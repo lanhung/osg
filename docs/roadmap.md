@@ -65,7 +65,7 @@ Evidence: completed data manifest, correspondence/access log, event-station matr
 
 ### 0.4 Paper 3 data Go/No-Go
 
-- [ ] Inventory stations in South China, Hong Kong, Taiwan, Philippines, Vietnam, and surrounding networks. (Current EarthScope query frozen; execution and other FDSN centres remain.)
+- [ ] Inventory stations in South China, Hong Kong, Taiwan, Philippines, Vietnam, and surrounding networks. (EarthScope query and conservative BH/LH triplet summarizer frozen; live execution and other FDSN centres remain.)
 - [ ] Distinguish archived, downloadable, real-time-capable, restricted, and unavailable stations.
 - [ ] Verify waveform epochs, sample rates, three-component channels, responses, and licenses.
 - [ ] Define noise-window strata: season, day/night, calm sea, typhoon, urban/remote, outages.

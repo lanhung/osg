@@ -129,7 +129,7 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 
 - [ ] Tides: periodic surface-load parameterization and long-integration detectability. (Validated finite-disk direct-attraction primitive complete; elastic response, priors and detectability ensemble remain.)
 - [ ] Storm surge/typhoon setup: regional sea-level anomaly with event-duration uncertainty. (Validated asymmetric finite-disk direct-attraction primitive complete; elastic response, spatial fields and cited priors remain.)
-- [ ] Mesoscale eddy: Gaussian lens or 3-D density anomaly with compensation variants.
+- [ ] Mesoscale eddy: Gaussian lens or 3-D density anomaly with compensation variants. (Validated translating Gaussian SSH primitive complete; compensated 3-D lens and cited priors remain.)
 - [ ] Internal wave: interface displacement/density dipole with cancellation diagnostics.
 - [ ] Tsunami: long-wave transient parameterization with propagating source geometry.
 - [ ] Submarine landslide: coupled solid-water rapid mass migration with conservation checks.

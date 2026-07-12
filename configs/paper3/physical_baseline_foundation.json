@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "result_class": "engineering_fixture_not_pegs_detectability_evidence",
+  "sample_interval_s": 1.0,
+  "decision_step_samples": 2,
+  "station_series": {
+    "A": [0.1, -0.1, 1.0, -1.0],
+    "B": [0.05, -0.05, 0.5, -0.5]
+  },
+  "station_noise_standard_deviation": {
+    "A": 0.1,
+    "B": 0.05
+  },
+  "station_noise_scale_source_ids": {
+    "A": "engineering_fixture_quiet_A",
+    "B": "engineering_fixture_quiet_B"
+  },
+  "station_templates": {
+    "A": [1.0, -1.0],
+    "B": [0.5, -0.5]
+  },
+  "quiet_score_windows": [
+    {
+      "window_id": "fixture_calibration_quiet",
+      "split_role": "threshold_calibration",
+      "scores": [0.8, 0.9, 1.0, 1.1],
+      "window_step_s": 60.0
+    },
+    {
+      "window_id": "fixture_heldout_quiet",
+      "split_role": "held_out",
+      "scores": [0.7, 0.9, 1.0, 1.05],
+      "window_step_s": 60.0
+    }
+  ],
+  "heldout_event_scores": {
+    "fixture_event": [0.9, 2.0, 3.0]
+  },
+  "target_false_alarms_per_30_days": 1.0,
+  "source_library_id": "engineering_fixture_library_v1",
+  "source_hypotheses": [
+    {
+      "scenario_id": "fixture_mw82_north",
+      "magnitude_mw": 8.2,
+      "segment_id": "north",
+      "template_source_id": "engineering_fixture_template_82",
+      "station_templates": {
+        "A": [0.5, -0.5],
+        "B": [0.25, -0.25]
+      }
+    },
+    {
+      "scenario_id": "fixture_mw86_central",
+      "magnitude_mw": 8.6,
+      "segment_id": "central",
+      "template_source_id": "engineering_fixture_template_86",
+      "station_templates": {
+        "A": [1.0, -1.0],
+        "B": [0.5, -0.5]
+      }
+    }
+  ]
+}

@@ -44,6 +44,13 @@
     }
   ],
   "raw_root": "data/raw/paper3/noise_windows",
+  "processing": {
+    "response_output": "ACC",
+    "pre_filt_hz": [0.001, 0.002, 0.1, 0.2],
+    "water_level_db": 60.0,
+    "diagnostic_band_hz": [0.005, 0.05],
+    "diagnostic_band_semantics": "response-QC summary only; not a frozen PEGS detection passband"
+  },
   "guardrails": [
     "Window roles are frozen before waveform inspection.",
     "Calibration and held-out candidates are not called quiet until independent event/weather screening passes.",

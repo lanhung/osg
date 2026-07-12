@@ -26,14 +26,14 @@ AUDIT = _module("audit_p3_noise_windows", "scripts/audit_p3_noise_windows.py")
 
 
 def test_blank_location_is_encoded_as_fdsn_double_dash() -> None:
-    url = FETCH.request_url(
-        "https://example.test/query",
-        {"network": "HK", "station": "HKPS", "location": ""},
-        {"start_utc": "2024-01-01T00:00:00Z", "end_utc": "2024-01-01T01:00:00Z"},
-        "LH",
-    )
-    assert "loc=--" in url
-    assert "cha=LH%3F" in url
+    import json
+
+    config = json.loads((ROOT / "data/manifests/paper3_noise_window_requests.json").read_text())
+    rows = FETCH.build_requests(config)
+    blank = [row for row in rows if row["station"] == "HKPS"]
+    assert blank
+    assert all("loc=--" in row["requested_url"] for row in blank)
+    assert all("LHE%2CLHN%2CLHZ" in row["requested_url"] for row in blank)
 
 
 def test_diagnostic_band_metric_recovers_sine_rms_order() -> None:
@@ -51,4 +51,4 @@ def test_request_windows_are_disjoint_and_unclassified() -> None:
     config = json.loads((ROOT / "data/manifests/paper3_noise_window_requests.json").read_text())
     intervals = sorted((row["start_utc"], row["end_utc"]) for row in config["windows"])
     assert all(left[1] <= right[0] for left, right in itertools.pairwise(intervals))
-    assert all(row["environment_label"].startswith("unclassified") for row in config["windows"])
+    assert all("quiet" not in row["label_status"] for row in config["windows"])

@@ -14,6 +14,21 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def request_url(base_url: str, station: dict, window: dict, channel_band: str) -> str:
+    """Build one FDSN wildcard URL, encoding an empty location as ``--``."""
+
+    parameters = {
+        "net": station["network"],
+        "sta": station["station"],
+        "loc": station["location"] or "--",
+        "cha": f"{channel_band}?",
+        "starttime": window["start_utc"],
+        "endtime": window["end_utc"],
+        "nodata": "404",
+    }
+    return f"{base_url}?{urllib.parse.urlencode(parameters)}"
+
+
 def build_requests(document: dict) -> tuple[dict, ...]:
     if document.get("schema_version") != 1:
         raise ValueError("unsupported noise-window request schema")

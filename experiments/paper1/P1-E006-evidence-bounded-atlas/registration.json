@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "execution_status": "registered_pending_execution",
+  "experiment_id": "P1-E006-evidence-bounded-atlas",
+  "paper": "paper1",
+  "registered_utc": "2026-07-12T14:41:48Z",
+  "code_commit": "caf777d7ec58e4008dc357c4942d0467c6d5c3c6",
+  "config_file": "configs/paper1/evidence_bounded_atlas.json",
+  "config_file_sha256": "0cd303804dd6cf9ce305ed495a6f56f7f69da5c3efea8cf429334cae0c60cacf",
+  "runner": "scripts/run_p1_evidence_bounded_atlas.py",
+  "data_manifest": "data/manifests/process_parameter_evidence.json",
+  "random_seeds": [1201, 1202, 1203, 1204, 1205, 1206],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "planned_output": "experiments/paper1/P1-E006-evidence-bounded-atlas/metrics.json",
+  "result_class": "evidence_bounded_sensitivity_design_not_probability",
+  "registration_note": "Committed before execution. Named-event and catalogue anchors are sensitivity designs; frequency coverage below 90 percent remains unclassified."
+}

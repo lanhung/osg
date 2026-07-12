@@ -1,0 +1,52 @@
+{
+  "audit": {
+    "all_heldout_events_improve": false,
+    "blocking_reasons": [
+      "real_observations_missing",
+      "analysis_not_complete",
+      "data_gate_not_passed",
+      "multi_event_design_incomplete",
+      "effect_ownership_not_closed",
+      "direct_deformation_separation_incomplete",
+      "multi_source_validation_incomplete",
+      "sensitivity_analysis_incomplete",
+      "failed_event_log_incomplete",
+      "attribution_interval_not_positive",
+      "heldout_improvement_not_demonstrated",
+      "quiet_false_alarm_gate_not_passed",
+      "event_snr_reporting_incomplete",
+      "fewer_than_three_novelty_requirements"
+    ],
+    "branch": "pending_evidence",
+    "event_snr_reporting_complete": false,
+    "events_above_snr_interpretation_threshold": 0,
+    "full_attribution_claim_ready": false,
+    "heldout_evaluation_complete": false,
+    "manuscript_release_ready": false,
+    "novelty": {
+      "cross_typhoon_generalization": false,
+      "demonstrated_count": 0,
+      "direct_gravity_deformation_separation": false,
+      "event_resolved_attribution": false,
+      "minimum_required_count": 3,
+      "multi_source_closed_loop_validation": false,
+      "passes": false
+    },
+    "positive_attribution_interval": false
+  },
+  "evidence_status": "placeholder_pending_real_data",
+  "provenance": {
+    "required_inputs": [
+      "paper2_event_data_gate_audit",
+      "paper2_effect_composition_audit",
+      "event_block_attribution_bootstrap",
+      "heldout_event_improvement_table",
+      "heldout_quiet_false_positive_audit",
+      "event_snr_table",
+      "sensitivity_and_failure_logs",
+      "data_license_review"
+    ],
+    "statement": "No scientific result is represented by this placeholder. Replace fields only with registered real-data artifacts."
+  },
+  "schema_version": 1
+}

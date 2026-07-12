@@ -57,6 +57,17 @@ from .attribution import (
     fit_ocean_attribution_coefficient,
     predict_heldout_ocean_attribution,
 )
+from .paper2_decision import (
+    Paper2DecisionAudit,
+    Paper2DecisionEvidence,
+    audit_paper2_decision,
+)
+from .paper2_decision import (
+    Paper2DecisionAudit,
+    Paper2DecisionEvidence,
+    Paper2NoveltyAudit,
+    audit_paper2_decision,
+)
 
 __all__ = [
     "gaussian_detection_probability",
@@ -90,6 +101,13 @@ __all__ = [
     "bootstrap_ocean_attribution_by_event",
     "fit_ocean_attribution_coefficient",
     "predict_heldout_ocean_attribution",
+    "Paper2DecisionAudit",
+    "Paper2DecisionEvidence",
+    "audit_paper2_decision",
+    "Paper2DecisionAudit",
+    "Paper2DecisionEvidence",
+    "Paper2NoveltyAudit",
+    "audit_paper2_decision",
     "empirical_detection_probability",
     "earliest_reliable_detection_time",
     "earliest_reliable_magnitude_time",

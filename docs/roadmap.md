@@ -222,8 +222,8 @@ Evidence: registered multi-event experiment, held-out metrics, false-positive ta
 
 ### 2.5 Paper 2 decision branches and manuscript
 
-- [ ] Decide among successful attribution, ocean-product evaluation, non-detection constraints, or single-case short paper.
-- [ ] Ensure at least three of four novelty requirements are demonstrated; prefer all four.
+- [ ] Decide among successful attribution, ocean-product evaluation, non-detection constraints, or single-case short paper. (An executable claim-safe audit now selects these branches, keeps missing/fixture evidence pending, and separates scientific readiness from data-license release; real artifacts remain.)
+- [ ] Ensure at least three of four novelty requirements are demonstrated; prefer all four. (The decision audit counts event attribution, direct/deformation separation, multi-source validation and cross-typhoon generalization, requiring at least three; none are claimed by the placeholder.)
 - [ ] Generate six core figures and supporting diagnostics automatically.
 - [ ] Draft claim-safe manuscript and explicitly distinguish the 2026 Haikou study.
 - [ ] Complete internal reproducibility and data-license review.

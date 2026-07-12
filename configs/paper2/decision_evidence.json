@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "evidence_status": "placeholder_pending_real_data",
+  "evidence": {
+    "uses_real_observations": false,
+    "analysis_complete": false,
+    "data_gate_passes": false,
+    "typhoon_event_count": 0,
+    "heldout_event_count": 0,
+    "quiet_window_count": 0,
+    "effect_closure_ready": false,
+    "direct_deformation_separated": false,
+    "multi_source_validation_complete": false,
+    "sensitivity_analysis_complete": false,
+    "failed_event_log_complete": false,
+    "data_license_review_complete": false,
+    "attribution_ci_lower_bound": null,
+    "heldout_improvement_passes": [],
+    "heldout_quiet_far_passes": null,
+    "event_snrs": [],
+    "event_snr_interpretation_threshold": 3.0
+  },
+  "provenance": {
+    "statement": "No scientific result is represented by this placeholder. Replace fields only with registered real-data artifacts.",
+    "required_inputs": [
+      "paper2_event_data_gate_audit",
+      "paper2_effect_composition_audit",
+      "event_block_attribution_bootstrap",
+      "heldout_event_improvement_table",
+      "heldout_quiet_false_positive_audit",
+      "event_snr_table",
+      "sensitivity_and_failure_logs",
+      "data_license_review"
+    ]
+  }
+}

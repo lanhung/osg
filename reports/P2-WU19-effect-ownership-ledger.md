@@ -1,4 +1,4 @@
-# P2-WU17 environmental-effect ownership ledger
+# P2-WU19 environmental-effect ownership ledger
 
 Status: executable metadata gate complete; current CMEMS/ERA5 composition
 correctly fails closure.

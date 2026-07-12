@@ -24,6 +24,14 @@ The dependency-free foundation tests can also run on a bare Python installation:
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
+Validate all registered metadata/config/output checksums and reproduce every
+registered deterministic experiment with:
+
+```bash
+make validate-experiments
+make reproduce-all
+```
+
 ## Reproducibility contract
 
 Large data never enters Git. Each dataset is represented by a manifest containing its source, time range, access status, license, and checksum. A formal experiment must record the Git commit, environment, data manifest, configuration, random seed, machine, and output files.
@@ -35,6 +43,11 @@ make reproduce PAPER=2 EXP=P2-E017
 ```
 
 It is operational for registered deterministic experiments containing `experiments/paperN/<experiment-id>/metadata.json`, a versioned runner/config, and expected output SHA-256. Unregistered experiments fail explicitly instead of silently producing an untracked result.
+
+Current registered foundation experiments cover six-process direct-gravity
+metrics, vertical-gravity detectability, gravity-gradient detectability, and
+distance attenuation. They are explicitly engineering references rather than
+paper-level physical priors.
 
 ## Repository map
 

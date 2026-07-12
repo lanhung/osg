@@ -22,4 +22,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py'
       - name: Compile source tree
         run: python -m compileall -q src tests scripts
-
+      - name: Validate registered experiment metadata and checksums
+        run: python scripts/validate_experiment_registry.py

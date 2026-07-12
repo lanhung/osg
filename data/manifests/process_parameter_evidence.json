@@ -12,13 +12,70 @@
           "source": "https://tidesandcurrents.noaa.gov/publications/Understanding_Tides_by_Steacy_finalFINAL11_30.pdf",
           "evidence_type": "astronomical_constituent_constant",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_single_week_duration_s",
+          "value": 604800.0,
+          "source_reported_value": "nine single weeks are analysed as separate wind-surge periods",
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "published_analysis_window_not_probability",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_extreme_month_duration_s",
+          "value": 2592000.0,
+          "source_reported_value": "2022-01-26 through 2022-02-25",
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "published_analysis_window_not_probability",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "BSH_HBMnoku_2022_regional_SSH_field",
+          "source": "https://gdi.bsh.de/de/feed/Modelled-Sea-Surface-Height-Above-Mean-Sea-Level-of-the-operational-circulation-model-of-BSH-in-the-German-Bight-and-the-western-Baltic-Sea-horizontal-resolution-ca-900-m-2022-series.xml",
+          "evidence_type": "registered_spatiotemporal_field",
+          "probability_prior_eligible": false
         }
       ],
-      "unresolved_for_atlas": [
-        "spatial amplitude and phase field or a cited site/region scenario envelope",
-        "loaded ocean domain and coastline mask",
-        "observation duration and empirical low-frequency station noise"
-      ]
+      "unresolved_for_atlas": [],
+      "resolution_for_atlas": [
+        "Use the registered BSH-HBMnoku regional SSH field rather than inventing a global tidal-amplitude distribution.",
+        "Derive the regional dominant M2 field, wet mask, amplitude and phase jointly from the same fine/coarse model archive.",
+        "Treat seven-day and thirty-day integrations as published sensitivity windows, not probability quantiles.",
+        "Keep empirical low-frequency noise as an instrument-coverage gate in WP2 rather than a tide prior."
+      ],
+      "production_joint_design": {
+        "status": "frozen",
+        "semantics": "sensitivity_design_not_probability",
+        "sample_count": 32,
+        "random_seed": 1201,
+        "model_variants": [
+          "bsh_hbmnoku_regional_harmonic_field_direct_plus_ce_elastic",
+          "finite_disk_geometry_diagnostic_direct_plus_ce_elastic"
+        ],
+        "joint_constraints": [
+          "Spatial amplitude, phase, wet mask and source area are derived jointly from one BSH field and are never sampled independently.",
+          "The finite-disk branch is a geometry sensitivity diagnostic normalized to the regional field, not an alternative ocean-tide atlas.",
+          "Detection is unclassified whenever the instrument curve fails the registered signal-energy coverage threshold."
+        ],
+        "parameters": {
+          "period_s": {
+            "kind": "constant",
+            "value": 44714.16432,
+            "unit": "s",
+            "evidence_parameters": ["M2_period_s"]
+          },
+          "observation_duration_s": {
+            "kind": "range",
+            "range": [604800.0, 2592000.0],
+            "unit": "s",
+            "scale": "log",
+            "evidence_parameters": [
+              "Helgoland_single_week_duration_s",
+              "Helgoland_extreme_month_duration_s"
+            ]
+          }
+        }
+      }
     },
     "storm_surge": {
       "evidence": [
@@ -42,13 +99,88 @@
           "source": "https://doi.org/10.1029/2024GL109262",
           "evidence_type": "single_benchmark_event",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_wind_surge_selection_threshold_m",
+          "value": 1.0,
+          "source_reported_value": "single weeks with wind surges between 1.0 and 1.5 m deviation from mean high or low water",
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "published_case_selection_threshold_not_probability",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_extreme_surge_selection_threshold_m",
+          "value": 1.5,
+          "source_reported_value": "extreme month with several storm surges of more than 1.5 m above mean high water",
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "published_case_selection_threshold_not_probability",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_single_week_duration_s",
+          "value": 604800.0,
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "published_analysis_window_not_probability",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_extreme_month_duration_s",
+          "value": 2592000.0,
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "published_analysis_window_not_probability",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "BSH_HBMnoku_2022_storm_SSH_field",
+          "source": "https://gdi.bsh.de/de/feed/Modelled-Sea-Surface-Height-Above-Mean-Sea-Level-of-the-operational-circulation-model-of-BSH-in-the-German-Bight-and-the-western-Baltic-Sea-horizontal-resolution-ca-900-m-2022-series.xml",
+          "evidence_type": "registered_spatiotemporal_field",
+          "probability_prior_eligible": false
         }
       ],
-      "unresolved_for_atlas": [
-        "event-independent amplitude/area/duration scenario envelope",
-        "regional sea-level spatial fields",
-        "direct-versus-elastic benchmark decomposition"
-      ]
+      "unresolved_for_atlas": [],
+      "resolution_for_atlas": [
+        "Scope Paper 1 to a named North Sea sensitivity family rather than claiming an event-independent global storm-surge probability distribution.",
+        "Use registered BSH fine/coarse SSH fields for spatial geometry and time dependence.",
+        "Use the frozen direct-attraction ledger and CE LoadDef adapter for direct-versus-elastic decomposition.",
+        "Treat 1.0--2.0 m and seven--thirty day bounds as named published-case sensitivity limits."
+      ],
+      "production_joint_design": {
+        "status": "frozen",
+        "semantics": "sensitivity_design_not_probability",
+        "sample_count": 64,
+        "random_seed": 1202,
+        "model_variants": [
+          "bsh_hbmnoku_event_field_direct_plus_ce_elastic",
+          "asymmetric_finite_disk_geometry_diagnostic_direct_plus_ce_elastic"
+        ],
+        "joint_constraints": [
+          "BSH spatial footprint, amplitude and duration remain coupled within observed model snapshots.",
+          "The 2.0 m event anchor is not combined with an independently sampled global footprint.",
+          "Parametric disk values are normalized diagnostics and cannot replace the published-case field calculation."
+        ],
+        "parameters": {
+          "peak_sea_level_anomaly_m": {
+            "kind": "range",
+            "range": [1.0, 2.0],
+            "unit": "m",
+            "scale": "linear",
+            "evidence_parameters": [
+              "Helgoland_wind_surge_selection_threshold_m",
+              "Helgoland_2022_01_30_sea_level_above_mean_high_water_m"
+            ]
+          },
+          "analysis_duration_s": {
+            "kind": "range",
+            "range": [604800.0, 2592000.0],
+            "unit": "s",
+            "scale": "log",
+            "evidence_parameters": [
+              "Helgoland_single_week_duration_s",
+              "Helgoland_extreme_month_duration_s"
+            ]
+          }
+        }
+      }
     },
     "mesoscale_eddy": {
       "evidence": [
@@ -65,17 +197,90 @@
           "source": "https://doi.org/10.1016/j.pocean.2011.01.002",
           "evidence_type": "global_catalogue_mean_not_distribution",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "global_observed_mean_lifetime_s",
+          "value": 19353600.0,
+          "source_reported_value": "32 weeks",
+          "source": "https://doi.org/10.1016/j.pocean.2011.01.002",
+          "evidence_type": "global_catalogue_mean_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "global_observed_mean_propagation_distance_m",
+          "value": 550000.0,
+          "source_reported_value": "550 km",
+          "source": "https://doi.org/10.1016/j.pocean.2011.01.002",
+          "evidence_type": "global_catalogue_mean_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "global_observed_implied_mean_propagation_speed_m_s",
+          "value": 0.02841848544973545,
+          "derivation": "550000 m / (32 * 7 * 86400 s)",
+          "source": "https://doi.org/10.1016/j.pocean.2011.01.002",
+          "evidence_type": "derived_ratio_of_two_reported_catalogue_means_not_distribution",
+          "probability_prior_eligible": false
         }
       ],
       "model_warning": "Chelton et al. argue that a quadratic composite profile can better represent observed eddies than a Gaussian; profile sensitivity is required.",
-      "unresolved_for_atlas": [
-        "catalogue quantiles or a traceable scenario envelope",
-        "translation-speed distribution",
-        "SSH-only versus compensated three-dimensional density structure"
-      ]
+      "unresolved_for_atlas": [],
+      "resolution_for_atlas": [
+        "Use a catalogue-mean named scenario and discrete profile sensitivity, not unsupported catalogue quantiles.",
+        "Derive one representative translation speed from the separately reported mean distance and lifetime; do not label it a speed distribution.",
+        "Compare SSH-only and exactly mass-balanced core/halo branches after equal positive-mass normalization; the compensation branch is structural sensitivity rather than an inferred ocean density profile.",
+        "Implement the Chelton quadratic-composite surface profile in WP2 before production execution."
+      ],
+      "production_joint_design": {
+        "status": "frozen",
+        "semantics": "sensitivity_design_not_probability",
+        "sample_count": 3,
+        "random_seed": 1203,
+        "model_variants": [
+          "catalogue_mean_gaussian_SSH",
+          "catalogue_mean_quadratic_composite_SSH",
+          "equal_positive_mass_exactly_compensated_core_halo"
+        ],
+        "joint_constraints": [
+          "Amplitude and speed-based radius retain the Chelton catalogue definitions.",
+          "Translation speed is a ratio of reported means and is not paired with independent tail values.",
+          "All profile variants share peak SSH, speed-based radius and positive-mass normalization.",
+          "The compensated branch reports cancellation sensitivity and is not assigned probability weight."
+        ],
+        "parameters": {
+          "peak_sea_level_anomaly_m": {
+            "kind": "constant",
+            "value": 0.08,
+            "unit": "m",
+            "evidence_parameters": ["global_observed_mean_SSH_amplitude_m"]
+          },
+          "speed_based_radius_m": {
+            "kind": "constant",
+            "value": 90000.0,
+            "unit": "m",
+            "evidence_parameters": ["global_observed_mean_speed_based_radius_m"]
+          },
+          "translation_speed_m_s": {
+            "kind": "constant",
+            "value": 0.02841848544973545,
+            "unit": "m s^-1",
+            "evidence_parameters": [
+              "global_observed_implied_mean_propagation_speed_m_s"
+            ]
+          }
+        }
+      }
     },
     "internal_wave": {
       "evidence": [
+        {
+          "parameter": "M2_period_s",
+          "value": 44714.16432,
+          "source_reported_value": "12.4206012 solar hours",
+          "source": "https://tidesandcurrents.noaa.gov/publications/Understanding_Tides_by_Steacy_finalFINAL11_30.pdf",
+          "evidence_type": "astronomical_constituent_constant",
+          "probability_prior_eligible": false
+        },
         {
           "parameter": "South_China_Sea_internal_tide_isopycnal_displacement_m",
           "value": 100.0,
@@ -117,15 +322,113 @@
           "source": "https://doi.org/10.3389/fmars.2021.734075",
           "evidence_type": "single_shallow_shelf_wave_packet",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Luzon_Strait_upper_1000m_reference_buoyancy_frequency_s-1",
+          "value": 0.0067,
+          "source_reported_value": "N0 = 6.7e-3 s^-1, average stratification of the upper 1000 m on the Pacific side",
+          "source": "https://doi.org/10.1002/jgrc.20293",
+          "evidence_type": "regional_observation_reference_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Luzon_Strait_mode1_M2_wavelength_m",
+          "range": [120000.0, 129000.0],
+          "source_reported_value": "120 km for climatological stratification and 129 km in the comparison case",
+          "source": "https://www7320.nrlssc.navy.mil/pubs/2007/ko2-2007.pdf",
+          "evidence_type": "regional_model_sensitivity_range_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Luzon_Strait_implied_density_gradient_kg_m4",
+          "value": 0.0046919437320593685,
+          "derivation": "rho0*N0^2/g using rho0=1025 kg m^-3 and g=9.80665 m s^-2",
+          "source": "https://doi.org/10.1002/jgrc.20293",
+          "evidence_type": "derived_from_reported_regional_buoyancy_frequency",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "South_China_Sea_implied_peak_density_anomaly_kg_m3",
+          "range": [0.4691943732059368, 1.1260664956942485],
+          "derivation": "abs(d_rho/dz)*xi for xi=100--240 m",
+          "source": "https://doi.org/10.1002/jgrc.20293",
+          "supporting_sources": [
+            "https://doi.org/10.1175/2011JPO4587.1",
+            "https://doi.org/10.1038/srep30041"
+          ],
+          "evidence_type": "derived_regional_sensitivity_range_not_distribution",
+          "probability_prior_eligible": false
         }
       ],
       "model_warning": "Isopycnal displacement alone does not determine gravity. The vertical density gradient, mode shape, free-surface expression and mass compensation must be explicit; the 240 m event is an extreme anchor, not an upper quantile.",
-      "unresolved_for_atlas": [
-        "regional mode/stratification-specific density-gradient ranges",
-        "horizontal and vertical wavenumber spectrum",
-        "free-surface coupling and compensation",
-        "separate coherent internal-tide and solitary-wave scenario families"
-      ]
+      "unresolved_for_atlas": [],
+      "resolution_for_atlas": [
+        "Derive density anomaly explicitly from the observed displacement anchors and the regional reference buoyancy frequency.",
+        "Use the published 120--129 km mode-1 M2 wavelength sensitivity and the existing 100--300 km global beam-width bracket without interpreting either as a probability distribution.",
+        "Separate a coherent mode-1 M2 branch from a solitary-wave extreme branch and never combine the 240 m extreme with probability language.",
+        "Implement a continuous mode-1 vertical-structure branch plus the existing exactly compensated Gaussian dipole diagnostic in WP2.",
+        "Treat free-surface coupling as a discrete zero-versus-linear-coupling sensitivity and report it separately from the internal density signal."
+      ],
+      "production_joint_design": {
+        "status": "frozen",
+        "semantics": "sensitivity_design_not_probability",
+        "sample_count": 128,
+        "random_seed": 1204,
+        "model_variants": [
+          "coherent_mode1_M2_density_structure",
+          "exactly_compensated_gaussian_dipole_diagnostic",
+          "solitary_wave_extreme_density_structure",
+          "linear_free_surface_coupling_sensitivity"
+        ],
+        "joint_constraints": [
+          "Density anomaly is derived from displacement and stratification within each sample rather than sampled independently.",
+          "The 240 m displacement is restricted to the solitary-wave extreme branch.",
+          "The 100--300 km beam width belongs to the coherent internal-tide branch and is not used as a solitary-wave packet scale.",
+          "All density branches are mass compensated over the represented water column before gravity integration."
+        ],
+        "parameters": {
+          "period_s": {
+            "kind": "constant",
+            "value": 44714.16432,
+            "unit": "s",
+            "evidence_parameters": ["M2_period_s"]
+          },
+          "isopycnal_displacement_m": {
+            "kind": "range",
+            "range": [100.0, 240.0],
+            "unit": "m",
+            "scale": "linear",
+            "evidence_parameters": [
+              "South_China_Sea_internal_tide_isopycnal_displacement_m",
+              "South_China_Sea_extreme_internal_solitary_wave_amplitude_m"
+            ]
+          },
+          "peak_density_anomaly_kg_m3": {
+            "kind": "range",
+            "range": [0.4691943732059368, 1.1260664956942485],
+            "unit": "kg m^-3",
+            "scale": "linear",
+            "evidence_parameters": [
+              "South_China_Sea_implied_peak_density_anomaly_kg_m3"
+            ]
+          },
+          "mode1_horizontal_scale_m": {
+            "kind": "range",
+            "range": [120000.0, 129000.0],
+            "unit": "m",
+            "scale": "linear",
+            "evidence_parameters": ["Luzon_Strait_mode1_M2_wavelength_m"]
+          },
+          "vertical_support_m": {
+            "kind": "constant",
+            "value": 1000.0,
+            "unit": "m",
+            "evidence_parameters": [
+              "Luzon_Strait_upper_1000m_reference_buoyancy_frequency_s-1"
+            ]
+          }
+        }
+      }
     },
     "tsunami": {
       "evidence": [
@@ -149,15 +452,81 @@
           "source": "https://doi.org/10.1080/01431160601094484",
           "evidence_type": "single_event_satellite_altimetry_lower_bound",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Tohoku_2011_DART_zero_to_peak_amplitude_m",
+          "value": 1.8,
+          "source_reported_value": "1.8 m zero-to-peak at DART station 21418",
+          "source": "https://doi.org/10.1080/19475705.2011.632443",
+          "evidence_type": "single_event_deep_ocean_observation",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Tohoku_2011_propagated_energy_J",
+          "value": 3000000000000000.0,
+          "relative_uncertainty": 0.06,
+          "source": "https://doi.org/10.1029/2011JC007635",
+          "evidence_type": "single_event_DART_energy_inversion",
+          "probability_prior_eligible": false
         }
       ],
       "model_warning": "The source footprint, open-ocean propagating amplitude and coastal/run-up amplitude are different quantities. No coastal height may be used as the Gaussian open-ocean load amplitude.",
-      "unresolved_for_atlas": [
-        "multi-magnitude earthquake-source-derived initial displacement family",
-        "bathymetry and dispersion validity boundary",
-        "distance definition tied to propagating wavefront geometry",
-        "source-to-propagating-packet transformation and mass-balance convention"
-      ]
+      "unresolved_for_atlas": [],
+      "resolution_for_atlas": [
+        "Use named Sumatra and Tohoku deep-ocean sensitivity anchors rather than claim a multi-magnitude earthquake probability prior.",
+        "Read water depth from a registered bathymetry field and flag shallow-water/dispersion validity per sample rather than sample depth independently.",
+        "Define distance to the nearest propagating wavefront and report source distance separately.",
+        "Normalize a mass-balanced crest/trough packet to either the reported deep-ocean amplitude or the DART-inferred propagated energy; never use coastal run-up as open-ocean load amplitude."
+      ],
+      "production_joint_design": {
+        "status": "frozen",
+        "semantics": "sensitivity_design_not_probability",
+        "sample_count": 96,
+        "random_seed": 1205,
+        "model_variants": [
+          "DART_amplitude_normalized_mass_balanced_packet",
+          "Tang_energy_normalized_mass_balanced_packet",
+          "source_footprint_to_wavefront_geometry_sensitivity"
+        ],
+        "joint_constraints": [
+          "The 1.0 m Sumatra lower bound and 1.8 m Tohoku observation define named-event sensitivity bounds, not percentiles.",
+          "Length and width remain coupled to the Tohoku source inversion in the source-footprint branch.",
+          "Amplitude-normalized and energy-normalized branches are reported separately and are not double constrained.",
+          "Every packet has equal signed crest and trough surface mass to numerical tolerance.",
+          "Samples outside the shallow-water validity boundary are labelled invalid rather than extrapolated."
+        ],
+        "parameters": {
+          "deep_ocean_amplitude_m": {
+            "kind": "range",
+            "range": [1.0, 1.8],
+            "unit": "m",
+            "scale": "linear",
+            "evidence_parameters": [
+              "Sumatra_2004_mid_ocean_peak_to_trough_wave_height_m",
+              "Tohoku_2011_DART_zero_to_peak_amplitude_m"
+            ]
+          },
+          "source_length_m": {
+            "kind": "range",
+            "range": [300000.0, 400000.0],
+            "unit": "m",
+            "scale": "linear",
+            "evidence_parameters": ["Tohoku_2011_inferred_source_length_m"]
+          },
+          "source_width_m": {
+            "kind": "constant",
+            "value": 100000.0,
+            "unit": "m",
+            "evidence_parameters": ["Tohoku_2011_inferred_source_width_m"]
+          },
+          "propagated_energy_J": {
+            "kind": "constant",
+            "value": 3000000000000000.0,
+            "unit": "J",
+            "evidence_parameters": ["Tohoku_2011_propagated_energy_J"]
+          }
+        }
+      }
     },
     "submarine_landslide": {
       "evidence": [
@@ -205,15 +574,99 @@
           "source": "https://doi.org/10.1002/2013JF002720",
           "evidence_type": "regional_censored_database_median_not_global_prior",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Storfjorden_LS1_modeled_velocity_m_s",
+          "range": [1.0, 30.0],
+          "source_reported_value": "1--5 m s^-1 early regional values increasing to 22--30 m s^-1",
+          "source": "https://doi.org/10.5194/nhess-22-3839-2022",
+          "evidence_type": "single_event_dynamic_model_range",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "deformable_slide_lab_apparent_density_kg_m3",
+          "value": 1950.0,
+          "source": "https://www1.udel.edu/kirby/landslide/models/ma-etal-om13.pdf",
+          "evidence_type": "laboratory_model_material_constant",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Storegga_mixture_minus_ambient_density_contrast_kg_m3",
+          "value": 600.0,
+          "derivation": "1700 kg m^-3 slide mixture minus 1100 kg m^-3 ambient turbidity-current density",
+          "source": "https://www.uaf.edu/cfos/files/research-projects/people/kowalik/book_sum.pdf",
+          "evidence_type": "published_model_density_contrast_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "laboratory_slide_minus_water_density_contrast_kg_m3",
+          "value": 950.0,
+          "derivation": "1950 kg m^-3 apparent slide density minus 1000 kg m^-3 laboratory water reference",
+          "source": "https://www1.udel.edu/kirby/landslide/models/ma-etal-om13.pdf",
+          "evidence_type": "derived_laboratory_density_contrast_not_distribution",
+          "probability_prior_eligible": false
         }
       ],
       "model_warning": "Storegga is a giant extreme event. Its volume, runout and local maximum velocity cannot be combined independently or used as population quantiles; early acceleration and evolving spatial distribution control tsunami generation. Mediterranean medians are region- and censoring-dependent and do not define a global distribution.",
-      "unresolved_for_atlas": [
-        "representative small and intermediate submarine-slide scenario families",
-        "sediment density contrast and early acceleration distributions",
-        "continuum mass shape and entrainment",
-        "coupled generated-water-wave field"
-      ]
+      "unresolved_for_atlas": [],
+      "resolution_for_atlas": [
+        "Define regional-median, Storfjorden dynamic, and Storegga giant named scenario strata; do not sample them as one population distribution.",
+        "Use the published 1--60 m s^-1 event-model span and 600--950 kg m^-3 model/laboratory density contrasts only as sensitivity bounds.",
+        "Compare point-pair and mass-balanced continuum solid relocation at equal moved mass.",
+        "Implement an explicitly separate generated-water-wave branch normalized by displaced volume and acceleration; do not fold it into the solid direct-gravity component.",
+        "Treat entrainment as a zero-versus-documented-mass-growth structural branch until an event-specific growth factor is available."
+      ],
+      "production_joint_design": {
+        "status": "frozen",
+        "semantics": "sensitivity_design_not_probability",
+        "sample_count": 96,
+        "random_seed": 1206,
+        "model_variants": [
+          "mass_conserving_point_pair_solid_relocation",
+          "mass_conserving_gaussian_continuum_solid_relocation",
+          "displaced_volume_generated_water_wave",
+          "zero_versus_entrainment_structural_sensitivity"
+        ],
+        "joint_constraints": [
+          "Samples are stratified into Mediterranean-median, Storfjorden and Storegga families before parameter assignment.",
+          "Storegga volume, runout and 30--60 m s^-1 velocities remain coupled only within the giant-event stratum.",
+          "Regional median volumes are not paired with Storegga runout or maximum velocity.",
+          "Solid relocation and generated-water-wave gravity remain separate ledger components.",
+          "Every solid variant conserves signed moved mass to numerical tolerance."
+        ],
+        "parameters": {
+          "slide_volume_m3": {
+            "kind": "range",
+            "range": [140000000.0, 3000000000000.0],
+            "unit": "m^3",
+            "scale": "log",
+            "evidence_parameters": [
+              "Mediterranean_submarine_landslide_inferred_population_median_volume_m3",
+              "Storegga_slide_volume_m3"
+            ]
+          },
+          "characteristic_velocity_m_s": {
+            "kind": "range",
+            "range": [1.0, 60.0],
+            "unit": "m s^-1",
+            "scale": "log",
+            "evidence_parameters": [
+              "Storfjorden_LS1_modeled_velocity_m_s",
+              "Storegga_local_maximum_velocity_m_s"
+            ]
+          },
+          "bulk_density_contrast_kg_m3": {
+            "kind": "range",
+            "range": [600.0, 950.0],
+            "unit": "kg m^-3",
+            "scale": "linear",
+            "evidence_parameters": [
+              "Storegga_mixture_minus_ambient_density_contrast_kg_m3",
+              "laboratory_slide_minus_water_density_contrast_kg_m3"
+            ]
+          }
+        }
+      }
     }
   },
   "foundation_comparison": {

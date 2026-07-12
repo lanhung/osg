@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E005-helgoland-bsh-model",
+  "case_id": "helgoland-ntol-2022-voigt-2024",
+  "input_root": "/root/autodl-tmp/ocean-gravity-run/data/helgoland/bsh_hbmnoku_ssh_20220126_20220225",
+  "loaddef_ce_green_function": "/root/autodl-tmp/ocean-gravity-run/data/loaddef-v1.2.2/source/output/Greens_Functions/ce_PREM_audit_angles.txt",
+  "analysis_window": {
+    "start_utc": "2022-01-26T00:00:00",
+    "end_utc": "2022-02-25T00:00:00"
+  },
+  "station": {
+    "id": "HELG00DEU/iGrav047",
+    "latitude_deg": 54.17448313039624,
+    "longitude_deg": 7.89309554222669,
+    "height_m": 0.0,
+    "coordinate_source": "HELG00DEU RINEX APPROX POSITION XYZ converted on WGS84; loading height follows the published H0=0 m contract"
+  },
+  "target_grid": {
+    "spacing_deg": 0.125,
+    "latitude_bounds_deg": [48.5625, 65.9375],
+    "longitude_bounds_deg": [-4.0625, 30.4375],
+    "fine_override_policy": "target cells wholly inside the fine-grid source bounds replace coarse-grid cells"
+  },
+  "water_density_kg_m3": 1025.0,
+  "earth_radius_m": 6371000.0,
+  "harmonic_detiding": {
+    "method": "ordinary least squares on the registered 30-day model response",
+    "include_linear_trend": true,
+    "constituents_cycles_per_solar_day": {
+      "M2": 1.932273616,
+      "S2": 2.0,
+      "N2": 1.89598186,
+      "K2": 2.0054758,
+      "K1": 1.002737909,
+      "O1": 0.929535695,
+      "P1": 0.997262079,
+      "Q1": 0.893244048
+    },
+    "scope_warning": "The source paper used a three-year ET34-X-V80 analysis. This 30-day fit is a declared reproduction limitation, not an equivalent detiding method."
+  },
+  "event_window": {
+    "start_utc": "2022-01-29T00:00:00",
+    "end_utc": "2022-02-01T00:00:00"
+  },
+  "published_targets": {
+    "elastic_gravity_peak_to_peak_m_s2": 8.5e-8,
+    "vertical_displacement_m": -0.034,
+    "fractional_tolerance": 0.30
+  }
+}

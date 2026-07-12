@@ -36,12 +36,17 @@ class TestProcessParameterEvidence(unittest.TestCase):
         self.assertGreater(len(evidence), 0)
         self.assertTrue(all(not item["probability_prior_eligible"] for item in evidence))
 
-    def test_unresolved_processes_cannot_enter_scientific_ensemble(self) -> None:
+    def test_complex_processes_have_explicit_nonprobabilistic_resolutions(self) -> None:
         for name in ("internal_wave", "tsunami", "submarine_landslide"):
             process = self.document["processes"][name]
             self.assertGreater(len(process["evidence"]), 0)
             self.assertIn("model_warning", process)
-            self.assertGreaterEqual(len(process["unresolved_for_atlas"]), 3)
+            self.assertEqual(process["unresolved_for_atlas"], [])
+            self.assertGreaterEqual(len(process["resolution_for_atlas"]), 4)
+            self.assertEqual(
+                process["production_joint_design"]["semantics"],
+                "sensitivity_design_not_probability",
+            )
 
     def test_extreme_named_events_are_explicitly_not_quantiles(self) -> None:
         internal = self.document["processes"]["internal_wave"]

@@ -18,18 +18,13 @@ SPEC.loader.exec_module(MODULE)
 
 
 class TestProcessPriorReadiness(unittest.TestCase):
-    def test_repository_correctly_blocks_all_production_processes(self) -> None:
+    def test_repository_has_six_frozen_nonprobabilistic_designs(self) -> None:
         document = json.loads((ROOT / "data/manifests/process_parameter_evidence.json").read_text())
         result = MODULE.audit_document(document)
         self.assertEqual(result["process_count"], 6)
-        self.assertEqual(result["ready_count"], 0)
-        self.assertFalse(result["all_processes_ready"])
-        self.assertTrue(
-            all(
-                "missing_frozen_production_joint_design" in row["blockers"]
-                for row in result["processes"]
-            )
-        )
+        self.assertEqual(result["ready_count"], 6)
+        self.assertTrue(result["all_processes_ready"])
+        self.assertTrue(all(not row["blockers"] for row in result["processes"]))
 
     def test_complete_sensitivity_design_can_pass_without_probability_claim(self) -> None:
         document = {
@@ -104,6 +99,34 @@ class TestProcessPriorReadiness(unittest.TestCase):
             "unresolved_physics_or_parameter_fields",
             result["processes"][0]["blockers"],
         )
+
+    def test_evidence_backed_constant_is_accepted(self) -> None:
+        document = {
+            "schema_version": 1,
+            "processes": {
+                "fixture": {
+                    "evidence": [{"parameter": "period", "probability_prior_eligible": False}],
+                    "unresolved_for_atlas": [],
+                    "production_joint_design": {
+                        "status": "frozen",
+                        "semantics": "sensitivity_design_not_probability",
+                        "sample_count": 1,
+                        "random_seed": 0,
+                        "model_variants": ["fixed_constituent"],
+                        "joint_constraints": [],
+                        "parameters": {
+                            "period_s": {
+                                "kind": "constant",
+                                "value": 44714.16432,
+                                "unit": "s",
+                                "evidence_parameters": ["period"],
+                            }
+                        },
+                    },
+                }
+            },
+        }
+        self.assertTrue(MODULE.audit_document(document)["all_processes_ready"])
 
     def test_empty_shell_design_is_rejected(self) -> None:
         document = {

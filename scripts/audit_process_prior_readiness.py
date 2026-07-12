@@ -69,27 +69,39 @@ def audit_document(document: dict) -> dict:
                         blockers.append(f"invalid_parameter_specification:{parameter_name}")
                         continue
                     unit = specification.get("unit")
-                    scale = specification.get("scale")
-                    bounds = specification.get("range")
+                    kind = specification.get("kind", "range")
                     references = specification.get("evidence_parameters")
                     if not isinstance(unit, str) or not unit.strip():
                         blockers.append(f"missing_parameter_unit:{parameter_name}")
-                    if scale not in {"linear", "log"}:
-                        blockers.append(f"invalid_parameter_scale:{parameter_name}")
-                    if not (
-                        isinstance(bounds, list)
-                        and len(bounds) == 2
-                        and all(
+                    if kind == "constant":
+                        value = specification.get("value")
+                        if not (
                             isinstance(value, (int, float))
                             and not isinstance(value, bool)
                             and math.isfinite(value)
-                            for value in bounds
-                        )
-                        and bounds[0] < bounds[1]
-                    ):
-                        blockers.append(f"invalid_parameter_range:{parameter_name}")
-                    elif scale == "log" and bounds[0] <= 0.0:
-                        blockers.append(f"nonpositive_log_range:{parameter_name}")
+                        ):
+                            blockers.append(f"invalid_parameter_constant:{parameter_name}")
+                    elif kind == "range":
+                        scale = specification.get("scale")
+                        bounds = specification.get("range")
+                        if scale not in {"linear", "log"}:
+                            blockers.append(f"invalid_parameter_scale:{parameter_name}")
+                        if not (
+                            isinstance(bounds, list)
+                            and len(bounds) == 2
+                            and all(
+                                isinstance(value, (int, float))
+                                and not isinstance(value, bool)
+                                and math.isfinite(value)
+                                for value in bounds
+                            )
+                            and bounds[0] < bounds[1]
+                        ):
+                            blockers.append(f"invalid_parameter_range:{parameter_name}")
+                        elif scale == "log" and bounds[0] <= 0.0:
+                            blockers.append(f"nonpositive_log_range:{parameter_name}")
+                    else:
+                        blockers.append(f"invalid_parameter_kind:{parameter_name}")
                     if not isinstance(references, list) or not references:
                         blockers.append(f"missing_parameter_evidence:{parameter_name}")
                         continue

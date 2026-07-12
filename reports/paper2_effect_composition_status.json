@@ -1,0 +1,63 @@
+{
+  "closure_ready": false,
+  "effects": [
+    {
+      "effect_id": "atmosphere_direct_attraction",
+      "excluded_sources": [],
+      "included_sources": [
+        "era5_atmosphere_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "atmosphere_elastic_loading",
+      "excluded_sources": [],
+      "included_sources": [
+        "era5_atmosphere_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "land_hydrology",
+      "excluded_sources": [],
+      "included_sources": [
+        "terrestrial_hydrology_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "ocean_direct_attraction",
+      "excluded_sources": [],
+      "included_sources": [
+        "cmems_ntol_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "ocean_elastic_response",
+      "excluded_sources": [],
+      "included_sources": [
+        "cmems_ntol_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "ocean_inverse_barometer_response",
+      "excluded_sources": [],
+      "included_sources": [
+        "era5_inverse_barometer_model"
+      ],
+      "status": "ambiguous_possible_overlap",
+      "unknown_sources": [
+        "cmems_ntol_forward_model"
+      ]
+    }
+  ],
+  "resolution_action": "Audit the exact CMEMS historical dataset. Mark its inverse-barometer effect excluded before adding the ERA5-derived response, or remove the separate ERA5 response if CMEMS already includes it.",
+  "schema_version": 1
+}

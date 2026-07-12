@@ -1,4 +1,4 @@
-.PHONY: test lint validate-experiments reproduce reproduce-all audit-cases audit-priors
+.PHONY: test lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects
 
 test:
 	python3 -m unittest discover -s tests -p 'test_*.py'
@@ -20,3 +20,6 @@ audit-cases:
 
 audit-priors:
 	python3 scripts/audit_process_prior_readiness.py --output reports/process_prior_readiness.json
+
+audit-effects:
+	python3 scripts/audit_effect_composition.py --output reports/paper2_effect_composition_status.json

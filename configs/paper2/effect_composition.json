@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "frozen-current-metadata-not-closure-ready",
+  "required_effect_ids": [
+    "ocean_direct_attraction",
+    "ocean_elastic_response",
+    "atmosphere_direct_attraction",
+    "atmosphere_elastic_loading",
+    "ocean_inverse_barometer_response",
+    "land_hydrology"
+  ],
+  "declarations": [
+    {
+      "source_id": "cmems_ntol_forward_model",
+      "effect_id": "ocean_direct_attraction",
+      "status": "included",
+      "evidence": "project direct-attraction calculation from CMEMS sea-level anomaly"
+    },
+    {
+      "source_id": "cmems_ntol_forward_model",
+      "effect_id": "ocean_elastic_response",
+      "status": "included",
+      "evidence": "project audited load Green-function calculation from the same sea-level field"
+    },
+    {
+      "source_id": "cmems_ntol_forward_model",
+      "effect_id": "ocean_inverse_barometer_response",
+      "status": "unknown",
+      "evidence": "exact historical CMEMS dataset equations and pressure-response representation not yet audited"
+    },
+    {
+      "source_id": "era5_atmosphere_forward_model",
+      "effect_id": "atmosphere_direct_attraction",
+      "status": "included",
+      "evidence": "project atmospheric calculation driven by ERA5 surface pressure"
+    },
+    {
+      "source_id": "era5_atmosphere_forward_model",
+      "effect_id": "atmosphere_elastic_loading",
+      "status": "included",
+      "evidence": "project atmospheric load Green-function calculation"
+    },
+    {
+      "source_id": "era5_inverse_barometer_model",
+      "effect_id": "ocean_inverse_barometer_response",
+      "status": "included",
+      "evidence": "project equilibrium inverse-barometer calculation from ERA5 pressure"
+    },
+    {
+      "source_id": "terrestrial_hydrology_model",
+      "effect_id": "land_hydrology",
+      "status": "included",
+      "evidence": "project rainfall, soil/groundwater and loading calculation; exact product pending"
+    }
+  ],
+  "resolution_action": "Audit the exact CMEMS historical dataset. Mark its inverse-barometer effect excluded before adding the ERA5-derived response, or remove the separate ERA5 response if CMEMS already includes it."
+}

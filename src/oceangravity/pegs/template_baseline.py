@@ -15,15 +15,21 @@ class NetworkTemplateScores:
     station_ids: tuple[str, ...]
     template_length_samples: int
     decision_step_samples: int
+    sample_interval_s: float
+    template_duration_s: float
+    decision_step_s: float
     trailing_samples_after_last_start: int
     noise_model: str
+    noise_scale_source_ids: tuple[tuple[str, str], ...]
 
 
 def independent_noise_network_template_scores(
     station_series: Mapping[str, Sequence[float]],
     station_templates: Mapping[str, Sequence[float]],
     station_noise_standard_deviation: Mapping[str, float],
+    station_noise_scale_source_ids: Mapping[str, str],
     *,
+    sample_interval_s: float,
     decision_step_samples: int,
     station_inclusion_masks: Mapping[str, Sequence[bool]] | None = None,
 ) -> NetworkTemplateScores:
@@ -48,6 +54,8 @@ def independent_noise_network_template_scores(
         raise ValueError("station template IDs must match station series exactly")
     if set(station_noise_standard_deviation) != expected:
         raise ValueError("station noise IDs must match station series exactly")
+    if set(station_noise_scale_source_ids) != expected:
+        raise ValueError("noise-scale source IDs must match station series exactly")
     if station_inclusion_masks is not None and set(station_inclusion_masks) != expected:
         raise ValueError("station mask IDs must match station series exactly")
     if (
@@ -56,6 +64,9 @@ def independent_noise_network_template_scores(
         or decision_step_samples <= 0
     ):
         raise ValueError("decision_step_samples must be a positive integer")
+    sample_interval = float(sample_interval_s)
+    if not math.isfinite(sample_interval) or sample_interval <= 0.0:
+        raise ValueError("sample_interval_s must be finite and positive")
 
     series = {
         station_id: tuple(float(value) for value in station_series[station_id])
@@ -88,6 +99,15 @@ def independent_noise_network_template_scores(
     }
     if not all(math.isfinite(value) and value > 0.0 for value in noise.values()):
         raise ValueError("station noise standard deviations must be finite and positive")
+    noise_sources = {
+        station_id: station_noise_scale_source_ids[station_id]
+        for station_id in station_ids
+    }
+    if any(
+        not isinstance(source_id, str) or not source_id.strip()
+        for source_id in noise_sources.values()
+    ):
+        raise ValueError("noise-scale source IDs must be non-empty strings")
     if station_inclusion_masks is None:
         masks = {station_id: (True,) * sample_count for station_id in station_ids}
     else:
@@ -138,6 +158,12 @@ def independent_noise_network_template_scores(
         station_ids=station_ids,
         template_length_samples=template_length,
         decision_step_samples=decision_step_samples,
+        sample_interval_s=sample_interval,
+        template_duration_s=template_length * sample_interval,
+        decision_step_s=decision_step_samples * sample_interval,
         trailing_samples_after_last_start=sample_count - (last_start + template_length),
         noise_model="independent_station_white_gaussian_reference",
+        noise_scale_source_ids=tuple(
+            (station_id, noise_sources[station_id]) for station_id in station_ids
+        ),
     )

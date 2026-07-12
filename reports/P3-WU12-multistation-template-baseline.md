@@ -14,6 +14,11 @@ sample, the whole candidate network window is discarded without temporal
 compaction. Outage experiments must instead define a new fixed participating
 station subset so changing network normalization is explicit.
 
+The result records the physical sample interval, template duration and decision
+step in seconds. Every station noise scale also requires a non-empty calibration
+source ID, making leakage review possible; the scorer does not authorize noise
+scales estimated from the held-out event itself.
+
 The analytic noise interpretation is only a reference. Operational thresholds
 must use the same held-out real-noise false-alarm audit as the single-station
 baseline, particularly because microseism and typhoon noise violate temporal and

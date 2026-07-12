@@ -15,7 +15,8 @@
       "heldout_improvement_not_demonstrated",
       "quiet_false_alarm_gate_not_passed",
       "event_snr_reporting_incomplete",
-      "fewer_than_three_novelty_requirements"
+      "fewer_than_three_novelty_requirements",
+      "data_license_review_incomplete"
     ],
     "branch": "pending_evidence",
     "event_snr_reporting_complete": false,

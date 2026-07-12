@@ -60,11 +60,6 @@ from .attribution import (
 from .paper2_decision import (
     Paper2DecisionAudit,
     Paper2DecisionEvidence,
-    audit_paper2_decision,
-)
-from .paper2_decision import (
-    Paper2DecisionAudit,
-    Paper2DecisionEvidence,
     Paper2NoveltyAudit,
     audit_paper2_decision,
 )
@@ -101,9 +96,6 @@ __all__ = [
     "bootstrap_ocean_attribution_by_event",
     "fit_ocean_attribution_coefficient",
     "predict_heldout_ocean_attribution",
-    "Paper2DecisionAudit",
-    "Paper2DecisionEvidence",
-    "audit_paper2_decision",
     "Paper2DecisionAudit",
     "Paper2DecisionEvidence",
     "Paper2NoveltyAudit",

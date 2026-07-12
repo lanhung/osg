@@ -1,4 +1,4 @@
-# P2-WU23 claim-safe Paper 2 decision audit
+# P2-WU25 claim-safe Paper 2 decision audit
 
 Status: decision logic complete; the repository evidence snapshot correctly
 remains pending until registered real observations and their audits exist.
@@ -15,7 +15,9 @@ Missing evidence is never interpreted as a negative scientific result. A
 failure branch is available only after the multi-event design, physical-effect
 closure, direct/deformation separation, multi-source validation, sensitivity
 analysis, failure log, held-out event evaluation, quiet-window false-alarm gate,
-and event-SNR reporting are all complete.
+and event-SNR reporting are all complete. The single-case branch also requires a
+complete physical closure, controls, sensitivity, failure log and event SNR; a
+positive coefficient alone is insufficient.
 
 The full attribution claim additionally requires a positive event-block
 bootstrap interval, improvement in both RMSE and explained variance for every

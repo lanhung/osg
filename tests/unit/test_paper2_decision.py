@@ -94,6 +94,21 @@ class TestPaper2Decision(unittest.TestCase):
         self.assertEqual(result.branch, "pending_evidence")
         self.assertFalse(result.heldout_evaluation_complete)
 
+    def test_single_case_requires_complete_case_evidence(self) -> None:
+        case = replace(
+            _complete(),
+            typhoon_event_count=1,
+            heldout_event_count=0,
+            quiet_window_count=3,
+            heldout_improvement_passes=(),
+            event_snrs=(5.0,),
+        )
+        self.assertEqual(
+            audit_paper2_decision(case).branch, "single_case_short_paper"
+        )
+        incomplete = replace(case, effect_closure_ready=False)
+        self.assertEqual(audit_paper2_decision(incomplete).branch, "pending_evidence")
+
     def test_invalid_counts_and_snr_are_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "cannot exceed"):
             replace(_complete(), heldout_event_count=5)

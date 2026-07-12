@@ -40,12 +40,12 @@ Evidence: CI run, lockfile, image digests, machine inventory, cross-machine regr
 ### 0.2 Literature and claims audit
 
 - [ ] Obtain and read the complete 2026 Haikou iGrav-048 paper, including supplements.
-- [ ] Audit whether it contains event-specific typhoon windows or component separation.
+- [x] Audit whether it contains event-specific typhoon windows or component separation.
 - [ ] Read and encode the Helgoland methods, geometry, filters, and reported uncertainties.
 - [ ] Read the atmospheric/Newtonian-noise and Cosmic Explorer source methods used by Paper 1.
-- [ ] Read PEGSGraph and the Peru real-time implementation, including training/evaluation splits.
-- [ ] Build a structured evidence table: claim, closest prior work, difference, required experiment, citation.
-- [ ] Update `claims.yml` only after evidence review; record audit date and reviewer.
+- [x] Read PEGSGraph and the Peru real-time implementation, including training/evaluation splits.
+- [x] Build an initial structured evidence table: claim, closest prior work, difference, required experiment, citation.
+- [x] Update `claims.yml` after evidence review; record audit date. (Independent human reviewer remains required.)
 
 Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadata.
 

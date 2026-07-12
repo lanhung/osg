@@ -32,14 +32,16 @@ paper2:
     - Wuhan typhoon-period atmospheric gravity-admittance studies
   must_demonstrate:
     - typhoon-specific event attribution
-    - direct-gravity, deformation, and potential-response separation
-    - validation with independent ocean, pressure, tide-gauge, GNSS, or track data
+    - direct-gravity, deformation, potential-response, atmosphere, and hydrology closure under severe weather
+    - validation with independent tide-gauge, GNSS, pressure, typhoon-track, and ocean-product evidence
     - held-out-event or cross-station validation
     - explicit prevention of atmosphere-ocean double counting
   forbidden_claims:
     - first South China Sea non-tidal ocean-loading study
     - first typhoon gravimetry study
     - first typhoon-event extraction
+    - first direct-Newtonian and elastic NTOL separation at Haikou
+    - first CMEMS-versus-MPIOM comparison for South China Sea NTOL
 
 paper3:
   working_title: Detectability and Warning Value of Prompt Elasto-Gravity Signals from Manila Trench Megathrust Earthquakes
@@ -57,8 +59,10 @@ paper3:
     - comparison with P-wave, W-phase, and GNSS characterization timelines
     - station-placement and outage sensitivity
     - held-out rupture segments and noise dates
+    - continuous-stream alert false-alarm rate rather than only conditional magnitude accuracy
   forbidden_claims:
     - first PEGS tsunami-warning proposal
     - first Manila Trench tsunami simulation
     - PEGS is useful merely because it precedes tsunami arrival
-
+    - first empirical-noise or graph-network treatment of PEGS
+    - first real-time PEGS monitoring-system implementation

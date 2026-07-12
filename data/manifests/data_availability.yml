@@ -17,13 +17,20 @@ paper2:
       - precipitation and terrestrial hydrology
   sources:
     - id: igets-superconducting-gravimetry
-      status: unknown
+      status: restricted
       owner: GFZ IGETS and station operators
-      action: freeze candidate stations, coverage, sampling, and access terms
+      action: register for password-protected access; freeze candidate stations, coverage, sampling, and station-specific terms
+      verified_facts:
+        - level-1 includes raw gravity and local pressure at 1-2 seconds and one-minute samples
+        - Helgoland iGrav-047 is listed from 2020
+        - Wuhan stations are listed for historical epochs
     - id: haikou-igrav-048
       status: unknown
       owner: Haikou station / 2026 paper authors
       action: request raw or near-raw gravity, pressure, and instrument logs
+      verified_facts:
+        - not present in the official IGETS station table last modified 2026-01-13
+        - published analysis covers 2023-12-22 through 2024-04-30 and reports a later instrument outage
     - id: ibtracs
       status: unknown
       owner: NOAA NCEI
@@ -62,7 +69,9 @@ paper3:
       owner: published literature
       action: extract source parameters and location-specific arrival distributions
     - id: pegs-benchmark-and-simulator
-      status: unknown
+      status: available
       owner: published implementations
-      action: select a reproducible waveform benchmark before regional simulation
-
+      action: audit and pin QSSP/PEGSGraph code versions and select a waveform benchmark before regional simulation
+      verified_facts:
+        - PEGSGraph source repository is public under GPL-3.0-or-later with tagged releases
+        - published PEGSGraph Green functions use QSSP with AK135

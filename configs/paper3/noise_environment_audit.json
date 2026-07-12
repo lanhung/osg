@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "audit_id": "paper3-noise-environment-audit-v1",
+  "frozen_utc": "2026-07-12T17:00:00Z",
+  "input_manifests": [
+    "data/manifests/paper3_noise_window_requests.json",
+    "data/manifests/paper3_noise_window_replacement_requests.json"
+  ],
+  "earthquake_catalog": {
+    "provider": "USGS Earthquake Hazards Program",
+    "service": "FDSN event web service",
+    "base_url": "https://earthquake.usgs.gov/fdsnws/event/1/query",
+    "format": "geojson",
+    "lookback_hours": 12.0,
+    "minimum_query_magnitude": 4.0,
+    "candidate_rules": {
+      "global_minimum_magnitude": 6.0,
+      "regional_minimum_magnitude": 4.5,
+      "regional_maximum_distance_km": 1000.0,
+      "surface_wave_velocity_range_km_s": [2.5, 4.0],
+      "post_arrival_coda_hours": 3.0
+    },
+    "interpretation": "Conservative catalogue screen only; it neither proves contamination nor certifies a quiet window."
+  },
+  "ibtracs": {
+    "candidate_manifest": "data/manifests/paper2_ibtracs_candidates_2026-07-12.json",
+    "overlap_rule": "closed_interval_intersection_with_regional_entry_and_exit_times",
+    "interpretation": "Regional track overlap only; it is not station-local wind, pressure, wave-height or microseism evidence."
+  },
+  "stations": [
+    {"network": "HK", "station": "HKPS", "latitude_deg": 22.277599, "longitude_deg": 114.141502},
+    {"network": "IC", "station": "QIZ", "latitude_deg": 19.02928, "longitude_deg": 109.84398},
+    {"network": "IU", "station": "DAV", "latitude_deg": 7.0697, "longitude_deg": 125.5791},
+    {"network": "MY", "station": "KKM", "latitude_deg": 6.0443, "longitude_deg": 116.214699},
+    {"network": "TW", "station": "KMNB", "latitude_deg": 24.4638, "longitude_deg": 118.388199}
+  ],
+  "final_label_gate": {
+    "required_layers": [
+      "earthquake_catalog_screen",
+      "regional_tropical_cyclone_screen",
+      "station_local_weather_and_pressure",
+      "regional_sea_state",
+      "waveform_transient_and_microseism_review"
+    ],
+    "policy": "No window may be labelled quiet until all required layers pass."
+  }
+}

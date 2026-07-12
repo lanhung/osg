@@ -148,12 +148,20 @@ def run(config: dict, retrieval: dict) -> dict:
             )
             continue
         station_ids = sorted(rows)
-        starts = {rows[station][1] for station in station_ids}
+        starts = [rows[station][1] for station in station_ids]
         rates = {rows[station][2] for station in station_ids}
         counts = {len(rows[station][0]) for station in station_ids}
-        if len(starts) != 1 or len(rates) != 1 or len(counts) != 1:
+        rate = next(iter(rates)) if len(rates) == 1 else None
+        start_span_s = max(starts) - min(starts)
+        maximum_phase_samples = float(processing["maximum_start_phase_mismatch_samples"])
+        if rate is None or len(counts) != 1 or start_span_s * rate > maximum_phase_samples:
             window_correlations.append(
-                {"window_id": window["window_id"], "status": "time_alignment_failed"}
+                {
+                    "window_id": window["window_id"],
+                    "status": "time_alignment_failed",
+                    "start_time_span_s": start_span_s,
+                    "maximum_start_phase_mismatch_samples": maximum_phase_samples,
+                }
             )
             continue
         count = counts.pop()
@@ -164,6 +172,8 @@ def run(config: dict, retrieval: dict) -> dict:
                 "status": "descriptive_unclassified_only",
                 "station_ids": station_ids,
                 "complete_sample_count": count,
+                "start_time_span_s": start_span_s,
+                "maximum_start_phase_mismatch_samples": maximum_phase_samples,
                 "correlation": np.corrcoef(matrix).tolist(),
             }
         )

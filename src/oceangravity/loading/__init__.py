@@ -16,11 +16,14 @@ from .gravity_budget import (
     apply_gravity_correction_chain,
 )
 from .green_functions import (
+    CombinedElasticLoadGreenFunctionSample,
+    CombinedElasticLoadResponse,
     LoadGreenFunctionMetadata,
     LoadGreenFunctionProvider,
     LoadGreenFunctionSample,
     TabulatedLoadGreenFunctionProvider,
     LoadResponseComponents,
+    convolve_combined_elastic_load_green_functions,
     convolve_load_green_functions,
 )
 
@@ -32,11 +35,14 @@ __all__ = [
     "GravityCorrectionChainResult",
     "GravityCorrectionStage",
     "GravityResidualResult",
+    "CombinedElasticLoadGreenFunctionSample",
+    "CombinedElasticLoadResponse",
     "LoadGreenFunctionMetadata",
     "LoadGreenFunctionProvider",
     "LoadGreenFunctionSample",
     "TabulatedLoadGreenFunctionProvider",
     "LoadResponseComponents",
+    "convolve_combined_elastic_load_green_functions",
     "convolve_load_green_functions",
     "sea_level_to_surface_density",
     "surface_load_gravity_planar",

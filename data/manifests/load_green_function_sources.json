@@ -33,7 +33,8 @@
       },
       "component_mapping": {
         "status": "requires-source-and-equation-audit",
-        "warning": "Do not split LoadDef elastic gravity into deformation and internal-mass terms without verifying its exact gE definition and normalization."
+        "provisional_project_semantics": "combined_elastic_gravity",
+        "warning": "Do not split LoadDef elastic gravity into deformation and internal-mass terms without verifying its exact gE definition and normalization. The project interface now enforces a combined-output path until such evidence exists."
       }
     }
   ],

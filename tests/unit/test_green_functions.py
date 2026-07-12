@@ -12,9 +12,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from oceangravity.loading import (  # noqa: E402
+    CombinedElasticLoadGreenFunctionSample,
     LoadGreenFunctionMetadata,
     LoadGreenFunctionSample,
     TabulatedLoadGreenFunctionProvider,
+    convolve_combined_elastic_load_green_functions,
     convolve_load_green_functions,
 )
 
@@ -32,6 +34,22 @@ class AnalyticFixtureProvider:
             deformation_gravity_m_s2_per_kg=2.0 * angular_distance_rad,
             internal_mass_gravity_m_s2_per_kg=-0.5 * angular_distance_rad,
             vertical_displacement_m_per_kg=3.0 * angular_distance_rad,
+        )
+
+
+class CombinedFixtureProvider:
+    metadata = LoadGreenFunctionMetadata(
+        provider_id="combined-fixture",
+        provider_version="1",
+        earth_model="not-a-physical-earth-model",
+        source="unit-test fixture",
+        component_semantics="combined_elastic_gravity",
+    )
+
+    def evaluate(self, angular_distance_rad: float) -> CombinedElasticLoadGreenFunctionSample:
+        return CombinedElasticLoadGreenFunctionSample(
+            elastic_gravity_m_s2_per_kg=1.5 * angular_distance_rad,
+            vertical_displacement_m_per_kg=-2.0 * angular_distance_rad,
         )
 
 
@@ -131,6 +149,38 @@ class TestLoadGreenFunctions(unittest.TestCase):
                     LoadGreenFunctionSample(0.0, 0.0, 0.0),
                     LoadGreenFunctionSample(0.0, 0.0, 0.0),
                 ),
+            )
+
+    def test_combined_elastic_output_is_preserved_without_fake_split(self) -> None:
+        response = convolve_combined_elastic_load_green_functions(
+            [2.0, 1.0],
+            [0.1, 0.2],
+            CombinedFixtureProvider(),
+            direct_attraction_m_s2=4.0,
+        )
+        weighted_distance = 2.0 * 0.1 + 1.0 * 0.2
+        self.assertAlmostEqual(
+            response.combined_elastic_gravity_m_s2, 1.5 * weighted_distance
+        )
+        self.assertAlmostEqual(response.vertical_displacement_m, -2.0 * weighted_distance)
+        self.assertAlmostEqual(
+            response.total_gravity_m_s2, 4.0 + 1.5 * weighted_distance
+        )
+        self.assertFalse(hasattr(response, "deformation_gravity_m_s2"))
+        self.assertFalse(hasattr(response, "internal_mass_gravity_m_s2"))
+
+    def test_component_semantics_cannot_cross_convolution_paths(self) -> None:
+        with self.assertRaisesRegex(ValueError, "decomposed convolution"):
+            convolve_load_green_functions(
+                [1.0], [0.1], CombinedFixtureProvider(), direct_attraction_m_s2=0.0
+            )
+        with self.assertRaisesRegex(ValueError, "combined convolution"):
+            convolve_combined_elastic_load_green_functions(
+                [1.0], [0.1], AnalyticFixtureProvider(), direct_attraction_m_s2=0.0
+            )
+        with self.assertRaises(ValueError):
+            LoadGreenFunctionMetadata(
+                "id", "1", "earth", "source", component_semantics="ambiguous"
             )
 
 

@@ -20,6 +20,7 @@ class LoadGreenFunctionMetadata:
     earth_model: str
     source: str
     normalization: str = "per_source_mass_kg"
+    component_semantics: str = "decomposed_deformation_and_internal_mass"
 
     def __post_init__(self) -> None:
         for name in ("provider_id", "provider_version", "earth_model", "source"):
@@ -27,6 +28,11 @@ class LoadGreenFunctionMetadata:
                 raise ValueError(f"{name} must not be empty")
         if self.normalization != "per_source_mass_kg":
             raise ValueError("provider normalization must be 'per_source_mass_kg'")
+        if self.component_semantics not in {
+            "decomposed_deformation_and_internal_mass",
+            "combined_elastic_gravity",
+        }:
+            raise ValueError("unsupported Green-function component semantics")
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,6 +53,24 @@ class LoadGreenFunctionSample:
             self.internal_mass_gravity_m_s2_per_kg,
             self.vertical_displacement_m_per_kg,
         )
+
+
+@dataclass(frozen=True, slots=True)
+class CombinedElasticLoadGreenFunctionSample:
+    """Combined elastic gravity when the source does not decompose its output."""
+
+    elastic_gravity_m_s2_per_kg: float
+    vertical_displacement_m_per_kg: float
+
+    def __post_init__(self) -> None:
+        if not all(
+            math.isfinite(value)
+            for value in (
+                self.elastic_gravity_m_s2_per_kg,
+                self.vertical_displacement_m_per_kg,
+            )
+        ):
+            raise ValueError("combined Green-function response values must be finite")
 
 
 @runtime_checkable
@@ -183,6 +207,42 @@ class LoadResponseComponents:
         )
 
 
+@dataclass(frozen=True, slots=True)
+class CombinedElasticLoadResponse:
+    """Direct attraction plus an explicitly non-decomposed elastic response."""
+
+    direct_attraction_m_s2: float
+    combined_elastic_gravity_m_s2: float
+    vertical_displacement_m: float
+    green_function_provider_id: str
+    green_function_provider_version: str
+    earth_model: str
+
+    def __post_init__(self) -> None:
+        values = (
+            self.direct_attraction_m_s2,
+            self.combined_elastic_gravity_m_s2,
+            self.vertical_displacement_m,
+        )
+        if not all(math.isfinite(value) for value in values):
+            raise ValueError("combined load-response components must be finite")
+        if not all(
+            value.strip()
+            for value in (
+                self.green_function_provider_id,
+                self.green_function_provider_version,
+                self.earth_model,
+            )
+        ):
+            raise ValueError("load-response provider metadata must not be empty")
+
+    @property
+    def total_gravity_m_s2(self) -> float:
+        return math.fsum(
+            (self.direct_attraction_m_s2, self.combined_elastic_gravity_m_s2)
+        )
+
+
 def convolve_load_green_functions(
     source_masses_kg: Sequence[float],
     angular_distances_rad: Sequence[float],
@@ -201,6 +261,10 @@ def convolve_load_green_functions(
         raise ValueError("source-mass and angular-distance arrays must have equal length")
     if not isinstance(provider, LoadGreenFunctionProvider):
         raise TypeError("provider must satisfy LoadGreenFunctionProvider")
+    if provider.metadata.component_semantics != "decomposed_deformation_and_internal_mass":
+        raise ValueError(
+            "decomposed convolution requires decomposed Green-function semantics"
+        )
     direct = float(direct_attraction_m_s2)
     if not math.isfinite(direct):
         raise ValueError("direct_attraction_m_s2 must be finite")
@@ -229,6 +293,59 @@ def convolve_load_green_functions(
         direct_attraction_m_s2=direct,
         deformation_gravity_m_s2=math.fsum(deformation_terms),
         internal_mass_gravity_m_s2=math.fsum(internal_terms),
+        vertical_displacement_m=math.fsum(displacement_terms),
+        green_function_provider_id=metadata.provider_id,
+        green_function_provider_version=metadata.provider_version,
+        earth_model=metadata.earth_model,
+    )
+
+
+def convolve_combined_elastic_load_green_functions(
+    source_masses_kg: Sequence[float],
+    angular_distances_rad: Sequence[float],
+    provider: LoadGreenFunctionProvider,
+    *,
+    direct_attraction_m_s2: float,
+) -> CombinedElasticLoadResponse:
+    """Convolve a provider whose gravity output is explicitly not decomposed."""
+
+    if len(source_masses_kg) != len(angular_distances_rad):
+        raise ValueError("source-mass and angular-distance arrays must have equal length")
+    if not isinstance(provider, LoadGreenFunctionProvider):
+        raise TypeError("provider must satisfy LoadGreenFunctionProvider")
+    if provider.metadata.component_semantics != "combined_elastic_gravity":
+        raise ValueError(
+            "combined convolution requires combined_elastic_gravity semantics"
+        )
+    direct = float(direct_attraction_m_s2)
+    if not math.isfinite(direct):
+        raise ValueError("direct_attraction_m_s2 must be finite")
+
+    elastic_terms: list[float] = []
+    displacement_terms: list[float] = []
+    for index, (raw_mass, raw_distance) in enumerate(
+        zip(source_masses_kg, angular_distances_rad, strict=True)
+    ):
+        mass = float(raw_mass)
+        distance = float(raw_distance)
+        if not math.isfinite(mass):
+            raise ValueError(f"source mass at index {index} must be finite")
+        if not math.isfinite(distance) or not 0.0 <= distance <= math.pi:
+            raise ValueError(f"angular distance at index {index} must lie in [0, pi]")
+        if mass == 0.0:
+            continue
+        sample = provider.evaluate(distance)
+        if not isinstance(sample, CombinedElasticLoadGreenFunctionSample):
+            raise TypeError(
+                "combined provider must return CombinedElasticLoadGreenFunctionSample"
+            )
+        elastic_terms.append(mass * sample.elastic_gravity_m_s2_per_kg)
+        displacement_terms.append(mass * sample.vertical_displacement_m_per_kg)
+
+    metadata = provider.metadata
+    return CombinedElasticLoadResponse(
+        direct_attraction_m_s2=direct,
+        combined_elastic_gravity_m_s2=math.fsum(elastic_terms),
         vertical_displacement_m=math.fsum(displacement_terms),
         green_function_provider_id=metadata.provider_id,
         green_function_provider_version=metadata.provider_version,

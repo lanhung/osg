@@ -85,7 +85,7 @@ Evidence: station manifest, response completeness report, noise sampling plan, s
 - [x] Test zero mass, invalid coincidence, sign, symmetry, inverse-square scaling, and units.
 - [x] Implement on-axis finite thin-disk analytic vertical gravity.
 - [x] Implement off-axis disk numerical integration with convergence tests.
-- [ ] Implement finite rectangular surface-load integration.
+- [x] Implement finite rectangular surface-load integration.
 - [ ] Implement two-dimensional Gaussian surface anomaly integration.
 - [ ] Implement three-dimensional density-anomaly volume integration.
 - [ ] Verify disk, rectangle, and Gaussian far-field point-mass limits below 1% error at the frozen distance ratio.

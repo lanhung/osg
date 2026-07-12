@@ -118,8 +118,8 @@ Evidence: gridded-load module, Green-function adapter, physics/regression tests,
 - [x] Implement periodic/quasi-periodic coherent-integration SNR with explicit observation time.
 - [x] Define detection threshold and false-alarm convention; separate illustrative and decision-grade SNR.
 - [x] Create versioned instrument-curve schema with digitization/source uncertainty.
-- [ ] Add superconducting, absolute, and cold-atom gravimeter models.
-- [ ] Add gravity-gradient/inertial sensor models where defensible.
+- [ ] Add superconducting, absolute, and cold-atom gravimeter models. (Traceable iGrav self-noise, AQG and FG5 scalar/band anchors loaded; empirical site curves, full PSD digitization, newer cold-atom/HUST instruments remain.)
+- [ ] Add gravity-gradient/inertial sensor models where defensible. (Legacy atom-gradiometer and GOCE band anchors loaded with explicit limitations; modern ground/space instruments remain.)
 - [ ] Add environmental channels from gravitational-wave/Newtonian-noise literature without claiming reinvention.
 - [ ] Encode HUST facility parameters only when traceable to an authoritative specification.
 

@@ -1,0 +1,77 @@
+{
+  "audit_date": "2026-07-12",
+  "curves": [
+    {
+      "asd": [1e-09, 1e-09],
+      "asd_unit": "m s^-2 Hz^-1/2",
+      "curve_version": "literature-anchor-v1",
+      "digitization_relative_uncertainty": 0.0,
+      "frequencies_hz": [0.001, 0.1],
+      "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+      "interpretation": "Approximate flat anchor converted from average -180 dB PSD relative to 1 (m s^-2)^2 Hz^-1.",
+      "model_uncertainty_note": "The paper reports an average level and frequency-dependent resonances; flat interpolation is an atlas assumption, not a digitized trace.",
+      "observable": "vertical_gravity",
+      "operating_conditions": "Three-channel-correlation self-noise estimate for quiet co-located iGrav instruments at J9 Strasbourg; environmental station noise is not represented.",
+      "source": "https://doi.org/10.1093/gji/ggaa359",
+      "source_reported_quantity": "approximately -180 dB average PSD from 1e-3 to 1e-1 Hz for iGrav015/iGrav032 and comparison instruments at J9"
+    },
+    {
+      "asd": [7.5e-07, 7.5e-07],
+      "asd_unit": "m s^-2 Hz^-1/2",
+      "curve_version": "short-term-white-anchor-v1",
+      "digitization_relative_uncertainty": 0.0,
+      "frequencies_hz": [0.001, 0.05],
+      "instrument_id": "aqg_a01_field_short_term_anchor",
+      "interpretation": "Flat short-term sensitivity anchor; upper edge follows reported servo-loop response change near 0.05 Hz.",
+      "model_uncertainty_note": "The 1e-3 Hz lower edge is an explicit atlas modelling choice, not a paper-stated white-noise boundary; long-term coloured noise/stability must be modelled separately.",
+      "observable": "vertical_gravity",
+      "operating_conditions": "AQG-A01 field measurements; reported short-term sensitivity 750 nm s^-2 Hz^-1/2.",
+      "source": "https://doi.org/10.1038/s41598-018-30608-1",
+      "source_reported_quantity": "750 nm s^-2 Hz^-1/2; long-term stability below 10 nm s^-2; servo-loop response decreases above about 0.05 Hz"
+    },
+    {
+      "asd": [4.5e-07, 4.5e-07],
+      "asd_unit": "m s^-2 Hz^-1/2",
+      "curve_version": "short-term-white-anchor-v1",
+      "digitization_relative_uncertainty": 0.0,
+      "frequencies_hz": [0.001, 0.013888888888888888],
+      "instrument_id": "fg5_228_short_term_anchor",
+      "interpretation": "Flat short-term sensitivity anchor ending at the Nyquist frequency implied by the reported 36 s effective sampling interval.",
+      "model_uncertainty_note": "The 1e-3 Hz lower edge is an atlas choice; drop-to-drop sampling, dead time, site vibration, and long-term systematics are omitted.",
+      "observable": "vertical_gravity",
+      "operating_conditions": "FG5#228 comparison at Larzac; reported short-term sensitivity 450 nm s^-2 Hz^-1/2 and effective sampling interval 36 s.",
+      "source": "https://doi.org/10.1038/s41598-018-30608-1",
+      "source_reported_quantity": "450 nm s^-2 Hz^-1/2 with 36 s effective sampling interval"
+    },
+    {
+      "asd": [4e-09, 4e-09],
+      "asd_unit": "s^-2 Hz^-1/2",
+      "curve_version": "reported-sensitivity-anchor-v1",
+      "digitization_relative_uncertainty": 0.0,
+      "frequencies_hz": [0.001, 1.0],
+      "instrument_id": "mcguirk_atom_gradiometer_anchor",
+      "interpretation": "Flat illustrative anchor at the paper-reported 4 E Hz^-1/2 sensitivity.",
+      "model_uncertainty_note": "The frequency interval is an atlas placeholder because the abstract reports sensitivity but not a white-noise band; do not use outside sensitivity analysis without full-paper response extraction.",
+      "observable": "gravity_gradient",
+      "operating_conditions": "Differential light-pulse atom interferometer with 10 m accelerometer separation.",
+      "source": "https://doi.org/10.1103/PhysRevA.65.033608",
+      "source_reported_quantity": "4 E Hz^-1/2 gravity-gradient sensitivity; better than 1 E accuracy"
+    },
+    {
+      "asd": [5e-12, 5e-12],
+      "asd_unit": "s^-2 Hz^-1/2",
+      "curve_version": "conservative-design-anchor-v1",
+      "digitization_relative_uncertainty": 0.0,
+      "frequencies_hz": [0.005, 0.1],
+      "instrument_id": "goce_egg_conservative_design_anchor",
+      "interpretation": "Conservative upper end of the reported 1-5 mE Hz^-1/2 mission noise-density target.",
+      "model_uncertainty_note": "Spaceborne GOCE design/performance context is not a ground instrument and must be plotted as a separate category.",
+      "observable": "gravity_gradient",
+      "operating_conditions": "GOCE electrostatic gravity gradiometer design at approximately 250 km altitude.",
+      "source": "https://bgo.ogs.it/issues/1999-vol-40-3-4/gradiometer-calibration-and-performance-verification-goce-approach",
+      "source_reported_quantity": "1-5 mE Hz^-1/2 from 0.005 to 0.1 Hz"
+    }
+  ],
+  "schema_version": 1
+}
+

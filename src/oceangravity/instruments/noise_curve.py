@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import json
 import math
 from dataclasses import dataclass
+from pathlib import Path
 
 
 @dataclass(frozen=True, slots=True)
@@ -18,6 +20,9 @@ class NoiseCurve:
     source: str
     curve_version: str
     digitization_relative_uncertainty: float = 0.0
+    interpretation: str = ""
+    operating_conditions: str = ""
+    model_uncertainty_note: str = ""
 
     def __post_init__(self) -> None:
         if not self.instrument_id.strip():
@@ -59,6 +64,8 @@ class NoiseCurve:
                 return self.asd[index]
             if frequency < node:
                 left = index - 1
+                if self.asd[left] == self.asd[index]:
+                    return self.asd[left]
                 log_fraction = math.log(frequency / self.frequencies_hz[left]) / math.log(
                     node / self.frequencies_hz[left]
                 )
@@ -74,3 +81,35 @@ class NoiseCurve:
         amplitude = self.asd_at(frequency_hz)
         return amplitude * amplitude
 
+
+def load_noise_curves(path: str | Path) -> dict[str, NoiseCurve]:
+    """Load versioned noise curves from the project JSON interchange format."""
+
+    source_path = Path(path)
+    document = json.loads(source_path.read_text(encoding="utf-8"))
+    if document.get("schema_version") != 1:
+        raise ValueError("unsupported instrument noise-curve schema version")
+    raw_curves = document.get("curves")
+    if not isinstance(raw_curves, list) or len(raw_curves) == 0:
+        raise ValueError("instrument curve document must contain a non-empty curves list")
+    curves: dict[str, NoiseCurve] = {}
+    for raw in raw_curves:
+        curve = NoiseCurve(
+            instrument_id=raw["instrument_id"],
+            observable=raw["observable"],
+            asd_unit=raw["asd_unit"],
+            frequencies_hz=tuple(raw["frequencies_hz"]),
+            asd=tuple(raw["asd"]),
+            source=raw["source"],
+            curve_version=raw["curve_version"],
+            digitization_relative_uncertainty=raw.get(
+                "digitization_relative_uncertainty", 0.0
+            ),
+            interpretation=raw.get("interpretation", ""),
+            operating_conditions=raw.get("operating_conditions", ""),
+            model_uncertainty_note=raw.get("model_uncertainty_note", ""),
+        )
+        if curve.instrument_id in curves:
+            raise ValueError(f"duplicate instrument_id: {curve.instrument_id}")
+        curves[curve.instrument_id] = curve
+    return curves

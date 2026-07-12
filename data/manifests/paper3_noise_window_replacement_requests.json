@@ -48,6 +48,7 @@
     "pre_filt_hz": [0.001, 0.002, 0.1, 0.2],
     "water_level_db": 60.0,
     "diagnostic_band_hz": [0.005, 0.05],
+    "maximum_start_phase_mismatch_samples": 0.001,
     "diagnostic_band_semantics": "response-QC summary only; not a frozen PEGS detection passband"
   },
   "guardrails": [

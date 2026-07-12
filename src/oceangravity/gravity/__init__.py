@@ -8,6 +8,7 @@ from .gaussian_surface import (
 from .point_mass import gravity_vector, vertical_gravity
 from .rectangle import rectangle_gravity_numerical, rectangle_vertical_gravity_on_axis
 from .thin_disk import disk_vertical_gravity_on_axis
+from .volume_cells import volume_cell_gravity
 
 __all__ = [
     "disk_gravity_numerical",
@@ -18,4 +19,5 @@ __all__ = [
     "rectangle_gravity_numerical",
     "rectangle_vertical_gravity_on_axis",
     "vertical_gravity",
+    "volume_cell_gravity",
 ]

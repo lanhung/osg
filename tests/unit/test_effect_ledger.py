@@ -52,8 +52,21 @@ class TestEffectLedger(unittest.TestCase):
         self.assertEqual(statuses["undeclared"], "missing_owner")
         self.assertFalse(audit.closure_ready)
 
-    def test_repository_cmems_ib_status_closes_without_double_counting(self) -> None:
+    def test_repository_p2_e001_snapshot_preserves_open_gate(self) -> None:
         document = json.loads((ROOT / "configs/paper2/effect_composition.json").read_text())
+        result = MODULE.audit_document(document)
+        self.assertFalse(result["closure_ready"])
+        ib = next(
+            row
+            for row in result["effects"]
+            if row["effect_id"] == "ocean_inverse_barometer_response"
+        )
+        self.assertEqual(ib["status"], "ambiguous_possible_overlap")
+        self.assertEqual(ib["included_sources"], ("era5_inverse_barometer_model",))
+        self.assertEqual(ib["unknown_sources"], ("cmems_ntol_forward_model",))
+
+    def test_p2_e002_cmems_ib_status_closes_without_double_counting(self) -> None:
+        document = json.loads((ROOT / "configs/paper2/effect_composition_closed.json").read_text())
         result = MODULE.audit_document(document)
         self.assertTrue(result["closure_ready"])
         ib = next(

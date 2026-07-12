@@ -5,7 +5,7 @@
   "paper": "paper2",
   "registered_utc": "2026-07-12T16:55:00Z",
   "code_commit": "d3a4b3cef152f87089c384af2ddd14b7d66c118f",
-  "config_file": "configs/paper2/effect_composition.json",
+  "config_file": "configs/paper2/effect_composition_closed.json",
   "config_file_sha256": "533c9edd57676eb636a8126ece4d4a047111287db12ae117146a86a5114a2414",
   "runner": "scripts/audit_effect_composition.py",
   "data_manifest": "data/manifests/paper2_environmental_products.json",

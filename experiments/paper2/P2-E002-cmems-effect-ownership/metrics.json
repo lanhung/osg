@@ -1,0 +1,63 @@
+{
+  "closure_ready": true,
+  "effects": [
+    {
+      "effect_id": "atmosphere_direct_attraction",
+      "excluded_sources": [],
+      "included_sources": [
+        "era5_atmosphere_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "atmosphere_elastic_loading",
+      "excluded_sources": [],
+      "included_sources": [
+        "era5_atmosphere_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "land_hydrology",
+      "excluded_sources": [],
+      "included_sources": [
+        "terrestrial_hydrology_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "ocean_direct_attraction",
+      "excluded_sources": [],
+      "included_sources": [
+        "cmems_ntol_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "ocean_elastic_response",
+      "excluded_sources": [],
+      "included_sources": [
+        "cmems_ntol_forward_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    },
+    {
+      "effect_id": "ocean_inverse_barometer_response",
+      "excluded_sources": [
+        "cmems_ntol_forward_model"
+      ],
+      "included_sources": [
+        "era5_inverse_barometer_model"
+      ],
+      "status": "closed",
+      "unknown_sources": []
+    }
+  ],
+  "resolution_action": "Ownership is closed by selecting MOWL sea_surface_height (non-tidal, non-IB) and adding the ERA5-derived inverse-barometer response exactly once. Preserve the selected CMEMS variable name in every event manifest.",
+  "schema_version": 1
+}

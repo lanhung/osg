@@ -40,8 +40,11 @@ and no overlapping same-station windows across splits.
 IBTrACS agency wind and pressure fields are retained separately. ERA5 surface
 pressure supplies atmospheric loading; mean-sea-level pressure and winds are
 event diagnostics. Significant wave height is not converted into additional
-water mass. CMEMS sea level is admitted only after its tide, mean dynamic
-topography, and inverse-barometer semantics are audited.
+water mass. The frozen CMEMS MOWL product separates dynamic sea level, inverse
+barometer, tide, steric and mass-volume contributions~\cite{CMEMSGLO024}. We
+select its \texttt{sea\_surface\_height} component, which excludes tides and
+surface-pressure forcing, and add the ERA5-driven inverse-barometer response
+exactly once.
 
 \section{Methods}
 \subsection{Transparent gravimeter correction}
@@ -88,11 +91,13 @@ A registered non-restricted readiness audit connects 17 completed processing
 and evaluation work units. The open IBTrACS inventory contains 48 broad regional
 track candidates and 11 priority station-coverage inquiries. These are not
 gravity events and do not select a pilot: the real-event gate remains
-\texttt{pending\_no\_event\_windows}. The environmental-effect ledger also
-remains open because the exact historical CMEMS inverse-barometer semantics are
-unknown. Consequently the claim-safe manuscript branch is
+\texttt{pending\_no\_event\_windows}. A second registered audit closes all six
+environmental-effect ownership entries. In particular, CMEMS dynamic sea level
+is the ocean direct/elastic input while the CMEMS inverse-barometer component is
+excluded in favour of the ERA5-derived branch. This removes a double-counting
+risk but supplies no gravity observation. Consequently the claim-safe branch is
 \texttt{pending\_evidence}. \TyphoonPending{Insert only registered real-SG
-event results after the station and effect-ownership gates pass.}
+event results after the station-data gate passes.}
 
 \section{Discussion}
 Possible outcomes include successful event attribution, evidence that ocean
@@ -107,10 +112,11 @@ compact nonrestricted metrics will be released.
 
 \section{Limitations}
 SG event windows, calibration and station logs remain authorization-dependent.
-The exact historical CMEMS pressure-response semantics are a separate product-
-metadata blocker. Consequently no pilot event, attribution coefficient,
-held-out improvement, event SNR or false-positive rate is reported. The current
-method audit cannot substitute for those observations.
+CMEMS pressure-response semantics and correction ownership are now closed at
+the metadata level, but event-specific CMEMS/ERA5 retrieval and anomaly
+construction have not occurred. Consequently no pilot event, attribution
+coefficient, held-out improvement, event SNR or false-positive rate is reported.
+The current method audit cannot substitute for those observations.
 
 \bibliographystyle{plain}
 \bibliography{references}

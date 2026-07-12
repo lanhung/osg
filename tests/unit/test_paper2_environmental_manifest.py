@@ -38,10 +38,14 @@ class TestPaper2EnvironmentalManifest(unittest.TestCase):
         self.assertFalse(wave["mass_load_eligible"])
         self.assertIn("not an additional mean water-mass load", " ".join(era5["warnings"]))
 
-    def test_double_count_gate_remains_unresolved(self) -> None:
-        self.assertTrue(self.document["double_count_gate"]["status"].startswith("unresolved"))
+    def test_double_count_gate_is_closed_by_component_selection(self) -> None:
+        self.assertEqual(
+            self.document["double_count_gate"]["status"],
+            "closed-by-explicit-variable-selection",
+        )
         cmems = self.document["products"][1]
-        self.assertTrue(cmems["variable_metadata_status"].startswith("must-verify"))
+        self.assertEqual(cmems["selected_variable"], "sea_surface_height")
+        self.assertTrue(cmems["variable_metadata_status"].startswith("verified"))
 
 
 if __name__ == "__main__":

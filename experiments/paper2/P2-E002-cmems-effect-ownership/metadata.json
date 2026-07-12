@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P2-E002-cmems-effect-ownership",
+  "paper": "paper2",
+  "code_commit": "38c149395c018981b57069bb1ee4cbcc6b510665",
+  "config_file": "configs/paper2/effect_composition_closed.json",
+  "config_file_sha256": "533c9edd57676eb636a8126ece4d4a047111287db12ae117146a86a5114a2414",
+  "data_manifest": "data/manifests/paper2_environmental_products.json",
+  "runner": "scripts/audit_effect_composition.py",
+  "outputs": [
+    {
+      "path": "experiments/paper2/P2-E002-cmems-effect-ownership/metrics.json",
+      "sha256": "df68cd6c6de1a1985e547b2f4c3c29dc6301bba275bfba9fa20367a3d08a04df"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T16:24:00Z",
+  "result_class": "metadata_effect_ownership_not_event_attribution"
+}

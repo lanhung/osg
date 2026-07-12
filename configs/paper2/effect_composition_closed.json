@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "frozen-current-metadata-not-closure-ready",
+  "status": "frozen-effect-ownership-closed-input-acquisition-pending",
   "required_effect_ids": [
     "ocean_direct_attraction",
     "ocean_elastic_response",
@@ -25,8 +25,8 @@
     {
       "source_id": "cmems_ntol_forward_model",
       "effect_id": "ocean_inverse_barometer_response",
-      "status": "unknown",
-      "evidence": "exact historical CMEMS dataset equations and pressure-response representation not yet audited"
+      "status": "excluded",
+      "evidence": "CMEMS MOWL PUM/QUID define sea_surface_height as excluding tides and surface-pressure forcing; the Paper 2 forward path selects this component rather than total_sea_level or invert_barometer"
     },
     {
       "source_id": "era5_atmosphere_forward_model",
@@ -53,5 +53,5 @@
       "evidence": "project rainfall, soil/groundwater and loading calculation; exact product pending"
     }
   ],
-  "resolution_action": "Audit the exact CMEMS historical dataset. Mark its inverse-barometer effect excluded before adding the ERA5-derived response, or remove the separate ERA5 response if CMEMS already includes it."
+  "resolution_action": "Ownership is closed by selecting MOWL sea_surface_height (non-tidal, non-IB) and adding the ERA5-derived inverse-barometer response exactly once. Preserve the selected CMEMS variable name in every event manifest."
 }

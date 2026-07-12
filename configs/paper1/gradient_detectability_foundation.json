@@ -1,0 +1,6 @@
+{
+  "foundation_config": "configs/paper1/foundation_reference.json",
+  "instrument_curve_manifest": "data/manifests/instrument_noise_curves.json",
+  "minimum_signal_energy_coverage": 0.9,
+  "required_expected_snr": 4.371783871712414
+}

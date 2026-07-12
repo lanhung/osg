@@ -52,7 +52,9 @@ def _signal_metrics(signal, interval: float) -> dict[str, float | str]:
     }
 
 
-def run(config: dict) -> dict:
+def build_process_signals(config: dict) -> dict[str, tuple[object, float, dict[str, float]]]:
+    """Construct the six frozen process signals for reuse by registered experiments."""
+
     tide_config = config["tide"]
     tide_interval = tide_config["period_s"] / 64.0
     tide_times = regular_times(128, tide_interval)
@@ -98,31 +100,41 @@ def run(config: dict) -> dict:
         landslide_times, **landslide_config
     )
 
-    metrics = {
-        "tide": _signal_metrics(tide, tide_interval),
-        "storm_surge": _signal_metrics(surge, surge_interval),
-        "eddy_surface": _signal_metrics(eddy, eddy_interval),
-        "internal_wave_dipole": _signal_metrics(internal.signal, internal_interval),
-        "tsunami_packet": _signal_metrics(tsunami.signal, tsunami_interval),
-        "submarine_landslide": _signal_metrics(landslide.signal, landslide_interval),
+    return {
+        "tide": (tide, tide_interval, {}),
+        "storm_surge": (surge, surge_interval, {}),
+        "eddy_surface": (eddy, eddy_interval, {}),
+        "internal_wave_dipole": (
+            internal.signal,
+            internal_interval,
+            {"net_mass_per_unit_peak_density_m3": internal.net_mass_per_unit_peak_density_m3},
+        ),
+        "tsunami_packet": (
+            tsunami.signal,
+            tsunami_interval,
+            {
+                "phase_speed_m_s": tsunami.shallow_water_phase_speed_m_s,
+                "net_surface_mass_amplitude_kg": tsunami.net_surface_mass_amplitude_kg,
+            },
+        ),
+        "submarine_landslide": (
+            landslide.signal,
+            landslide_interval,
+            {
+                "net_mass_anomaly_kg": landslide.net_mass_anomaly_kg,
+                "final_vertical_gradient_change_s2": landslide.final_gravity_gradient_change_s2[2][2],
+            },
+        ),
     }
-    metrics["internal_wave_dipole"].update(
-        {
-            "net_mass_per_unit_peak_density_m3": internal.net_mass_per_unit_peak_density_m3,
-        }
-    )
-    metrics["tsunami_packet"].update(
-        {
-            "phase_speed_m_s": tsunami.shallow_water_phase_speed_m_s,
-            "net_surface_mass_amplitude_kg": tsunami.net_surface_mass_amplitude_kg,
-        }
-    )
-    metrics["submarine_landslide"].update(
-        {
-            "net_mass_anomaly_kg": landslide.net_mass_anomaly_kg,
-            "final_vertical_gradient_change_s2": landslide.final_gravity_gradient_change_s2[2][2],
-        }
-    )
+
+
+def run(config: dict) -> dict:
+    built = build_process_signals(config)
+    metrics = {}
+    for name, (signal, interval, extras) in built.items():
+        process_metrics = _signal_metrics(signal, interval)
+        process_metrics.update(extras)
+        metrics[name] = process_metrics
     return {
         "schema_version": 1,
         "experiment_id": "P1-E001-foundation",
@@ -148,4 +160,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

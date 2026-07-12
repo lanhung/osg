@@ -48,7 +48,10 @@ from .effect_ledger import (
     audit_effect_ledger,
 )
 from .hydrology import (
+    DoubleExponentialHydrologyResult,
+    double_exponential_precipitation_storage,
     groundwater_level_to_equivalent_water_height,
+    hydrology_bouguer_correction_component,
     water_equivalent_height_to_bouguer_slab_gravity,
 )
 
@@ -91,5 +94,8 @@ __all__ = [
     "EffectOwnershipResult",
     "audit_effect_ledger",
     "groundwater_level_to_equivalent_water_height",
+    "DoubleExponentialHydrologyResult",
+    "double_exponential_precipitation_storage",
+    "hydrology_bouguer_correction_component",
     "water_equivalent_height_to_bouguer_slab_gravity",
 ]

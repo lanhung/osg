@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "time-constants-evidenced-mixture-weight-unresolved",
+  "model": "causal_weighted_two_linear_reservoirs",
+  "precipitation_input_convention": "interval accumulation in metres assigned at each timestamp; no interpolation across missing values",
+  "time_constants": {
+    "fast_s": 3600.0,
+    "slow_s": 2592000.0,
+    "source": "Zhang et al. 2026 Haikou VOR method contract: tau1=1 h and tau2=720 h"
+  },
+  "fast_fraction": null,
+  "fast_fraction_gate": "must be obtained from the full method/equations or fitted only on declared training events with held-out sensitivity",
+  "gravity_mapping": {
+    "baseline": "infinite Bouguer slab direct attraction",
+    "vertical_convention": "local up positive; added water below sensor is negative",
+    "required_sensitivity_branches": [
+      "finite catchment geometry",
+      "elastic loading",
+      "groundwater effective porosity",
+      "initial reservoir state",
+      "fast_fraction"
+    ]
+  }
+}

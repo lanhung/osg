@@ -89,7 +89,7 @@ Evidence: station manifest, response completeness report, noise sampling plan, s
 - [x] Implement two-dimensional Gaussian surface anomaly integration.
 - [x] Implement three-dimensional density-anomaly volume integration.
 - [ ] Verify disk, rectangle, and Gaussian far-field point-mass limits below 1% error at the frozen distance ratio.
-- [ ] Document density-compensation/cancellation tests for internal-wave-like dipoles.
+- [x] Document density-compensation/cancellation tests for internal-wave-like dipoles.
 
 Evidence: physics APIs, tests, convergence tables, analytic validation report.
 

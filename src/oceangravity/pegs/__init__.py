@@ -14,6 +14,7 @@ from .template_baseline import (
     CovarianceNetworkTemplateScores,
     NetworkTemplateScores,
     cross_station_covariance_template_scores,
+    estimate_cross_station_covariance,
     independent_noise_network_template_scores,
 )
 from .source_inversion import (
@@ -52,6 +53,7 @@ __all__ = [
     "CrossStationCovarianceModel",
     "CovarianceNetworkTemplateScores",
     "cross_station_covariance_template_scores",
+    "estimate_cross_station_covariance",
     "independent_noise_network_template_scores",
     "DiscreteSourceInversion",
     "SourceHypothesisFit",

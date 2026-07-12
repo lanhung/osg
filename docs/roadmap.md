@@ -248,7 +248,7 @@ Evidence: benchmark report, frozen scenario schema/table, simulator provenance.
 - [ ] Download permitted station metadata, responses, and waveform windows through manifests/scripts.
 - [ ] Remove response and normalize components with timing checks.
 - [ ] Label day/night, season, sea state, typhoon, urban/remote, gaps, and outages.
-- [ ] Quantify PSD distributions, nonstationarity, transients, and cross-station correlation.
+- [ ] Quantify PSD distributions, nonstationarity, transients, and cross-station correlation. (A provenance-preserving complete-case cross-station covariance estimator with explicit diagonal shrinkage and positive-definite gate is complete; real stratified PSD/covariance distributions, temporal colour and transient audits remain.)
 - [ ] Freeze training, validation, held-out dates, held-out segments, and domain-out events before modelling.
 - [ ] Define existing, idealized, and incrementally augmented network variants.
 

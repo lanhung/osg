@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from oceangravity.pegs import (  # noqa: E402
     CrossStationCovarianceModel,
     cross_station_covariance_template_scores,
+    estimate_cross_station_covariance,
     independent_noise_network_template_scores,
 )
 
@@ -95,6 +96,34 @@ class TestPegsCovarianceTemplate(unittest.TestCase):
         )
         self.assertEqual(result.start_sample_indices, (0, 3))
         self.assertEqual(result.discarded_start_sample_indices, (1, 2))
+
+    def test_covariance_estimation_uses_complete_quiet_samples_and_shrinkage(self) -> None:
+        model = estimate_cross_station_covariance(
+            {
+                "quiet-2": {"A": (1.0, -1.0), "B": (1.0, -1.0)},
+                "quiet-1": {"A": (1.0, -1.0), "B": (1.0, -1.0)},
+            },
+            source_id="quiet-cov-v1",
+            diagonal_shrinkage=0.5,
+            minimum_complete_samples=4,
+        )
+        self.assertEqual(model.calibration_window_ids, ("quiet-1", "quiet-2"))
+        self.assertEqual(model.complete_sample_count, 4)
+        self.assertEqual(model.estimation_method, "complete_case_unbiased_diagonal_shrinkage")
+        self.assertAlmostEqual(model.covariance[0][0], 4.0 / 3.0)
+        self.assertAlmostEqual(model.covariance[0][1], 2.0 / 3.0)
+
+    def test_covariance_estimation_rejects_insufficient_complete_cases(self) -> None:
+        with self.assertRaisesRegex(ValueError, "below minimum"):
+            estimate_cross_station_covariance(
+                {"quiet": {"A": (1.0, 2.0), "B": (1.0, 2.0)}},
+                source_id="quiet-cov-v1",
+                diagonal_shrinkage=0.5,
+                minimum_complete_samples=2,
+                inclusion_masks={
+                    "quiet": {"A": (True, False), "B": (True, True)}
+                },
+            )
 
 
 if __name__ == "__main__":

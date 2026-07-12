@@ -29,6 +29,9 @@ class CrossStationCovarianceModel:
     covariance: tuple[tuple[float, ...], ...]
     source_id: str
     calibration_window_ids: tuple[str, ...]
+    estimation_method: str = "externally_supplied"
+    complete_sample_count: int | None = None
+    diagonal_shrinkage: float | None = None
 
     def __post_init__(self) -> None:
         if not self.station_ids or any(not value.strip() for value in self.station_ids):
@@ -43,6 +46,19 @@ class CrossStationCovarianceModel:
             raise ValueError("covariance calibration window IDs must be non-empty")
         if len(set(self.calibration_window_ids)) != len(self.calibration_window_ids):
             raise ValueError("covariance calibration window IDs must be unique")
+        if not self.estimation_method.strip():
+            raise ValueError("covariance estimation method must be non-empty")
+        if self.complete_sample_count is not None and (
+            isinstance(self.complete_sample_count, bool)
+            or not isinstance(self.complete_sample_count, int)
+            or self.complete_sample_count < 2
+        ):
+            raise ValueError("covariance complete sample count must be an integer >= 2")
+        if self.diagonal_shrinkage is not None and (
+            not math.isfinite(self.diagonal_shrinkage)
+            or not 0.0 <= self.diagonal_shrinkage <= 1.0
+        ):
+            raise ValueError("covariance diagonal shrinkage must lie in [0, 1]")
         count = len(self.station_ids)
         if len(self.covariance) != count or any(
             len(row) != count for row in self.covariance
@@ -124,6 +140,110 @@ def _solve_cholesky(
             )
         ) / lower[row][row]
     return tuple(solution)
+
+
+def estimate_cross_station_covariance(
+    calibration_windows: Mapping[str, Mapping[str, Sequence[float]]],
+    *,
+    source_id: str,
+    diagonal_shrinkage: float,
+    minimum_complete_samples: int = 3,
+    inclusion_masks: Mapping[str, Mapping[str, Sequence[bool]]] | None = None,
+) -> CrossStationCovarianceModel:
+    """Estimate complete-case cross-station covariance from quiet windows only."""
+
+    window_ids = tuple(sorted(calibration_windows))
+    if not window_ids or any(not window_id.strip() for window_id in window_ids):
+        raise ValueError("covariance calibration windows require non-empty IDs")
+    if not isinstance(source_id, str) or not source_id.strip():
+        raise ValueError("covariance source ID must be non-empty")
+    shrinkage = float(diagonal_shrinkage)
+    if not math.isfinite(shrinkage) or not 0.0 <= shrinkage <= 1.0:
+        raise ValueError("diagonal_shrinkage must lie in [0, 1]")
+    if isinstance(minimum_complete_samples, bool) or not isinstance(
+        minimum_complete_samples, int
+    ) or minimum_complete_samples < 2:
+        raise ValueError("minimum_complete_samples must be an integer >= 2")
+    first = calibration_windows[window_ids[0]]
+    station_ids = tuple(sorted(first))
+    if not station_ids or any(not station.strip() for station in station_ids):
+        raise ValueError("covariance calibration requires non-empty station IDs")
+    expected = set(station_ids)
+    if inclusion_masks is not None and set(inclusion_masks) != set(window_ids):
+        raise ValueError("covariance mask window IDs must match calibration windows")
+
+    vectors: list[tuple[float, ...]] = []
+    for window_id in window_ids:
+        window = calibration_windows[window_id]
+        if set(window) != expected:
+            raise ValueError("every covariance window must contain identical stations")
+        rows = {
+            station: tuple(float(value) for value in window[station])
+            for station in station_ids
+        }
+        lengths = {len(row) for row in rows.values()}
+        if len(lengths) != 1 or next(iter(lengths)) == 0:
+            raise ValueError("covariance window station rows must have equal nonzero length")
+        sample_count = next(iter(lengths))
+        if not all(math.isfinite(value) for row in rows.values() for value in row):
+            raise ValueError("covariance calibration samples must be finite")
+        if inclusion_masks is None:
+            masks = {station: (True,) * sample_count for station in station_ids}
+        else:
+            window_masks = inclusion_masks[window_id]
+            if set(window_masks) != expected:
+                raise ValueError("every covariance mask window must contain identical stations")
+            masks = {station: tuple(window_masks[station]) for station in station_ids}
+            if any(
+                len(mask) != sample_count
+                or any(not isinstance(value, bool) for value in mask)
+                for mask in masks.values()
+            ):
+                raise ValueError("covariance masks require one boolean per sample")
+        vectors.extend(
+            tuple(rows[station][index] for station in station_ids)
+            for index in range(sample_count)
+            if all(masks[station][index] for station in station_ids)
+        )
+    if len(vectors) < minimum_complete_samples:
+        raise ValueError(
+            "complete covariance samples are below minimum: "
+            f"{len(vectors)} < {minimum_complete_samples}"
+        )
+    means = tuple(
+        math.fsum(vector[index] for vector in vectors) / len(vectors)
+        for index in range(len(station_ids))
+    )
+    denominator = len(vectors) - 1
+    empirical = tuple(
+        tuple(
+            math.fsum(
+                (vector[left] - means[left]) * (vector[right] - means[right])
+                for vector in vectors
+            )
+            / denominator
+            for right in range(len(station_ids))
+        )
+        for left in range(len(station_ids))
+    )
+    shrunk = tuple(
+        tuple(
+            empirical[left][right]
+            if left == right
+            else (1.0 - shrinkage) * empirical[left][right]
+            for right in range(len(station_ids))
+        )
+        for left in range(len(station_ids))
+    )
+    return CrossStationCovarianceModel(
+        station_ids=station_ids,
+        covariance=shrunk,
+        source_id=source_id,
+        calibration_window_ids=window_ids,
+        estimation_method="complete_case_unbiased_diagonal_shrinkage",
+        complete_sample_count=len(vectors),
+        diagonal_shrinkage=shrinkage,
+    )
 
 
 def independent_noise_network_template_scores(

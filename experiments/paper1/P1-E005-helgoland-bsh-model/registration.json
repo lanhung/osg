@@ -4,7 +4,7 @@
   "experiment_id": "P1-E005-helgoland-bsh-model",
   "paper": "paper1",
   "registered_utc": "2026-07-12T14:01:13Z",
-  "code_commit": "9055841e2ba6a95f18fc970b03fe4fdf04d5bdf3",
+  "code_commit": "73bccf986f2ebfffdd5e3637f88fc0dce35fc169",
   "config_file": "configs/paper1/helgoland_bsh_model.json",
   "config_file_sha256": "52afeb79e1665d5a3dc28cdc107e425384549a295ff7771bbd9fe6de22b2a6ab",
   "runner": "scripts/run_helgoland_bsh_model.py",
@@ -36,6 +36,13 @@
       "code_commit": "e4c67b98c6f61eaea1a10094e0ce3c9cbf30f1b3",
       "start_utc": "2026-07-12T14:06:38Z",
       "failure_class": "completed output superseded because observed extrema had been mislabelled as model-only acceptance targets",
+      "scientific_output_created": true,
+      "disposition": "superseded_not_registered"
+    },
+    {
+      "code_commit": "9055841e2ba6a95f18fc970b03fe4fdf04d5bdf3",
+      "start_utc": "2026-07-12T14:09:17Z",
+      "failure_class": "completed output superseded because the paper and project gravity sign conventions were not yet mapped at the comparison boundary",
       "scientific_output_created": true,
       "disposition": "superseded_not_registered"
     }

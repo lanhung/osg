@@ -32,10 +32,54 @@ def evaluate_gravity_signal_against_curve(
 ) -> CurveDetectabilityResult:
     """Classify only when a vertical-gravity curve covers enough signal energy."""
 
-    if curve.observable != "vertical_gravity":
-        raise ValueError("gravity signal requires a vertical_gravity instrument curve")
-    if curve.asd_unit != "m s^-2 Hz^-1/2":
-        raise ValueError("gravity curve ASD unit must be 'm s^-2 Hz^-1/2'")
+    return _evaluate_signal_against_curve(
+        samples_m_s2,
+        sample_interval_s,
+        curve,
+        required_expected_snr=required_expected_snr,
+        minimum_signal_energy_coverage=minimum_signal_energy_coverage,
+        expected_observable="vertical_gravity",
+        expected_asd_unit="m s^-2 Hz^-1/2",
+    )
+
+
+def evaluate_gradient_signal_against_curve(
+    samples_s2: Sequence[float],
+    sample_interval_s: float,
+    curve: NoiseCurve,
+    *,
+    required_expected_snr: float,
+    minimum_signal_energy_coverage: float = 0.9,
+) -> CurveDetectabilityResult:
+    """Classify only when a gravity-gradient curve covers enough signal energy."""
+
+    return _evaluate_signal_against_curve(
+        samples_s2,
+        sample_interval_s,
+        curve,
+        required_expected_snr=required_expected_snr,
+        minimum_signal_energy_coverage=minimum_signal_energy_coverage,
+        expected_observable="gravity_gradient",
+        expected_asd_unit="s^-2 Hz^-1/2",
+    )
+
+
+def _evaluate_signal_against_curve(
+    samples: Sequence[float],
+    sample_interval_s: float,
+    curve: NoiseCurve,
+    *,
+    required_expected_snr: float,
+    minimum_signal_energy_coverage: float,
+    expected_observable: str,
+    expected_asd_unit: str,
+) -> CurveDetectabilityResult:
+    if curve.observable != expected_observable:
+        raise ValueError(
+            f"signal requires a {expected_observable} instrument curve"
+        )
+    if curve.asd_unit != expected_asd_unit:
+        raise ValueError(f"curve ASD unit must be {expected_asd_unit!r}")
     required_snr = float(required_expected_snr)
     coverage_threshold = float(minimum_signal_energy_coverage)
     if not math.isfinite(required_snr) or required_snr < 0.0:
@@ -44,7 +88,7 @@ def evaluate_gravity_signal_against_curve(
         raise ValueError("minimum_signal_energy_coverage must lie in (0, 1]")
 
     spectrum = one_sided_spectrum(
-        samples_m_s2,
+        samples,
         sample_interval_s,
         detrend="constant",
     )
@@ -126,4 +170,3 @@ def _trapezoid_spectral_energy(
         width = frequencies[right] - frequencies[left]
         terms.append(0.5 * width * (abs(amplitudes[left]) ** 2 + abs(amplitudes[right]) ** 2))
     return math.fsum(terms)
-

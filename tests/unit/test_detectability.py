@@ -9,7 +9,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import evaluate_gravity_signal_against_curve  # noqa: E402
+from oceangravity.evaluation import (  # noqa: E402
+    evaluate_gradient_signal_against_curve,
+    evaluate_gravity_signal_against_curve,
+)
 from oceangravity.instruments import NoiseCurve  # noqa: E402
 
 
@@ -121,7 +124,36 @@ class TestCurveDetectability(unittest.TestCase):
                 minimum_signal_energy_coverage=0.0,
             )
 
+    def test_gradient_wrapper_uses_gradient_observable_and_units(self) -> None:
+        count = 128
+        samples = tuple(
+            1e-9 * math.sin(2.0 * math.pi * 8 * index / count)
+            for index in range(count)
+        )
+        curve = NoiseCurve(
+            instrument_id="gradient",
+            observable="gravity_gradient",
+            asd_unit="s^-2 Hz^-1/2",
+            frequencies_hz=(0.01, 0.4),
+            asd=(1e-10, 1e-10),
+            source="fixture",
+            curve_version="1",
+        )
+        result = evaluate_gradient_signal_against_curve(
+            samples,
+            1.0,
+            curve,
+            required_expected_snr=1.0,
+        )
+        self.assertEqual(result.status, "detectable_under_curve_model")
+        with self.assertRaises(ValueError):
+            evaluate_gravity_signal_against_curve(
+                samples,
+                1.0,
+                curve,
+                required_expected_snr=1.0,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
-

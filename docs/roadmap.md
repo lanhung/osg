@@ -214,6 +214,8 @@ Reproduction milestone: registered workflows reproduce `P1-E005` and `P1-E006` b
 
 Structural-closure milestone: registered experiment `P1-E007-structural-variant-closure` implements the evidence-supported energy-normalized tsunami mapping and explicitly excludes underdetermined eddy, internal-wave and landslide branches instead of inventing surrogate parameters. This closes the primary model-form disposition gate; excluded variants remain documented future evidence needs, not zero-effect assumptions.
 
+Scope-reconciliation milestone: Paper 1 route A is selected. Final closure is an evidence-bounded framework/frequency-coverage-limit paper, not a completed decision-grade detectability atlas. Title/claim alignment, direct-versus-total observable audit, systematic related work, scenario-family accounting, revised figures and independent geodesy review remain P0 submission gates.
+
 Gradient coverage milestone: registered experiment `P1-E003-gradient-detectability-foundation` applies the same gate to all six `Tzz` fixtures and only the two gradient-instrument anchors; vertical-gravity curves are explicitly excluded.
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.
@@ -313,7 +315,7 @@ Non-restricted integration milestone: registered experiment `P2-E001-nonrestrict
   generation; this item is scheduled in Phase 0 even though its evidence is consumed here.
 - [ ] Reproduce a published PEGS event at specified stations/components.
 - [ ] Achieve waveform correlation >0.95, amplitude error <10–20%, and onset error below one sample, or document justified revised tolerances.
-- [ ] Extract published Manila source segments, geometry, slip, and location-specific tsunami-arrival distributions. (Strict source/arrival schema and source queue complete; full numeric extraction pending.)
+- [ ] Extract published Manila source segments, geometry, slip, and location-specific tsunami-arrival distributions. (Open Zhao/Niu source families and generation contract plus 19 Liu et al. PMEL scenario-family geometries/slips and five-location arrival ranges are extracted. No PEGS-ready record is registered because rise time, rupture velocity and explicit arrival-threshold definitions remain missing.)
 - [ ] Record source-paper assumptions and avoid treating one 2.6-hour arrival as universal.
 - [ ] Build 500–1000 baseline scenarios across Mw 8.0–9.0, segments, velocity, rise time, depth, dip, and heterogeneous slip.
 - [ ] Preserve an interface for external tsunami calculations without claiming COMCOT simulation novelty.
@@ -350,6 +352,12 @@ inversion APIs. It deliberately fails the one-per-month false-alarm exposure gat
 and is engineering infrastructure, not Manila PEGS detectability evidence.
 
 Archive-network milestone: registered experiment `P3-E002-archive-network-design` exact-matches open LH archive triplets to response epochs for five stations and freezes 0/20/40% outage combinations. This authorizes predeclared real-noise downloads but does not pass the latency, waveform-QC or PEGS-template gates.
+
+Open-waveform milestone: 22/25 predeclared original/replacement six-hour requests were retrieved and 21 passed response QC. Two five-station windows are structurally complete, but labels, false-alarm exposure and network-specific citation review remain pending; no threshold or PEGS claim is authorized.
+
+Open-source milestone: Zhao and Niu (2025) supplies southern Mw 8.1 and northern Mw 9.1 recurrence-family anchors plus a Slab2-based generation contract. The released hazard dataset lacks per-scenario rise time, rupture velocity, full geometry and arrivals, so zero PEGS-ready Manila scenarios remain registered.
+
+Open-noise pilot milestone: 22 of 25 frozen/replacement MiniSEED requests and 21 response-QC records succeed across five stations. Two complete five-station windows provide descriptive 0.005--0.05 Hz acceleration ASD and cross-station correlation, but all environment labels remain unclassified and threshold calibration is prohibited pending earthquake/weather/transient review.
 
 ### 3.4 Network optimization
 

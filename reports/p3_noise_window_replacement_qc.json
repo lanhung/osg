@@ -1,0 +1,521 @@
+{
+  "all_records_pass_response_qc": false,
+  "pegs_detectability_ready": false,
+  "record_count": 10,
+  "records": [
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 6.418554954755802e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 9.503987413409096e-08,
+          "rms_acceleration_m_s2": 2.2706531317233904e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.647053233259654e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 5.5744152709867815e-08,
+          "rms_acceleration_m_s2": 1.8335723689066475e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.4083716300615505e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 2.903316988229157e-08,
+          "rms_acceleration_m_s2": 2.028937962134795e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "threshold_calibration_replacement_candidate",
+      "station_id": "HK.HKPS",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.1817514695614947e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 3.7885804125339326e-08,
+          "rms_acceleration_m_s2": 2.017940723060986e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.523291079645378e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 9.684902828093694e-08,
+          "rms_acceleration_m_s2": 2.306325455048539e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.9004076949101334e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 3.513190363569777e-08,
+          "rms_acceleration_m_s2": 2.6826853597896604e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "threshold_calibration_replacement_candidate",
+      "station_id": "IC.QIZ",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 6.540707896025798e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.525754640544249e-07,
+          "rms_acceleration_m_s2": 7.272544060482337e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 9.663143693375691e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 2.3728745058124872e-07,
+          "rms_acceleration_m_s2": 8.210381572561195e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.9982820914833686e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 3.946243132129929e-08,
+          "rms_acceleration_m_s2": 4.272532043556145e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "threshold_calibration_replacement_candidate",
+      "station_id": "IU.DAV",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.401207272900124e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.3171939177467937e-07,
+          "rms_acceleration_m_s2": 1.2641769900213779e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.3029700509500276e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 1.4003532201477326e-07,
+          "rms_acceleration_m_s2": 1.3482080120902624e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.3173733440173953e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 6.009827498087773e-08,
+          "rms_acceleration_m_s2": 8.507963060036666e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "threshold_calibration_replacement_candidate",
+      "station_id": "MY.KKM",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 6.258660597315074e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 7.753340720866601e-08,
+          "rms_acceleration_m_s2": 3.7773880684727557e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.610707215468934e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 7.295235964279435e-08,
+          "rms_acceleration_m_s2": 3.2343542106820574e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.4886720372892957e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 3.5713647722502866e-08,
+          "rms_acceleration_m_s2": 3.6161650882891265e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "threshold_calibration_replacement_candidate",
+      "station_id": "TW.KMNB",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 9.78094989960841e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 3.079824235114119e-08,
+          "rms_acceleration_m_s2": 3.628541920337988e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.821045405544937e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.440467642473784e-08,
+          "rms_acceleration_m_s2": 2.6040474542931608e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.794532477159173e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.0725870810141418e-08,
+          "rms_acceleration_m_s2": 2.4804264298804312e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "held_out_replacement_candidate",
+      "station_id": "HK.HKPS",
+      "window_id": "replacement_heldout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 4.171769408080084e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.577499521349051e-08,
+          "rms_acceleration_m_s2": 2.378668042776675e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 7.294976776977002e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 2.4179281082832346e-08,
+          "rms_acceleration_m_s2": 2.5207514334356257e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.638279377876238e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.0921279213582526e-08,
+          "rms_acceleration_m_s2": 2.3500178438743733e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "held_out_replacement_candidate",
+      "station_id": "IC.QIZ",
+      "window_id": "replacement_heldout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.2464985111415245e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 7.420661123263367e-08,
+          "rms_acceleration_m_s2": 2.453229201221214e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.6019397051194248e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 5.936490948736734e-08,
+          "rms_acceleration_m_s2": 2.3179594972382244e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 9.739244340968966e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 2.218896106740211e-08,
+          "rms_acceleration_m_s2": 1.3599934969569084e-07,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "held_out_replacement_candidate",
+      "station_id": "IU.DAV",
+      "window_id": "replacement_heldout_2025-05-15"
+    },
+    {
+      "component_metrics": [],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "location": "--",
+      "response_removed": false,
+      "retrieval_status": "http_error",
+      "split_role": "held_out_replacement_candidate",
+      "station_id": "MY.KKM",
+      "window_id": "replacement_heldout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 6.8535590432029334e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 2.4674286071245485e-08,
+          "rms_acceleration_m_s2": 2.3379564178709597e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.428251420840568e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.4355247081676067e-08,
+          "rms_acceleration_m_s2": 1.954368333922302e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.454510156071216e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.1665272720102269e-08,
+          "rms_acceleration_m_s2": 2.0666086747245166e-08,
+          "sample_count": 21600,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified_pending_earthquake_weather_and_gap_audit",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "held_out_replacement_candidate",
+      "station_id": "TW.KMNB",
+      "window_id": "replacement_heldout_2025-05-15"
+    }
+  ],
+  "remaining_gate": "earthquake_weather_transient_and_split-label_review",
+  "request_id": "paper3-earthscope-lh-noise-window-replacements-v1",
+  "response_removed_record_count": 9,
+  "result_class": "unclassified_open_archive_noise_qc_not_pegs_detectability",
+  "schema_version": 1,
+  "threshold_calibration_authorized": false,
+  "window_cross_station_correlations": [
+    {
+      "complete_sample_count": 21600,
+      "correlation": [
+        [
+          0.9999999999999999,
+          0.07559408563179604,
+          0.0011689418186617976,
+          0.018001395727152713,
+          0.3109109795274208
+        ],
+        [
+          0.07559408563179605,
+          1.0,
+          0.019678321600548335,
+          0.009402350184712171,
+          0.1505641344690343
+        ],
+        [
+          0.0011689418186617976,
+          0.019678321600548335,
+          1.0,
+          -0.0019731009935176043,
+          0.0033879527002003895
+        ],
+        [
+          0.018001395727152713,
+          0.009402350184712171,
+          -0.001973100993517604,
+          1.0,
+          0.010002726895425819
+        ],
+        [
+          0.3109109795274208,
+          0.15056413446903433,
+          0.0033879527002003895,
+          0.010002726895425819,
+          1.0
+        ]
+      ],
+      "maximum_start_phase_mismatch_samples": 0.001,
+      "start_time_span_s": 3.814697265625e-05,
+      "station_ids": [
+        "HK.HKPS",
+        "IC.QIZ",
+        "IU.DAV",
+        "MY.KKM",
+        "TW.KMNB"
+      ],
+      "status": "descriptive_unclassified_only",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "status": "incomplete_station_network",
+      "window_id": "replacement_heldout_2025-05-15"
+    }
+  ]
+}

@@ -40,11 +40,40 @@ nested under that source and has a location and arrival definition. Qualitative
 statements such as ``more than about three hours'' are not converted into exact
 universal arrival times.
 
+Open source-family extraction currently retains two geodetic recurrence
+families from Zhao and Niu~\cite{Zhao2024,Zhao2025} and 19 PMEL-based
+scenario families from Liu et al.~\cite{Liu2023}. The latter provide
+magnitude-specific geometry, slip and five-location modelled arrival ranges.
+They remain outside the PEGS simulator library because rise time and rupture
+velocity are not reported and the extracted arrival threshold definition is
+not explicit.
+
+The open Zhao and Niu scenario descriptor~\cite{Zhao2025} separates southern
+(13.0--14.5$^\circ$N) and northern (14.5--22.0$^\circ$N) Manila source families,
+with 1000-year recurrence-family magnitudes $M_w$ 8.1 and 9.1. Its 1,800
+0.1-degree Slab2.0 subfaults provide location, depth, strike and dip, and the
+hazard calculation assumes 90-degree rake. The released data are target-point
+height/period statistics, not per-scenario PEGS sources: rise time, rupture
+velocity, complete rupture geometry and location-specific arrivals remain
+missing. These source families are not promoted to simulator inputs.
+
+Liu et al.~\cite{Liu2023Manila} provide a complementary PMEL/SIFT-based set of
+19 finite-fault families: eleven $M_w$ 7.5, five $M_w$ 8.1 and three $M_w$ 8.5
+locations, with reported rupture dimensions, mean slip, rake and individual
+static geometry. Their arrival ranges remain tied to magnitude family and site
+(Nanao, Shanwei, Macao, Boao or Sanya). Rise time and rupture velocity are not
+reported, so these records also remain family evidence rather than PEGS-ready
+dynamic scenarios.
+
 Station candidates require a contemporaneous BH/LH three-component epoch, full
 response, waveform availability, licence, latency class, and noise quality.
 Channel metadata or scalar sensitivity alone is insufficient. Noise windows are
 frozen by season, day/night, calm sea, typhoon/microseism, urban/remote setting,
 and outage state before model fitting.
+
+The archive/response inventory is retrieved through EarthScope FDSN
+services~\cite{EarthScopeFDSN}. Network-specific citations and acknowledgements
+remain mandatory; archive availability is never relabelled as real-time latency.
 
 \section{Methods}
 \subsection{PEGS simulation benchmark}
@@ -95,9 +124,22 @@ baselines demonstrate stable information. It must outperform those baselines
 under identical splits and thresholds, not merely fit synthetic waveforms.
 
 \section{Results}
-\PEGSPending{No validated PEGS simulator, frozen station inventory, or empirical
-noise library is present. Do not report the unit-test fixtures as detection or
-warning results.}
+A registered open-archive audit exact-matches five three-component LH station
+epochs to complete response structure: HK.HKPS, IC.QIZ, IU.DAV, MY.KKM and
+TW.KMNB. Their common audited archive interval begins in 2020. The frozen outage
+design contains one five-station, five four-station and ten three-station
+combinations for nominal 0\%, 20\% and 40\% branches.
+
+An initial real-noise pilot requested three simultaneous six-hour windows.
+Thirteen of fifteen waveform requests and twelve response-removal records pass;
+the failures are retained as two KKM 404 responses and one KMNB gap/overlap
+case. A failure-triggered replacement adds one complete five-station window.
+Across the two complete unclassified windows, maximum absolute off-diagonal
+vertical correlation is 0.039 and 0.311, respectively. These are descriptive
+archive/response-QC results. No window is yet authorized as quiet calibration
+data, and no PEGS signal was evaluated. \PEGSPending{Insert detection, magnitude
+and warning results only after the simulator benchmark and environment-labelled
+noise gates pass.}
 
 \section{Discussion}
 A high-value negative result is an explicit station-count, placement, noise, and
@@ -111,8 +153,13 @@ scenario provenance, splits, thresholds, compact metrics and checksums will be
 recorded. Restricted waveforms and large synthetic corpora remain outside Git.
 
 \section{Limitations}
-\PEGSPending{Update after simulator benchmark, station/noise gate, physical
-baselines, network optimization, and conditional graph ablations.}
+Archive availability is not real-time latency. The present acceleration spectra
+use a diagnostic 0.005--0.05~Hz band for response QC, not a frozen PEGS detection
+passband. Candidate calibration/held-out labels still require earthquake,
+weather, microseism and transient audits. The simulator benchmark, physical
+detectability boundary, network performance, warning value and every graph-model
+stage remain pending. The extracted source families also lack per-scenario rise
+time, rupture velocity, complete geometry and location-specific arrivals.
 
 \bibliographystyle{plain}
 \bibliography{references}

@@ -1,15 +1,135 @@
 {
   "schema_version": 1,
   "reviewed_date": "2026-07-12",
-  "scenario_table_status": "pending-full-text-parameter-extraction",
+  "scenario_table_status": "source-families-extracted-full-pegs-scenarios-pending",
   "scenarios": [],
+  "extracted_source_families": [
+    {
+      "family_id": "zhao_niu_2025_south_1000yr",
+      "segment": "south",
+      "latitude_range_deg_north": [13.0, 14.5],
+      "moment_magnitude": 8.1,
+      "magnitude_semantics": "1000-year recurrence-period geodetic scenario family, not a deterministic forecast",
+      "geometry_source": "Slab2.0 interpolated per 0.1-degree subfault",
+      "rake_deg": 90.0,
+      "rake_semantics": "constant most-hazardous slip-angle assumption in the PTHA",
+      "individual_geometry_available": false,
+      "rise_time_available": false,
+      "rupture_velocity_available": false,
+      "location_specific_arrival_times_available": false,
+      "source": "https://doi.org/10.1038/s41597-025-06006-4",
+      "source_location": "Methods, Potential tsunami scenario set and Probabilistic assessment method"
+    },
+    {
+      "family_id": "zhao_niu_2025_north_1000yr",
+      "segment": "north",
+      "latitude_range_deg_north": [14.5, 22.0],
+      "moment_magnitude": 9.1,
+      "magnitude_semantics": "1000-year recurrence-period geodetic scenario family, not a deterministic forecast",
+      "geometry_source": "Slab2.0 interpolated per 0.1-degree subfault",
+      "rake_deg": 90.0,
+      "rake_semantics": "constant most-hazardous slip-angle assumption in the PTHA",
+      "individual_geometry_available": false,
+      "rise_time_available": false,
+      "rupture_velocity_available": false,
+      "location_specific_arrival_times_available": false,
+      "source": "https://doi.org/10.1038/s41597-025-06006-4",
+      "source_location": "Methods, Potential tsunami scenario set and Probabilistic assessment method"
+    }
+  ],
+  "extracted_generation_contract": {
+    "manila_domain_deg": {
+      "longitude_east": [119.0, 123.0],
+      "latitude_north": [13.0, 22.0]
+    },
+    "subfault_grid": {
+      "spacing_deg": 0.1,
+      "along_strike_count": 90,
+      "downdip_count": 20,
+      "total_count": 1800
+    },
+    "geometry_fields": ["longitude", "latitude", "depth", "strike", "dip"],
+    "geometry_dataset": "Slab2.0",
+    "heterogeneous_slip_realizations_per_magnitude_epicenter": 100,
+    "reported_total_potential_scenarios": 2015300,
+    "released_dataset_contents": "target-point tsunami height, recurrence and wave-height/period distributions; not complete per-scenario PEGS source records",
+    "figshare_doi": "10.6084/m9.figshare.29311046.v2",
+    "figshare_license": "CC BY 4.0"
+  },
+  "liu_2023_pmel_scenario_families": [
+    {
+      "family_id": "liu_2023_pmel_mw75",
+      "moment_magnitude": 7.5,
+      "scenario_count": 11,
+      "rupture_length_m": 96000.0,
+      "rupture_width_m": 23000.0,
+      "mean_slip_m": 3.1,
+      "rake_deg": 90.0,
+      "source_subfault_count_per_scenario": 1,
+      "arrival_ranges_hours": {
+        "nanao": [2.5, 4.0],
+        "shanwei": [3.0, 4.0],
+        "macao": [3.8, 4.7],
+        "boao": [2.0, 2.8],
+        "sanya": [2.5, 2.5]
+      }
+    },
+    {
+      "family_id": "liu_2023_pmel_mw81",
+      "moment_magnitude": 8.1,
+      "scenario_count": 5,
+      "rupture_length_m": 192000.0,
+      "rupture_width_m": 46000.0,
+      "mean_slip_m": 6.3,
+      "rake_deg": 90.0,
+      "source_subfault_count_per_scenario": 2,
+      "arrival_ranges_hours": {
+        "nanao": [2.6, 3.8],
+        "shanwei": [3.0, 3.8],
+        "macao": [4.0, 4.5],
+        "boao": [2.3, 2.6],
+        "sanya": [2.4, 2.7]
+      }
+    },
+    {
+      "family_id": "liu_2023_pmel_mw85",
+      "moment_magnitude": 8.5,
+      "scenario_count": 3,
+      "rupture_length_m": 303000.0,
+      "rupture_width_m": 74000.0,
+      "mean_slip_m": 10.0,
+      "rake_deg": 90.0,
+      "source_subfault_count_per_scenario": 6,
+      "arrival_ranges_hours": {
+        "nanao": [2.6, 3.4],
+        "shanwei": [3.1, 3.1],
+        "macao": [3.9, 4.2],
+        "boao": [2.5, 2.5],
+        "sanya": [2.5, 2.5]
+      }
+    }
+  ],
+  "liu_2023_extraction_contract": {
+    "source_geometry": "PMEL SIFT 2021 Manila finite-fault database",
+    "pmel_subfault_count": 22,
+    "pmel_subfault_length_m": 100000.0,
+    "pmel_subfault_width_m": 50000.0,
+    "individual_longitude_latitude_strike_dip_depth_rake": "available in source Tables 4 and 6; not promoted to PEGS records",
+    "family_dimensions_and_slip_source": "Table 5",
+    "arrival_source": "Sections 3.1--3.3 and Figures 5, 9 and 15",
+    "arrival_values_semantics": "approximate narrative ranges, including equal endpoints where the source says approximately one value",
+    "rise_time_available": false,
+    "rupture_velocity_available": false,
+    "arrival_definition": "modelled tsunami-wave arrival at named coastal observation points; threshold definition not stated in extracted text",
+    "registration_status": "family_evidence_only_missing_pegs_dynamic_source_parameters"
+  },
   "sources": [
     {
       "id": "liu_et_al_2023_hyyhz",
       "title": "马尼拉俯冲带潜在地震海啸对华南沿海的影响",
       "citation": "海洋与湖沼 2023, 54(2):331-350",
       "url": "https://qdhys.cnjournals.com/html/hyyhz/2023/2/20230202.htm",
-      "status": "landing-page-timeout-full-table-not-yet-extracted"
+      "status": "tables-4-to-6-and-location-specific-arrival-ranges-extracted"
     },
     {
       "id": "hko_south_china_sea_risk",
@@ -23,6 +143,13 @@
       "title": "Possible Maximum Earthquake Tsunami Along the South Coast of China Inferred From GPS-Derived Surface Velocities",
       "doi": "10.1029/2023JC020835",
       "status": "full-source-parameter-audit-pending"
+    },
+    {
+      "id": "zhao_niu_2025_scientific_data",
+      "title": "Dataset of Potential Tsunami Scenarios in the South China Sea",
+      "doi": "10.1038/s41597-025-06006-4",
+      "data_doi": "10.6084/m9.figshare.29311046.v2",
+      "status": "source-family-and-generation-contract-extracted-individual-pegs-records-unavailable"
     }
   ],
   "required_before_scenario_registration": [
@@ -31,6 +158,7 @@
     "rupture length, width, slip, rise time and rupture velocity or explicit missing status",
     "location-specific arrival definition and time",
     "source table/figure/page and model assumptions",
+    "explicit separation of recurrence-family magnitude from deterministic event prediction",
     "no conversion of qualitative three-plus-hours into an exact universal constant"
   ]
 }

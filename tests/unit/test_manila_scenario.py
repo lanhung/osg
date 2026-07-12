@@ -50,8 +50,28 @@ class TestManilaScenario(unittest.TestCase):
     def test_manifest_refuses_unsourced_numeric_scenarios(self) -> None:
         document = json.loads((ROOT / "data/manifests/manila_scenario_sources.json").read_text())
         self.assertEqual(document["scenarios"], [])
-        self.assertTrue(document["scenario_table_status"].startswith("pending"))
+        self.assertIn("pending", document["scenario_table_status"])
         self.assertIn("no conversion", document["required_before_scenario_registration"][-1])
+
+    def test_manifest_retains_partial_source_families_without_promoting_them(self) -> None:
+        document = json.loads((ROOT / "data/manifests/manila_scenario_sources.json").read_text())
+        families = document["extracted_source_families"]
+        self.assertEqual({row["segment"] for row in families}, {"north", "south"})
+        self.assertEqual({row["moment_magnitude"] for row in families}, {8.1, 9.1})
+        self.assertTrue(all(not row["rise_time_available"] for row in families))
+        self.assertTrue(all(not row["rupture_velocity_available"] for row in families))
+        self.assertEqual(document["scenarios"], [])
+
+    def test_liu_families_keep_arrivals_location_specific_and_dynamic_fields_missing(self) -> None:
+        document = json.loads((ROOT / "data/manifests/manila_scenario_sources.json").read_text())
+        families = document["liu_2023_pmel_scenario_families"]
+        self.assertEqual(sum(row["scenario_count"] for row in families), 19)
+        self.assertEqual({row["moment_magnitude"] for row in families}, {7.5, 8.1, 8.5})
+        self.assertTrue(all("macao" in row["arrival_ranges_hours"] for row in families))
+        contract = document["liu_2023_extraction_contract"]
+        self.assertFalse(contract["rise_time_available"])
+        self.assertFalse(contract["rupture_velocity_available"])
+        self.assertEqual(document["scenarios"], [])
 
 
 if __name__ == "__main__":

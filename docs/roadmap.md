@@ -131,7 +131,7 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 - [ ] Storm surge/typhoon setup: regional sea-level anomaly with event-duration uncertainty. (Validated asymmetric finite-disk direct-attraction primitive complete; elastic response, spatial fields and cited priors remain.)
 - [ ] Mesoscale eddy: Gaussian lens or 3-D density anomaly with compensation variants. (Validated translating Gaussian SSH primitive complete; compensated 3-D lens and cited priors remain.)
 - [ ] Internal wave: interface displacement/density dipole with cancellation diagnostics. (Validated mass-balanced oscillating 3-D Gaussian dipole complete; stratified eigenmode, free surface and cited priors remain.)
-- [ ] Tsunami: long-wave transient parameterization with propagating source geometry.
+- [ ] Tsunami: long-wave transient parameterization with propagating source geometry. (Validated mass-balanced shallow-water Gaussian packet complete; realistic source/bathymetry, elastic response and cited priors remain.)
 - [ ] Submarine landslide: coupled solid-water rapid mass migration with conservation checks.
 - [ ] Freeze realistic parameter priors and citations for every process.
 - [ ] Run Latin-hypercube or Monte Carlo uncertainty with deterministic seeds.

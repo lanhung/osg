@@ -39,6 +39,10 @@ class TestGriddedSeaLevelSignal(unittest.TestCase):
         )
         self.assertAlmostEqual(result.included_mass_kg[2], -2.0 * result.included_mass_kg[1])
         self.assertEqual(len(set(result.included_area_m2)), 1)
+        gradient = result.signal.vertical_direct_gravity_gradient_s2
+        self.assertIsNotNone(gradient)
+        self.assertEqual(gradient[0], 0.0)
+        self.assertAlmostEqual(gradient[2], -2.0 * gradient[1])
 
     def test_partial_cells_scale_mass_and_zero_land_may_be_missing(self) -> None:
         result = self._result(

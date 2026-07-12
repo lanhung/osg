@@ -11,6 +11,7 @@ from oceangravity.constants import (
     WGS84_INVERSE_FLATTENING,
     WGS84_SEMI_MAJOR_AXIS,
 )
+from oceangravity.gravity.gradient import Matrix3, gravity_gradient_tensor
 from oceangravity.gravity.point_mass import Vector3
 
 from .surface_grid import OptionalGrid, _validate_cell_load_fraction, _validate_grid_shape
@@ -22,6 +23,8 @@ class EllipsoidalSurfaceLoadResult:
 
     gravity_ecef_m_s2: Vector3
     geodetic_up_gravity_m_s2: float
+    gravity_gradient_ecef_s2: Matrix3
+    geodetic_up_gravity_gradient_s2: float
     included_area_m2: float
     included_mass_kg: float
     included_cells: int
@@ -81,6 +84,7 @@ def surface_load_gravity_wgs84(
     gravity_x: list[float] = []
     gravity_y: list[float] = []
     gravity_z: list[float] = []
+    gradient_terms: list[list[float]] = [[] for _ in range(9)]
     areas: list[float] = []
     masses: list[float] = []
     included_cells = 0
@@ -139,13 +143,29 @@ def surface_load_gravity_wgs84(
             gravity_x.append(scale * displacement[0])
             gravity_y.append(scale * displacement[1])
             gravity_z.append(scale * displacement[2])
+            tensor = gravity_gradient_tensor(mass, source, observation)
+            for row in range(3):
+                for column in range(3):
+                    gradient_terms[3 * row + column].append(tensor[row][column])
 
     gravity = (math.fsum(gravity_x), math.fsum(gravity_y), math.fsum(gravity_z))
+    gradient_rows = tuple(
+        tuple(math.fsum(gradient_terms[3 * row + column]) for column in range(3))
+        for row in range(3)
+    )
+    gradient: Matrix3 = (gradient_rows[0], gradient_rows[1], gradient_rows[2])
+    up_gradient = math.fsum(
+        up[row] * gradient[row][column] * up[column]
+        for row in range(3)
+        for column in range(3)
+    )
     return EllipsoidalSurfaceLoadResult(
         gravity_ecef_m_s2=gravity,
         geodetic_up_gravity_m_s2=math.fsum(
             gravity[index] * up[index] for index in range(3)
         ),
+        gravity_gradient_ecef_s2=gradient,
+        geodetic_up_gravity_gradient_s2=up_gradient,
         included_area_m2=math.fsum(areas),
         included_mass_kg=math.fsum(masses),
         included_cells=included_cells,

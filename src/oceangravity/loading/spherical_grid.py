@@ -7,6 +7,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 from oceangravity.constants import GRAVITATIONAL_CONSTANT, MEAN_EARTH_RADIUS
+from oceangravity.gravity.gradient import Matrix3, gravity_gradient_tensor
 from oceangravity.gravity.point_mass import Vector3
 
 from .surface_grid import OptionalGrid, _validate_cell_load_fraction, _validate_grid_shape
@@ -18,6 +19,8 @@ class SphericalSurfaceLoadResult:
 
     gravity_ecef_m_s2: Vector3
     radial_gravity_m_s2: float
+    gravity_gradient_ecef_s2: Matrix3
+    radial_gravity_gradient_s2: float
     included_area_m2: float
     included_mass_kg: float
     included_cells: int
@@ -92,6 +95,7 @@ def surface_load_gravity_spherical(
     contributions_x = _ChunkedSum(chunk_size_cells)
     contributions_y = _ChunkedSum(chunk_size_cells)
     contributions_z = _ChunkedSum(chunk_size_cells)
+    gradient_terms = tuple(_ChunkedSum(chunk_size_cells) for _ in range(9))
     areas = _ChunkedSum(chunk_size_cells)
     masses = _ChunkedSum(chunk_size_cells)
     included_cells = 0
@@ -156,6 +160,10 @@ def surface_load_gravity_spherical(
             contributions_x.add(scale * displacement[0])
             contributions_y.add(scale * displacement[1])
             contributions_z.add(scale * displacement[2])
+            tensor = gravity_gradient_tensor(mass, source, observation)
+            for row in range(3):
+                for column in range(3):
+                    gradient_terms[3 * row + column].add(tensor[row][column])
 
     gravity = (
         contributions_x.total(),
@@ -163,9 +171,21 @@ def surface_load_gravity_spherical(
         contributions_z.total(),
     )
     radial_gravity = math.fsum(gravity[index] * radial_unit[index] for index in range(3))
+    gradient_rows = tuple(
+        tuple(gradient_terms[3 * row + column].total() for column in range(3))
+        for row in range(3)
+    )
+    gradient: Matrix3 = (gradient_rows[0], gradient_rows[1], gradient_rows[2])
+    radial_gradient = math.fsum(
+        radial_unit[row] * gradient[row][column] * radial_unit[column]
+        for row in range(3)
+        for column in range(3)
+    )
     return SphericalSurfaceLoadResult(
         gravity_ecef_m_s2=gravity,
         radial_gravity_m_s2=radial_gravity,
+        gravity_gradient_ecef_s2=gradient,
+        radial_gravity_gradient_s2=radial_gradient,
         included_area_m2=areas.total(),
         included_mass_kg=masses.total(),
         included_cells=included_cells,

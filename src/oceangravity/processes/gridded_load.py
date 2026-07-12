@@ -54,6 +54,7 @@ def gridded_sea_level_direct_gravity_signal(
         raise ValueError("geometry must be 'sphere' or 'wgs84'")
 
     gravity = []
+    gradients = []
     masses = []
     areas = []
     for grid in sea_level_anomaly_m:
@@ -75,6 +76,7 @@ def gridded_sea_level_direct_gravity_signal(
                 **common,
             )
             vertical = result.radial_gravity_m_s2
+            vertical_gradient = result.radial_gravity_gradient_s2
         else:
             result = surface_load_gravity_wgs84(
                 density_grid,
@@ -87,7 +89,9 @@ def gridded_sea_level_direct_gravity_signal(
                 **common,
             )
             vertical = result.geodetic_up_gravity_m_s2
+            vertical_gradient = result.geodetic_up_gravity_gradient_s2
         gravity.append(vertical)
+        gradients.append(vertical_gradient)
         masses.append(result.included_mass_kg)
         areas.append(result.included_area_m2)
 
@@ -98,6 +102,7 @@ def gridded_sea_level_direct_gravity_signal(
         source_amplitude_unit="kg signed included sea-level load mass",
         vertical_direct_gravity_m_s2=tuple(gravity),
         model_scope=f"direct attraction of gridded sea-level anomaly on {geometry}; no elastic response",
+        vertical_direct_gravity_gradient_s2=tuple(gradients),
     )
     return GriddedSeaLevelSignalResult(
         signal=signal,

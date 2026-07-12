@@ -101,6 +101,24 @@ class TestEllipsoidalSurfaceGrid(unittest.TestCase):
                 [[1.0]], [-91.0, 0.0], [0.0, 1.0], 0.0, 0.0, 1_000.0
             )
 
+    def test_geodetic_up_gradient_matches_height_finite_difference(self) -> None:
+        arguments = ([[1_025.0]], [19.0, 21.0], [109.0, 111.0], 20.0, 110.0)
+        step = 10.0
+        lower = surface_load_gravity_wgs84(*arguments, 100_000.0 - step)
+        centre = surface_load_gravity_wgs84(*arguments, 100_000.0)
+        upper = surface_load_gravity_wgs84(*arguments, 100_000.0 + step)
+        finite_difference = (
+            upper.geodetic_up_gravity_m_s2 - lower.geodetic_up_gravity_m_s2
+        ) / (2.0 * step)
+        self.assertAlmostEqual(
+            centre.geodetic_up_gravity_gradient_s2,
+            finite_difference,
+            delta=abs(finite_difference) * 2e-7,
+        )
+        tensor = centre.gravity_gradient_ecef_s2
+        self.assertAlmostEqual(tensor[0][2], tensor[2][0])
+        self.assertAlmostEqual(sum(tensor[index][index] for index in range(3)), 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()

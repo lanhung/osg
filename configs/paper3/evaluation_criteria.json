@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "preregistered_before_PEGS_simulator_selection",
+  "primary_hypothesis": "A realistic regional network can identify high-risk Manila Trench events earlier than conventional reliable characterization while meeting a continuous-stream false-alarm constraint under held-out rupture and noise domains.",
+  "simulator_benchmark_gate": {
+    "minimum_waveform_correlation": 0.95,
+    "maximum_fractional_peak_amplitude_error": 0.20,
+    "maximum_onset_error_samples": 1,
+    "required_components": [
+      "vertical",
+      "horizontal"
+    ]
+  },
+  "split_gate": {
+    "hold_out_rupture_segments": true,
+    "hold_out_noise_dates": true,
+    "retain_domain_out_sources": true,
+    "retain_domain_out_stations": true,
+    "preserve_simultaneous_multistation_noise": true
+  },
+  "operational_detection_gate": {
+    "minimum_detection_probability": 0.90,
+    "maximum_false_alarms_per_30_day_month": 1.0,
+    "minimum_consecutive_qualifying_points": 3,
+    "noise_evaluation": "continuous_stream",
+    "required_noise_regimes": [
+      "day",
+      "night",
+      "summer",
+      "winter",
+      "calm_sea",
+      "typhoon_or_strong_microseism",
+      "urban",
+      "remote"
+    ]
+  },
+  "reliable_magnitude_gate": {
+    "high_risk_threshold_mw": 8.2,
+    "maximum_magnitude_mae": 0.30,
+    "minimum_high_risk_sensitivity": 0.90,
+    "minimum_lower_risk_specificity": 0.90,
+    "nominal_interval_coverage": 0.90,
+    "minimum_interval_coverage": 0.80,
+    "minimum_consecutive_qualifying_points": 3
+  },
+  "required_comparators": [
+    "P_wave_characterization",
+    "W_phase_characterization",
+    "GNSS_characterization"
+  ],
+  "required_network_stress_tests": {
+    "station_outage_fractions": [0.0, 0.2, 0.4],
+    "vertical_only_and_three_component": true,
+    "existing_and_augmented_networks": true,
+    "physical_baseline_before_GNN": true
+  },
+  "decision_rule": {
+    "success": "Held-out data meet both operational detection and reliable-magnitude gates, and characterization gain is reported against every available conventional comparator with scenario-specific tsunami arrivals.",
+    "conditional_GNN": "Train a graph model only after a coherent physical baseline demonstrates held-out signal; accept it only if it improves the same frozen metrics and splits.",
+    "negative_result": "Failure below a magnitude, station count, noise level, segment, or outage condition is reported as a network feasibility boundary.",
+    "failure": "A claim based on arrival precedence alone, conditional-on-event accuracy without continuous false alarms, or synthetic white noise alone."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "preregistered_before_typhoon_data_analysis",
+  "primary_hypothesis": "Adding an independently modelled typhoon-driven ocean-loading term improves held-out superconducting-gravimeter residuals and has a positive, event-consistent attribution coefficient after atmospheric and hydrological controls.",
+  "hard_data_gate": {
+    "accepted_designs": [
+      {
+        "minimum_stations": 1,
+        "minimum_typhoon_events": 3
+      },
+      {
+        "minimum_stations": 2,
+        "minimum_typhoon_events": 2
+      }
+    ],
+    "window_days_before": 7,
+    "window_days_after": 7,
+    "minimum_holdout_events": 1,
+    "required_streams": [
+      "superconducting_gravimeter_level1_or_equivalent",
+      "collocated_pressure",
+      "calibration_and_instrument_state",
+      "sea_level_anomaly",
+      "typhoon_track_and_intensity",
+      "precipitation_and_land_hydrology"
+    ],
+    "required_controls": [
+      "non_typhoon_storm",
+      "quiet_windows"
+    ],
+    "level3_only_outcome": "case_or_model_evaluation_only_not_full_physical_attribution"
+  },
+  "physics_closure_gate": {
+    "required_separate_components": [
+      "direct_water_attraction",
+      "vertical_deformation_gravity",
+      "internal_mass_and_potential_response",
+      "direct_atmosphere",
+      "inverted_barometer_response",
+      "land_hydrology"
+    ],
+    "forbid_atmosphere_ocean_double_counting": true,
+    "require_component_sign_and_unit_audit": true
+  },
+  "confirmatory_metrics": {
+    "event_block_bootstrap_confidence_level": 0.95,
+    "ocean_attribution_coefficient_required_sign": "positive",
+    "ocean_attribution_coefficient_ci_lower_bound": 0.0,
+    "heldout_rmse_improvement_required": "strictly_positive",
+    "heldout_explained_variance_improvement_required": "strictly_positive",
+    "same_threshold_required_for_quiet_windows": true,
+    "report_without_pass_threshold": [
+      "correlation",
+      "peak_amplitude_error",
+      "peak_time_error",
+      "frequency_domain_coherence",
+      "event_detection_snr"
+    ]
+  },
+  "decision_rule": {
+    "success": "The data and closure gates pass, the positive ocean coefficient survives event-block uncertainty, and the fully held-out event improves both RMSE and explained variance at the frozen preprocessing and model settings.",
+    "model_failure_branch": "A predicted signal with poor gravimeter closure becomes an evaluation of coastal ocean/reanalysis resolution or preprocessing, without a detection claim.",
+    "single_event_branch": "One successful event is a case study and cannot support cross-typhoon generalization.",
+    "null_branch": "A physically predicted but undetected signal is retained to constrain station distance, competing hydrology, product resolution, and direct-versus-elastic cancellation."
+  }
+}

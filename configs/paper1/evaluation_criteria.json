@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "preregistered_before_production_atlas",
+  "primary_hypothesis": "A common forward-model and SNR convention separates detectable, boundary-detectable, and non-detectable regions for six oceanic processes without merging unlike instrument classes.",
+  "analysis_correctness_gate": {
+    "analytic_primitives": [
+      "point_mass",
+      "on_axis_thin_disk",
+      "finite_rectangular_surface_load",
+      "gaussian_surface_load"
+    ],
+    "maximum_relative_error": 0.01,
+    "far_field_distance_to_source_scale": 100.0,
+    "far_field_maximum_relative_error": 0.01
+  },
+  "published_case_gate": {
+    "cases": [
+      "Helgoland_storm_surge",
+      "Haikou_South_China_Sea_NTOL"
+    ],
+    "maximum_fractional_amplitude_difference": 0.30,
+    "exception_policy": "A larger difference is allowed only with a quantified attribution to domain, resolution, Green function, geometry, or preprocessing; it is not a passing reproduction."
+  },
+  "atlas_convention": {
+    "target_detection_probability": 0.90,
+    "family_false_alarm_probability": 0.001,
+    "independent_trials_reference": 1,
+    "uncertainty_quantiles": [0.05, 0.50, 0.95],
+    "required_processes": [
+      "tide",
+      "storm_surge",
+      "mesoscale_eddy",
+      "internal_wave",
+      "tsunami",
+      "submarine_landslide"
+    ],
+    "instrument_panels": [
+      "ground_gravimeters",
+      "gravity_gradients_and_inertial_sensors",
+      "environmental_Newtonian_noise_channels"
+    ]
+  },
+  "decision_rule": {
+    "success": "All correctness and case gates pass and every required process is classified over frequency, distance, instrument, and observation duration with uncertainty.",
+    "negative_result": "A process remaining non-detectable throughout its realistic prior is retained and reported as a physical feasibility boundary.",
+    "failure": "Unclosed validation errors, omitted required processes, or a detectability claim based only on amplitude/noise curve intersection without bandwidth and duration."
+  }
+}

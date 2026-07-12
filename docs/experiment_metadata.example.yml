@@ -1,0 +1,14 @@
+experiment_id: P2-E017
+paper: paper2
+git_commit: replace-with-full-commit-sha
+docker_image: replace-with-image-digest
+data_manifest: data/manifests/replace-me.yml
+config_file: configs/paper2/baseline.yml
+random_seed: 20260712
+start_time: replace-with-iso-8601-utc
+machine: replace-with-machine-id
+outputs:
+  - metrics.json
+  - figure_03.pdf
+  - residual_timeseries.nc
+

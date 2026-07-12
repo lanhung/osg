@@ -1,0 +1,10 @@
+"""Workflow entry point.
+
+Production rules are added only after their scientific gate, inputs, outputs, and
+validation criteria are frozen in a paper-specific configuration.
+"""
+
+rule all:
+    input:
+        []
+

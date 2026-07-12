@@ -1,0 +1,9 @@
+schema_version: 1
+units: SI
+random_seed: 20260712
+output_policy:
+  figures: pdf
+  arrays: netcdf
+  metrics: json
+  preserve_intermediate_components: true
+

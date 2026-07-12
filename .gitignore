@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+
+# Generated scientific data and experiment outputs
+data/raw/**
+data/interim/**
+data/processed/**
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+experiments/**/runs/
+reports/generated/
+*.nc
+*.h5
+*.hdf5
+*.zarr/
+
+# Secrets and local configuration
+.env
+*.pem
+*.key
+

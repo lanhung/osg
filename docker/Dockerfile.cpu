@@ -1,0 +1,8 @@
+FROM python:3.13-slim
+
+WORKDIR /workspace
+COPY . /workspace
+RUN python -m pip install --no-cache-dir .
+
+CMD ["python", "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"]
+

@@ -1,0 +1,9 @@
+schema_version: 1
+processes: [tide, storm_surge, mesoscale_eddy, internal_wave, tsunami, submarine_landslide]
+observables: [vertical_gravity, gravity_gradient]
+snr:
+  transient_definition: matched_filter
+  periodic_definition: coherent_integration
+  threshold: null
+  note: threshold must be frozen with a false-alarm convention before production runs
+

@@ -1,0 +1,7 @@
+schema_version: 1
+event_window_days_before: 7
+event_window_days_after: 7
+minimum_typhoon_events: 3
+holdout_events: 1
+require_quiet_controls: true
+

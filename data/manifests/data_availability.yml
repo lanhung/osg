@@ -1,0 +1,68 @@
+schema_version: 1
+last_reviewed: 2026-07-12
+status_values: [unknown, requested, approved, available, restricted, unavailable]
+
+paper2:
+  go_no_go_deadline: week-2
+  minimum_viable_closure:
+    alternatives:
+      - one station with three typhoon events and fourteen-day windows
+      - two stations with two typhoon events each
+    required_channels:
+      - superconducting-gravimeter level-1 or equivalent
+      - colocated pressure
+      - calibration, jump, maintenance, and timing records
+      - sea-level anomaly
+      - typhoon track and intensity
+      - precipitation and terrestrial hydrology
+  sources:
+    - id: igets-superconducting-gravimetry
+      status: unknown
+      owner: GFZ IGETS and station operators
+      action: freeze candidate stations, coverage, sampling, and access terms
+    - id: haikou-igrav-048
+      status: unknown
+      owner: Haikou station / 2026 paper authors
+      action: request raw or near-raw gravity, pressure, and instrument logs
+    - id: ibtracs
+      status: unknown
+      owner: NOAA NCEI
+      action: record release, basin filters, time range, license, and checksum
+    - id: era5
+      status: unknown
+      owner: ECMWF Copernicus Climate Data Store
+      action: define variables, spatial bounds, temporal resolution, and license
+    - id: cmems-sea-level
+      status: unknown
+      owner: Copernicus Marine Service
+      action: identify products that retain storm-scale sea-level anomalies
+    - id: tide-gauge-and-gnss
+      status: unknown
+      owner: to-be-determined
+      action: inventory stations around each candidate gravimeter
+
+paper3:
+  go_no_go_deadline: week-2
+  minimum_viable_closure:
+    - frozen list of stations with downloadable three-component waveform data
+    - noise windows spanning seasons, day/night, calm sea, and typhoon conditions
+    - station metadata and response information
+    - published PEGS benchmark event and forward-model implementation
+  sources:
+    - id: south-china-regional-seismic-network
+      status: unknown
+      owner: multiple network operators
+      action: distinguish real-time-capable, archival-only, and inaccessible stations
+    - id: surrounding-fdsn-networks
+      status: unknown
+      owner: FDSN data centres
+      action: freeze station epochs, channels, response availability, and licenses
+    - id: manila-tsunami-scenarios
+      status: unknown
+      owner: published literature
+      action: extract source parameters and location-specific arrival distributions
+    - id: pegs-benchmark-and-simulator
+      status: unknown
+      owner: published implementations
+      action: select a reproducible waveform benchmark before regional simulation
+

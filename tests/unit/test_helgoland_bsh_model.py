@@ -45,3 +45,21 @@ def test_separable_remap_conserves_constant_field_integral() -> None:
         - MODULE._ellipsoid_area_coordinate(np.array([0.0, 2.0]))[0]
     ) * np.radians(2.0)
     np.testing.assert_allclose(integral, [[expected]], rtol=2e-15)
+
+
+def test_load_green_table_ignores_headers_and_footer(tmp_path: Path) -> None:
+    table = tmp_path / "ce.txt"
+    table.write_text(
+        "header\n"
+        "0.1 -2e-12 0 0 0 -10 0\n"
+        "0.2 -1e-12 0 0 0 -8 0\n"
+        "footer has more than six non numeric tokens here\n",
+        encoding="utf-8",
+    )
+    theta, gravity, displacement = MODULE._load_green_table(table, 6_371_000.0)
+    np.testing.assert_allclose(theta, np.radians([0.1, 0.2]))
+    np.testing.assert_allclose(displacement, [-2e-12, -1e-12])
+    np.testing.assert_allclose(
+        gravity,
+        np.array([-10.0, -8.0]) / (1e18 * 6_371_000.0 * theta),
+    )

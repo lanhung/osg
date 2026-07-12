@@ -136,10 +136,21 @@ def _target_edges(bounds: list[float], spacing: float) -> np.ndarray:
 def _load_green_table(
     path: Path, earth_radius_m: float
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    rows = np.loadtxt(path, comments="-", skiprows=5)
+    parsed_rows = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        tokens = line.split()
+        if len(tokens) < 6:
+            continue
+        try:
+            parsed_rows.append(tuple(float(tokens[index]) for index in (0, 1, 5)))
+        except ValueError:
+            continue
+    rows = np.asarray(parsed_rows)
+    if rows.ndim != 2 or rows.shape[0] < 2 or rows.shape[1] != 3:
+        raise ValueError("LoadDef table must contain at least two numeric response rows")
     theta_rad = np.radians(rows[:, 0])
     displacement = rows[:, 1]
-    elastic_gravity = rows[:, 5] / (1.0e18 * earth_radius_m * theta_rad)
+    elastic_gravity = rows[:, 2] / (1.0e18 * earth_radius_m * theta_rad)
     return theta_rad, elastic_gravity, displacement
 
 

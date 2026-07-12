@@ -134,7 +134,7 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 - [ ] Internal wave: interface displacement/density dipole with cancellation diagnostics. (Validated mass-balanced oscillating 3-D Gaussian dipole complete; stratified eigenmode, free surface and cited priors remain.)
 - [ ] Tsunami: long-wave transient parameterization with propagating source geometry. (Validated mass-balanced shallow-water Gaussian packet complete; realistic source/bathymetry, elastic response and cited priors remain.)
 - [ ] Submarine landslide: coupled solid-water rapid mass migration with conservation checks. (Validated conserved solid plus optional explicit water point-pair gravity/gradient primitive complete; continuum slide, generated wave and cited priors remain.)
-- [ ] Freeze realistic parameter priors and citations for every process.
+- [ ] Freeze realistic parameter priors and citations for every process. (M2 constant, Helgoland benchmark and Chelton eddy means encoded as non-probabilistic anchors; complete envelopes/distributions for all six remain.)
 - [ ] Run Latin-hypercube or Monte Carlo uncertainty with deterministic seeds. (Validated deterministic linear/log Latin-hypercube and quantile engine complete; cited priors, correlations, convergence and production ensembles remain.)
 
 Foundation milestone: registered experiment `P1-E001-foundation` runs all six direct-gravity primitives under explicitly non-scientific engineering fixture parameters; it is infrastructure evidence, not an atlas result.

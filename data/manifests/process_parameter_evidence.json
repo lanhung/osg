@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-07-12",
+  "policy": "Reported examples, means, and benchmark events are evidence anchors, not probability distributions.",
+  "processes": {
+    "tide": {
+      "evidence": [
+        {
+          "parameter": "M2_period_s",
+          "value": 44714.16432,
+          "source_reported_value": "12.4206012 solar hours",
+          "source": "https://tidesandcurrents.noaa.gov/publications/Understanding_Tides_by_Steacy_finalFINAL11_30.pdf",
+          "evidence_type": "astronomical_constituent_constant",
+          "probability_prior_eligible": false
+        }
+      ],
+      "unresolved_for_atlas": [
+        "spatial amplitude and phase field or a cited site/region scenario envelope",
+        "loaded ocean domain and coastline mask",
+        "observation duration and empirical low-frequency station noise"
+      ]
+    },
+    "storm_surge": {
+      "evidence": [
+        {
+          "parameter": "Helgoland_2022_01_30_sea_level_above_mean_high_water_m",
+          "value": 2.0,
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "single_benchmark_event",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_peak_to_peak_gravity_m_s2",
+          "value": 8.5e-08,
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "single_benchmark_event",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Helgoland_vertical_displacement_m",
+          "value": -0.034,
+          "source": "https://doi.org/10.1029/2024GL109262",
+          "evidence_type": "single_benchmark_event",
+          "probability_prior_eligible": false
+        }
+      ],
+      "unresolved_for_atlas": [
+        "event-independent amplitude/area/duration scenario envelope",
+        "regional sea-level spatial fields",
+        "direct-versus-elastic benchmark decomposition"
+      ]
+    },
+    "mesoscale_eddy": {
+      "evidence": [
+        {
+          "parameter": "global_observed_mean_SSH_amplitude_m",
+          "value": 0.08,
+          "source": "https://doi.org/10.1016/j.pocean.2011.01.002",
+          "evidence_type": "global_catalogue_mean_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "global_observed_mean_speed_based_radius_m",
+          "value": 90000.0,
+          "source": "https://doi.org/10.1016/j.pocean.2011.01.002",
+          "evidence_type": "global_catalogue_mean_not_distribution",
+          "probability_prior_eligible": false
+        }
+      ],
+      "model_warning": "Chelton et al. argue that a quadratic composite profile can better represent observed eddies than a Gaussian; profile sensitivity is required.",
+      "unresolved_for_atlas": [
+        "catalogue quantiles or a traceable scenario envelope",
+        "translation-speed distribution",
+        "SSH-only versus compensated three-dimensional density structure"
+      ]
+    },
+    "internal_wave": {
+      "evidence": [],
+      "unresolved_for_atlas": [
+        "regional mode/stratification-specific displacement and density ranges",
+        "horizontal and vertical wavenumber spectrum",
+        "free-surface coupling and compensation"
+      ]
+    },
+    "tsunami": {
+      "evidence": [],
+      "unresolved_for_atlas": [
+        "earthquake-source-derived amplitude/scale scenario family",
+        "bathymetry and dispersion validity boundary",
+        "distance definition tied to propagating wavefront geometry"
+      ]
+    },
+    "submarine_landslide": {
+      "evidence": [],
+      "unresolved_for_atlas": [
+        "volume, density, runout, velocity and acceleration scenario family",
+        "continuum mass shape and entrainment",
+        "coupled generated-water-wave field"
+      ]
+    }
+  },
+  "foundation_comparison": {
+    "tide_period_s": {
+      "foundation": 44712.0,
+      "evidence_anchor": 44714.16432,
+      "action": "retain frozen engineering experiment; use astronomical value in scientific configuration"
+    },
+    "storm_surge_peak_m": {
+      "foundation": 2.0,
+      "evidence_anchor": 2.0,
+      "action": "matching magnitude is coincidental and does not transfer Helgoland geometry or probability"
+    },
+    "eddy_SSH_amplitude_m": {
+      "foundation": 0.3,
+      "evidence_anchor": 0.08,
+      "action": "foundation is above the reported global mean and remains engineering-only"
+    },
+    "eddy_radius_m": {
+      "foundation": 50000.0,
+      "evidence_anchor": 90000.0,
+      "action": "definitions differ; do not substitute without profile/radius audit"
+    }
+  }
+}

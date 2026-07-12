@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "paper": "paper2_typhoon",
+  "figures": [
+    {"figure_id": "figure_1_tracks_sea_level_stations", "status": "pending-event-and-station-gate"},
+    {"figure_id": "figure_2_sg_correction_waterfall", "status": "pending-raw-sg-data"},
+    {"figure_id": "figure_3_direct_elastic_component_split", "status": "pending-loaddef-validation"},
+    {"figure_id": "figure_4_observed_modeled_comparison", "status": "pending-event-data"},
+    {"figure_id": "figure_5_multi_event_summary", "status": "pending-three-or-more-events"},
+    {"figure_id": "figure_6_holdout_and_false_positives", "status": "pending-frozen-splits"}
+  ]
+}

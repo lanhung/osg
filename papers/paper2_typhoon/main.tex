@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\TyphoonPending}[1]{\textbf{[PENDING: #1]}}
+
+\title{Event-Resolved Gravimetric Detection of Typhoon-Driven Ocean Mass Redistribution}
+\author{\TyphoonPending{author list and data-provider collaboration}}
+\date{Methods-first draft; not for submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We test whether named typhoons produce event-resolved ocean mass-redistribution
+signals in superconducting-gravimeter records after explicit separation of
+atmosphere, hydrology, direct ocean attraction, elastic loading, and instrument
+effects. The design combines gravimetry with pressure, best tracks, gridded sea
+level, tide gauges and GNSS, and evaluates a completely held-out typhoon together
+with strong-weather and quiet controls. \TyphoonPending{Insert data-gated
+multi-event results and uncertainty after station authorization.}
+\end{abstract}
+
+\section{Introduction}
+Previous work has modeled non-tidal ocean loading in the South China Sea and
+observed storm-surge loading at Helgoland. The increment tested here is not
+general NTOL correction, but named-typhoon attribution with a closed component
+budget, independent evidence, and cross-event generalization.
+
+\section{Data and preregistered event design}
+The raw-data gate requires either one station covering at least three typhoons or
+two stations covering at least two typhoons each, including gravity, colocated
+pressure, calibration/timing/jump/maintenance records, sea-level fields, storm
+tracks, precipitation, and hydrology. Evaluation additionally requires one
+held-out typhoon, one non-typhoon strong-weather control, three quiet windows,
+and no overlapping same-station windows across splits.
+
+IBTrACS agency wind and pressure fields are retained separately. ERA5 surface
+pressure supplies atmospheric loading; mean-sea-level pressure and winds are
+event diagnostics. Significant wave height is not converted into additional
+water mass. CMEMS sea level is admitted only after its tide, mean dynamic
+topography, and inverse-barometer semantics are audited.
+
+\section{Methods}
+\subsection{Transparent gravimeter correction}
+For observed gravity $g_{\mathrm{obs}}$, the residual is
+\begin{equation}
+ g_{\mathrm{res}} = g_{\mathrm{obs}}-
+ \sum_k g_k,
+\end{equation}
+where every removed component has a unique physical-effect identifier, source,
+SI series, and pre-applied flag. Two components cannot own the same effect. Each
+stage stores its input, removed series, output, and peak contribution.
+
+Missing samples and cadence violations split records without interpolation.
+Candidate discontinuities are flagged at original indices but are not
+automatically classified or corrected.
+
+\subsection{Independent ocean forward model}
+Sea-level anomaly $\eta$ is converted to surface density
+$\Delta\sigma=\rho_w\eta$. Direct attraction is integrated on spherical and
+WGS~84 grids with explicit masks and partial coastal-cell fractions. The modeled
+ocean signal is
+\begin{equation}
+ g_{\mathrm{ocean}}^{\mathrm{model}}=
+ g_{\mathrm{direct}}+g_{\mathrm{deformation}}+g_{\mathrm{internal}},
+\end{equation}
+with every term retained separately. Elastic terms are disabled until the
+Green-function Earth model, reference frame, normalization, and component
+semantics pass a published benchmark.
+
+\subsection{Double-count audit}
+A CMEMS field containing inverse-barometer response cannot be combined with a
+second ERA5-driven inverse-barometer correction. Likewise, a pre-corrected NTOL
+residual cannot receive NTOL again. Unknown product physics blocks assembly.
+
+\subsection{Evaluation}
+Primary metrics are correlation, RMSE, peak amplitude and time error, explained
+variance, frequency-domain coherence, event SNR, and held-out performance.
+Quiet/control windows estimate false positives. Model, filter, hydrology,
+Green-function, station, and event sensitivities are retained, including failed
+events.
+
+\section{Results}
+\TyphoonPending{No SG event data are authorized in the repository. Do not insert
+synthetic foundation results as event detections.}
+
+\section{Discussion}
+Possible outcomes include successful event attribution, evidence that ocean
+products miss rapid coastal redistribution, or an upper constraint from
+non-detection. A single successful event cannot establish generality.
+
+\section{Data and code availability}
+Restricted SG and station logs will remain outside Git. Versioned manifests will
+record owner, terms, station, channels, time range, product version, retrieval
+time, checksum, exclusions, and redistribution limits. Processing code and
+compact nonrestricted metrics will be released.
+
+\section{Limitations}
+\TyphoonPending{Update after data authorization, product audit, elastic benchmark,
+and held-out evaluation.}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

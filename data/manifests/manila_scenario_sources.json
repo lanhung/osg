@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-07-12",
+  "scenario_table_status": "pending-full-text-parameter-extraction",
+  "scenarios": [],
+  "sources": [
+    {
+      "id": "liu_et_al_2023_hyyhz",
+      "title": "马尼拉俯冲带潜在地震海啸对华南沿海的影响",
+      "citation": "海洋与湖沼 2023, 54(2):331-350",
+      "url": "https://qdhys.cnjournals.com/html/hyyhz/2023/2/20230202.htm",
+      "status": "landing-page-timeout-full-table-not-yet-extracted"
+    },
+    {
+      "id": "hko_south_china_sea_risk",
+      "title": "潜在影响香港的南海海啸源风险评估",
+      "url": "https://www.hko.gov.hk/sc/gts/equake/risk_assessment_of_SCS_tsunami_potential_impact_hk.htm",
+      "status": "qualitative-arrival-anchor-only",
+      "verified_scope": "A north-Manila-trench tsunami generally affects Hong Kong and southeast China after more than about three hours; this is not a scenario-specific numeric arrival."
+    },
+    {
+      "id": "zhao_et_al_2024_jgr_oceans",
+      "title": "Possible Maximum Earthquake Tsunami Along the South Coast of China Inferred From GPS-Derived Surface Velocities",
+      "doi": "10.1029/2023JC020835",
+      "status": "full-source-parameter-audit-pending"
+    }
+  ],
+  "required_before_scenario_registration": [
+    "exact segment geometry and coordinate convention",
+    "Mw, strike, dip, rake and top depth",
+    "rupture length, width, slip, rise time and rupture velocity or explicit missing status",
+    "location-specific arrival definition and time",
+    "source table/figure/page and model assumptions",
+    "no conversion of qualitative three-plus-hours into an exact universal constant"
+  ]
+}

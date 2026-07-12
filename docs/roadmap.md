@@ -236,7 +236,7 @@ Evidence: decision record, manuscript, figures, reproduction report.
 
 - [ ] Reproduce a published PEGS event at specified stations/components.
 - [ ] Achieve waveform correlation >0.95, amplitude error <10–20%, and onset error below one sample, or document justified revised tolerances.
-- [ ] Extract published Manila source segments, geometry, slip, and location-specific tsunami-arrival distributions.
+- [ ] Extract published Manila source segments, geometry, slip, and location-specific tsunami-arrival distributions. (Strict source/arrival schema and source queue complete; full numeric extraction pending.)
 - [ ] Record source-paper assumptions and avoid treating one 2.6-hour arrival as universal.
 - [ ] Build 500–1000 baseline scenarios across Mw 8.0–9.0, segments, velocity, rise time, depth, dip, and heterogeneous slip.
 - [ ] Preserve an interface for external tsunami calculations without claiming COMCOT simulation novelty.

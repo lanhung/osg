@@ -75,25 +75,112 @@
       ]
     },
     "internal_wave": {
-      "evidence": [],
+      "evidence": [
+        {
+          "parameter": "South_China_Sea_internal_tide_isopycnal_displacement_m",
+          "value": 100.0,
+          "source": "https://doi.org/10.1175/2011JPO4587.1",
+          "evidence_type": "regional_typical_upper-scale_statement_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "South_China_Sea_internal_solitary_wave_displacement_m",
+          "value": 150.0,
+          "source": "https://doi.org/10.1175/2011JPO4587.1",
+          "evidence_type": "regional_observation_summary_not_distribution",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "South_China_Sea_extreme_internal_solitary_wave_amplitude_m",
+          "value": 240.0,
+          "source": "https://doi.org/10.1038/srep30041",
+          "evidence_type": "single_extreme_observation",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "global_mode1_M2_internal_tide_beam_width_m",
+          "range": [100000.0, 300000.0],
+          "source": "https://doi.org/10.1175/JPO-D-15-0105.1",
+          "evidence_type": "global_mapped_beam_width_not_waveform_scale_distribution",
+          "probability_prior_eligible": false
+        }
+      ],
+      "model_warning": "Isopycnal displacement alone does not determine gravity. The vertical density gradient, mode shape, free-surface expression and mass compensation must be explicit; the 240 m event is an extreme anchor, not an upper quantile.",
       "unresolved_for_atlas": [
-        "regional mode/stratification-specific displacement and density ranges",
+        "regional mode/stratification-specific density-gradient ranges",
         "horizontal and vertical wavenumber spectrum",
-        "free-surface coupling and compensation"
+        "free-surface coupling and compensation",
+        "separate coherent internal-tide and solitary-wave scenario families"
       ]
     },
     "tsunami": {
-      "evidence": [],
+      "evidence": [
+        {
+          "parameter": "Tohoku_2011_inferred_source_length_m",
+          "range": [300000.0, 400000.0],
+          "source": "https://doi.org/10.1029/2011JC007635",
+          "evidence_type": "single_event_DART_energy_inversion",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Tohoku_2011_inferred_source_width_m",
+          "value": 100000.0,
+          "source": "https://doi.org/10.1029/2011JC007635",
+          "evidence_type": "single_event_DART_energy_inversion",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Sumatra_2004_mid_ocean_peak_to_trough_wave_height_m",
+          "lower_bound": 1.0,
+          "source": "https://doi.org/10.1080/01431160601094484",
+          "evidence_type": "single_event_satellite_altimetry_lower_bound",
+          "probability_prior_eligible": false
+        }
+      ],
+      "model_warning": "The source footprint, open-ocean propagating amplitude and coastal/run-up amplitude are different quantities. No coastal height may be used as the Gaussian open-ocean load amplitude.",
       "unresolved_for_atlas": [
-        "earthquake-source-derived amplitude/scale scenario family",
+        "multi-magnitude earthquake-source-derived initial displacement family",
         "bathymetry and dispersion validity boundary",
-        "distance definition tied to propagating wavefront geometry"
+        "distance definition tied to propagating wavefront geometry",
+        "source-to-propagating-packet transformation and mass-balance convention"
       ]
     },
     "submarine_landslide": {
-      "evidence": [],
+      "evidence": [
+        {
+          "parameter": "Storegga_slide_volume_m3",
+          "range": [2.4e12, 3.0e12],
+          "source": "https://doi.org/10.1002/2017GL074062",
+          "supporting_source": "https://www.researchgate.net/publication/239769493_Dynamics_Velocity_and_Run-Out_of_the_Giant_Storegga_Slide",
+          "evidence_type": "single_giant_paleoslide_model_range",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Storegga_runout_m",
+          "value": 450000.0,
+          "source": "https://www.researchgate.net/publication/239769493_Dynamics_Velocity_and_Run-Out_of_the_Giant_Storegga_Slide",
+          "evidence_type": "single_giant_paleoslide_reconstruction",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Storegga_frontal_progression_velocity_m_s",
+          "range": [30.0, 40.0],
+          "source": "https://doi.org/10.1029/2018JC014893",
+          "evidence_type": "single_event_calibrated_rheological_model",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Storegga_local_maximum_velocity_m_s",
+          "value": 60.0,
+          "source": "https://doi.org/10.1029/2018JC014893",
+          "evidence_type": "single_event_local_model_maximum",
+          "probability_prior_eligible": false
+        }
+      ],
+      "model_warning": "Storegga is a giant extreme event. Its volume, runout and local maximum velocity cannot be combined independently or used as population quantiles; early acceleration and evolving spatial distribution control tsunami generation.",
       "unresolved_for_atlas": [
-        "volume, density, runout, velocity and acceleration scenario family",
+        "representative small and intermediate submarine-slide scenario families",
+        "sediment density contrast and early acceleration distributions",
         "continuum mass shape and entrainment",
         "coupled generated-water-wave field"
       ]

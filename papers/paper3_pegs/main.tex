@@ -40,14 +40,6 @@ nested under that source and has a location and arrival definition. Qualitative
 statements such as ``more than about three hours'' are not converted into exact
 universal arrival times.
 
-Open source-family extraction currently retains two geodetic recurrence
-families from Zhao and Niu~\cite{Zhao2024,Zhao2025} and 19 PMEL-based
-scenario families from Liu et al.~\cite{Liu2023}. The latter provide
-magnitude-specific geometry, slip and five-location modelled arrival ranges.
-They remain outside the PEGS simulator library because rise time and rupture
-velocity are not reported and the extracted arrival threshold definition is
-not explicit.
-
 The open Zhao and Niu scenario descriptor~\cite{Zhao2025} separates southern
 (13.0--14.5$^\circ$N) and northern (14.5--22.0$^\circ$N) Manila source families,
 with 1000-year recurrence-family magnitudes $M_w$ 8.1 and 9.1. Its 1,800
@@ -57,7 +49,7 @@ height/period statistics, not per-scenario PEGS sources: rise time, rupture
 velocity, complete rupture geometry and location-specific arrivals remain
 missing. These source families are not promoted to simulator inputs.
 
-Liu et al.~\cite{Liu2023Manila} provide a complementary PMEL/SIFT-based set of
+Liu et al.~\cite{Liu2023} provide a complementary PMEL/SIFT-based set of
 19 finite-fault families: eleven $M_w$ 7.5, five $M_w$ 8.1 and three $M_w$ 8.5
 locations, with reported rupture dimensions, mean slip, rake and individual
 static geometry. Their arrival ranges remain tied to magnitude family and site

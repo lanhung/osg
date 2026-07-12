@@ -24,6 +24,44 @@ class TsunamiWavePacketResult:
         return math.fsum((self.crest_mass_amplitude_kg, self.trough_mass_amplitude_kg))
 
 
+def gaussian_packet_amplitude_from_energy(
+    propagated_energy_j: float,
+    *,
+    horizontal_scale_m: float,
+    crest_trough_separation_m: float,
+    water_density_kg_m3: float = REFERENCE_SEAWATER_DENSITY.value,
+) -> float:
+    """Invert linear shallow-water energy for a mass-balanced Gaussian packet.
+
+    The free surface is ``eta=A(g_crest-g_trough)`` with equal isotropic
+    Gaussian scales. ``propagated_energy_j`` uses the linear long-wave total
+    energy convention ``E=rho*g*integral(eta**2 dA)`` (equal depth-integrated
+    kinetic and potential contributions). Analytic integration includes the
+    finite crest--trough overlap; no coastal amplification is represented.
+    """
+
+    energy = float(propagated_energy_j)
+    scale = float(horizontal_scale_m)
+    separation = float(crest_trough_separation_m)
+    density = float(water_density_kg_m3)
+    for name, value in (
+        ("propagated_energy_j", energy),
+        ("horizontal_scale_m", scale),
+        ("crest_trough_separation_m", separation),
+        ("water_density_kg_m3", density),
+    ):
+        if not math.isfinite(value):
+            raise ValueError(f"{name} must be finite")
+    if energy <= 0.0 or scale <= 0.0 or separation <= 0.0 or density <= 0.0:
+        raise ValueError("energy, scale, separation, and density must be greater than zero")
+
+    overlap = math.exp(-(separation**2) / (4.0 * scale**2))
+    squared_surface_integral_per_amplitude = 2.0 * math.pi * scale**2 * (1.0 - overlap)
+    return math.sqrt(
+        energy / (density * STANDARD_GRAVITY.value * squared_surface_integral_per_amplitude)
+    )
+
+
 def propagating_compensated_gaussian_tsunami(
     times_s: Sequence[float],
     *,

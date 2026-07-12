@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from oceangravity.constants import STANDARD_GRAVITY
 from oceangravity.processes import (
+    gaussian_packet_amplitude_from_energy,
     propagating_compensated_gaussian_tsunami,
     regular_times,
 )
@@ -93,6 +94,61 @@ class TestTsunamiWavePacket(unittest.TestCase):
             self._result(crest_trough_separation_m=0.0)
         with self.assertRaises(ValueError):
             self._result(observation_xyz_m=(0.0, 0.0))
+
+    def test_energy_normalization_recovers_linear_long_wave_energy(self) -> None:
+        """The analytic inverse uses E=rho*g*integral(eta^2 dA), in SI units."""
+
+        energy = 3.0e15
+        scale = 50_000.0
+        separation = 350_000.0
+        density = 1025.0
+        amplitude = gaussian_packet_amplitude_from_energy(
+            energy,
+            horizontal_scale_m=scale,
+            crest_trough_separation_m=separation,
+            water_density_kg_m3=density,
+        )
+        overlap = math.exp(-(separation**2) / (4.0 * scale**2))
+        recovered = (
+            density
+            * STANDARD_GRAVITY.value
+            * amplitude**2
+            * 2.0
+            * math.pi
+            * scale**2
+            * (1.0 - overlap)
+        )
+        self.assertAlmostEqual(recovered / energy, 1.0, places=14)
+
+    def test_energy_normalization_includes_crest_trough_overlap(self) -> None:
+        """Closer opposite lobes require larger amplitude at fixed total energy."""
+
+        close = gaussian_packet_amplitude_from_energy(
+            3.0e15,
+            horizontal_scale_m=50_000.0,
+            crest_trough_separation_m=50_000.0,
+        )
+        separated = gaussian_packet_amplitude_from_energy(
+            3.0e15,
+            horizontal_scale_m=50_000.0,
+            crest_trough_separation_m=350_000.0,
+        )
+        self.assertGreater(close, separated)
+        self.assertGreater(separated, 0.0)
+
+    def test_energy_normalization_rejects_invalid_inputs(self) -> None:
+        with self.assertRaises(ValueError):
+            gaussian_packet_amplitude_from_energy(
+                0.0, horizontal_scale_m=1.0, crest_trough_separation_m=1.0
+            )
+        with self.assertRaises(ValueError):
+            gaussian_packet_amplitude_from_energy(
+                1.0, horizontal_scale_m=-1.0, crest_trough_separation_m=1.0
+            )
+        with self.assertRaises(ValueError):
+            gaussian_packet_amplitude_from_energy(
+                1.0, horizontal_scale_m=1.0, crest_trough_separation_m=math.inf
+            )
 
 
 if __name__ == "__main__":

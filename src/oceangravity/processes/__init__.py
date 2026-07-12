@@ -21,7 +21,11 @@ from .landslide import (
 )
 from .storm_surge import asymmetric_gaussian_disk_surge
 from .tide import periodic_disk_tide
-from .tsunami import TsunamiWavePacketResult, propagating_compensated_gaussian_tsunami
+from .tsunami import (
+    TsunamiWavePacketResult,
+    gaussian_packet_amplitude_from_energy,
+    propagating_compensated_gaussian_tsunami,
+)
 
 __all__ = [
     "CompensatedDensityEddyResult",
@@ -31,6 +35,7 @@ __all__ = [
     "ScalarGravitySignal",
     "TsunamiWavePacketResult",
     "asymmetric_gaussian_disk_surge",
+    "gaussian_packet_amplitude_from_energy",
     "gridded_sea_level_direct_gravity_signal",
     "mass_conserving_gaussian_submarine_landslide",
     "mass_conserving_submarine_landslide",

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E007-structural-variant-closure",
+  "process_evidence_manifest": "data/manifests/process_parameter_evidence.json",
+  "report_significant_digits": 10,
+  "tsunami_energy_branch": {
+    "propagated_energy_j": 3000000000000000.0,
+    "relative_energy_uncertainty": 0.06,
+    "horizontal_scale_m": 50000.0,
+    "crest_trough_separation_m": [300000.0, 350000.0, 400000.0],
+    "water_density_kg_m3": 1025.0,
+    "energy_convention": "linear_long_wave_total_energy_rho_g_integral_eta_squared_dA"
+  },
+  "variant_decisions": [
+    {
+      "variant_id": "mesoscale_eddy_quadratic_composite_ssh",
+      "status": "excluded_pending_design_resolution",
+      "reason": "fixed peak SSH, fixed speed-based radius and equal positive mass cannot all hold for distinct Gaussian and compact quadratic profiles"
+    },
+    {
+      "variant_id": "mesoscale_eddy_compensated_core_halo",
+      "status": "excluded_pending_physical_mapping",
+      "reason": "the validated compensated primitive lacks an evidence-supported mapping from SSH amplitude to vertical density structure"
+    },
+    {
+      "variant_id": "internal_wave_continuous_mode1_density_structure",
+      "status": "excluded_pending_physical_mapping",
+      "reason": "one regional buoyancy-frequency scalar does not determine a continuous density profile and boundary-conditioned vertical eigenfunction"
+    },
+    {
+      "variant_id": "internal_wave_linear_free_surface_coupling",
+      "status": "excluded_pending_physical_mapping",
+      "reason": "the evidence ledger contains no transfer coefficient from the internal mode to free-surface height"
+    },
+    {
+      "variant_id": "tsunami_energy_normalized_mass_balanced_packet",
+      "status": "implemented_evidence_bounded_sensitivity",
+      "reason": "reported propagated energy maps analytically to the registered Gaussian crest-trough packet under an explicit linear long-wave energy convention"
+    },
+    {
+      "variant_id": "landslide_mediterranean_storfjorden_joint_branch",
+      "status": "excluded_insufficient_joint_evidence",
+      "reason": "regional volume medians and event velocity ranges do not supply a jointly supported amplitude-duration scenario"
+    },
+    {
+      "variant_id": "landslide_generated_water_wave",
+      "status": "excluded_pending_physical_mapping",
+      "reason": "displaced volume and acceleration do not determine a wave without an event-specific generation/entrainment transfer model"
+    }
+  ],
+  "acceptance": "pass only when every preregistered pending E006 structural variant is implemented or explicitly excluded with a non-external scientific reason"
+}

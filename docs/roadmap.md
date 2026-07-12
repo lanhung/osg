@@ -133,7 +133,7 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 - [ ] Mesoscale eddy: Gaussian lens or 3-D density anomaly with compensation variants. (Validated translating SSH and exactly compensated 3-D core/halo variants complete; profile sensitivity and cited envelopes remain.)
 - [ ] Internal wave: interface displacement/density dipole with cancellation diagnostics. (Validated mass-balanced oscillating 3-D Gaussian dipole complete; stratified eigenmode, free surface and cited priors remain.)
 - [ ] Tsunami: long-wave transient parameterization with propagating source geometry. (Validated mass-balanced shallow-water Gaussian packet complete; realistic source/bathymetry, elastic response and cited priors remain.)
-- [ ] Submarine landslide: coupled solid-water rapid mass migration with conservation checks. (Validated conserved solid plus optional explicit water point-pair gravity/gradient primitive complete; continuum slide, generated wave and cited priors remain.)
+- [ ] Submarine landslide: coupled solid-water rapid mass migration with conservation checks. (Validated point-pair plus mass-balanced Gaussian continuum solid variants complete; entrainment/generated wave and cited scenarios remain.)
 - [ ] Freeze realistic parameter priors and citations for every process. (M2 constant, Helgoland benchmark and Chelton eddy means encoded as non-probabilistic anchors; complete envelopes/distributions for all six remain.)
 - [ ] Run Latin-hypercube or Monte Carlo uncertainty with deterministic seeds. (Validated deterministic linear/log Latin-hypercube and quantile engine complete; cited priors, correlations, convergence and production ensembles remain.)
 

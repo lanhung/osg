@@ -13,3 +13,16 @@ only four days. Expansion is conditional on at least four stations passing in
 six of eight days and completion of all environmental layers. A production
 split needs at least 32 accepted days independently for calibration and held-out
 evaluation. Failed dates may not be replaced based on observed noise amplitude.
+
+The AutoDL acquisition retrieved 38 of 40 requests (21,951,488 bytes). Both
+failures are retained as KKM HTTP 404 responses, on 2023-08-15 and 2025-05-15.
+Every day therefore has at least four retrieved stations, so the retrieval part
+of the stage gate passes. Response/gap QC and all environmental labels remain
+separate gates.
+
+Response processing then passes 35 of 40 records. All five failures are KKM:
+the two retained 404 responses plus gap/overlap failures on 2023-02-15,
+2023-05-15 and 2025-11-15. Every date still has at least four response-QC
+stations, so the predeclared six-of-eight promotion minimum passes; three dates
+have a complete five-station network. This remains unclassified diagnostic
+exposure, not a threshold or false-alarm dataset.

@@ -8,6 +8,14 @@
     "required_acknowledgement": "EarthScope Consortium NSF SAGE Facility plus every network operator/source",
     "default_guidance": "EarthScope states that data without an owner-declared licence are distributed as CC BY 4.0; this manifest does not infer whether a declaration is absent."
   },
+  "realtime_snapshot": {
+    "manifest": "data/manifests/paper3_seedlink_latency_audit_2026-07-12.json",
+    "endpoint": "rtserve.earthscope.org:18000",
+    "packets_received_station_count": 3,
+    "query_error_station_count": 2,
+    "operational_latency_authorized": false,
+    "reason": "one packet-recency snapshot is not an uptime, continuity or latency distribution"
+  },
   "networks": [
     {
       "network": "HK",

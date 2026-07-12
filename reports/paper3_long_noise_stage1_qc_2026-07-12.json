@@ -1,0 +1,1986 @@
+{
+  "all_records_pass_response_qc": false,
+  "pegs_detectability_ready": false,
+  "record_count": 40,
+  "records": [
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 6.166593861527919e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.4563710381800984e-07,
+          "rms_acceleration_m_s2": 1.446401118690744e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.093275894210089e-07,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.2609073547090175e-07,
+          "rms_acceleration_m_s2": 3.1112058365150814e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.2198989173974564e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 2.6910855082389967e-08,
+          "rms_acceleration_m_s2": 1.120904066773786e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.315833054796494e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.0984392971044803e-07,
+          "rms_acceleration_m_s2": 1.763978203498904e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.9225166133233656e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.1441375075665391e-07,
+          "rms_acceleration_m_s2": 1.751439637504605e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 7.840273679519225e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.5952422357184344e-07,
+          "rms_acceleration_m_s2": 2.3032035184118216e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.5449156022050527e-07,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 5.478681612932209e-07,
+          "rms_acceleration_m_s2": 4.8989664505861765e-06,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.7214072567616854e-07,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.0014821189096056e-06,
+          "rms_acceleration_m_s2": 4.086396195031233e-06,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.4552674598425817e-07,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.508111050091434e-07,
+          "rms_acceleration_m_s2": 1.8425733132609033e-06,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "component_metrics": [],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 3,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": "channel_set_gap_or_trace_count_gate_failed",
+      "response_removed": false,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.218456880066472e-07,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 3.029101904334716e-07,
+          "rms_acceleration_m_s2": 2.397636055781629e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 6.105578505518262e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.417859752819958e-07,
+          "rms_acceleration_m_s2": 1.9095079332860007e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 6.45173551624845e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.1908362798097414e-07,
+          "rms_acceleration_m_s2": 1.923575063004045e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.0139044773311316e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 3.6902061343856894e-09,
+          "rms_acceleration_m_s2": 4.903229337205105e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 7.905642942545431e-10,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.831498088513644e-09,
+          "rms_acceleration_m_s2": 1.0376740465376644e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.972669149990963e-10,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 2.0474237571770424e-09,
+          "rms_acceleration_m_s2": 6.5723248822883246e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.0281419994521524e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 2.8313684120796773e-09,
+          "rms_acceleration_m_s2": 1.2458187798905728e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.026022360537931e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 2.5620613897804877e-09,
+          "rms_acceleration_m_s2": 1.2008709640869252e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.970197392223822e-10,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.1904350355131012e-09,
+          "rms_acceleration_m_s2": 1.55822879429156e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.1994277661600373e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 8.563526028749412e-08,
+          "rms_acceleration_m_s2": 6.946858062040643e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.7747608150320004e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 6.595750004655292e-08,
+          "rms_acceleration_m_s2": 6.727559679010704e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.0416927114028028e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 3.6848458577757377e-09,
+          "rms_acceleration_m_s2": 3.971858890928623e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "component_metrics": [],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 3,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": "channel_set_gap_or_trace_count_gate_failed",
+      "response_removed": false,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.4895263275744915e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 4.931014921543081e-09,
+          "rms_acceleration_m_s2": 8.830176868415166e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.937303867412651e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 6.954773941719764e-09,
+          "rms_acceleration_m_s2": 9.612152309242662e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.863856755330847e-10,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.6831053843208884e-09,
+          "rms_acceleration_m_s2": 1.236295614606329e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.4299228777177687e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 6.476844561677918e-09,
+          "rms_acceleration_m_s2": 4.775408141195415e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.268986935234208e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 5.054937005354208e-09,
+          "rms_acceleration_m_s2": 9.958380618263142e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.2924786256593672e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 4.628915953177888e-09,
+          "rms_acceleration_m_s2": 9.85817015599688e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.50645948862997e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 8.955144237711944e-09,
+          "rms_acceleration_m_s2": 9.89286536679452e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.8836255016764814e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.0544488946349182e-08,
+          "rms_acceleration_m_s2": 9.717869107737764e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.0918188359934728e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 2.8156546928330823e-09,
+          "rms_acceleration_m_s2": 9.926397889798612e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.654200988510608e-11,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.6490973798486626e-10,
+          "rms_acceleration_m_s2": 9.823299452387428e-11,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.7225283162083872e-11,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 7.988288655465199e-11,
+          "rms_acceleration_m_s2": 5.4540870242200924e-11,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.8969915225958176e-11,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.3387597030519723e-10,
+          "rms_acceleration_m_s2": 7.767994497870935e-11,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "component_metrics": [],
+      "environment_label": "unclassified",
+      "location": "--",
+      "response_removed": false,
+      "retrieval_status": "http_error",
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 4.299810048725165e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.680808740399166e-08,
+          "rms_acceleration_m_s2": 1.1233671251969161e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 6.220309693762161e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.2007247269415623e-08,
+          "rms_acceleration_m_s2": 1.3496590930648667e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.0999220463046735e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.5940508986081742e-08,
+          "rms_acceleration_m_s2": 1.4265689567445882e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.1002095394501574e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 4.610364814460345e-09,
+          "rms_acceleration_m_s2": 7.193515380722405e-09,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.5136272417473479e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 5.346939323096255e-09,
+          "rms_acceleration_m_s2": 1.8343847784859243e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.218481009286312e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 4.565820038953136e-09,
+          "rms_acceleration_m_s2": 1.6732888848660838e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.038083728684762e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 3.740995944651151e-09,
+          "rms_acceleration_m_s2": 1.7885562934559275e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.1587596708367358e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 4.32395619401247e-09,
+          "rms_acceleration_m_s2": 1.5588444245669617e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.888014593692859e-10,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.8712343123431023e-09,
+          "rms_acceleration_m_s2": 2.18989839893794e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.5591464658464186e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 6.433783962655329e-08,
+          "rms_acceleration_m_s2": 1.3537483965086467e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.1016466456017874e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 4.6280747368635e-08,
+          "rms_acceleration_m_s2": 1.2843139489502456e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.811657517283923e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.0315535002334312e-08,
+          "rms_acceleration_m_s2": 7.617992921606626e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.4480738306832123e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 4.121039727041713e-08,
+          "rms_acceleration_m_s2": 5.573253414020864e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.6032455177679054e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 4.4513304949995547e-08,
+          "rms_acceleration_m_s2": 5.96108349519734e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.2310274453354494e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 5.47680327363026e-09,
+          "rms_acceleration_m_s2": 2.6330217320978928e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.030236549019088e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.3589511321040816e-08,
+          "rms_acceleration_m_s2": 1.8136852362909974e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.786013162403564e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 1.1360220941666556e-08,
+          "rms_acceleration_m_s2": 2.6414804440763615e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 7.949841991977807e-10,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 2.7101822848620937e-09,
+          "rms_acceleration_m_s2": 2.4679479046100128e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_calibration_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.354485889878142e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.0647870126403277e-07,
+          "rms_acceleration_m_s2": 1.166239510350808e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.8525391033996684e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 3.624235429000128e-08,
+          "rms_acceleration_m_s2": 9.259893927592526e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.6881375082396508e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.431473709757359e-08,
+          "rms_acceleration_m_s2": 1.0227403231521784e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.0791918653947496e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.8318194357809032e-08,
+          "rms_acceleration_m_s2": 1.0135730297843602e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.2407970360487337e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 4.803393491264526e-08,
+          "rms_acceleration_m_s2": 1.1562333191209161e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 9.391406436454993e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.7375275385835323e-08,
+          "rms_acceleration_m_s2": 1.3483567459043987e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.365563463024574e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.0122393142791388e-07,
+          "rms_acceleration_m_s2": 3.712261919971416e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.827981079489135e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.5182198359313417e-07,
+          "rms_acceleration_m_s2": 4.180781965824584e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.436701083367028e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.861853511180253e-08,
+          "rms_acceleration_m_s2": 2.2835557738343518e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 5.687212420216711e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.478553472190126e-07,
+          "rms_acceleration_m_s2": 1.4516472290136647e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 6.903237207471875e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 1.692998725181412e-07,
+          "rms_acceleration_m_s2": 1.593422243303335e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.448980819826265e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 5.141837071220294e-08,
+          "rms_acceleration_m_s2": 1.464818818001354e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.100561459387854e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 3.8618050789964835e-08,
+          "rms_acceleration_m_s2": 1.8907503632027506e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.2927507153810916e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 3.6928141442150014e-08,
+          "rms_acceleration_m_s2": 1.6201461678812778e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.2284600615259374e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.7365605938483556e-08,
+          "rms_acceleration_m_s2": 1.8132561018667778e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.9579786122709195e-06,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 8.266421123816288e-06,
+          "rms_acceleration_m_s2": 5.139330018270135e-06,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.813155792016782e-06,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 1.3694755748159272e-05,
+          "rms_acceleration_m_s2": 8.334590242366793e-06,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.0088579439812258e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.9083741046595905e-08,
+          "rms_acceleration_m_s2": 3.0217957323680865e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.3603001513432356e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.3303593308085514e-08,
+          "rms_acceleration_m_s2": 1.551914590236377e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.607061919792287e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.2711623865384618e-08,
+          "rms_acceleration_m_s2": 1.4356943892159846e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.3833219254766324e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 5.651976489894585e-09,
+          "rms_acceleration_m_s2": 1.510956620729415e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.2206814074342733e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 4.2493774488354e-08,
+          "rms_acceleration_m_s2": 1.2452799466953393e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 8.2803917877736e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 3.137612854359411e-08,
+          "rms_acceleration_m_s2": 1.1762901127083541e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.572650184128132e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.039145330169398e-08,
+          "rms_acceleration_m_s2": 6.949716925263992e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "component_metrics": [],
+      "environment_label": "unclassified",
+      "location": "--",
+      "response_removed": false,
+      "retrieval_status": "http_error",
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.6878291877977867e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.539475615425147e-08,
+          "rms_acceleration_m_s2": 1.4941134375139915e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.5557811967715206e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 1.5575550872218994e-08,
+          "rms_acceleration_m_s2": 1.3397836907100511e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.7984011348671647e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 6.535743994600581e-09,
+          "rms_acceleration_m_s2": 1.6005371672415738e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 9.039598194362032e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 2.997090409916533e-07,
+          "rms_acceleration_m_s2": 1.3727314030728428e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.3284760357490444e-07,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 4.450595766918169e-07,
+          "rms_acceleration_m_s2": 1.9546929899846842e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.779682983848442e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 7.582691572333145e-09,
+          "rms_acceleration_m_s2": 1.6891843417616697e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.793445909386034e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 8.571738673043487e-09,
+          "rms_acceleration_m_s2": 1.2393483653736062e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.4322552667579745e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.2388248971409473e-08,
+          "rms_acceleration_m_s2": 1.206589449727859e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.6056737244855064e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 9.043493239178616e-09,
+          "rms_acceleration_m_s2": 1.630299109488094e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.302254343316119e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 5.1797159123089556e-08,
+          "rms_acceleration_m_s2": 9.080894509526368e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 8.583731893685735e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 3.8918257677319345e-08,
+          "rms_acceleration_m_s2": 7.929836287256926e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.8333693524189974e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 7.255916785949341e-09,
+          "rms_acceleration_m_s2": 4.708693392285928e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.0603111207097603e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 3.781937863359688e-08,
+          "rms_acceleration_m_s2": 3.0384071180249507e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 1.7472708455310246e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 7.266460540799199e-08,
+          "rms_acceleration_m_s2": 5.374754926583399e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.9367183744688095e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 6.303778238032198e-09,
+          "rms_acceleration_m_s2": 2.093760303550056e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 4.896952576602769e-09,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 1.980959733331056e-08,
+          "rms_acceleration_m_s2": 1.3642537887428842e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.202740343200369e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.288609198791323e-08,
+          "rms_acceleration_m_s2": 1.4619734101781576e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.60464554909553e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 7.123142028402973e-09,
+          "rms_acceleration_m_s2": 1.7339611170909888e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.580998742534053e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 4.741504425790673e-08,
+          "rms_acceleration_m_s2": 3.9493112992785385e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.1984581335766547e-08,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 6.2549773702774e-08,
+          "rms_acceleration_m_s2": 6.08541148573646e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.2328772420715144e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 5.274387821122946e-09,
+          "rms_acceleration_m_s2": 2.0014998240249593e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "HK.HKPS",
+      "window_id": "stage1_holdout_2025-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 2.40135269480121e-09,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 7.13090687699812e-09,
+          "rms_acceleration_m_s2": 1.4714308881861429e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.9331165032041023e-09,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 8.89212452101321e-09,
+          "rms_acceleration_m_s2": 1.4595690740108674e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 4.096653905323788e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 3.24654714599425e-09,
+          "rms_acceleration_m_s2": 1.8612223653692403e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "10",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IC.QIZ",
+      "window_id": "stage1_holdout_2025-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 3.832019846874541e-08,
+          "channel": "LH1",
+          "median_asd_m_s2_per_sqrt_hz": 1.5333147864403456e-07,
+          "rms_acceleration_m_s2": 5.114585991630176e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 3.44528999424442e-08,
+          "channel": "LH2",
+          "median_asd_m_s2_per_sqrt_hz": 1.4625473312151772e-07,
+          "rms_acceleration_m_s2": 5.196755057902913e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 2.1876102102473367e-08,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 1.5927804429292943e-08,
+          "rms_acceleration_m_s2": 2.909514243804718e-07,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "00",
+      "present_channels": [
+        "LH1",
+        "LH2",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "IU.DAV",
+      "window_id": "stage1_holdout_2025-11-15"
+    },
+    {
+      "component_metrics": [],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 756,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": "channel_set_gap_or_trace_count_gate_failed",
+      "response_removed": false,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "MY.KKM",
+      "window_id": "stage1_holdout_2025-11-15"
+    },
+    {
+      "component_metrics": [
+        {
+          "band_rms_m_s2": 1.0090996408213091e-08,
+          "channel": "LHE",
+          "median_asd_m_s2_per_sqrt_hz": 4.3775694843192536e-08,
+          "rms_acceleration_m_s2": 2.3834261968167358e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 6.426887359046237e-09,
+          "channel": "LHN",
+          "median_asd_m_s2_per_sqrt_hz": 2.3906820428241507e-08,
+          "rms_acceleration_m_s2": 2.9289680627546832e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        },
+        {
+          "band_rms_m_s2": 5.796153789670202e-09,
+          "channel": "LHZ",
+          "median_asd_m_s2_per_sqrt_hz": 7.85235910064006e-09,
+          "rms_acceleration_m_s2": 2.8449258009579283e-08,
+          "sample_count": 86400,
+          "sample_rate_hz": 1.0,
+          "welch_bin_count": 46
+        }
+      ],
+      "environment_label": "unclassified",
+      "expected_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "gap_or_overlap_count": 0,
+      "location": "--",
+      "present_channels": [
+        "LHE",
+        "LHN",
+        "LHZ"
+      ],
+      "response_error": null,
+      "response_removed": true,
+      "split_role": "retrieval_and_label_heldout_year",
+      "station_id": "TW.KMNB",
+      "window_id": "stage1_holdout_2025-11-15"
+    }
+  ],
+  "remaining_gate": "earthquake_weather_transient_and_split-label_review",
+  "request_id": "paper3-seasonal-long-noise-stage1-v1",
+  "response_removed_record_count": 35,
+  "result_class": "unclassified_open_archive_noise_qc_not_pegs_detectability",
+  "schema_version": 1,
+  "threshold_calibration_authorized": false,
+  "window_cross_station_correlations": [
+    {
+      "status": "incomplete_station_network",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "status": "incomplete_station_network",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "status": "incomplete_station_network",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "complete_sample_count": 86400,
+      "correlation": [
+        [
+          0.9999999999999998,
+          0.0014494137130748354,
+          -0.007461510438390461,
+          -0.0039182488205492545,
+          -0.006834656726410701
+        ],
+        [
+          0.0014494137130748354,
+          1.0,
+          -0.009036893940893895,
+          -0.003573485300882552,
+          -0.0037791690270727826
+        ],
+        [
+          -0.007461510438390461,
+          -0.009036893940893895,
+          1.0,
+          -0.01570625745182577,
+          0.0020761961026571625
+        ],
+        [
+          -0.003918248820549254,
+          -0.0035734853008825515,
+          -0.01570625745182577,
+          1.0,
+          0.00832128792172448
+        ],
+        [
+          -0.006834656726410701,
+          -0.003779169027072782,
+          0.002076196102657163,
+          0.00832128792172448,
+          0.9999999999999999
+        ]
+      ],
+      "maximum_start_phase_mismatch_samples": 0.001,
+      "start_time_span_s": 3.910064697265625e-05,
+      "station_ids": [
+        "HK.HKPS",
+        "IC.QIZ",
+        "IU.DAV",
+        "MY.KKM",
+        "TW.KMNB"
+      ],
+      "status": "descriptive_unclassified_only",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "complete_sample_count": 86400,
+      "correlation": [
+        [
+          0.9999999999999999,
+          0.07461136325860358,
+          0.0013872837847105648,
+          0.006196476015346287,
+          0.30769166665313147
+        ],
+        [
+          0.0746113632586036,
+          1.0,
+          0.01820838484967877,
+          0.002813291937223014,
+          0.14923728005096176
+        ],
+        [
+          0.0013872837847105648,
+          0.01820838484967877,
+          0.9999999999999999,
+          0.0005145212088066262,
+          0.003711514740193826
+        ],
+        [
+          0.006196476015346287,
+          0.002813291937223014,
+          0.0005145212088066262,
+          1.0,
+          0.002904727540471068
+        ],
+        [
+          0.30769166665313147,
+          0.14923728005096176,
+          0.0037115147401938255,
+          0.002904727540471068,
+          1.0
+        ]
+      ],
+      "maximum_start_phase_mismatch_samples": 0.001,
+      "start_time_span_s": 3.814697265625e-05,
+      "station_ids": [
+        "HK.HKPS",
+        "IC.QIZ",
+        "IU.DAV",
+        "MY.KKM",
+        "TW.KMNB"
+      ],
+      "status": "descriptive_unclassified_only",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "status": "incomplete_station_network",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "complete_sample_count": 86400,
+      "correlation": [
+        [
+          0.9999999999999998,
+          -0.061725272497877536,
+          0.011510190650064128,
+          0.014813672525286387,
+          0.03249629679282806
+        ],
+        [
+          -0.06172527249787753,
+          0.9999999999999998,
+          -0.014333271999478975,
+          0.0008385583088637071,
+          -0.03687713094926355
+        ],
+        [
+          0.011510190650064128,
+          -0.014333271999478975,
+          1.0,
+          -0.0026104663620983254,
+          0.009333270378675918
+        ],
+        [
+          0.014813672525286387,
+          0.000838558308863707,
+          -0.002610466362098326,
+          1.0,
+          -0.018078364185490015
+        ],
+        [
+          0.03249629679282806,
+          -0.03687713094926355,
+          0.00933327037867592,
+          -0.01807836418549002,
+          1.0
+        ]
+      ],
+      "maximum_start_phase_mismatch_samples": 0.001,
+      "start_time_span_s": 3.814697265625e-05,
+      "station_ids": [
+        "HK.HKPS",
+        "IC.QIZ",
+        "IU.DAV",
+        "MY.KKM",
+        "TW.KMNB"
+      ],
+      "status": "descriptive_unclassified_only",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "status": "incomplete_station_network",
+      "window_id": "stage1_holdout_2025-11-15"
+    }
+  ]
+}

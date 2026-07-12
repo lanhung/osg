@@ -37,3 +37,11 @@ def test_dynamic_values_are_not_promoted_to_manila_defaults() -> None:
     assert audit["rupture_velocity"]["scenario_default_authorized"] is False
     assert audit["rise_time"]["scenario_default_authorized"] is False
     assert audit["rise_time"]["manila_specific_value_s"] is None
+
+
+def test_stage1_catalogue_rules_match_pilot_audit() -> None:
+    pilot = json.loads((ROOT / "configs/paper3/noise_environment_audit.json").read_text())
+    stage1 = json.loads((ROOT / "configs/paper3/noise_environment_stage1_audit.json").read_text())
+    assert stage1["earthquake_catalog"]["candidate_rules"] == pilot["earthquake_catalog"][
+        "candidate_rules"
+    ]

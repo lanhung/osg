@@ -11,6 +11,7 @@ from .coherence import (
     mean_coherence_in_band,
     welch_magnitude_squared_coherence,
 )
+from .coverage import LowFrequencyCoverageRequirement, low_frequency_coverage_requirements
 from .drift import (
     InstrumentDriftCorrection,
     InstrumentDriftModel,
@@ -43,6 +44,7 @@ __all__ = [
     "InstrumentDriftModel",
     "InstrumentStepCorrection",
     "InstrumentStepDecision",
+    "LowFrequencyCoverageRequirement",
     "MaskedEventSnr",
     "OneSidedSpectrum",
     "QualityAnnotationResult",
@@ -56,6 +58,7 @@ __all__ = [
     "apply_quality_annotations",
     "assess_time_series_quality",
     "coherent_periodic_snr",
+    "low_frequency_coverage_requirements",
     "masked_event_matched_filter_snr",
     "matched_filter_snr",
     "mean_coherence_in_band",

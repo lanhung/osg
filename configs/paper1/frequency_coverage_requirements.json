@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E008-frequency-coverage-requirements",
+  "source_experiment_id": "P1-E006-evidence-bounded-atlas",
+  "source_config": "configs/paper1/evidence_bounded_atlas.json",
+  "source_metrics": "experiments/paper1/P1-E006-evidence-bounded-atlas/metrics.json",
+  "instrument_curve_manifest": "data/manifests/instrument_noise_curves.json",
+  "authorized_vertical_gravity_curves": [
+    "igrav_quiet_j9_self_noise_anchor",
+    "aqg_a01_field_short_term_anchor",
+    "fg5_228_short_term_anchor"
+  ],
+  "required_energy_fractions": [0.5, 0.75, 0.9, 0.95],
+  "spectrum": {
+    "detrend": "constant",
+    "window": "rectangular",
+    "energy_domain": "positive frequencies excluding DC",
+    "intrinsic_upper_edge": "per-record Nyquist frequency"
+  },
+  "aggregation": {
+    "group_by": "process",
+    "statistics": ["minimum", "median", "maximum"],
+    "probability_interpretation": false
+  },
+  "claim_boundary": "Frequency coverage only; no result is a detection probability, SNR, or detectable/undetectable classification.",
+  "report_significant_digits": 10
+}

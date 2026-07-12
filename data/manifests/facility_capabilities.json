@@ -1,0 +1,27 @@
+{
+  "facilities": [
+    {
+      "capabilities_reported": [
+        "global-milligal-level gravity data acquisition, evaluation and application",
+        "reference-microgal-level gravity data acquisition, evaluation and application",
+        "international-leading-level work in gravitational constant measurement",
+        "international-leading-level work in space electrostatic accelerometers",
+        "international-leading-level work in cold-atom absolute gravimeters"
+      ],
+      "facility_id": "hust_national_precise_gravity_measurement_facility",
+      "host": "Huazhong University of Science and Technology with partner institutions",
+      "limitations": [
+        "No frequency-dependent ASD or PSD is provided by the cited acceptance announcement.",
+        "Milligal/microgal facility capability wording is not an individual instrument noise model.",
+        "No detectability SNR may be computed from this record alone."
+      ],
+      "noise_curve_eligible": false,
+      "review_date": "2026-07-12",
+      "source": "https://kjt.hubei.gov.cn/kjdt/kjtgz/202310/t20231024_4911353.shtml",
+      "source_date": "2023-10-24",
+      "status": "passed national acceptance review on 2023-10-18"
+    }
+  ],
+  "schema_version": 1
+}
+

@@ -32,3 +32,9 @@ Willemenot, Touboul & Josselin report a GOCE target of 1–5 `mE Hz^-1/2` from 0
 4. Never extrapolate beyond a curve's declared frequency range.
 5. Treat flat segments formed from scalar sensitivity as assumptions and include them in model uncertainty.
 
+## HUST National Precise Gravity Measurement Facility
+
+The Hubei Department of Science and Technology/HUST acceptance announcement dated 2023-10-24 states that the facility passed national acceptance review on 2023-10-18. It reports capability for global milligal-level and reference microgal-level gravity-data acquisition/evaluation/application, and describes work in gravitational-constant measurement, space electrostatic accelerometers, and cold-atom absolute gravimeters as internationally leading.
+
+These are facility-level capability statements, not frequency-dependent instrument ASD/PSD. The record is saved in `facility_capabilities.json` with `noise_curve_eligible=false`. Paper 1 may cite it as a domestic collaboration/infrastructure benchmark, but quantitative SNR requires a separate instrument specification or empirical noise record from the facility.
+

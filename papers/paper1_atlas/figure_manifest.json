@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper": "paper1_atlas",
+  "figures": [
+    {
+      "figure_id": "figure_1_frequency_amplitude",
+      "status": "pending-scientific-ensemble",
+      "required_inputs": ["six cited process envelopes", "elastic components", "observation duration"]
+    },
+    {
+      "figure_id": "figure_2_distance_snr",
+      "status": "engineering-prototype-only",
+      "prototype": [
+        "reports/figures/distance_attenuation_gravity.svg",
+        "reports/figures/distance_attenuation_Tzz.svg"
+      ],
+      "registered_input": "P1-E004-distance-attenuation-foundation"
+    },
+    {
+      "figure_id": "figure_3_process_instrument_matrix",
+      "status": "engineering-prototype-only",
+      "registered_inputs": [
+        "P1-E002-detectability-foundation",
+        "P1-E003-gradient-detectability-foundation"
+      ]
+    },
+    {
+      "figure_id": "figure_4_uncertainty_compensation",
+      "status": "pending-cited-envelopes",
+      "required_models": ["SSH versus compensated 3-D eddy", "internal-wave dipole", "mass-balanced tsunami", "continuum landslide"]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "execution_status": "registered_pending_execution",
+  "experiment_id": "P2-E002-cmems-effect-ownership",
+  "paper": "paper2",
+  "registered_utc": "2026-07-12T16:55:00Z",
+  "code_commit": "d3a4b3c4d6e9809ce98328941298a7451dabf055",
+  "config_file": "configs/paper2/effect_composition.json",
+  "config_file_sha256": "533c9edd57676eb636a8126ece4d4a047111287db12ae117146a86a5114a2414",
+  "runner": "scripts/audit_effect_composition.py",
+  "data_manifest": "data/manifests/paper2_environmental_products.json",
+  "random_seeds": [],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "planned_output": "experiments/paper2/P2-E002-cmems-effect-ownership/metrics.json",
+  "result_class": "metadata_effect_ownership_not_event_attribution",
+  "registration_note": "Committed before AutoDL execution. Closure means only that every declared correction effect has one owner; it is not evidence of a storm signal."
+}

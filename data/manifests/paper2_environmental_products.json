@@ -62,20 +62,30 @@
       "dataset_id": "cmems_mod_glo_phy_anfc_merged-sl_PT1H-i",
       "doi": "10.48670/moi-00016",
       "resolution": "hourly sea level; native product grid",
-      "temporal_extent_observed": "2022-09-01 through rolling forecast horizon",
-      "candidate_variables": ["zos"],
-      "variable_metadata_status": "must-verify-with-copernicusmarine-describe-before-download",
-      "role": "ocean sea-level anomaly source for surface-mass loading",
+      "temporal_extent_observed": "2020-11-01 through rolling forecast horizon (product metadata reviewed 2026-07-12)",
+      "candidate_variables": [
+        "sea_surface_height",
+        "invert_barometer",
+        "ocean_tide",
+        "tide_loading",
+        "global_mean_steric_variation",
+        "global_mean_mass_volume_variation",
+        "total_sea_level"
+      ],
+      "selected_variable": "sea_surface_height",
+      "selected_variable_semantics": "Sea surface height computed without tides and surface pressure force (ocean_dynamic_sea_level)",
+      "variable_metadata_status": "verified-from-PUM-and-QUID-2026-07-12",
+      "role": "non-tidal non-inverse-barometer ocean dynamic sea-level anomaly source for surface-mass loading",
       "mass_load_eligible": true,
       "warnings": [
-        "Verify whether tides, inverse-barometer response, and mean dynamic topography are represented before anomaly construction.",
-        "Do not add an ERA5-driven ocean response if it is already represented in this ocean product.",
+        "Do not substitute total_sea_level: it contains ocean tide, inverse-barometer, dynamic sea level, and global mean steric and mass-volume terms.",
+        "Do not add the MOWL invert_barometer variable when the registered ERA5-driven ocean response is enabled.",
         "Freeze exact product/dataset versions, variable metadata, retrieval time, and checksums."
       ]
     }
   ],
   "double_count_gate": {
-    "status": "unresolved-until-product-metadata-and-equations-audited",
+    "status": "closed-by-explicit-variable-selection",
     "forbidden": [
       "treating significant wave height as added water mass",
       "adding inverted-barometer ocean response twice",

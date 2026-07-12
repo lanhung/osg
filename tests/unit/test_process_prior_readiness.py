@@ -43,11 +43,28 @@ class TestProcessPriorReadiness(unittest.TestCase):
                     "production_joint_design": {
                         "status": "frozen",
                         "semantics": "sensitivity_design_not_probability",
-                        "parameters": {"amplitude": {"range": [1.0, 2.0]}},
+                        "sample_count": 64,
+                        "random_seed": 7,
+                        "model_variants": ["fixture_model"],
+                        "joint_constraints": [],
+                        "parameters": {
+                            "amplitude": {
+                                "range": [1.0, 2.0],
+                                "unit": "m",
+                                "scale": "linear",
+                                "evidence_parameters": ["amplitude_anchor"],
+                            }
+                        },
                     },
                 }
             },
         }
+        document["processes"]["fixture"]["evidence"] = [
+            {
+                "parameter": "amplitude_anchor",
+                "probability_prior_eligible": False,
+            }
+        ]
         result = MODULE.audit_document(document)
         self.assertTrue(result["all_processes_ready"])
 
@@ -61,17 +78,86 @@ class TestProcessPriorReadiness(unittest.TestCase):
                     "production_joint_design": {
                         "status": "frozen",
                         "semantics": "probability_prior",
-                        "parameters": {"amplitude": {"range": [1.0, 2.0]}},
+                        "sample_count": 64,
+                        "random_seed": 7,
+                        "model_variants": ["fixture_model"],
+                        "joint_constraints": [],
+                        "parameters": {
+                            "amplitude": {
+                                "range": [1.0, 2.0],
+                                "unit": "m",
+                                "scale": "linear",
+                                "evidence_parameters": ["amplitude_anchor"],
+                            }
+                        },
                     },
                 }
             },
         }
+        document["processes"]["fixture"]["evidence"] = [
+            {
+                "parameter": "amplitude_anchor",
+                "probability_prior_eligible": True,
+            }
+        ]
         result = MODULE.audit_document(document)
         self.assertFalse(result["all_processes_ready"])
         self.assertIn(
             "unresolved_physics_or_parameter_fields",
             result["processes"][0]["blockers"],
         )
+
+    def test_empty_shell_design_is_rejected(self) -> None:
+        document = {
+            "schema_version": 1,
+            "processes": {
+                "fixture": {
+                    "evidence": [{"parameter": "a", "probability_prior_eligible": False}],
+                    "unresolved_for_atlas": [],
+                    "production_joint_design": {
+                        "status": "frozen",
+                        "semantics": "sensitivity_design_not_probability",
+                        "parameters": {"amplitude": {"range": [1.0, 2.0]}},
+                    },
+                }
+            },
+        }
+        blockers = MODULE.audit_document(document)["processes"][0]["blockers"]
+        self.assertIn("invalid_sample_count", blockers)
+        self.assertIn("missing_integer_random_seed", blockers)
+        self.assertIn("missing_model_variants", blockers)
+        self.assertIn("missing_joint_constraints", blockers)
+        self.assertIn("missing_parameter_unit:amplitude", blockers)
+        self.assertIn("missing_parameter_evidence:amplitude", blockers)
+
+    def test_probability_prior_rejects_named_case_evidence(self) -> None:
+        document = {
+            "schema_version": 1,
+            "processes": {
+                "fixture": {
+                    "evidence": [{"parameter": "case", "probability_prior_eligible": False}],
+                    "unresolved_for_atlas": [],
+                    "production_joint_design": {
+                        "status": "frozen",
+                        "semantics": "probability_prior",
+                        "sample_count": 8,
+                        "random_seed": 1,
+                        "model_variants": ["model"],
+                        "joint_constraints": [],
+                        "parameters": {
+                            "amplitude": {
+                                "range": [1.0, 2.0],
+                                "unit": "m",
+                                "scale": "linear",
+                                "evidence_parameters": ["case"],
+                            }
+                        },
+                    },
+                }
+            },
+        }
+        blockers = MODULE.audit_document(document)["processes"][0]["blockers"]
+        self.assertIn("nonprobabilistic_evidence_in_prior:amplitude", blockers)
 
 
 if __name__ == "__main__":

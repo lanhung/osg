@@ -25,6 +25,7 @@ class TestExperimentRegistry(unittest.TestCase):
                 "P1-E005-helgoland-bsh-model",
                 "P1-E006-evidence-bounded-atlas",
                 "P1-E007-structural-variant-closure",
+                "P1-E008-frequency-coverage-requirements",
                 "P2-E001-nonrestricted-readiness",
                 "P2-E002-cmems-effect-ownership",
                 "P3-E001-physical-baseline-foundation",

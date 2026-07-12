@@ -1,7 +1,10 @@
 {
   "schema_version": 1,
   "paper": "paper1_atlas",
-  "registered_input": "P1-E006-evidence-bounded-atlas",
+  "registered_inputs": [
+    "P1-E006-evidence-bounded-atlas",
+    "P1-E008-frequency-coverage-requirements"
+  ],
   "figures": [
     {
       "figure_id": "figure_1_frequency_coverage",
@@ -26,7 +29,13 @@
       "status": "complete-primary-branch",
       "path": "reports/figures/paper1/p1_sensitivity_envelopes.png",
       "sha256": "2706a405a06ea21b11b90c83a902ce9f855abce8721797aad95a79c2259eb7b4"
+    },
+    {
+      "figure_id": "figure_5_frequency_requirements",
+      "status": "complete",
+      "path": "reports/figures/paper1/p1_frequency_requirements.png",
+      "sha256": "6d2638b60f2a2a195e0e2bca21c4501160add1bd3f4b8cd14dd27e5fac0d6b3a"
     }
   ],
-  "remaining_gate": "Structural model variants must close before primary-branch amplitude and sensitivity figures are promoted to final."
+  "remaining_gate": "Conceptual/observable figure, literature gate and human geodesy review remain before release."
 }

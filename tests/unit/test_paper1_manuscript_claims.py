@@ -56,9 +56,15 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         self.assertIn("We therefore withhold", self.manuscript)
         self.assertIn("SNR classifications rather than extrapolating", self.manuscript)
         figures = json.loads((ROOT / "papers/paper1_atlas/figure_manifest.json").read_text())
-        self.assertEqual(len(figures["figures"]), 4)
-        self.assertEqual(figures["registered_input"], "P1-E006-evidence-bounded-atlas")
-        self.assertEqual([item["status"] for item in figures["figures"]].count("complete"), 2)
+        self.assertEqual(len(figures["figures"]), 5)
+        self.assertEqual(
+            figures["registered_inputs"],
+            [
+                "P1-E006-evidence-bounded-atlas",
+                "P1-E008-frequency-coverage-requirements",
+            ],
+        )
+        self.assertEqual([item["status"] for item in figures["figures"]].count("complete"), 3)
 
 
 if __name__ == "__main__":

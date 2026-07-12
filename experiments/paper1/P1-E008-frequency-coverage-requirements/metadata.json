@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E008-frequency-coverage-requirements",
+  "paper": "paper1",
+  "code_commit": "e9fe04345e564817b342904cb218e89f6b1c86e6",
+  "config_file": "configs/paper1/frequency_coverage_requirements.json",
+  "config_file_sha256": "df357964299d779ec14b4c05343241599ec3284f743d0af827e3dfabe89c8e2a",
+  "data_manifest": "data/manifests/instrument_noise_curves.json",
+  "runner": "scripts/run_p1_frequency_coverage_requirements.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+      "sha256": "e9e169de96b7c7ec7349fbee8dcf5a1cc458bb7ca65ea5f9254e5d736de568d1"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T17:06:15Z",
+  "result_class": "spectral_coverage_requirement_not_detectability"
+}

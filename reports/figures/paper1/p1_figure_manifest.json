@@ -14,6 +14,13 @@
       "sha256": "01c76612f104e3220d42e43071f5b612814c978f5135e59332321862694048ec",
       "status": "complete"
     },
+    "frequency_requirements": {
+      "path": "reports/figures/paper1/p1_frequency_requirements.svg",
+      "preview_png_path": "reports/figures/paper1/p1_frequency_requirements.png",
+      "preview_png_sha256": "6d2638b60f2a2a195e0e2bca21c4501160add1bd3f4b8cd14dd27e5fac0d6b3a",
+      "sha256": "a9a1443c2df60068c32d0f179cdd88e5ce5e7d80171fb8e2c249eb1e987e2f5b",
+      "status": "complete"
+    },
     "process_instrument_coverage_matrix": {
       "path": "reports/figures/paper1/p1_process_instrument_matrix.svg",
       "preview_png_path": "reports/figures/paper1/p1_process_instrument_matrix.png",
@@ -30,5 +37,8 @@
     }
   },
   "schema_version": 1,
-  "source_experiment": "P1-E006-evidence-bounded-atlas"
+  "source_experiments": [
+    "P1-E006-evidence-bounded-atlas",
+    "P1-E008-frequency-coverage-requirements"
+  ]
 }

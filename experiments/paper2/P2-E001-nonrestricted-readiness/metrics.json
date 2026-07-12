@@ -1,0 +1,164 @@
+{
+  "claim_decision_gate": {
+    "audit": {
+      "all_heldout_events_improve": false,
+      "blocking_reasons": [
+        "real_observations_missing",
+        "analysis_not_complete",
+        "data_gate_not_passed",
+        "multi_event_design_incomplete",
+        "effect_ownership_not_closed",
+        "direct_deformation_separation_incomplete",
+        "multi_source_validation_incomplete",
+        "sensitivity_analysis_incomplete",
+        "failed_event_log_incomplete",
+        "attribution_interval_not_positive",
+        "heldout_improvement_not_demonstrated",
+        "quiet_false_alarm_gate_not_passed",
+        "event_snr_reporting_incomplete",
+        "fewer_than_three_novelty_requirements",
+        "data_license_review_incomplete"
+      ],
+      "branch": "pending_evidence",
+      "event_snr_reporting_complete": false,
+      "events_above_snr_interpretation_threshold": 0,
+      "full_attribution_claim_ready": false,
+      "heldout_evaluation_complete": false,
+      "manuscript_release_ready": false,
+      "novelty": {
+        "cross_typhoon_generalization": false,
+        "demonstrated_count": 0,
+        "direct_gravity_deformation_separation": false,
+        "event_resolved_attribution": false,
+        "minimum_required_count": 3,
+        "multi_source_closed_loop_validation": false,
+        "passes": false
+      },
+      "positive_attribution_interval": false
+    },
+    "evidence_status": "placeholder_pending_real_data",
+    "provenance": {
+      "required_inputs": [
+        "paper2_event_data_gate_audit",
+        "paper2_effect_composition_audit",
+        "event_block_attribution_bootstrap",
+        "heldout_event_improvement_table",
+        "heldout_quiet_false_positive_audit",
+        "event_snr_table",
+        "sensitivity_and_failure_logs",
+        "data_license_review"
+      ],
+      "statement": "No scientific result is represented by this placeholder. Replace fields only with registered real-data artifacts."
+    },
+    "schema_version": 1
+  },
+  "config_sha256": "1fb48f829e39055a5ec9ddf85b53adb5abe3a86d0af3265dfd5a5b9453576840",
+  "effect_composition_gate": {
+    "closure_ready": false,
+    "effects": [
+      {
+        "effect_id": "atmosphere_direct_attraction",
+        "excluded_sources": [],
+        "included_sources": [
+          "era5_atmosphere_forward_model"
+        ],
+        "status": "closed",
+        "unknown_sources": []
+      },
+      {
+        "effect_id": "atmosphere_elastic_loading",
+        "excluded_sources": [],
+        "included_sources": [
+          "era5_atmosphere_forward_model"
+        ],
+        "status": "closed",
+        "unknown_sources": []
+      },
+      {
+        "effect_id": "land_hydrology",
+        "excluded_sources": [],
+        "included_sources": [
+          "terrestrial_hydrology_model"
+        ],
+        "status": "closed",
+        "unknown_sources": []
+      },
+      {
+        "effect_id": "ocean_direct_attraction",
+        "excluded_sources": [],
+        "included_sources": [
+          "cmems_ntol_forward_model"
+        ],
+        "status": "closed",
+        "unknown_sources": []
+      },
+      {
+        "effect_id": "ocean_elastic_response",
+        "excluded_sources": [],
+        "included_sources": [
+          "cmems_ntol_forward_model"
+        ],
+        "status": "closed",
+        "unknown_sources": []
+      },
+      {
+        "effect_id": "ocean_inverse_barometer_response",
+        "excluded_sources": [],
+        "included_sources": [
+          "era5_inverse_barometer_model"
+        ],
+        "status": "ambiguous_possible_overlap",
+        "unknown_sources": [
+          "cmems_ntol_forward_model"
+        ]
+      }
+    ],
+    "resolution_action": "Audit the exact CMEMS historical dataset. Mark its inverse-barometer effect excluded before adding the ERA5-derived response, or remove the separate ERA5 response if CMEMS already includes it.",
+    "schema_version": 1
+  },
+  "event_data_gate": {
+    "attribution_data_gate_passes": false,
+    "audit": null,
+    "decision": "pending_no_event_windows",
+    "decision_status": "draft",
+    "schema_version": 1
+  },
+  "experiment_id": "P2-E001-nonrestricted-readiness",
+  "external_dependencies": {
+    "Haikou_authorization": "blocks iGrav-048 event windows and station logs but not method readiness",
+    "IGETS_or_station_owner_SG": "blocks real event attribution",
+    "PEGS": "not a Paper 2 dependency"
+  },
+  "interpretation_limits": [
+    "No fixture or open storm track is an SG detection.",
+    "A final event cannot be selected before real station coverage is intersected.",
+    "Unknown CMEMS inverse-barometer semantics blocks effect closure independently of SG access."
+  ],
+  "method_artifact_gate": {
+    "missing_reports": [],
+    "required_report_count": 17,
+    "status": "pass"
+  },
+  "nonrestricted_work_complete": true,
+  "open_candidate_inventory": {
+    "candidate_count": 48,
+    "interpretation": "coverage inquiries only; not selected gravity events",
+    "priority_names": [
+      "HAIKUI",
+      "KAJIKI",
+      "KOINU",
+      "MAN-YI",
+      "MATMO",
+      "RAGASA",
+      "SAOLA",
+      "TALIM",
+      "TORAJI",
+      "YAGI",
+      "YINXING"
+    ],
+    "priority_screening_count": 11
+  },
+  "result_class": "nonrestricted_method_readiness_not_event_attribution",
+  "schema_version": 1,
+  "scientific_claim_ready": false
+}

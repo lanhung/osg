@@ -1,0 +1,440 @@
+{
+  "augmented_role_targets": [
+    "northern_Luzon_or_western_trench_margin",
+    "Taiwan_southern_margin",
+    "Hainan",
+    "Hong_Kong_coast",
+    "southern_Philippines"
+  ],
+  "claim_blockers": [
+    "archive_availability_is_not_real_time_latency",
+    "waveform_response_removal_and_noise_qc_not_yet_run",
+    "no_validated_pegs_templates"
+  ],
+  "common_archive_interval_utc": {
+    "end": "2026-07-10T23:59:59.069500Z",
+    "start": "2020-01-01T00:00:00Z"
+  },
+  "config_sha256": "2ff513c3fa4fe2c455dabf94c1732fed47ecf92ec113df880036b9b8944f8cc5",
+  "excluded_metadata_or_unavailable_stations": [
+    {
+      "network": "JP",
+      "reason": "response_or_open_three_component_archive_missing",
+      "role": "southern Ryukyu",
+      "station": "YOJ",
+      "station_id": "JP.YOJ"
+    },
+    {
+      "network": "PS",
+      "reason": "response_or_open_three_component_archive_missing",
+      "role": "northern Philippines",
+      "station": "BAG",
+      "station_id": "PS.BAG"
+    },
+    {
+      "network": "TW",
+      "reason": "response_or_open_three_component_archive_missing",
+      "role": "southern Taiwan",
+      "station": "TWKB",
+      "station_id": "TW.TWKB"
+    }
+  ],
+  "existing_archive_evaluation_network": [
+    {
+      "network": "HK",
+      "response_structure_matched": true,
+      "role": "Hong Kong",
+      "station": "HKPS",
+      "station_id": "HK.HKPS",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069500+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 246,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "IC",
+      "response_structure_matched": true,
+      "role": "Hainan",
+      "station": "QIZ",
+      "station_id": "IC.QIZ",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069500+00:00",
+        "components": [
+          "1",
+          "2",
+          "Z"
+        ],
+        "location": "10",
+        "maximum_timespan_count": 59,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "IU",
+      "response_structure_matched": true,
+      "role": "southern Philippines",
+      "station": "DAV",
+      "station_id": "IU.DAV",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069538+00:00",
+        "components": [
+          "1",
+          "2",
+          "Z"
+        ],
+        "location": "00",
+        "maximum_timespan_count": 52,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "MY",
+      "response_structure_matched": true,
+      "role": "northern Borneo",
+      "station": "KKM",
+      "station_id": "MY.KKM",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-11T00:04:52.069538+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 14892,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "TW",
+      "response_structure_matched": true,
+      "role": "Taiwan Strait",
+      "station": "KMNB",
+      "station_id": "TW.KMNB",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069500+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 347,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    }
+  ],
+  "experiment_id": "P3-E002-archive-network-design",
+  "historical_archive_sensitivity_network": [
+    {
+      "network": "HK",
+      "response_structure_matched": true,
+      "role": "Hong Kong",
+      "station": "HKPS",
+      "station_id": "HK.HKPS",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069500+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 246,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "IC",
+      "response_structure_matched": true,
+      "role": "Hainan",
+      "station": "QIZ",
+      "station_id": "IC.QIZ",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069500+00:00",
+        "components": [
+          "1",
+          "2",
+          "Z"
+        ],
+        "location": "10",
+        "maximum_timespan_count": 59,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "IU",
+      "response_structure_matched": true,
+      "role": "southern Philippines",
+      "station": "DAV",
+      "station_id": "IU.DAV",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069538+00:00",
+        "components": [
+          "1",
+          "2",
+          "Z"
+        ],
+        "location": "00",
+        "maximum_timespan_count": 52,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "MY",
+      "response_structure_matched": true,
+      "role": "northern Borneo",
+      "station": "KKM",
+      "station_id": "MY.KKM",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-11T00:04:52.069538+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 14892,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "RM",
+      "response_structure_matched": true,
+      "role": "Vietnam",
+      "station": "DLV",
+      "station_id": "RM.DLV",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-06-22T15:13:13.069538+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2023-10-12T21:01:31.069539+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 3040,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "RM",
+      "response_structure_matched": true,
+      "role": "northwestern Philippines",
+      "station": "SZP",
+      "station_id": "RM.SZP",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2021-01-13T14:54:47.069538+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 42339,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    },
+    {
+      "network": "TW",
+      "response_structure_matched": true,
+      "role": "Taiwan Strait",
+      "station": "KMNB",
+      "station_id": "TW.KMNB",
+      "triplet": {
+        "all_open": true,
+        "band": "LH",
+        "common_earliest": "2020-01-01T00:00:00+00:00",
+        "common_extent_nonempty": true,
+        "common_latest": "2026-07-10T23:59:59.069500+00:00",
+        "components": [
+          "E",
+          "N",
+          "Z"
+        ],
+        "location": "",
+        "maximum_timespan_count": 347,
+        "quality": "M",
+        "sample_rate_hz": 1.0
+      }
+    }
+  ],
+  "interpretation": "archive evaluation design only; not an operational or PEGS-detectability network",
+  "noise_download_ready": true,
+  "operational_warning_ready": false,
+  "outage_design": [
+    {
+      "active_station_count": 5,
+      "active_station_sets": [
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "IU.DAV",
+          "MY.KKM",
+          "TW.KMNB"
+        ]
+      ],
+      "network_variant_count": 1,
+      "outage_fraction": 0.0
+    },
+    {
+      "active_station_count": 4,
+      "active_station_sets": [
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "IU.DAV",
+          "MY.KKM"
+        ],
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "IU.DAV",
+          "TW.KMNB"
+        ],
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "MY.KKM",
+          "TW.KMNB"
+        ],
+        [
+          "HK.HKPS",
+          "IU.DAV",
+          "MY.KKM",
+          "TW.KMNB"
+        ],
+        [
+          "IC.QIZ",
+          "IU.DAV",
+          "MY.KKM",
+          "TW.KMNB"
+        ]
+      ],
+      "network_variant_count": 5,
+      "outage_fraction": 0.2
+    },
+    {
+      "active_station_count": 3,
+      "active_station_sets": [
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "IU.DAV"
+        ],
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "MY.KKM"
+        ],
+        [
+          "HK.HKPS",
+          "IC.QIZ",
+          "TW.KMNB"
+        ],
+        [
+          "HK.HKPS",
+          "IU.DAV",
+          "MY.KKM"
+        ],
+        [
+          "HK.HKPS",
+          "IU.DAV",
+          "TW.KMNB"
+        ],
+        [
+          "HK.HKPS",
+          "MY.KKM",
+          "TW.KMNB"
+        ],
+        [
+          "IC.QIZ",
+          "IU.DAV",
+          "MY.KKM"
+        ],
+        [
+          "IC.QIZ",
+          "IU.DAV",
+          "TW.KMNB"
+        ],
+        [
+          "IC.QIZ",
+          "MY.KKM",
+          "TW.KMNB"
+        ],
+        [
+          "IU.DAV",
+          "MY.KKM",
+          "TW.KMNB"
+        ]
+      ],
+      "network_variant_count": 10,
+      "outage_fraction": 0.4
+    }
+  ],
+  "pegs_detectability_ready": false,
+  "result_class": "open_archive_network_design_not_pegs_detectability",
+  "schema_version": 1,
+  "status": "pass"
+}

@@ -303,6 +303,8 @@ Evidence: registered multi-event experiment, held-out metrics, false-positive ta
 
 Evidence: decision record, manuscript, figures, reproduction report.
 
+Non-restricted integration milestone: registered experiment `P2-E001-nonrestricted-readiness` connects the 17 completed method artifacts, 48-event open IBTrACS inventory, event-data gate, effect-ownership ledger and claim-safe decision audit. The method gate passes while real attribution correctly remains pending; this is not SG event evidence.
+
 ## Phase 3 — Paper 3 regional PEGS warning value (Weeks 16–24; benchmark starts Day 0)
 
 ### 3.1 Benchmark and Manila scenario library
@@ -325,7 +327,7 @@ Evidence: benchmark report, frozen scenario schema/table, simulator provenance.
 - [ ] Label day/night, season, sea state, typhoon, urban/remote, gaps, and outages.
 - [ ] Quantify PSD distributions, nonstationarity, transients, and cross-station correlation. (A provenance-preserving complete-case cross-station covariance estimator with explicit diagonal shrinkage and positive-definite gate is complete; real stratified PSD/covariance distributions, temporal colour and transient audits remain.)
 - [ ] Freeze training, validation, held-out dates, held-out segments, and domain-out events before modelling.
-- [ ] Define existing, idealized, and incrementally augmented network variants.
+- [x] Define existing, idealized, and incrementally augmented network variants. (`P3-E002` freezes a five-station exact response/archive-matched LH evaluation network, historical-only and excluded stations, 0/20/40% outage sets and augmented geographic roles. It is an archive design, not an operational network claim.)
 
 Evidence: station/noise manifests, QC report, immutable split definitions.
 
@@ -346,6 +348,8 @@ Foundation milestone: registered experiment `P3-E001-physical-baseline-foundatio
 connects the single-station threshold, two-station template and discrete source
 inversion APIs. It deliberately fails the one-per-month false-alarm exposure gate
 and is engineering infrastructure, not Manila PEGS detectability evidence.
+
+Archive-network milestone: registered experiment `P3-E002-archive-network-design` exact-matches open LH archive triplets to response epochs for five stations and freezes 0/20/40% outage combinations. This authorizes predeclared real-noise downloads but does not pass the latency, waveform-QC or PEGS-template gates.
 
 ### 3.4 Network optimization
 

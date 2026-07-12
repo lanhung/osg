@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P3-E002-archive-network-design",
+  "paper": "paper3",
+  "code_commit": "781f15d02d1b5bc44f164c65bfda2e5c51e1833a",
+  "config_file": "configs/paper3/archive_network_design.json",
+  "config_file_sha256": "91334f698cdfa0be45ae6a1b11ecfb98b0bfbdd46af24a16656265d8e829d46e",
+  "data_manifest": "data/manifests/paper3_fdsn_availability_audit_2026-07-12.json",
+  "runner": "scripts/run_p3_archive_network_design.py",
+  "outputs": [
+    {
+      "path": "experiments/paper3/P3-E002-archive-network-design/metrics.json",
+      "sha256": "508c2b09b0f769d69b68b07d76159401231328adb7c2849ecfab9367a27caaf8"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T15:50:05Z",
+  "result_class": "open_archive_network_design_not_pegs_detectability"
+}

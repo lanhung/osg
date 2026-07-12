@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P2-E001-nonrestricted-readiness",
+  "paper": "paper2",
+  "code_commit": "3d888d9120a8c8abc5334e63563f246e73f4ad1f",
+  "config_file": "configs/paper2/nonrestricted_readiness.json",
+  "config_file_sha256": "ad6414228f42b424ec2f339b41a985c76f5bc03cd60954c4dcd3fdfc19f827e6",
+  "data_manifest": "data/manifests/paper2_ibtracs_candidates_2026-07-12.json",
+  "runner": "scripts/run_p2_nonrestricted_readiness.py",
+  "outputs": [
+    {
+      "path": "experiments/paper2/P2-E001-nonrestricted-readiness/metrics.json",
+      "sha256": "419b557ea50005a25dd3f3d03038c33c53f1e0896a0e3513c7e0960866e0caf0"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T15:47:55Z",
+  "result_class": "nonrestricted_method_readiness_not_event_attribution"
+}

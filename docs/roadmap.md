@@ -134,7 +134,7 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 - [ ] Tsunami: long-wave transient parameterization with propagating source geometry. (Validated mass-balanced shallow-water Gaussian packet complete; realistic source/bathymetry, elastic response and cited priors remain.)
 - [ ] Submarine landslide: coupled solid-water rapid mass migration with conservation checks. (Validated conserved solid plus optional explicit water point-pair gravity/gradient primitive complete; continuum slide, generated wave and cited priors remain.)
 - [ ] Freeze realistic parameter priors and citations for every process.
-- [ ] Run Latin-hypercube or Monte Carlo uncertainty with deterministic seeds.
+- [ ] Run Latin-hypercube or Monte Carlo uncertainty with deterministic seeds. (Validated deterministic linear/log Latin-hypercube and quantile engine complete; cited priors, correlations, convergence and production ensembles remain.)
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.
 

@@ -28,3 +28,10 @@ Accordingly every new evidence entry remains
 the manifest. The production Latin-hypercube gate must continue to reject these
 processes until coherent scenario families—not arbitrary min/max combinations—
 are frozen.
+
+The scale coverage was subsequently extended without relaxing that gate: a
+single shallow-shelf northern-SCS packet supplies 7 m vertical and 100 m
+horizontal scales, while a Mediterranean database supplies an inferred 0.14 km³
+and observed 0.31 km³ median slide volume. The shallow packet is not combined
+with the deep-basin 240 m extreme, and the regional/censored Mediterranean
+statistics are not treated as a global landslide distribution.

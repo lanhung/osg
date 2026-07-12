@@ -56,6 +56,30 @@ class TestProcessParameterEvidence(unittest.TestCase):
         self.assertIn("open-ocean", warning)
         self.assertIn("coastal", warning)
 
+    def test_small_and_extreme_named_scales_are_kept_separate(self) -> None:
+        internal = self.document["processes"]["internal_wave"]["evidence"]
+        slides = self.document["processes"]["submarine_landslide"]["evidence"]
+        internal_values = {item["parameter"]: item.get("value") for item in internal}
+        slide_values = {item["parameter"]: item.get("value") for item in slides}
+        self.assertEqual(
+            internal_values[
+                "northern_South_China_Sea_shallow_shelf_soliton_vertical_scale_m"
+            ],
+            7.0,
+        )
+        self.assertEqual(
+            slide_values[
+                "Mediterranean_submarine_landslide_observed_database_median_volume_m3"
+            ],
+            3.1e8,
+        )
+        storegga_volume = next(
+            item["range"]
+            for item in slides
+            if item["parameter"] == "Storegga_slide_volume_m3"
+        )
+        self.assertGreater(storegga_volume[0], 1e12)
+
 
 if __name__ == "__main__":
     unittest.main()

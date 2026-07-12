@@ -103,6 +103,20 @@
           "source": "https://doi.org/10.1175/JPO-D-15-0105.1",
           "evidence_type": "global_mapped_beam_width_not_waveform_scale_distribution",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "northern_South_China_Sea_shallow_shelf_soliton_vertical_scale_m",
+          "value": 7.0,
+          "source": "https://doi.org/10.3389/fmars.2021.734075",
+          "evidence_type": "single_shallow_shelf_wave_packet",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "northern_South_China_Sea_shallow_shelf_soliton_horizontal_scale_m",
+          "value": 100.0,
+          "source": "https://doi.org/10.3389/fmars.2021.734075",
+          "evidence_type": "single_shallow_shelf_wave_packet",
+          "probability_prior_eligible": false
         }
       ],
       "model_warning": "Isopycnal displacement alone does not determine gravity. The vertical density gradient, mode shape, free-surface expression and mass compensation must be explicit; the 240 m event is an extreme anchor, not an upper quantile.",
@@ -175,9 +189,25 @@
           "source": "https://doi.org/10.1029/2018JC014893",
           "evidence_type": "single_event_local_model_maximum",
           "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Mediterranean_submarine_landslide_inferred_population_median_volume_m3",
+          "value": 1.4e8,
+          "source_reported_value": "0.14 km^3 inferred median under a truncated-Pareto interpretation",
+          "source": "https://doi.org/10.1002/2013JF002720",
+          "evidence_type": "regional_database_model_inferred_median_not_global_prior",
+          "probability_prior_eligible": false
+        },
+        {
+          "parameter": "Mediterranean_submarine_landslide_observed_database_median_volume_m3",
+          "value": 3.1e8,
+          "source_reported_value": "0.31 km^3 observed database median",
+          "source": "https://doi.org/10.1002/2013JF002720",
+          "evidence_type": "regional_censored_database_median_not_global_prior",
+          "probability_prior_eligible": false
         }
       ],
-      "model_warning": "Storegga is a giant extreme event. Its volume, runout and local maximum velocity cannot be combined independently or used as population quantiles; early acceleration and evolving spatial distribution control tsunami generation.",
+      "model_warning": "Storegga is a giant extreme event. Its volume, runout and local maximum velocity cannot be combined independently or used as population quantiles; early acceleration and evolving spatial distribution control tsunami generation. Mediterranean medians are region- and censoring-dependent and do not define a global distribution.",
       "unresolved_for_atlas": [
         "representative small and intermediate submarine-slide scenario families",
         "sediment density contrast and early acceleration distributions",

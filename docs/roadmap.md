@@ -112,7 +112,7 @@ Evidence: gridded-load module, Green-function adapter, physics/regression tests,
 
 ### 1.3 Signal and instrument models
 
-- [ ] Define time series sampling, Fourier normalization, windowing, detrending, and one-sided PSD conventions. (Sampling, DFT and one-sided PSD fixed; window/detrend/gap conventions remain.)
+- [ ] Define time series sampling, Fourier normalization, windowing, detrending, and one-sided PSD conventions. (Sampling, DFT, one-sided PSD, window and detrend fixed; gap/resampling conventions remain.)
 - [x] Implement time-to-frequency conversion with Parseval tests.
 - [x] Implement transient matched-filter SNR.
 - [x] Implement periodic/quasi-periodic coherent-integration SNR with explicit observation time.

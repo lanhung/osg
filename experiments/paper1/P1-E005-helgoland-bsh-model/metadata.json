@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E005-helgoland-bsh-model",
+  "paper": "paper1",
+  "code_commit": "73bccf986f2ebfffdd5e3637f88fc0dce35fc169",
+  "config_file": "configs/paper1/helgoland_bsh_model.json",
+  "config_file_sha256": "52afeb79e1665d5a3dc28cdc107e425384549a295ff7771bbd9fe6de22b2a6ab",
+  "data_manifest": "data/manifests/helgoland_reproduction_inputs.json",
+  "runner": "scripts/run_helgoland_bsh_model.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E005-helgoland-bsh-model/metrics.json",
+      "sha256": "7c5535c31a96e88b1a807b14c7182922c3bbfdf42b6bde0112dec9bbf7f09da9"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T14:11:44Z",
+  "input_inventory_sha256": "e5840fff8e56a8b11458b884da543b06bb1a1b617c7b7560f790f2a34b3f241c",
+  "result_class": "published_case_model_reproduction_with_declared_detiding_difference"
+}

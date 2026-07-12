@@ -75,3 +75,12 @@ def test_bsh_timestamp_canonicalization_rounds_both_offset_signs() -> None:
     )
     expected = np.array(["2022-01-26T01:00:00", "2022-01-26T01:00:00"], dtype="datetime64[s]")
     np.testing.assert_array_equal(MODULE.canonicalize_bsh_times(values), expected)
+
+
+def test_paper_ratio_converts_project_upward_gravity_to_positive_downward() -> None:
+    displacement_m = np.array([-0.001, 0.0, 0.001])
+    project_upward_gravity_m_s2 = 2.5e-6 * displacement_m
+    ratio = MODULE.paper_gravity_height_ratio_nm_s2_per_mm(
+        project_upward_gravity_m_s2, displacement_m
+    )
+    assert ratio == -2.5

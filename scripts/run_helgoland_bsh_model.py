@@ -251,6 +251,23 @@ def _summary(values: np.ndarray) -> dict[str, float]:
     }
 
 
+def paper_gravity_height_ratio_nm_s2_per_mm(
+    geodetic_up_gravity_m_s2: np.ndarray, vertical_displacement_m: np.ndarray
+) -> float:
+    """Fit the paper's positive-down gravity over positive-up displacement."""
+
+    gravity = np.asarray(geodetic_up_gravity_m_s2, dtype=float)
+    height = np.asarray(vertical_displacement_m, dtype=float)
+    if gravity.shape != height.shape or gravity.ndim != 1 or gravity.size < 2:
+        raise ValueError("gravity and displacement must be equal-length one-dimensional series")
+    centered_height = height - height.mean()
+    centered_gravity = gravity - gravity.mean()
+    denominator = centered_height @ centered_height
+    if denominator == 0.0:
+        raise ValueError("vertical displacement must have nonzero variance")
+    return float(-(centered_height @ centered_gravity) / denominator * 1.0e6)
+
+
 def run(config: dict) -> dict:
     input_root = Path(config["input_root"])
     files = {grid: sorted((input_root / grid).glob("*.nc")) for grid in ("fine", "coarse")}
@@ -336,11 +353,7 @@ def run(config: dict) -> dict:
     target = config["published_model_target"]
     height = detided["vertical_displacement_m"]
     gravity = detided["combined_elastic_gravity_m_s2"]
-    centered_height = height - height.mean()
-    centered_gravity = gravity - gravity.mean()
-    gravity_to_height_ratio = float(
-        (centered_height @ centered_gravity) / (centered_height @ centered_height) * 1.0e6
-    )
+    gravity_to_height_ratio = paper_gravity_height_ratio_nm_s2_per_mm(gravity, height)
     ratio_fractional_error = abs(
         gravity_to_height_ratio - target["gravity_to_height_ratio_nm_s2_per_mm"]
     ) / abs(target["gravity_to_height_ratio_nm_s2_per_mm"])
@@ -385,6 +398,11 @@ def run(config: dict) -> dict:
         },
         "published_model_target_comparison": {
             "gravity_to_height_ratio_nm_s2_per_mm": gravity_to_height_ratio,
+            "comparison_sign_convention": (
+                "paper gravity increase positive downward divided by vertical displacement "
+                "positive upward; project geodetic-up elastic acceleration is negated only "
+                "at this comparison boundary"
+            ),
             "published_gravity_to_height_ratio_nm_s2_per_mm": target[
                 "gravity_to_height_ratio_nm_s2_per_mm"
             ],

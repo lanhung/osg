@@ -117,7 +117,7 @@ Evidence: gridded-load module, Green-function adapter, physics/regression tests,
 - [x] Implement transient matched-filter SNR.
 - [x] Implement periodic/quasi-periodic coherent-integration SNR with explicit observation time.
 - [x] Define detection threshold and false-alarm convention; separate illustrative and decision-grade SNR.
-- [ ] Create versioned instrument-curve schema with digitization/source uncertainty.
+- [x] Create versioned instrument-curve schema with digitization/source uncertainty.
 - [ ] Add superconducting, absolute, and cold-atom gravimeter models.
 - [ ] Add gravity-gradient/inertial sensor models where defensible.
 - [ ] Add environmental channels from gravitational-wave/Newtonian-noise literature without claiming reinvention.

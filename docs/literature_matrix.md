@@ -17,6 +17,8 @@ This is a living audit, not a complete systematic review. Primary articles and o
 **Verified study design**
 
 - Uses continuous iGrav-048 observations and CMEMS sea-surface height with load Green-function convolution; compares with MPIOM/GFZ predictions.
+- The VOR dry-season window is 2023-12-22 through 2024-04-30 and contains no named typhoon-event windows; it therefore does not demonstrate event-resolved typhoon attribution.
+- VOR targets differ from the preprint (including CMEMS 2.6 microgal maximum variation and 0.83 observation correlation); versions must not be mixed in reproduction.
 - Observation window is 2023-12-22 through 2024-04-30, deliberately chosen in Haikou's dry season to reduce hydrological contamination.
 - Gravity preprocessing proceeds from one-second data to one minute and finally hourly observations, correcting gaps/steps/spikes, solid Earth tides, ocean-tide loading, atmosphere, and polar motion; rainfall and groundwater are modelled separately.
 - The VOR explicitly treats the elastic loading contribution and additional direct Newtonian attraction. Therefore component separation is prior art and is not independently sufficient novelty for Paper 2.
@@ -111,4 +113,3 @@ Access is password protected and requires user registration. The station table (
 2. Paper 2: model-to-model comparison and regional contribution analysis are also prior art.
 3. Paper 3: empirical correlated noise, network geometry, station outages as an architectural concern, and operational integration are prior art.
 4. Paper 3: explicit continuous-stream false alarms, South China domain shift, typhoon/microseism noise, regional baseline comparisons, and optimized station requirements remain the sharper target.
-

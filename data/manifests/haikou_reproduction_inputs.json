@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "case_id": "haikou-ntol-2023-2024-zhang-2026",
+  "status": "pending-restricted-observations-and-product-version-audit",
+  "inputs": [
+    {
+      "id": "igrav048-gravity-pressure-state",
+      "role": "gravity observation, pressure, calibration, timing and instrument-state closure",
+      "availability": "not public according to the article data-availability statement; author collaboration required",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "haikou-rainfall-groundwater",
+      "role": "hydrological correction",
+      "availability": "not publicly identified; author collaboration required",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "cmems-global-analysisforecast-phy-001-024",
+      "role": "hourly non-tidal SSH over 3N-23N, 106E-122E",
+      "doi": "10.48670/moi-00016",
+      "availability": "open after Copernicus Marine account/licence; exact historical dataset/version and variable metadata pending",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "gfz-mpiom-loading",
+      "role": "independent 3-hourly loading comparison",
+      "source": "https://rz-vm480.gfz.de/",
+      "availability": "public repository reported by article; exact product path/version pending",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "hihk-gnss",
+      "role": "independent vertical deformation comparison",
+      "availability": "not public according to the article data-availability statement",
+      "local_path": null,
+      "sha256": null
+    }
+  ],
+  "observed_reproduction_values": {}
+}

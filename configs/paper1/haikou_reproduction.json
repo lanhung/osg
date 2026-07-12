@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "case_id": "haikou-ntol-2023-2024-zhang-2026",
+  "status": "vor-targets-frozen-inputs-pending",
+  "version_of_record": "https://doi.org/10.1007/s00024-026-03930-3",
+  "open_preprint": "https://doi.org/10.21203/rs.3.rs-7592512/v1",
+  "version_note": "The VOR changed several numerical results from the preprint. Registered targets use VOR values; preprint-only values are not interchangeable.",
+  "analysis_window": {
+    "start_utc": "2023-12-22T00:00:00Z",
+    "end_utc": "2024-04-30T23:59:59Z",
+    "selection_reason": "dry season chosen to minimize hydrological interference"
+  },
+  "typhoon_scope": {
+    "named_typhoon_events_analyzed": 0,
+    "event_windows_present": false,
+    "consequence": "This case is a general dry-season South China Sea NTOL benchmark, not prior event-resolved typhoon attribution."
+  },
+  "targets": [
+    {
+      "target_id": "cmems_ntol_maximum_variation_m_s2",
+      "expected_value": 2.6e-08,
+      "source_reported_value": "2.6 microgal",
+      "unit": "m/s^2",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.30,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "mpiom_ntol_maximum_variation_m_s2",
+      "expected_value": 3.0e-08,
+      "source_reported_value": "3.0 microgal",
+      "unit": "m/s^2",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.30,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "cmems_sg_residual_correlation",
+      "expected_value": 0.83,
+      "unit": "dimensionless",
+      "tolerance_kind": "absolute",
+      "tolerance": 0.05,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "mpiom_sg_residual_correlation",
+      "expected_value": 0.81,
+      "unit": "dimensionless",
+      "tolerance_kind": "absolute",
+      "tolerance": 0.05,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "cmems_mpiom_correlation",
+      "expected_value": 0.87,
+      "unit": "dimensionless",
+      "tolerance_kind": "absolute",
+      "tolerance": 0.05,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "uncorrected_sg_residual_rms_m_s2",
+      "expected_value": 8.1e-09,
+      "source_reported_value": "0.81 microgal",
+      "unit": "m/s^2",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.10,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "cmems_corrected_sg_residual_rms_m_s2",
+      "expected_value": 5.0e-09,
+      "source_reported_value": "0.50 microgal; 38 percent reduction",
+      "unit": "m/s^2",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.10,
+      "source": "Zhang et al. 2026 VOR"
+    },
+    {
+      "target_id": "mpiom_corrected_sg_residual_rms_m_s2",
+      "expected_value": 5.4e-09,
+      "source_reported_value": "0.54 microgal; 34 percent reduction",
+      "unit": "m/s^2",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.10,
+      "source": "Zhang et al. 2026 VOR"
+    }
+  ],
+  "method_contract": {
+    "station_distance_to_qiongzhou_strait_km": 11,
+    "gravity_input": "iGrav-048 at 1 Hz",
+    "downsampling": "12 cycles/day low-pass to one minute, TSoft remove-restore for gaps/steps/spikes, then hourly",
+    "calibration": "FG5-232 colocated comparison during 2024-04-05 through 2024-04-10",
+    "solid_earth_tide": "WDD theoretical model",
+    "ocean_tide_loading": "FES2014b",
+    "atmosphere": "local admittance from ETERNA 3.4; acknowledged risk of absorbing unmodelled pressure-related signals",
+    "polar_motion": "IERS EOPC04",
+    "hydrology": "rainfall double exponential tau1=1 h, tau2=720 h; groundwater Bouguer slab porosity 0.05",
+    "cmems_product": "GLOBAL_ANALYSISFORECAST_PHY_001_024 hourly non-tidal SSH",
+    "cmems_domain": "3N-23N, 106E-122E",
+    "cmems_grid": "0.083 degree by 0.083 degree",
+    "elastic_loading": "SPOTL NLOADF with Gutenberg-Bullen Earth model and station height set to zero",
+    "direct_attraction": "separate Newtonian integration retaining Earth curvature",
+    "mpiom": "0.125 degree ocean bottom pressure, 0.5 degree deformation, 3-hourly linearly interpolated to hourly; gravity inferred with -0.28 microgal/mm ratio"
+  },
+  "auxiliary_vor_values_not_primary_variation_targets": {
+    "date": "2023-12-22",
+    "ssh_peak_m": 0.71,
+    "total_gravity_state_microgal": 7.8,
+    "height_independent_component_microgal": 5.6,
+    "direct_height_dependent_component_microgal": 2.2,
+    "vertical_displacement_mm": -19.13
+  }
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#222}.tick{font-size:13px}.label{font-size:15px}.title{font-size:20px;font-weight:600}.legend{font-size:12px}</style>
+<text class="title" x="450.0" y="27" text-anchor="middle">vertical_gravity literature/model anchors</text>
+<line x1="95.000" y1="45" x2="95.000" y2="475" stroke="#ddd"/>
+<text class="tick" x="95.000" y="498" text-anchor="middle">1e-3</text>
+<line x1="482.500" y1="45" x2="482.500" y2="475" stroke="#ddd"/>
+<text class="tick" x="482.500" y="498" text-anchor="middle">1e-2</text>
+<line x1="870.000" y1="45" x2="870.000" y2="475" stroke="#ddd"/>
+<text class="tick" x="870.000" y="498" text-anchor="middle">1e-1</text>
+<line x1="95" y1="475.000" x2="870" y2="475.000" stroke="#ddd"/>
+<text class="tick" x="83" y="479.000" text-anchor="end">1e-10</text>
+<line x1="95" y1="389.000" x2="870" y2="389.000" stroke="#ddd"/>
+<text class="tick" x="83" y="393.000" text-anchor="end">1e-9</text>
+<line x1="95" y1="303.000" x2="870" y2="303.000" stroke="#ddd"/>
+<text class="tick" x="83" y="307.000" text-anchor="end">1e-8</text>
+<line x1="95" y1="217.000" x2="870" y2="217.000" stroke="#ddd"/>
+<text class="tick" x="83" y="221.000" text-anchor="end">1e-7</text>
+<line x1="95" y1="131.000" x2="870" y2="131.000" stroke="#ddd"/>
+<text class="tick" x="83" y="135.000" text-anchor="end">1e-6</text>
+<line x1="95" y1="45.000" x2="870" y2="45.000" stroke="#ddd"/>
+<text class="tick" x="83" y="49.000" text-anchor="end">1e-5</text>
+<rect x="95" y="45" width="775" height="430" fill="none" stroke="#222"/>
+<text class="label" x="482.5" y="535" text-anchor="middle">Frequency (Hz)</text>
+<text class="label" transform="translate(23 260.0) rotate(-90)" text-anchor="middle">ASD (m s^-2 Hz^-1/2)</text>
+<polyline points="95.000,141.745 753.351,141.745" fill="none" stroke="#0072B2" stroke-width="3"/>
+<line x1="107" y1="62" x2="135" y2="62" stroke="#0072B2" stroke-width="3"/>
+<text class="legend" x="142" y="66">aqg_a01_field_short_term_anchor</text>
+<polyline points="95.000,160.824 537.784,160.824" fill="none" stroke="#D55E00" stroke-width="3"/>
+<line x1="107" y1="81" x2="135" y2="81" stroke="#D55E00" stroke-width="3"/>
+<text class="legend" x="142" y="85">fg5_228_short_term_anchor</text>
+<polyline points="95.000,389.000 870.000,389.000" fill="none" stroke="#009E73" stroke-width="3"/>
+<line x1="107" y1="100" x2="135" y2="100" stroke="#009E73" stroke-width="3"/>
+<text class="legend" x="142" y="104">igrav_quiet_j9_self_noise_anchor</text>
+</svg>

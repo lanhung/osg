@@ -269,7 +269,7 @@ Evidence: baseline metrics, calibration curves, boundary/negative-result report.
 
 ### 3.4 Network optimization
 
-- [ ] Define objective combining detection time, probability, false alarms, magnitude error, and station cost/count.
+- [x] Define objective combining detection time, probability, false alarms, magnitude error, and station cost/count. (A deterministic non-dominated Pareto frontier is implemented; policy weights are deliberately not hidden in a scalar score.)
 - [ ] Evaluate station-count/performance curves for existing and augmented networks.
 - [ ] Identify robust station locations under rupture and noise uncertainty.
 - [ ] Quantify minimum instrument/noise requirements by magnitude and segment.

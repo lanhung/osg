@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="580" viewBox="0 0 920 580">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#222}.tick{font-size:13px}.label{font-size:15px}.title{font-size:19px;font-weight:600}.legend{font-size:12px}</style>
+<text class="title" x="460.0" y="29" text-anchor="middle">Engineering distance attenuation: Peak direct vertical gravity (m s^-2)</text>
+<line x1="100.000" y1="50" x2="100.000" y2="495" stroke="#ddd"/>
+<text class="tick" x="100.000" y="518" text-anchor="middle">1e3</text>
+<line x1="361.667" y1="50" x2="361.667" y2="495" stroke="#ddd"/>
+<text class="tick" x="361.667" y="518" text-anchor="middle">1e4</text>
+<line x1="623.333" y1="50" x2="623.333" y2="495" stroke="#ddd"/>
+<text class="tick" x="623.333" y="518" text-anchor="middle">1e5</text>
+<line x1="885.000" y1="50" x2="885.000" y2="495" stroke="#ddd"/>
+<text class="tick" x="885.000" y="518" text-anchor="middle">1e6</text>
+<line x1="100" y1="495.000" x2="885" y2="495.000" stroke="#ddd"/>
+<text class="tick" x="88" y="499.000" text-anchor="end">1e-14</text>
+<line x1="100" y1="445.556" x2="885" y2="445.556" stroke="#ddd"/>
+<text class="tick" x="88" y="449.556" text-anchor="end">1e-13</text>
+<line x1="100" y1="396.111" x2="885" y2="396.111" stroke="#ddd"/>
+<text class="tick" x="88" y="400.111" text-anchor="end">1e-12</text>
+<line x1="100" y1="346.667" x2="885" y2="346.667" stroke="#ddd"/>
+<text class="tick" x="88" y="350.667" text-anchor="end">1e-11</text>
+<line x1="100" y1="297.222" x2="885" y2="297.222" stroke="#ddd"/>
+<text class="tick" x="88" y="301.222" text-anchor="end">1e-10</text>
+<line x1="100" y1="247.778" x2="885" y2="247.778" stroke="#ddd"/>
+<text class="tick" x="88" y="251.778" text-anchor="end">1e-9</text>
+<line x1="100" y1="198.333" x2="885" y2="198.333" stroke="#ddd"/>
+<text class="tick" x="88" y="202.333" text-anchor="end">1e-8</text>
+<line x1="100" y1="148.889" x2="885" y2="148.889" stroke="#ddd"/>
+<text class="tick" x="88" y="152.889" text-anchor="end">1e-7</text>
+<line x1="100" y1="99.444" x2="885" y2="99.444" stroke="#ddd"/>
+<text class="tick" x="88" y="103.444" text-anchor="end">1e-6</text>
+<line x1="100" y1="50.000" x2="885" y2="50.000" stroke="#ddd"/>
+<text class="tick" x="88" y="54.000" text-anchor="end">1e-5</text>
+<rect x="100" y="50" width="785" height="445" fill="none" stroke="#222"/>
+<text class="label" x="492.5" y="557" text-anchor="middle">Vertical standoff (m)</text>
+<text class="label" transform="translate(23 272.5) rotate(-90)" text-anchor="middle">Peak direct vertical gravity (m s^-2)</text>
+<polyline points="100.000,137.426 224.847,139.658 361.667,146.370 486.513,157.726 623.333,183.062 748.180,221.960 885.000,272.189" fill="none" stroke="#0072B2" stroke-width="2.5"/>
+<circle cx="100.000" cy="137.426" r="2.6" fill="#0072B2"/>
+<circle cx="224.847" cy="139.658" r="2.6" fill="#0072B2"/>
+<circle cx="361.667" cy="146.370" r="2.6" fill="#0072B2"/>
+<circle cx="486.513" cy="157.726" r="2.6" fill="#0072B2"/>
+<circle cx="623.333" cy="183.062" r="2.6" fill="#0072B2"/>
+<circle cx="748.180" cy="221.960" r="2.6" fill="#0072B2"/>
+<circle cx="885.000" cy="272.189" r="2.6" fill="#0072B2"/>
+<line x1="112" y1="67" x2="138" y2="67" stroke="#0072B2" stroke-width="3"/>
+<text class="legend" x="145" y="71">eddy_surface</text>
+<polyline points="100.000,182.367 224.847,208.554 361.667,223.067 486.513,263.468 623.333,332.057 748.180,401.761 885.000,479.194" fill="none" stroke="#D55E00" stroke-width="2.5"/>
+<circle cx="100.000" cy="182.367" r="2.6" fill="#D55E00"/>
+<circle cx="224.847" cy="208.554" r="2.6" fill="#D55E00"/>
+<circle cx="361.667" cy="223.067" r="2.6" fill="#D55E00"/>
+<circle cx="486.513" cy="263.468" r="2.6" fill="#D55E00"/>
+<circle cx="623.333" cy="332.057" r="2.6" fill="#D55E00"/>
+<circle cx="748.180" cy="401.761" r="2.6" fill="#D55E00"/>
+<circle cx="885.000" cy="479.194" r="2.6" fill="#D55E00"/>
+<line x1="112" y1="85" x2="138" y2="85" stroke="#D55E00" stroke-width="3"/>
+<text class="legend" x="145" y="89">internal_wave_dipole</text>
+<polyline points="100.000,102.961 224.847,103.511 361.667,105.535 486.513,111.979 623.333,135.290 748.180,175.450 885.000,226.150" fill="none" stroke="#009E73" stroke-width="2.5"/>
+<circle cx="100.000" cy="102.961" r="2.6" fill="#009E73"/>
+<circle cx="224.847" cy="103.511" r="2.6" fill="#009E73"/>
+<circle cx="361.667" cy="105.535" r="2.6" fill="#009E73"/>
+<circle cx="486.513" cy="111.979" r="2.6" fill="#009E73"/>
+<circle cx="623.333" cy="135.290" r="2.6" fill="#009E73"/>
+<circle cx="748.180" cy="175.450" r="2.6" fill="#009E73"/>
+<circle cx="885.000" cy="226.150" r="2.6" fill="#009E73"/>
+<line x1="112" y1="103" x2="138" y2="103" stroke="#009E73" stroke-width="3"/>
+<text class="legend" x="145" y="107">storm_surge</text>
+<polyline points="100.000,84.080 224.847,79.748 361.667,144.027 486.513,213.609 623.333,291.034 748.180,361.795 885.000,439.354" fill="none" stroke="#CC79A7" stroke-width="2.5"/>
+<circle cx="100.000" cy="84.080" r="2.6" fill="#CC79A7"/>
+<circle cx="224.847" cy="79.748" r="2.6" fill="#CC79A7"/>
+<circle cx="361.667" cy="144.027" r="2.6" fill="#CC79A7"/>
+<circle cx="486.513" cy="213.609" r="2.6" fill="#CC79A7"/>
+<circle cx="623.333" cy="291.034" r="2.6" fill="#CC79A7"/>
+<circle cx="748.180" cy="361.795" r="2.6" fill="#CC79A7"/>
+<circle cx="885.000" cy="439.354" r="2.6" fill="#CC79A7"/>
+<line x1="112" y1="121" x2="138" y2="121" stroke="#CC79A7" stroke-width="3"/>
+<text class="legend" x="145" y="125">submarine_landslide</text>
+<polyline points="100.000,117.791 224.847,118.229 361.667,119.826 486.513,124.850 623.333,143.944 748.180,181.346 885.000,231.509" fill="none" stroke="#E69F00" stroke-width="2.5"/>
+<circle cx="100.000" cy="117.791" r="2.6" fill="#E69F00"/>
+<circle cx="224.847" cy="118.229" r="2.6" fill="#E69F00"/>
+<circle cx="361.667" cy="119.826" r="2.6" fill="#E69F00"/>
+<circle cx="486.513" cy="124.850" r="2.6" fill="#E69F00"/>
+<circle cx="623.333" cy="143.944" r="2.6" fill="#E69F00"/>
+<circle cx="748.180" cy="181.346" r="2.6" fill="#E69F00"/>
+<circle cx="885.000" cy="231.509" r="2.6" fill="#E69F00"/>
+<line x1="112" y1="139" x2="138" y2="139" stroke="#E69F00" stroke-width="3"/>
+<text class="legend" x="145" y="143">tide</text>
+<polyline points="100.000,123.409 224.847,118.573 361.667,129.952 486.513,151.662 623.333,201.402 748.180,267.424 885.000,362.634" fill="none" stroke="#56B4E9" stroke-width="2.5"/>
+<circle cx="100.000" cy="123.409" r="2.6" fill="#56B4E9"/>
+<circle cx="224.847" cy="118.573" r="2.6" fill="#56B4E9"/>
+<circle cx="361.667" cy="129.952" r="2.6" fill="#56B4E9"/>
+<circle cx="486.513" cy="151.662" r="2.6" fill="#56B4E9"/>
+<circle cx="623.333" cy="201.402" r="2.6" fill="#56B4E9"/>
+<circle cx="748.180" cy="267.424" r="2.6" fill="#56B4E9"/>
+<circle cx="885.000" cy="362.634" r="2.6" fill="#56B4E9"/>
+<line x1="112" y1="157" x2="138" y2="157" stroke="#56B4E9" stroke-width="3"/>
+<text class="legend" x="145" y="161">tsunami_packet</text>
+</svg>

@@ -257,7 +257,7 @@ Evidence: station/noise manifests, QC report, immutable split definitions.
 ### 3.3 Physics and statistical baselines
 
 - [ ] Implement single-station amplitude/energy threshold baseline. (A mask-preserving sliding-RMS baseline freezes its threshold on calibration quiet windows and reports held-out quiet FAR, within-event trigger fraction and earliest triggering score index without mislabelling either as detection probability; response-corrected real waveforms, ensemble detection probability and passband evaluation remain.)
-- [ ] Implement multi-station coherent stacking/template/likelihood baseline.
+- [ ] Implement multi-station coherent stacking/template/likelihood baseline. (Aligned coherent stacking and a signed, noise-weighted sliding network-template statistic are complete under an explicit independent white-noise reference; validated PEGS templates, real cross-station covariance and likelihood comparisons remain.)
 - [ ] Implement rapid source-parameter inversion for magnitude, region, and rupture segment.
 - [ ] Calibrate thresholds to false alarms per month/year using long real-noise windows.
 - [ ] Generate time-dependent detection probability and reliable-magnitude timelines.

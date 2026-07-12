@@ -5,6 +5,90 @@ from __future__ import annotations
 import math
 import random
 from collections.abc import Mapping, Sequence
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class NetworkPerformance:
+    """Frozen operational metrics for one station-network candidate.
+
+    Lower values are better for times, false alarms, errors, and cost; higher
+    values are better for detection probability. A candidate remains explicit
+    rather than being collapsed into a scientifically arbitrary weighted score.
+    """
+
+    network_id: str
+    station_ids: tuple[str, ...]
+    detection_time_s: float
+    detection_probability: float
+    false_alarms_per_30_days: float
+    magnitude_mae: float
+    station_cost: float
+
+    def __post_init__(self) -> None:
+        if not self.network_id.strip():
+            raise ValueError("network_id must be non-empty")
+        if not self.station_ids or any(not station.strip() for station in self.station_ids):
+            raise ValueError("station_ids must contain non-empty station names")
+        if len(set(self.station_ids)) != len(self.station_ids):
+            raise ValueError("station_ids must be unique")
+        finite_nonnegative = (
+            self.detection_time_s,
+            self.false_alarms_per_30_days,
+            self.magnitude_mae,
+            self.station_cost,
+        )
+        if not all(math.isfinite(value) and value >= 0.0 for value in finite_nonnegative):
+            raise ValueError("time, false alarms, error, and cost must be finite and nonnegative")
+        if not math.isfinite(self.detection_probability) or not 0.0 <= self.detection_probability <= 1.0:
+            raise ValueError("detection_probability must lie in [0, 1]")
+
+
+def _dominates(left: NetworkPerformance, right: NetworkPerformance) -> bool:
+    """Return whether ``left`` is no worse everywhere and better somewhere."""
+
+    no_worse = (
+        left.detection_time_s <= right.detection_time_s
+        and left.detection_probability >= right.detection_probability
+        and left.false_alarms_per_30_days <= right.false_alarms_per_30_days
+        and left.magnitude_mae <= right.magnitude_mae
+        and left.station_cost <= right.station_cost
+    )
+    strictly_better = (
+        left.detection_time_s < right.detection_time_s
+        or left.detection_probability > right.detection_probability
+        or left.false_alarms_per_30_days < right.false_alarms_per_30_days
+        or left.magnitude_mae < right.magnitude_mae
+        or left.station_cost < right.station_cost
+    )
+    return no_worse and strictly_better
+
+
+def pareto_optimal_networks(
+    candidates: Sequence[NetworkPerformance],
+) -> tuple[NetworkPerformance, ...]:
+    """Return the deterministic non-dominated multi-objective network frontier.
+
+    Exact duplicate network identifiers are rejected. The result is sorted by
+    identifier so input order cannot change serialized experiment outputs.
+    """
+
+    rows = tuple(candidates)
+    if not rows:
+        raise ValueError("at least one network candidate is required")
+    identifiers = [row.network_id for row in rows]
+    if len(set(identifiers)) != len(identifiers):
+        raise ValueError("network_id values must be unique")
+    frontier = [
+        candidate
+        for candidate in rows
+        if not any(
+            _dominates(other, candidate)
+            for other in rows
+            if other.network_id != candidate.network_id
+        )
+    ]
+    return tuple(sorted(frontier, key=lambda row: row.network_id))
 
 
 def coherent_network_stack(

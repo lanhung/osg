@@ -202,7 +202,7 @@ Evidence: correction waterfall, spectra, component files, sensitivity report.
 - [ ] Calculate atmospheric direct/loading terms and inverted-barometer response.
 - [ ] Test CMEMS/ERA5 coupling to prevent double counting.
 - [ ] Estimate terrestrial precipitation/groundwater contribution.
-- [ ] Compare observation residual and independent forward prediction in time and frequency domains. (Mask-aware time-domain RMSE, correlation, peak amplitude and peak-time metrics are implemented; coherence and real-event comparison remain.)
+- [ ] Compare observation residual and independent forward prediction in time and frequency domains. (Mask-aware time-domain RMSE, correlation, peak amplitude and peak-time metrics plus a mask-aware Welch coherence reference implementation are complete; production FFT parity, frozen real-event frequency bands, and real-event comparison remain.)
 - [ ] Close units, signs, timing, and uncertainty budgets. (SI/unit, component-collision, UTC-validity and correlated uncertainty gates exist; real component uncertainties, covariance assumptions and event closure remain.)
 
 Evidence: component decomposition, double-count audit, closure metrics.

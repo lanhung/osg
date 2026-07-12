@@ -24,6 +24,11 @@ from .annotations import (
     QualityAnnotationResult,
     apply_quality_annotations,
 )
+from .coherence import (
+    WelchCoherence,
+    mean_coherence_in_band,
+    welch_magnitude_squared_coherence,
+)
 
 __all__ = [
     "OneSidedSpectrum",
@@ -48,4 +53,7 @@ __all__ = [
     "DataQualityAnnotation",
     "QualityAnnotationResult",
     "apply_quality_annotations",
+    "WelchCoherence",
+    "mean_coherence_in_band",
+    "welch_magnitude_squared_coherence",
 ]

@@ -185,11 +185,11 @@ Evidence: event catalogue, data-quality report, exclusion manifest.
 ### 2.2 Transparent SG correction chain
 
 - [ ] Implement calibration and timing normalization. (Versioned feedback-voltage calibration with validity interval and propagated factor/offset uncertainty is complete; real calibration records and full timestamp normalization remain.)
-- [ ] Flag spikes and earthquake-contaminated intervals without silently deleting them.
-- [ ] Represent gaps and uncertainty explicitly.
+- [ ] Flag spikes and earthquake-contaminated intervals without silently deleting them. (A frozen pre-comparison annotation policy, UTC interval ledger, overlapping flags and separate fit/metric masks preserve all original samples; real catalog/log review remains.)
+- [ ] Represent gaps and uncertainty explicitly. (Cadence/gap segmentation plus a strict observation/component uncertainty budget with correlated groups are implemented; real gap decisions and uncertainty models remain.)
 - [ ] Correct jumps and instrument drift with versioned decisions. (Explicit persistent-step decisions plus linear/quadratic drift models with UTC validity, allowed non-event fit roles, no extrapolation and propagated uncertainty are complete; real reviewed decisions/model parameters and sensitivity branches remain.)
 - [ ] Remove solid Earth tide, ocean-tide loading, polar motion, atmosphere, and hydrology stepwise.
-- [ ] Save every removed component and its contribution to the event peak.
+- [ ] Save every removed component and its contribution to the event peak. (The ordered waterfall preserves every input/removed/output series, provenance, effects, peak removal and RMS change; real-event artifacts remain.)
 - [ ] Test alternative correction models and filter choices.
 
 Evidence: correction waterfall, spectra, component files, sensitivity report.
@@ -202,8 +202,8 @@ Evidence: correction waterfall, spectra, component files, sensitivity report.
 - [ ] Calculate atmospheric direct/loading terms and inverted-barometer response.
 - [ ] Test CMEMS/ERA5 coupling to prevent double counting.
 - [ ] Estimate terrestrial precipitation/groundwater contribution.
-- [ ] Compare observation residual and independent forward prediction in time and frequency domains.
-- [ ] Close units, signs, timing, and uncertainty budgets.
+- [ ] Compare observation residual and independent forward prediction in time and frequency domains. (Mask-aware time-domain RMSE, correlation, peak amplitude and peak-time metrics are implemented; coherence and real-event comparison remain.)
+- [ ] Close units, signs, timing, and uncertainty budgets. (SI/unit, component-collision, UTC-validity and correlated uncertainty gates exist; real component uncertainties, covariance assumptions and event closure remain.)
 
 Evidence: component decomposition, double-count audit, closure metrics.
 

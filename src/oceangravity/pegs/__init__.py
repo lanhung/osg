@@ -10,7 +10,10 @@ from .energy_baseline import (
     windowed_rms_energy_scores,
 )
 from .template_baseline import (
+    CrossStationCovarianceModel,
+    CovarianceNetworkTemplateScores,
     NetworkTemplateScores,
+    cross_station_covariance_template_scores,
     independent_noise_network_template_scores,
 )
 from .source_inversion import (
@@ -46,6 +49,9 @@ __all__ = [
     "audit_single_station_energy_baseline",
     "windowed_rms_energy_scores",
     "NetworkTemplateScores",
+    "CrossStationCovarianceModel",
+    "CovarianceNetworkTemplateScores",
+    "cross_station_covariance_template_scores",
     "independent_noise_network_template_scores",
     "DiscreteSourceInversion",
     "SourceHypothesisFit",

@@ -7,6 +7,11 @@ from .surface_grid import (
 )
 from .spherical_grid import SphericalSurfaceLoadResult, surface_load_gravity_spherical
 from .ellipsoidal_grid import EllipsoidalSurfaceLoadResult, surface_load_gravity_wgs84
+from .gravity_budget import (
+    GravityCorrectionComponent,
+    GravityResidualResult,
+    compute_gravity_residual,
+)
 from .green_functions import (
     LoadGreenFunctionMetadata,
     LoadGreenFunctionProvider,
@@ -20,6 +25,8 @@ __all__ = [
     "SurfaceLoadResult",
     "SphericalSurfaceLoadResult",
     "EllipsoidalSurfaceLoadResult",
+    "GravityCorrectionComponent",
+    "GravityResidualResult",
     "LoadGreenFunctionMetadata",
     "LoadGreenFunctionProvider",
     "LoadGreenFunctionSample",
@@ -30,4 +37,5 @@ __all__ = [
     "surface_load_gravity_planar",
     "surface_load_gravity_spherical",
     "surface_load_gravity_wgs84",
+    "compute_gravity_residual",
 ]

@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 import math
+from bisect import bisect_right
 from collections.abc import Sequence
 from dataclasses import dataclass
+import json
+from pathlib import Path
 from typing import Protocol, runtime_checkable
 
 
@@ -54,6 +57,86 @@ class LoadGreenFunctionProvider(Protocol):
 
     def evaluate(self, angular_distance_rad: float) -> LoadGreenFunctionSample:
         """Return per-kilogram response at angular distance in radians."""
+
+
+@dataclass(frozen=True, slots=True)
+class TabulatedLoadGreenFunctionProvider:
+    """No-extrapolation linear adapter for audited per-kilogram tables."""
+
+    metadata: LoadGreenFunctionMetadata
+    angular_distances_rad: tuple[float, ...]
+    samples: tuple[LoadGreenFunctionSample, ...]
+    interpolation: str = "linear_angular_distance"
+
+    def __post_init__(self) -> None:
+        if len(self.angular_distances_rad) != len(self.samples) or len(self.samples) < 2:
+            raise ValueError("tabulated distances and samples must have equal length >= 2")
+        if self.interpolation != "linear_angular_distance":
+            raise ValueError("only linear_angular_distance interpolation is supported")
+        if not all(
+            math.isfinite(value) and 0.0 <= value <= math.pi
+            for value in self.angular_distances_rad
+        ):
+            raise ValueError("tabulated angular distances must be finite and lie in [0, pi]")
+        if any(
+            self.angular_distances_rad[index + 1] <= self.angular_distances_rad[index]
+            for index in range(len(self.angular_distances_rad) - 1)
+        ):
+            raise ValueError("tabulated angular distances must be strictly increasing")
+
+    def evaluate(self, angular_distance_rad: float) -> LoadGreenFunctionSample:
+        distance = float(angular_distance_rad)
+        if not math.isfinite(distance):
+            raise ValueError("angular_distance_rad must be finite")
+        if distance < self.angular_distances_rad[0] or distance > self.angular_distances_rad[-1]:
+            raise ValueError("refusing to extrapolate beyond the tabulated angular-distance range")
+        index = bisect_right(self.angular_distances_rad, distance)
+        if index == 0:
+            return self.samples[0]
+        if index == len(self.angular_distances_rad):
+            return self.samples[-1]
+        left = index - 1
+        if distance == self.angular_distances_rad[left]:
+            return self.samples[left]
+        fraction = (distance - self.angular_distances_rad[left]) / (
+            self.angular_distances_rad[index] - self.angular_distances_rad[left]
+        )
+        return LoadGreenFunctionSample(
+            *(
+                left_value + fraction * (right_value - left_value)
+                for left_value, right_value in zip(
+                    self.samples[left].as_tuple(), self.samples[index].as_tuple(), strict=True
+                )
+            )
+        )
+
+    @classmethod
+    def from_json(cls, path: str | Path) -> "TabulatedLoadGreenFunctionProvider":
+        """Load the project interchange format after explicit unit normalization."""
+
+        document = json.loads(Path(path).read_text(encoding="utf-8"))
+        if document.get("schema_version") != 1:
+            raise ValueError("unsupported tabulated Green-function schema version")
+        metadata = LoadGreenFunctionMetadata(**document["metadata"])
+        distances = tuple(float(value) for value in document["angular_distances_rad"])
+        component_names = (
+            "deformation_gravity_m_s2_per_kg",
+            "internal_mass_gravity_m_s2_per_kg",
+            "vertical_displacement_m_per_kg",
+        )
+        components = [document[name] for name in component_names]
+        if any(len(component) != len(distances) for component in components):
+            raise ValueError("every tabulated component must match the distance array")
+        samples = tuple(
+            LoadGreenFunctionSample(*(float(component[index]) for component in components))
+            for index in range(len(distances))
+        )
+        return cls(
+            metadata=metadata,
+            angular_distances_rad=distances,
+            samples=samples,
+            interpolation=document.get("interpolation", "linear_angular_distance"),
+        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -151,4 +234,3 @@ def convolve_load_green_functions(
         green_function_provider_version=metadata.provider_version,
         earth_model=metadata.earth_model,
     )
-

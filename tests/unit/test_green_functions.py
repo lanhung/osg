@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import math
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -12,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from oceangravity.loading import (  # noqa: E402
     LoadGreenFunctionMetadata,
     LoadGreenFunctionSample,
+    TabulatedLoadGreenFunctionProvider,
     convolve_load_green_functions,
 )
 
@@ -77,7 +80,59 @@ class TestLoadGreenFunctions(unittest.TestCase):
         with self.assertRaises(ValueError):
             LoadGreenFunctionMetadata("id", "1", "earth", "source", normalization="per-area")
 
+    def test_tabulated_provider_interpolates_components_without_extrapolation(self) -> None:
+        provider = TabulatedLoadGreenFunctionProvider(
+            metadata=AnalyticFixtureProvider.metadata,
+            angular_distances_rad=(0.1, 0.2, 0.5),
+            samples=(
+                LoadGreenFunctionSample(1.0, -2.0, 3.0),
+                LoadGreenFunctionSample(2.0, -4.0, 6.0),
+                LoadGreenFunctionSample(5.0, -10.0, 15.0),
+            ),
+        )
+        self.assertEqual(provider.evaluate(0.1), provider.samples[0])
+        self.assertEqual(provider.evaluate(0.5), provider.samples[-1])
+        interpolated = provider.evaluate(0.35)
+        for actual, expected in zip(interpolated.as_tuple(), (3.5, -7.0, 10.5), strict=True):
+            self.assertAlmostEqual(actual, expected)
+        with self.assertRaises(ValueError):
+            provider.evaluate(0.09)
+        with self.assertRaises(ValueError):
+            provider.evaluate(0.51)
+
+    def test_tabulated_provider_json_schema(self) -> None:
+        document = {
+            "schema_version": 1,
+            "metadata": {
+                "provider_id": "fixture",
+                "provider_version": "1",
+                "earth_model": "test-only",
+                "source": "unit-test fixture",
+                "normalization": "per_source_mass_kg",
+            },
+            "interpolation": "linear_angular_distance",
+            "angular_distances_rad": [0.0, 1.0],
+            "deformation_gravity_m_s2_per_kg": [0.0, 1.0],
+            "internal_mass_gravity_m_s2_per_kg": [0.0, -1.0],
+            "vertical_displacement_m_per_kg": [0.0, 2.0],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "fixture.json"
+            path.write_text(json.dumps(document), encoding="utf-8")
+            provider = TabulatedLoadGreenFunctionProvider.from_json(path)
+        self.assertEqual(provider.evaluate(0.25), LoadGreenFunctionSample(0.25, -0.25, 0.5))
+
+    def test_tabulated_provider_rejects_bad_tables(self) -> None:
+        with self.assertRaises(ValueError):
+            TabulatedLoadGreenFunctionProvider(
+                metadata=AnalyticFixtureProvider.metadata,
+                angular_distances_rad=(0.2, 0.1),
+                samples=(
+                    LoadGreenFunctionSample(0.0, 0.0, 0.0),
+                    LoadGreenFunctionSample(0.0, 0.0, 0.0),
+                ),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
-

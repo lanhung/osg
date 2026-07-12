@@ -10,6 +10,7 @@ from .green_functions import (
     LoadGreenFunctionMetadata,
     LoadGreenFunctionProvider,
     LoadGreenFunctionSample,
+    TabulatedLoadGreenFunctionProvider,
     LoadResponseComponents,
     convolve_load_green_functions,
 )
@@ -20,6 +21,7 @@ __all__ = [
     "LoadGreenFunctionMetadata",
     "LoadGreenFunctionProvider",
     "LoadGreenFunctionSample",
+    "TabulatedLoadGreenFunctionProvider",
     "LoadResponseComponents",
     "convolve_load_green_functions",
     "sea_level_to_surface_density",

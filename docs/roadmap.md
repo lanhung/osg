@@ -31,7 +31,7 @@ Git contains code, configuration, manifests, checksums, compact fixtures, metric
 - [ ] Install `uv`, resolve dependencies, generate `uv.lock`, and run the complete test/lint suite.
 - [ ] Build and smoke-test the CPU image on Vultr.
 - [ ] Build and smoke-test the GPU image on AutoDL; record CUDA, driver, and framework compatibility.
-- [ ] Add immutable image tags/digests and a machine inventory.
+- [ ] Add immutable image tags/digests and a machine inventory. (Vultr inspected and AutoDL placeholder recorded; AutoDL inspection and image digests remain.)
 - [x] Add experiment metadata schema validation and a working workflow dispatcher.
 - [ ] Demonstrate identical reference output on Vultr and AutoDL.
 

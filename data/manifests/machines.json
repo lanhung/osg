@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "inspected_at_utc": "2026-07-12",
+  "machines": [
+    {
+      "machine_id": "vultr-control-plane",
+      "verification_status": "locally-inspected",
+      "hostname": "vultr",
+      "kernel": "Linux 7.0.0-15-generic x86_64",
+      "cpu": {
+        "logical_cpus": 1,
+        "model": "Intel Core Processor (Skylake, IBRS, no TSX)",
+        "hypervisor_vendor": "Microsoft"
+      },
+      "memory_bytes": 1716604928,
+      "swap_bytes": 5662306304,
+      "gpu": null,
+      "python": "3.14.4",
+      "uv_available": false,
+      "docker_available": false,
+      "network_state": "DNS resolution unavailable for tested GitHub and EarthScope hosts",
+      "roles": [
+        "Git and code control plane",
+        "dependency-free tests",
+        "small reference experiments",
+        "manifests and reports"
+      ]
+    },
+    {
+      "machine_id": "autodl-compute-plane",
+      "verification_status": "user-described-not-inspected",
+      "hostname": null,
+      "kernel": null,
+      "cpu": null,
+      "memory_bytes": null,
+      "swap_bytes": null,
+      "gpu": {
+        "model": "NVIDIA A5000",
+        "count": null,
+        "count_note": "described as multi-card; exact count not inspected"
+      },
+      "python": null,
+      "cuda": null,
+      "driver": null,
+      "roles": [
+        "large parameter sweeps",
+        "PEGS synthetic generation",
+        "conditional GNN training and multi-seed evaluation"
+      ]
+    }
+  ],
+  "cross_machine_regression": {
+    "status": "pending-autodl-access",
+    "required_experiments": [
+      "P1-E001-foundation",
+      "P1-E002-detectability-foundation",
+      "P1-E003-gradient-detectability-foundation",
+      "P1-E004-distance-attenuation-foundation"
+    ],
+    "acceptance": "Every registered output SHA-256 must match exactly, or a predeclared floating-tolerance comparison and discrepancy report must replace byte identity."
+  }
+}

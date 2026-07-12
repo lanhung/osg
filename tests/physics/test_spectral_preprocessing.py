@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     mean_square_from_psd,
     one_sided_spectrum,
 )
@@ -36,9 +36,7 @@ class TestSpectralPreprocessing(unittest.TestCase):
         expected = math.fsum(
             (samples[index] * window_values[index]) ** 2 for index in range(sample_count)
         ) / (sample_count * spectrum.window_power_gain)
-        self.assertAlmostEqual(
-            mean_square_from_psd(spectrum), expected, delta=expected * 2.0e-14
-        )
+        self.assertAlmostEqual(mean_square_from_psd(spectrum), expected, delta=expected * 2.0e-14)
 
     def test_hann_coherent_gain_recovers_bin_sine_peak_amplitude(self) -> None:
         sample_count = 128
@@ -78,11 +76,8 @@ class TestSpectralPreprocessing(unittest.TestCase):
         with self.assertRaises(ValueError):
             one_sided_spectrum([1.0, 2.0], 1.0, detrend="quadratic")
         with self.assertRaises(ValueError):
-            one_sided_spectrum(
-                [1.0, 2.0], 1.0, remove_mean=True, detrend="constant"
-            )
+            one_sided_spectrum([1.0, 2.0], 1.0, remove_mean=True, detrend="constant")
 
 
 if __name__ == "__main__":
     unittest.main()
-

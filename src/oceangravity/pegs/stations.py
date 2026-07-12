@@ -73,7 +73,10 @@ def audit_station_readiness(
 ) -> StationReadinessAudit:
     """Separate archive-analysis readiness from plausible operational access."""
 
-    if isinstance(minimum_operational_station_count, bool) or minimum_operational_station_count <= 0:
+    if (
+        isinstance(minimum_operational_station_count, bool)
+        or minimum_operational_station_count <= 0
+    ):
         raise ValueError("minimum_operational_station_count must be a positive integer")
     identifiers = [epoch.epoch_id for epoch in epochs]
     if len(set(identifiers)) != len(identifiers):

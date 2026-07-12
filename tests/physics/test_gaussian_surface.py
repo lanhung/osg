@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.gravity import (
     gaussian_surface_gravity_numerical,
     gaussian_vertical_gravity_on_axis,
     gravity_vector,
@@ -95,4 +95,3 @@ class TestGaussianSurfaceGravity(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -95,24 +95,18 @@ def calibrate_empirical_threshold(
         window_step_s=step,
         target_false_alarms_per_30_days=target,
         observed_false_alarms_per_30_days=observed_rate,
-        minimum_nonzero_resolvable_false_alarms_per_30_days=(
-            windows_per_month / len(scores)
-        ),
+        minimum_nonzero_resolvable_false_alarms_per_30_days=(windows_per_month / len(scores)),
     )
 
 
-def empirical_detection_probability(
-    signal_scores: Sequence[float], threshold: float
-) -> float:
+def empirical_detection_probability(signal_scores: Sequence[float], threshold: float) -> float:
     """Fraction of finite held-out signal scores meeting the frozen threshold."""
 
     if not signal_scores:
         raise ValueError("signal_scores must not be empty")
     scores = tuple(float(value) for value in signal_scores)
     threshold_value = float(threshold)
-    if not all(math.isfinite(value) for value in scores) or not math.isfinite(
-        threshold_value
-    ):
+    if not all(math.isfinite(value) for value in scores) or not math.isfinite(threshold_value):
         raise ValueError("signal scores and threshold must be finite")
     return sum(score >= threshold_value for score in scores) / len(scores)
 

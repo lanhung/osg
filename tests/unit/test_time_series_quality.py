@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import assess_time_series_quality  # noqa: E402
+from oceangravity.signal_processing import assess_time_series_quality
 
 
 class TestTimeSeriesQuality(unittest.TestCase):
@@ -39,9 +39,7 @@ class TestTimeSeriesQuality(unittest.TestCase):
 
     def test_threshold_must_be_explicit_and_positive(self) -> None:
         with self.assertRaises(ValueError):
-            assess_time_series_quality(
-                [0.0, 1.0], [0.0, 1.0], 1.0, discontinuity_threshold=0.0
-            )
+            assess_time_series_quality([0.0, 1.0], [0.0, 1.0], 1.0, discontinuity_threshold=0.0)
 
 
 if __name__ == "__main__":

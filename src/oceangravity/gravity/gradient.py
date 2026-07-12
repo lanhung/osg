@@ -48,10 +48,7 @@ def gravity_gradient_tensor(
             tuple(
                 scale
                 * (
-                    3.0
-                    * displacement[row]
-                    * displacement[column]
-                    * inverse_distance_fifth
+                    3.0 * displacement[row] * displacement[column] * inverse_distance_fifth
                     - (inverse_distance_cubed if row == column else 0.0)
                 )
                 for column in range(3)
@@ -103,8 +100,5 @@ def volume_cell_gravity_gradient(
 
     rows = []
     for row in range(3):
-        rows.append(
-            tuple(math.fsum(component_terms[3 * row + column]) for column in range(3))
-        )
+        rows.append(tuple(math.fsum(component_terms[3 * row + column]) for column in range(3)))
     return rows[0], rows[1], rows[2]
-

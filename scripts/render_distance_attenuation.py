@@ -39,27 +39,59 @@ def render_metric(document: dict, metric: str, y_label: str) -> str:
         return TOP + plot_height * math.log(y_max / value) / math.log(y_max / y_min)
 
     lines = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">',
+        (
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" '
+            f'height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">'
+        ),
         '<rect width="100%" height="100%" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#222}.tick{font-size:13px}.label{font-size:15px}.title{font-size:19px;font-weight:600}.legend{font-size:12px}</style>',
-        f'<text class="title" x="{WIDTH / 2}" y="29" text-anchor="middle">Engineering distance attenuation: {escape(y_label)}</text>',
+        (
+            "<style>text{font-family:Arial,sans-serif;fill:#222}"
+            ".tick{font-size:13px}.label{font-size:15px}"
+            ".title{font-size:19px;font-weight:600}"
+            ".legend{font-size:12px}</style>"
+        ),
+        (
+            f'<text class="title" x="{WIDTH / 2}" y="29" text-anchor="middle">'
+            f"Engineering distance attenuation: {escape(y_label)}</text>"
+        ),
     ]
     for exponent in range(math.floor(math.log10(x_min)), math.ceil(math.log10(x_max)) + 1):
         tick = 10.0**exponent
         if x_min <= tick <= x_max:
             x = x_pos(tick)
-            lines.append(f'<line x1="{x:.3f}" y1="{TOP}" x2="{x:.3f}" y2="{TOP + plot_height}" stroke="#ddd"/>')
-            lines.append(f'<text class="tick" x="{x:.3f}" y="{TOP + plot_height + 23}" text-anchor="middle">1e{exponent}</text>')
+            lines.append(
+                f'<line x1="{x:.3f}" y1="{TOP}" x2="{x:.3f}" '
+                f'y2="{TOP + plot_height}" stroke="#ddd"/>'
+            )
+            lines.append(
+                f'<text class="tick" x="{x:.3f}" y="{TOP + plot_height + 23}" '
+                f'text-anchor="middle">1e{exponent}</text>'
+            )
     for exponent in range(math.floor(math.log10(y_min)), math.ceil(math.log10(y_max)) + 1):
         tick = 10.0**exponent
         y = y_pos(tick)
-        lines.append(f'<line x1="{LEFT}" y1="{y:.3f}" x2="{LEFT + plot_width}" y2="{y:.3f}" stroke="#ddd"/>')
-        lines.append(f'<text class="tick" x="{LEFT - 12}" y="{y + 4:.3f}" text-anchor="end">1e{exponent}</text>')
+        lines.append(
+            f'<line x1="{LEFT}" y1="{y:.3f}" x2="{LEFT + plot_width}" y2="{y:.3f}" stroke="#ddd"/>'
+        )
+        lines.append(
+            f'<text class="tick" x="{LEFT - 12}" y="{y + 4:.3f}" '
+            f'text-anchor="end">1e{exponent}</text>'
+        )
     lines.extend(
         (
-            f'<rect x="{LEFT}" y="{TOP}" width="{plot_width}" height="{plot_height}" fill="none" stroke="#222"/>',
-            f'<text class="label" x="{LEFT + plot_width / 2}" y="{HEIGHT - 23}" text-anchor="middle">Vertical standoff (m)</text>',
-            f'<text class="label" transform="translate(23 {TOP + plot_height / 2}) rotate(-90)" text-anchor="middle">{escape(y_label)}</text>',
+            (
+                f'<rect x="{LEFT}" y="{TOP}" width="{plot_width}" '
+                f'height="{plot_height}" fill="none" stroke="#222"/>'
+            ),
+            (
+                f'<text class="label" x="{LEFT + plot_width / 2}" '
+                f'y="{HEIGHT - 23}" text-anchor="middle">Vertical standoff (m)</text>'
+            ),
+            (
+                f'<text class="label" transform="translate(23 '
+                f'{TOP + plot_height / 2}) rotate(-90)" text-anchor="middle">'
+                f"{escape(y_label)}</text>"
+            ),
         )
     )
     for index, (name, records) in enumerate(sorted(processes.items())):
@@ -68,12 +100,22 @@ def render_metric(document: dict, metric: str, y_label: str) -> str:
             f"{x_pos(record['vertical_standoff_m']):.3f},{y_pos(record[metric]):.3f}"
             for record in records
         )
-        lines.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="2.5"/>')
+        lines.append(
+            f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="2.5"/>'
+        )
         for record in records:
-            lines.append(f'<circle cx="{x_pos(record["vertical_standoff_m"]):.3f}" cy="{y_pos(record[metric]):.3f}" r="2.6" fill="{color}"/>')
+            lines.append(
+                f'<circle cx="{x_pos(record["vertical_standoff_m"]):.3f}" '
+                f'cy="{y_pos(record[metric]):.3f}" r="2.6" fill="{color}"/>'
+            )
         legend_y = TOP + 17 + 18 * index
-        lines.append(f'<line x1="{LEFT + 12}" y1="{legend_y}" x2="{LEFT + 38}" y2="{legend_y}" stroke="{color}" stroke-width="3"/>')
-        lines.append(f'<text class="legend" x="{LEFT + 45}" y="{legend_y + 4}">{escape(name)}</text>')
+        lines.append(
+            f'<line x1="{LEFT + 12}" y1="{legend_y}" x2="{LEFT + 38}" '
+            f'y2="{legend_y}" stroke="{color}" stroke-width="3"/>'
+        )
+        lines.append(
+            f'<text class="legend" x="{LEFT + 45}" y="{legend_y + 4}">{escape(name)}</text>'
+        )
     lines.append("</svg>")
     return "\n".join(lines) + "\n"
 

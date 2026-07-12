@@ -18,9 +18,7 @@ class TestPaper2EnvironmentalManifest(unittest.TestCase):
 
     def test_products_are_versioned_and_cited(self) -> None:
         products = {item["id"]: item for item in self.document["products"]}
-        self.assertEqual(
-            products["era5-single-levels-hourly"]["doi"], "10.24381/cds.adbb2d47"
-        )
+        self.assertEqual(products["era5-single-levels-hourly"]["doi"], "10.24381/cds.adbb2d47")
         self.assertEqual(
             products["cmems-global-ocean-physics-analysis-forecast"]["doi"],
             "10.48670/moi-00016",
@@ -41,9 +39,7 @@ class TestPaper2EnvironmentalManifest(unittest.TestCase):
         self.assertIn("not an additional mean water-mass load", " ".join(era5["warnings"]))
 
     def test_double_count_gate_remains_unresolved(self) -> None:
-        self.assertTrue(
-            self.document["double_count_gate"]["status"].startswith("unresolved")
-        )
+        self.assertTrue(self.document["double_count_gate"]["status"].startswith("unresolved"))
         cmems = self.document["products"][1]
         self.assertTrue(cmems["variable_metadata_status"].startswith("must-verify"))
 

@@ -33,9 +33,7 @@ def _great_circle_distance_km(
     longitude_delta = math.radians(longitude_b_deg - longitude_a_deg)
     haversine = (
         math.sin(latitude_delta / 2.0) ** 2
-        + math.cos(latitude_a)
-        * math.cos(latitude_b)
-        * math.sin(longitude_delta / 2.0) ** 2
+        + math.cos(latitude_a) * math.cos(latitude_b) * math.sin(longitude_delta / 2.0) ** 2
     )
     return 2.0 * EARTH_MEAN_RADIUS_KM * math.asin(min(1.0, math.sqrt(haversine)))
 
@@ -164,7 +162,10 @@ def select_candidates(input_path: Path, config: dict) -> dict:
         "reference_points": list(references),
         "shortlist_screening": config.get("shortlist_screening"),
         "events": events,
-        "warning": "Candidate status does not imply superconducting-gravimeter coverage or event suitability.",
+        "warning": (
+            "Candidate status does not imply superconducting-gravimeter coverage "
+            "or event suitability."
+        ),
     }
 
 

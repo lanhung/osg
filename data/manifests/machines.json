@@ -28,20 +28,36 @@
     },
     {
       "machine_id": "autodl-compute-plane",
-      "verification_status": "user-described-not-inspected",
-      "hostname": null,
-      "kernel": null,
-      "cpu": null,
-      "memory_bytes": null,
-      "swap_bytes": null,
-      "gpu": {
-        "model": "NVIDIA A5000",
-        "count": null,
-        "count_note": "described as multi-card; exact count not inspected"
+      "verification_status": "remotely-inspected",
+      "hostname": "autodl-container-7fb444a9ae-9b4ed319",
+      "kernel": "Linux 6.8.0-90-generic x86_64",
+      "cpu": {
+        "logical_cpus": 64,
+        "model": "Intel Xeon Silver 4314 CPU @ 2.40GHz",
+        "sockets": 2,
+        "cores_per_socket": 16,
+        "threads_per_core": 2
       },
-      "python": null,
-      "cuda": null,
-      "driver": null,
+      "memory_bytes": 134787624960,
+      "swap_bytes": 8589930496,
+      "gpu": {
+        "model": "NVIDIA RTX 5000 Ada Generation",
+        "count": 4,
+        "memory_mib_per_device": 32760,
+        "compute_capability": "8.9"
+      },
+      "python": "3.12.12",
+      "uv": "0.8.24",
+      "cuda_driver_reported": "12.8",
+      "driver": "570.124.06",
+      "locked_scientific_environment": {
+        "numpy": "2.5.1",
+        "scipy": "1.18.0",
+        "obspy": "1.5.0",
+        "xarray": "2026.7.0",
+        "torch": null
+      },
+      "execution_root": "/root/autodl-tmp/ocean-gravity-run",
       "roles": [
         "large parameter sweeps",
         "PEGS synthetic generation",
@@ -50,13 +66,17 @@
     }
   ],
   "cross_machine_regression": {
-    "status": "pending-autodl-access",
+    "status": "autodl-suite-passed-vultr-rerun-pending",
     "required_experiments": [
       "P1-E001-foundation",
       "P1-E002-detectability-foundation",
       "P1-E003-gradient-detectability-foundation",
-      "P1-E004-distance-attenuation-foundation"
+      "P1-E004-distance-attenuation-foundation",
+      "P3-E001-physical-baseline-foundation"
     ],
+    "autodl_validation_log_sha256": "3a65b41290c52b6e8ecf206554d578f54009824094682625c320258a9967ab91",
+    "autodl_registered_outputs_reproduced": 5,
+    "autodl_test_result": "430 passed, 12 subtests passed",
     "acceptance": "Every registered output SHA-256 must match exactly, or a predeclared floating-tolerance comparison and discrepancy report must replace byte identity."
   }
 }

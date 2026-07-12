@@ -2,7 +2,7 @@
   "schema_version": 1,
   "reviewed_date": "2026-07-12",
   "selected_candidate": "loaddef-v1.2.2",
-  "integration_status": "selected-not-installed",
+  "integration_status": "validated-for-paper1-ce-provider-scope",
   "sources": [
     {
       "id": "loaddef-v1.2.2",
@@ -14,7 +14,7 @@
       "license": "GPL-3.0",
       "software_citation_doi": "10.1029/2018EA000462",
       "earth_model_candidate": "oceanless PREM",
-      "reference_frame_candidates": ["CE", "CM"],
+      "reference_frame_candidates": ["CE", "CM", "CF"],
       "documented_outputs": [
         "vertical displacement load Green function",
         "horizontal displacement load Green function",
@@ -27,30 +27,47 @@
         "M2 ocean-tide-loading displacement comparison with SPOTL"
       ],
       "source_audit_observations": {
-        "scope": "upstream main branch inspected through GitHub HTML on 2026-07-12; not a v1.2.2 artifact audit",
+        "scope": "exact v1.2.2 tag archive inspected and executed on AutoDL on 2026-07-12",
         "observed_reference_frame_outputs": ["CE", "CM", "CF"],
         "observed_gravity_outputs": ["gE elastic response", "gN Newtonian response"],
         "observed_output_normalization_header": "gE*(10^18*(a*theta))",
-        "project_consequence": "Use a selected gE reference-frame output only for the combined elastic path and compute direct attraction independently; do not add LoadDef gN again. Reverse and test the published normalization before SI conversion."
+        "gE_equation": "2*g_surface*(u/a) - (g_surface/earth_mass) times the potential-Love-number Legendre sum",
+        "gN_equation": "-g_surface/(4*earth_mass*sin(theta/2)) before output normalization",
+        "project_consequence": "Use a selected gE reference-frame output only for the combined deformation-plus-potential elastic path and compute direct attraction independently; do not add LoadDef gN again."
       },
       "local_install": {
-        "status": "blocked-by-control-plane-dns",
-        "exact_commit": null,
-        "artifact_checksum": null
+        "status": "installed-and-executed-on-autodl",
+        "exact_commit": "b65493574f606b7d165a2d10fe862eda5b32f89a",
+        "artifact_sha256": "77243146b260c6ff90d09cdeda6f721c6e8e3c003899614dab5e345c66611b5b",
+        "artifact_size_bytes": 31626039,
+        "license_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "execution_config": "configs/paper1/loaddef_v1.2.2_prem.json",
+        "environment": {
+          "python": "3.12.12",
+          "mpich": "5.0.1",
+          "mpi4py": "4.1.2",
+          "numpy": "1.26.4",
+          "scipy": "1.11.4",
+          "numba": "0.63.1",
+          "matplotlib": "3.10.8"
+        }
       },
       "scientific_use_gate": {
-        "status": "not-ready",
-        "exact_source_commit": null,
-        "artifact_sha256": null,
-        "reference_frame": null,
-        "source_equation_audited": false,
-        "published_benchmark_id": null,
-        "benchmark_passed": false
+        "status": "ready-for-paper1-ce-provider-scope",
+        "exact_source_commit": "b65493574f606b7d165a2d10fe862eda5b32f89a",
+        "artifact_sha256": "77243146b260c6ff90d09cdeda6f721c6e8e3c003899614dab5e345c66611b5b",
+        "reference_frame": "CE",
+        "source_equation_audited": true,
+        "published_benchmark_id": "Martens2019-LoadDef-DataSets-S2-S5-provider-columns",
+        "benchmark_passed": true,
+        "benchmark_metrics_sha256": "57f1005d0fd4b2a2fbf87808e47d76b4f4886fdb87dcc22ca43e5196c6ab8daf",
+        "benchmark_scope": ["theta_deg", "radial_displacement_m_per_kg", "normalized_gE"],
+        "strict_all_twelve_columns_status": "failed-with-discrepancy-report"
       },
       "component_mapping": {
-        "status": "requires-source-and-equation-audit",
+        "status": "source-audited",
         "provisional_project_semantics": "combined_elastic_gravity",
-        "warning": "Do not split LoadDef elastic gravity into deformation and internal-mass terms without verifying its exact gE definition and normalization. The project interface now enforces a combined-output path until such evidence exists."
+        "warning": "gE combines the surface-displacement free-air term and potential response. gN is direct Newtonian attraction and must not be added when the project direct-attraction path is already present. CE authorization is limited to the Paper 1 provider scope; Paper 2 must retain reference-frame sensitivity."
       }
     }
   ],

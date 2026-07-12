@@ -21,7 +21,9 @@ class SourceTemplateHypothesis:
             or not self.segment_id.strip()
             or not self.template_source_id.strip()
         ):
-            raise ValueError("source hypothesis scenario, segment, and source IDs must be non-empty")
+            raise ValueError(
+                "source hypothesis scenario, segment, and source IDs must be non-empty"
+            )
         if not math.isfinite(self.magnitude_mw) or self.magnitude_mw <= 0.0:
             raise ValueError("source hypothesis magnitude must be finite and positive")
 
@@ -96,9 +98,7 @@ def invert_discrete_source_library(
         raise ValueError("sample_interval_s must be finite and positive")
     window_start = float(window_start_time_since_origin_s)
     if not math.isfinite(window_start) or window_start < 0.0:
-        raise ValueError(
-            "window_start_time_since_origin_s must be finite and non-negative"
-        )
+        raise ValueError("window_start_time_since_origin_s must be finite and non-negative")
     scenario_ids = tuple(row.scenario_id for row in rows)
     if len(set(scenario_ids)) != len(scenario_ids):
         raise ValueError("source hypothesis scenario IDs must be unique")
@@ -111,9 +111,7 @@ def invert_discrete_source_library(
     if len(observation_lengths) != 1 or next(iter(observation_lengths)) == 0:
         raise ValueError("station observations must have equal nonzero length")
     sample_count = next(iter(observation_lengths))
-    if not all(
-        math.isfinite(value) for row in observations.values() for value in row
-    ):
+    if not all(math.isfinite(value) for row in observations.values() for value in row):
         raise ValueError("station observations must be finite")
     noise = {
         station_id: float(station_noise_standard_deviation[station_id])
@@ -122,8 +120,7 @@ def invert_discrete_source_library(
     if not all(math.isfinite(value) and value > 0.0 for value in noise.values()):
         raise ValueError("station noise standard deviations must be finite and positive")
     noise_sources = {
-        station_id: station_noise_scale_source_ids[station_id]
-        for station_id in station_ids
+        station_id: station_noise_scale_source_ids[station_id] for station_id in station_ids
     }
     if any(
         not isinstance(source_id, str) or not source_id.strip()
@@ -131,14 +128,10 @@ def invert_discrete_source_library(
     ):
         raise ValueError("noise-scale source IDs must be non-empty strings")
     if station_inclusion_masks is None:
-        masks = {
-            station_id: (True,) * len(observations[station_id])
-            for station_id in station_ids
-        }
+        masks = {station_id: (True,) * len(observations[station_id]) for station_id in station_ids}
     else:
         masks = {
-            station_id: tuple(station_inclusion_masks[station_id])
-            for station_id in station_ids
+            station_id: tuple(station_inclusion_masks[station_id]) for station_id in station_ids
         }
         if any(
             len(masks[station_id]) != len(observations[station_id])
@@ -146,9 +139,7 @@ def invert_discrete_source_library(
             for station_id in station_ids
         ):
             raise ValueError("each station mask must contain one boolean per observation")
-    included_count = sum(
-        include for station_id in station_ids for include in masks[station_id]
-    )
+    included_count = sum(include for station_id in station_ids for include in masks[station_id])
     if included_count == 0:
         raise ValueError("source inversion requires at least one included sample")
 
@@ -165,9 +156,7 @@ def invert_discrete_source_library(
                 f"hypothesis {hypothesis.scenario_id!r} station IDs do not match observations"
             )
         templates = {
-            station_id: tuple(
-                float(value) for value in hypothesis.station_templates[station_id]
-            )
+            station_id: tuple(float(value) for value in hypothesis.station_templates[station_id])
             for station_id in station_ids
         }
         if any(
@@ -180,10 +169,7 @@ def invert_discrete_source_library(
         if not all(math.isfinite(value) for row in templates.values() for value in row):
             raise ValueError("source hypothesis templates must be finite")
         chi_square = math.fsum(
-            (
-                observations[station_id][index] - templates[station_id][index]
-            )
-            ** 2
+            (observations[station_id][index] - templates[station_id][index]) ** 2
             / noise[station_id] ** 2
             for station_id in station_ids
             for index, include in enumerate(masks[station_id])
@@ -217,9 +203,7 @@ def invert_discrete_source_library(
         sample_interval_s=sample_interval,
         window_start_time_since_origin_s=window_start,
         window_duration_s=sample_count * sample_interval,
-        decision_time_since_origin_s=(
-            window_start + sample_count * sample_interval
-        ),
+        decision_time_since_origin_s=(window_start + sample_count * sample_interval),
         noise_scale_source_ids=tuple(
             (station_id, noise_sources[station_id]) for station_id in station_ids
         ),

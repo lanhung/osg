@@ -37,11 +37,7 @@ def summarize_stationxml(payload: bytes, network: str, station: str) -> dict:
                 if len(code) != 3 or code[:2] not in {"BH", "LH"}:
                     continue
                 response = next(
-                    (
-                        child
-                        for child in channel
-                        if _local_name(child.tag) == "Response"
-                    ),
+                    (child for child in channel if _local_name(child.tag) == "Response"),
                     None,
                 )
                 sensitivity = None
@@ -91,8 +87,7 @@ def summarize_stationxml(payload: bytes, network: str, station: str) -> dict:
         )
         groups.setdefault(key, set()).add(channel["channel"][2])
         complete_response[key] = complete_response.get(key, True) and (
-            channel["response_present"]
-            and channel["instrument_sensitivity_present"]
+            channel["response_present"] and channel["instrument_sensitivity_present"]
         )
         full_response_structure[key] = full_response_structure.get(key, True) and (
             channel["response_present"]
@@ -164,7 +159,7 @@ def main() -> int:
         url = build_url(config, network, station)
         request = urllib.request.Request(url, headers={"User-Agent": "oceangravity/0.1"})
         try:
-            with urllib.request.urlopen(request, timeout=args.timeout) as response:  # noqa: S310
+            with urllib.request.urlopen(request, timeout=args.timeout) as response:
                 payload = response.read()
                 status = response.status
                 final_url = response.url
@@ -213,7 +208,10 @@ def main() -> int:
             for row in results
         ),
         "stations": results,
-        "warning": "StationXML response presence does not establish waveform availability, current operation, real-time latency, licence, or usable PEGS noise.",
+        "warning": (
+            "StationXML response presence does not establish waveform availability, "
+            "current operation, real-time latency, licence, or usable PEGS noise."
+        ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(output, indent=2, sort_keys=True) + "\n")

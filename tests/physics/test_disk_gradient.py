@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import GRAVITATIONAL_CONSTANT  # noqa: E402
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.constants import GRAVITATIONAL_CONSTANT
+from oceangravity.gravity import (
     disk_vertical_gravity_gradient_on_axis,
     disk_vertical_gravity_on_axis,
     gravity_gradient_tensor,
@@ -25,29 +25,19 @@ class TestDiskVerticalGradient(unittest.TestCase):
         observation_z = 1_000.0
         step = 0.01
         numerical = (
-            disk_vertical_gravity_on_axis(
-                density, radius, disk_z, observation_z + step
-            )
-            - disk_vertical_gravity_on_axis(
-                density, radius, disk_z, observation_z - step
-            )
+            disk_vertical_gravity_on_axis(density, radius, disk_z, observation_z + step)
+            - disk_vertical_gravity_on_axis(density, radius, disk_z, observation_z - step)
         ) / (2.0 * step)
-        analytic = disk_vertical_gravity_gradient_on_axis(
-            density, radius, disk_z, observation_z
-        )
+        analytic = disk_vertical_gravity_gradient_on_axis(density, radius, disk_z, observation_z)
         self.assertAlmostEqual(numerical, analytic, delta=abs(analytic) * 1e-8)
 
     def test_far_field_matches_equal_point_mass_tzz(self) -> None:
         density = 1_025.0
         radius = 100.0
         separation = 100.0 * radius
-        disk = disk_vertical_gravity_gradient_on_axis(
-            density, radius, -separation, 0.0
-        )
+        disk = disk_vertical_gravity_gradient_on_axis(density, radius, -separation, 0.0)
         mass = math.pi * radius**2 * density
-        point = gravity_gradient_tensor(
-            mass, (0.0, 0.0, -separation), (0.0, 0.0, 0.0)
-        )[2][2]
+        point = gravity_gradient_tensor(mass, (0.0, 0.0, -separation), (0.0, 0.0, 0.0))[2][2]
         self.assertLess(abs(disk - point) / abs(point), 0.01)
 
     def test_gradient_is_even_across_plane_and_signed_with_density(self) -> None:
@@ -73,4 +63,3 @@ class TestDiskVerticalGradient(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

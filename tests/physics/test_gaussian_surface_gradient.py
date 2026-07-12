@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.gravity import (
     gaussian_surface_gravity_numerical,
     gaussian_surface_response_numerical,
     gaussian_vertical_gravity_on_axis,
@@ -25,12 +25,8 @@ class TestGaussianSurfaceGradient(unittest.TestCase):
         observation_z = 500.0
         step = 0.1
         finite_difference = (
-            gaussian_vertical_gravity_on_axis(
-                density, scale, anomaly_z, observation_z + step
-            )
-            - gaussian_vertical_gravity_on_axis(
-                density, scale, anomaly_z, observation_z - step
-            )
+            gaussian_vertical_gravity_on_axis(density, scale, anomaly_z, observation_z + step)
+            - gaussian_vertical_gravity_on_axis(density, scale, anomaly_z, observation_z - step)
         ) / (2.0 * step)
         response = gaussian_surface_response_numerical(
             density,
@@ -41,8 +37,7 @@ class TestGaussianSurfaceGradient(unittest.TestCase):
             angular_cells=16,
         )
         self.assertLess(
-            abs(response.vertical_gravity_gradient_s2 - finite_difference)
-            / abs(finite_difference),
+            abs(response.vertical_gravity_gradient_s2 - finite_difference) / abs(finite_difference),
             5e-4,
         )
 
@@ -89,9 +84,7 @@ class TestGaussianSurfaceGradient(unittest.TestCase):
             angular_cells=24,
         )
         mass = 2.0 * math.pi * density * scale**2
-        point = gravity_gradient_tensor(
-            mass, (0.0, 0.0, -separation), (0.0, 0.0, 0.0)
-        )[2][2]
+        point = gravity_gradient_tensor(mass, (0.0, 0.0, -separation), (0.0, 0.0, 0.0))[2][2]
         self.assertLess(
             abs(response.vertical_gravity_gradient_s2 - point) / abs(point),
             0.01,
@@ -112,4 +105,3 @@ class TestGaussianSurfaceGradient(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

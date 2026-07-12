@@ -9,11 +9,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import (  # noqa: E402
+from oceangravity.constants import (
     WGS84_INVERSE_FLATTENING,
     WGS84_SEMI_MAJOR_AXIS,
 )
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.loading import (
     surface_load_gravity_spherical,
     surface_load_gravity_wgs84,
 )
@@ -29,8 +29,11 @@ class TestEllipsoidalSurfaceGrid(unittest.TestCase):
         flattening = 1.0 / WGS84_INVERSE_FLATTENING.value
         semi_minor = semi_major * (1.0 - flattening)
         eccentricity = math.sqrt(1.0 - (semi_minor / semi_major) ** 2)
-        expected_area = 2.0 * math.pi * semi_major**2 * (
-            1.0 + (1.0 - eccentricity**2) * math.atanh(eccentricity) / eccentricity
+        expected_area = (
+            2.0
+            * math.pi
+            * semi_major**2
+            * (1.0 + (1.0 - eccentricity**2) * math.atanh(eccentricity) / eccentricity)
         )
         result = surface_load_gravity_wgs84(
             [[0.0] * 36 for _ in range(18)],
@@ -67,9 +70,9 @@ class TestEllipsoidalSurfaceGrid(unittest.TestCase):
             110.0,
             100_000.0,
         )
-        relative = abs(
-            ellipsoid.geodetic_up_gravity_m_s2 - sphere.radial_gravity_m_s2
-        ) / abs(ellipsoid.geodetic_up_gravity_m_s2)
+        relative = abs(ellipsoid.geodetic_up_gravity_m_s2 - sphere.radial_gravity_m_s2) / abs(
+            ellipsoid.geodetic_up_gravity_m_s2
+        )
         self.assertLess(relative, 0.01)
         self.assertGreater(relative, 0.0)
 
@@ -97,9 +100,7 @@ class TestEllipsoidalSurfaceGrid(unittest.TestCase):
         self.assertEqual(result.skipped_missing_cells, 1)
         self.assertEqual(result.skipped_masked_cells, 1)
         with self.assertRaises(ValueError):
-            surface_load_gravity_wgs84(
-                [[1.0]], [-91.0, 0.0], [0.0, 1.0], 0.0, 0.0, 1_000.0
-            )
+            surface_load_gravity_wgs84([[1.0]], [-91.0, 0.0], [0.0, 1.0], 0.0, 0.0, 1_000.0)
 
     def test_geodetic_up_gradient_matches_height_finite_difference(self) -> None:
         arguments = ([[1_025.0]], [19.0, 21.0], [109.0, 111.0], 20.0, 110.0)
@@ -107,9 +108,9 @@ class TestEllipsoidalSurfaceGrid(unittest.TestCase):
         lower = surface_load_gravity_wgs84(*arguments, 100_000.0 - step)
         centre = surface_load_gravity_wgs84(*arguments, 100_000.0)
         upper = surface_load_gravity_wgs84(*arguments, 100_000.0 + step)
-        finite_difference = (
-            upper.geodetic_up_gravity_m_s2 - lower.geodetic_up_gravity_m_s2
-        ) / (2.0 * step)
+        finite_difference = (upper.geodetic_up_gravity_m_s2 - lower.geodetic_up_gravity_m_s2) / (
+            2.0 * step
+        )
         self.assertAlmostEqual(
             centre.geodetic_up_gravity_gradient_s2,
             finite_difference,

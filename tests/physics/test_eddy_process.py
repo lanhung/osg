@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import REFERENCE_SEAWATER_DENSITY  # noqa: E402
-from oceangravity.processes import (  # noqa: E402
+from oceangravity.constants import REFERENCE_SEAWATER_DENSITY
+from oceangravity.processes import (
     regular_times,
     translating_gaussian_surface_eddy,
 )
@@ -84,9 +84,7 @@ class TestTranslatingGaussianEddy(unittest.TestCase):
     def test_peak_density_and_sign_scale_gravity_linearly(self) -> None:
         baseline = self._signal()
         negative = self._signal(peak_sea_level_anomaly_m=-0.4)
-        doubled_density = self._signal(
-            water_density_kg_m3=2.0 * REFERENCE_SEAWATER_DENSITY.value
-        )
+        doubled_density = self._signal(water_density_kg_m3=2.0 * REFERENCE_SEAWATER_DENSITY.value)
         self.assertEqual(
             negative.vertical_direct_gravity_m_s2,
             tuple(-value for value in baseline.vertical_direct_gravity_m_s2),
@@ -109,4 +107,3 @@ class TestTranslatingGaussianEddy(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

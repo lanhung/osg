@@ -57,9 +57,7 @@ class TestPaper2Decision(unittest.TestCase):
         self.assertEqual(result.blocking_reasons, ())
 
     def test_missing_license_blocks_release_not_scientific_branch(self) -> None:
-        result = audit_paper2_decision(
-            replace(_complete(), data_license_review_complete=False)
-        )
+        result = audit_paper2_decision(replace(_complete(), data_license_review_complete=False))
         self.assertEqual(result.branch, "successful_attribution")
         self.assertTrue(result.full_attribution_claim_ready)
         self.assertFalse(result.manuscript_release_ready)
@@ -74,15 +72,11 @@ class TestPaper2Decision(unittest.TestCase):
         )
         result = audit_paper2_decision(negative)
         self.assertEqual(result.branch, "non_detection_constraints")
-        model_failure = audit_paper2_decision(
-            replace(negative, event_snrs=(1.0, 1.5, 4.0, 2.5))
-        )
+        model_failure = audit_paper2_decision(replace(negative, event_snrs=(1.0, 1.5, 4.0, 2.5)))
         self.assertEqual(model_failure.branch, "ocean_product_evaluation")
 
     def test_missing_or_fixture_evidence_stays_pending(self) -> None:
-        document = json.loads(
-            (ROOT / "configs/paper2/decision_evidence.json").read_text()
-        )
+        document = json.loads((ROOT / "configs/paper2/decision_evidence.json").read_text())
         result = MODULE.audit_document(document)
         self.assertEqual(result["audit"]["branch"], "pending_evidence")
         self.assertFalse(result["audit"]["full_attribution_claim_ready"])
@@ -103,9 +97,7 @@ class TestPaper2Decision(unittest.TestCase):
             heldout_improvement_passes=(),
             event_snrs=(5.0,),
         )
-        self.assertEqual(
-            audit_paper2_decision(case).branch, "single_case_short_paper"
-        )
+        self.assertEqual(audit_paper2_decision(case).branch, "single_case_short_paper")
         incomplete = replace(case, effect_closure_ready=False)
         self.assertEqual(audit_paper2_decision(incomplete).branch, "pending_evidence")
 

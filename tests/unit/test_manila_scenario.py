@@ -28,9 +28,7 @@ def _scenario(**overrides) -> ManilaScenario:
         "rise_time_s": 60.0,
         "rupture_velocity_m_s": 2_500.0,
         "source": "unit-test fixture; not a physical scenario",
-        "arrivals": (
-            TsunamiArrival("hong_kong", 10_800.0, "first threshold crossing", "fixture"),
-        ),
+        "arrivals": (TsunamiArrival("hong_kong", 10_800.0, "first threshold crossing", "fixture"),),
     }
     values.update(overrides)
     return ManilaScenario(**values)
@@ -50,9 +48,7 @@ class TestManilaScenario(unittest.TestCase):
             _scenario(arrivals=(_scenario().arrivals[0], duplicate))
 
     def test_manifest_refuses_unsourced_numeric_scenarios(self) -> None:
-        document = json.loads(
-            (ROOT / "data/manifests/manila_scenario_sources.json").read_text()
-        )
+        document = json.loads((ROOT / "data/manifests/manila_scenario_sources.json").read_text())
         self.assertEqual(document["scenarios"], [])
         self.assertTrue(document["scenario_table_status"].startswith("pending"))
         self.assertIn("no conversion", document["required_before_scenario_registration"][-1])

@@ -6,13 +6,13 @@ from .eddy import (
     translating_compensated_gaussian_density_eddy,
     translating_gaussian_surface_eddy,
 )
-from .internal_wave import (
-    CompensatedDipoleResult,
-    oscillating_compensated_gaussian_dipole,
-)
 from .gridded_load import (
     GriddedSeaLevelSignalResult,
     gridded_sea_level_direct_gravity_signal,
+)
+from .internal_wave import (
+    CompensatedDipoleResult,
+    oscillating_compensated_gaussian_dipole,
 )
 from .landslide import (
     MassRelocationResult,
@@ -24,20 +24,20 @@ from .tide import periodic_disk_tide
 from .tsunami import TsunamiWavePacketResult, propagating_compensated_gaussian_tsunami
 
 __all__ = [
-    "ScalarGravitySignal",
+    "CompensatedDensityEddyResult",
     "CompensatedDipoleResult",
-    "MassRelocationResult",
     "GriddedSeaLevelSignalResult",
+    "MassRelocationResult",
+    "ScalarGravitySignal",
     "TsunamiWavePacketResult",
     "asymmetric_gaussian_disk_surge",
-    "periodic_disk_tide",
-    "oscillating_compensated_gaussian_dipole",
-    "mass_conserving_submarine_landslide",
+    "gridded_sea_level_direct_gravity_signal",
     "mass_conserving_gaussian_submarine_landslide",
+    "mass_conserving_submarine_landslide",
+    "oscillating_compensated_gaussian_dipole",
+    "periodic_disk_tide",
     "propagating_compensated_gaussian_tsunami",
     "regular_times",
-    "gridded_sea_level_direct_gravity_signal",
-    "translating_gaussian_surface_eddy",
     "translating_compensated_gaussian_density_eddy",
-    "CompensatedDensityEddyResult",
+    "translating_gaussian_surface_eddy",
 ]

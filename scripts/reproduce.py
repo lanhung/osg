@@ -54,7 +54,7 @@ def main() -> int:
     args = parse_args()
     root = Path(__file__).resolve().parents[1]
     try:
-        experiment_dir, metadata = _load_metadata(root, args.paper, args.experiment)
+        _experiment_dir, metadata = _load_metadata(root, args.paper, args.experiment)
         runner = _resolve_inside_root(root, metadata["runner"])
         config = _resolve_inside_root(root, metadata["config_file"])
         outputs = metadata["outputs"]
@@ -73,7 +73,8 @@ def main() -> int:
     actual_sha256 = _sha256(output)
     if actual_sha256 != expected_sha256:
         raise SystemExit(
-            f"Output checksum mismatch for {output}: expected {expected_sha256}, got {actual_sha256}"
+            f"Output checksum mismatch for {output}: expected {expected_sha256}, "
+            f"got {actual_sha256}"
         )
     print(
         json.dumps(
@@ -92,4 +93,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

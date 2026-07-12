@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.pegs import independent_noise_network_template_scores  # noqa: E402
+from oceangravity.pegs import independent_noise_network_template_scores
 
 
 class TestPegsTemplateBaseline(unittest.TestCase):

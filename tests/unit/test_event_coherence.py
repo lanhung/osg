@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     mean_coherence_in_band,
     welch_magnitude_squared_coherence,
 )
@@ -18,8 +18,7 @@ from oceangravity.signal_processing import (  # noqa: E402
 class TestEventCoherence(unittest.TestCase):
     def test_identical_signal_has_unit_coherence_where_power_exists(self) -> None:
         samples = tuple(
-            math.sin(2.0 * math.pi * index / 8.0)
-            + 0.3 * math.sin(2.0 * math.pi * index / 4.0)
+            math.sin(2.0 * math.pi * index / 8.0) + 0.3 * math.sin(2.0 * math.pi * index / 4.0)
             for index in range(32)
         )
         result = welch_magnitude_squared_coherence(

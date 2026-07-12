@@ -16,9 +16,7 @@ from run_p1_detectability_foundation import run  # noqa: E402
 class TestDetectabilityExperiment(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.config = json.loads(
-            (ROOT / "configs/paper1/detectability_foundation.json").read_text()
-        )
+        cls.config = json.loads((ROOT / "configs/paper1/detectability_foundation.json").read_text())
         cls.result = run(cls.config)
 
     def test_result_is_deterministic_and_complete(self) -> None:
@@ -45,4 +43,3 @@ class TestDetectabilityExperiment(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

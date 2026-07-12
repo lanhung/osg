@@ -1,5 +1,5 @@
 {
-  "config_sha256": "527616013c729a04b9a33dc3e149719a93dc37989c27269b5229c75b6416fa0f",
+  "config_sha256": "1f3e9c065794f4c285bbc9f625cfa3064f9426b48aa5e562d1a34f4d4608ec81",
   "excluded_instrument_curves": {
     "aqg_a01_field_short_term_anchor": "observable 'vertical_gravity' does not match gravity_gradient signal",
     "fg5_228_short_term_anchor": "observable 'vertical_gravity' does not match gravity_gradient signal",
@@ -14,7 +14,7 @@
         "covered_minimum_frequency_hz": null,
         "instrument_id": "goce_egg_conservative_design_anchor",
         "matched_filter_snr_in_covered_band": null,
-        "required_expected_snr": 4.371783871712414,
+        "required_expected_snr": 4.371783872,
         "signal_energy_coverage_fraction": 0.0,
         "status": "no_frequency_coverage"
       },
@@ -24,7 +24,7 @@
         "covered_minimum_frequency_hz": null,
         "instrument_id": "mcguirk_atom_gradiometer_anchor",
         "matched_filter_snr_in_covered_band": null,
-        "required_expected_snr": 4.371783871712414,
+        "required_expected_snr": 4.371783872,
         "signal_energy_coverage_fraction": 0.0,
         "status": "no_frequency_coverage"
       }
@@ -32,22 +32,22 @@
     "internal_wave_dipole": {
       "goce_egg_conservative_design_anchor": {
         "covered_bin_count": 15,
-        "covered_maximum_frequency_hz": 0.008888888888888889,
+        "covered_maximum_frequency_hz": 0.008888888889,
         "covered_minimum_frequency_hz": 0.005,
         "instrument_id": "goce_egg_conservative_design_anchor",
-        "matched_filter_snr_in_covered_band": 3.3885781719277917e-13,
-        "required_expected_snr": 4.371783871712414,
-        "signal_energy_coverage_fraction": 1.2428827043971616e-29,
+        "matched_filter_snr_in_covered_band": 0.0,
+        "required_expected_snr": 4.371783872,
+        "signal_energy_coverage_fraction": 0.0,
         "status": "partial_band_not_classified"
       },
       "mcguirk_atom_gradiometer_anchor": {
         "covered_bin_count": 29,
-        "covered_maximum_frequency_hz": 0.008888888888888889,
-        "covered_minimum_frequency_hz": 0.0011111111111111111,
+        "covered_maximum_frequency_hz": 0.008888888889,
+        "covered_minimum_frequency_hz": 0.001111111111,
         "instrument_id": "mcguirk_atom_gradiometer_anchor",
-        "matched_filter_snr_in_covered_band": 4.716360130733809e-16,
-        "required_expected_snr": 4.371783871712414,
-        "signal_energy_coverage_fraction": 1.54095167607361e-29,
+        "matched_filter_snr_in_covered_band": 0.0,
+        "required_expected_snr": 4.371783872,
+        "signal_energy_coverage_fraction": 0.0,
         "status": "partial_band_not_classified"
       }
     },
@@ -58,39 +58,39 @@
         "covered_minimum_frequency_hz": null,
         "instrument_id": "goce_egg_conservative_design_anchor",
         "matched_filter_snr_in_covered_band": null,
-        "required_expected_snr": 4.371783871712414,
+        "required_expected_snr": 4.371783872,
         "signal_energy_coverage_fraction": 0.0,
         "status": "no_frequency_coverage"
       },
       "mcguirk_atom_gradiometer_anchor": {
         "covered_bin_count": 101,
-        "covered_maximum_frequency_hz": 0.0016633663366336633,
-        "covered_minimum_frequency_hz": 0.0010033003300330033,
+        "covered_maximum_frequency_hz": 0.001663366337,
+        "covered_minimum_frequency_hz": 0.00100330033,
         "instrument_id": "mcguirk_atom_gradiometer_anchor",
-        "matched_filter_snr_in_covered_band": 3.5505765821978672e-06,
-        "required_expected_snr": 4.371783871712414,
-        "signal_energy_coverage_fraction": 9.664002073431222e-11,
+        "matched_filter_snr_in_covered_band": 3.550576582e-06,
+        "required_expected_snr": 4.371783872,
+        "signal_energy_coverage_fraction": 9.664002073e-11,
         "status": "partial_band_not_classified"
       }
     },
     "submarine_landslide": {
       "goce_egg_conservative_design_anchor": {
         "covered_bin_count": 9,
-        "covered_maximum_frequency_hz": 0.09836065573770492,
-        "covered_minimum_frequency_hz": 0.01092896174863388,
+        "covered_maximum_frequency_hz": 0.09836065574,
+        "covered_minimum_frequency_hz": 0.01092896175,
         "instrument_id": "goce_egg_conservative_design_anchor",
-        "matched_filter_snr_in_covered_band": 2254.4045125517755,
-        "required_expected_snr": 4.371783871712414,
-        "signal_energy_coverage_fraction": 0.9541270292014891,
+        "matched_filter_snr_in_covered_band": 2254.404513,
+        "required_expected_snr": 4.371783872,
+        "signal_energy_coverage_fraction": 0.9541270292,
         "status": "detectable_under_curve_model"
       },
       "mcguirk_atom_gradiometer_anchor": {
         "covered_bin_count": 30,
-        "covered_maximum_frequency_hz": 0.32786885245901637,
-        "covered_minimum_frequency_hz": 0.01092896174863388,
+        "covered_maximum_frequency_hz": 0.3278688525,
+        "covered_minimum_frequency_hz": 0.01092896175,
         "instrument_id": "mcguirk_atom_gradiometer_anchor",
-        "matched_filter_snr_in_covered_band": 2.8849531082489945,
-        "required_expected_snr": 4.371783871712414,
+        "matched_filter_snr_in_covered_band": 2.884953108,
+        "required_expected_snr": 4.371783872,
         "signal_energy_coverage_fraction": 1.0,
         "status": "not_detectable_under_curve_model"
       }
@@ -102,7 +102,7 @@
         "covered_minimum_frequency_hz": null,
         "instrument_id": "goce_egg_conservative_design_anchor",
         "matched_filter_snr_in_covered_band": null,
-        "required_expected_snr": 4.371783871712414,
+        "required_expected_snr": 4.371783872,
         "signal_energy_coverage_fraction": 0.0,
         "status": "no_frequency_coverage"
       },
@@ -112,7 +112,7 @@
         "covered_minimum_frequency_hz": null,
         "instrument_id": "mcguirk_atom_gradiometer_anchor",
         "matched_filter_snr_in_covered_band": null,
-        "required_expected_snr": 4.371783871712414,
+        "required_expected_snr": 4.371783872,
         "signal_energy_coverage_fraction": 0.0,
         "status": "no_frequency_coverage"
       }
@@ -120,22 +120,22 @@
     "tsunami_packet": {
       "goce_egg_conservative_design_anchor": {
         "covered_bin_count": 18,
-        "covered_maximum_frequency_hz": 0.019401508161749625,
-        "covered_minimum_frequency_hz": 0.0056587732138436405,
+        "covered_maximum_frequency_hz": 0.01940150816,
+        "covered_minimum_frequency_hz": 0.005658773214,
         "instrument_id": "goce_egg_conservative_design_anchor",
-        "matched_filter_snr_in_covered_band": 1.5880546632506487,
-        "required_expected_snr": 4.371783871712414,
-        "signal_energy_coverage_fraction": 0.0007208088203492155,
+        "matched_filter_snr_in_covered_band": 1.588054663,
+        "required_expected_snr": 4.371783872,
+        "signal_energy_coverage_fraction": 0.0007208088203,
         "status": "partial_band_not_classified"
       },
       "mcguirk_atom_gradiometer_anchor": {
         "covered_bin_count": 23,
-        "covered_maximum_frequency_hz": 0.019401508161749625,
-        "covered_minimum_frequency_hz": 0.0016167923468124686,
+        "covered_maximum_frequency_hz": 0.01940150816,
+        "covered_minimum_frequency_hz": 0.001616792347,
         "instrument_id": "mcguirk_atom_gradiometer_anchor",
-        "matched_filter_snr_in_covered_band": 0.0418695597690062,
-        "required_expected_snr": 4.371783871712414,
-        "signal_energy_coverage_fraction": 0.3206756329890923,
+        "matched_filter_snr_in_covered_band": 0.04186955977,
+        "required_expected_snr": 4.371783872,
+        "signal_energy_coverage_fraction": 0.320675633,
         "status": "partial_band_not_classified"
       }
     }

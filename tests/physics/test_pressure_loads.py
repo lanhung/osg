@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import STANDARD_GRAVITY  # noqa: E402
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.constants import STANDARD_GRAVITY
+from oceangravity.loading import (
     inverse_barometer_sea_level_anomaly,
     pressure_anomaly_to_column_surface_density,
 )
@@ -74,9 +74,7 @@ class TestPressureLoads(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "missing"):
             inverse_barometer_sea_level_anomaly(((None,),), ((1.0,),))
         with self.assertRaisesRegex(ValueError, "fraction"):
-            inverse_barometer_sea_level_anomaly(
-                ((1.0,),), ((1.0,),), cell_ocean_fraction=((1.1,),)
-            )
+            inverse_barometer_sea_level_anomaly(((1.0,),), ((1.0,),), cell_ocean_fraction=((1.1,),))
         with self.assertRaisesRegex(ValueError, "shape"):
             inverse_barometer_sea_level_anomaly(((1.0,),), ((1.0, 2.0),))
 

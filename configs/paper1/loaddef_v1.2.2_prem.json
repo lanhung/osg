@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "provider_id": "loaddef-v1.2.2",
+  "source": {
+    "version": "1.2.2",
+    "tag_commit": "b65493574f606b7d165a2d10fe862eda5b32f89a",
+    "archive_sha256": "77243146b260c6ff90d09cdeda6f721c6e8e3c003899614dab5e345c66611b5b",
+    "license_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+  },
+  "environment": {
+    "python": "3.12.12",
+    "mpich": "5.0.1",
+    "mpi4py": "4.1.2",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "numba": "0.63.1",
+    "matplotlib": "3.10.8"
+  },
+  "planet_model": {
+    "path": "input/Planet_Models/PREM.txt",
+    "sha256": "75445e83b6be7123ef27562b848e68191079b4db36b743aafa898006f4f1b396"
+  },
+  "smoke": {
+    "startn": 0,
+    "stopn": 20,
+    "file_out": "PREM_smoke_n20.txt"
+  },
+  "production": {
+    "startn": 0,
+    "stopn": 10000,
+    "period_hours": 12.42,
+    "r_min": 1000.0,
+    "inf_tol": 1e-5,
+    "rel_tol": 1e-13,
+    "abs_tol": 1e-13,
+    "backend": "dop853",
+    "nstps": 3000,
+    "gravitational_constant_m3_kg_s2": 6.672e-11,
+    "kx": 1,
+    "num_soln": 100,
+    "interp_emod": false,
+    "nongrav": false,
+    "file_out": "PREM.txt"
+  },
+  "green_functions": {
+    "reference_frames": ["CE", "CM", "CF"],
+    "theta_unit": "deg",
+    "theta": [0.0001, 0.001, 0.01, 0.02, 0.03, 0.04, 0.06, 0.08, 0.1, 0.16, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 12.0, 16.0, 20.0, 25.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 110.0, 120.0, 130.0, 140.0, 150.0, 160.0, 170.0, 180.0],
+    "earth_radius_m": 6371000.0,
+    "disk_factor": true,
+    "disk_factor_start_deg": 10.0,
+    "disk_radius_deg": 0.1,
+    "apply_taper": false,
+    "max_asymptotic_theta_deg": 200.0,
+    "output_name": "PREM_audit_angles.txt"
+  },
+  "published_benchmark": {
+    "id": "Martens2019-LoadDef-DataSets-S2-S5",
+    "doi": "10.1029/2018EA000462",
+    "supplementary_bundle_sha256": "fe068554f11ac91e127affec5a1497994b6c2022b8fd49a34823ce7c6ce58b15",
+    "comparison_rule": "exact_numeric_tokens_ignoring_text_headers_and_timestamp",
+    "project_provider_comparison_rule": {
+      "rule": "exact_numeric_tokens_ignoring_text_headers_and_timestamp",
+      "green_function_zero_based_columns": [0, 1, 5],
+      "green_function_columns": ["theta_deg", "radial_displacement_m_per_kg", "normalized_gE"]
+    },
+    "files": {
+      "PREM": {"name": "ESS2-6-311-s002.txt", "sha256": "75445e83b6be7123ef27562b848e68191079b4db36b743aafa898006f4f1b396"},
+      "LLN": {"name": "ESS2-6-311-s003.txt", "sha256": "6bcd829983c45b4cb3afef650e4c4d6e104d855ac7c33f9b01c98e65379b3d6c"},
+      "CE": {"name": "ESS2-6-311-s004.txt", "sha256": "394e078922e0a7cbbb64c16d6c08f584f70295a618115b2131569447df7887da"},
+      "CM": {"name": "ESS2-6-311-s005.txt", "sha256": "f7e4fe2b07538c36e983c038ee31945fdc769280aca2b70e3f0c5123c36bb89e"},
+      "CF": {"name": "ESS2-6-311-s006.txt", "sha256": "f47acb3f4769f28f673c1ffbce968ad190c5d70505c8516236891c9ced48f0eb"}
+    }
+  },
+  "acceptance": {
+    "love_number_degree_count": 10001,
+    "finite_value_policy": {
+      "all_other_values_finite": true,
+      "allowed_undefined_cells": {
+        "LLN": {"degree": 0, "zero_based_columns": [4, 5, 6]},
+        "PLN": {"degree": 1, "zero_based_columns": [1, 2, 3]},
+        "SHR": {"degree": 1, "zero_based_columns": [1, 2, 3]}
+      }
+    },
+    "green_output_row_count": 50,
+    "published_provider_token_mismatches": 0,
+    "required_component_separation": ["gE_indirect_elastic", "gN_direct_newtonian"],
+    "published_benchmark_required_before_scientific_use": true
+  }
+}

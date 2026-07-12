@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import GRAVITATIONAL_CONSTANT  # noqa: E402
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.constants import GRAVITATIONAL_CONSTANT
+from oceangravity.gravity import (
     gravity_gradient_tensor,
     gravity_vector,
     volume_cell_gravity_gradient,
@@ -60,9 +60,9 @@ class TestGravityGradient(unittest.TestCase):
             acceleration_plus = gravity_vector(mass, source, plus)
             acceleration_minus = gravity_vector(mass, source, minus)
             for row in range(3):
-                finite_difference = (
-                    acceleration_plus[row] - acceleration_minus[row]
-                ) / (2.0 * step)
+                finite_difference = (acceleration_plus[row] - acceleration_minus[row]) / (
+                    2.0 * step
+                )
                 tolerance = max(abs(tensor[row][column]), 1.0e-30) * 1.0e-6
                 self.assertAlmostEqual(
                     finite_difference,
@@ -71,12 +71,8 @@ class TestGravityGradient(unittest.TestCase):
                 )
 
     def test_inverse_cube_scaling(self) -> None:
-        near = gravity_gradient_tensor(
-            1.0e10, (0.0, 0.0, -10.0), (0.0, 0.0, 0.0)
-        )[2][2]
-        far = gravity_gradient_tensor(
-            1.0e10, (0.0, 0.0, -20.0), (0.0, 0.0, 0.0)
-        )[2][2]
+        near = gravity_gradient_tensor(1.0e10, (0.0, 0.0, -10.0), (0.0, 0.0, 0.0))[2][2]
+        far = gravity_gradient_tensor(1.0e10, (0.0, 0.0, -20.0), (0.0, 0.0, 0.0))[2][2]
         self.assertAlmostEqual(near / far, 8.0)
 
     def test_negative_mass_reverses_tensor(self) -> None:
@@ -107,4 +103,3 @@ class TestGravityGradient(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

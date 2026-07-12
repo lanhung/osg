@@ -41,9 +41,11 @@ def welch_magnitude_squared_coherence(
         raise ValueError("coherence series must have equal nonzero length")
     if not all(math.isfinite(value) for value in (*x, *y)):
         raise ValueError("coherence series must be finite")
-    if isinstance(segment_length_samples, bool) or not isinstance(
-        segment_length_samples, int
-    ) or segment_length_samples < 4:
+    if (
+        isinstance(segment_length_samples, bool)
+        or not isinstance(segment_length_samples, int)
+        or segment_length_samples < 4
+    ):
         raise ValueError("segment_length_samples must be an integer >= 4")
     if isinstance(overlap_samples, bool) or not isinstance(overlap_samples, int):
         raise ValueError("overlap_samples must be an integer")
@@ -59,13 +61,9 @@ def welch_magnitude_squared_coherence(
             raise ValueError("coherence inclusion mask must contain one boolean per sample")
 
     step = segment_length_samples - overlap_samples
-    candidate_starts = tuple(
-        range(0, len(x) - segment_length_samples + 1, step)
-    )
+    candidate_starts = tuple(range(0, len(x) - segment_length_samples + 1, step))
     used = tuple(
-        start
-        for start in candidate_starts
-        if all(mask[start : start + segment_length_samples])
+        start for start in candidate_starts if all(mask[start : start + segment_length_samples])
     )
     discarded = tuple(start for start in candidate_starts if start not in set(used))
     if len(used) < 2:

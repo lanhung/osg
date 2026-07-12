@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.loading import (
     LoadGreenFunctionMetadata,
     build_provisional_loaddef_combined_provider,
     convolve_combined_elastic_load_green_functions,

@@ -4,6 +4,10 @@ Audit date: 2026-07-12
 
 These actions require a human identity, affiliation, acceptance of terms, CAPTCHA, or station-owner approval. Codex must prepare and track them but must not impersonate the principal investigator or claim that a request was sent.
 
+Hard dates, owners, and fallback triggers are tracked in
+`data/manifests/critical_path.yml`. An unchecked action below must not be described
+as registered, requested, approved, or delivered without human-supplied evidence.
+
 ## Action A — IGETS user registration
 
 Register at the official [IGETS data-user page](https://isdc.gfz.de/igets-data-base/registration-for-data-users/). The form requires personal/institutional information and a CAPTCHA.
@@ -65,3 +69,21 @@ Do not use removed `includeavailability` or `matchtimeseries` parameters. Statio
 
 The initial geographic box is deliberately broad and not the final “realistic network.” A station enters the experimental network only after channel epoch, response, waveform availability, license, latency class, and noise QC are recorded.
 
+## Action E — PEGS simulator and benchmark acquisition
+
+This action starts immediately and is independent of Manila Trench station-data
+authorization. Treat the following as separate deliverables:
+
+1. freeze one published earthquake benchmark, source/Earth models, stations,
+   components, sampling, passband, units, and tolerances;
+2. determine whether the QSSP-PEGS or normal-mode implementation is publicly
+   runnable, licensed, author-provided, or must be independently implemented;
+3. have the PI make any required author/license request without claiming access in
+   advance;
+4. reproduce the published waveform and save correlation, amplitude, onset, and
+   provenance evidence;
+5. only after the benchmark passes, generate production Manila scenarios.
+
+A methods paper does not by itself prove executable-code access. Station metadata
+does not prove continuous waveform availability. Neither gap may be replaced with an
+invented waveform or white-noise scientific experiment.

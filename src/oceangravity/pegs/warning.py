@@ -33,8 +33,7 @@ class WarningTimeline:
         if any(not location.strip() for location in locations):
             raise ValueError("tsunami arrival locations must not be empty")
         if not all(
-            math.isfinite(arrival) and arrival > 0.0
-            for _, arrival in self.tsunami_arrivals_s
+            math.isfinite(arrival) and arrival > 0.0 for _, arrival in self.tsunami_arrivals_s
         ):
             raise ValueError("tsunami arrival times must be finite and positive")
 

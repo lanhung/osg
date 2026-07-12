@@ -40,7 +40,10 @@ class NetworkPerformance:
         )
         if not all(math.isfinite(value) and value >= 0.0 for value in finite_nonnegative):
             raise ValueError("time, false alarms, error, and cost must be finite and nonnegative")
-        if not math.isfinite(self.detection_probability) or not 0.0 <= self.detection_probability <= 1.0:
+        if (
+            not math.isfinite(self.detection_probability)
+            or not 0.0 <= self.detection_probability <= 1.0
+        ):
             raise ValueError("detection_probability must lie in [0, 1]")
 
 

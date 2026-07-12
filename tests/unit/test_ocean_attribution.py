@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     fit_ocean_attribution_coefficient,
     predict_heldout_ocean_attribution,
 )
@@ -48,9 +48,7 @@ class TestOceanAttribution(unittest.TestCase):
             training_event_ids=("T1",),
         )
         with self.assertRaisesRegex(ValueError, "not held out"):
-            predict_heldout_ocean_attribution(
-                fit, (0.0,), (1.0,), event_id="T1"
-            )
+            predict_heldout_ocean_attribution(fit, (0.0,), (1.0,), event_id="T1")
 
     def test_mask_and_training_identity_control_selected_samples(self) -> None:
         fit = fit_ocean_attribution_coefficient(

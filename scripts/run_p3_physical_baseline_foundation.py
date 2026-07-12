@@ -61,7 +61,7 @@ def run(config: dict) -> dict:
         "claim_blockers": [
             "engineering_fixture_not_validated_pegs_waveforms",
             "synthetic_independent_noise_only",
-            "heldout_quiet_exposure_cannot_resolve_target_false_alarm_rate"
+            "heldout_quiet_exposure_cannot_resolve_target_false_alarm_rate",
         ],
         "network_template_scores": asdict(template_scores),
         "single_station_energy_audit": asdict(energy_audit),

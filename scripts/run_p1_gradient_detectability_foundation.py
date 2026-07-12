@@ -13,9 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from oceangravity.evaluation import evaluate_gradient_signal_against_curve  # noqa: E402
-from oceangravity.instruments import load_noise_curves  # noqa: E402
 from run_p1_foundation import build_process_signals  # noqa: E402
+
+from oceangravity.evaluation import (  # noqa: E402
+    canonicalize_report_floats,
+    evaluate_gradient_signal_against_curve,
+)
+from oceangravity.instruments import load_noise_curves  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:
@@ -51,15 +55,14 @@ def run(config: dict) -> dict:
                     interval,
                     curve,
                     required_expected_snr=config["required_expected_snr"],
-                    minimum_signal_energy_coverage=config[
-                        "minimum_signal_energy_coverage"
-                    ],
+                    minimum_signal_energy_coverage=config["minimum_signal_energy_coverage"],
+                    numerical_energy_coverage_floor=config["numerical_energy_coverage_floor"],
                 )
             )
             for curve_name, curve in gradient_curves.items()
         }
     canonical_config = json.dumps(config, sort_keys=True, separators=(",", ":"))
-    return {
+    result = {
         "schema_version": 1,
         "experiment_id": "P1-E003-gradient-detectability-foundation",
         "result_class": "engineering_reference_not_cited_physical_prior",
@@ -67,6 +70,10 @@ def run(config: dict) -> dict:
         "excluded_instrument_curves": excluded_curves,
         "matrix": matrix,
     }
+    return canonicalize_report_floats(
+        result,
+        significant_digits=config["report_significant_digits"],
+    )
 
 
 def main() -> int:

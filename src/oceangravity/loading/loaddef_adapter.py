@@ -51,11 +51,7 @@ def build_provisional_loaddef_combined_provider(
         raise ValueError("LoadDef provisional adapter requires combined semantics")
     if angular_distance_unit not in {"deg", "rad"}:
         raise ValueError("angular_distance_unit must be deg or rad")
-    if not (
-        len(angular_distances)
-        == len(normalized_gE)
-        == len(radial_displacement_m_per_kg)
-    ):
+    if not (len(angular_distances) == len(normalized_gE) == len(radial_displacement_m_per_kg)):
         raise ValueError("LoadDef table columns must have equal length")
     angles_rad = tuple(
         math.radians(float(value)) if angular_distance_unit == "deg" else float(value)

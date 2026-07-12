@@ -72,13 +72,10 @@ def surface_load_gravity_wgs84(
     observation_height = float(observation_height_m)
     source_height = float(load_height_m)
     if not all(
-        math.isfinite(value)
-        for value in (observation_longitude, observation_height, source_height)
+        math.isfinite(value) for value in (observation_longitude, observation_height, source_height)
     ):
         raise ValueError("longitude and heights must be finite")
-    observation = _geodetic_ecef(
-        observation_latitude, observation_longitude, observation_height
-    )
+    observation = _geodetic_ecef(observation_latitude, observation_longitude, observation_height)
     up = _geodetic_up(observation_latitude, observation_longitude)
 
     gravity_x: list[float] = []
@@ -98,9 +95,7 @@ def surface_load_gravity_wgs84(
         south_area_coordinate = _ellipsoid_area_primitive(math.sin(south))
         north_area_coordinate = _ellipsoid_area_primitive(math.sin(north))
         centroid_area_coordinate = 0.5 * (south_area_coordinate + north_area_coordinate)
-        centroid_latitude = _latitude_from_area_coordinate(
-            centroid_area_coordinate, south, north
-        )
+        centroid_latitude = _latitude_from_area_coordinate(centroid_area_coordinate, south, north)
         for column_index in range(columns):
             if water_mask is not None and not water_mask[row_index][column_index]:
                 skipped_masked_cells += 1
@@ -119,26 +114,22 @@ def surface_load_gravity_wgs84(
                 continue
             west = math.radians(longitudes[column_index])
             east = math.radians(longitudes[column_index + 1])
-            area = (
-                (east - west)
-                * (north_area_coordinate - south_area_coordinate)
-                * fraction
-            )
+            area = (east - west) * (north_area_coordinate - south_area_coordinate) * fraction
             mass = float(raw_density) * area
             included_cells += 1
             areas.append(area)
             masses.append(mass)
             if mass == 0.0:
                 continue
-            source = _geodetic_ecef(
-                centroid_latitude, 0.5 * (west + east), source_height
-            )
+            source = _geodetic_ecef(centroid_latitude, 0.5 * (west + east), source_height)
             displacement = tuple(source[index] - observation[index] for index in range(3))
             distance_squared = math.fsum(value * value for value in displacement)
             if distance_squared == 0.0:
                 raise ValueError("nonzero point-cell mass at the observation location")
-            scale = GRAVITATIONAL_CONSTANT.value * mass / (
-                distance_squared * math.sqrt(distance_squared)
+            scale = (
+                GRAVITATIONAL_CONSTANT.value
+                * mass
+                / (distance_squared * math.sqrt(distance_squared))
             )
             gravity_x.append(scale * displacement[0])
             gravity_y.append(scale * displacement[1])
@@ -155,15 +146,11 @@ def surface_load_gravity_wgs84(
     )
     gradient: Matrix3 = (gradient_rows[0], gradient_rows[1], gradient_rows[2])
     up_gradient = math.fsum(
-        up[row] * gradient[row][column] * up[column]
-        for row in range(3)
-        for column in range(3)
+        up[row] * gradient[row][column] * up[column] for row in range(3) for column in range(3)
     )
     return EllipsoidalSurfaceLoadResult(
         gravity_ecef_m_s2=gravity,
-        geodetic_up_gravity_m_s2=math.fsum(
-            gravity[index] * up[index] for index in range(3)
-        ),
+        geodetic_up_gravity_m_s2=math.fsum(gravity[index] * up[index] for index in range(3)),
         gravity_gradient_ecef_s2=gradient,
         geodetic_up_gravity_gradient_s2=up_gradient,
         included_area_m2=math.fsum(areas),
@@ -187,8 +174,7 @@ def _ellipsoid_area_primitive(sine_latitude: float) -> float:
     eccentricity = math.sqrt(eccentricity_squared)
     denominator = 1.0 - eccentricity_squared * sine_latitude**2
     integral = 0.5 * (
-        sine_latitude / denominator
-        + math.atanh(eccentricity * sine_latitude) / eccentricity
+        sine_latitude / denominator + math.atanh(eccentricity * sine_latitude) / eccentricity
     )
     return semi_major**2 * (1.0 - eccentricity_squared) * integral
 
@@ -208,9 +194,7 @@ def _geodetic_ecef(latitude: float, longitude: float, height: float) -> Vector3:
     semi_major, eccentricity_squared = _ellipsoid_parameters()
     sine_latitude = math.sin(latitude)
     cosine_latitude = math.cos(latitude)
-    prime_vertical_radius = semi_major / math.sqrt(
-        1.0 - eccentricity_squared * sine_latitude**2
-    )
+    prime_vertical_radius = semi_major / math.sqrt(1.0 - eccentricity_squared * sine_latitude**2)
     return (
         (prime_vertical_radius + height) * cosine_latitude * math.cos(longitude),
         (prime_vertical_radius + height) * cosine_latitude * math.sin(longitude),

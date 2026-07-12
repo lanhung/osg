@@ -9,9 +9,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import MEAN_EARTH_RADIUS  # noqa: E402
-from oceangravity.gravity import gravity_vector  # noqa: E402
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.constants import MEAN_EARTH_RADIUS
+from oceangravity.gravity import gravity_vector
+from oceangravity.loading import (
     surface_load_gravity_planar,
     surface_load_gravity_spherical,
 )
@@ -111,9 +111,9 @@ class TestSphericalSurfaceGrid(unittest.TestCase):
             0.0,
             (0.0, 0.0, height),
         )
-        relative_difference = abs(
-            spherical.radial_gravity_m_s2 - planar.gravity_m_s2[2]
-        ) / abs(planar.gravity_m_s2[2])
+        relative_difference = abs(spherical.radial_gravity_m_s2 - planar.gravity_m_s2[2]) / abs(
+            planar.gravity_m_s2[2]
+        )
         self.assertLess(relative_difference, 0.01)
 
     def test_mask_missing_and_geometry_validation(self) -> None:
@@ -212,9 +212,7 @@ class TestSphericalSurfaceGrid(unittest.TestCase):
         lower = surface_load_gravity_spherical(*arguments, 100_000.0 - step)
         centre = surface_load_gravity_spherical(*arguments, 100_000.0)
         upper = surface_load_gravity_spherical(*arguments, 100_000.0 + step)
-        finite_difference = (
-            upper.radial_gravity_m_s2 - lower.radial_gravity_m_s2
-        ) / (2.0 * step)
+        finite_difference = (upper.radial_gravity_m_s2 - lower.radial_gravity_m_s2) / (2.0 * step)
         self.assertAlmostEqual(
             centre.radial_gravity_gradient_s2,
             finite_difference,

@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.loading import surface_load_gravity_spherical  # noqa: E402
+from oceangravity.loading import surface_load_gravity_spherical
 
 
 def _edges(start: float, stop: float, cells: int) -> list[float]:
@@ -25,10 +25,7 @@ def _gaussian_grid(half_width_deg: float, cells: int, sigma_deg: float = 1.0) ->
             [
                 math.exp(
                     -0.5
-                    * (
-                        latitude**2
-                        + (0.5 * (edges[column] + edges[column + 1])) ** 2
-                    )
+                    * (latitude**2 + (0.5 * (edges[column] + edges[column + 1])) ** 2)
                     / sigma_deg**2
                 )
                 for column in range(cells)

@@ -46,8 +46,7 @@ class Paper2DecisionEvidence:
             self.quiet_window_count,
         )
         if any(
-            isinstance(value, bool) or not isinstance(value, int) or value < 0
-            for value in counts
+            isinstance(value, bool) or not isinstance(value, int) or value < 0 for value in counts
         ):
             raise ValueError("Paper 2 event/window counts must be non-negative integers")
         if self.heldout_event_count > self.typhoon_event_count:
@@ -109,9 +108,7 @@ def audit_paper2_decision(evidence: Paper2DecisionEvidence) -> Paper2DecisionAud
         evidence.heldout_event_count > 0
         and len(evidence.heldout_improvement_passes) == evidence.heldout_event_count
     )
-    all_heldout_improve = heldout_complete and all(
-        evidence.heldout_improvement_passes
-    )
+    all_heldout_improve = heldout_complete and all(evidence.heldout_improvement_passes)
     multi_event_design = (
         evidence.typhoon_event_count >= 3
         and evidence.heldout_event_count >= 1
@@ -122,8 +119,7 @@ def audit_paper2_decision(evidence: Paper2DecisionEvidence) -> Paper2DecisionAud
         and len(evidence.event_snrs) == evidence.typhoon_event_count
     )
     events_above_snr = sum(
-        value >= evidence.event_snr_interpretation_threshold
-        for value in evidence.event_snrs
+        value >= evidence.event_snr_interpretation_threshold for value in evidence.event_snrs
     )
 
     real = evidence.uses_real_observations
@@ -210,7 +206,11 @@ def audit_paper2_decision(evidence: Paper2DecisionEvidence) -> Paper2DecisionAud
         and snr_complete
     ):
         branch = "pending_evidence"
-    elif not positive_interval and not any(evidence.heldout_improvement_passes) and events_above_snr == 0:
+    elif (
+        not positive_interval
+        and not any(evidence.heldout_improvement_passes)
+        and events_above_snr == 0
+    ):
         branch = "non_detection_constraints"
     else:
         branch = "ocean_product_evaluation"
@@ -218,9 +218,7 @@ def audit_paper2_decision(evidence: Paper2DecisionEvidence) -> Paper2DecisionAud
     return Paper2DecisionAudit(
         branch=branch,
         full_attribution_claim_ready=full_claim_ready,
-        manuscript_release_ready=(
-            full_claim_ready and evidence.data_license_review_complete
-        ),
+        manuscript_release_ready=(full_claim_ready and evidence.data_license_review_complete),
         novelty=novelty,
         positive_attribution_interval=positive_interval,
         heldout_evaluation_complete=heldout_complete,

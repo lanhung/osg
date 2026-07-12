@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     mean_square_from_psd,
     one_sided_spectrum,
 )
@@ -80,4 +80,3 @@ class TestOneSidedSpectrum(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -70,14 +70,8 @@ def windowed_rms_energy_scores(
         if len(mask) != len(values) or any(not isinstance(value, bool) for value in mask):
             raise ValueError("energy inclusion mask must contain one boolean per sample")
 
-    starts = tuple(
-        range(0, len(values) - window_length_samples + 1, decision_step_samples)
-    )
-    used = tuple(
-        start
-        for start in starts
-        if all(mask[start : start + window_length_samples])
-    )
+    starts = tuple(range(0, len(values) - window_length_samples + 1, decision_step_samples))
+    used = tuple(start for start in starts if all(mask[start : start + window_length_samples]))
     used_set = set(used)
     discarded = tuple(start for start in starts if start not in used_set)
     if not used:
@@ -96,9 +90,7 @@ def windowed_rms_energy_scores(
         discarded_start_sample_indices=discarded,
         window_length_samples=window_length_samples,
         decision_step_samples=decision_step_samples,
-        trailing_samples_after_last_start=(
-            len(values) - (last_start + window_length_samples)
-        ),
+        trailing_samples_after_last_start=(len(values) - (last_start + window_length_samples)),
     )
 
 
@@ -129,9 +121,7 @@ def audit_single_station_energy_baseline(
         scores = tuple(float(value) for value in heldout_event_scores[event_id])
         if not scores or not all(math.isfinite(value) for value in scores):
             raise ValueError("held-out event scores must be non-empty and finite")
-        earliest = next(
-            (index for index, score in enumerate(scores) if score >= threshold), None
-        )
+        earliest = next((index for index, score in enumerate(scores) if score >= threshold), None)
         results.append(
             HeldoutEnergyEventResult(
                 event_id=event_id,

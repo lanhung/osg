@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import bootstrap_ocean_attribution_by_event  # noqa: E402
+from oceangravity.evaluation import bootstrap_ocean_attribution_by_event
 
 
 class TestOceanAttributionBlockBootstrap(unittest.TestCase):
@@ -67,15 +67,11 @@ class TestOceanAttributionBlockBootstrap(unittest.TestCase):
             replicates=100,
             random_seed=3,
         )
-        result = bootstrap_ocean_attribution_by_event(
-            **common, minimum_valid_fraction=0.8
-        )
+        result = bootstrap_ocean_attribution_by_event(**common, minimum_valid_fraction=0.8)
         self.assertGreater(result.degenerate_replicates, 0)
         self.assertIn(None, result.ocean_coefficients)
         with self.assertRaisesRegex(ValueError, "valid event-block bootstrap fraction"):
-            bootstrap_ocean_attribution_by_event(
-                **common, minimum_valid_fraction=1.0
-            )
+            bootstrap_ocean_attribution_by_event(**common, minimum_valid_fraction=1.0)
 
     def test_three_events_and_nonempty_included_blocks_are_required(self) -> None:
         with self.assertRaisesRegex(ValueError, "at least three"):

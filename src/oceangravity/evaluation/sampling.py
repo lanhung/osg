@@ -32,9 +32,7 @@ class ParameterRange:
             raise ValueError("unit_value must lie in [0, 1]")
         if self.scale == "linear":
             return self.lower + unit_value * (self.upper - self.lower)
-        return math.exp(
-            math.log(self.lower) + unit_value * math.log(self.upper / self.lower)
-        )
+        return math.exp(math.log(self.lower) + unit_value * math.log(self.upper / self.lower))
 
 
 def latin_hypercube(
@@ -65,10 +63,7 @@ def latin_hypercube(
             parameter.transform_unit(value) for value in unit_values
         ]
     return tuple(
-        {
-            parameter.name: dimension_values[parameter.name][sample_index]
-            for parameter in parameters
-        }
+        {parameter.name: dimension_values[parameter.name][sample_index] for parameter in parameters}
         for sample_index in range(sample_count)
     )
 
@@ -115,4 +110,3 @@ def summarize_ensemble(
         }
         for key in keys
     }
-

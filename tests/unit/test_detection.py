@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     gaussian_detection_probability,
     gaussian_threshold_for_false_alarm,
     required_snr_for_detection_probability,
@@ -17,12 +17,8 @@ from oceangravity.evaluation import (  # noqa: E402
 
 class TestGaussianDetectionReference(unittest.TestCase):
     def test_known_one_sided_thresholds(self) -> None:
-        self.assertAlmostEqual(
-            gaussian_threshold_for_false_alarm(0.05), 1.6448536269514722
-        )
-        self.assertAlmostEqual(
-            gaussian_threshold_for_false_alarm(0.001), 3.090232306167813
-        )
+        self.assertAlmostEqual(gaussian_threshold_for_false_alarm(0.05), 1.6448536269514722)
+        self.assertAlmostEqual(gaussian_threshold_for_false_alarm(0.001), 3.090232306167813)
 
     def test_trials_correction_recovers_family_probability(self) -> None:
         single = gaussian_threshold_for_false_alarm(0.01, independent_trials=1)

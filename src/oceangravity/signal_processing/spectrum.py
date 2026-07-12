@@ -70,9 +70,7 @@ def one_sided_spectrum(
     coherent_gain = math.fsum(window_values) / sample_count
     power_gain = math.fsum(value * value for value in window_values) / sample_count
     equivalent_noise_bandwidth = power_gain / coherent_gain**2
-    weighted = tuple(
-        centred[index] * window_values[index] for index in range(sample_count)
-    )
+    weighted = tuple(centred[index] * window_values[index] for index in range(sample_count))
     duration = sample_count * interval
     frequency_spacing = 1.0 / duration
     highest_bin = sample_count // 2
@@ -128,12 +126,12 @@ def _detrend(
     midpoint = 0.5 * (len(values) - 1) * interval
     centred_times = tuple(index * interval - midpoint for index in range(len(values)))
     denominator = math.fsum(time * time for time in centred_times)
-    slope = math.fsum(
-        centred_times[index] * (values[index] - mean) for index in range(len(values))
-    ) / denominator
+    slope = (
+        math.fsum(centred_times[index] * (values[index] - mean) for index in range(len(values)))
+        / denominator
+    )
     residual = tuple(
-        values[index] - mean - slope * centred_times[index]
-        for index in range(len(values))
+        values[index] - mean - slope * centred_times[index] for index in range(len(values))
     )
     return residual, mean, slope
 

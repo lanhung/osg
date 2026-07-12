@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import STANDARD_GRAVITY  # noqa: E402
-from oceangravity.processes import (  # noqa: E402
+from oceangravity.constants import STANDARD_GRAVITY
+from oceangravity.processes import (
     propagating_compensated_gaussian_tsunami,
     regular_times,
 )
@@ -97,4 +97,3 @@ class TestTsunamiWavePacket(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -1,2 +1,1 @@
 """Fast unit tests."""
-

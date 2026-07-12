@@ -31,9 +31,7 @@ class TestPaper2ManuscriptClaims(unittest.TestCase):
             self.assertNotIn(forbidden, lowered)
 
     def test_all_six_figures_remain_pending(self) -> None:
-        document = json.loads(
-            (ROOT / "papers/paper2_typhoon/figure_manifest.json").read_text()
-        )
+        document = json.loads((ROOT / "papers/paper2_typhoon/figure_manifest.json").read_text())
         self.assertEqual(len(document["figures"]), 6)
         self.assertTrue(all(item["status"].startswith("pending") for item in document["figures"]))
 

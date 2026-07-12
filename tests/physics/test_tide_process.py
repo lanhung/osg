@@ -9,10 +9,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import REFERENCE_SEAWATER_DENSITY  # noqa: E402
-from oceangravity.gravity import disk_vertical_gravity_on_axis  # noqa: E402
-from oceangravity.processes import periodic_disk_tide, regular_times  # noqa: E402
-from oceangravity.signal_processing import one_sided_spectrum  # noqa: E402
+from oceangravity.constants import REFERENCE_SEAWATER_DENSITY
+from oceangravity.gravity import disk_vertical_gravity_on_axis
+from oceangravity.processes import periodic_disk_tide, regular_times
+from oceangravity.signal_processing import one_sided_spectrum
 
 
 class TestPeriodicDiskTide(unittest.TestCase):
@@ -123,4 +123,3 @@ class TestPeriodicDiskTide(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -16,24 +16,157 @@
     {
       "id": "helbh-tide-gauge",
       "role": "local attraction transfer and non-tidal sea level",
-      "source": "BSH / paper data availability statement",
-      "access": "pending exact product and license audit",
+      "source": "PEGELONLINE / German Federal Waterways and Shipping Administration (WSV)",
+      "station_name": "HELGOLAND BINNENHAFEN",
+      "station_number": "9510070",
+      "station_uuid": "c0ec139b-13b4-4f86-bee3-06665ad81a40",
+      "parameter": "WASSERSTAND ROHDATEN",
+      "station_page": "https://pegelonline.wsv.de/gast/stammdaten?pegelnr=9510070",
+      "download_endpoint": "https://www.pegelonline.wsv.de/gast/historische-zeitreihen/prepare-download",
+      "query": {
+        "start": "2022-01-26T00:00:00Z",
+        "end": "2022-02-25T00:00:00Z",
+        "format": "json",
+        "time_basis": "explicit UTC offsets submitted to the official endpoint; retain source timestamps and trim to the registered UTC analysis window during processing"
+      },
+      "vertical_reference": {
+        "kind": "PNP",
+        "offset_to_DHHN2016_m": -5.015,
+        "valid_from": "2019-11-01",
+        "source": "official PEGELONLINE station metadata"
+      },
+      "terms_url": "https://www.pegelonline.wsv.de/gast/nutzungsbedingungen",
+      "license": "PEGELONLINE terms permit copying, modification, redistribution, combination, and commercial or non-commercial use; attribution and source-status requirements apply",
+      "access": "public download; official terms reviewed and accepted for this project",
       "local_path": null,
-      "sha256": null
+      "remote_path": "/root/autodl-tmp/ocean-gravity-run/data/helgoland/pegelonline-helgolandbinnenhafen-W-20220126-20220225.zip",
+      "sha256": "93a1fb84b23d531321b48a16a3cf121976837e500380e7ebaf1c82379da0e3c9",
+      "archive": {
+        "json_member": "pegelonline-helgolandbinnenhafen-W-20220126-20220225.json",
+        "json_sha256": "b213996bf38e497ffea06690d22845ce32a3f55893159bfdfddb4d2a6fd7c7b1",
+        "records": 43201,
+        "first_timestamp": "2022-01-26T01:00:00+01:00",
+        "last_timestamp": "2022-02-25T01:00:00+01:00",
+        "cadence_seconds": 60,
+        "null_records": 0,
+        "unit": "cm",
+        "quality": "unchecked",
+        "minimum_cm": 326,
+        "maximum_cm": 805
+      }
     },
     {
       "id": "bsh-hbmnoku",
       "role": "regional high-resolution sea-surface height model",
-      "source": "BSH",
-      "access": "pending exact archive/product authorization",
+      "source": "BSH Open Data / operational HBMnoku sea-surface height above mean sea level",
+      "model_reference": "https://doi.org/10.23784/HN118-01",
+      "temporal_resolution_minutes": 15,
+      "analysis_cycle_hours": 6,
+      "file_payload": {
+        "time_steps": 24,
+        "first_step_offset_minutes": 15,
+        "last_step_offset_minutes": 360,
+        "variable": "elev",
+        "variable_standard_name": "sea surface elevation above model reference level",
+        "unit": "m"
+      },
+      "registered_window": {
+        "start_utc": "2022-01-26T00:00:00Z",
+        "end_utc": "2022-02-25T00:00:00Z",
+        "cycle_endpoints_inclusive": true,
+        "processing_trim": "retain decoded model timestamps within the registered UTC window after timestamp canonicalization"
+      },
+      "timestamp_canonicalization": {
+        "operation": "round decoded timestamps to the nearest whole second",
+        "maximum_allowed_adjustment_seconds": 0.5,
+        "reason": "source NetCDF day encoding decodes nominal quarter hours with a systematic 0.288-second offset"
+      },
+      "grids": [
+        {
+          "id": "fine",
+          "horizontal_resolution": "approximately 900 m",
+          "coverage": "German Bight and western Baltic Sea",
+          "feed": "https://gdi.bsh.de/de/feed/Modelled-Sea-Surface-Height-Above-Mean-Sea-Level-of-the-operational-circulation-model-of-BSH-in-the-German-Bight-and-the-western-Baltic-Sea-horizontal-resolution-ca-900-m-2022-series.xml",
+          "download_pattern": "https://gdi.bsh.de/data/OpenData/OperationalModel/z_file_fine_2022/z_file_fine_{cycle:%Y%m%d%H}_000_006.nc"
+        },
+        {
+          "id": "coarse",
+          "horizontal_resolution": "approximately 5 km",
+          "coverage": "North Sea and Baltic Sea",
+          "feed": "https://gdi.bsh.de/de/feed/Modelled-Sea-Surface-Height-Above-Mean-Sea-Level-of-the-operational-circulation-model-of-BSH-in-the-North-and-Baltic-Sea-horizontal-resolution-ca-5-km-2022-series.xml",
+          "download_pattern": "https://gdi.bsh.de/data/OpenData/OperationalModel/z_file_coarse_2022/z_file_coarse_{cycle:%Y%m%d%H}_000_006.nc"
+        }
+      ],
+      "format": "NetCDF",
+      "license": "Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-by-de/2.0)",
+      "attribution": "Quelle: Bundesamt für Seeschifffahrt und Hydrographie",
+      "license_url": "https://www.govdata.de/dl-de/by-2-0",
+      "access": "public open-data download; no access restriction",
+      "remote_directory": "/root/autodl-tmp/ocean-gravity-run/data/helgoland/bsh_hbmnoku_ssh_20220126_20220225",
+      "expected_file_count": 242,
+      "total_bytes": 429394746,
+      "inventory_sha256": "e5840fff8e56a8b11458b884da543b06bb1a1b617c7b7560f790f2a34b3f241c",
+      "structural_audit": {
+        "status": "pass",
+        "maximum_timestamp_adjustment_seconds": 0.288,
+        "registered_steps_per_grid": 2880,
+        "source_first_time": "2022-01-26T00:15:00Z",
+        "source_last_time": "2022-02-25T06:00:00Z",
+        "registered_last_time": "2022-02-25T00:00:00Z"
+      },
       "local_path": null,
       "sha256": null
     },
     {
       "id": "helg-hel2-gnss",
       "role": "independent vertical-displacement validation",
-      "source": "BKG / GFZ data products cited by the paper",
-      "access": "pending exact series and license audit",
+      "stations": [
+        {
+          "id": "HELG00DEU",
+          "domes_number": "14264M001"
+        },
+        {
+          "id": "HEL200DEU",
+          "domes_number": "14264M002"
+        }
+      ],
+      "raw_rinex": {
+        "source": "BKG GNSS Data Center EUREF archive",
+        "base_url": "https://igs.bkg.bund.de/root_ftp/EUREF/obs/2022",
+        "start_utc": "2022-01-26T00:00:00Z",
+        "end_utc": "2022-02-25T00:00:00Z",
+        "day_of_year_range_inclusive": [26, 56],
+        "file_pattern": "{station}_R_2022{doy:03d}0000_01D_30S_MO.crx.gz",
+        "format": "RINEX 3 compact observation, gzip compressed",
+        "sampling_seconds": 30,
+        "license": "CC BY 4.0",
+        "access": "public, no embargo",
+        "metadata_sources": [
+          "https://gnss-metadata.eu/MOID/HELG00DEU",
+          "https://igs.bkg.bund.de/searchRINEX"
+        ],
+        "remote_directory": "/root/autodl-tmp/ocean-gravity-run/data/helgoland/gnss_rinex_2022_026_056",
+        "expected_file_count": 62,
+        "total_bytes": 209861943,
+        "inventory_sha256": "2034a99ecca2ff43ca381ec9aeb6609989351ef70a2001782bc3564eb587dfe6"
+      },
+      "processed_series": {
+        "doi": "10.5880/GFZ.1.1.2023.001",
+        "title": "Heligoland GNSS hourly time series positioning for 2017-2021",
+        "processor": "GFZ EPOS",
+        "sampling": "hourly North, East, Vertical coordinates",
+        "license": "CC BY 4.0",
+        "metadata_temporal_extent": {
+          "start": "2020-03-13",
+          "end": "2021-06-23"
+        },
+        "download_url": "https://datapub.gfz-potsdam.de/download/10.5880.GFZ.1.1.2023.001-Veazb/2023-001_Zhiguo-Deng-Helgoland.zip",
+        "remote_path": "/root/autodl-tmp/ocean-gravity-run/data/helgoland/gnss_processed_reference_2017_2021/2023-001_Zhiguo-Deng-Helgoland.zip",
+        "sha256": "85e0c50a72d86cda0b48b087f425fa08a403c4a0e1f1dabd90cdcbefc16cd8e2",
+        "access": "public, but does not cover the registered 2022 event window",
+        "reproduction_use": "method/provenance reference only; must not be substituted for the unavailable 2022 processed coordinates"
+      },
+      "access": "raw 2022 RINEX public; paper-equivalent processed 2022 coordinate series not identified in the cited public dataset",
       "local_path": null,
       "sha256": null
     }

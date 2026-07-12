@@ -40,14 +40,12 @@ def _ols_intercept_coefficient(
     if x_sum_squares == 0.0:
         raise ValueError("ocean predictor has zero variance in training samples")
     cross_sum = math.fsum(
-        (x_value - x_mean) * (y_value - y_mean)
-        for x_value, y_value in zip(x, y, strict=True)
+        (x_value - x_mean) * (y_value - y_mean) for x_value, y_value in zip(x, y, strict=True)
     )
     coefficient = cross_sum / x_sum_squares
     intercept = y_mean - coefficient * x_mean
     residuals = tuple(
-        y_value - intercept - coefficient * x_value
-        for x_value, y_value in zip(x, y, strict=True)
+        y_value - intercept - coefficient * x_value for x_value, y_value in zip(x, y, strict=True)
     )
     return intercept, coefficient, residuals, x_sum_squares
 
@@ -77,16 +75,16 @@ def fit_ocean_attribution_coefficient(
     baseline = tuple(float(value) for value in baseline_prediction_m_s2)
     ocean = tuple(float(value) for value in ocean_prediction_m_s2)
     event_ids = tuple(event_id_by_sample)
-    if not observed or not (
-        len(observed) == len(baseline) == len(ocean) == len(event_ids)
-    ):
+    if not observed or not (len(observed) == len(baseline) == len(ocean) == len(event_ids)):
         raise ValueError("attribution arrays must have equal nonzero length")
     if not all(math.isfinite(value) for value in (*observed, *baseline, *ocean)):
         raise ValueError("attribution numeric inputs must be finite")
     if any(not isinstance(event_id, str) or not event_id.strip() for event_id in event_ids):
         raise ValueError("every attribution sample requires a non-empty event ID")
     training = tuple(sorted(set(training_event_ids)))
-    if not training or any(not isinstance(event_id, str) or not event_id.strip() for event_id in training):
+    if not training or any(
+        not isinstance(event_id, str) or not event_id.strip() for event_id in training
+    ):
         raise ValueError("training_event_ids must contain non-empty event IDs")
     unknown_training = set(training) - set(event_ids)
     if unknown_training:
@@ -168,9 +166,7 @@ def bootstrap_ocean_attribution_by_event(
     baseline = tuple(float(value) for value in baseline_prediction_m_s2)
     ocean = tuple(float(value) for value in ocean_prediction_m_s2)
     event_ids = tuple(event_id_by_sample)
-    if not observed or not (
-        len(observed) == len(baseline) == len(ocean) == len(event_ids)
-    ):
+    if not observed or not (len(observed) == len(baseline) == len(ocean) == len(event_ids)):
         raise ValueError("attribution arrays must have equal nonzero length")
     if not all(math.isfinite(value) for value in (*observed, *baseline, *ocean)):
         raise ValueError("attribution numeric inputs must be finite")
@@ -209,9 +205,7 @@ def bootstrap_ocean_attribution_by_event(
     coefficients: list[float | None] = []
     for _ in range(replicates):
         sampled_events = rng.choices(training, k=len(training))
-        sampled_indices = tuple(
-            index for event_id in sampled_events for index in blocks[event_id]
-        )
+        sampled_indices = tuple(index for event_id in sampled_events for index in blocks[event_id])
         x = tuple(ocean[index] for index in sampled_indices)
         y = tuple(observed[index] - baseline[index] for index in sampled_indices)
         try:

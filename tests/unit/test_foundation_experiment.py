@@ -36,9 +36,7 @@ class TestFoundationExperiment(unittest.TestCase):
         for process_metrics in first["metrics"].values():
             self.assertGreater(process_metrics["peak_absolute_direct_gravity_m_s2"], 0.0)
             self.assertGreater(process_metrics["dominant_nonzero_frequency_hz"], 0.0)
-        self.assertEqual(
-            first["result_class"], "engineering_reference_not_cited_physical_prior"
-        )
+        self.assertEqual(first["result_class"], "engineering_reference_not_cited_physical_prior")
 
     def test_json_round_trip_is_stable(self) -> None:
         config = json.loads(

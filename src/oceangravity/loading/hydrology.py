@@ -59,8 +59,7 @@ def double_exponential_precipitation_storage(
     initial_fast = float(initial_fast_storage_m)
     initial_slow = float(initial_slow_storage_m)
     if not all(
-        math.isfinite(value)
-        for value in (fast_tau, slow_tau, fraction, initial_fast, initial_slow)
+        math.isfinite(value) for value in (fast_tau, slow_tau, fraction, initial_fast, initial_slow)
     ):
         raise ValueError("hydrology response parameters must be finite")
     if fast_tau <= 0.0 or slow_tau <= fast_tau:
@@ -84,9 +83,7 @@ def double_exponential_precipitation_storage(
         slow_state += increment
         fast_storage.append(fast_state)
         slow_storage.append(slow_state)
-        effective_storage.append(
-            fraction * fast_state + (1.0 - fraction) * slow_state
-        )
+        effective_storage.append(fraction * fast_state + (1.0 - fraction) * slow_state)
     return DoubleExponentialHydrologyResult(
         timestamps_s=timestamps,
         precipitation_increment_m=precipitation,
@@ -166,15 +163,8 @@ def hydrology_bouguer_correction_component(
         if len(height_uncertainty) != len(gravity) or not all(
             math.isfinite(value) and value >= 0.0 for value in height_uncertainty
         ):
-            raise ValueError(
-                "equivalent-height standard uncertainty must match and be nonnegative"
-            )
-        factor = (
-            2.0
-            * math.pi
-            * GRAVITATIONAL_CONSTANT.value
-            * float(water_density_kg_m3)
-        )
+            raise ValueError("equivalent-height standard uncertainty must match and be nonnegative")
+        factor = 2.0 * math.pi * GRAVITATIONAL_CONSTANT.value * float(water_density_kg_m3)
         uncertainty = tuple(factor * value for value in height_uncertainty)
     return GravityCorrectionComponent(
         component_id=component_id,

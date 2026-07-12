@@ -1,0 +1,149 @@
+schema_version: 1
+baseline_date: 2026-07-12
+status: active
+policy:
+  scientific_delivery_order:
+    - paper1
+    - paper2
+    - paper3
+  parallel_from_day_zero:
+    - paper1_scientific_sprint
+    - paper2_external_authorization
+    - paper3_simulator_and_real_noise_validation
+    - infrastructure_risk_control
+  target_duration_months: "6-7"
+  target_conditions:
+    - raw-enough SG observations close within 4-8 weeks
+    - a validated PEGS simulator benchmark closes within about 4 weeks
+    - permitted response-corrected continuous real-noise windows are obtained
+  prohibited_shortcuts:
+    - count infrastructure completion as scientific evidence
+    - treat StationXML as proof of waveform or real-time availability
+    - replace realistic PEGS noise with white noise for a scientific claim
+    - start GNN training before simulator and real-noise baseline gates pass
+
+tracks:
+  - id: INFRA-BACKUP
+    blocker_type: infrastructure
+    owner: engineering
+    status: in_progress
+    deadline: 2026-07-13
+    completion_evidence:
+      - remote push contains the reviewed compact repository history
+      - a remote read-back verifies the expected commit
+    fallback_trigger: remote push remains unavailable at deadline
+    fallback_action: create a checksummed off-machine repository bundle and retry remote push
+    scientific_gate: false
+
+  - id: P2-SG-AUTH
+    blocker_type: external_authorization
+    owner: PI
+    support_owner: Codex
+    status: pending_human_action
+    deadline: 2026-08-09
+    checkpoints:
+      - date: 2026-07-19
+        requirement: registered IGETS station and product inventory completed
+      - date: 2026-07-26
+        requirement: first Haikou/Wuhan follow-up completed by PI
+      - date: 2026-08-09
+        requirement: credible station, channels, terms, and delivery path recorded
+      - date: 2026-08-23
+        requirement: activate substitute if preferred data have no committed delivery date
+      - date: 2026-09-06
+        requirement: preferred-station delay no longer blocks method validation
+    completion_evidence:
+      - legally usable SG gravity at a scientifically relevant station/event
+      - colocated pressure
+      - calibration, timing, jump, and maintenance provenance
+      - environmental validation sources and explicit terms
+    fallback_trigger: no committed raw-enough data delivery by 2026-08-23
+    fallback_ladder:
+      - haikou_or_chinese_coastal_multi_typhoon
+      - other_coastal_typhoon_exposed_sg_with_channel_closure
+      - other_tropical_cyclone_with_equivalent_closure
+      - helgoland_or_storm_surge_method_validation_only
+    claim_effect: narrow title and claims whenever the fallback level changes
+    scientific_gate: true
+
+  - id: P3-SIM-BENCH
+    blocker_type: scientific_validation
+    owner: Codex_and_research_team
+    escalation_owner: PI
+    status: pending
+    deadline: 2026-08-09
+    checkpoints:
+      - date: 2026-07-19
+        requirement: event, stations, components, source/Earth models, units, band, and tolerances frozen
+      - date: 2026-07-26
+        requirement: simulator source, license, author dependency, or independent implementation route recorded
+      - date: 2026-08-09
+        requirement: benchmark passes or a discrepancy report activates an alternative route
+    completion_evidence:
+      - waveform_correlation_greater_than_0.95
+      - peak_amplitude_error_within_10_to_20_percent
+      - onset_error_below_one_sample_or_justified_revision
+      - simulator provenance and exact version recorded
+    fallback_trigger: benchmark does not pass by 2026-08-09
+    fallback_ladder:
+      - validated_qssp_pegs_route
+      - validated_juhel_normal_mode_route
+      - independent_cross_check_if_both_are_available
+      - stop_regional_claims_and_publish_requirements_boundary_only
+    downstream_blocks:
+      - production_manila_scenario_generation
+      - gnn_training
+    scientific_gate: true
+
+  - id: P3-REAL-NOISE
+    blocker_type: external_authorization
+    secondary_blocker_type: scientific_validation
+    owner: Codex_and_research_team
+    escalation_owner: PI
+    status: in_progress
+    deadline: 2026-08-23
+    completion_evidence:
+      - permitted continuous waveform pilot
+      - epoch-matched instrument response
+      - timing and gap audit
+      - at least one frozen realistic-noise stratum
+      - source, license, query, and checksum provenance
+    fallback_trigger: no scientifically usable continuous-noise pilot by 2026-08-23
+    fallback_action: expand permitted FDSN providers and request restricted networks; do not substitute white noise
+    downstream_blocks:
+      - scientific_false_alarm_calibration
+      - gnn_training
+    scientific_gate: true
+
+  - id: P1-SPRINT
+    blocker_type: implementation
+    secondary_blocker_type: scientific_validation
+    owner: Codex_and_research_team
+    status: in_progress
+    deadline: 2026-09-06
+    completion_evidence:
+      - mature elastic-load Green-function benchmark
+      - published-case reproduction evidence
+      - citation-backed priors and uncertainty ensembles
+      - registered atlas figures and manuscript draft
+    fallback_trigger: an ocean process remains undetectable or a prior remains weak
+    fallback_action: retain the negative or bounded result and report its evidence limit
+    scientific_gate: true
+
+dependencies:
+  paper2_production_event_attribution:
+    requires:
+      - P2-SG-AUTH
+  paper3_regional_scenarios:
+    requires:
+      - P3-SIM-BENCH
+  paper3_real_noise_baselines:
+    requires:
+      - P3-SIM-BENCH
+      - P3-REAL-NOISE
+  paper3_gnn:
+    requires:
+      - P3-SIM-BENCH
+      - P3-REAL-NOISE
+      - physical_detectability_boundary
+      - calibrated_multistation_false_alarm_baseline

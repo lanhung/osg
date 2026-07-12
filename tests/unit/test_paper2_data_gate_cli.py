@@ -45,9 +45,7 @@ def _data(identifier):
 
 class TestPaper2DataGateCli(unittest.TestCase):
     def test_repository_manifest_truthfully_remains_pending(self) -> None:
-        document = json.loads(
-            (ROOT / "data/manifests/paper2_event_windows.json").read_text()
-        )
+        document = json.loads((ROOT / "data/manifests/paper2_event_windows.json").read_text())
         result = MODULE.audit_manifest(document)
         self.assertEqual(result["decision"], "pending_no_event_windows")
         self.assertFalse(result["attribution_data_gate_passes"])

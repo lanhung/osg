@@ -1,24 +1,25 @@
 {
-  "code_commit": "c4354f889a72dbfdc63593125f0260b226d301a2",
+  "code_commit": "465d71b1a97f1fa89077db30dc45176d4532895d",
   "config_file": "configs/paper1/gradient_detectability_foundation.json",
-  "config_file_sha256": "84adeeb6e43c654797d42d805cb77763c60776be2771957826abc99081c9b489",
+  "config_file_sha256": "5d60e1ce9bc030d14b85438e735d799925137d11e13ea8c9b137090d79e58a90",
   "data_manifest": "data/manifests/instrument_noise_curves.json",
   "docker_image": null,
   "environment": {
-    "python": "3.14.4",
+    "python": "3.12.12",
     "third_party_runtime_dependencies": []
   },
   "experiment_id": "P1-E003-gradient-detectability-foundation",
-  "machine": "control-plane-host-unverified-identity",
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
   "outputs": [
     {
       "path": "experiments/paper1/P1-E003-gradient-detectability-foundation/metrics.json",
-      "sha256": "5af4e7b56d3e054e8e4326a8ffcc230a04f7d1e976635d849d7ba21e2949ebe2"
+      "sha256": "e9c8f160e2245b9bb5846f0a82813e20fd96583eda4d4fa47e39b0f876df2854"
     }
   ],
   "paper": "paper1",
   "random_seed": null,
   "result_class": "engineering_reference_not_cited_physical_prior",
   "runner": "scripts/run_p1_gradient_detectability_foundation.py",
-  "schema_version": 1
+  "schema_version": 1,
+  "working_tree_dirty": true
 }

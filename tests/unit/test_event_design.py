@@ -74,20 +74,28 @@ class TestEventDesign(unittest.TestCase):
 
     def test_same_station_overlap_across_events_is_rejected(self) -> None:
         left = EventWindow(
-            "T1", "typhoon", "training", "2024-01-01T00:00:00Z",
-            "2024-01-03T00:00:00Z", ("SG1",), "fixture"
+            "T1",
+            "typhoon",
+            "training",
+            "2024-01-01T00:00:00Z",
+            "2024-01-03T00:00:00Z",
+            ("SG1",),
+            "fixture",
         )
         right = EventWindow(
-            "T2", "typhoon", "held_out", "2024-01-02T00:00:00Z",
-            "2024-01-04T00:00:00Z", ("SG1",), "fixture"
+            "T2",
+            "typhoon",
+            "held_out",
+            "2024-01-02T00:00:00Z",
+            "2024-01-04T00:00:00Z",
+            ("SG1",),
+            "fixture",
         )
         with self.assertRaisesRegex(ValueError, "overlap"):
             audit_event_design((left, right))
 
     def test_empty_manifest_does_not_claim_data_gate(self) -> None:
-        document = json.loads(
-            (ROOT / "data/manifests/paper2_event_windows.json").read_text()
-        )
+        document = json.loads((ROOT / "data/manifests/paper2_event_windows.json").read_text())
         self.assertEqual(document["events"], [])
         self.assertTrue(document["status"].startswith("pending"))
 

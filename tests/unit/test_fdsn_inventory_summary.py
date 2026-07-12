@@ -12,7 +12,6 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from summarize_fdsn_inventory import summarize_inventory  # noqa: E402
 
-
 HEADER = (
     "#Network|Station|Location|Channel|Latitude|Longitude|Elevation|Depth|"
     "Azimuth|Dip|SensorDescription|Scale|ScaleFreq|ScaleUnits|SampleRate|"
@@ -35,19 +34,22 @@ def _row(
 
 class TestFdsnInventorySummary(unittest.TestCase):
     def test_triplets_are_kept_and_incomplete_epochs_are_separate(self) -> None:
-        payload = "\n".join(
-            (
-                HEADER,
-                _row("BHZ"),
-                _row("BHN"),
-                _row("BHE"),
-                _row("LHZ", station="BBB"),
-                _row("LH1", station="BBB"),
-                _row("LH2", station="BBB"),
-                _row("BHZ", station="CCC"),
-                _row("HHZ", station="DDD"),
+        payload = (
+            "\n".join(
+                (
+                    HEADER,
+                    _row("BHZ"),
+                    _row("BHN"),
+                    _row("BHE"),
+                    _row("LHZ", station="BBB"),
+                    _row("LH1", station="BBB"),
+                    _row("LH2", station="BBB"),
+                    _row("BHZ", station="CCC"),
+                    _row("HHZ", station="DDD"),
+                )
             )
-        ) + "\n"
+            + "\n"
+        )
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "inventory.txt"
             path.write_text(payload, encoding="utf-8")
@@ -63,9 +65,7 @@ class TestFdsnInventorySummary(unittest.TestCase):
         self.assertEqual(result["open_ended_candidate_epoch_count"], 0)
 
     def test_scalar_sensitivity_missing_is_recorded_not_promoted(self) -> None:
-        payload = "\n".join(
-            (HEADER, _row("BHZ", scale=""), _row("BHN"), _row("BHE"))
-        ) + "\n"
+        payload = "\n".join((HEADER, _row("BHZ", scale=""), _row("BHN"), _row("BHE"))) + "\n"
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "inventory.txt"
             path.write_text(payload, encoding="utf-8")
@@ -75,14 +75,17 @@ class TestFdsnInventorySummary(unittest.TestCase):
         self.assertFalse(candidate["full_response_verified"])
 
     def test_open_ended_epochs_are_counted_without_claiming_operation(self) -> None:
-        payload = "\n".join(
-            (
-                HEADER,
-                _row("BHZ", end_time=""),
-                _row("BHN", end_time=""),
-                _row("BHE", end_time=""),
+        payload = (
+            "\n".join(
+                (
+                    HEADER,
+                    _row("BHZ", end_time=""),
+                    _row("BHN", end_time=""),
+                    _row("BHE", end_time=""),
+                )
             )
-        ) + "\n"
+            + "\n"
+        )
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "inventory.txt"
             path.write_text(payload, encoding="utf-8")

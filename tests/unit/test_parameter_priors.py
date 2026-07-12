@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     ParameterEnvelope,
     sample_parameter_design,
 )

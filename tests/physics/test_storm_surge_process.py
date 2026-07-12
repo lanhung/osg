@@ -9,13 +9,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import REFERENCE_SEAWATER_DENSITY  # noqa: E402
-from oceangravity.gravity import disk_vertical_gravity_on_axis  # noqa: E402
-from oceangravity.processes import (  # noqa: E402
+from oceangravity.constants import REFERENCE_SEAWATER_DENSITY
+from oceangravity.gravity import disk_vertical_gravity_on_axis
+from oceangravity.processes import (
     asymmetric_gaussian_disk_surge,
     regular_times,
 )
-from oceangravity.signal_processing import one_sided_spectrum  # noqa: E402
+from oceangravity.signal_processing import one_sided_spectrum
 
 
 class TestStormSurgeProcess(unittest.TestCase):
@@ -23,9 +23,7 @@ class TestStormSurgeProcess(unittest.TestCase):
         self.hour = 3600.0
         self.interval = 300.0
         # Six rise scales before and six fall scales after the peak.
-        self.times = regular_times(
-            505, self.interval, start_time_s=-12.0 * self.hour
-        )
+        self.times = regular_times(505, self.interval, start_time_s=-12.0 * self.hour)
 
     def _signal(self, **overrides: float):
         parameters = {
@@ -72,11 +70,7 @@ class TestStormSurgeProcess(unittest.TestCase):
             for index in range(len(signal.source_amplitude) - 1)
         ]
         numerical_integral = math.fsum(trapezoids)
-        expected = (
-            2.0
-            * math.sqrt(math.pi / 2.0)
-            * (2.0 * self.hour + 5.0 * self.hour)
-        )
+        expected = 2.0 * math.sqrt(math.pi / 2.0) * (2.0 * self.hour + 5.0 * self.hour)
         self.assertLess(abs(numerical_integral - expected) / expected, 1.0e-5)
 
     def test_signal_is_broadband_not_a_single_spectral_line(self) -> None:

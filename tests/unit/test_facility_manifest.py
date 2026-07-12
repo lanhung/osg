@@ -10,9 +10,7 @@ from pathlib import Path
 class TestFacilityManifest(unittest.TestCase):
     def test_hust_record_is_traceable_and_not_noise_curve_eligible(self) -> None:
         root = Path(__file__).resolve().parents[2]
-        document = json.loads(
-            (root / "data/manifests/facility_capabilities.json").read_text()
-        )
+        document = json.loads((root / "data/manifests/facility_capabilities.json").read_text())
         self.assertEqual(document["schema_version"], 1)
         self.assertEqual(len(document["facilities"]), 1)
         facility = document["facilities"][0]
@@ -27,4 +25,3 @@ class TestFacilityManifest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

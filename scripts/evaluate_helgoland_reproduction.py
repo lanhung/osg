@@ -41,7 +41,10 @@ def evaluate_documents(configuration: dict, inputs: dict) -> dict:
         "status": audit.status,
         "targets": [asdict(row) for row in audit.targets],
         "input_manifest_status": inputs["status"],
-        "warning": "A pass requires outputs from the frozen method contract; scalar agreement from a simplified proxy is not a reproduction.",
+        "warning": (
+            "A pass requires outputs from the frozen method contract; scalar "
+            "agreement from a simplified proxy is not a reproduction."
+        ),
     }
 
 

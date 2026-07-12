@@ -9,11 +9,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.gravity import (
     gravity_vector,
     rectangle_vertical_gravity_on_axis,
 )
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.loading import (
     sea_level_to_surface_density,
     surface_load_gravity_planar,
 )
@@ -75,9 +75,7 @@ class TestSurfaceGrid(unittest.TestCase):
         half_x = 2_000.0
         half_y = 1_000.0
         load_z = -800.0
-        expected = rectangle_vertical_gravity_on_axis(
-            density, half_x, half_y, load_z, 0.0
-        )
+        expected = rectangle_vertical_gravity_on_axis(density, half_x, half_y, load_z, 0.0)
         errors = []
         for cells_y in (4, 8, 16):
             cells_x = 2 * cells_y
@@ -96,9 +94,7 @@ class TestSurfaceGrid(unittest.TestCase):
 
     def test_missing_error_and_invalid_shapes_are_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "missing"):
-            surface_load_gravity_planar(
-                [[None]], [0.0, 1.0], [0.0, 1.0], -1.0, (0.0, 0.0, 0.0)
-            )
+            surface_load_gravity_planar([[None]], [0.0, 1.0], [0.0, 1.0], -1.0, (0.0, 0.0, 0.0))
         with self.assertRaisesRegex(ValueError, "rectangular"):
             surface_load_gravity_planar(
                 [[1.0], [1.0, 2.0]],
@@ -108,17 +104,12 @@ class TestSurfaceGrid(unittest.TestCase):
                 (0.0, 0.0, 0.0),
             )
         with self.assertRaisesRegex(ValueError, "strictly increasing"):
-            surface_load_gravity_planar(
-                [[1.0]], [0.0, 0.0], [0.0, 1.0], -1.0, (0.0, 0.0, 0.0)
-            )
+            surface_load_gravity_planar([[1.0]], [0.0, 0.0], [0.0, 1.0], -1.0, (0.0, 0.0, 0.0))
 
     def test_nonzero_centroid_at_observer_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "refine"):
-            surface_load_gravity_planar(
-                [[1.0]], [-1.0, 1.0], [-1.0, 1.0], 0.0, (0.0, 0.0, 0.0)
-            )
+            surface_load_gravity_planar([[1.0]], [-1.0, 1.0], [-1.0, 1.0], 0.0, (0.0, 0.0, 0.0))
 
 
 if __name__ == "__main__":
     unittest.main()
-

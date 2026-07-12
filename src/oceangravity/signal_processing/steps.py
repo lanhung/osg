@@ -58,9 +58,7 @@ def apply_instrument_step_decisions(
         if index in decision_by_index:
             running = math.fsum((running, decision_by_index[index].observed_step_m_s2))
         removed.append(running)
-    corrected = tuple(
-        value - correction for value, correction in zip(values, removed, strict=True)
-    )
+    corrected = tuple(value - correction for value, correction in zip(values, removed, strict=True))
     return InstrumentStepCorrection(
         corrected_m_s2=corrected,
         removed_cumulative_step_m_s2=tuple(removed),

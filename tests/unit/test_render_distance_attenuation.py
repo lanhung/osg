@@ -18,8 +18,7 @@ class TestRenderDistanceAttenuation(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.document = json.loads(
             (
-                ROOT
-                / "experiments/paper1/P1-E004-distance-attenuation-foundation/metrics.json"
+                ROOT / "experiments/paper1/P1-E004-distance-attenuation-foundation/metrics.json"
             ).read_text()
         )
 

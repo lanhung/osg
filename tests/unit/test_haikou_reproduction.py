@@ -27,9 +27,7 @@ class TestHaikouReproduction(unittest.TestCase):
 
     def test_vor_values_and_typhoon_scope_are_frozen(self) -> None:
         targets = {row["target_id"]: row for row in self.configuration["targets"]}
-        self.assertEqual(
-            targets["cmems_ntol_maximum_variation_m_s2"]["expected_value"], 2.6e-8
-        )
+        self.assertEqual(targets["cmems_ntol_maximum_variation_m_s2"]["expected_value"], 2.6e-8)
         self.assertEqual(targets["cmems_sg_residual_correlation"]["expected_value"], 0.83)
         self.assertEqual(targets["cmems_mpiom_correlation"]["expected_value"], 0.87)
         self.assertEqual(
@@ -48,8 +46,7 @@ class TestHaikouReproduction(unittest.TestCase):
     def test_exact_values_pass_adapter_but_do_not_change_typhoon_scope(self) -> None:
         inputs = dict(self.inputs)
         inputs["observed_reproduction_values"] = {
-            row["target_id"]: row["expected_value"]
-            for row in self.configuration["targets"]
+            row["target_id"]: row["expected_value"] for row in self.configuration["targets"]
         }
         result = MODULE.evaluate_documents(self.configuration, inputs)
         self.assertEqual(result["status"], "pass")

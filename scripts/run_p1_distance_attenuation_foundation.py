@@ -20,9 +20,7 @@ from run_p1_foundation import build_process_signals  # noqa: E402
 def _configuration_at_distance(base: dict, distance_m: float) -> dict:
     config = copy.deepcopy(base)
     config["tide"]["observation_z_m"] = config["tide"]["disk_z_m"] + distance_m
-    config["storm_surge"]["observation_z_m"] = (
-        config["storm_surge"]["disk_z_m"] + distance_m
-    )
+    config["storm_surge"]["observation_z_m"] = config["storm_surge"]["disk_z_m"] + distance_m
     config["eddy"]["observation_xyz_m"] = [
         0.0,
         0.0,

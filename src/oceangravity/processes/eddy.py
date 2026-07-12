@@ -91,12 +91,10 @@ def translating_gaussian_surface_eddy(
     for time in times:
         center_x = speed * (time - passage_time)
         center = (center_x, closest_y, anomaly_z)
-        horizontal_offset_squared = (
-            (observation[0] - center_x) ** 2 + (observation[1] - closest_y) ** 2
-        )
-        local_sea_level.append(
-            peak * math.exp(-0.5 * horizontal_offset_squared / scale**2)
-        )
+        horizontal_offset_squared = (observation[0] - center_x) ** 2 + (
+            observation[1] - closest_y
+        ) ** 2
+        local_sea_level.append(peak * math.exp(-0.5 * horizontal_offset_squared / scale**2))
         response = gaussian_surface_response_numerical(
             density * peak,
             scale,
@@ -115,7 +113,9 @@ def translating_gaussian_surface_eddy(
         source_amplitude=tuple(local_sea_level),
         source_amplitude_unit="m local sea-level anomaly at observation projection",
         vertical_direct_gravity_m_s2=tuple(vertical_gravity),
-        model_scope="direct attraction of translating Gaussian SSH; no 3-D compensation or elastic response",
+        model_scope=(
+            "direct attraction of translating Gaussian SSH; no 3-D compensation or elastic response"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(vertical_gradient),
     )
 
@@ -176,7 +176,9 @@ def translating_compensated_gaussian_density_eddy(
     ):
         raise ValueError("cells_per_axis must be an integer of at least two")
 
-    def gaussian_cells(horizontal_scale: float) -> tuple[list[tuple[float, float, float]], list[float], float]:
+    def gaussian_cells(
+        horizontal_scale: float,
+    ) -> tuple[list[tuple[float, float, float]], list[float], float]:
         horizontal_step = 2.0 * cutoff * horizontal_scale / cells_per_axis
         vertical_step = 2.0 * cutoff * vertical_scale / cells_per_axis
         horizontal = [
@@ -221,23 +223,23 @@ def translating_compensated_gaussian_density_eddy(
     vertical_gradient = []
     for time in times:
         center_x = speed * (time - passage_time)
-        centers = tuple(
-            (center_x + x, closest_y + y, center_z + z) for x, y, z in local_centers
-        )
+        centers = tuple((center_x + x, closest_y + y, center_z + z) for x, y, z in local_centers)
         gravity = volume_cell_gravity(
-            unit_densities, cell_centers_xyz_m=centers, cell_volumes_m3=cell_volumes,
+            unit_densities,
+            cell_centers_xyz_m=centers,
+            cell_volumes_m3=cell_volumes,
             observation_xyz_m=observation,
         )
         gradient = volume_cell_gravity_gradient(
-            unit_densities, cell_centers_xyz_m=centers, cell_volumes_m3=cell_volumes,
+            unit_densities,
+            cell_centers_xyz_m=centers,
+            cell_volumes_m3=cell_volumes,
             observation_xyz_m=observation,
         )
-        horizontal_offset_squared = (
-            (observation[0] - center_x) ** 2 + (observation[1] - closest_y) ** 2
-        )
-        source_amplitude.append(
-            peak * math.exp(-0.5 * horizontal_offset_squared / core_scale**2)
-        )
+        horizontal_offset_squared = (observation[0] - center_x) ** 2 + (
+            observation[1] - closest_y
+        ) ** 2
+        source_amplitude.append(peak * math.exp(-0.5 * horizontal_offset_squared / core_scale**2))
         vertical_gravity.append(peak * gravity[2])
         vertical_gradient.append(peak * gradient[2][2])
 
@@ -247,7 +249,10 @@ def translating_compensated_gaussian_density_eddy(
         source_amplitude=tuple(source_amplitude),
         source_amplitude_unit="kg m^-3 local positive-core density anomaly",
         vertical_direct_gravity_m_s2=tuple(vertical_gravity),
-        model_scope="direct attraction of exactly compensated 3-D Gaussian core/halo; no free surface or elastic response",
+        model_scope=(
+            "direct attraction of exactly compensated 3-D Gaussian core/halo; "
+            "no free surface or elastic response"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(vertical_gradient),
     )
     return CompensatedDensityEddyResult(

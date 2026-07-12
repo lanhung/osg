@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.pegs import (  # noqa: E402
+from oceangravity.pegs import (
     NetworkPerformance,
     coherent_network_stack,
     generate_station_outage_masks,
@@ -31,9 +31,7 @@ class TestPegsNetwork(unittest.TestCase):
         )
         self.assertAlmostEqual(stack[0], math.sqrt(2.0))
         with self.assertRaises(ValueError):
-            coherent_network_stack(
-                {"A": [1.0], "B": [1.0]}, station_weights={"A": 1.0}
-            )
+            coherent_network_stack({"A": [1.0], "B": [1.0]}, station_weights={"A": 1.0})
 
     def test_outage_masks_have_fixed_counts_and_are_deterministic(self) -> None:
         stations = tuple(f"S{index:02d}" for index in range(10))
@@ -54,15 +52,9 @@ class TestPegsNetwork(unittest.TestCase):
         efficient_fast = NetworkPerformance(
             "fast-expensive", ("A", "B", "C"), 240.0, 0.95, 0.5, 0.20, 3.0
         )
-        efficient_cheap = NetworkPerformance(
-            "slow-cheap", ("A",), 360.0, 0.90, 0.8, 0.30, 1.0
-        )
-        dominated = NetworkPerformance(
-            "dominated", ("A", "B"), 400.0, 0.85, 1.0, 0.35, 2.0
-        )
-        frontier = pareto_optimal_networks(
-            (dominated, efficient_cheap, efficient_fast)
-        )
+        efficient_cheap = NetworkPerformance("slow-cheap", ("A",), 360.0, 0.90, 0.8, 0.30, 1.0)
+        dominated = NetworkPerformance("dominated", ("A", "B"), 400.0, 0.85, 1.0, 0.35, 2.0)
+        frontier = pareto_optimal_networks((dominated, efficient_cheap, efficient_fast))
         self.assertEqual(
             tuple(row.network_id for row in frontier),
             ("fast-expensive", "slow-cheap"),

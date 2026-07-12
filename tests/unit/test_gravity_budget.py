@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.loading import (
     GravityCorrectionComponent,
     apply_gravity_correction_chain,
     compute_gravity_residual,
@@ -31,9 +31,7 @@ def _component(
         physical_effect_ids=tuple(effects),
         source="unit-test fixture",
         preapplied_to_input=preapplied,
-        standard_uncertainty_m_s2=(
-            None if uncertainty is None else tuple(uncertainty)
-        ),
+        standard_uncertainty_m_s2=(None if uncertainty is None else tuple(uncertainty)),
         uncertainty_group_id=uncertainty_group,
     )
 
@@ -77,9 +75,7 @@ class TestGravityBudget(unittest.TestCase):
                 [_component("ntol", [0.1, 0.2], ["ocean_direct"], preapplied=True)],
             )
         with self.assertRaises(ValueError):
-            compute_gravity_residual(
-                [1.0, 2.0], [_component("short", [0.1], ["hydrology"])]
-            )
+            compute_gravity_residual([1.0, 2.0], [_component("short", [0.1], ["hydrology"])])
 
     def test_ordered_chain_retains_every_intermediate_series(self) -> None:
         observed = [10.0, 20.0]

@@ -2,10 +2,35 @@
 
 Status: active  
 Baseline date: 2026-07-12  
-Execution order: Paper 1 -> Paper 2 -> Paper 3  
-Parallel risk track: Paper 2 and Paper 3 data access begins immediately
+Scientific delivery order: Paper 1 -> Paper 2 -> Paper 3
+Execution model: Paper 1 sprint plus immediate Paper 2 authorization, Paper 3
+simulator/noise validation, and infrastructure risk-control tracks
 
 This document is the project work-breakdown structure (WBS). A checkbox is closed only when its listed evidence exists in Git or an external-access decision is recorded in a manifest. Writing code is not, by itself, completion.
+
+The delivery order does not make external approvals sequential dependencies. Human
+authorization and simulator/data acquisition begin at baseline and run beside the
+Paper 1 scientific sprint. Owners, hard dates, and fallback triggers are authoritative
+in `data/manifests/critical_path.yml`.
+
+## Critical-path operating decision
+
+- Paper 1 remains the near-term scientific result and does not acquire an AI stage.
+- Paper 2 station access is a PI-owned external-authorization track starting on Day 0.
+  Codex may prepare inventories, manifests, and correspondence drafts, but cannot
+  register identities, accept agreements, or state that a request was sent.
+- Paper 3 published-waveform reproduction moves from a Week 16 activity to an
+  immediate parallel validation track. Benchmark specification, simulator acquisition,
+  and numerical reproduction are separate gates.
+- Real continuous PEGS-band noise and response-corrected waveforms are a second
+  long-lead risk beside SG authorization; StationXML alone does not close this gate.
+- GNN work remains conditional on a validated simulator and stable information in
+  real-noise, multi-station physical/statistical baselines.
+- Infrastructure backup and cross-machine checks are urgent risk controls but are not
+  counted as scientific-result completion.
+- The 6--7 month target is conditional on raw-enough SG data closing within 4--8
+  weeks and the PEGS benchmark/simulator path closing within about 4 weeks. A missed
+  hard trigger activates a documented fallback rather than indefinite waiting.
 
 ## Delivery policy
 
@@ -28,12 +53,12 @@ Git contains code, configuration, manifests, checksums, compact fixtures, metric
 - [x] Lock claim boundaries and forbidden novelty statements in `claims.yml`.
 - [x] Add repository-wide scientific and agent rules.
 - [x] Add dependency-free CI foundation tests.
-- [ ] Install `uv`, resolve dependencies, generate `uv.lock`, and run the complete test/lint suite.
+- [x] Install `uv`, resolve dependencies, generate `uv.lock`, and run the complete test/lint suite. (Local uv 0.8.24/Python 3.12 environment and Python 3.11/3.13 CI matrix are frozen; container parity remains separate.)
 - [ ] Build and smoke-test the CPU image on Vultr.
 - [ ] Build and smoke-test the GPU image on AutoDL; record CUDA, driver, and framework compatibility.
-- [ ] Add immutable image tags/digests and a machine inventory. (Vultr inspected and AutoDL placeholder recorded; AutoDL inspection and image digests remain.)
+- [ ] Add immutable image tags/digests and a machine inventory. (Vultr and AutoDL are inspected; immutable CPU/GPU image digests remain.)
 - [x] Add experiment metadata schema validation and a working workflow dispatcher.
-- [ ] Demonstrate identical reference output on Vultr and AutoDL.
+- [ ] Demonstrate identical reference output on Vultr and AutoDL. (All five registered outputs reproduce on AutoDL after canonical reporting rules were frozen; the revised hashes still require a Vultr rerun.)
 
 Evidence: CI run, lockfile, image digests, machine inventory, cross-machine regression report.
 
@@ -51,6 +76,9 @@ Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadat
 
 ### 0.3 Paper 2 data Go/No-Go
 
+Owner: PI for identity, agreements, and station contact; Codex for inventories,
+manifests, closure audits, and analysis readiness.
+
 - [ ] Freeze candidate SG stations and candidate typhoons before requesting data. (A checksummed 11-event Haikou-proxy priority list is frozen for coverage inquiry; author-confirmed iGrav-048 coordinates/coverage and alternative SG stations remain.)
 - [x] Determine IGETS product levels, nominal cadence, registration/SFTP access path, and public station table. (Station/file-specific terms remain after registration.)
 - [ ] Request Haikou iGrav-048 gravity, colocated pressure, calibration, jump, maintenance, and timing logs.
@@ -61,17 +89,54 @@ Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadat
 - [ ] Record a formal go, conditional-go, or no-go decision by the end of Week 2.
 - [ ] If no-go, activate Helgoland code-validation track and narrow the Paper 2 claim.
 
+Hard triggers from the 2026-07-12 baseline:
+
+- 2026-07-19 (Day 7): finish the registered-access IGETS station/product inventory.
+- 2026-07-26 (Day 14): complete the first PI follow-up for Haikou/Wuhan requests.
+- 2026-08-09 (Day 28): require a credible station, channel, terms, and delivery path;
+  otherwise mark the preferred route conditional/no-go.
+- 2026-08-23 (end Week 6): activate the best legally accessible substitute event/station
+  if the preferred observations still have no committed delivery date.
+- 2026-09-06 (end Week 8): stop allowing Haikou access to block method validation.
+
+Fallback ladder, with claims narrowed at each step:
+
+1. Haikou/Chinese coastal SG with multi-typhoon channel closure;
+2. another coastal, typhoon-exposed SG with raw-enough gravity, pressure, logs, and
+   independent environmental validation;
+3. another tropical-cyclone event with equivalent data closure;
+4. Helgoland or another storm-surge benchmark for method/model validation only,
+   without a typhoon-generalization claim.
+
 Evidence: completed data manifest, correspondence/access log, event-station matrix, signed decision record.
 
 ### 0.4 Paper 3 data Go/No-Go
+
+Owner: Codex/research team for benchmark and reproducible engineering; PI for any
+simulator license, author request, restricted waveform agreement, or institutional
+data term.
 
 - [ ] Inventory stations in South China, Hong Kong, Taiwan, Philippines, Vietnam, and surrounding networks. (The live EarthScope holdings query yields 145 three-component epochs and 75 unique network/station pairs; other FDSN centres, coverage gaps and ownership completeness remain.)
 - [ ] Distinguish archived, downloadable, real-time-capable, restricted, and unavailable stations. (EarthScope archive extents exist for 8/10 response-priority pairs and six have samples within seven days; BAG/TWKB are absent from these holdings. Actual download, other centres, restrictions and SeedLink realtime/latency remain.)
 - [ ] Verify waveform epochs, sample rates, three-component channels, responses, and licenses. (Ten geographic-priority station pairs now have checksummed StationXML with exact three-component response-stage/transfer-function structure; waveform holdings, epoch-matched deconvolution, latency and network terms remain.)
 - [ ] Define noise-window strata: season, day/night, calm sea, typhoon, urban/remote, outages.
 - [ ] Select a published PEGS waveform benchmark and obtain a validated simulator.
+- [ ] Separately record whether a runnable implementation is public, licensed,
+  author-provided, or must be independently reproduced; a method paper is not itself
+  evidence of executable simulator access.
 - [ ] Freeze the realistic station list before network experiments.
 - [ ] Record a formal go, conditional-go, or no-go decision by the end of Week 2.
+
+Immediate benchmark triggers:
+
+- 2026-07-19 (Day 7): select the published event, stations, components, source model,
+  Earth model, units, sampling, passband, and predeclared tolerances.
+- 2026-07-26 (Day 14): record the QSSP-PEGS/normal-mode acquisition route and any
+  author, license, or implementation dependency.
+- 2026-08-09 (Day 28): reproduce the reference waveform within the frozen tolerances
+  or issue a discrepancy report and activate the alternative validated route.
+- 2026-08-23 (end Week 6): require at least one permitted continuous-noise pilot with
+  response, timing, gaps, and provenance; metadata-only inventory is insufficient.
 
 Evidence: station manifest, response completeness report, noise sampling plan, simulator decision.
 
@@ -104,7 +169,7 @@ Evidence: physics APIs, tests, convergence tables, analytic validation report.
 - [x] Implement gridded direct-attraction integration with chunking and deterministic summation.
 - [x] Add planar and spherical geometry comparison and validity limits.
 - [x] Define a load Green-function provider interface with provenance/version metadata.
-- [ ] Integrate a mature elastic-load Green-function dataset or library. (LoadDef v1.2.2 selected; combined `gE` versus direct `gN` semantics, reference-frame separation, scientific-use gate and provisional normalized-table adapter are complete. Exact tag pin/checksum, installation, equation/sign audit and published benchmark remain.)
+- [x] Integrate a mature elastic-load Green-function dataset or library. (LoadDef v1.2.2 exact tag/archive, isolated installation, PREM execution, `gE`/`gN` equation audit and normalization adapter are complete. Paper 1 CE angle/radial-displacement/`gE` fields match all 50 published Martens et al. 2019 rows exactly; broader tilt/strain discrepancies remain explicitly outside the authorized scope.)
 - [x] Preserve direct attraction, deformation, and potential response separately at the interface and output level.
 - [x] Test mass conservation, sign, spatial convergence, domain truncation, and component sums for reference kernels. (Production datasets still require case-specific sensitivity.)
 - [ ] Benchmark CPU, memory, and I/O; determine when AutoDL CPU resources are justified.
@@ -147,7 +212,7 @@ Evidence: process configs, prior table, unit/physics tests, compact ensemble met
 
 ### 1.5 Published-case reproduction
 
-- [ ] Reproduce Helgoland storm-surge gravity magnitude and deformation components. (Event/month targets, exact processing contract, input manifest and executable pending/pass/fail audit are frozen; IGETS/BSH/HELBH/GNSS inputs remain.)
+- [ ] Reproduce Helgoland storm-surge gravity magnitude and deformation components. (Event/month targets, exact processing contract, input manifest and executable pending/pass/fail audit are frozen. HELBH raw water level, both BSH-HBMnoku SSH grids, and HELG/HEL2 raw RINEX are acquired and integrity-checked on AutoDL. The 242-file BSH structural/time audit passes after two truncated race artifacts were detected and replaced. IGETS gravity still requires registered access, and the cited public GFZ processed GNSS dataset ends in 2021 rather than covering the 2022 event.)
 - [ ] Quantify differences caused by geometry, resolution, Green functions, or domain truncation.
 - [ ] Reproduce the Haikou NTOL magnitude/correlation only with legally available data or author-provided aggregates. (VOR—not preprint—targets, method contract, restricted/open input split and executable audit are frozen; SG/GNSS are author-restricted and exact CMEMS/MPIOM artifacts remain.)
 - [ ] Record whether each case closes within 20–30% or supply a tested discrepancy explanation.
@@ -230,10 +295,12 @@ Evidence: registered multi-event experiment, held-out metrics, false-positive ta
 
 Evidence: decision record, manuscript, figures, reproduction report.
 
-## Phase 3 — Paper 3 regional PEGS warning value (Weeks 16–24)
+## Phase 3 — Paper 3 regional PEGS warning value (Weeks 16–24; benchmark starts Day 0)
 
 ### 3.1 Benchmark and Manila scenario library
 
+- [ ] Complete the Day 0--28 published-event benchmark gate before regional scenario
+  generation; this item is scheduled in Phase 0 even though its evidence is consumed here.
 - [ ] Reproduce a published PEGS event at specified stations/components.
 - [ ] Achieve waveform correlation >0.95, amplitude error <10–20%, and onset error below one sample, or document justified revised tolerances.
 - [ ] Extract published Manila source segments, geometry, slip, and location-specific tsunami-arrival distributions. (Strict source/arrival schema and source queue complete; full numeric extraction pending.)
@@ -284,7 +351,8 @@ Evidence: Pareto curves, recommended network, uncertainty and robustness report.
 
 ### 3.5 GNN conditional stage
 
-- [ ] Start only if real-noise multi-station baselines show stable information.
+- [ ] Start only if the published-waveform simulator benchmark passes and real-noise
+  multi-station baselines show stable information at a predeclared false-alarm target.
 - [ ] Expand physically valid scenarios to 10,000–100,000 only after baseline validation.
 - [ ] Define graph nodes, edges, features, targets, calibration, and uncertainty outputs.
 - [ ] Overfit a tiny dataset as an implementation check.
@@ -322,7 +390,12 @@ Evidence: clean-room reproduction report, release manifests, tags, final drafts.
 
 ## Current next work units
 
-1. Push the repository foundation and this roadmap.
-2. Implement point-mass gravity with explicit geometry/sign contracts and physics tests.
-3. Implement the finite disk analytic benchmark and far-field comparison.
-4. In parallel, turn Paper 2 and Paper 3 `unknown` data entries into concrete access decisions.
+1. Continue the Paper 1 Green-function, published-case, priors, SNR, and atlas sprint.
+2. PI: register IGETS and send the approved Haikou/Wuhan access requests; Codex:
+   inventory only actually deposited stations/products and audit channel closure.
+3. Freeze and execute the published PEGS benchmark while separately resolving
+   simulator source/license access and continuous real-noise access.
+4. Push/backup compact repository artifacts and complete AutoDL cross-machine
+   regression without counting those operations as a scientific gate.
+5. Keep regional PEGS scenario expansion and all GNN training blocked until their
+   explicit predecessor gates pass.

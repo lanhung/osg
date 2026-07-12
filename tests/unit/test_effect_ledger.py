@@ -53,9 +53,7 @@ class TestEffectLedger(unittest.TestCase):
         self.assertFalse(audit.closure_ready)
 
     def test_repository_cmems_ib_status_blocks_closure(self) -> None:
-        document = json.loads(
-            (ROOT / "configs/paper2/effect_composition.json").read_text()
-        )
+        document = json.loads((ROOT / "configs/paper2/effect_composition.json").read_text())
         result = MODULE.audit_document(document)
         self.assertFalse(result["closure_ready"])
         ib = next(

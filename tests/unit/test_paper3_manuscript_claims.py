@@ -35,9 +35,7 @@ class TestPaper3ManuscriptClaims(unittest.TestCase):
             self.assertNotIn(forbidden, self.lowered)
 
     def test_all_seven_figures_remain_pending(self) -> None:
-        document = json.loads(
-            (ROOT / "papers/paper3_pegs/figure_manifest.json").read_text()
-        )
+        document = json.loads((ROOT / "papers/paper3_pegs/figure_manifest.json").read_text())
         self.assertEqual(len(document["figures"]), 7)
         self.assertTrue(all(item["status"].startswith("pending") for item in document["figures"]))
 

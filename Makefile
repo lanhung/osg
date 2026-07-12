@@ -1,9 +1,16 @@
-.PHONY: test lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects audit-paper2-decision
+.PHONY: test test-env lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects audit-paper2-decision
+
+UV ?= uv
 
 test:
 	python3 -m unittest discover -s tests -p 'test_*.py'
 
+test-env:
+	$(UV) run pytest -q
+
 lint:
+	$(UV) run ruff check .
+	$(UV) run ruff format --check .
 	python3 -m compileall -q src tests scripts
 
 validate-experiments:

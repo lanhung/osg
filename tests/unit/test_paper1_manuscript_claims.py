@@ -29,9 +29,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
     def test_pending_results_and_figure_statuses_are_explicit(self) -> None:
         self.assertIn("P1-E001--E004", self.manuscript)
         self.assertIn("engineering references", self.manuscript)
-        figures = json.loads(
-            (ROOT / "papers/paper1_atlas/figure_manifest.json").read_text()
-        )
+        figures = json.loads((ROOT / "papers/paper1_atlas/figure_manifest.json").read_text())
         self.assertEqual(len(figures["figures"]), 4)
         self.assertTrue(all(item["status"] != "complete" for item in figures["figures"]))
 

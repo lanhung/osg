@@ -9,11 +9,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.processes import (  # noqa: E402
+from oceangravity.processes import (
     oscillating_compensated_gaussian_dipole,
     regular_times,
 )
-from oceangravity.signal_processing import one_sided_spectrum  # noqa: E402
+from oceangravity.signal_processing import one_sided_spectrum
 
 
 class TestCompensatedInternalWave(unittest.TestCase):

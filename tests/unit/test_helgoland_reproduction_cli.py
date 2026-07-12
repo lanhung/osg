@@ -34,8 +34,7 @@ class TestHelgolandReproductionCli(unittest.TestCase):
     def test_exact_frozen_values_pass_adapter(self) -> None:
         inputs = dict(self.inputs)
         inputs["observed_reproduction_values"] = {
-            row["target_id"]: row["expected_value"]
-            for row in self.configuration["targets"]
+            row["target_id"]: row["expected_value"] for row in self.configuration["targets"]
         }
         result = MODULE.evaluate_documents(self.configuration, inputs)
         self.assertEqual(result["status"], "pass")

@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.processes import (  # noqa: E402
+from oceangravity.processes import (
     mass_conserving_gaussian_submarine_landslide,
     mass_conserving_submarine_landslide,
 )
@@ -71,16 +71,13 @@ class TestContinuumLandslide(unittest.TestCase):
         shift = (10_000.0, -20_000.0, 30_000.0)
         shifted = self._result(
             solid_source_xyz_m=tuple(
-                value + shift[index]
-                for index, value in enumerate((-1_000.0, 0.0, -2_000.0))
+                value + shift[index] for index, value in enumerate((-1_000.0, 0.0, -2_000.0))
             ),
             solid_destination_xyz_m=tuple(
-                value + shift[index]
-                for index, value in enumerate((2_000.0, 0.0, -3_000.0))
+                value + shift[index] for index, value in enumerate((2_000.0, 0.0, -3_000.0))
             ),
             observation_xyz_m=tuple(
-                value + shift[index]
-                for index, value in enumerate((0.0, 0.0, 10_000.0))
+                value + shift[index] for index, value in enumerate((0.0, 0.0, 10_000.0))
             ),
         )
         for actual, expected in zip(

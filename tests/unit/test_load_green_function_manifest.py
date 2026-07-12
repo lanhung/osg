@@ -27,17 +27,32 @@ class TestLoadGreenFunctionManifest(unittest.TestCase):
         observations = source["source_audit_observations"]
         self.assertEqual(observations["observed_reference_frame_outputs"], ["CE", "CM", "CF"])
         self.assertIn("gN Newtonian response", observations["observed_gravity_outputs"])
-        self.assertIn("do not add LoadDef gN again".lower(), observations["project_consequence"].lower())
-        self.assertEqual(source["scientific_use_gate"]["status"], "not-ready")
-
-    def test_unresolved_component_mapping_forbids_scientific_use(self) -> None:
-        source = self.document["sources"][0]
-        self.assertNotEqual(self.document["integration_status"], "validated")
-        self.assertEqual(
-            source["component_mapping"]["status"],
-            "requires-source-and-equation-audit",
+        self.assertIn(
+            "do not add LoadDef gN again".lower(), observations["project_consequence"].lower()
         )
-        self.assertIsNone(source["local_install"]["exact_commit"])
+        self.assertEqual(
+            source["scientific_use_gate"]["status"],
+            "ready-for-paper1-ce-provider-scope",
+        )
+
+    def test_scientific_gate_is_scoped_and_preserves_broader_failure(self) -> None:
+        source = self.document["sources"][0]
+        self.assertEqual(
+            self.document["integration_status"],
+            "validated-for-paper1-ce-provider-scope",
+        )
+        self.assertEqual(source["component_mapping"]["status"], "source-audited")
+        self.assertEqual(len(source["local_install"]["exact_commit"]), 40)
+        self.assertEqual(len(source["local_install"]["artifact_sha256"]), 64)
+        gate = source["scientific_use_gate"]
+        self.assertTrue(gate["source_equation_audited"])
+        self.assertEqual(gate["reference_frame"], "CE")
+        self.assertEqual(
+            gate["published_benchmark_id"],
+            "Martens2019-LoadDef-DataSets-S2-S5-provider-columns",
+        )
+        self.assertTrue(gate["benchmark_passed"])
+        self.assertEqual(gate["strict_all_twelve_columns_status"], "failed-with-discrepancy-report")
         self.assertGreaterEqual(len(self.document["acceptance_before_scientific_use"]), 6)
 
 

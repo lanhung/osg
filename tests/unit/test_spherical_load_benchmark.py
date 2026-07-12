@@ -20,12 +20,8 @@ class TestSphericalLoadBenchmark(unittest.TestCase):
         for case in result["cases"]:
             self.assertEqual(case["included_cells"], 32)
             self.assertGreater(case["integrator_peak_traced_bytes"], 0)
-            self.assertLess(
-                case["maximum_relative_gravity_difference_from_unchunked"], 2e-15
-            )
-            self.assertLess(
-                case["maximum_relative_gradient_difference_from_unchunked"], 2e-15
-            )
+            self.assertLess(case["maximum_relative_gravity_difference_from_unchunked"], 2e-15)
+            self.assertLess(case["maximum_relative_gradient_difference_from_unchunked"], 2e-15)
 
     def test_invalid_grid_is_rejected(self) -> None:
         with self.assertRaises(ValueError):

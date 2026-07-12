@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import GRAVITATIONAL_CONSTANT  # noqa: E402
-from oceangravity.gravity import gravity_vector, vertical_gravity  # noqa: E402
+from oceangravity.constants import GRAVITATIONAL_CONSTANT
+from oceangravity.gravity import gravity_vector, vertical_gravity
 
 
 class TestPointMassGravity(unittest.TestCase):
@@ -68,11 +68,12 @@ class TestPointMassGravity(unittest.TestCase):
             (1.0, (0.0, 0.0), (1.0, 0.0, 0.0)),
         )
         for mass, source, observation in cases:
-            with self.subTest(mass=mass, source=source, observation=observation):
-                with self.assertRaises(ValueError):
-                    gravity_vector(mass, source, observation)
+            with (
+                self.subTest(mass=mass, source=source, observation=observation),
+                self.assertRaises(ValueError),
+            ):
+                gravity_vector(mass, source, observation)
 
 
 if __name__ == "__main__":
     unittest.main()
-

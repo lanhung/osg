@@ -64,8 +64,7 @@ def summarize_inventory(path: Path) -> dict:
             "longitude_deg": float(rows[0]["Longitude"]),
             "sample_rates_hz": sorted({float(row["SampleRate"]) for row in rows}),
             "scalar_sensitivity_present_for_all_channels": all(
-                bool(row.get("Scale", "")) and bool(row.get("ScaleUnits", ""))
-                for row in rows
+                bool(row.get("Scale", "")) and bool(row.get("ScaleUnits", "")) for row in rows
             ),
             "full_response_verified": False,
         }
@@ -83,7 +82,12 @@ def summarize_inventory(path: Path) -> dict:
         "open_ended_networks": sorted({record["network"] for record in open_ended}),
         "three_component_candidates": candidates,
         "incomplete_channel_epochs": incomplete,
-        "warning": "An open-ended channel epoch does not establish current operation. Channel metadata and scalar sensitivity do not establish waveform availability, full response, real-time latency, licence, or usable noise quality.",
+        "warning": (
+            "An open-ended channel epoch does not establish current operation. "
+            "Channel metadata and scalar sensitivity do not establish waveform "
+            "availability, full response, real-time latency, licence, or usable "
+            "noise quality."
+        ),
     }
 
 

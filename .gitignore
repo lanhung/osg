@@ -6,6 +6,7 @@ __pycache__/
 .coverage
 htmlcov/
 .venv/
+.tools/
 
 # Editors and operating systems
 .DS_Store
@@ -30,4 +31,3 @@ reports/generated/
 .env
 *.pem
 *.key
-

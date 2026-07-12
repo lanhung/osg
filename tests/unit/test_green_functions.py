@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import math
 import json
+import math
 import sys
 import tempfile
 import unittest
@@ -11,11 +11,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.loading import (
     CombinedElasticLoadGreenFunctionSample,
     LoadGreenFunctionMetadata,
-    LoadGreenFunctionScientificAudit,
     LoadGreenFunctionSample,
+    LoadGreenFunctionScientificAudit,
     TabulatedLoadGreenFunctionProvider,
     assert_green_function_scientific_use_ready,
     convolve_combined_elastic_load_green_functions,
@@ -78,7 +78,9 @@ class TestLoadGreenFunctions(unittest.TestCase):
         )
         expected = math.fsum((4.0, 1.0, -0.25))
         self.assertEqual(response.total_gravity_m_s2, expected)
-        self.assertNotEqual(response.total_gravity_m_s2, expected + response.vertical_displacement_m)
+        self.assertNotEqual(
+            response.total_gravity_m_s2, expected + response.vertical_displacement_m
+        )
 
     def test_zero_mass_does_not_require_singular_provider_evaluation(self) -> None:
         response = convolve_load_green_functions(
@@ -161,13 +163,9 @@ class TestLoadGreenFunctions(unittest.TestCase):
             direct_attraction_m_s2=4.0,
         )
         weighted_distance = 2.0 * 0.1 + 1.0 * 0.2
-        self.assertAlmostEqual(
-            response.combined_elastic_gravity_m_s2, 1.5 * weighted_distance
-        )
+        self.assertAlmostEqual(response.combined_elastic_gravity_m_s2, 1.5 * weighted_distance)
         self.assertAlmostEqual(response.vertical_displacement_m, -2.0 * weighted_distance)
-        self.assertAlmostEqual(
-            response.total_gravity_m_s2, 4.0 + 1.5 * weighted_distance
-        )
+        self.assertAlmostEqual(response.total_gravity_m_s2, 4.0 + 1.5 * weighted_distance)
         self.assertFalse(hasattr(response, "deformation_gravity_m_s2"))
         self.assertFalse(hasattr(response, "internal_mass_gravity_m_s2"))
 
@@ -181,9 +179,7 @@ class TestLoadGreenFunctions(unittest.TestCase):
                 [1.0], [0.1], AnalyticFixtureProvider(), direct_attraction_m_s2=0.0
             )
         with self.assertRaises(ValueError):
-            LoadGreenFunctionMetadata(
-                "id", "1", "earth", "source", component_semantics="ambiguous"
-            )
+            LoadGreenFunctionMetadata("id", "1", "earth", "source", component_semantics="ambiguous")
 
     def test_scientific_gate_requires_matching_audit_and_benchmark(self) -> None:
         provider = CombinedFixtureProvider()

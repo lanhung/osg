@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.loading import (
     surface_load_gravity_planar,
     surface_load_gravity_spherical,
     surface_load_gravity_wgs84,
@@ -19,9 +19,7 @@ class TestCellLoadFraction(unittest.TestCase):
     def test_planar_partial_cell_scales_area_mass_and_gravity(self) -> None:
         arguments = ([[2.0]], [0.0, 10.0], [0.0, 10.0], 0.0, (5.0, 5.0, 10.0))
         full = surface_load_gravity_planar(*arguments)
-        quarter = surface_load_gravity_planar(
-            *arguments, cell_load_fraction=[[0.25]]
-        )
+        quarter = surface_load_gravity_planar(*arguments, cell_load_fraction=[[0.25]])
         self.assertEqual(quarter.included_area_m2, 25.0)
         self.assertEqual(quarter.included_mass_kg, 50.0)
         self.assertEqual(quarter.gravity_m_s2[2], 0.25 * full.gravity_m_s2[2])

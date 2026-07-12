@@ -17,11 +17,11 @@ from .thin_disk import (
 from .volume_cells import volume_cell_gravity
 
 __all__ = [
-    "disk_gravity_numerical",
-    "disk_vertical_gravity_on_axis",
-    "disk_vertical_gravity_gradient_on_axis",
-    "gaussian_surface_gravity_numerical",
     "GaussianSurfaceResponse",
+    "disk_gravity_numerical",
+    "disk_vertical_gravity_gradient_on_axis",
+    "disk_vertical_gravity_on_axis",
+    "gaussian_surface_gravity_numerical",
     "gaussian_surface_response_numerical",
     "gaussian_vertical_gravity_on_axis",
     "gravity_gradient_tensor",

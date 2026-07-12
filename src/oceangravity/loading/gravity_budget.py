@@ -38,8 +38,7 @@ class GravityCorrectionComponent:
             if len(self.standard_uncertainty_m_s2) != len(self.values_m_s2):
                 raise ValueError("component uncertainty must match component length")
             if not all(
-                math.isfinite(value) and value >= 0.0
-                for value in self.standard_uncertainty_m_s2
+                math.isfinite(value) and value >= 0.0 for value in self.standard_uncertainty_m_s2
             ):
                 raise ValueError("component standard uncertainty must be finite and nonnegative")
             if not self.uncertainty_group_id or not self.uncertainty_group_id.strip():
@@ -136,9 +135,7 @@ def compute_gravity_residual(
     )
     if observed_uncertainty is not None and (
         len(observed_uncertainty) != len(observed)
-        or not all(
-            math.isfinite(value) and value >= 0.0 for value in observed_uncertainty
-        )
+        or not all(math.isfinite(value) and value >= 0.0 for value in observed_uncertainty)
     ):
         raise ValueError(
             "observed standard uncertainty must match observation length and be nonnegative"
@@ -163,8 +160,7 @@ def compute_gravity_residual(
             effect_owner[effect] = component.component_id
 
     residual = tuple(
-        observed[index]
-        - math.fsum(component.values_m_s2[index] for component in components)
+        observed[index] - math.fsum(component.values_m_s2[index] for component in components)
         for index in range(len(observed))
     )
     closure = max(
@@ -188,9 +184,7 @@ def compute_gravity_residual(
         if component.standard_uncertainty_m_s2 is None
     )
     if require_complete_uncertainty and missing_uncertainty:
-        raise ValueError(
-            "incomplete gravity uncertainty budget: " + ", ".join(missing_uncertainty)
-        )
+        raise ValueError("incomplete gravity uncertainty budget: " + ", ".join(missing_uncertainty))
     group_ids = tuple(
         sorted(
             {
@@ -269,8 +263,7 @@ def apply_gravity_correction_chain(
         current = output
     if current != final.residual_m_s2:
         difference = max(
-            abs(left - right)
-            for left, right in zip(current, final.residual_m_s2, strict=True)
+            abs(left - right) for left, right in zip(current, final.residual_m_s2, strict=True)
         )
         if difference > max(final.closure_max_abs_m_s2, 1e-30) * 4.0:
             raise RuntimeError("sequential and direct correction paths do not close")

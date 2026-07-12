@@ -79,7 +79,9 @@ def asymmetric_gaussian_disk_surge(
         vertical_direct_gravity_m_s2=tuple(
             unit_sea_level_gravity * value for value in sea_level_tuple
         ),
-        model_scope="direct attraction of an asymmetric transient finite-disk load; no elastic response",
+        model_scope=(
+            "direct attraction of an asymmetric transient finite-disk load; no elastic response"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(
             unit_sea_level_gradient * value for value in sea_level_tuple
         ),

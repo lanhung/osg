@@ -42,14 +42,21 @@ def evaluate_documents(configuration: dict, inputs: dict) -> dict:
         "targets": [asdict(row) for row in audit.targets],
         "input_manifest_status": inputs["status"],
         "typhoon_event_attribution_eligible": False,
-        "warning": "VOR and preprint values differ; only VOR targets and the frozen full method may be used for reproduction.",
+        "warning": (
+            "VOR and preprint values differ; only VOR targets and the frozen full "
+            "method may be used for reproduction."
+        ),
     }
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=Path, default=ROOT / "configs/paper1/haikou_reproduction.json")
-    parser.add_argument("--inputs", type=Path, default=ROOT / "data/manifests/haikou_reproduction_inputs.json")
+    parser.add_argument(
+        "--config", type=Path, default=ROOT / "configs/paper1/haikou_reproduction.json"
+    )
+    parser.add_argument(
+        "--inputs", type=Path, default=ROOT / "data/manifests/haikou_reproduction_inputs.json"
+    )
     parser.add_argument("--output", type=Path)
     return parser.parse_args()
 

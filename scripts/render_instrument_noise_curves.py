@@ -55,26 +55,57 @@ def render_observable(curves: list[NoiseCurve], observable: str) -> str:
         return TOP + plot_height * math.log(y_max / value) / math.log(y_max / y_min)
 
     lines = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">',
+        (
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" '
+            f'height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">'
+        ),
         '<rect width="100%" height="100%" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#222}.tick{font-size:13px}.label{font-size:15px}.title{font-size:20px;font-weight:600}.legend{font-size:12px}</style>',
-        f'<text class="title" x="{WIDTH / 2}" y="27" text-anchor="middle">{escape(observable)} literature/model anchors</text>',
+        (
+            "<style>text{font-family:Arial,sans-serif;fill:#222}"
+            ".tick{font-size:13px}.label{font-size:15px}"
+            ".title{font-size:20px;font-weight:600}"
+            ".legend{font-size:12px}</style>"
+        ),
+        (
+            f'<text class="title" x="{WIDTH / 2}" y="27" text-anchor="middle">'
+            f"{escape(observable)} literature/model anchors</text>"
+        ),
     ]
     for tick in _log_ticks(x_min, x_max):
         if tick < x_min or tick > x_max:
             continue
         x = x_position(tick)
-        lines.append(f'<line x1="{x:.3f}" y1="{TOP}" x2="{x:.3f}" y2="{TOP + plot_height}" stroke="#ddd"/>')
-        lines.append(f'<text class="tick" x="{x:.3f}" y="{TOP + plot_height + 23}" text-anchor="middle">1e{round(math.log10(tick))}</text>')
+        lines.append(
+            f'<line x1="{x:.3f}" y1="{TOP}" x2="{x:.3f}" y2="{TOP + plot_height}" stroke="#ddd"/>'
+        )
+        lines.append(
+            f'<text class="tick" x="{x:.3f}" y="{TOP + plot_height + 23}" '
+            f'text-anchor="middle">1e{round(math.log10(tick))}</text>'
+        )
     for tick in _log_ticks(y_min, y_max):
         y = y_position(tick)
-        lines.append(f'<line x1="{LEFT}" y1="{y:.3f}" x2="{LEFT + plot_width}" y2="{y:.3f}" stroke="#ddd"/>')
-        lines.append(f'<text class="tick" x="{LEFT - 12}" y="{y + 4:.3f}" text-anchor="end">1e{round(math.log10(tick))}</text>')
+        lines.append(
+            f'<line x1="{LEFT}" y1="{y:.3f}" x2="{LEFT + plot_width}" y2="{y:.3f}" stroke="#ddd"/>'
+        )
+        lines.append(
+            f'<text class="tick" x="{LEFT - 12}" y="{y + 4:.3f}" '
+            f'text-anchor="end">1e{round(math.log10(tick))}</text>'
+        )
     lines.extend(
         (
-            f'<rect x="{LEFT}" y="{TOP}" width="{plot_width}" height="{plot_height}" fill="none" stroke="#222"/>',
-            f'<text class="label" x="{LEFT + plot_width / 2}" y="{HEIGHT - 25}" text-anchor="middle">Frequency (Hz)</text>',
-            f'<text class="label" transform="translate(23 {TOP + plot_height / 2}) rotate(-90)" text-anchor="middle">ASD ({escape(next(iter(units)))})</text>',
+            (
+                f'<rect x="{LEFT}" y="{TOP}" width="{plot_width}" '
+                f'height="{plot_height}" fill="none" stroke="#222"/>'
+            ),
+            (
+                f'<text class="label" x="{LEFT + plot_width / 2}" '
+                f'y="{HEIGHT - 25}" text-anchor="middle">Frequency (Hz)</text>'
+            ),
+            (
+                f'<text class="label" transform="translate(23 '
+                f'{TOP + plot_height / 2}) rotate(-90)" text-anchor="middle">'
+                f"ASD ({escape(next(iter(units)))})</text>"
+            ),
         )
     )
     for index, curve in enumerate(selected):
@@ -85,9 +116,15 @@ def render_observable(curves: list[NoiseCurve], observable: str) -> str:
         )
         lines.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="3"/>')
         legend_y = TOP + 17 + 19 * index
-        lines.append(f'<line x1="{LEFT + 12}" y1="{legend_y}" x2="{LEFT + 40}" y2="{legend_y}" stroke="{color}" stroke-width="3"/>')
-        lines.append(f'<text class="legend" x="{LEFT + 47}" y="{legend_y + 4}">{escape(curve.instrument_id)}</text>')
-    lines.append('</svg>')
+        lines.append(
+            f'<line x1="{LEFT + 12}" y1="{legend_y}" x2="{LEFT + 40}" '
+            f'y2="{legend_y}" stroke="{color}" stroke-width="3"/>'
+        )
+        lines.append(
+            f'<text class="legend" x="{LEFT + 47}" y="{legend_y + 4}">'
+            f"{escape(curve.instrument_id)}</text>"
+        )
+    lines.append("</svg>")
     return "\n".join(lines) + "\n"
 
 

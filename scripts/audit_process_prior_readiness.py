@@ -35,17 +35,21 @@ def audit_document(document: dict) -> dict:
                 "sensitivity_design_not_probability",
             }:
                 blockers.append("invalid_joint_design_semantics")
-            if not isinstance(design.get("sample_count"), int) or isinstance(
-                design.get("sample_count"), bool
-            ) or design.get("sample_count", 0) <= 0:
+            if (
+                not isinstance(design.get("sample_count"), int)
+                or isinstance(design.get("sample_count"), bool)
+                or design.get("sample_count", 0) <= 0
+            ):
                 blockers.append("invalid_sample_count")
             if not isinstance(design.get("random_seed"), int) or isinstance(
                 design.get("random_seed"), bool
             ):
                 blockers.append("missing_integer_random_seed")
             variants = design.get("model_variants")
-            if not isinstance(variants, list) or not variants or any(
-                not isinstance(item, str) or not item.strip() for item in variants
+            if (
+                not isinstance(variants, list)
+                or not variants
+                or any(not isinstance(item, str) or not item.strip() for item in variants)
             ):
                 blockers.append("missing_model_variants")
             if not isinstance(design.get("joint_constraints"), list):
@@ -112,13 +116,14 @@ def audit_document(document: dict) -> dict:
         )
     return {
         "schema_version": 1,
-        "all_processes_ready": all(
-            row["ready_for_production_ensemble"] for row in results
-        ),
+        "all_processes_ready": all(row["ready_for_production_ensemble"] for row in results),
         "ready_count": sum(row["ready_for_production_ensemble"] for row in results),
         "process_count": len(results),
         "processes": results,
-        "policy": "Foundation fixtures may run, but production atlas ensembles require this gate to pass for all six processes.",
+        "policy": (
+            "Foundation fixtures may run, but production atlas ensembles require "
+            "this gate to pass for all six processes."
+        ),
     }
 
 

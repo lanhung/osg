@@ -61,16 +61,11 @@ def disk_gravity_numerical(
             displacement_x = source_x - observation[0]
             displacement_y = source_y - observation[1]
             displacement_z = center[2] - observation[2]
-            distance_squared = (
-                displacement_x**2 + displacement_y**2 + displacement_z**2
-            )
-            inverse_distance_cubed = 1.0 / (
-                distance_squared * math.sqrt(distance_squared)
-            )
+            distance_squared = displacement_x**2 + displacement_y**2 + displacement_z**2
+            inverse_distance_cubed = 1.0 / (distance_squared * math.sqrt(distance_squared))
             cell_scale = scale * cell_area * inverse_distance_cubed
             acceleration_x += cell_scale * displacement_x
             acceleration_y += cell_scale * displacement_y
             acceleration_z += cell_scale * displacement_z
 
     return acceleration_x, acceleration_y, acceleration_z
-

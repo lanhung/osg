@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     earliest_reliable_detection_time,
     time_dependent_detection_probability,
 )
@@ -40,9 +40,7 @@ class TestTimeDependentDetection(unittest.TestCase):
         )
         self.assertEqual(earliest_reliable_detection_time(points, 0.9), 60.0)
         self.assertEqual(
-            earliest_reliable_detection_time(
-                points, 0.9, required_consecutive_points=2
-            ),
+            earliest_reliable_detection_time(points, 0.9, required_consecutive_points=2),
             180.0,
         )
 

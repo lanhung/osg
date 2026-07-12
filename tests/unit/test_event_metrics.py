@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     compare_event_model_improvement,
     evaluate_event_model_metrics,
 )
@@ -52,9 +52,7 @@ class TestEventMetrics(unittest.TestCase):
         self.assertEqual(observed[1], 100.0)
 
     def test_constant_series_and_invalid_inputs_are_explicit(self) -> None:
-        metrics = evaluate_event_model_metrics(
-            (0.0, 1.0), (2.0, 2.0), (3.0, 3.0)
-        )
+        metrics = evaluate_event_model_metrics((0.0, 1.0), (2.0, 2.0), (3.0, 3.0))
         self.assertIsNone(metrics.pearson_correlation)
         self.assertIsNone(metrics.explained_variance_fraction)
         with self.assertRaises(ValueError):

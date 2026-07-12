@@ -22,17 +22,21 @@ class TestMachineInventory(unittest.TestCase):
         self.assertFalse(control["uv_available"])
         self.assertFalse(control["docker_available"])
 
-    def test_compute_plane_unknowns_remain_null(self) -> None:
+    def test_compute_plane_records_inspected_hardware_and_locked_runtime(self) -> None:
         compute = self.document["machines"][1]
-        self.assertEqual(compute["verification_status"], "user-described-not-inspected")
-        self.assertEqual(compute["gpu"]["model"], "NVIDIA A5000")
-        self.assertIsNone(compute["gpu"]["count"])
-        self.assertIsNone(compute["cuda"])
+        self.assertEqual(compute["verification_status"], "remotely-inspected")
+        self.assertEqual(compute["cpu"]["logical_cpus"], 64)
+        self.assertEqual(compute["gpu"]["model"], "NVIDIA RTX 5000 Ada Generation")
+        self.assertEqual(compute["gpu"]["count"], 4)
+        self.assertEqual(compute["driver"], "570.124.06")
+        self.assertEqual(compute["python"], "3.12.12")
+        self.assertIsNone(compute["locked_scientific_environment"]["torch"])
 
     def test_cross_machine_equivalence_is_not_claimed(self) -> None:
         regression = self.document["cross_machine_regression"]
-        self.assertTrue(regression["status"].startswith("pending"))
-        self.assertEqual(len(regression["required_experiments"]), 4)
+        self.assertTrue(regression["status"].endswith("vultr-rerun-pending"))
+        self.assertEqual(len(regression["required_experiments"]), 5)
+        self.assertEqual(regression["autodl_registered_outputs_reproduced"], 5)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.instruments import NoiseCurve  # noqa: E402
+from oceangravity.instruments import NoiseCurve
 
 
 def _curve() -> NoiseCurve:
@@ -74,4 +74,3 @@ class TestNoiseCurve(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -106,16 +106,13 @@ def apply_instrument_drift_model(
     uncertainty = tuple(
         math.hypot(
             seconds * model.linear_rate_standard_uncertainty_m_s2_per_s,
-            0.5
-            * seconds**2
-            * model.quadratic_rate_standard_uncertainty_m_s2_per_s2,
+            0.5 * seconds**2 * model.quadratic_rate_standard_uncertainty_m_s2_per_s2,
         )
         for seconds in elapsed
     )
     return InstrumentDriftCorrection(
         corrected_m_s2=tuple(
-            value - correction
-            for value, correction in zip(values, removed, strict=True)
+            value - correction for value, correction in zip(values, removed, strict=True)
         ),
         removed_drift_m_s2=removed,
         removed_drift_standard_uncertainty_m_s2=uncertainty,

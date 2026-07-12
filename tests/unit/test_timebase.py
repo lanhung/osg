@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import split_uniform_time_series  # noqa: E402
+from oceangravity.signal_processing import split_uniform_time_series
 
 
 class TestTimebaseSegmentation(unittest.TestCase):
@@ -32,9 +32,7 @@ class TestTimebaseSegmentation(unittest.TestCase):
         )
 
     def test_relative_tolerance_is_explicit(self) -> None:
-        accepted = split_uniform_time_series(
-            [0.0, 1.0000005, 2.0000002], [1.0, 2.0, 3.0], 1.0
-        )
+        accepted = split_uniform_time_series([0.0, 1.0000005, 2.0000002], [1.0, 2.0, 3.0], 1.0)
         self.assertEqual(len(accepted.segments), 1)
         strict = split_uniform_time_series(
             [0.0, 1.0000005, 2.0000002],
@@ -54,9 +52,7 @@ class TestTimebaseSegmentation(unittest.TestCase):
         with self.assertRaises(ValueError):
             split_uniform_time_series([0.0, 1.0], [1.0, 2.0], 0.0)
         with self.assertRaises(ValueError):
-            split_uniform_time_series(
-                [0.0, 1.0], [1.0, 2.0], 1.0, minimum_segment_samples=True
-            )
+            split_uniform_time_series([0.0, 1.0], [1.0, 2.0], 1.0, minimum_segment_samples=True)
 
 
 if __name__ == "__main__":

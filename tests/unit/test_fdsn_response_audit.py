@@ -11,13 +11,18 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from fetch_fdsn_response_audit import summarize_stationxml  # noqa: E402
 
-
 STATION_XML = b"""<?xml version='1.0'?>
 <FDSNStationXML xmlns='http://www.fdsn.org/xml/station/1'>
   <Network code='XX'><Station code='AAA'>
-    <Channel code='BHZ' locationCode='00' startDate='2024-01-01T00:00:00Z'><Response><InstrumentSensitivity/><Stage number='1'><PolesZeros/></Stage></Response></Channel>
-    <Channel code='BHN' locationCode='00' startDate='2024-01-01T00:00:00Z'><Response><InstrumentSensitivity/><Stage number='1'><PolesZeros/></Stage></Response></Channel>
-    <Channel code='BHE' locationCode='00' startDate='2024-01-01T00:00:00Z'><Response><InstrumentSensitivity/><Stage number='1'><PolesZeros/></Stage></Response></Channel>
+    <Channel code='BHZ' locationCode='00' startDate='2024-01-01T00:00:00Z'>
+      <Response><InstrumentSensitivity/><Stage number='1'><PolesZeros/></Stage></Response>
+    </Channel>
+    <Channel code='BHN' locationCode='00' startDate='2024-01-01T00:00:00Z'>
+      <Response><InstrumentSensitivity/><Stage number='1'><PolesZeros/></Stage></Response>
+    </Channel>
+    <Channel code='BHE' locationCode='00' startDate='2024-01-01T00:00:00Z'>
+      <Response><InstrumentSensitivity/><Stage number='1'><PolesZeros/></Stage></Response>
+    </Channel>
     <Channel code='LHZ' locationCode='10' startDate='2024-01-01T00:00:00Z'><Response/></Channel>
     <Channel code='LH1' locationCode='10' startDate='2024-01-01T00:00:00Z'><Response/></Channel>
     <Channel code='LH2' locationCode='10' startDate='2024-01-01T00:00:00Z'><Response/></Channel>

@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.pegs import (  # noqa: E402
+from oceangravity.pegs import (
     StationEpochReadiness,
     audit_station_readiness,
 )
@@ -35,9 +35,7 @@ class TestPegsStationReadiness(unittest.TestCase):
     def test_ready_archive_and_operational_epochs_are_distinguished(self) -> None:
         live = _epoch("live", "AAA")
         archive = _epoch("archive", "BBB", latency_class="archive_only")
-        audit = audit_station_readiness(
-            (archive, live), minimum_operational_station_count=1
-        )
+        audit = audit_station_readiness((archive, live), minimum_operational_station_count=1)
         self.assertEqual(audit.retrospective_station_count, 2)
         self.assertEqual(audit.operational_station_count, 1)
         self.assertEqual(audit.operational_ready_epoch_ids, ("live",))

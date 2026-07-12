@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.pegs import (  # noqa: E402
+from oceangravity.pegs import (
     CrossStationCovarianceModel,
     cross_station_covariance_template_scores,
     estimate_cross_station_covariance,
@@ -64,12 +64,8 @@ class TestPegsCovarianceTemplate(unittest.TestCase):
 
     def test_non_positive_definite_and_station_mismatch_fail(self) -> None:
         with self.assertRaisesRegex(ValueError, "positive definite"):
-            CrossStationCovarianceModel(
-                ("A", "B"), ((1.0, 1.0), (1.0, 1.0)), "bad", ("q",)
-            )
-        covariance = CrossStationCovarianceModel(
-            ("A",), ((1.0,),), "one", ("q",)
-        )
+            CrossStationCovarianceModel(("A", "B"), ((1.0, 1.0), (1.0, 1.0)), "bad", ("q",))
+        covariance = CrossStationCovarianceModel(("A",), ((1.0,),), "one", ("q",))
         with self.assertRaisesRegex(ValueError, "match covariance"):
             cross_station_covariance_template_scores(
                 {"B": (1.0,)},
@@ -120,9 +116,7 @@ class TestPegsCovarianceTemplate(unittest.TestCase):
                 source_id="quiet-cov-v1",
                 diagonal_shrinkage=0.5,
                 minimum_complete_samples=2,
-                inclusion_masks={
-                    "quiet": {"A": (True, False), "B": (True, True)}
-                },
+                inclusion_masks={"quiet": {"A": (True, False), "B": (True, True)}},
             )
 
 

@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.pegs import (  # noqa: E402
+from oceangravity.pegs import (
     SourceTemplateHypothesis,
     invert_discrete_source_library,
 )
@@ -50,7 +50,11 @@ class TestPegsSourceInversion(unittest.TestCase):
     def test_candidate_worse_than_null_is_not_a_detection(self) -> None:
         result = invert_discrete_source_library(
             {"A": (0.0,), "B": (0.0,)},
-            (SourceTemplateHypothesis("large", 9.0, "joint", "fixture:large", {"A": (5.0,), "B": (5.0,)}),),
+            (
+                SourceTemplateHypothesis(
+                    "large", 9.0, "joint", "fixture:large", {"A": (5.0,), "B": (5.0,)}
+                ),
+            ),
             {"A": 1.0, "B": 1.0},
             {"A": "quiet:A", "B": "quiet:B"},
             source_library_id="fixture-library-v1",

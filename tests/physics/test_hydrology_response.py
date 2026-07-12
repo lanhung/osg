@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import GRAVITATIONAL_CONSTANT  # noqa: E402
-from oceangravity.loading import (  # noqa: E402
+from oceangravity.constants import GRAVITATIONAL_CONSTANT
+from oceangravity.loading import (
     double_exponential_precipitation_storage,
     hydrology_bouguer_correction_component,
 )

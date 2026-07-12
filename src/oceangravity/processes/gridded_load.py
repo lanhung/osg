@@ -101,7 +101,9 @@ def gridded_sea_level_direct_gravity_signal(
         source_amplitude=tuple(masses),
         source_amplitude_unit="kg signed included sea-level load mass",
         vertical_direct_gravity_m_s2=tuple(gravity),
-        model_scope=f"direct attraction of gridded sea-level anomaly on {geometry}; no elastic response",
+        model_scope=(
+            f"direct attraction of gridded sea-level anomaly on {geometry}; no elastic response"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(gradients),
     )
     return GriddedSeaLevelSignalResult(

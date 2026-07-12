@@ -19,9 +19,7 @@ SPEC.loader.exec_module(MODULE)
 
 class TestProcessPriorReadiness(unittest.TestCase):
     def test_repository_correctly_blocks_all_production_processes(self) -> None:
-        document = json.loads(
-            (ROOT / "data/manifests/process_parameter_evidence.json").read_text()
-        )
+        document = json.loads((ROOT / "data/manifests/process_parameter_evidence.json").read_text())
         result = MODULE.audit_document(document)
         self.assertEqual(result["process_count"], 6)
         self.assertEqual(result["ready_count"], 0)

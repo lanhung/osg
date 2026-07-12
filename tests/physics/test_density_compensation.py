@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.gravity import volume_cell_gravity  # noqa: E402
+from oceangravity.gravity import volume_cell_gravity
 
 
 def _gaussian_pair_grid(
@@ -19,10 +19,7 @@ def _gaussian_pair_grid(
 
     cells_per_axis = 12
     step = 0.5 * scale
-    coordinates = [
-        (-0.5 * cells_per_axis + index + 0.5) * step
-        for index in range(cells_per_axis)
-    ]
+    coordinates = [(-0.5 * cells_per_axis + index + 0.5) * step for index in range(cells_per_axis)]
     densities: list[float] = []
     centers: list[tuple[float, float, float]] = []
     positive_count = 0
@@ -52,12 +49,8 @@ class TestDensityCompensation(unittest.TestCase):
 
         near_observation = (0.0, 0.0, 20.0 * scale)
         far_observation = (0.0, 0.0, 40.0 * scale)
-        compensated_near = volume_cell_gravity(
-            densities, centers, cell_volume, near_observation
-        )[2]
-        compensated_far = volume_cell_gravity(
-            densities, centers, cell_volume, far_observation
-        )[2]
+        compensated_near = volume_cell_gravity(densities, centers, cell_volume, near_observation)[2]
+        compensated_far = volume_cell_gravity(densities, centers, cell_volume, far_observation)[2]
 
         positive_densities = densities[:positive_count]
         positive_centers = centers[:positive_count]
@@ -79,4 +72,3 @@ class TestDensityCompensation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

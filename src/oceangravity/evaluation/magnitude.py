@@ -73,13 +73,11 @@ def time_dependent_magnitude_performance(
     for time_index, time in enumerate(times):
         errors = [predictions[event][time_index] - truth[event] for event in range(len(truth))]
         true_positives = sum(
-            truth[event] >= risk_threshold
-            and predictions[event][time_index] >= risk_threshold
+            truth[event] >= risk_threshold and predictions[event][time_index] >= risk_threshold
             for event in range(len(truth))
         )
         true_negatives = sum(
-            truth[event] < risk_threshold
-            and predictions[event][time_index] < risk_threshold
+            truth[event] < risk_threshold and predictions[event][time_index] < risk_threshold
             for event in range(len(truth))
         )
         coverage = None
@@ -94,12 +92,8 @@ def time_dependent_magnitude_performance(
                 event_count=len(truth),
                 mean_absolute_error=math.fsum(abs(error) for error in errors) / len(errors),
                 mean_error_bias=math.fsum(errors) / len(errors),
-                high_risk_sensitivity=(
-                    true_positives / positive_count if positive_count else None
-                ),
-                low_risk_specificity=(
-                    true_negatives / negative_count if negative_count else None
-                ),
+                high_risk_sensitivity=(true_positives / positive_count if positive_count else None),
+                low_risk_specificity=(true_negatives / negative_count if negative_count else None),
                 interval_coverage_probability=coverage,
             )
         )
@@ -126,7 +120,9 @@ def earliest_reliable_magnitude_time(
         raise ValueError("maximum_mae must be finite and non-negative")
     if any(not math.isfinite(value) or not 0.0 <= value <= 1.0 for value in limits[1:]):
         raise ValueError("sensitivity and specificity minima must lie in [0, 1]")
-    coverage_minimum = None if minimum_interval_coverage is None else float(minimum_interval_coverage)
+    coverage_minimum = (
+        None if minimum_interval_coverage is None else float(minimum_interval_coverage)
+    )
     if coverage_minimum is not None and (
         not math.isfinite(coverage_minimum) or not 0.0 <= coverage_minimum <= 1.0
     ):

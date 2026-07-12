@@ -64,9 +64,7 @@ def periodic_disk_tide(
         observation_z_m,
     )
     angular_frequency = 2.0 * math.pi / period
-    sea_level = tuple(
-        amplitude * math.cos(angular_frequency * time + phase) for time in times
-    )
+    sea_level = tuple(amplitude * math.cos(angular_frequency * time + phase) for time in times)
     gravity = tuple(unit_sea_level_gravity * value for value in sea_level)
     return ScalarGravitySignal(
         process_id="periodic_disk_tide",

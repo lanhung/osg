@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.gravity import (
     disk_gravity_numerical,
     disk_vertical_gravity_on_axis,
     gravity_vector,
@@ -96,18 +96,19 @@ class TestNumericalDiskGravity(unittest.TestCase):
         with self.assertRaises(ValueError):
             disk_gravity_numerical(1.0, 2.0, (0.0, 0.0, 0.0), (1.0, 0.0, 0.0))
         for radial_cells, angular_cells in ((0, 8), (8, 2), (True, 8)):
-            with self.subTest(radial_cells=radial_cells, angular_cells=angular_cells):
-                with self.assertRaises(ValueError):
-                    disk_gravity_numerical(
-                        1.0,
-                        2.0,
-                        (0.0, 0.0, 0.0),
-                        (0.0, 0.0, 1.0),
-                        radial_cells=radial_cells,
-                        angular_cells=angular_cells,
-                    )
+            with (
+                self.subTest(radial_cells=radial_cells, angular_cells=angular_cells),
+                self.assertRaises(ValueError),
+            ):
+                disk_gravity_numerical(
+                    1.0,
+                    2.0,
+                    (0.0, 0.0, 0.0),
+                    (0.0, 0.0, 1.0),
+                    radial_cells=radial_cells,
+                    angular_cells=angular_cells,
+                )
 
 
 if __name__ == "__main__":
     unittest.main()
-

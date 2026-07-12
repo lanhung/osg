@@ -10,8 +10,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from evaluate_haikou_reproduction import evaluate_documents as evaluate_haikou
-from evaluate_helgoland_reproduction import evaluate_documents as evaluate_helgoland
+from evaluate_haikou_reproduction import evaluate_documents as evaluate_haikou  # noqa: E402
+from evaluate_helgoland_reproduction import (  # noqa: E402
+    evaluate_documents as evaluate_helgoland,
+)
 
 
 def _read(relative_path: str) -> dict:

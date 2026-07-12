@@ -8,7 +8,6 @@ from dataclasses import dataclass
 
 from oceangravity.constants import REFERENCE_SEAWATER_DENSITY, STANDARD_GRAVITY
 
-
 Grid = Sequence[Sequence[float | None]]
 
 
@@ -50,9 +49,7 @@ def pressure_anomaly_to_column_surface_density(
         raise ValueError("gravity_m_s2 must be finite and positive")
     return tuple(
         tuple(
-            None
-            if value is None or not math.isfinite(float(value))
-            else float(value) / gravity
+            None if value is None or not math.isfinite(float(value)) else float(value) / gravity
             for value in row
         )
         for row in pressure_anomaly_pa

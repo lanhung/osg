@@ -64,9 +64,7 @@ def volume_cell_gravity(
                 "integrate the containing cell analytically"
             )
         scale = (
-            GRAVITATIONAL_CONSTANT.value
-            * mass
-            / (distance_squared * math.sqrt(distance_squared))
+            GRAVITATIONAL_CONSTANT.value * mass / (distance_squared * math.sqrt(distance_squared))
         )
         contributions_x.append(scale * displacement_x)
         contributions_y.append(scale * displacement_y)
@@ -77,4 +75,3 @@ def volume_cell_gravity(
         math.fsum(contributions_y),
         math.fsum(contributions_z),
     )
-

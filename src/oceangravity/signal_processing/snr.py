@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import itertools
 import math
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -74,7 +75,7 @@ def matched_filter_snr(
         raise ValueError("selected band must contain at least two sampled frequency bins")
     integrand = tuple(4.0 * abs(signals[index]) ** 2 / noise[index] for index in range(count))
     integral_terms = []
-    for left, right in zip(selected[:-1], selected[1:], strict=True):
+    for left, right in itertools.pairwise(selected):
         if right != left + 1:
             raise ValueError("selected frequency band must be contiguous")
         width = frequencies[right] - frequencies[left]
@@ -135,9 +136,11 @@ def masked_event_matched_filter_snr(
     samples = tuple(float(value) for value in signal_samples)
     if not samples or not all(math.isfinite(value) for value in samples):
         raise ValueError("event signal samples must be non-empty and finite")
-    if isinstance(segment_length_samples, bool) or not isinstance(
-        segment_length_samples, int
-    ) or segment_length_samples < 4:
+    if (
+        isinstance(segment_length_samples, bool)
+        or not isinstance(segment_length_samples, int)
+        or segment_length_samples < 4
+    ):
         raise ValueError("segment_length_samples must be an integer >= 4")
     if len(samples) < segment_length_samples:
         raise ValueError("event signal is shorter than one SNR segment")
@@ -151,9 +154,7 @@ def masked_event_matched_filter_snr(
     complete_sample_count = (len(samples) // segment_length_samples) * segment_length_samples
     candidate_starts = tuple(range(0, complete_sample_count, segment_length_samples))
     used = tuple(
-        start
-        for start in candidate_starts
-        if all(mask[start : start + segment_length_samples])
+        start for start in candidate_starts if all(mask[start : start + segment_length_samples])
     )
     used_set = set(used)
     discarded = tuple(start for start in candidate_starts if start not in used_set)

@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.pegs import (  # noqa: E402
+from oceangravity.pegs import (
     SourceTemplateHypothesis,
     invert_discrete_source_library_over_time,
 )
@@ -60,9 +60,7 @@ class TestPegsSourceTrajectory(unittest.TestCase):
             decision_sample_counts=(1, 3),
             station_inclusion_masks={"A": (True, False, True)},
         )
-        self.assertEqual(
-            tuple(point.included_sample_count for point in result.points), (1, 2)
-        )
+        self.assertEqual(tuple(point.included_sample_count for point in result.points), (1, 2))
         self.assertEqual(result.points[-1].improvement_over_null_chi_square, 2.0)
 
     def test_decision_counts_are_strict_and_bounded(self) -> None:
@@ -76,13 +74,9 @@ class TestPegsSourceTrajectory(unittest.TestCase):
             window_start_time_since_origin_s=0.0,
         )
         with self.assertRaisesRegex(ValueError, "strictly increasing"):
-            invert_discrete_source_library_over_time(
-                **arguments, decision_sample_counts=(1, 1)
-            )
+            invert_discrete_source_library_over_time(**arguments, decision_sample_counts=(1, 1))
         with self.assertRaisesRegex(ValueError, "exceeds"):
-            invert_discrete_source_library_over_time(
-                **arguments, decision_sample_counts=(3,)
-            )
+            invert_discrete_source_library_over_time(**arguments, decision_sample_counts=(3,))
 
 
 if __name__ == "__main__":

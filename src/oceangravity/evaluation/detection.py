@@ -58,4 +58,3 @@ def required_snr_for_detection_probability(
     if not math.isfinite(probability) or not 0.0 < probability < 1.0:
         raise ValueError("target_detection_probability must lie in (0, 1)")
     return threshold_value + _STANDARD_NORMAL.inv_cdf(probability)
-

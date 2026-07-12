@@ -26,8 +26,7 @@ def audit_manifest(document: dict) -> dict:
         raise ValueError("decision_status must be draft or frozen")
     events = tuple(EventWindow(**row) for row in document.get("events", []))
     availability = tuple(
-        EventStationData(**row)
-        for row in document.get("station_data_availability", [])
+        EventStationData(**row) for row in document.get("station_data_availability", [])
     )
     if not events:
         if availability:
@@ -42,14 +41,16 @@ def audit_manifest(document: dict) -> dict:
     audit = audit_event_data_gate(
         events,
         availability,
-        minimum_gravity_coverage_fraction=float(
-            document["minimum_gravity_coverage_fraction"]
-        ),
+        minimum_gravity_coverage_fraction=float(document["minimum_gravity_coverage_fraction"]),
     )
     if decision_status == "draft":
         decision = "draft_pass" if audit.attribution_data_gate_passes else "draft_no_go"
     else:
-        decision = "go_full_attribution" if audit.attribution_data_gate_passes else "no_go_full_attribution"
+        decision = (
+            "go_full_attribution"
+            if audit.attribution_data_gate_passes
+            else "no_go_full_attribution"
+        )
     return {
         "schema_version": 1,
         "decision": decision,

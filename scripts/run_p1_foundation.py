@@ -66,8 +66,8 @@ def build_process_signals(config: dict) -> dict[str, tuple[object, float, dict[s
     surge = asymmetric_gaussian_disk_surge(surge_times, **surge_config)
 
     eddy_config = config["eddy"]
-    eddy_characteristic_time = (
-        eddy_config["horizontal_scale_m"] / abs(eddy_config["translation_speed_x_m_s"])
+    eddy_characteristic_time = eddy_config["horizontal_scale_m"] / abs(
+        eddy_config["translation_speed_x_m_s"]
     )
     eddy_interval = eddy_characteristic_time / 5.0
     eddy_times = regular_times(41, eddy_interval, start_time_s=-4.0 * eddy_characteristic_time)
@@ -76,9 +76,7 @@ def build_process_signals(config: dict) -> dict[str, tuple[object, float, dict[s
     internal_config = config["internal_wave"]
     internal_interval = internal_config["period_s"] / 32.0
     internal_times = regular_times(64, internal_interval)
-    internal = oscillating_compensated_gaussian_dipole(
-        internal_times, **internal_config
-    )
+    internal = oscillating_compensated_gaussian_dipole(internal_times, **internal_config)
 
     tsunami_config = config["tsunami"]
     tsunami_speed = math.sqrt(STANDARD_GRAVITY.value * tsunami_config["water_depth_m"])
@@ -96,9 +94,7 @@ def build_process_signals(config: dict) -> dict[str, tuple[object, float, dict[s
         landslide_interval,
         start_time_s=-0.5 * landslide_config["transition_duration_s"],
     )
-    landslide = mass_conserving_submarine_landslide(
-        landslide_times, **landslide_config
-    )
+    landslide = mass_conserving_submarine_landslide(landslide_times, **landslide_config)
 
     return {
         "tide": (tide, tide_interval, {}),
@@ -122,7 +118,9 @@ def build_process_signals(config: dict) -> dict[str, tuple[object, float, dict[s
             landslide_interval,
             {
                 "net_mass_anomaly_kg": landslide.net_mass_anomaly_kg,
-                "final_vertical_gradient_change_s2": landslide.final_gravity_gradient_change_s2[2][2],
+                "final_vertical_gradient_change_s2": landslide.final_gravity_gradient_change_s2[2][
+                    2
+                ],
             },
         ),
     }

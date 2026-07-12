@@ -87,16 +87,16 @@ def apply_quality_annotations(
     if set(action_by_flag) != ALLOWED_FLAGS:
         missing = sorted(ALLOWED_FLAGS - set(action_by_flag))
         extra = sorted(set(action_by_flag) - ALLOWED_FLAGS)
-        raise ValueError(f"quality policy flags must match exactly; missing={missing}, extra={extra}")
+        raise ValueError(
+            f"quality policy flags must match exactly; missing={missing}, extra={extra}"
+        )
     if any(action not in ALLOWED_ACTIONS for action in action_by_flag.values()):
         raise ValueError("quality policy contains an unsupported action")
     rows = tuple(annotations)
     if len({row.annotation_id for row in rows}) != len(rows):
         raise ValueError("quality annotation IDs must be unique")
 
-    annotations_by_sample: list[list[DataQualityAnnotation]] = [
-        [] for _ in samples
-    ]
+    annotations_by_sample: list[list[DataQualityAnnotation]] = [[] for _ in samples]
     for row in rows:
         start = _utc(row.start_utc)
         end = _utc(row.end_utc)
@@ -106,9 +106,7 @@ def apply_quality_annotations(
                 annotations_by_sample[index].append(row)
                 matched = True
         if not matched:
-            raise ValueError(
-                f"quality annotation {row.annotation_id!r} matches no samples"
-            )
+            raise ValueError(f"quality annotation {row.annotation_id!r} matches no samples")
 
     fit = []
     metric = []

@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     ParameterRange,
     latin_hypercube,
     quantile,
@@ -51,9 +51,7 @@ class TestLatinHypercube(unittest.TestCase):
         )
         strata = sorted(
             math.floor(
-                math.log(sample["frequency"] / lower)
-                / math.log(upper / lower)
-                * sample_count
+                math.log(sample["frequency"] / lower) / math.log(upper / lower) * sample_count
             )
             for sample in samples
         )
@@ -92,4 +90,3 @@ class TestLatinHypercube(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

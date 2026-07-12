@@ -36,7 +36,7 @@ def sea_level_to_surface_density(
         raise ValueError("water_density_kg_m3 must be finite and greater than zero")
     width = _validate_grid_shape(sea_level_anomaly_m, "sea_level_anomaly_m")
     converted = []
-    for row_index, row in enumerate(sea_level_anomaly_m):
+    for _row_index, row in enumerate(sea_level_anomaly_m):
         converted_row = []
         for column_index in range(width):
             value = row[column_index]
@@ -83,9 +83,7 @@ def surface_load_gravity_planar(
             raise ValueError("water_mask shape must match surface-density grid")
         if any(not isinstance(value, bool) for row in water_mask for value in row):
             raise ValueError("water_mask must contain booleans")
-    fractions = _validate_cell_load_fraction(
-        cell_load_fraction, row_count, column_count
-    )
+    fractions = _validate_cell_load_fraction(cell_load_fraction, row_count, column_count)
 
     load_z = float(load_z_m)
     if not math.isfinite(load_z):
@@ -134,9 +132,7 @@ def surface_load_gravity_planar(
             displacement_x = center_x - observation[0]
             displacement_y = center_y - observation[1]
             displacement_z = load_z - observation[2]
-            distance_squared = (
-                displacement_x**2 + displacement_y**2 + displacement_z**2
-            )
+            distance_squared = displacement_x**2 + displacement_y**2 + displacement_z**2
             if distance_squared == 0.0:
                 raise ValueError(
                     "nonzero point-cell mass at observation location; refine or use an "
@@ -199,10 +195,6 @@ def _validate_cell_load_fraction(
     if len(fractions) != row_count or width != column_count:
         raise ValueError("cell_load_fraction shape must match surface-density grid")
     values = tuple(tuple(float(value) for value in row) for row in fractions)
-    if not all(
-        math.isfinite(value) and 0.0 <= value <= 1.0
-        for row in values
-        for value in row
-    ):
+    if not all(math.isfinite(value) and 0.0 <= value <= 1.0 for row in values for value in row):
         raise ValueError("cell_load_fraction values must be finite and lie in [0, 1]")
     return values

@@ -16,14 +16,16 @@ from oceangravity.instruments import load_noise_curves  # noqa: E402
 class TestInstrumentManifest(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.curves = load_noise_curves(
-            ROOT / "data/manifests/instrument_noise_curves.json"
-        )
+        cls.curves = load_noise_curves(ROOT / "data/manifests/instrument_noise_curves.json")
 
     def test_expected_instruments_and_observable_groups(self) -> None:
         self.assertEqual(len(self.curves), 5)
-        gravity = {key for key, curve in self.curves.items() if curve.observable == "vertical_gravity"}
-        gradient = {key for key, curve in self.curves.items() if curve.observable == "gravity_gradient"}
+        gravity = {
+            key for key, curve in self.curves.items() if curve.observable == "vertical_gravity"
+        }
+        gradient = {
+            key for key, curve in self.curves.items() if curve.observable == "gravity_gradient"
+        }
         self.assertEqual(len(gravity), 3)
         self.assertEqual(len(gradient), 2)
         self.assertTrue(gravity.isdisjoint(gradient))
@@ -68,4 +70,3 @@ class TestInstrumentManifest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

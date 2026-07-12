@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
-from fetch_fdsn_station_inventory import ENDPOINT, build_url  # noqa: E402
+from fetch_fdsn_station_inventory import ENDPOINT, build_url
 
 
 class TestFdsnInventoryRequest(unittest.TestCase):
@@ -37,4 +37,3 @@ class TestFdsnInventoryRequest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

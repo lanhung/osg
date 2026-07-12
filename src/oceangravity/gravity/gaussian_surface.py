@@ -32,8 +32,7 @@ def _gaussian_axis_geometry_factor(separation_over_scale: float) -> float:
         + inverse_q_squared
         * (
             -3.0
-            + inverse_q_squared
-            * (15.0 + inverse_q_squared * (-105.0 + inverse_q_squared * 945.0))
+            + inverse_q_squared * (15.0 + inverse_q_squared * (-105.0 + inverse_q_squared * 945.0))
         )
     )
 
@@ -162,12 +161,8 @@ def gaussian_surface_response_numerical(
             source_y = center[1] + local_radius * math.sin(angle)
             displacement_x = source_x - observation[0]
             displacement_y = source_y - observation[1]
-            distance_squared = (
-                displacement_x**2 + displacement_y**2 + displacement_z**2
-            )
-            inverse_distance_cubed = 1.0 / (
-                distance_squared * math.sqrt(distance_squared)
-            )
+            distance_squared = displacement_x**2 + displacement_y**2 + displacement_z**2
+            inverse_distance_cubed = 1.0 / (distance_squared * math.sqrt(distance_squared))
             cell_scale = base_scale * local_density_factor * cell_area * inverse_distance_cubed
             acceleration_x += cell_scale * displacement_x
             acceleration_y += cell_scale * displacement_y

@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
+import json
 import math
+import re
 from bisect import bisect_right
 from collections.abc import Sequence
 from dataclasses import dataclass
-import json
 from pathlib import Path
-import re
 from typing import Protocol, runtime_checkable
 
 
@@ -108,9 +108,7 @@ def assert_green_function_scientific_use_ready(
             audit.component_semantics,
         ),
     }
-    mismatches = [
-        name for name, (actual, expected) in comparisons.items() if actual != expected
-    ]
+    mismatches = [name for name, (actual, expected) in comparisons.items() if actual != expected]
     if mismatches:
         raise ValueError(
             "Green-function scientific audit does not match provider metadata: "
@@ -187,8 +185,7 @@ class TabulatedLoadGreenFunctionProvider:
         if self.interpolation != "linear_angular_distance":
             raise ValueError("only linear_angular_distance interpolation is supported")
         if not all(
-            math.isfinite(value) and 0.0 <= value <= math.pi
-            for value in self.angular_distances_rad
+            math.isfinite(value) and 0.0 <= value <= math.pi for value in self.angular_distances_rad
         ):
             raise ValueError("tabulated angular distances must be finite and lie in [0, pi]")
         if any(
@@ -224,7 +221,7 @@ class TabulatedLoadGreenFunctionProvider:
         )
 
     @classmethod
-    def from_json(cls, path: str | Path) -> "TabulatedLoadGreenFunctionProvider":
+    def from_json(cls, path: str | Path) -> TabulatedLoadGreenFunctionProvider:
         """Load the project interchange format after explicit unit normalization."""
 
         document = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -269,8 +266,7 @@ class TabulatedCombinedElasticLoadGreenFunctionProvider:
         if self.interpolation != "linear_angular_distance":
             raise ValueError("only linear_angular_distance interpolation is supported")
         if not all(
-            math.isfinite(value) and 0.0 <= value <= math.pi
-            for value in self.angular_distances_rad
+            math.isfinite(value) and 0.0 <= value <= math.pi for value in self.angular_distances_rad
         ):
             raise ValueError("tabulated angular distances must be finite and lie in [0, pi]")
         if any(
@@ -393,9 +389,7 @@ class CombinedElasticLoadResponse:
 
     @property
     def total_gravity_m_s2(self) -> float:
-        return math.fsum(
-            (self.direct_attraction_m_s2, self.combined_elastic_gravity_m_s2)
-        )
+        return math.fsum((self.direct_attraction_m_s2, self.combined_elastic_gravity_m_s2))
 
 
 def convolve_load_green_functions(
@@ -417,9 +411,7 @@ def convolve_load_green_functions(
     if not isinstance(provider, LoadGreenFunctionProvider):
         raise TypeError("provider must satisfy LoadGreenFunctionProvider")
     if provider.metadata.component_semantics != "decomposed_deformation_and_internal_mass":
-        raise ValueError(
-            "decomposed convolution requires decomposed Green-function semantics"
-        )
+        raise ValueError("decomposed convolution requires decomposed Green-function semantics")
     direct = float(direct_attraction_m_s2)
     if not math.isfinite(direct):
         raise ValueError("direct_attraction_m_s2 must be finite")
@@ -469,9 +461,7 @@ def convolve_combined_elastic_load_green_functions(
     if not isinstance(provider, LoadGreenFunctionProvider):
         raise TypeError("provider must satisfy LoadGreenFunctionProvider")
     if provider.metadata.component_semantics != "combined_elastic_gravity":
-        raise ValueError(
-            "combined convolution requires combined_elastic_gravity semantics"
-        )
+        raise ValueError("combined convolution requires combined_elastic_gravity semantics")
     direct = float(direct_attraction_m_s2)
     if not math.isfinite(direct):
         raise ValueError("direct_attraction_m_s2 must be finite")
@@ -491,9 +481,7 @@ def convolve_combined_elastic_load_green_functions(
             continue
         sample = provider.evaluate(distance)
         if not isinstance(sample, CombinedElasticLoadGreenFunctionSample):
-            raise TypeError(
-                "combined provider must return CombinedElasticLoadGreenFunctionSample"
-            )
+            raise TypeError("combined provider must return CombinedElasticLoadGreenFunctionSample")
         elastic_terms.append(mass * sample.elastic_gravity_m_s2_per_kg)
         displacement_terms.append(mass * sample.vertical_displacement_m_per_kg)
 

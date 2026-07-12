@@ -130,12 +130,7 @@ def surface_load_gravity_spherical(
             longitude_east = math.radians(longitudes[column_index + 1])
             longitude_width = longitude_east - longitude_west
             centroid_longitude = 0.5 * (longitude_west + longitude_east)
-            area = (
-                load_radius**2
-                * longitude_width
-                * (sine_north - sine_south)
-                * fraction
-            )
+            area = load_radius**2 * longitude_width * (sine_north - sine_south) * fraction
             mass = density * area
             included_cells += 1
             areas.add(area)
@@ -172,8 +167,7 @@ def surface_load_gravity_spherical(
     )
     radial_gravity = math.fsum(gravity[index] * radial_unit[index] for index in range(3))
     gradient_rows = tuple(
-        tuple(gradient_terms[3 * row + column].total() for column in range(3))
-        for row in range(3)
+        tuple(gradient_terms[3 * row + column].total() for column in range(3)) for row in range(3)
     )
     gradient: Matrix3 = (gradient_rows[0], gradient_rows[1], gradient_rows[2])
     radial_gradient = math.fsum(

@@ -86,9 +86,7 @@ def mass_conserving_submarine_landslide(
         )
         gradient_terms.extend(
             (
-                gravity_gradient_tensor(
-                    water_mass, water_destination_xyz_m, observation_xyz_m
-                ),
+                gravity_gradient_tensor(water_mass, water_destination_xyz_m, observation_xyz_m),
                 gravity_gradient_tensor(-water_mass, water_source_xyz_m, observation_xyz_m),
             )
         )
@@ -102,10 +100,7 @@ def mass_conserving_submarine_landslide(
         final_gravity_values[2],
     )
     final_gradient_rows = tuple(
-        tuple(
-            math.fsum(term[row][column] for term in gradient_terms)
-            for column in range(3)
-        )
+        tuple(math.fsum(term[row][column] for term in gradient_terms) for column in range(3))
         for row in range(3)
     )
     final_gradient: Matrix3 = (
@@ -120,7 +115,10 @@ def mass_conserving_submarine_landslide(
         source_amplitude=fractions,
         source_amplitude_unit="dimensionless completed mass-relocation fraction",
         vertical_direct_gravity_m_s2=tuple(fraction * final_gravity[2] for fraction in fractions),
-        model_scope="direct gravity/gradient from conserved point-mass relocation; no continuum slide or generated wave",
+        model_scope=(
+            "direct gravity/gradient from conserved point-mass relocation; no "
+            "continuum slide or generated wave"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(
             fraction * final_gradient[2][2] for fraction in fractions
         ),
@@ -194,8 +192,7 @@ def mass_conserving_gaussian_submarine_landslide(
         for index in range(cells_per_axis)
     )
     vertical = tuple(
-        -cutoff * vertical_scale + (index + 0.5) * step_vertical
-        for index in range(cells_per_axis)
+        -cutoff * vertical_scale + (index + 0.5) * step_vertical for index in range(cells_per_axis)
     )
     local_centers = []
     weights = []
@@ -221,25 +218,21 @@ def mass_conserving_gaussian_submarine_landslide(
     centers = tuple(
         (source[0] + x, source[1] + y, source[2] + z) for x, y, z in local_centers
     ) + tuple(
-        (destination[0] + x, destination[1] + y, destination[2] + z)
-        for x, y, z in local_centers
+        (destination[0] + x, destination[1] + y, destination[2] + z) for x, y, z in local_centers
     )
-    final_gravity = volume_cell_gravity(
-        densities, centers, cell_volume, observation
-    )
-    final_gradient = volume_cell_gravity_gradient(
-        densities, centers, cell_volume, observation
-    )
+    final_gravity = volume_cell_gravity(densities, centers, cell_volume, observation)
+    final_gradient = volume_cell_gravity_gradient(densities, centers, cell_volume, observation)
     fractions = tuple(_half_cosine_fraction(time, start, duration) for time in times)
     signal = ScalarGravitySignal(
         process_id="mass_conserving_gaussian_submarine_landslide",
         times_s=times,
         source_amplitude=fractions,
         source_amplitude_unit="dimensionless completed continuum mass-relocation fraction",
-        vertical_direct_gravity_m_s2=tuple(
-            fraction * final_gravity[2] for fraction in fractions
+        vertical_direct_gravity_m_s2=tuple(fraction * final_gravity[2] for fraction in fractions),
+        model_scope=(
+            "direct gravity/gradient from identical signed Gaussian solid volumes; "
+            "no entrainment or generated wave"
         ),
-        model_scope="direct gravity/gradient from identical signed Gaussian solid volumes; no entrainment or generated wave",
         vertical_direct_gravity_gradient_s2=tuple(
             fraction * final_gradient[2][2] for fraction in fractions
         ),

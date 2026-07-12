@@ -11,9 +11,7 @@ class TestNewtonianNoiseManifest(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         root = Path(__file__).resolve().parents[2]
-        cls.document = json.loads(
-            (root / "data/manifests/newtonian_noise_models.json").read_text()
-        )
+        cls.document = json.loads((root / "data/manifests/newtonian_noise_models.json").read_text())
 
     def test_models_are_separate_from_instrument_curves(self) -> None:
         self.assertEqual(self.document["schema_version"], 1)
@@ -49,4 +47,3 @@ class TestNewtonianNoiseManifest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

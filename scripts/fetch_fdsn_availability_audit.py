@@ -77,9 +77,8 @@ def build_url(config: dict, network: str, station: str) -> str:
         "format": "json",
         "nodata": 404,
     }
-    return (
-        "https://service.earthscope.org/fdsnws/availability/1/extent?"
-        + urllib.parse.urlencode(query)
+    return "https://service.earthscope.org/fdsnws/availability/1/extent?" + urllib.parse.urlencode(
+        query
     )
 
 
@@ -104,7 +103,7 @@ def main() -> int:
         url = build_url(config, network, station)
         request = urllib.request.Request(url, headers={"User-Agent": "oceangravity/0.1"})
         try:
-            with urllib.request.urlopen(request, timeout=args.timeout) as response:  # noqa: S310
+            with urllib.request.urlopen(request, timeout=args.timeout) as response:
                 payload = response.read()
                 final_url = response.url
                 status = response.status
@@ -133,14 +132,11 @@ def main() -> int:
                 "raw_path": str(raw_path),
                 "size_bytes": len(payload),
                 "sha256": hashlib.sha256(payload).hexdigest(),
-                "latest_common_archive_sample": (
-                    None if latest is None else latest.isoformat()
-                ),
+                "latest_common_archive_sample": (None if latest is None else latest.isoformat()),
                 "archive_recent_within_declared_days": (
                     False
                     if latest is None
-                    else (retrieved_at - latest).total_seconds()
-                    <= args.recent_days * 86400.0
+                    else (retrieved_at - latest).total_seconds() <= args.recent_days * 86400.0
                 ),
                 **summary,
             }
@@ -158,7 +154,11 @@ def main() -> int:
             row.get("archive_recent_within_declared_days", False) for row in results
         ),
         "stations": results,
-        "warning": "Archive extents and recent samples do not establish continuous coverage, successful download, usable noise, low latency, or SeedLink realtime availability.",
+        "warning": (
+            "Archive extents and recent samples do not establish continuous "
+            "coverage, successful download, usable noise, low latency, or "
+            "SeedLink realtime availability."
+        ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(output, indent=2, sort_keys=True) + "\n")

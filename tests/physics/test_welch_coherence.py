@@ -9,15 +9,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     welch_magnitude_squared_coherence,
 )
 
 
 def _sinusoid(length: int, cycles: int) -> tuple[float, ...]:
-    return tuple(
-        math.sin(2.0 * math.pi * cycles * index / length) for index in range(length)
-    )
+    return tuple(math.sin(2.0 * math.pi * cycles * index / length) for index in range(length))
 
 
 class TestWelchCoherence(unittest.TestCase):

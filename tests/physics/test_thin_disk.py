@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.constants import GRAVITATIONAL_CONSTANT  # noqa: E402
-from oceangravity.gravity import (  # noqa: E402
+from oceangravity.constants import GRAVITATIONAL_CONSTANT
+from oceangravity.gravity import (
     disk_vertical_gravity_on_axis,
     vertical_gravity,
 )
@@ -24,8 +24,12 @@ class TestThinDiskGravity(unittest.TestCase):
         radius = 4_000.0
         separation = 1_500.0
         result = disk_vertical_gravity_on_axis(density, radius, -separation, 0.0)
-        expected = -2.0 * math.pi * GRAVITATIONAL_CONSTANT.value * density * (
-            1.0 - separation / math.sqrt(separation**2 + radius**2)
+        expected = (
+            -2.0
+            * math.pi
+            * GRAVITATIONAL_CONSTANT.value
+            * density
+            * (1.0 - separation / math.sqrt(separation**2 + radius**2))
         )
         self.assertAlmostEqual(result, expected, delta=abs(expected) * 1.0e-15)
 
@@ -64,9 +68,11 @@ class TestThinDiskGravity(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "discontinuous"):
             disk_vertical_gravity_on_axis(1.0, 2.0, 0.0, 0.0)
         for radius in (0.0, -1.0):
-            with self.subTest(radius=radius):
-                with self.assertRaisesRegex(ValueError, "greater than zero"):
-                    disk_vertical_gravity_on_axis(1.0, radius, -1.0, 0.0)
+            with (
+                self.subTest(radius=radius),
+                self.assertRaisesRegex(ValueError, "greater than zero"),
+            ):
+                disk_vertical_gravity_on_axis(1.0, radius, -1.0, 0.0)
 
     def test_nonfinite_inputs_are_rejected(self) -> None:
         with self.assertRaises(ValueError):
@@ -77,4 +83,3 @@ class TestThinDiskGravity(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -23,7 +23,7 @@ def main() -> int:
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     url = manifest["download_url"]
     request = urllib.request.Request(url, headers={"User-Agent": "oceangravity/0.1"})
-    with urllib.request.urlopen(request, timeout=args.timeout) as response:  # noqa: S310
+    with urllib.request.urlopen(request, timeout=args.timeout) as response:
         payload = response.read()
         final_url = response.url
         status = response.status

@@ -79,12 +79,8 @@ def propagating_compensated_gaussian_tsunami(
     for time in times:
         crest_x = phase_speed * (time - passage_time)
         trough_x = crest_x - separation
-        crest_offset_squared = (
-            (observation[0] - crest_x) ** 2 + observation[1] ** 2
-        )
-        trough_offset_squared = (
-            (observation[0] - trough_x) ** 2 + observation[1] ** 2
-        )
+        crest_offset_squared = (observation[0] - crest_x) ** 2 + observation[1] ** 2
+        trough_offset_squared = (observation[0] - trough_x) ** 2 + observation[1] ** 2
         local_sea_level.append(
             peak
             * (
@@ -111,9 +107,7 @@ def propagating_compensated_gaussian_tsunami(
             cutoff_sigma=cutoff_sigma,
         )
         vertical_gravity.append(
-            math.fsum(
-                (crest_response.gravity_m_s2[2], trough_response.gravity_m_s2[2])
-            )
+            math.fsum((crest_response.gravity_m_s2[2], trough_response.gravity_m_s2[2]))
         )
         vertical_gradient.append(
             math.fsum(
@@ -131,7 +125,10 @@ def propagating_compensated_gaussian_tsunami(
         source_amplitude=tuple(local_sea_level),
         source_amplitude_unit="m local crest-minus-trough sea-level anomaly",
         vertical_direct_gravity_m_s2=tuple(vertical_gravity),
-        model_scope="direct attraction of a mass-balanced shallow-water Gaussian packet; no elastic/seismic source",
+        model_scope=(
+            "direct attraction of a mass-balanced shallow-water Gaussian packet; "
+            "no elastic/seismic source"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(vertical_gradient),
     )
     return TsunamiWavePacketResult(

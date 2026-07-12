@@ -9,11 +9,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import (  # noqa: E402
+from oceangravity.evaluation import (
     evaluate_gradient_signal_against_curve,
     evaluate_gravity_signal_against_curve,
 )
-from oceangravity.instruments import NoiseCurve  # noqa: E402
+from oceangravity.instruments import NoiseCurve
 
 
 def _curve(minimum: float, maximum: float, asd: float = 1.0) -> NoiseCurve:
@@ -35,8 +35,7 @@ class TestCurveDetectability(unittest.TestCase):
         frequency_bin = 20
         frequency = frequency_bin / (count * interval)
         samples = tuple(
-            math.sin(2.0 * math.pi * frequency_bin * index / count)
-            for index in range(count)
+            math.sin(2.0 * math.pi * frequency_bin * index / count) for index in range(count)
         )
         result = evaluate_gravity_signal_against_curve(
             samples,
@@ -82,6 +81,25 @@ class TestCurveDetectability(unittest.TestCase):
         self.assertAlmostEqual(result.signal_energy_coverage_fraction, 0.5, delta=1e-14)
         self.assertGreater(result.matched_filter_snr_in_covered_band, 1.0)
 
+    def test_predeclared_numerical_coverage_floor_zeros_spectral_leakage(self) -> None:
+        count = 256
+        samples = tuple(
+            math.sin(2.0 * math.pi * 60 * index / count)
+            + 1.0e-15 * math.sin(2.0 * math.pi * 10 * index / count)
+            for index in range(count)
+        )
+        result = evaluate_gravity_signal_against_curve(
+            samples,
+            1.0,
+            _curve(0.03, 0.05, asd=1.0),
+            required_expected_snr=1.0,
+            minimum_signal_energy_coverage=0.9,
+            numerical_energy_coverage_floor=1.0e-24,
+        )
+        self.assertEqual(result.status, "partial_band_not_classified")
+        self.assertEqual(result.signal_energy_coverage_fraction, 0.0)
+        self.assertEqual(result.matched_filter_snr_in_covered_band, 0.0)
+
     def test_zero_signal_and_observable_mismatch(self) -> None:
         result = evaluate_gravity_signal_against_curve(
             [0.0] * 64,
@@ -123,12 +141,20 @@ class TestCurveDetectability(unittest.TestCase):
                 required_expected_snr=1.0,
                 minimum_signal_energy_coverage=0.0,
             )
+        with self.assertRaises(ValueError):
+            evaluate_gravity_signal_against_curve(
+                [0.0] * 64,
+                1.0,
+                _curve(0.01, 0.4),
+                required_expected_snr=1.0,
+                minimum_signal_energy_coverage=0.9,
+                numerical_energy_coverage_floor=0.9,
+            )
 
     def test_gradient_wrapper_uses_gradient_observable_and_units(self) -> None:
         count = 128
         samples = tuple(
-            1e-9 * math.sin(2.0 * math.pi * 8 * index / count)
-            for index in range(count)
+            1e-9 * math.sin(2.0 * math.pi * 8 * index / count) for index in range(count)
         )
         curve = NoiseCurve(
             instrument_id="gradient",

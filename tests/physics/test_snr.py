@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     coherent_periodic_snr,
     matched_filter_snr,
     one_sided_spectrum,
@@ -24,8 +24,7 @@ class TestSignalToNoiseRatio(unittest.TestCase):
         peak_amplitude = 3.0e-8
         noise_psd = 2.5e-17
         samples = [
-            peak_amplitude
-            * math.sin(2.0 * math.pi * frequency_index * index / sample_count)
+            peak_amplitude * math.sin(2.0 * math.pi * frequency_index * index / sample_count)
             for index in range(sample_count)
         ]
         spectrum = one_sided_spectrum(samples, interval)
@@ -34,9 +33,7 @@ class TestSignalToNoiseRatio(unittest.TestCase):
             spectrum.fourier_amplitude,
             [noise_psd] * len(spectrum.frequencies_hz),
         )
-        periodic = coherent_periodic_snr(
-            peak_amplitude, noise_psd, spectrum.duration_s
-        )
+        periodic = coherent_periodic_snr(peak_amplitude, noise_psd, spectrum.duration_s)
         self.assertAlmostEqual(matched, periodic, delta=periodic * 2.0e-14)
 
     def test_snr_scaling_with_signal_noise_and_time(self) -> None:
@@ -51,8 +48,7 @@ class TestSignalToNoiseRatio(unittest.TestCase):
     def test_frequency_band_can_exclude_signal(self) -> None:
         sample_count = 64
         samples = [
-            math.sin(2.0 * math.pi * 10 * index / sample_count)
-            for index in range(sample_count)
+            math.sin(2.0 * math.pi * 10 * index / sample_count) for index in range(sample_count)
         ]
         spectrum = one_sided_spectrum(samples, 1.0)
         result = matched_filter_snr(
@@ -88,4 +84,3 @@ class TestSignalToNoiseRatio(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

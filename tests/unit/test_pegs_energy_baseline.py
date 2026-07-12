@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.evaluation import QuietScoreWindow  # noqa: E402
-from oceangravity.pegs import (  # noqa: E402
+from oceangravity.evaluation import QuietScoreWindow
+from oceangravity.pegs import (
     audit_single_station_energy_baseline,
     windowed_rms_energy_scores,
 )
@@ -49,7 +49,9 @@ class TestPegsEnergyBaseline(unittest.TestCase):
             target_false_alarms_per_30_days=1.0,
         )
         self.assertGreater(result.quiet_false_positive_audit.threshold.threshold, 1.2)
-        self.assertEqual(tuple(row.event_id for row in result.heldout_events), ("event-a", "event-b"))
+        self.assertEqual(
+            tuple(row.event_id for row in result.heldout_events), ("event-a", "event-b")
+        )
         self.assertEqual(result.heldout_events[0].triggered_score_fraction, 1.0)
         self.assertEqual(result.heldout_events[0].earliest_trigger_score_index, 0)
         self.assertEqual(result.heldout_events[1].triggered_score_fraction, 2.0 / 3.0)

@@ -65,14 +65,10 @@ def audit_effect_ledger(
             status = "ambiguous_possible_overlap"
         else:
             status = "closed"
-        results.append(
-            EffectOwnershipResult(effect, status, included, unknown, excluded)
-        )
+        results.append(EffectOwnershipResult(effect, status, included, unknown, excluded))
     return EffectLedgerAudit(
         closure_ready=all(
-            result.status == "closed"
-            for result in results
-            if result.effect_id in required
+            result.status == "closed" for result in results if result.effect_id in required
         ),
         effects=tuple(results),
     )

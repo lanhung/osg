@@ -62,22 +62,14 @@ class TestQualityAnnotations(unittest.TestCase):
     def test_overlapping_flags_apply_most_restrictive_action(self) -> None:
         times = ("2024-01-01T00:00:00Z", "2024-01-01T01:00:00Z")
         rows = (
-            DataQualityAnnotation(
-                "candidate", "candidate_spike", times[0], times[1], "a", "a"
-            ),
-            DataQualityAnnotation(
-                "maintenance", "maintenance", times[0], times[1], "b", "b"
-            ),
+            DataQualityAnnotation("candidate", "candidate_spike", times[0], times[1], "a", "a"),
+            DataQualityAnnotation("maintenance", "maintenance", times[0], times[1], "b", "b"),
         )
         policy_id, actions = _policy()
-        result = apply_quality_annotations(
-            times, (1.0, 2.0), rows, actions, policy_id=policy_id
-        )
+        result = apply_quality_annotations(times, (1.0, 2.0), rows, actions, policy_id=policy_id)
         self.assertFalse(result.fit_included[0])
         self.assertFalse(result.metric_included[0])
-        self.assertEqual(
-            result.annotation_ids_by_sample[0], ("candidate", "maintenance")
-        )
+        self.assertEqual(result.annotation_ids_by_sample[0], ("candidate", "maintenance"))
 
     def test_incomplete_policy_and_unmatched_annotation_are_rejected(self) -> None:
         times = ("2024-01-01T00:00:00Z",)

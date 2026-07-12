@@ -39,9 +39,7 @@ class ScalarGravitySignal:
         if self.vertical_direct_gravity_gradient_s2 is not None:
             if len(self.vertical_direct_gravity_gradient_s2) != count:
                 raise ValueError("gravity-gradient array must match time length")
-            if not all(
-                math.isfinite(value) for value in self.vertical_direct_gravity_gradient_s2
-            ):
+            if not all(math.isfinite(value) for value in self.vertical_direct_gravity_gradient_s2):
                 raise ValueError("gravity-gradient samples must be finite")
 
     @property

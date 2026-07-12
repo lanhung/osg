@@ -35,7 +35,10 @@ class ParameterEnvelope:
             raise ValueError("unsupported range_semantics")
         if self.evidence_status in {"literature_supported", "data_derived"} and not self.sources:
             raise ValueError("literature/data-supported envelopes require sources")
-        if self.range_semantics == "probability_prior" and self.evidence_status == "engineering_fixture":
+        if (
+            self.range_semantics == "probability_prior"
+            and self.evidence_status == "engineering_fixture"
+        ):
             raise ValueError("an engineering fixture cannot be labelled a probability prior")
         if any(not source.strip() for source in self.sources):
             raise ValueError("envelope sources must be non-empty strings")
@@ -68,9 +71,7 @@ def sample_parameter_design(
         sample_count,
         random_seed=random_seed,
     )
-    all_probability = all(
-        envelope.range_semantics == "probability_prior" for envelope in envelopes
-    )
+    all_probability = all(envelope.range_semantics == "probability_prior" for envelope in envelopes)
     interpretation = (
         "probability_prior_samples"
         if all_probability

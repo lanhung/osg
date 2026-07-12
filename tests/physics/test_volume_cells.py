@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.gravity import gravity_vector, volume_cell_gravity  # noqa: E402
+from oceangravity.gravity import gravity_vector, volume_cell_gravity
 
 
 class TestVolumeCellGravity(unittest.TestCase):
@@ -68,8 +68,7 @@ class TestVolumeCellGravity(unittest.TestCase):
         cells_per_axis = 20
         step = 0.4 * scale
         coordinates = [
-            (-0.5 * cells_per_axis + index + 0.5) * step
-            for index in range(cells_per_axis)
+            (-0.5 * cells_per_axis + index + 0.5) * step for index in range(cells_per_axis)
         ]
         densities = []
         centers = []
@@ -89,9 +88,7 @@ class TestVolumeCellGravity(unittest.TestCase):
         self.assertAlmostEqual(numerical[1], 0.0, delta=abs(point[2]) * 1.0e-14)
 
     def test_zero_density_at_observation_is_safe(self) -> None:
-        result = volume_cell_gravity(
-            [0.0], [(0.0, 0.0, 0.0)], 1.0, (0.0, 0.0, 0.0)
-        )
+        result = volume_cell_gravity([0.0], [(0.0, 0.0, 0.0)], 1.0, (0.0, 0.0, 0.0))
         self.assertEqual(result, (0.0, 0.0, 0.0))
 
     def test_nonzero_cell_at_observation_is_rejected(self) -> None:

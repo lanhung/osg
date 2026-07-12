@@ -63,7 +63,10 @@ def benchmark_grid(
         )
         scale = max(max(abs(value) for value in reference.gravity_ecef_m_s2), 1e-300)
         gradient_difference = max(
-            abs(result.gravity_gradient_ecef_s2[row][column] - reference.gravity_gradient_ecef_s2[row][column])
+            abs(
+                result.gravity_gradient_ecef_s2[row][column]
+                - reference.gravity_gradient_ecef_s2[row][column]
+            )
             for row in range(3)
             for column in range(3)
         )
@@ -95,7 +98,10 @@ def benchmark_grid(
             "longitude_cells": longitude_cells,
             "total_cells": latitude_cells * longitude_cells,
         },
-        "measurement_scope": "joint gravity-plus-ECEF-gradient kernel wall time and tracemalloc Python allocation peak; input allocation and I/O excluded",
+        "measurement_scope": (
+            "joint gravity-plus-ECEF-gradient kernel wall time and tracemalloc "
+            "Python allocation peak; input allocation and I/O excluded"
+        ),
         "cases": cases,
     }
 

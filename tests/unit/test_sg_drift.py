@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     InstrumentDriftModel,
     apply_instrument_drift_model,
 )
@@ -43,8 +43,12 @@ class TestSgDrift(unittest.TestCase):
         model = _model()
         result = apply_instrument_drift_model(times, (1.0, 1.0, 1.0), model)
         day = 86400.0
-        expected_early = -model.linear_rate_m_s2_per_s * day + 0.5 * model.quadratic_rate_m_s2_per_s2 * day**2
-        expected_late = model.linear_rate_m_s2_per_s * day + 0.5 * model.quadratic_rate_m_s2_per_s2 * day**2
+        expected_early = (
+            -model.linear_rate_m_s2_per_s * day + 0.5 * model.quadratic_rate_m_s2_per_s2 * day**2
+        )
+        expected_late = (
+            model.linear_rate_m_s2_per_s * day + 0.5 * model.quadratic_rate_m_s2_per_s2 * day**2
+        )
         self.assertAlmostEqual(result.removed_drift_m_s2[0], expected_early)
         self.assertEqual(result.removed_drift_m_s2[1], 0.0)
         self.assertAlmostEqual(result.removed_drift_m_s2[2], expected_late)
@@ -60,9 +64,7 @@ class TestSgDrift(unittest.TestCase):
     def test_validity_and_time_order_prevent_extrapolation(self) -> None:
         model = _model()
         with self.assertRaisesRegex(ValueError, "extrapolate"):
-            apply_instrument_drift_model(
-                ("2024-01-05T00:00:00Z",), (1.0,), model
-            )
+            apply_instrument_drift_model(("2024-01-05T00:00:00Z",), (1.0,), model)
         with self.assertRaisesRegex(ValueError, "strictly increasing"):
             apply_instrument_drift_model(
                 ("2024-01-02T00:00:00Z", "2024-01-01T00:00:00Z"),

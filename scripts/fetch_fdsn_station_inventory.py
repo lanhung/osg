@@ -48,7 +48,7 @@ def main() -> int:
     args = parse_args()
     url = build_url(args)
     request = urllib.request.Request(url, headers={"User-Agent": "oceangravity/0.1"})
-    with urllib.request.urlopen(request, timeout=args.timeout) as response:  # noqa: S310
+    with urllib.request.urlopen(request, timeout=args.timeout) as response:
         payload = response.read()
         final_url = response.url
         status = response.status
@@ -70,4 +70,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -102,9 +102,7 @@ def load_noise_curves(path: str | Path) -> dict[str, NoiseCurve]:
             asd=tuple(raw["asd"]),
             source=raw["source"],
             curve_version=raw["curve_version"],
-            digitization_relative_uncertainty=raw.get(
-                "digitization_relative_uncertainty", 0.0
-            ),
+            digitization_relative_uncertainty=raw.get("digitization_relative_uncertainty", 0.0),
             interpretation=raw.get("interpretation", ""),
             operating_conditions=raw.get("operating_conditions", ""),
             model_uncertainty_note=raw.get("model_uncertainty_note", ""),

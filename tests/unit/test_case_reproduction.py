@@ -39,9 +39,7 @@ class TestCaseReproduction(unittest.TestCase):
         self.assertEqual(failed.status, "fail")
 
     def test_helgoland_targets_preserve_exact_paper_values(self) -> None:
-        config = json.loads(
-            (ROOT / "configs/paper1/helgoland_reproduction.json").read_text()
-        )
+        config = json.loads((ROOT / "configs/paper1/helgoland_reproduction.json").read_text())
         targets = {row["target_id"]: row for row in config["targets"]}
         self.assertEqual(config["event"]["peak_time_utc"], "2022-01-30T05:00:00Z")
         self.assertEqual(targets["event_gravity_peak_to_peak_m_s2"]["expected_value"], 8.5e-8)

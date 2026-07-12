@@ -52,8 +52,7 @@ def invert_discrete_source_library_over_time(
 
     counts = tuple(decision_sample_counts)
     if not counts or any(
-        isinstance(value, bool) or not isinstance(value, int) or value <= 0
-        for value in counts
+        isinstance(value, bool) or not isinstance(value, int) or value <= 0 for value in counts
     ):
         raise ValueError("decision sample counts must be positive integers")
     if any(counts[index + 1] <= counts[index] for index in range(len(counts) - 1)):
@@ -75,8 +74,7 @@ def invert_discrete_source_library_over_time(
     masks = None
     if station_inclusion_masks is not None:
         masks = {
-            station_id: tuple(values)
-            for station_id, values in station_inclusion_masks.items()
+            station_id: tuple(values) for station_id, values in station_inclusion_masks.items()
         }
 
     points = []
@@ -96,10 +94,7 @@ def invert_discrete_source_library_over_time(
             for row in rows
         )
         inversion = invert_discrete_source_library(
-            {
-                station_id: values[:count]
-                for station_id, values in observation_rows.items()
-            },
+            {station_id: values[:count] for station_id, values in observation_rows.items()},
             prefix_hypotheses,
             station_noise_standard_deviation,
             station_noise_scale_source_ids,
@@ -124,12 +119,8 @@ def invert_discrete_source_library_over_time(
                 estimated_segment_id=inversion.estimated_segment_id,
                 best_beats_null=inversion.best_beats_null,
                 best_is_unique=inversion.best_is_unique,
-                improvement_over_null_chi_square=(
-                    best.improvement_over_null_chi_square
-                ),
-                second_best_delta_chi_square=(
-                    inversion.second_best_delta_chi_square
-                ),
+                improvement_over_null_chi_square=(best.improvement_over_null_chi_square),
+                second_best_delta_chi_square=(inversion.second_best_delta_chi_square),
                 included_sample_count=inversion.included_sample_count,
             )
         )
@@ -137,13 +128,9 @@ def invert_discrete_source_library_over_time(
     return SourceInversionTrajectory(
         source_library_id=source_library_id,
         sample_interval_s=first_inversion.sample_interval_s,
-        window_start_time_since_origin_s=(
-            first_inversion.window_start_time_since_origin_s
-        ),
+        window_start_time_since_origin_s=(first_inversion.window_start_time_since_origin_s),
         station_ids=first_inversion.station_ids,
         noise_scale_source_ids=first_inversion.noise_scale_source_ids,
         points=tuple(points),
-        interpretation=(
-            "prefix_library_ranking_not_reliable_magnitude_without_heldout_gates"
-        ),
+        interpretation=("prefix_library_ranking_not_reliable_magnitude_without_heldout_gates"),
     )

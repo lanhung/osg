@@ -55,14 +55,11 @@ class CrossStationCovarianceModel:
         ):
             raise ValueError("covariance complete sample count must be an integer >= 2")
         if self.diagonal_shrinkage is not None and (
-            not math.isfinite(self.diagonal_shrinkage)
-            or not 0.0 <= self.diagonal_shrinkage <= 1.0
+            not math.isfinite(self.diagonal_shrinkage) or not 0.0 <= self.diagonal_shrinkage <= 1.0
         ):
             raise ValueError("covariance diagonal shrinkage must lie in [0, 1]")
         count = len(self.station_ids)
-        if len(self.covariance) != count or any(
-            len(row) != count for row in self.covariance
-        ):
+        if len(self.covariance) != count or any(len(row) != count for row in self.covariance):
             raise ValueError("covariance matrix dimensions must match station IDs")
         if not all(math.isfinite(value) for row in self.covariance for value in row):
             raise ValueError("covariance matrix must be finite")
@@ -105,8 +102,7 @@ def _cholesky_factor(
     for row in range(count):
         for column in range(row + 1):
             subtotal = math.fsum(
-                lower[row][index] * lower[column][index]
-                for index in range(column)
+                lower[row][index] * lower[column][index] for index in range(column)
             )
             if row == column:
                 diagonal = matrix[row][row] - subtotal
@@ -114,30 +110,22 @@ def _cholesky_factor(
                     raise ValueError("covariance matrix must be positive definite")
                 lower[row][column] = math.sqrt(diagonal)
             else:
-                lower[row][column] = (
-                    matrix[row][column] - subtotal
-                ) / lower[column][column]
+                lower[row][column] = (matrix[row][column] - subtotal) / lower[column][column]
     return tuple(tuple(row) for row in lower)
 
 
-def _solve_cholesky(
-    lower: Sequence[Sequence[float]], vector: Sequence[float]
-) -> tuple[float, ...]:
+def _solve_cholesky(lower: Sequence[Sequence[float]], vector: Sequence[float]) -> tuple[float, ...]:
     count = len(vector)
     forward = [0.0] * count
     for row in range(count):
         forward[row] = (
-            vector[row]
-            - math.fsum(lower[row][column] * forward[column] for column in range(row))
+            vector[row] - math.fsum(lower[row][column] * forward[column] for column in range(row))
         ) / lower[row][row]
     solution = [0.0] * count
     for row in range(count - 1, -1, -1):
         solution[row] = (
             forward[row]
-            - math.fsum(
-                lower[column][row] * solution[column]
-                for column in range(row + 1, count)
-            )
+            - math.fsum(lower[column][row] * solution[column] for column in range(row + 1, count))
         ) / lower[row][row]
     return tuple(solution)
 
@@ -160,9 +148,11 @@ def estimate_cross_station_covariance(
     shrinkage = float(diagonal_shrinkage)
     if not math.isfinite(shrinkage) or not 0.0 <= shrinkage <= 1.0:
         raise ValueError("diagonal_shrinkage must lie in [0, 1]")
-    if isinstance(minimum_complete_samples, bool) or not isinstance(
-        minimum_complete_samples, int
-    ) or minimum_complete_samples < 2:
+    if (
+        isinstance(minimum_complete_samples, bool)
+        or not isinstance(minimum_complete_samples, int)
+        or minimum_complete_samples < 2
+    ):
         raise ValueError("minimum_complete_samples must be an integer >= 2")
     first = calibration_windows[window_ids[0]]
     station_ids = tuple(sorted(first))
@@ -178,8 +168,7 @@ def estimate_cross_station_covariance(
         if set(window) != expected:
             raise ValueError("every covariance window must contain identical stations")
         rows = {
-            station: tuple(float(value) for value in window[station])
-            for station in station_ids
+            station: tuple(float(value) for value in window[station]) for station in station_ids
         }
         lengths = {len(row) for row in rows.values()}
         if len(lengths) != 1 or next(iter(lengths)) == 0:
@@ -195,8 +184,7 @@ def estimate_cross_station_covariance(
                 raise ValueError("every covariance mask window must contain identical stations")
             masks = {station: tuple(window_masks[station]) for station in station_ids}
             if any(
-                len(mask) != sample_count
-                or any(not isinstance(value, bool) for value in mask)
+                len(mask) != sample_count or any(not isinstance(value, bool) for value in mask)
                 for mask in masks.values()
             ):
                 raise ValueError("covariance masks require one boolean per sample")
@@ -218,8 +206,7 @@ def estimate_cross_station_covariance(
     empirical = tuple(
         tuple(
             math.fsum(
-                (vector[left] - means[left]) * (vector[right] - means[right])
-                for vector in vectors
+                (vector[left] - means[left]) * (vector[right] - means[right]) for vector in vectors
             )
             / denominator
             for right in range(len(station_ids))
@@ -228,9 +215,7 @@ def estimate_cross_station_covariance(
     )
     shrunk = tuple(
         tuple(
-            empirical[left][right]
-            if left == right
-            else (1.0 - shrinkage) * empirical[left][right]
+            empirical[left][right] if left == right else (1.0 - shrinkage) * empirical[left][right]
             for right in range(len(station_ids))
         )
         for left in range(len(station_ids))
@@ -323,8 +308,7 @@ def independent_noise_network_template_scores(
     if not all(math.isfinite(value) and value > 0.0 for value in noise.values()):
         raise ValueError("station noise standard deviations must be finite and positive")
     noise_sources = {
-        station_id: station_noise_scale_source_ids[station_id]
-        for station_id in station_ids
+        station_id: station_noise_scale_source_ids[station_id] for station_id in station_ids
     }
     if any(
         not isinstance(source_id, str) or not source_id.strip()
@@ -334,7 +318,9 @@ def independent_noise_network_template_scores(
     if station_inclusion_masks is None:
         masks = {station_id: (True,) * sample_count for station_id in station_ids}
     else:
-        masks = {station_id: tuple(station_inclusion_masks[station_id]) for station_id in station_ids}
+        masks = {
+            station_id: tuple(station_inclusion_masks[station_id]) for station_id in station_ids
+        }
         if any(
             len(mask) != sample_count or any(not isinstance(value, bool) for value in mask)
             for mask in masks.values()
@@ -354,8 +340,7 @@ def independent_noise_network_template_scores(
         start
         for start in starts
         if all(
-            all(masks[station_id][start : start + template_length])
-            for station_id in station_ids
+            all(masks[station_id][start : start + template_length]) for station_id in station_ids
         )
     )
     used_set = set(used)
@@ -409,16 +394,17 @@ def cross_station_covariance_template_scores(
         raise ValueError("series and template IDs must match covariance stations exactly")
     if station_inclusion_masks is not None and set(station_inclusion_masks) != expected:
         raise ValueError("station mask IDs must match covariance stations exactly")
-    if isinstance(decision_step_samples, bool) or not isinstance(
-        decision_step_samples, int
-    ) or decision_step_samples <= 0:
+    if (
+        isinstance(decision_step_samples, bool)
+        or not isinstance(decision_step_samples, int)
+        or decision_step_samples <= 0
+    ):
         raise ValueError("decision_step_samples must be a positive integer")
     sample_interval = float(sample_interval_s)
     if not math.isfinite(sample_interval) or sample_interval <= 0.0:
         raise ValueError("sample_interval_s must be finite and positive")
     series = {
-        station: tuple(float(value) for value in station_series[station])
-        for station in station_ids
+        station: tuple(float(value) for value in station_series[station]) for station in station_ids
     }
     templates = {
         station: tuple(float(value) for value in station_templates[station])
@@ -444,12 +430,9 @@ def cross_station_covariance_template_scores(
     if station_inclusion_masks is None:
         masks = {station: (True,) * sample_count for station in station_ids}
     else:
-        masks = {
-            station: tuple(station_inclusion_masks[station]) for station in station_ids
-        }
+        masks = {station: tuple(station_inclusion_masks[station]) for station in station_ids}
         if any(
-            len(mask) != sample_count
-            or any(not isinstance(value, bool) for value in mask)
+            len(mask) != sample_count or any(not isinstance(value, bool) for value in mask)
             for mask in masks.values()
         ):
             raise ValueError("every station mask must contain one boolean per sample")
@@ -462,8 +445,7 @@ def cross_station_covariance_template_scores(
         solved = _solve_cholesky(lower, template_vector)
         solved_templates.append(solved)
         normalization_squared += math.fsum(
-            template_vector[index] * solved[index]
-            for index in range(len(station_ids))
+            template_vector[index] * solved[index] for index in range(len(station_ids))
         )
     if normalization_squared <= 0.0:
         raise ValueError("network templates cannot all be zero")
@@ -472,10 +454,7 @@ def cross_station_covariance_template_scores(
     used = tuple(
         start
         for start in starts
-        if all(
-            all(masks[station][start : start + template_length])
-            for station in station_ids
-        )
+        if all(all(masks[station][start : start + template_length]) for station in station_ids)
     )
     used_set = set(used)
     discarded = tuple(start for start in starts if start not in used_set)

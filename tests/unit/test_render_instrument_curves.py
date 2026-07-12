@@ -10,8 +10,9 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "src"))
 
-from oceangravity.instruments import load_noise_curves  # noqa: E402
 from render_instrument_noise_curves import render_observable  # noqa: E402
+
+from oceangravity.instruments import load_noise_curves  # noqa: E402
 
 
 class TestRenderInstrumentCurves(unittest.TestCase):

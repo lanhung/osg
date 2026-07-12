@@ -18,14 +18,13 @@ SPEC.loader.exec_module(MODULE)
 
 class TestP3FoundationRunner(unittest.TestCase):
     def test_fixture_never_claims_scientific_readiness(self) -> None:
-        config = json.loads(
-            (ROOT / "configs/paper3/physical_baseline_foundation.json").read_text()
-        )
+        config = json.loads((ROOT / "configs/paper3/physical_baseline_foundation.json").read_text())
         result = MODULE.run(config)
         self.assertFalse(result["scientific_claim_ready"])
         self.assertFalse(
-            result["single_station_energy_audit"]["quiet_false_positive_audit"]
-            ["rate_resolution_sufficient"]
+            result["single_station_energy_audit"]["quiet_false_positive_audit"][
+                "rate_resolution_sufficient"
+            ]
         )
         self.assertEqual(
             result["discrete_source_inversion"]["best_scenario_id"],

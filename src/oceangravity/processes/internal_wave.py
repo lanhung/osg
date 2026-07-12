@@ -102,8 +102,7 @@ def oscillating_compensated_gaussian_dipole(
     )
     local_y = local_x
     local_z = tuple(
-        -cutoff * vertical_scale + (index + 0.5) * step_vertical
-        for index in range(cells_per_axis)
+        -cutoff * vertical_scale + (index + 0.5) * step_vertical for index in range(cells_per_axis)
     )
     densities: list[float] = []
     cell_centers: list[tuple[float, float, float]] = []
@@ -154,7 +153,10 @@ def oscillating_compensated_gaussian_dipole(
         vertical_direct_gravity_m_s2=tuple(
             unit_gravity[2] * amplitude for amplitude in density_amplitude
         ),
-        model_scope="direct attraction of equal/opposite 3-D Gaussian lobes; no free surface or elastic response",
+        model_scope=(
+            "direct attraction of equal/opposite 3-D Gaussian lobes; no free "
+            "surface or elastic response"
+        ),
         vertical_direct_gravity_gradient_s2=tuple(
             unit_gradient[2][2] * amplitude for amplitude in density_amplitude
         ),

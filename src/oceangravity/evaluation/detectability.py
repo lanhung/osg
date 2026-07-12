@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import itertools
 import math
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -29,6 +30,7 @@ def evaluate_gravity_signal_against_curve(
     *,
     required_expected_snr: float,
     minimum_signal_energy_coverage: float = 0.9,
+    numerical_energy_coverage_floor: float = 0.0,
 ) -> CurveDetectabilityResult:
     """Classify only when a vertical-gravity curve covers enough signal energy."""
 
@@ -38,6 +40,7 @@ def evaluate_gravity_signal_against_curve(
         curve,
         required_expected_snr=required_expected_snr,
         minimum_signal_energy_coverage=minimum_signal_energy_coverage,
+        numerical_energy_coverage_floor=numerical_energy_coverage_floor,
         expected_observable="vertical_gravity",
         expected_asd_unit="m s^-2 Hz^-1/2",
     )
@@ -50,6 +53,7 @@ def evaluate_gradient_signal_against_curve(
     *,
     required_expected_snr: float,
     minimum_signal_energy_coverage: float = 0.9,
+    numerical_energy_coverage_floor: float = 0.0,
 ) -> CurveDetectabilityResult:
     """Classify only when a gravity-gradient curve covers enough signal energy."""
 
@@ -59,6 +63,7 @@ def evaluate_gradient_signal_against_curve(
         curve,
         required_expected_snr=required_expected_snr,
         minimum_signal_energy_coverage=minimum_signal_energy_coverage,
+        numerical_energy_coverage_floor=numerical_energy_coverage_floor,
         expected_observable="gravity_gradient",
         expected_asd_unit="s^-2 Hz^-1/2",
     )
@@ -71,21 +76,26 @@ def _evaluate_signal_against_curve(
     *,
     required_expected_snr: float,
     minimum_signal_energy_coverage: float,
+    numerical_energy_coverage_floor: float,
     expected_observable: str,
     expected_asd_unit: str,
 ) -> CurveDetectabilityResult:
     if curve.observable != expected_observable:
-        raise ValueError(
-            f"signal requires a {expected_observable} instrument curve"
-        )
+        raise ValueError(f"signal requires a {expected_observable} instrument curve")
     if curve.asd_unit != expected_asd_unit:
         raise ValueError(f"curve ASD unit must be {expected_asd_unit!r}")
     required_snr = float(required_expected_snr)
     coverage_threshold = float(minimum_signal_energy_coverage)
+    numerical_floor = float(numerical_energy_coverage_floor)
     if not math.isfinite(required_snr) or required_snr < 0.0:
         raise ValueError("required_expected_snr must be finite and non-negative")
     if not math.isfinite(coverage_threshold) or not 0.0 < coverage_threshold <= 1.0:
         raise ValueError("minimum_signal_energy_coverage must lie in (0, 1]")
+    if not math.isfinite(numerical_floor) or not 0.0 <= numerical_floor < coverage_threshold:
+        raise ValueError(
+            "numerical_energy_coverage_floor must be finite, non-negative, and below "
+            "minimum_signal_energy_coverage"
+        )
 
     spectrum = one_sided_spectrum(
         samples,
@@ -101,9 +111,7 @@ def _evaluate_signal_against_curve(
     covered_indices = [
         index
         for index in positive_indices
-        if curve.frequencies_hz[0]
-        <= spectrum.frequencies_hz[index]
-        <= curve.frequencies_hz[-1]
+        if curve.frequencies_hz[0] <= spectrum.frequencies_hz[index] <= curve.frequencies_hz[-1]
     ]
     if len(covered_indices) < 2:
         return CurveDetectabilityResult(
@@ -138,6 +146,9 @@ def _evaluate_signal_against_curve(
     amplitudes = tuple(spectrum.fourier_amplitude[index] for index in covered_indices)
     noise_psd = tuple(curve.psd_at(frequency) for frequency in frequencies)
     snr = matched_filter_snr(frequencies, amplitudes, noise_psd)
+    if coverage_fraction < numerical_floor:
+        coverage_fraction = 0.0
+        snr = 0.0
     if coverage_fraction < coverage_threshold:
         status = "partial_band_not_classified"
     elif snr >= required_snr:
@@ -164,7 +175,7 @@ def _trapezoid_spectral_energy(
     if len(indices) < 2:
         return 0.0
     terms = []
-    for left, right in zip(indices[:-1], indices[1:], strict=True):
+    for left, right in itertools.pairwise(indices):
         if right != left + 1:
             raise ValueError("spectral-energy indices must be contiguous")
         width = frequencies[right] - frequencies[left]

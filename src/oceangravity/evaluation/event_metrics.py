@@ -85,21 +85,15 @@ def evaluate_event_model_metrics(
     rmse = math.sqrt(math.fsum(value * value for value in residual) / len(residual))
     observed_mean = _mean(selected_observed)
     modeled_mean = _mean(selected_modeled)
-    observed_sum_squares = math.fsum(
-        (value - observed_mean) ** 2 for value in selected_observed
-    )
-    modeled_sum_squares = math.fsum(
-        (value - modeled_mean) ** 2 for value in selected_modeled
-    )
+    observed_sum_squares = math.fsum((value - observed_mean) ** 2 for value in selected_observed)
+    modeled_sum_squares = math.fsum((value - modeled_mean) ** 2 for value in selected_modeled)
     correlation = None
     if observed_sum_squares > 0.0 and modeled_sum_squares > 0.0:
         covariance_sum = math.fsum(
             (observation - observed_mean) * (model - modeled_mean)
             for observation, model in zip(selected_observed, selected_modeled, strict=True)
         )
-        correlation = covariance_sum / math.sqrt(
-            observed_sum_squares * modeled_sum_squares
-        )
+        correlation = covariance_sum / math.sqrt(observed_sum_squares * modeled_sum_squares)
         correlation = min(1.0, max(-1.0, correlation))
     observed_variance = _population_variance(selected_observed)
     explained_variance = None
@@ -155,19 +149,14 @@ def compare_event_model_improvement(
     if baseline.included_sample_count != candidate.included_sample_count:
         raise RuntimeError("baseline and candidate event samples do not match")
     rmse_improvement = baseline.rmse_m_s2 - candidate.rmse_m_s2
-    rmse_fraction = (
-        None
-        if baseline.rmse_m_s2 == 0.0
-        else rmse_improvement / baseline.rmse_m_s2
-    )
+    rmse_fraction = None if baseline.rmse_m_s2 == 0.0 else rmse_improvement / baseline.rmse_m_s2
     explained_improvement = None
     if (
         baseline.explained_variance_fraction is not None
         and candidate.explained_variance_fraction is not None
     ):
         explained_improvement = (
-            candidate.explained_variance_fraction
-            - baseline.explained_variance_fraction
+            candidate.explained_variance_fraction - baseline.explained_variance_fraction
         )
     return EventModelImprovement(
         baseline=baseline,

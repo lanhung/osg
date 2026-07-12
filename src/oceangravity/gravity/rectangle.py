@@ -104,16 +104,11 @@ def rectangle_gravity_numerical(
         for index_y in range(cells_y):
             source_y = center[1] - half_y + (index_y + 0.5) * step_y
             displacement_y = source_y - observation[1]
-            distance_squared = (
-                displacement_x**2 + displacement_y**2 + displacement_z**2
-            )
-            inverse_distance_cubed = 1.0 / (
-                distance_squared * math.sqrt(distance_squared)
-            )
+            distance_squared = displacement_x**2 + displacement_y**2 + displacement_z**2
+            inverse_distance_cubed = 1.0 / (distance_squared * math.sqrt(distance_squared))
             cell_scale = cell_scale_base * inverse_distance_cubed
             acceleration_x += cell_scale * displacement_x
             acceleration_y += cell_scale * displacement_y
             acceleration_z += cell_scale * displacement_z
 
     return acceleration_x, acceleration_y, acceleration_z
-

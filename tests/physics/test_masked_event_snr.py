@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from oceangravity.signal_processing import (  # noqa: E402
+from oceangravity.signal_processing import (
     masked_event_matched_filter_snr,
     matched_filter_snr,
     one_sided_spectrum,
@@ -18,14 +18,10 @@ from oceangravity.signal_processing import (  # noqa: E402
 
 class TestMaskedEventSnr(unittest.TestCase):
     def test_two_equal_segments_combine_in_quadrature(self) -> None:
-        segment = tuple(
-            2.0 * math.sin(2.0 * math.pi * 2 * index / 16) for index in range(16)
-        )
+        segment = tuple(2.0 * math.sin(2.0 * math.pi * 2 * index / 16) for index in range(16))
         reference = one_sided_spectrum(segment, 1.0)
         noise = (3.0,) * len(reference.frequencies_hz)
-        single = matched_filter_snr(
-            reference.frequencies_hz, reference.fourier_amplitude, noise
-        )
+        single = matched_filter_snr(reference.frequencies_hz, reference.fourier_amplitude, noise)
         result = masked_event_matched_filter_snr(
             segment * 2,
             1.0,

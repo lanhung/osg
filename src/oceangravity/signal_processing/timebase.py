@@ -62,9 +62,7 @@ def split_uniform_time_series(
         raise ValueError("expected_interval_s must be finite and positive")
     if not math.isfinite(tolerance) or tolerance < 0.0:
         raise ValueError("relative_interval_tolerance must be finite and non-negative")
-    if isinstance(minimum_segment_samples, bool) or not isinstance(
-        minimum_segment_samples, int
-    ):
+    if isinstance(minimum_segment_samples, bool) or not isinstance(minimum_segment_samples, int):
         raise ValueError("minimum_segment_samples must be an integer of at least two")
     if minimum_segment_samples < 2:
         raise ValueError("minimum_segment_samples must be an integer of at least two")

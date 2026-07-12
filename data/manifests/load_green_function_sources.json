@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-07-12",
+  "selected_candidate": "loaddef-v1.2.2",
+  "integration_status": "selected-not-installed",
+  "sources": [
+    {
+      "id": "loaddef-v1.2.2",
+      "name": "LoadDef",
+      "version": "1.2.2",
+      "release_date": "2024-10-21",
+      "repository": "https://github.com/hrmartens/LoadDef",
+      "release": "https://github.com/hrmartens/LoadDef/releases/tag/v1.2.2",
+      "license": "GPL-3.0",
+      "software_citation_doi": "10.1029/2018EA000462",
+      "earth_model_candidate": "oceanless PREM",
+      "reference_frame_candidates": ["CE", "CM"],
+      "documented_outputs": [
+        "vertical displacement load Green function",
+        "horizontal displacement load Green function",
+        "elastic gravity load Green function",
+        "tilt load Green function",
+        "strain load Green functions"
+      ],
+      "published_validation": [
+        "Green-function comparison with Guo et al. (2004)",
+        "M2 ocean-tide-loading displacement comparison with SPOTL"
+      ],
+      "local_install": {
+        "status": "blocked-by-control-plane-dns",
+        "exact_commit": null,
+        "artifact_checksum": null
+      },
+      "component_mapping": {
+        "status": "requires-source-and-equation-audit",
+        "warning": "Do not split LoadDef elastic gravity into deformation and internal-mass terms without verifying its exact gE definition and normalization."
+      }
+    }
+  ],
+  "acceptance_before_scientific_use": [
+    "record exact release commit and source checksum",
+    "record Python/MPI dependency environment",
+    "freeze Earth model and CE/CM reference frame",
+    "verify angular-distance and per-unit-load normalization",
+    "map elastic gravity output to project component definitions without double counting",
+    "reproduce a published LoadDef Green-function benchmark",
+    "preserve GPL obligations while keeping project-generated data provenance distinct"
+  ]
+}

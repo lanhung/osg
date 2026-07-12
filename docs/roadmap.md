@@ -104,7 +104,7 @@ Evidence: physics APIs, tests, convergence tables, analytic validation report.
 - [x] Implement gridded direct-attraction integration with chunking and deterministic summation.
 - [x] Add planar and spherical geometry comparison and validity limits.
 - [x] Define a load Green-function provider interface with provenance/version metadata.
-- [ ] Integrate a mature elastic-load Green-function dataset or library.
+- [ ] Integrate a mature elastic-load Green-function dataset or library. (LoadDef v1.2.2 selected; exact source pin, component-semantics audit, installation and published benchmark remain.)
 - [x] Preserve direct attraction, deformation, and potential response separately at the interface and output level.
 - [ ] Test mass conservation, sign, spatial convergence, domain truncation, and component sums.
 - [ ] Benchmark CPU, memory, and I/O; determine when AutoDL CPU resources are justified.

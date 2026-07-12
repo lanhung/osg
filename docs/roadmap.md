@@ -80,9 +80,9 @@ Evidence: station manifest, response completeness report, noise sampling plan, s
 ### 1.1 Units, coordinates, and analytic primitives
 
 - [x] Establish SI physical constants and microgal conversions.
-- [ ] Define coordinate frames, vertical sign, observation geometry, array shapes, and validation rules.
-- [ ] Implement point-mass gravity vector and vertical component.
-- [ ] Test zero mass, invalid coincidence, sign, symmetry, inverse-square scaling, and units.
+- [x] Define the point-mass local coordinate frame, vertical sign, observation geometry, and validation rules.
+- [x] Implement point-mass gravity vector and vertical component.
+- [x] Test zero mass, invalid coincidence, sign, symmetry, inverse-square scaling, and units.
 - [ ] Implement on-axis finite thin-disk analytic vertical gravity.
 - [ ] Implement off-axis disk numerical integration with convergence tests.
 - [ ] Implement finite rectangular surface-load integration.
@@ -310,4 +310,3 @@ Evidence: clean-room reproduction report, release manifests, tags, final drafts.
 2. Implement point-mass gravity with explicit geometry/sign contracts and physics tests.
 3. Implement the finite disk analytic benchmark and far-field comparison.
 4. In parallel, turn Paper 2 and Paper 3 `unknown` data entries into concrete access decisions.
-

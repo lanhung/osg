@@ -6,12 +6,23 @@ from .surface_grid import (
     surface_load_gravity_planar,
 )
 from .spherical_grid import SphericalSurfaceLoadResult, surface_load_gravity_spherical
+from .green_functions import (
+    LoadGreenFunctionMetadata,
+    LoadGreenFunctionProvider,
+    LoadGreenFunctionSample,
+    LoadResponseComponents,
+    convolve_load_green_functions,
+)
 
 __all__ = [
     "SurfaceLoadResult",
     "SphericalSurfaceLoadResult",
+    "LoadGreenFunctionMetadata",
+    "LoadGreenFunctionProvider",
+    "LoadGreenFunctionSample",
+    "LoadResponseComponents",
+    "convolve_load_green_functions",
     "sea_level_to_surface_density",
     "surface_load_gravity_planar",
     "surface_load_gravity_spherical",
 ]
-

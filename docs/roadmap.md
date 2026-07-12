@@ -102,9 +102,9 @@ Evidence: physics APIs, tests, convergence tables, analytic validation report.
 - [x] Convert sea-surface height anomaly to surface mass density without treating wave height as mean load.
 - [ ] Implement gridded direct-attraction integration with chunking and deterministic summation. (Local planar deterministic reference complete; optimized spherical/chunked path remains.)
 - [x] Add planar and spherical geometry comparison and validity limits.
-- [ ] Define a load Green-function provider interface with provenance/version metadata.
+- [x] Define a load Green-function provider interface with provenance/version metadata.
 - [ ] Integrate a mature elastic-load Green-function dataset or library.
-- [ ] Preserve direct attraction, deformation, and potential response separately.
+- [x] Preserve direct attraction, deformation, and potential response separately at the interface and output level.
 - [ ] Test mass conservation, sign, spatial convergence, domain truncation, and component sums.
 - [ ] Benchmark CPU, memory, and I/O; determine when AutoDL CPU resources are justified.
 

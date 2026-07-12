@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "manifest_id": "paper3-earthscope-lh-noise-window-requests-v1",
-  "created_utc": "2026-07-12T15:55:00Z",
+  "created_utc": "2026-07-12T15:53:48Z",
   "source": {
     "provider": "EarthScope Consortium NSF SAGE Facility",
     "service": "FDSN dataselect v1",

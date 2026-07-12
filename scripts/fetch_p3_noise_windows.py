@@ -46,9 +46,7 @@ def build_requests(document: dict) -> tuple[dict, ...]:
                     "start_utc": window["start_utc"],
                     "end_utc": window["end_utc"],
                     "requested_url": f"{base_url}?{urllib.parse.urlencode(parameters)}",
-                    "raw_path": str(
-                        Path(document["raw_root"]) / window["window_id"] / filename
-                    ),
+                    "raw_path": str(Path(document["raw_root"]) / window["window_id"] / filename),
                 }
             )
     return tuple(rows)
@@ -73,7 +71,7 @@ def fetch(document: dict, *, timeout_s: float = 120.0) -> dict:
         )
         result = dict(row)
         try:
-            with urllib.request.urlopen(request, timeout=timeout_s) as response:  # noqa: S310
+            with urllib.request.urlopen(request, timeout=timeout_s) as response:
                 payload = response.read()
                 result["http_status"] = response.status
                 result["final_url"] = response.url

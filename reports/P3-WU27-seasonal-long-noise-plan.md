@@ -26,3 +26,10 @@ the two retained 404 responses plus gap/overlap failures on 2023-02-15,
 stations, so the predeclared six-of-eight promotion minimum passes; three dates
 have a complete five-station network. This remains unclassified diagnostic
 exposure, not a threshold or false-alarm dataset.
+
+The frozen catalogue audit retains earthquake candidates in seven of eight
+days; only 2025-08-15 passes both earthquake and regional IBTrACS layers. No day
+overlaps an IBTrACS regional track. Because station-local weather, sea state and
+waveform transient/microseism layers are also pending, the environmental-label
+promotion gate fails and Stage 2 is not automatically authorized. The dates are
+retained as an unbiased yield result rather than replaced.

@@ -29,6 +29,7 @@ class TestExperimentRegistry(unittest.TestCase):
                 "P2-E002-cmems-effect-ownership",
                 "P3-E001-physical-baseline-foundation",
                 "P3-E002-archive-network-design",
+                "P3-E003-seasonal-noise-stage1",
             ],
         )
 

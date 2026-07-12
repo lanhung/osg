@@ -1,0 +1,425 @@
+{
+  "audit_id": "paper3-seasonal-stage1-environment-audit-v1",
+  "config_sha256": "44e9f96be0a80b485fb9ae196ce7f5e1cbdea73cd56597ee9dd39d3b650b253f",
+  "generated_utc": "2026-07-12T16:32:51.580557Z",
+  "raw_data_policy": "USGS GeoJSON retained outside Git; query URLs and SHA-256 hashes retained here.",
+  "remaining_gate": {
+    "policy": "No window may be labelled quiet until all required layers pass.",
+    "required_layers": [
+      "earthquake_catalog_screen",
+      "regional_tropical_cyclone_screen",
+      "station_local_weather_and_pressure",
+      "regional_sea_state",
+      "waveform_transient_and_microseism_review"
+    ]
+  },
+  "schema_version": 1,
+  "summary": {
+    "catalogue_layers_pass_count": 1,
+    "earthquake_candidate_window_count": 7,
+    "ibtracs_overlap_window_count": 0,
+    "quiet_label_count": 0,
+    "window_count": 8
+  },
+  "windows": [
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000jp2m",
+          "event_id": "us6000jp2m",
+          "magnitude": 4.9,
+          "place": "1 km NNW of Miaga, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-02-15T12:19:34.390520Z",
+              "distance_km": 607.359,
+              "predicted_surface_arrival_start_utc": "2023-02-15T09:18:03.286700Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2023-02-15T09:15:31.447000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000jr0t",
+          "event_id": "us6000jr0t",
+          "magnitude": 4.7,
+          "place": "258 km NNE of Tobelo, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-02-15T16:46:27.971255Z",
+              "distance_km": 482.318,
+              "predicted_surface_arrival_start_utc": "2023-02-15T13:45:15.623535Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2023-02-15T13:43:15.044000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000jr0w",
+          "event_id": "us6000jr0w",
+          "magnitude": 4.5,
+          "place": "179 km NW of Tobelo, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-02-15T19:18:42.955676Z",
+              "distance_km": 484.402,
+              "predicted_surface_arrival_start_utc": "2023-02-15T16:17:30.295422Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2023-02-15T16:15:29.195000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000jp76",
+          "event_id": "us6000jp76",
+          "magnitude": 6.1,
+          "place": "9 km NNE of Miaga, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-02-15T21:20:13.347523Z",
+              "distance_km": 1513.101,
+              "predicted_surface_arrival_start_utc": "2023-02-15T18:16:26.382327Z",
+              "rule": "global_magnitude_rule",
+              "station": "HK.HKPS"
+            },
+            {
+              "conservative_coda_end_utc": "2023-02-15T21:21:18.171459Z",
+              "distance_km": 1675.161,
+              "predicted_surface_arrival_start_utc": "2023-02-15T18:17:06.897287Z",
+              "rule": "global_magnitude_rule",
+              "station": "IC.QIZ"
+            },
+            {
+              "conservative_coda_end_utc": "2023-02-15T21:14:13.049046Z",
+              "distance_km": 612.355,
+              "predicted_surface_arrival_start_utc": "2023-02-15T18:12:41.195779Z",
+              "rule": "global_magnitude_rule",
+              "station": "IU.DAV"
+            },
+            {
+              "conservative_coda_end_utc": "2023-02-15T21:17:24.276784Z",
+              "distance_km": 1090.424,
+              "predicted_surface_arrival_start_utc": "2023-02-15T18:14:40.713115Z",
+              "rule": "global_magnitude_rule",
+              "station": "MY.KKM"
+            },
+            {
+              "conservative_coda_end_utc": "2023-02-15T21:19:55.733880Z",
+              "distance_km": 1469.067,
+              "predicted_surface_arrival_start_utc": "2023-02-15T18:16:15.373800Z",
+              "rule": "global_magnitude_rule",
+              "station": "TW.KMNB"
+            }
+          ],
+          "time_utc": "2023-02-15T18:10:08.107000Z"
+        }
+      ],
+      "end_utc": "2023-02-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2023-02-15T00:00:00Z",
+      "usgs_event_count_m4plus": 61,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-02-14T12%3A00%3A00Z&endtime=2023-02-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "442dcef518bbba3a7fc45d837966d91947cf8298eef8ea5e0632993a160f77f8",
+      "window_id": "stage1_cal_2023-02-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000kc33",
+          "event_id": "us6000kc33",
+          "magnitude": 4.8,
+          "place": "85 km SE of Modisi, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-05-15T19:15:23.225111Z",
+              "distance_km": 800.968,
+              "predicted_surface_arrival_start_utc": "2023-05-15T16:13:23.079944Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2023-05-15T16:10:02.838000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000kc36",
+          "event_id": "us6000kc36",
+          "magnitude": 4.6,
+          "place": "143 km W of Tobelo, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-05-15T19:27:16.660318Z",
+              "distance_km": 583.171,
+              "predicted_surface_arrival_start_utc": "2023-05-15T16:25:49.184699Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2023-05-15T16:23:23.392000Z"
+        }
+      ],
+      "end_utc": "2023-05-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2023-05-15T00:00:00Z",
+      "usgs_event_count_m4plus": 57,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-05-14T12%3A00%3A00Z&endtime=2023-05-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "94700d5dced978cb21ae5e49ea433f62c86716ba2fa22a5c715c461e2fde3c74",
+      "window_id": "stage1_cal_2023-05-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000l05a",
+          "event_id": "us6000l05a",
+          "magnitude": 5,
+          "place": "southwestern Ryukyu Islands, Japan",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-08-15T20:12:15.935388Z",
+              "distance_km": 712.058,
+              "predicted_surface_arrival_start_utc": "2023-08-15T17:10:29.126618Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "TW.KMNB"
+            }
+          ],
+          "time_utc": "2023-08-15T17:07:31.112000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000kqg7",
+          "event_id": "us7000kqg7",
+          "magnitude": 4.6,
+          "place": "19 km NNE of Hualien City, Taiwan",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-08-15T20:14:35.499574Z",
+              "distance_km": 794.471,
+              "predicted_surface_arrival_start_utc": "2023-08-15T17:12:36.328859Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "HK.HKPS"
+            },
+            {
+              "conservative_coda_end_utc": "2023-08-15T20:11:30.504808Z",
+              "distance_km": 331.985,
+              "predicted_surface_arrival_start_utc": "2023-08-15T17:10:40.707130Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "TW.KMNB"
+            }
+          ],
+          "time_utc": "2023-08-15T17:09:17.711000Z"
+        }
+      ],
+      "end_utc": "2023-08-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2023-08-15T00:00:00Z",
+      "usgs_event_count_m4plus": 48,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-08-14T12%3A00%3A00Z&endtime=2023-08-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "57276727205a6ed5b3abdf19a5c5bdab7aa6f911b77050a11cb40867950c9570",
+      "window_id": "stage1_cal_2023-08-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000lnq0",
+          "event_id": "us6000lnq0",
+          "magnitude": 5.8,
+          "place": "96 km NW of Manado, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2023-11-16T02:30:08.551767Z",
+              "distance_km": 585.639,
+              "predicted_surface_arrival_start_utc": "2023-11-15T23:28:40.705854Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            },
+            {
+              "conservative_coda_end_utc": "2023-11-16T02:32:49.506295Z",
+              "distance_km": 988.026,
+              "predicted_surface_arrival_start_utc": "2023-11-15T23:30:21.302434Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "MY.KKM"
+            }
+          ],
+          "time_utc": "2023-11-15T23:26:14.296000Z"
+        }
+      ],
+      "end_utc": "2023-11-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2023-11-15T00:00:00Z",
+      "usgs_event_count_m4plus": 52,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-11-14T12%3A00%3A00Z&endtime=2023-11-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "b56c28278d0e298e2f5855cdd87932a58a28f0deb878bdf77351ab7e2c9fd6ed",
+      "window_id": "stage1_cal_2023-11-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pdvn",
+          "event_id": "us7000pdvn",
+          "magnitude": 5,
+          "place": "30 km W of Mabiton, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-02-15T03:33:37.597584Z",
+              "distance_km": 698.649,
+              "predicted_surface_arrival_start_utc": "2025-02-15T00:31:52.800240Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2025-02-15T00:28:58.138000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pdvr",
+          "event_id": "us7000pdvr",
+          "magnitude": 5,
+          "place": "26 km NE of Hernani, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-02-15T04:22:04.894605Z",
+              "distance_km": 490.447,
+              "predicted_surface_arrival_start_utc": "2025-02-15T01:20:51.327628Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2025-02-15T01:18:48.716000Z"
+        }
+      ],
+      "end_utc": "2025-02-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2025-02-15T00:00:00Z",
+      "usgs_event_count_m4plus": 61,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2025-02-14T12%3A00%3A00Z&endtime=2025-02-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "5b41ee85b3e9d56e1623ac62696302df2322b5f648d3214c0c085cc5c994b771",
+      "window_id": "stage1_holdout_2025-02-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pzg2",
+          "event_id": "us7000pzg2",
+          "magnitude": 4.5,
+          "place": "159 km W of Gorontalo, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-05-15T22:21:42.530847Z",
+              "distance_km": 843.505,
+              "predicted_surface_arrival_start_utc": "2025-05-15T19:19:36.005154Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            },
+            {
+              "conservative_coda_end_utc": "2025-05-15T22:21:46.818913Z",
+              "distance_km": 854.225,
+              "predicted_surface_arrival_start_utc": "2025-05-15T19:19:38.685196Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "MY.KKM"
+            }
+          ],
+          "time_utc": "2025-05-15T19:16:05.129000Z"
+        }
+      ],
+      "end_utc": "2025-05-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2025-05-15T00:00:00Z",
+      "usgs_event_count_m4plus": 37,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2025-05-14T12%3A00%3A00Z&endtime=2025-05-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "1fb3059cc1f8a46302b87e34eae356e4e967cdf12744773333e900517344bda5",
+      "window_id": "stage1_holdout_2025-05-15"
+    },
+    {
+      "catalogue_layers_pass": true,
+      "earthquake_candidates": [],
+      "end_utc": "2025-08-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2025-08-15T00:00:00Z",
+      "usgs_event_count_m4plus": 81,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2025-08-14T12%3A00%3A00Z&endtime=2025-08-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "32f7cc54d85e0228f9e881d0688e590f0b1a4837067c9935524f5e3629ffbbe8",
+      "window_id": "stage1_holdout_2025-08-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rndw",
+          "event_id": "us6000rndw",
+          "magnitude": 4.7,
+          "place": "44 km SE of Jiufen, Taiwan",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-11-15T03:02:12.958409Z",
+              "distance_km": 867.564,
+              "predicted_surface_arrival_start_utc": "2025-11-15T00:00:02.823881Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "HK.HKPS"
+            },
+            {
+              "conservative_coda_end_utc": "2025-11-15T02:59:00.120888Z",
+              "distance_km": 385.47,
+              "predicted_surface_arrival_start_utc": "2025-11-14T23:58:02.300430Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "TW.KMNB"
+            }
+          ],
+          "time_utc": "2025-11-14T23:56:25.933000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rneu",
+          "event_id": "us6000rneu",
+          "magnitude": 5.3,
+          "place": "200 km SE of Sarangani, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-11-15T08:35:53.821941Z",
+              "distance_km": 358.357,
+              "predicted_surface_arrival_start_utc": "2025-11-15T05:35:00.068338Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2025-11-15T05:33:30.479000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000rnfs",
+          "event_id": "us6000rnfs",
+          "magnitude": 4.9,
+          "place": "7 km WNW of Tapilon, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-11-15T10:42:00.610410Z",
+              "distance_km": 502.374,
+              "predicted_surface_arrival_start_utc": "2025-11-15T07:40:45.254381Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2025-11-15T07:38:39.661000Z"
+        }
+      ],
+      "end_utc": "2025-11-16T00:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2025-11-15T00:00:00Z",
+      "usgs_event_count_m4plus": 52,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2025-11-14T12%3A00%3A00Z&endtime=2025-11-16T00%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "db3370ab28c437070c4b7a32b31f9bded091041573a512ffac0acff3331e1245",
+      "window_id": "stage1_holdout_2025-11-15"
+    }
+  ]
+}

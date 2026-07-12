@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P3-E003-seasonal-noise-stage1",
+  "paper": "paper3",
+  "code_commit": "93fff9b9fc161120799f0bec487ec9df59f9fa83",
+  "config_file": "data/manifests/paper3_long_noise_stage1_requests.json",
+  "config_file_sha256": "eb31512951ad47c26597013724266f60f0c7331d94568f44e6d4f12f19296f75",
+  "data_manifest": "data/manifests/paper3_long_noise_stage1_acquisition_2026-07-12.json",
+  "runner": "scripts/audit_p3_noise_windows.py",
+  "outputs": [
+    {
+      "path": "experiments/paper3/P3-E003-seasonal-noise-stage1/metrics.json",
+      "sha256": "b63c7e7598b234abaeae07de221cf08638ea8d350c1a88ca289b14d939d9ba8b"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0",
+    "obspy": "1.5.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T16:38:00Z",
+  "result_class": "unclassified_open_archive_noise_qc_not_pegs_detectability"
+}

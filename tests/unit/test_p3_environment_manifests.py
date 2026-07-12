@@ -42,6 +42,22 @@ def test_dynamic_values_are_not_promoted_to_manila_defaults() -> None:
 def test_stage1_catalogue_rules_match_pilot_audit() -> None:
     pilot = json.loads((ROOT / "configs/paper3/noise_environment_audit.json").read_text())
     stage1 = json.loads((ROOT / "configs/paper3/noise_environment_stage1_audit.json").read_text())
-    assert stage1["earthquake_catalog"]["candidate_rules"] == pilot["earthquake_catalog"][
-        "candidate_rules"
-    ]
+    assert (
+        stage1["earthquake_catalog"]["candidate_rules"]
+        == pilot["earthquake_catalog"]["candidate_rules"]
+    )
+
+
+def test_stage1_environment_yield_does_not_authorize_quiet_data() -> None:
+    audit = json.loads(
+        (
+            ROOT / "data/manifests/paper3_long_noise_stage1_environment_audit_2026-07-12.json"
+        ).read_text()
+    )
+    assert audit["summary"] == {
+        "catalogue_layers_pass_count": 1,
+        "earthquake_candidate_window_count": 7,
+        "ibtracs_overlap_window_count": 0,
+        "quiet_label_count": 0,
+        "window_count": 8,
+    }

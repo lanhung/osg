@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "policy_id": "P2-quality-policy-v1",
+  "status": "frozen-before-event-model-comparison",
+  "actions": {
+    "candidate_spike": "retain",
+    "confirmed_instrument_spike": "exclude_from_fit_and_metrics",
+    "earthquake": "exclude_from_fit_and_metrics",
+    "maintenance": "exclude_from_fit_and_metrics",
+    "timing_issue": "exclude_from_fit_and_metrics",
+    "sensor_saturation": "exclude_from_fit_and_metrics",
+    "gap_edge_buffer": "exclude_from_fit"
+  },
+  "rules": [
+    "Annotations never change or delete original values.",
+    "A discontinuity threshold creates candidate_spike only; confirmation requires independent evidence.",
+    "Overlapping annotations use the most restrictive declared action.",
+    "Gap-edge buffers may be excluded from fitting while retained for transparent metric sensitivity.",
+    "Any policy revision after viewing ocean-model comparison results requires a versioned amendment and full sensitivity rerun."
+  ]
+}

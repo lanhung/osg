@@ -19,6 +19,11 @@ from .drift import (
     InstrumentDriftModel,
     apply_instrument_drift_model,
 )
+from .annotations import (
+    DataQualityAnnotation,
+    QualityAnnotationResult,
+    apply_quality_annotations,
+)
 
 __all__ = [
     "OneSidedSpectrum",
@@ -40,4 +45,7 @@ __all__ = [
     "InstrumentDriftCorrection",
     "InstrumentDriftModel",
     "apply_instrument_drift_model",
+    "DataQualityAnnotation",
+    "QualityAnnotationResult",
+    "apply_quality_annotations",
 ]

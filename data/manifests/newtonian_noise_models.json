@@ -1,0 +1,60 @@
+{
+  "models": [
+    {
+      "implementation_status": "equations and figures not yet transcribed",
+      "model_id": "brundu_2022_atmospheric_turbulence_nn",
+      "model_inputs": [
+        "detector depth",
+        "frequency",
+        "wind speed",
+        "surface roughness length",
+        "turbulent dissipation rate",
+        "temperature-structure parameter",
+        "finite eddy correlation time",
+        "vertical inhomogeneity model"
+      ],
+      "model_purpose": "Equivalent strain spectral density from atmospheric temperature/density turbulence for third-generation gravitational-wave detectors.",
+      "not_an_instrument_noise_curve": true,
+      "output_observable": "equivalent_gravitational_wave_strain_noise",
+      "review_date": "2026-07-12",
+      "source": "https://doi.org/10.1103/PhysRevD.106.064040",
+      "source_code_or_preprint": "https://arxiv.org/abs/2206.02610",
+      "verified_scope": [
+        "finite correlation time",
+        "vertical atmospheric inhomogeneity",
+        "surface and underground detector comparisons",
+        "comparison with Einstein Telescope xylophone sensitivity"
+      ]
+    },
+    {
+      "implementation_status": "design inputs recorded; transfer functions not yet integrated",
+      "model_id": "cosmic_explorer_local_gravity_fluctuation_budget",
+      "model_inputs": [
+        "Rayleigh-wave ground acceleration ASD",
+        "body-wave ground acceleration ASD",
+        "seismic wave composition and ground properties",
+        "ambient infrasound pressure ASD",
+        "test-mass geometry and 40 km arm response"
+      ],
+      "model_purpose": "Cosmic Explorer equivalent strain-noise budget from seismic and atmospheric local gravity fluctuations.",
+      "not_an_instrument_noise_curve": true,
+      "output_observable": "equivalent_gravitational_wave_strain_noise",
+      "reported_design_inputs": {
+        "body_wave_ambient_acceleration_asd_m_s2_hz_minus_half": 3e-07,
+        "body_wave_required_mitigation_db": 10.0,
+        "infrasound_pressure_asd_pa_hz_minus_half": 0.001,
+        "rayleigh_wave_ambient_acceleration_asd_m_s2_hz_minus_half": 1e-06,
+        "rayleigh_wave_required_mitigation_db": 20.0
+      },
+      "review_date": "2026-07-12",
+      "source": "https://doi.org/10.3390/galaxies10040090",
+      "verified_scope": [
+        "surface 40 km Cosmic Explorer concept",
+        "separate Rayleigh and body-wave mitigation requirements",
+        "atmospheric infrasound-dominated residual local gravity limit",
+        "no assumed infrasound mitigation in the cited design review"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

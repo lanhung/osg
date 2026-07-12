@@ -75,6 +75,23 @@ class TestEmpiricalDetection(unittest.TestCase):
             audit.heldout_triggered_window_ids, ("Q-test-1", "Q-test-2")
         )
         self.assertEqual(audit.heldout_false_alarms_per_30_days, 15.0)
+        self.assertFalse(audit.rate_resolution_sufficient)
+        self.assertFalse(audit.passes_target_rate)
+
+    def test_zero_exceedances_do_not_pass_when_exposure_is_too_short(self) -> None:
+        audit = audit_quiet_window_false_positives(
+            (
+                QuietScoreWindow("Q-cal", "threshold_calibration", (0.0, 1.0), 86_400.0),
+                QuietScoreWindow("Q-test", "held_out", (0.0,), 86_400.0),
+            ),
+            target_false_alarms_per_30_days=1.0,
+        )
+        self.assertEqual(audit.heldout_exceedance_count, 0)
+        self.assertEqual(
+            audit.heldout_minimum_nonzero_resolvable_false_alarms_per_30_days,
+            30.0,
+        )
+        self.assertFalse(audit.rate_resolution_sufficient)
         self.assertFalse(audit.passes_target_rate)
 
     def test_quiet_audit_requires_both_splits_and_common_step(self) -> None:

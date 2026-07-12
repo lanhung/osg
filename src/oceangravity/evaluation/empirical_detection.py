@@ -48,6 +48,7 @@ class QuietWindowFalsePositiveAudit:
     heldout_triggered_window_ids: tuple[str, ...]
     heldout_false_alarms_per_30_days: float
     heldout_minimum_nonzero_resolvable_false_alarms_per_30_days: float
+    rate_resolution_sufficient: bool
     passes_target_rate: bool
 
 
@@ -151,6 +152,8 @@ def audit_quiet_window_false_positives(
         )
     )
     target = float(target_false_alarms_per_30_days)
+    minimum_nonzero_rate = windows_per_month / len(heldout_scores)
+    resolution_sufficient = minimum_nonzero_rate <= target
     return QuietWindowFalsePositiveAudit(
         threshold=threshold,
         calibration_window_ids=tuple(sorted(row.window_id for row in calibration)),
@@ -159,8 +162,7 @@ def audit_quiet_window_false_positives(
         heldout_exceedance_count=exceedance_count,
         heldout_triggered_window_ids=triggered,
         heldout_false_alarms_per_30_days=observed_rate,
-        heldout_minimum_nonzero_resolvable_false_alarms_per_30_days=(
-            windows_per_month / len(heldout_scores)
-        ),
-        passes_target_rate=observed_rate <= target,
+        heldout_minimum_nonzero_resolvable_false_alarms_per_30_days=minimum_nonzero_rate,
+        rate_resolution_sufficient=resolution_sufficient,
+        passes_target_rate=resolution_sufficient and observed_rate <= target,
     )

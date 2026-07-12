@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from oceangravity.loading import (  # noqa: E402
     GravityCorrectionComponent,
+    apply_gravity_correction_chain,
     compute_gravity_residual,
 )
 
@@ -64,6 +65,19 @@ class TestGravityBudget(unittest.TestCase):
             compute_gravity_residual(
                 [1.0, 2.0], [_component("short", [0.1], ["hydrology"])]
             )
+
+    def test_ordered_chain_retains_every_intermediate_series(self) -> None:
+        observed = [10.0, 20.0]
+        first = _component("tide", [1.0, 2.0], ["solid_earth_tide"])
+        second = _component("atmosphere", [3.0, 4.0], ["atmosphere_direct"])
+        chain = apply_gravity_correction_chain(observed, [first, second])
+        self.assertEqual(len(chain.stages), 2)
+        self.assertEqual(chain.stages[0].input_m_s2, (10.0, 20.0))
+        self.assertEqual(chain.stages[0].output_m_s2, (9.0, 18.0))
+        self.assertEqual(chain.stages[1].input_m_s2, (9.0, 18.0))
+        self.assertEqual(chain.stages[1].output_m_s2, (6.0, 14.0))
+        self.assertEqual(chain.final_residual.residual_m_s2, (6.0, 14.0))
+        self.assertEqual(chain.stages[1].peak_absolute_removed_m_s2, 4.0)
 
 
 if __name__ == "__main__":

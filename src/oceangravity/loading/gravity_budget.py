@@ -38,6 +38,22 @@ class GravityResidualResult:
     closure_max_abs_m_s2: float
 
 
+@dataclass(frozen=True, slots=True)
+class GravityCorrectionStage:
+    stage_index: int
+    component_id: str
+    input_m_s2: tuple[float, ...]
+    removed_m_s2: tuple[float, ...]
+    output_m_s2: tuple[float, ...]
+    peak_absolute_removed_m_s2: float
+
+
+@dataclass(frozen=True, slots=True)
+class GravityCorrectionChainResult:
+    stages: tuple[GravityCorrectionStage, ...]
+    final_residual: GravityResidualResult
+
+
 def compute_gravity_residual(
     observed_m_s2: Sequence[float],
     components: Sequence[GravityCorrectionComponent],
@@ -89,3 +105,38 @@ def compute_gravity_residual(
         subtracted_component_ids=tuple(component_ids),
         closure_max_abs_m_s2=closure,
     )
+
+
+def apply_gravity_correction_chain(
+    observed_m_s2: Sequence[float],
+    ordered_components: Sequence[GravityCorrectionComponent],
+) -> GravityCorrectionChainResult:
+    """Apply a validated correction order while retaining every intermediate series."""
+
+    final = compute_gravity_residual(observed_m_s2, ordered_components)
+    current = final.observed_m_s2
+    stages = []
+    for index, component in enumerate(ordered_components, start=1):
+        output = tuple(
+            current[sample_index] - component.values_m_s2[sample_index]
+            for sample_index in range(len(current))
+        )
+        stages.append(
+            GravityCorrectionStage(
+                stage_index=index,
+                component_id=component.component_id,
+                input_m_s2=current,
+                removed_m_s2=component.values_m_s2,
+                output_m_s2=output,
+                peak_absolute_removed_m_s2=max(abs(value) for value in component.values_m_s2),
+            )
+        )
+        current = output
+    if current != final.residual_m_s2:
+        difference = max(
+            abs(left - right)
+            for left, right in zip(current, final.residual_m_s2, strict=True)
+        )
+        if difference > max(final.closure_max_abs_m_s2, 1e-30) * 4.0:
+            raise RuntimeError("sequential and direct correction paths do not close")
+    return GravityCorrectionChainResult(stages=tuple(stages), final_residual=final)

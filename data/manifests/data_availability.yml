@@ -24,6 +24,7 @@ paper2:
         - level-1 includes raw gravity and local pressure at 1-2 seconds and one-minute samples
         - Helgoland iGrav-047 is listed from 2020
         - Wuhan stations are listed for historical epochs
+        - current download transport is encrypted SFTP at igetsftp.gfz.de
     - id: haikou-igrav-048
       status: unknown
       owner: Haikou station / 2026 paper authors
@@ -60,6 +61,7 @@ paper3:
       status: unknown
       owner: multiple network operators
       action: distinguish real-time-capable, archival-only, and inaccessible stations
+      inventory_query: data/manifests/paper3_fdsn_inventory.yml
     - id: surrounding-fdsn-networks
       status: unknown
       owner: FDSN data centres

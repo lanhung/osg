@@ -1,0 +1,32 @@
+schema_version: 1
+status: prepared-not-executed
+reviewed_date: 2026-07-12
+purpose: initial broadband station/channel inventory around the South China Sea and Manila Trench
+service:
+  operator: NSF SAGE Facility / EarthScope Consortium
+  endpoint: https://service.earthscope.org/fdsnws/station/1/query
+  service_version: 1
+  output_format: text
+  level: channel
+query:
+  minlatitude: 5.0
+  maxlatitude: 30.0
+  minlongitude: 100.0
+  maxlongitude: 130.0
+  channel: "BH?,LH?"
+  starttime: "2020-01-01T00:00:00"
+  endtime: "2026-07-12T00:00:00"
+  includerestricted: "false"
+  nodata: 404
+post_query_gates:
+  - record network, station, location, channel and exact epoch
+  - require response metadata before physical-unit conversion
+  - query waveform availability separately
+  - label archival-only versus plausible real-time access
+  - freeze noise dates before model fitting
+  - record license and acknowledgement
+expected_output:
+  path: data/raw/paper3/fdsn_station_channels.txt
+  checksum: pending
+  retrieved_at_utc: pending
+

@@ -52,11 +52,11 @@ Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadat
 ### 0.3 Paper 2 data Go/No-Go
 
 - [ ] Freeze candidate SG stations and candidate typhoons before requesting data.
-- [ ] Determine IGETS level, cadence, time span, license, and station restrictions.
+- [x] Determine IGETS product levels, nominal cadence, registration/SFTP access path, and public station table. (Station/file-specific terms remain after registration.)
 - [ ] Request Haikou iGrav-048 gravity, colocated pressure, calibration, jump, maintenance, and timing logs.
 - [ ] Request or inventory Wuhan/HUST and other coastal or regional SG data.
 - [ ] Inventory colocated/nearby tide gauges and GNSS vertical displacement records.
-- [ ] Define IBTrACS, ERA5, CMEMS, hydrology, and optional wave-product queries.
+- [ ] Define IBTrACS, ERA5, CMEMS, hydrology, and optional wave-product queries. (Request targets listed; exact product IDs/bounds remain.)
 - [ ] Verify at least one station/three events or two stations/two events with required channels.
 - [ ] Record a formal go, conditional-go, or no-go decision by the end of Week 2.
 - [ ] If no-go, activate Helgoland code-validation track and narrow the Paper 2 claim.
@@ -65,7 +65,7 @@ Evidence: completed data manifest, correspondence/access log, event-station matr
 
 ### 0.4 Paper 3 data Go/No-Go
 
-- [ ] Inventory stations in South China, Hong Kong, Taiwan, Philippines, Vietnam, and surrounding networks.
+- [ ] Inventory stations in South China, Hong Kong, Taiwan, Philippines, Vietnam, and surrounding networks. (Current EarthScope query frozen; execution and other FDSN centres remain.)
 - [ ] Distinguish archived, downloadable, real-time-capable, restricted, and unavailable stations.
 - [ ] Verify waveform epochs, sample rates, three-component channels, responses, and licenses.
 - [ ] Define noise-window strata: season, day/night, calm sea, typhoon, urban/remote, outages.

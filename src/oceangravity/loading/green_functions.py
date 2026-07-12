@@ -8,6 +8,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 import json
 from pathlib import Path
+import re
 from typing import Protocol, runtime_checkable
 
 
@@ -21,6 +22,7 @@ class LoadGreenFunctionMetadata:
     source: str
     normalization: str = "per_source_mass_kg"
     component_semantics: str = "decomposed_deformation_and_internal_mass"
+    reference_frame: str = "unspecified_fixture"
 
     def __post_init__(self) -> None:
         for name in ("provider_id", "provider_version", "earth_model", "source"):
@@ -33,6 +35,91 @@ class LoadGreenFunctionMetadata:
             "combined_elastic_gravity",
         }:
             raise ValueError("unsupported Green-function component semantics")
+        if self.reference_frame not in {"CE", "CM", "CF", "unspecified_fixture"}:
+            raise ValueError("unsupported load Green-function reference frame")
+
+
+@dataclass(frozen=True, slots=True)
+class LoadGreenFunctionScientificAudit:
+    """Evidence required before a provider may produce scientific results."""
+
+    provider_id: str
+    provider_version: str
+    exact_source_commit: str
+    artifact_sha256: str
+    license_id: str
+    earth_model: str
+    reference_frame: str
+    normalization: str
+    component_semantics: str
+    angular_distance_unit: str
+    source_equation_audited: bool
+    published_benchmark_id: str
+    benchmark_passed: bool
+
+    def __post_init__(self) -> None:
+        for name in (
+            "provider_id",
+            "provider_version",
+            "license_id",
+            "earth_model",
+            "published_benchmark_id",
+        ):
+            if not getattr(self, name).strip():
+                raise ValueError(f"{name} must not be empty")
+        if not re.fullmatch(r"[0-9a-f]{40}", self.exact_source_commit):
+            raise ValueError("exact_source_commit must be a lowercase 40-character Git SHA")
+        if not re.fullmatch(r"[0-9a-f]{64}", self.artifact_sha256):
+            raise ValueError("artifact_sha256 must be a lowercase SHA-256 digest")
+        if self.reference_frame not in {"CE", "CM", "CF"}:
+            raise ValueError("scientific reference_frame must be CE, CM, or CF")
+        if self.normalization != "per_source_mass_kg":
+            raise ValueError("scientific normalization must be per_source_mass_kg")
+        if self.component_semantics not in {
+            "decomposed_deformation_and_internal_mass",
+            "combined_elastic_gravity",
+        }:
+            raise ValueError("unsupported scientific component semantics")
+        if self.angular_distance_unit != "rad":
+            raise ValueError("angular_distance_unit must be rad")
+
+    @property
+    def scientific_use_ready(self) -> bool:
+        return self.source_equation_audited and self.benchmark_passed
+
+
+def assert_green_function_scientific_use_ready(
+    provider: LoadGreenFunctionProvider,
+    audit: LoadGreenFunctionScientificAudit,
+) -> None:
+    """Reject unaudited, mismatched, or unbenchmarked scientific providers."""
+
+    if not isinstance(provider, LoadGreenFunctionProvider):
+        raise TypeError("provider must satisfy LoadGreenFunctionProvider")
+    metadata = provider.metadata
+    comparisons = {
+        "provider_id": (metadata.provider_id, audit.provider_id),
+        "provider_version": (metadata.provider_version, audit.provider_version),
+        "earth_model": (metadata.earth_model, audit.earth_model),
+        "reference_frame": (metadata.reference_frame, audit.reference_frame),
+        "normalization": (metadata.normalization, audit.normalization),
+        "component_semantics": (
+            metadata.component_semantics,
+            audit.component_semantics,
+        ),
+    }
+    mismatches = [
+        name for name, (actual, expected) in comparisons.items() if actual != expected
+    ]
+    if mismatches:
+        raise ValueError(
+            "Green-function scientific audit does not match provider metadata: "
+            + ", ".join(mismatches)
+        )
+    if not audit.source_equation_audited:
+        raise ValueError("Green-function source/equation audit is incomplete")
+    if not audit.benchmark_passed:
+        raise ValueError("published Green-function benchmark has not passed")
 
 
 @dataclass(frozen=True, slots=True)

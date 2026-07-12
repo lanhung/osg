@@ -14,8 +14,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from oceangravity.loading import (  # noqa: E402
     CombinedElasticLoadGreenFunctionSample,
     LoadGreenFunctionMetadata,
+    LoadGreenFunctionScientificAudit,
     LoadGreenFunctionSample,
     TabulatedLoadGreenFunctionProvider,
+    assert_green_function_scientific_use_ready,
     convolve_combined_elastic_load_green_functions,
     convolve_load_green_functions,
 )
@@ -181,6 +183,65 @@ class TestLoadGreenFunctions(unittest.TestCase):
         with self.assertRaises(ValueError):
             LoadGreenFunctionMetadata(
                 "id", "1", "earth", "source", component_semantics="ambiguous"
+            )
+
+    def test_scientific_gate_requires_matching_audit_and_benchmark(self) -> None:
+        provider = CombinedFixtureProvider()
+        base = {
+            "provider_id": "combined-fixture",
+            "provider_version": "1",
+            "exact_source_commit": "a" * 40,
+            "artifact_sha256": "b" * 64,
+            "license_id": "GPL-3.0",
+            "earth_model": "not-a-physical-earth-model",
+            "reference_frame": "CE",
+            "normalization": "per_source_mass_kg",
+            "component_semantics": "combined_elastic_gravity",
+            "angular_distance_unit": "rad",
+            "source_equation_audited": True,
+            "published_benchmark_id": "unit-test-only",
+            "benchmark_passed": True,
+        }
+        audited_metadata = LoadGreenFunctionMetadata(
+            provider_id=provider.metadata.provider_id,
+            provider_version=provider.metadata.provider_version,
+            earth_model=provider.metadata.earth_model,
+            source=provider.metadata.source,
+            component_semantics=provider.metadata.component_semantics,
+            reference_frame="CE",
+        )
+        provider.metadata = audited_metadata
+        assert_green_function_scientific_use_ready(
+            provider, LoadGreenFunctionScientificAudit(**base)
+        )
+
+        incomplete = dict(base, benchmark_passed=False)
+        with self.assertRaisesRegex(ValueError, "benchmark"):
+            assert_green_function_scientific_use_ready(
+                provider, LoadGreenFunctionScientificAudit(**incomplete)
+            )
+        mismatched = dict(base, earth_model="different")
+        with self.assertRaisesRegex(ValueError, "earth_model"):
+            assert_green_function_scientific_use_ready(
+                provider, LoadGreenFunctionScientificAudit(**mismatched)
+            )
+
+    def test_scientific_audit_rejects_placeholder_provenance(self) -> None:
+        with self.assertRaisesRegex(ValueError, "exact_source_commit"):
+            LoadGreenFunctionScientificAudit(
+                provider_id="provider",
+                provider_version="1",
+                exact_source_commit="pending",
+                artifact_sha256="b" * 64,
+                license_id="GPL-3.0",
+                earth_model="PREM",
+                reference_frame="CE",
+                normalization="per_source_mass_kg",
+                component_semantics="combined_elastic_gravity",
+                angular_distance_unit="rad",
+                source_equation_audited=True,
+                published_benchmark_id="benchmark",
+                benchmark_passed=True,
             )
 
 

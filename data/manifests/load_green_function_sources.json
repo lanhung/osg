@@ -31,6 +31,15 @@
         "exact_commit": null,
         "artifact_checksum": null
       },
+      "scientific_use_gate": {
+        "status": "not-ready",
+        "exact_source_commit": null,
+        "artifact_sha256": null,
+        "reference_frame": null,
+        "source_equation_audited": false,
+        "published_benchmark_id": null,
+        "benchmark_passed": false
+      },
       "component_mapping": {
         "status": "requires-source-and-equation-audit",
         "provisional_project_semantics": "combined_elastic_gravity",

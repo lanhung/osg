@@ -17,16 +17,23 @@ from .empirical_detection import (
     calibrate_empirical_threshold,
     empirical_detection_probability,
 )
+from .time_dependent import (
+    DetectionProbabilityPoint,
+    earliest_reliable_detection_time,
+    time_dependent_detection_probability,
+)
 
 __all__ = [
     "gaussian_detection_probability",
     "CurveDetectabilityResult",
     "EmpiricalThreshold",
+    "DetectionProbabilityPoint",
     "evaluate_gravity_signal_against_curve",
     "evaluate_gradient_signal_against_curve",
     "gaussian_threshold_for_false_alarm",
     "calibrate_empirical_threshold",
     "empirical_detection_probability",
+    "earliest_reliable_detection_time",
     "latin_hypercube",
     "ParameterRange",
     "ParameterDesign",
@@ -35,4 +42,5 @@ __all__ = [
     "required_snr_for_detection_probability",
     "summarize_ensemble",
     "sample_parameter_design",
+    "time_dependent_detection_probability",
 ]

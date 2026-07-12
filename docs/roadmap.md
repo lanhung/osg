@@ -155,6 +155,7 @@ Evidence: reproducible case configs, metrics, plots, discrepancy report.
 - [ ] Produce frequency–equivalent-gravity panel with uncertainty.
 - [ ] Produce distance–SNR panel with observation-time assumptions.
 - [ ] Produce process–instrument detectability matrix.
+- [x] Implement a frequency-coverage gate that forbids detectability classification when a curve covers less than the required signal-energy fraction.
 - [ ] Produce uncertainty/cancellation panel.
 - [ ] Classify detectable, boundary-detectable, and undetectable regions without censoring negative results.
 - [ ] Run sensitivity to priors, geometry, PSD, integration time, and threshold.

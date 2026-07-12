@@ -47,6 +47,10 @@ from .effect_ledger import (
     EffectOwnershipResult,
     audit_effect_ledger,
 )
+from .hydrology import (
+    groundwater_level_to_equivalent_water_height,
+    water_equivalent_height_to_bouguer_slab_gravity,
+)
 
 __all__ = [
     "SurfaceLoadResult",
@@ -86,4 +90,6 @@ __all__ = [
     "EffectLedgerAudit",
     "EffectOwnershipResult",
     "audit_effect_ledger",
+    "groundwater_level_to_equivalent_water_height",
+    "water_equivalent_height_to_bouguer_slab_gravity",
 ]

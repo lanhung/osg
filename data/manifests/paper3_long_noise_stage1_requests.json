@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "manifest_id": "paper3-seasonal-long-noise-stage1-v1",
+  "created_utc": "2026-07-12T17:20:00Z",
+  "purpose": "Predeclare an eight-day seasonal archive acquisition before waveform inspection; this stage tests retrieval and label yield and cannot calibrate a 30-day false-alarm claim.",
+  "source": {
+    "provider": "EarthScope Consortium NSF SAGE Facility",
+    "service": "FDSN dataselect v1",
+    "base_url": "https://service.earthscope.org/fdsnws/dataselect/1/query",
+    "format": "MiniSEED",
+    "terms_url": "https://www.earthscope.org/terms-of-service/",
+    "citation_url": "https://www.earthscope.org/how-to-cite/",
+    "access": "only archive triplets marked all_open in P3-E002",
+    "redistribution": "raw waveform redistribution disabled; raw data stay on AutoDL"
+  },
+  "selection_rule": "UTC calendar day 15 of February, May, August and November in 2023 and 2025; fixed without waveform or environmental inspection",
+  "stations": [
+    {"network": "HK", "station": "HKPS", "location": "--", "channels": ["LHE", "LHN", "LHZ"]},
+    {"network": "IC", "station": "QIZ", "location": "10", "channels": ["LH1", "LH2", "LHZ"]},
+    {"network": "IU", "station": "DAV", "location": "00", "channels": ["LH1", "LH2", "LHZ"]},
+    {"network": "MY", "station": "KKM", "location": "--", "channels": ["LHE", "LHN", "LHZ"]},
+    {"network": "TW", "station": "KMNB", "location": "--", "channels": ["LHE", "LHN", "LHZ"]}
+  ],
+  "windows": [
+    {"window_id": "stage1_cal_2023-02-15", "split_role": "retrieval_and_label_calibration_year", "start_utc": "2023-02-15T00:00:00Z", "end_utc": "2023-02-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_cal_2023-05-15", "split_role": "retrieval_and_label_calibration_year", "start_utc": "2023-05-15T00:00:00Z", "end_utc": "2023-05-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_cal_2023-08-15", "split_role": "retrieval_and_label_calibration_year", "start_utc": "2023-08-15T00:00:00Z", "end_utc": "2023-08-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_cal_2023-11-15", "split_role": "retrieval_and_label_calibration_year", "start_utc": "2023-11-15T00:00:00Z", "end_utc": "2023-11-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_holdout_2025-02-15", "split_role": "retrieval_and_label_heldout_year", "start_utc": "2025-02-15T00:00:00Z", "end_utc": "2025-02-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_holdout_2025-05-15", "split_role": "retrieval_and_label_heldout_year", "start_utc": "2025-05-15T00:00:00Z", "end_utc": "2025-05-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_holdout_2025-08-15", "split_role": "retrieval_and_label_heldout_year", "start_utc": "2025-08-15T00:00:00Z", "end_utc": "2025-08-16T00:00:00Z", "label_status": "unclassified"},
+    {"window_id": "stage1_holdout_2025-11-15", "split_role": "retrieval_and_label_heldout_year", "start_utc": "2025-11-15T00:00:00Z", "end_utc": "2025-11-16T00:00:00Z", "label_status": "unclassified"}
+  ],
+  "raw_root": "data/raw/paper3/seasonal_stage1",
+  "processing": {
+    "response_output": "ACC",
+    "pre_filt_hz": [0.001, 0.002, 0.1, 0.2],
+    "water_level_db": 60.0,
+    "response_and_gap_qc": "same frozen gates as P3-WU22"
+  },
+  "stage_gates": {
+    "stage1_exposure_days_per_split": 4,
+    "stage1_total_station_days_requested": 40,
+    "promotion_requirements": [
+      "at least four stations pass response and gap QC in at least six of eight days",
+      "earthquake, tropical-cyclone, local-weather, sea-state and waveform-transient layers are recorded",
+      "no date replacement based on observed noise amplitude"
+    ],
+    "stage2": "Expand the same calendar rule to eight days per season and at least 32 accepted days per split before claiming resolution at one false alarm per 30 days.",
+    "false_alarm_guardrail": "Eight stage-1 days cannot resolve a one-per-30-day empirical false-alarm rate."
+  }
+}

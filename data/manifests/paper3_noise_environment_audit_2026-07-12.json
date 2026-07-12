@@ -1,0 +1,168 @@
+{
+  "audit_id": "paper3-noise-environment-audit-v1",
+  "config_sha256": "7ac6076a8829d9154d696b96e0e81c09a2b4ae6a64b8c8e6f1fb49cdffa28a33",
+  "generated_utc": "2026-07-12T16:22:14.842229Z",
+  "raw_data_policy": "USGS GeoJSON retained outside Git; query URLs and SHA-256 hashes retained here.",
+  "remaining_gate": {
+    "policy": "No window may be labelled quiet until all required layers pass.",
+    "required_layers": [
+      "earthquake_catalog_screen",
+      "regional_tropical_cyclone_screen",
+      "station_local_weather_and_pressure",
+      "regional_sea_state",
+      "waveform_transient_and_microseism_review"
+    ]
+  },
+  "schema_version": 1,
+  "summary": {
+    "catalogue_layers_pass_count": 3,
+    "earthquake_candidate_window_count": 2,
+    "ibtracs_overlap_window_count": 1,
+    "quiet_label_count": 0,
+    "window_count": 5
+  },
+  "windows": [
+    {
+      "catalogue_layers_pass": true,
+      "earthquake_candidates": [],
+      "end_utc": "2024-02-15T06:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2024-02-15T00:00:00Z",
+      "usgs_event_count_m4plus": 36,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2024-02-14T12%3A00%3A00Z&endtime=2024-02-15T06%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "e8dbf2716bea4dd0228af9c5ce81ef00a71c0b67707a85c6ce1fbd5705d44c70",
+      "window_id": "candidate_calibration_2024-02-15"
+    },
+    {
+      "catalogue_layers_pass": true,
+      "earthquake_candidates": [],
+      "end_utc": "2024-05-15T06:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2024-05-15T00:00:00Z",
+      "usgs_event_count_m4plus": 40,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2024-05-14T12%3A00%3A00Z&endtime=2024-05-15T06%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "c4c4138fa1701ef160a2a9a8e8f5a26012700dd3ef5ede0bf294affdf24e146b",
+      "window_id": "candidate_heldout_2024-05-15"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000nq82",
+          "event_id": "us6000nq82",
+          "magnitude": 4.6,
+          "place": "167 km N of Tobelo, Indonesia",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2024-09-07T03:06:02.830978Z",
+              "distance_km": 510.15,
+              "predicted_surface_arrival_start_utc": "2024-09-07T00:04:46.308486Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2024-09-07T00:02:38.771000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000nq8y",
+          "event_id": "us6000nq8y",
+          "magnitude": 4.9,
+          "place": "14 km ESE of Hualien City, Taiwan",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2024-09-07T08:22:09.668627Z",
+              "distance_km": 796.562,
+              "predicted_surface_arrival_start_utc": "2024-09-07T05:20:10.184392Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "HK.HKPS"
+            },
+            {
+              "conservative_coda_end_utc": "2024-09-07T08:19:08.657320Z",
+              "distance_km": 344.033,
+              "predicted_surface_arrival_start_utc": "2024-09-07T05:18:17.052325Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "TW.KMNB"
+            }
+          ],
+          "time_utc": "2024-09-07T05:16:51.044000Z"
+        }
+      ],
+      "end_utc": "2024-09-07T06:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [
+        {
+          "closest_reference_distance_km": 14.62848706514181,
+          "maximum_usa_wind_kt": 145.0,
+          "name": "YAGI",
+          "regional_entry_time": "2024-09-01 09:00:00",
+          "regional_exit_time": "2024-09-09 12:00:00",
+          "sid": "2024244N09137"
+        }
+      ],
+      "start_utc": "2024-09-07T00:00:00Z",
+      "usgs_event_count_m4plus": 31,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2024-09-06T12%3A00%3A00Z&endtime=2024-09-07T06%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "f9e224a79d80bc32e0432c9e4bebd6875307b672f6006656f2294e14e6e1abd4",
+      "window_id": "candidate_stress_yagi_2024-09-07"
+    },
+    {
+      "catalogue_layers_pass": false,
+      "earthquake_candidates": [
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pdvn",
+          "event_id": "us7000pdvn",
+          "magnitude": 5,
+          "place": "30 km W of Mabiton, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-02-15T03:33:37.597584Z",
+              "distance_km": 698.649,
+              "predicted_surface_arrival_start_utc": "2025-02-15T00:31:52.800240Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2025-02-15T00:28:58.138000Z"
+        },
+        {
+          "detail_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000pdvr",
+          "event_id": "us7000pdvr",
+          "magnitude": 5,
+          "place": "26 km NE of Hernani, Philippines",
+          "station_hits": [
+            {
+              "conservative_coda_end_utc": "2025-02-15T04:22:04.894605Z",
+              "distance_km": 490.447,
+              "predicted_surface_arrival_start_utc": "2025-02-15T01:20:51.327628Z",
+              "rule": "regional_magnitude_distance_rule",
+              "station": "IU.DAV"
+            }
+          ],
+          "time_utc": "2025-02-15T01:18:48.716000Z"
+        }
+      ],
+      "end_utc": "2025-02-15T06:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2025-02-15T00:00:00Z",
+      "usgs_event_count_m4plus": 35,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2025-02-14T12%3A00%3A00Z&endtime=2025-02-15T06%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "1bede96a82d76c06b384ac28ed69898f850491f1aca932201781c267e1276bd4",
+      "window_id": "replacement_calibration_2025-02-15"
+    },
+    {
+      "catalogue_layers_pass": true,
+      "earthquake_candidates": [],
+      "end_utc": "2025-05-15T06:00:00Z",
+      "environment_label_status": "pending_weather_sea_state_and_waveform_review",
+      "ibtracs_regional_overlaps": [],
+      "start_utc": "2025-05-15T00:00:00Z",
+      "usgs_event_count_m4plus": 18,
+      "usgs_query_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2025-05-14T12%3A00%3A00Z&endtime=2025-05-15T06%3A00%3A00Z&minmagnitude=4.0&orderby=time-asc",
+      "usgs_raw_sha256": "3f72d7da685b469a9c509bb739dde5a8487dd4a707cf95b0a3ec14aae2f33b3a",
+      "window_id": "replacement_heldout_2025-05-15"
+    }
+  ]
+}

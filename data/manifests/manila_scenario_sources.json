@@ -123,6 +123,30 @@
     "arrival_definition": "modelled tsunami-wave arrival at named coastal observation points; threshold definition not stated in extracted text",
     "registration_status": "family_evidence_only_missing_pegs_dynamic_source_parameters"
   },
+  "dynamic_parameter_literature_audit": {
+    "status": "sensitivity-values-found-but-no-manila-event-specific-prior",
+    "rupture_velocity": {
+      "manila_specific_evidence": {
+        "source": "https://doi.org/10.1016/j.oceaneng.2019.03.045",
+        "scope": "kinematic rupture sensitivity for Manila-trench tsunami propagation",
+        "verified_numeric_prior": null,
+        "reason_not_promoted": "The accessible primary record establishes a Manila sensitivity study but does not expose an auditable event-specific rupture-velocity table."
+      },
+      "general_megathrust_sensitivity_km_s": [2.0, 2.5, 3.0],
+      "general_source": "https://doi.org/10.1002/2015JB012426",
+      "general_source_semantics": "finite-fault inversion sensitivity values; not a Manila prior or posterior",
+      "scenario_default_authorized": false
+    },
+    "rise_time": {
+      "manila_specific_value_s": null,
+      "external_tohoku_sensitivity_range_s": [3.2, 32.0],
+      "source": "https://doi.org/10.1016/j.oceaneng.2019.03.045",
+      "source_semantics": "2011 Tohoku sensitivity range quoted by a Manila kinematic-tsunami study; not transferable as a Manila source prior without a declared scaling model",
+      "scenario_default_authorized": false
+    },
+    "allowed_current_use": "The cited numeric values may define explicitly labelled external sensitivity branches only. They may not fill the missing Manila scenario fields or support operational warning claims.",
+    "remaining_evidence_gate": "Obtain an auditable Manila-specific finite-fault source or pre-register a defensible scaling law with uncertainty before PEGS production registration."
+  },
   "sources": [
     {
       "id": "liu_et_al_2023_hyyhz",
@@ -150,6 +174,18 @@
       "doi": "10.1038/s41597-025-06006-4",
       "data_doi": "10.6084/m9.figshare.29311046.v2",
       "status": "source-family-and-generation-contract-extracted-individual-pegs-records-unavailable"
+    },
+    {
+      "id": "ren_et_al_2019_ocean_engineering",
+      "title": "Effect of kinematic fault rupture process on tsunami propagation",
+      "doi": "10.1016/j.oceaneng.2019.03.045",
+      "status": "manila-kinematic-sensitivity-scope-verified-exact-manila-dynamic-table-unavailable"
+    },
+    {
+      "id": "ye_et_al_2016_jgr",
+      "title": "The 1991--2015 series of large interplate earthquakes: Slower slip at the plate interface for larger events",
+      "doi": "10.1002/2015JB012426",
+      "status": "general-megathrust-rupture-velocity-sensitivity-only"
     }
   ],
   "required_before_scenario_registration": [

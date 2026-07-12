@@ -1,5 +1,5 @@
 schema_version: 1
-status: prepared-not-executed
+status: executed-earthscope-holdings-inventory-only
 reviewed_date: 2026-07-12
 purpose: initial broadband station/channel inventory around the South China Sea and Manila Trench
 service:
@@ -27,6 +27,12 @@ post_query_gates:
   - record license and acknowledgement
 expected_output:
   path: data/raw/paper3/fdsn_station_channels.txt
-  checksum: pending
-  retrieved_at_utc: pending
-
+  checksum: 12daf91de2aad1a12630da7eca6245f914f8173662b0e0170e99506ac2a4fdce
+  size_bytes: 65280
+  retrieved_at_utc: "2026-07-12T09:18:08.618620+00:00"
+  compact_summary: data/manifests/paper3_fdsn_station_candidates_2026-07-12.json
+  summary_counts:
+    three_component_channel_epochs: 145
+    incomplete_channel_epochs: 14
+    unique_network_station_pairs: 75
+  limitation: EarthScope holdings only; waveform availability, full response, latency, licence and other regional FDSN centres remain unaudited

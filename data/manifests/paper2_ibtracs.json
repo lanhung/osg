@@ -10,10 +10,12 @@
   "official_last_modified_observed": "2026-07-09",
   "update_warning": "The v04r01 filename is updated multiple times per week; retrieval timestamp and SHA-256 are mandatory.",
   "retrieval": {
-    "status": "pending-control-plane-network",
+    "status": "available-local-raw-ignored-by-git",
     "path": "data/raw/paper2/ibtracs.last3years.list.v04r01.csv",
-    "retrieved_at_utc": null,
-    "sha256": null
+    "retrieved_at_utc": "2026-07-12T09:17:41.075337+00:00",
+    "http_last_modified": "Thu, 09 Jul 2026 09:13:04 GMT",
+    "size_bytes": 9434011,
+    "sha256": "91217d5c3caf56c02c858fc699ccac80c683ed14d50ab6495963470b964f9608"
   },
   "usage": {
     "status": "open",

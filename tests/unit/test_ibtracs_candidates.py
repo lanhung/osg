@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -21,12 +22,22 @@ class TestIbtracsCandidates(unittest.TestCase):
             (ROOT / "configs/paper2/ibtracs_south_china_sea.json").read_text()
         )
 
-    def test_manifest_freezes_release_url_doi_and_checksum_requirement(self) -> None:
+    def test_manifest_freezes_release_url_doi_and_retrieved_checksum(self) -> None:
         manifest = json.loads((ROOT / "data/manifests/paper2_ibtracs.json").read_text())
         self.assertEqual(manifest["release"], "v04r01")
         self.assertIn("ncei.noaa.gov", manifest["download_url"])
         self.assertEqual(manifest["dataset_doi"], "10.25921/82ty-9e16")
-        self.assertIsNone(manifest["retrieval"]["sha256"])
+        retrieval = manifest["retrieval"]
+        self.assertRegex(retrieval["sha256"], re.compile(r"^[0-9a-f]{64}$"))
+        self.assertGreater(retrieval["size_bytes"], 0)
+        candidates = json.loads(
+            (
+                ROOT
+                / "data/manifests/paper2_ibtracs_candidates_2026-07-12.json"
+            ).read_text()
+        )
+        self.assertEqual(candidates["input_sha256"], retrieval["sha256"])
+        self.assertGreater(candidates["candidate_count"], 0)
         self.assertIn("SHA-256", manifest["update_warning"])
 
     def test_selection_keeps_agency_intensity_fields_separate(self) -> None:

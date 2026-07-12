@@ -1,0 +1,445 @@
+{
+  "pairs_with_full_response_structure_triplet": 10,
+  "pairs_with_response_triplet": 10,
+  "retrieved_at_utc": "2026-07-12T09:25:07.268789+00:00",
+  "retrieved_pair_count": 10,
+  "schema_version": 1,
+  "selection_status": "geographic-response-audit-not-frozen-scientific-network",
+  "station_pair_count": 10,
+  "stations": [
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=IC&station=QIZ&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "IC",
+      "raw_path": "data/raw/paper3/responses/IC.QIZ.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=IC&station=QIZ&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 15,
+      "role": "Hainan",
+      "sha256": "51712d80887fda3a95ebc4273a148837626a69594429d393ccd2625c2d940e8b",
+      "size_bytes": 124225,
+      "station": "QIZ",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 1,
+      "three_component_response_epochs": [
+        {
+          "band": "LH",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "10",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2013-07-23T16:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=HK&station=HKPS&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "HK",
+      "raw_path": "data/raw/paper3/responses/HK.HKPS.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=HK&station=HKPS&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 9,
+      "role": "Hong Kong",
+      "sha256": "5dbf70499a7b4cdb60f9a7426db79235f0e4186d57dfee0659e1b63c8892816c",
+      "size_bytes": 87854,
+      "station": "HKPS",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 3,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2009-10-29T00:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2009-10-29T00:00:00.0000"
+        },
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "00",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2010-03-18T00:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=IU&station=DAV&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "IU",
+      "raw_path": "data/raw/paper3/responses/IU.DAV.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=IU&station=DAV&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 12,
+      "role": "southern Philippines",
+      "sha256": "4694fc927e44ca2b5b197a8728be5dde3df90311159cc43e90aed6b88cc1b2ae",
+      "size_bytes": 85991,
+      "station": "DAV",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 4,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "00",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2015-09-04T06:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "00",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2015-09-04T06:00:00.0000"
+        },
+        {
+          "band": "BH",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "10",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2011-07-27T00:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "10",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2011-07-27T00:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=PS&station=BAG&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "PS",
+      "raw_path": "data/raw/paper3/responses/PS.BAG.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=PS&station=BAG&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 6,
+      "role": "northern Philippines",
+      "sha256": "50690e43e94023a4b4172fbd6d5ab652a0916fccbc84888c7496bb6877396c6d",
+      "size_bytes": 1389784,
+      "station": "BAG",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 2,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-03-18T08:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-03-18T08:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=RM&station=SZP&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "RM",
+      "raw_path": "data/raw/paper3/responses/RM.SZP.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=RM&station=SZP&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 6,
+      "role": "northwestern Philippines",
+      "sha256": "72592c7d56154056ec0462121fdcbed2ad0689cb528a97101ff05865a95fcfb4",
+      "size_bytes": 50027,
+      "station": "SZP",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 2,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-04-24T00:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-04-24T00:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=TW&station=TWKB&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "TW",
+      "raw_path": "data/raw/paper3/responses/TW.TWKB.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=TW&station=TWKB&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 6,
+      "role": "southern Taiwan",
+      "sha256": "3be8647e7eff33a8de64cbed0d12318f77a51993f0c93d61d639d668fbfec0a1",
+      "size_bytes": 58786,
+      "station": "TWKB",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 2,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-09-04T08:18:32.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-09-04T08:18:32.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=TW&station=KMNB&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "TW",
+      "raw_path": "data/raw/paper3/responses/TW.KMNB.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=TW&station=KMNB&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 6,
+      "role": "Taiwan Strait",
+      "sha256": "b8c0c6d323f36233a1ba15aee751a219d05d38d86c56b6d112316e3958dea7e9",
+      "size_bytes": 54258,
+      "station": "KMNB",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 2,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2009-02-19T06:20:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2009-02-19T06:20:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=RM&station=DLV&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "RM",
+      "raw_path": "data/raw/paper3/responses/RM.DLV.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=RM&station=DLV&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 6,
+      "role": "Vietnam",
+      "sha256": "a07a600272a46bf8eb197d9ffd73454546e878ac08334127a75efec5329afda0",
+      "size_bytes": 50063,
+      "station": "DLV",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 2,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-04-24T00:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2008-04-24T00:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=MY&station=KKM&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "MY",
+      "raw_path": "data/raw/paper3/responses/MY.KKM.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=MY&station=KKM&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 6,
+      "role": "northern Borneo",
+      "sha256": "64d71555883262f54025a69bcf6c716b95479e4e0d36bc170727b9340e88ad39",
+      "size_bytes": 50775,
+      "station": "KKM",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 2,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2005-02-17T00:00:00.0000"
+        },
+        {
+          "band": "LH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "2005-02-17T00:00:00.0000"
+        }
+      ]
+    },
+    {
+      "final_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=JP&station=YOJ&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "http_status": 200,
+      "network": "JP",
+      "raw_path": "data/raw/paper3/responses/JP.YOJ.xml",
+      "requested_url": "https://service.earthscope.org/fdsnws/station/1/query?format=xml&level=response&network=JP&station=YOJ&channel=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&includerestricted=false&nodata=404",
+      "response_channel_count": 3,
+      "role": "southern Ryukyu",
+      "sha256": "1b1896a6bb0fe3403ea18c3853533a560a2abb020fd5d80449912b3a88de9eb3",
+      "size_bytes": 53626,
+      "station": "YOJ",
+      "status": "retrieved",
+      "three_component_response_epoch_count": 1,
+      "three_component_response_epochs": [
+        {
+          "band": "BH",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "end_time": "",
+          "full_response_structure_present_for_group": true,
+          "location": "",
+          "response_and_sensitivity_present_for_group": true,
+          "start_time": "1996-10-14T00:00:00.0000"
+        }
+      ]
+    }
+  ],
+  "warning": "StationXML response presence does not establish waveform availability, current operation, real-time latency, licence, or usable PEGS noise."
+}

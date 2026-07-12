@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "endpoint": "https://service.earthscope.org/fdsnws/station/1/query",
+  "starttime": "2020-01-01T00:00:00",
+  "endtime": "2026-07-12T00:00:00",
+  "channel": "BH?,LH?",
+  "selection_status": "geographic-response-audit-not-frozen-scientific-network",
+  "stations": [
+    {"network": "IC", "station": "QIZ", "role": "Hainan"},
+    {"network": "HK", "station": "HKPS", "role": "Hong Kong"},
+    {"network": "IU", "station": "DAV", "role": "southern Philippines"},
+    {"network": "PS", "station": "BAG", "role": "northern Philippines"},
+    {"network": "RM", "station": "SZP", "role": "northwestern Philippines"},
+    {"network": "TW", "station": "TWKB", "role": "southern Taiwan"},
+    {"network": "TW", "station": "KMNB", "role": "Taiwan Strait"},
+    {"network": "RM", "station": "DLV", "role": "Vietnam"},
+    {"network": "MY", "station": "KKM", "role": "northern Borneo"},
+    {"network": "JP", "station": "YOJ", "role": "southern Ryukyu"}
+  ]
+}

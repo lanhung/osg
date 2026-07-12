@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "manifest_id": "paper3-earthscope-lh-noise-window-requests-v1",
+  "created_utc": "2026-07-12T15:55:00Z",
+  "source": {
+    "provider": "EarthScope Consortium NSF SAGE Facility",
+    "service": "FDSN dataselect v1",
+    "base_url": "https://service.earthscope.org/fdsnws/dataselect/1/query",
+    "format": "MiniSEED",
+    "terms_url": "https://www.earthscope.org/terms-of-service/",
+    "citation_url": "https://www.earthscope.org/how-to-cite/",
+    "access": "only archive triplets marked all_open in P3-E002",
+    "redistribution": "raw waveform redistribution remains disabled until every network-specific licence/citation is audited"
+  },
+  "selection_basis": "experiments/paper3/P3-E002-archive-network-design/metrics.json",
+  "stations": [
+    {"network": "HK", "station": "HKPS", "location": "--", "channels": ["LHE", "LHN", "LHZ"]},
+    {"network": "IC", "station": "QIZ", "location": "10", "channels": ["LH1", "LH2", "LHZ"]},
+    {"network": "IU", "station": "DAV", "location": "00", "channels": ["LH1", "LH2", "LHZ"]},
+    {"network": "MY", "station": "KKM", "location": "--", "channels": ["LHE", "LHN", "LHZ"]},
+    {"network": "TW", "station": "KMNB", "location": "--", "channels": ["LHE", "LHN", "LHZ"]}
+  ],
+  "windows": [
+    {
+      "window_id": "candidate_calibration_2024-02-15",
+      "split_role": "threshold_calibration_candidate",
+      "start_utc": "2024-02-15T00:00:00Z",
+      "end_utc": "2024-02-15T06:00:00Z",
+      "label_status": "unclassified_pending_earthquake_weather_and_gap_audit"
+    },
+    {
+      "window_id": "candidate_heldout_2024-05-15",
+      "split_role": "held_out_candidate",
+      "start_utc": "2024-05-15T00:00:00Z",
+      "end_utc": "2024-05-15T06:00:00Z",
+      "label_status": "unclassified_pending_earthquake_weather_and_gap_audit"
+    },
+    {
+      "window_id": "candidate_stress_yagi_2024-09-07",
+      "split_role": "high_weather_stress_candidate",
+      "start_utc": "2024-09-07T00:00:00Z",
+      "end_utc": "2024-09-07T06:00:00Z",
+      "label_status": "Yagi_regional_period_but_station_noise_class_pending_waveform_and_weather_audit"
+    }
+  ],
+  "raw_root": "data/raw/paper3/noise_windows",
+  "guardrails": [
+    "Window roles are frozen before waveform inspection.",
+    "Calibration and held-out candidates are not called quiet until independent event/weather screening passes.",
+    "All five stations use simultaneous UTC windows to preserve cross-station covariance.",
+    "Raw MiniSEED remains outside Git; compact queries, hashes and QC metrics are versioned."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P2-E001-nonrestricted-readiness",
+  "candidate_inventory": "data/manifests/paper2_ibtracs_candidates_2026-07-12.json",
+  "event_data_manifest": "data/manifests/paper2_event_windows.json",
+  "effect_composition": "configs/paper2/effect_composition.json",
+  "decision_evidence": "configs/paper2/decision_evidence.json",
+  "required_method_reports": [
+    "reports/P2-WU03-gravity-budget-ledger.md",
+    "reports/P2-WU04-gridded-sea-level-forward-path.md",
+    "reports/P2-WU05-time-series-quality-summary.md",
+    "reports/P2-WU06-stepwise-correction-chain.md",
+    "reports/P2-WU10-calibration-step-ledger.md",
+    "reports/P2-WU11-explicit-drift-ledger.md",
+    "reports/P2-WU12-quality-annotation-policy.md",
+    "reports/P2-WU13-correction-waterfall-metrics.md",
+    "reports/P2-WU13-gravity-uncertainty-budget.md",
+    "reports/P2-WU14-event-time-domain-metrics.md",
+    "reports/P2-WU15-welch-coherence.md",
+    "reports/P2-WU16-leakage-safe-ocean-attribution.md",
+    "reports/P2-WU18-event-block-bootstrap.md",
+    "reports/P2-WU20-heldout-model-improvement.md",
+    "reports/P2-WU21-masked-event-snr.md",
+    "reports/P2-WU22-heldout-quiet-false-positives.md",
+    "reports/P2-WU25-claim-safe-decision-audit.md"
+  ],
+  "external_dependencies": {
+    "IGETS_or_station_owner_SG": "blocks real event attribution",
+    "Haikou_authorization": "blocks iGrav-048 event windows and station logs but not method readiness",
+    "PEGS": "not a Paper 2 dependency"
+  }
+}

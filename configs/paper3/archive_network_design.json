@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P3-E002-archive-network-design",
+  "availability_manifest": "data/manifests/paper3_fdsn_availability_audit_2026-07-12.json",
+  "response_manifest": "data/manifests/paper3_fdsn_response_audit_2026-07-12.json",
+  "preferred_band": "LH",
+  "minimum_sample_rate_hz": 1.0,
+  "recent_archive_cutoff_utc": "2024-01-01T00:00:00Z",
+  "outage_fractions": [0.0, 0.2, 0.4],
+  "minimum_archive_network_size": 4,
+  "augmented_role_targets": [
+    "northern_Luzon_or_western_trench_margin",
+    "Taiwan_southern_margin",
+    "Hainan",
+    "Hong_Kong_coast",
+    "southern_Philippines"
+  ],
+  "interpretation": "archive evaluation design only; not an operational or PEGS-detectability network"
+}

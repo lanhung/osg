@@ -1,4 +1,4 @@
-.PHONY: test lint validate-experiments reproduce reproduce-all
+.PHONY: test lint validate-experiments reproduce reproduce-all audit-cases
 
 test:
 	python3 -m unittest discover -s tests -p 'test_*.py'
@@ -14,3 +14,6 @@ reproduce:
 
 reproduce-all:
 	python3 scripts/reproduce_all.py
+
+audit-cases:
+	python3 scripts/audit_published_cases.py --output reports/published_case_reproduction_status.json

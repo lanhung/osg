@@ -54,12 +54,23 @@ def benchmark_grid(
         _, peak_bytes = tracemalloc.get_traced_memory()
         tracemalloc.stop()
         if reference is None:
-            reference = result.gravity_ecef_m_s2
+            reference = result
         difference = max(
             abs(actual - expected)
-            for actual, expected in zip(result.gravity_ecef_m_s2, reference, strict=True)
+            for actual, expected in zip(
+                result.gravity_ecef_m_s2, reference.gravity_ecef_m_s2, strict=True
+            )
         )
-        scale = max(max(abs(value) for value in reference), 1e-300)
+        scale = max(max(abs(value) for value in reference.gravity_ecef_m_s2), 1e-300)
+        gradient_difference = max(
+            abs(result.gravity_gradient_ecef_s2[row][column] - reference.gravity_gradient_ecef_s2[row][column])
+            for row in range(3)
+            for column in range(3)
+        )
+        gradient_scale = max(
+            max(abs(value) for row in reference.gravity_gradient_ecef_s2 for value in row),
+            1e-300,
+        )
         cases.append(
             {
                 "chunk_size_cells": chunk_size,
@@ -67,11 +78,14 @@ def benchmark_grid(
                 "integrator_peak_traced_bytes": peak_bytes,
                 "included_cells": result.included_cells,
                 "maximum_relative_gravity_difference_from_unchunked": difference / scale,
+                "maximum_relative_gradient_difference_from_unchunked": (
+                    gradient_difference / gradient_scale
+                ),
             }
         )
     return {
         "schema_version": 1,
-        "benchmark_id": "P1-WU31-spherical-load-scaling",
+        "benchmark_id": "P1-WU48-spherical-load-gravity-gradient-scaling",
         "environment": {
             "python": platform.python_version(),
             "platform": platform.platform(),
@@ -81,7 +95,7 @@ def benchmark_grid(
             "longitude_cells": longitude_cells,
             "total_cells": latitude_cells * longitude_cells,
         },
-        "measurement_scope": "kernel wall time and tracemalloc Python allocation peak; input allocation and I/O excluded",
+        "measurement_scope": "joint gravity-plus-ECEF-gradient kernel wall time and tracemalloc Python allocation peak; input allocation and I/O excluded",
         "cases": cases,
     }
 

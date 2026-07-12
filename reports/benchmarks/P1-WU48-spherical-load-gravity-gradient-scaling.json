@@ -1,0 +1,40 @@
+{
+  "benchmark_id": "P1-WU48-spherical-load-gravity-gradient-scaling",
+  "cases": [
+    {
+      "chunk_size_cells": null,
+      "elapsed_seconds": 4.341806324198842,
+      "included_cells": 16200,
+      "integrator_peak_traced_bytes": 7367264,
+      "maximum_relative_gradient_difference_from_unchunked": 0.0,
+      "maximum_relative_gravity_difference_from_unchunked": 0.0
+    },
+    {
+      "chunk_size_cells": 256,
+      "elapsed_seconds": 4.116603530943394,
+      "included_cells": 16200,
+      "integrator_peak_traced_bytes": 153800,
+      "maximum_relative_gradient_difference_from_unchunked": 1.6134334342197193e-16,
+      "maximum_relative_gravity_difference_from_unchunked": 0.0
+    },
+    {
+      "chunk_size_cells": 4096,
+      "elapsed_seconds": 4.186092980206013,
+      "included_cells": 16200,
+      "integrator_peak_traced_bytes": 1848344,
+      "maximum_relative_gradient_difference_from_unchunked": 0.0,
+      "maximum_relative_gravity_difference_from_unchunked": 0.0
+    }
+  ],
+  "environment": {
+    "platform": "Linux-7.0.0-15-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4"
+  },
+  "grid": {
+    "latitude_cells": 90,
+    "longitude_cells": 180,
+    "total_cells": 16200
+  },
+  "measurement_scope": "joint gravity-plus-ECEF-gradient kernel wall time and tracemalloc Python allocation peak; input allocation and I/O excluded",
+  "schema_version": 1
+}

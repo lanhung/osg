@@ -2,6 +2,9 @@
 
 Status: control-plane baseline captured; production I/O benchmark pending
 
+Historical scope: gravity-only kernel at commit `1fe570c`. The kernel later gained
+full ECEF gravity gradients; use `P1-WU48` for current performance.
+
 ## Frozen run
 
 - Grid: 90 × 180 = 16,200 spherical cells

@@ -57,11 +57,11 @@ static geometry. Their arrival ranges remain tied to magnitude family and site
 reported, so these records also remain family evidence rather than PEGS-ready
 dynamic scenarios.
 
-Station candidates require a contemporaneous BH/LH three-component epoch, full
-response, waveform availability, licence, latency class, and noise quality.
-Channel metadata or scalar sensitivity alone is insufficient. Noise windows are
-frozen by season, day/night, calm sea, typhoon/microseism, urban/remote setting,
-and outage state before model fitting.
+Station candidates require a contemporaneous three-component BH or LH epoch,
+full response, waveform availability, licence, latency class, and noise quality.
+Channel metadata or scalar sensitivity alone is insufficient. Before fitting,
+noise windows are frozen by season, time of day, sea state, typhoon and
+microseism conditions, setting, and outage state.
 
 The archive/response inventory is retrieved through EarthScope FDSN
 services~\cite{EarthScopeFDSN}. Network-specific citations and acknowledgements
@@ -109,11 +109,11 @@ For location $x$,
 Negative characterization gain is retained as a negative result.
 
 \subsection{Network optimization and conditional GNN}
-Existing, idealized, and incrementally augmented networks are compared by
-detection time/probability, false alarms, magnitude error, robustness, and
-station count. A graph model is trained only if held-out real-noise physical
-baselines demonstrate stable information. It must outperform those baselines
-under identical splits and thresholds, not merely fit synthetic waveforms.
+Existing, idealized, and augmented networks are compared by detection time,
+detection probability, false alarms, magnitude error, robustness, and station
+count. A graph model is trained only if held-out real-noise physical baselines
+demonstrate stable information. It must outperform those baselines under the
+same splits and thresholds, not merely fit synthetic waveforms.
 
 \section{Results}
 A registered open-archive audit exact-matches five three-component LH station

@@ -56,19 +56,32 @@ class GravityCalibration:
 
 @dataclass(frozen=True, slots=True)
 class CalibratedGravity:
+    sample_times_utc: tuple[str, ...]
     values_m_s2: tuple[float, ...]
     standard_uncertainty_m_s2: tuple[float, ...]
     calibration_id: str
 
 
 def apply_feedback_calibration(
-    feedback_voltage_v: Sequence[float], calibration: GravityCalibration
+    sample_times_utc: Sequence[str],
+    feedback_voltage_v: Sequence[float],
+    calibration: GravityCalibration,
 ) -> CalibratedGravity:
-    """Convert voltage to SI gravity and propagate independent factor/offset uncertainty."""
+    """Convert voltage within calibration validity and propagate uncertainty."""
 
+    raw_times = tuple(sample_times_utc)
+    times = tuple(_parse_utc(value) for value in raw_times)
     voltage = tuple(float(value) for value in feedback_voltage_v)
-    if not voltage or not all(math.isfinite(value) for value in voltage):
-        raise ValueError("feedback voltage must be non-empty and finite")
+    if not voltage or len(times) != len(voltage):
+        raise ValueError("sample times and feedback voltage must have equal nonzero length")
+    if not all(math.isfinite(value) for value in voltage):
+        raise ValueError("feedback voltage must be finite")
+    if any(times[index + 1] <= times[index] for index in range(len(times) - 1)):
+        raise ValueError("calibration sample times must be strictly increasing")
+    start = _parse_utc(calibration.valid_start_utc)
+    end = _parse_utc(calibration.valid_end_utc)
+    if any(time < start or time >= end for time in times):
+        raise ValueError("refusing to apply calibration outside its validity interval")
     centered = tuple(value - calibration.voltage_offset_v for value in voltage)
     values = tuple(
         calibration.factor_m_s2_per_volt * value + calibration.gravity_offset_m_s2
@@ -81,4 +94,4 @@ def apply_feedback_calibration(
         )
         for value in centered
     )
-    return CalibratedGravity(values, uncertainty, calibration.calibration_id)
+    return CalibratedGravity(raw_times, values, uncertainty, calibration.calibration_id)

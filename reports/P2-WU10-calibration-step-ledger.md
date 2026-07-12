@@ -8,6 +8,11 @@ uncertainty, voltage/gravity offsets and uncertainty, UTC validity interval, and
 source. Factor and offset uncertainty are propagated sample by sample; a negative
 instrument factor is preserved rather than normalized away.
 
+Every calibration call now requires the corresponding strictly increasing UTC
+sample times. All samples must fall within the half-open calibration validity
+interval; applying the factor before its start or at/after its end is rejected.
+The validated timestamps are preserved with the SI output.
+
 Persistent instrument jumps are corrected only through explicit decisions that
 record a unique ID, the index of the later sample, the observed step in SI units,
 the evidence source, and the rationale. The output retains the full cumulative

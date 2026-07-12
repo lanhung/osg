@@ -41,7 +41,12 @@ from .case_reproduction import (
     CaseTargetResult,
     evaluate_case_reproduction,
 )
-from .event_metrics import EventModelMetrics, evaluate_event_model_metrics
+from .event_metrics import (
+    EventModelImprovement,
+    EventModelMetrics,
+    compare_event_model_improvement,
+    evaluate_event_model_metrics,
+)
 from .attribution import (
     OceanAttributionBlockBootstrap,
     OceanAttributionFit,
@@ -71,6 +76,8 @@ __all__ = [
     "audit_event_data_gate",
     "evaluate_case_reproduction",
     "EventModelMetrics",
+    "EventModelImprovement",
+    "compare_event_model_improvement",
     "evaluate_event_model_metrics",
     "OceanAttributionFit",
     "OceanAttributionBlockBootstrap",

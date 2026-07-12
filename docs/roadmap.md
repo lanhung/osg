@@ -213,7 +213,7 @@ Evidence: component decomposition, double-count audit, closure metrics.
 - [ ] Add a non-typhoon strong-weather control.
 - [ ] Add 3–5 quiet windows.
 - [ ] Hold out at least one typhoon from all parameter fitting. (The attribution API freezes training event identities and rejects prediction on any training event; real event splits remain unavailable.)
-- [ ] Report correlation, RMSE, peak amplitude/time error, explained variance, coherence, and event SNR. (Time-domain metrics, mask-aware coherence, leakage-safe attribution fitting, and deterministic event-block coefficient bootstrap are implemented; explained variance, event SNR integration and real-event reporting remain.)
+- [ ] Report correlation, RMSE, peak amplitude/time error, explained variance, coherence, and event SNR. (Time-domain metrics including explained variance, paired held-out improvement, mask-aware coherence, leakage-safe attribution fitting, and deterministic event-block coefficient bootstrap are implemented; event SNR integration and real-event reporting remain.)
 - [ ] Report quiet-window false positives and held-out-event performance.
 - [ ] Run station, product, Green-function, hydrology, and filter sensitivity.
 - [ ] Document failed events rather than excluding them post hoc.

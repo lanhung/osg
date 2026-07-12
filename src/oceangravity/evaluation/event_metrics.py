@@ -22,6 +22,16 @@ class EventModelMetrics:
     peak_time_error_s: float
 
 
+@dataclass(frozen=True, slots=True)
+class EventModelImprovement:
+    baseline: EventModelMetrics
+    candidate: EventModelMetrics
+    rmse_improvement_m_s2: float
+    rmse_improvement_fraction: float | None
+    explained_variance_improvement: float | None
+    passes_strict_preregistered_improvement: bool
+
+
 def _mean(values: Sequence[float]) -> float:
     return math.fsum(values) / len(values)
 
@@ -111,5 +121,63 @@ def evaluate_event_model_metrics(
         modeled_peak_time_s=selected_times[modeled_peak_index],
         peak_time_error_s=(
             selected_times[modeled_peak_index] - selected_times[observed_peak_index]
+        ),
+    )
+
+
+def compare_event_model_improvement(
+    sample_times_s: Sequence[float],
+    observed_m_s2: Sequence[float],
+    baseline_modeled_m_s2: Sequence[float],
+    candidate_modeled_m_s2: Sequence[float],
+    *,
+    inclusion_mask: Sequence[bool] | None = None,
+) -> EventModelImprovement:
+    """Compare nested event models on exactly the same frozen samples.
+
+    Positive improvement means the candidate has lower RMSE or higher explained
+    variance. The strict preregistered gate requires both improvements to be
+    defined and greater than zero.
+    """
+
+    baseline = evaluate_event_model_metrics(
+        sample_times_s,
+        observed_m_s2,
+        baseline_modeled_m_s2,
+        inclusion_mask=inclusion_mask,
+    )
+    candidate = evaluate_event_model_metrics(
+        sample_times_s,
+        observed_m_s2,
+        candidate_modeled_m_s2,
+        inclusion_mask=inclusion_mask,
+    )
+    if baseline.included_sample_count != candidate.included_sample_count:
+        raise RuntimeError("baseline and candidate event samples do not match")
+    rmse_improvement = baseline.rmse_m_s2 - candidate.rmse_m_s2
+    rmse_fraction = (
+        None
+        if baseline.rmse_m_s2 == 0.0
+        else rmse_improvement / baseline.rmse_m_s2
+    )
+    explained_improvement = None
+    if (
+        baseline.explained_variance_fraction is not None
+        and candidate.explained_variance_fraction is not None
+    ):
+        explained_improvement = (
+            candidate.explained_variance_fraction
+            - baseline.explained_variance_fraction
+        )
+    return EventModelImprovement(
+        baseline=baseline,
+        candidate=candidate,
+        rmse_improvement_m_s2=rmse_improvement,
+        rmse_improvement_fraction=rmse_fraction,
+        explained_variance_improvement=explained_improvement,
+        passes_strict_preregistered_improvement=(
+            rmse_improvement > 0.0
+            and explained_improvement is not None
+            and explained_improvement > 0.0
         ),
     )

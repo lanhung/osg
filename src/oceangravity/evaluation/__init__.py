@@ -42,6 +42,11 @@ from .case_reproduction import (
     evaluate_case_reproduction,
 )
 from .event_metrics import EventModelMetrics, evaluate_event_model_metrics
+from .attribution import (
+    OceanAttributionFit,
+    fit_ocean_attribution_coefficient,
+    predict_heldout_ocean_attribution,
+)
 
 __all__ = [
     "gaussian_detection_probability",
@@ -65,6 +70,9 @@ __all__ = [
     "evaluate_case_reproduction",
     "EventModelMetrics",
     "evaluate_event_model_metrics",
+    "OceanAttributionFit",
+    "fit_ocean_attribution_coefficient",
+    "predict_heldout_ocean_attribution",
     "empirical_detection_probability",
     "earliest_reliable_detection_time",
     "earliest_reliable_magnitude_time",

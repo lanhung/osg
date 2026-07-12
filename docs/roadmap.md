@@ -51,7 +51,7 @@ Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadat
 
 ### 0.3 Paper 2 data Go/No-Go
 
-- [ ] Freeze candidate SG stations and candidate typhoons before requesting data.
+- [ ] Freeze candidate SG stations and candidate typhoons before requesting data. (A checksummed 11-event Haikou-proxy priority list is frozen for coverage inquiry; author-confirmed iGrav-048 coordinates/coverage and alternative SG stations remain.)
 - [x] Determine IGETS product levels, nominal cadence, registration/SFTP access path, and public station table. (Station/file-specific terms remain after registration.)
 - [ ] Request Haikou iGrav-048 gravity, colocated pressure, calibration, jump, maintenance, and timing logs.
 - [ ] Request or inventory Wuhan/HUST and other coastal or regional SG data.

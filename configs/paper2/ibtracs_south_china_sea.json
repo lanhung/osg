@@ -7,5 +7,19 @@
     "maximum_longitude_deg_east": 125.0
   },
   "minimum_regional_track_points": 1,
-  "required_basin": "WP"
+  "required_basin": "WP",
+  "reference_points": [
+    {
+      "id": "haikou-city-screening-proxy",
+      "latitude_deg": 20.0,
+      "longitude_deg_east": 110.34,
+      "status": "screening-proxy-not-igrav048-coordinate",
+      "use_limit": "data-request prioritization only; replace with author-confirmed instrument coordinates"
+    }
+  ],
+  "shortlist_screening": {
+    "minimum_maximum_usa_wind_kt": 80.0,
+    "maximum_closest_reference_distance_km": 350.0,
+    "interpretation": "priority for SG coverage inquiry, not event eligibility or expected gravity SNR"
+  }
 }

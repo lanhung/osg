@@ -16,6 +16,18 @@ Paper 2 event catalogue. Candidate status does not establish iGrav-048 or any
 other SG coverage, raw-enough product level, pressure/instrument logs, nearby
 tide gauge/GNSS, or sufficient ocean-loading amplitude.
 
-The next gate must add a cited station coordinate or clearly labelled proxy,
-closest-approach distance, intensity and actual SG channel coverage before
-choosing the pilot and train/held-out events.
+A second, explicitly non-scientific screening stage uses the Haikou city proxy
+at 20.00 N, 110.34 E because the VOR does not publish a machine-readable exact
+iGrav-048 coordinate. Requiring at least 80 kt regional USA wind and no more than
+350 km closest approach yields 11 priority coverage inquiries. The proxy cannot
+be used for gravity forward modelling.
+
+The frozen priority names are Talim, Saola, Haikui and Koinu (2023); Yagi,
+Yinxing, Toraji and Man-yi (2024); and Kajiki, Ragasa and Matmo (2025). Yagi is
+closest to the proxy at about 14.6 km. This is not evidence that iGrav-048 was
+operational during Yagi or any other event.
+
+The next gate must replace the proxy with an author-confirmed instrument
+coordinate and intersect these 11 events with actual SG, pressure, calibration,
+maintenance, rainfall, tide-gauge and GNSS coverage before choosing the pilot and
+train/held-out events.

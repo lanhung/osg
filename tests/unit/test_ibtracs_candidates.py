@@ -62,6 +62,12 @@ class TestIbtracsCandidates(unittest.TestCase):
         self.assertEqual(event["minimum_wmo_pressure_mb"], 980.0)
         self.assertEqual(event["maximum_usa_wind_kt"], 55.0)
         self.assertEqual(event["minimum_usa_pressure_mb"], 975.0)
+        self.assertGreater(event["closest_reference_distance_km"], 0.0)
+        self.assertFalse(event["shortlist_screening_passes"])
+        self.assertIn(
+            "closest_reference_distance_exceeds_limit",
+            event["shortlist_screening_failures"],
+        )
         self.assertIn("does not imply", result["warning"])
 
 

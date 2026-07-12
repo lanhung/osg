@@ -1,8 +1,10 @@
 {
   "candidate_count": 48,
-  "config_sha256": "8dd094e9e01e35c3331799015c9ffadc3e49a60ea8621eb0e9ae105eeb582c8b",
+  "config_sha256": "1ee25e7af28e1a829337dfc393f7592836646bfe5db8ad1f694d2d4a33eb359f",
   "events": [
     {
+      "closest_reference_distance_km": 1299.311456513415,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": null,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": null,
@@ -20,9 +22,16 @@
       ],
       "regional_track_points": 16,
       "season": 2023,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2023101N14127"
     },
     {
+      "closest_reference_distance_km": 1529.8121934558935,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 78.0,
       "maximum_wmo_wind_kt": 80.0,
       "minimum_usa_pressure_mb": 969.0,
@@ -40,9 +49,16 @@
       ],
       "regional_track_points": 7,
       "season": 2023,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2023138N05151"
     },
     {
+      "closest_reference_distance_km": 133.4990304049607,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 80.0,
       "maximum_wmo_wind_kt": 60.0,
       "minimum_usa_pressure_mb": 964.0,
@@ -60,9 +76,13 @@
       ],
       "regional_track_points": 65,
       "season": 2023,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2023194N16123"
     },
     {
+      "closest_reference_distance_km": 931.5683502551841,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 130.0,
       "maximum_wmo_wind_kt": 100.0,
       "minimum_usa_pressure_mb": 928.0,
@@ -80,9 +100,15 @@
       ],
       "regional_track_points": 27,
       "season": 2023,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2023201N13134"
     },
     {
+      "closest_reference_distance_km": 130.00149981707378,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 140.0,
       "maximum_wmo_wind_kt": 105.0,
       "minimum_usa_pressure_mb": 917.0,
@@ -100,9 +126,13 @@
       ],
       "regional_track_points": 115,
       "season": 2023,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2023234N18128"
     },
     {
+      "closest_reference_distance_km": 138.0469913919282,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 105.0,
       "maximum_wmo_wind_kt": 85.0,
       "minimum_usa_pressure_mb": 945.0,
@@ -120,9 +150,13 @@
       ],
       "regional_track_points": 66,
       "season": 2023,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2023239N18144"
     },
     {
+      "closest_reference_distance_km": 477.4874678230772,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 30.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 995.0,
@@ -140,9 +174,16 @@
       ],
       "regional_track_points": 31,
       "season": 2023,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2023266N16116"
     },
     {
+      "closest_reference_distance_km": 120.30976177717893,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 120.0,
       "maximum_wmo_wind_kt": 90.0,
       "minimum_usa_pressure_mb": 936.0,
@@ -160,9 +201,13 @@
       ],
       "regional_track_points": 72,
       "season": 2023,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2023271N14144"
     },
     {
+      "closest_reference_distance_km": 78.09303540454364,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 45.0,
       "maximum_wmo_wind_kt": 40.0,
       "minimum_usa_pressure_mb": 996.0,
@@ -180,9 +225,15 @@
       ],
       "regional_track_points": 43,
       "season": 2023,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2023289N15111"
     },
     {
+      "closest_reference_distance_km": 1349.3665235189728,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 90.0,
       "maximum_wmo_wind_kt": 75.0,
       "minimum_usa_pressure_mb": 961.0,
@@ -200,9 +251,15 @@
       ],
       "regional_track_points": 25,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024141N03142"
     },
     {
+      "closest_reference_distance_km": 147.36955395540895,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 30.0,
       "maximum_wmo_wind_kt": 35.0,
       "minimum_usa_pressure_mb": 990.0,
@@ -220,9 +277,15 @@
       ],
       "regional_track_points": 31,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024151N18113"
     },
     {
+      "closest_reference_distance_km": 420.1835725957741,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 25.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 997.0,
@@ -240,9 +303,16 @@
       ],
       "regional_track_points": 23,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024195N13114"
     },
     {
+      "closest_reference_distance_km": 111.38950463961622,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 60.0,
       "maximum_wmo_wind_kt": 55.0,
       "minimum_usa_pressure_mb": 981.0,
@@ -260,9 +330,15 @@
       ],
       "regional_track_points": 62,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024198N08130"
     },
     {
+      "closest_reference_distance_km": 1218.3432110927586,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 125.0,
       "maximum_wmo_wind_kt": 90.0,
       "minimum_usa_pressure_mb": 919.0,
@@ -280,9 +356,15 @@
       ],
       "regional_track_points": 16,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024201N12133"
     },
     {
+      "closest_reference_distance_km": 14.62848706514181,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 145.0,
       "maximum_wmo_wind_kt": 105.0,
       "minimum_usa_pressure_mb": 907.0,
@@ -300,9 +382,13 @@
       ],
       "regional_track_points": 66,
       "season": 2024,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2024244N09137"
     },
     {
+      "closest_reference_distance_km": 279.1337064725074,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 35.0,
       "maximum_wmo_wind_kt": 35.0,
       "minimum_usa_pressure_mb": 989.0,
@@ -320,9 +406,15 @@
       ],
       "regional_track_points": 36,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024259N17126"
     },
     {
+      "closest_reference_distance_km": 984.4830505313107,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 28.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 995.0,
@@ -340,9 +432,16 @@
       ],
       "regional_track_points": 7,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024264N20128"
     },
     {
+      "closest_reference_distance_km": 934.4984877886504,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 135.0,
       "maximum_wmo_wind_kt": 105.0,
       "minimum_usa_pressure_mb": 922.0,
@@ -360,9 +459,15 @@
       ],
       "regional_track_points": 43,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024270N24128"
     },
     {
+      "closest_reference_distance_km": 334.54356821395163,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 65.0,
       "maximum_wmo_wind_kt": 60.0,
       "minimum_usa_pressure_mb": 984.0,
@@ -380,9 +485,15 @@
       ],
       "regional_track_points": 54,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024293N13141"
     },
     {
+      "closest_reference_distance_km": 1103.9279956219707,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 140.0,
       "maximum_wmo_wind_kt": 100.0,
       "minimum_usa_pressure_mb": 917.0,
@@ -400,9 +511,15 @@
       ],
       "regional_track_points": 15,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024298N13150"
     },
     {
+      "closest_reference_distance_km": 292.52473155961167,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 130.0,
       "maximum_wmo_wind_kt": 100.0,
       "minimum_usa_pressure_mb": 931.0,
@@ -420,9 +537,13 @@
       ],
       "regional_track_points": 60,
       "season": 2024,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2024307N06143"
     },
     {
+      "closest_reference_distance_km": 294.6468453125522,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 80.0,
       "maximum_wmo_wind_kt": 70.0,
       "minimum_usa_pressure_mb": 976.0,
@@ -440,9 +561,13 @@
       ],
       "regional_track_points": 68,
       "season": 2024,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2024312N14145"
     },
     {
+      "closest_reference_distance_km": 273.9941179188556,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 130.0,
       "maximum_wmo_wind_kt": 105.0,
       "minimum_usa_pressure_mb": 933.0,
@@ -460,9 +585,13 @@
       ],
       "regional_track_points": 29,
       "season": 2024,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2024313N10169"
     },
     {
+      "closest_reference_distance_km": 982.0486157948895,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 130.0,
       "maximum_wmo_wind_kt": 95.0,
       "minimum_usa_pressure_mb": 934.0,
@@ -480,9 +609,15 @@
       ],
       "regional_track_points": 24,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024314N07151"
     },
     {
+      "closest_reference_distance_km": 950.7382558954354,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 30.0,
       "maximum_wmo_wind_kt": 35.0,
       "minimum_usa_pressure_mb": 994.0,
@@ -500,9 +635,16 @@
       ],
       "regional_track_points": 37,
       "season": 2024,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2024357N10115"
     },
     {
+      "closest_reference_distance_km": 125.14896337582081,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 64.0,
       "maximum_wmo_wind_kt": 55.0,
       "minimum_usa_pressure_mb": 979.0,
@@ -520,9 +662,15 @@
       ],
       "regional_track_points": 40,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025161N15114"
     },
     {
+      "closest_reference_distance_km": 39.213701696868846,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 25.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 1002.0,
@@ -540,9 +688,15 @@
       ],
       "regional_track_points": 25,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025175N16117"
     },
     {
+      "closest_reference_distance_km": 453.6729391259849,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 89.0,
       "maximum_wmo_wind_kt": 75.0,
       "minimum_usa_pressure_mb": 958.0,
@@ -560,9 +714,15 @@
       ],
       "regional_track_points": 43,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025184N20122"
     },
     {
+      "closest_reference_distance_km": 167.42664921996393,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 64.0,
       "maximum_wmo_wind_kt": 60.0,
       "minimum_usa_pressure_mb": 970.0,
@@ -580,9 +740,15 @@
       ],
       "regional_track_points": 41,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025197N14131"
     },
     {
+      "closest_reference_distance_km": 887.963523218484,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 70.0,
       "maximum_wmo_wind_kt": 60.0,
       "minimum_usa_pressure_mb": 974.0,
@@ -600,9 +766,16 @@
       ],
       "regional_track_points": 31,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025203N20124"
     },
     {
+      "closest_reference_distance_km": 606.4902320030382,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 89.0,
       "maximum_wmo_wind_kt": 80.0,
       "minimum_usa_pressure_mb": 966.0,
@@ -620,9 +793,15 @@
       ],
       "regional_track_points": 16,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025218N19149"
     },
     {
+      "closest_reference_distance_km": 249.65937848370586,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 29.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 1000.0,
@@ -640,9 +819,15 @@
       ],
       "regional_track_points": 23,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025229N17111"
     },
     {
+      "closest_reference_distance_km": 257.85243018198247,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 93.0,
       "maximum_wmo_wind_kt": 80.0,
       "minimum_usa_pressure_mb": 964.0,
@@ -660,9 +845,13 @@
       ],
       "regional_track_points": 43,
       "season": 2025,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2025233N15126"
     },
     {
+      "closest_reference_distance_km": 300.2562852843338,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 39.0,
       "maximum_wmo_wind_kt": 40.0,
       "minimum_usa_pressure_mb": 993.0,
@@ -680,9 +869,15 @@
       ],
       "regional_track_points": 29,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025240N15117"
     },
     {
+      "closest_reference_distance_km": 301.08481553724863,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 64.0,
       "maximum_wmo_wind_kt": 60.0,
       "minimum_usa_pressure_mb": 984.0,
@@ -700,9 +895,15 @@
       ],
       "regional_track_points": 34,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025248N18120"
     },
     {
+      "closest_reference_distance_km": 449.7167797224563,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 45.0,
       "maximum_wmo_wind_kt": 50.0,
       "minimum_usa_pressure_mb": 994.0,
@@ -720,9 +921,16 @@
       ],
       "regional_track_points": 39,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025259N13126"
     },
     {
+      "closest_reference_distance_km": 178.68775141871814,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 144.0,
       "maximum_wmo_wind_kt": 110.0,
       "minimum_usa_pressure_mb": 910.0,
@@ -740,9 +948,13 @@
       ],
       "regional_track_points": 32,
       "season": 2025,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2025260N13138"
     },
     {
+      "closest_reference_distance_km": 391.1563351552971,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 80.0,
       "maximum_wmo_wind_kt": 65.0,
       "minimum_usa_pressure_mb": 970.0,
@@ -760,9 +972,15 @@
       ],
       "regional_track_points": 33,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025266N11137"
     },
     {
+      "closest_reference_distance_km": 88.49706795908105,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 89.0,
       "maximum_wmo_wind_kt": 70.0,
       "minimum_usa_pressure_mb": 966.0,
@@ -780,9 +998,13 @@
       ],
       "regional_track_points": 33,
       "season": 2025,
+      "shortlist_screening_failures": [],
+      "shortlist_screening_passes": true,
       "sid": "2025274N14133"
     },
     {
+      "closest_reference_distance_km": 289.1378968346861,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 51.0,
       "maximum_wmo_wind_kt": 50.0,
       "minimum_usa_pressure_mb": 988.0,
@@ -800,9 +1022,15 @@
       ],
       "regional_track_points": 41,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025289N13140"
     },
     {
+      "closest_reference_distance_km": 703.2588174296105,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 115.0,
       "maximum_wmo_wind_kt": 90.0,
       "minimum_usa_pressure_mb": 948.0,
@@ -820,9 +1048,15 @@
       ],
       "regional_track_points": 33,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025305N08140"
     },
     {
+      "closest_reference_distance_km": 835.892886283973,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 115.0,
       "maximum_wmo_wind_kt": 95.0,
       "minimum_usa_pressure_mb": 943.0,
@@ -840,9 +1074,15 @@
       ],
       "regional_track_points": 33,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025308N09144"
     },
     {
+      "closest_reference_distance_km": 602.0451642104999,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 80.0,
       "maximum_wmo_wind_kt": 70.0,
       "minimum_usa_pressure_mb": 975.0,
@@ -860,9 +1100,15 @@
       ],
       "regional_track_points": 72,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025328N07132"
     },
     {
+      "closest_reference_distance_km": 1406.4347755742406,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 29.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 1004.0,
@@ -880,9 +1126,16 @@
       ],
       "regional_track_points": 8,
       "season": 2025,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2025330N05099"
     },
     {
+      "closest_reference_distance_km": 1612.4864276027424,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 51.0,
       "maximum_wmo_wind_kt": 40.0,
       "minimum_usa_pressure_mb": 993.0,
@@ -900,9 +1153,16 @@
       ],
       "regional_track_points": 5,
       "season": 2026,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2026014N08133"
     },
     {
+      "closest_reference_distance_km": 1699.8154249720797,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 29.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 1002.0,
@@ -920,9 +1180,16 @@
       ],
       "regional_track_points": 9,
       "season": 2026,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing",
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2026034N10137"
     },
     {
+      "closest_reference_distance_km": 1488.885176157029,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 112.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 945.0,
@@ -940,9 +1207,15 @@
       ],
       "regional_track_points": 14,
       "season": 2026,
+      "shortlist_screening_failures": [
+        "closest_reference_distance_exceeds_limit"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2026170N12145"
     },
     {
+      "closest_reference_distance_km": 157.4320007169033,
+      "closest_reference_point_id": "haikou-city-screening-proxy",
       "maximum_usa_wind_kt": 51.0,
       "maximum_wmo_wind_kt": null,
       "minimum_usa_pressure_mb": 988.0,
@@ -960,11 +1233,43 @@
       ],
       "regional_track_points": 29,
       "season": 2026,
+      "shortlist_screening_failures": [
+        "regional_usa_wind_below_or_missing"
+      ],
+      "shortlist_screening_passes": false,
       "sid": "2026183N17115"
     }
   ],
   "input_sha256": "91217d5c3caf56c02c858fc699ccac80c683ed14d50ab6495963470b964f9608",
+  "reference_points": [
+    {
+      "id": "haikou-city-screening-proxy",
+      "latitude_deg": 20.0,
+      "longitude_deg_east": 110.34,
+      "status": "screening-proxy-not-igrav048-coordinate",
+      "use_limit": "data-request prioritization only; replace with author-confirmed instrument coordinates"
+    }
+  ],
   "schema_version": 1,
   "selection_id": "paper2-south-china-sea-ibtracs-candidates",
+  "shortlist_count": 11,
+  "shortlist_event_ids": [
+    "2023194N16123",
+    "2023234N18128",
+    "2023239N18144",
+    "2023271N14144",
+    "2024244N09137",
+    "2024307N06143",
+    "2024312N14145",
+    "2024313N10169",
+    "2025233N15126",
+    "2025260N13138",
+    "2025274N14133"
+  ],
+  "shortlist_screening": {
+    "interpretation": "priority for SG coverage inquiry, not event eligibility or expected gravity SNR",
+    "maximum_closest_reference_distance_km": 350.0,
+    "minimum_maximum_usa_wind_kt": 80.0
+  },
   "warning": "Candidate status does not imply superconducting-gravimeter coverage or event suitability."
 }

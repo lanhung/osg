@@ -20,6 +20,37 @@ class EmpiricalThreshold:
     minimum_nonzero_resolvable_false_alarms_per_30_days: float
 
 
+@dataclass(frozen=True, slots=True)
+class QuietScoreWindow:
+    window_id: str
+    split_role: str
+    scores: tuple[float, ...]
+    window_step_s: float
+
+    def __post_init__(self) -> None:
+        if not self.window_id.strip():
+            raise ValueError("quiet score window ID must be non-empty")
+        if self.split_role not in {"threshold_calibration", "held_out"}:
+            raise ValueError("quiet score split role must be threshold_calibration or held_out")
+        if not self.scores or not all(math.isfinite(value) for value in self.scores):
+            raise ValueError("quiet scores must be non-empty and finite")
+        if not math.isfinite(self.window_step_s) or self.window_step_s <= 0.0:
+            raise ValueError("quiet score window step must be finite and positive")
+
+
+@dataclass(frozen=True, slots=True)
+class QuietWindowFalsePositiveAudit:
+    threshold: EmpiricalThreshold
+    calibration_window_ids: tuple[str, ...]
+    heldout_window_ids: tuple[str, ...]
+    heldout_score_count: int
+    heldout_exceedance_count: int
+    heldout_triggered_window_ids: tuple[str, ...]
+    heldout_false_alarms_per_30_days: float
+    heldout_minimum_nonzero_resolvable_false_alarms_per_30_days: float
+    passes_target_rate: bool
+
+
 def calibrate_empirical_threshold(
     noise_scores: Sequence[float],
     window_step_s: float,
@@ -83,3 +114,53 @@ def empirical_detection_probability(
     ):
         raise ValueError("signal scores and threshold must be finite")
     return sum(score >= threshold_value for score in scores) / len(scores)
+
+
+def audit_quiet_window_false_positives(
+    windows: Sequence[QuietScoreWindow],
+    *,
+    target_false_alarms_per_30_days: float,
+) -> QuietWindowFalsePositiveAudit:
+    """Freeze a threshold on calibration quiet windows and evaluate held-out quiets."""
+
+    rows = tuple(windows)
+    if len({row.window_id for row in rows}) != len(rows):
+        raise ValueError("quiet score window IDs must be unique")
+    calibration = tuple(row for row in rows if row.split_role == "threshold_calibration")
+    heldout = tuple(row for row in rows if row.split_role == "held_out")
+    if not calibration or not heldout:
+        raise ValueError("quiet false-positive audit requires calibration and held-out windows")
+    steps = {row.window_step_s for row in rows}
+    if len(steps) != 1:
+        raise ValueError("all quiet score windows must use the same decision step")
+    step = next(iter(steps))
+    threshold = calibrate_empirical_threshold(
+        tuple(score for row in calibration for score in row.scores),
+        step,
+        target_false_alarms_per_30_days,
+    )
+    heldout_scores = tuple(score for row in heldout for score in row.scores)
+    exceedance_count = sum(score >= threshold.threshold for score in heldout_scores)
+    windows_per_month = SECONDS_PER_30_DAY_MONTH / step
+    observed_rate = exceedance_count / len(heldout_scores) * windows_per_month
+    triggered = tuple(
+        sorted(
+            row.window_id
+            for row in heldout
+            if any(score >= threshold.threshold for score in row.scores)
+        )
+    )
+    target = float(target_false_alarms_per_30_days)
+    return QuietWindowFalsePositiveAudit(
+        threshold=threshold,
+        calibration_window_ids=tuple(sorted(row.window_id for row in calibration)),
+        heldout_window_ids=tuple(sorted(row.window_id for row in heldout)),
+        heldout_score_count=len(heldout_scores),
+        heldout_exceedance_count=exceedance_count,
+        heldout_triggered_window_ids=triggered,
+        heldout_false_alarms_per_30_days=observed_rate,
+        heldout_minimum_nonzero_resolvable_false_alarms_per_30_days=(
+            windows_per_month / len(heldout_scores)
+        ),
+        passes_target_rate=observed_rate <= target,
+    )

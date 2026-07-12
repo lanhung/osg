@@ -10,6 +10,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from oceangravity.evaluation import (  # noqa: E402
+    QuietScoreWindow,
+    audit_quiet_window_false_positives,
     calibrate_empirical_threshold,
     empirical_detection_probability,
 )
@@ -56,6 +58,38 @@ class TestEmpiricalDetection(unittest.TestCase):
         self.assertEqual(empirical_detection_probability([1.0, 2.0, 3.0, 4.0], 2.5), 0.5)
         with self.assertRaises(ValueError):
             empirical_detection_probability([math.nan], 1.0)
+
+    def test_quiet_threshold_is_frozen_before_heldout_evaluation(self) -> None:
+        windows = (
+            QuietScoreWindow("Q-cal-1", "threshold_calibration", (0.0, 1.0), 86_400.0),
+            QuietScoreWindow("Q-cal-2", "threshold_calibration", (0.5, 1.5), 86_400.0),
+            QuietScoreWindow("Q-test-1", "held_out", (1.0, 2.0), 86_400.0),
+            QuietScoreWindow("Q-test-2", "held_out", (0.0, 3.0), 86_400.0),
+        )
+        audit = audit_quiet_window_false_positives(
+            windows, target_false_alarms_per_30_days=1.0
+        )
+        self.assertGreater(audit.threshold.threshold, 1.5)
+        self.assertEqual(audit.heldout_exceedance_count, 2)
+        self.assertEqual(
+            audit.heldout_triggered_window_ids, ("Q-test-1", "Q-test-2")
+        )
+        self.assertEqual(audit.heldout_false_alarms_per_30_days, 15.0)
+        self.assertFalse(audit.passes_target_rate)
+
+    def test_quiet_audit_requires_both_splits_and_common_step(self) -> None:
+        calibration = QuietScoreWindow(
+            "Q-cal", "threshold_calibration", (0.0, 1.0), 3600.0
+        )
+        heldout = QuietScoreWindow("Q-test", "held_out", (0.0, 1.0), 60.0)
+        with self.assertRaisesRegex(ValueError, "same decision step"):
+            audit_quiet_window_false_positives(
+                (calibration, heldout), target_false_alarms_per_30_days=1.0
+            )
+        with self.assertRaisesRegex(ValueError, "calibration and held-out"):
+            audit_quiet_window_false_positives(
+                (calibration,), target_false_alarms_per_30_days=1.0
+            )
 
 
 if __name__ == "__main__":

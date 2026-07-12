@@ -14,6 +14,9 @@ from .sampling import ParameterRange, latin_hypercube, quantile, summarize_ensem
 from .priors import ParameterDesign, ParameterEnvelope, sample_parameter_design
 from .empirical_detection import (
     EmpiricalThreshold,
+    QuietScoreWindow,
+    QuietWindowFalsePositiveAudit,
+    audit_quiet_window_false_positives,
     calibrate_empirical_threshold,
     empirical_detection_probability,
 )
@@ -59,6 +62,8 @@ __all__ = [
     "gaussian_detection_probability",
     "CurveDetectabilityResult",
     "EmpiricalThreshold",
+    "QuietScoreWindow",
+    "QuietWindowFalsePositiveAudit",
     "DetectionProbabilityPoint",
     "MagnitudePerformancePoint",
     "EventDesignAudit",
@@ -72,6 +77,7 @@ __all__ = [
     "evaluate_gradient_signal_against_curve",
     "gaussian_threshold_for_false_alarm",
     "calibrate_empirical_threshold",
+    "audit_quiet_window_false_positives",
     "audit_event_design",
     "audit_event_data_gate",
     "evaluate_case_reproduction",

@@ -133,6 +133,17 @@ def _target_edges(bounds: list[float], spacing: float) -> np.ndarray:
     return np.linspace(bounds[0], bounds[1], count + 1)
 
 
+def canonicalize_bsh_times(values: np.ndarray) -> np.ndarray:
+    """Round decoded BSH timestamps to the nearest whole second."""
+
+    times = np.asarray(values).astype("datetime64[ns]")
+    rounded = (times + np.timedelta64(500, "ms")).astype("datetime64[s]")
+    adjustment = np.abs(times - rounded.astype("datetime64[ns]"))
+    if np.any(adjustment > np.timedelta64(500, "ms")):
+        raise ValueError("BSH timestamp adjustment exceeds the registered 0.5 s bound")
+    return rounded
+
+
 def _load_green_table(
     path: Path, earth_radius_m: float
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -278,8 +289,8 @@ def run(config: dict) -> dict:
     displacement_series: list[float] = []
     for fine_path, coarse_path in zip(files["fine"], files["coarse"], strict=True):
         with xr.open_dataset(fine_path) as fine_ds, xr.open_dataset(coarse_path) as coarse_ds:
-            fine_times = fine_ds.time.values.astype("datetime64[s]")
-            coarse_times = coarse_ds.time.values.astype("datetime64[s]")
+            fine_times = canonicalize_bsh_times(fine_ds.time.values)
+            coarse_times = canonicalize_bsh_times(coarse_ds.time.values)
             if not np.array_equal(fine_times, coarse_times):
                 raise ValueError("fine and coarse files have mismatched timestamps")
             selected = np.flatnonzero(

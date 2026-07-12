@@ -63,3 +63,15 @@ def test_load_green_table_ignores_headers_and_footer(tmp_path: Path) -> None:
         gravity,
         np.array([-10.0, -8.0]) / (1e18 * 6_371_000.0 * theta),
     )
+
+
+def test_bsh_timestamp_canonicalization_rounds_both_offset_signs() -> None:
+    values = np.array(
+        [
+            "2022-01-26T00:59:59.712000000",
+            "2022-01-26T01:00:00.288000000",
+        ],
+        dtype="datetime64[ns]",
+    )
+    expected = np.array(["2022-01-26T01:00:00", "2022-01-26T01:00:00"], dtype="datetime64[s]")
+    np.testing.assert_array_equal(MODULE.canonicalize_bsh_times(values), expected)

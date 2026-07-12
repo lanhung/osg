@@ -14,22 +14,24 @@
   "required_expected_snr": 4.371783871712414,
   "report_significant_digits": 10,
   "distance_standoff_m": [10000.0, 30000.0, 100000.0, 300000.0, 1000000.0],
+  "spherical_patch": {
+    "cutoff_sigma": 3.0,
+    "cells_per_sigma": 8,
+    "distance_semantics": "surface great-circle standoff from the represented 3-sigma anomaly support; compact anomalies translate parallel to the idealized coastline"
+  },
   "tide": {
     "sample_count": 32,
     "period_s": 44714.16432,
     "observation_duration_s": [604800.0, 2592000.0],
     "disk_radius_m": 100000.0,
     "sea_level_normalization_m": 1.0,
-    "observation_height_m": 10.0,
-    "geometry_semantics": "finite-disk transfer diagnostic per 1 m SSH; standoff is measured from the disk edge and is not a tidal-amplitude probability model"
+    "geometry_semantics": "spherical finite-disk transfer diagnostic per 1 m SSH; standoff is measured from the disk edge and is not a tidal-amplitude probability model"
   },
   "eddy": {
     "peak_sea_level_anomaly_m": 0.08,
     "horizontal_scale_m": 90000.0,
     "translation_speed_m_s": 0.02841848544973545,
-    "observation_height_m": 10.0,
-    "radial_cells": 24,
-    "angular_cells": 36
+    "profile_cutoff_sigma": 3.0
   },
   "internal_wave": {
     "sample_count": 128,
@@ -47,9 +49,7 @@
     "source_length_m": [300000.0, 400000.0],
     "source_width_m": 100000.0,
     "water_depth_m": 4000.0,
-    "observation_height_m": 10.0,
-    "radial_cells": 20,
-    "angular_cells": 30
+    "profile_cutoff_sigma": 3.0
   },
   "landslide_storegga": {
     "sample_count": 32,

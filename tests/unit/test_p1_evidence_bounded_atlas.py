@@ -50,3 +50,34 @@ def test_only_vertical_gravity_curves_are_authorized() -> None:
         observables[curve_id] == "vertical_gravity"
         for curve_id in config["authorized_vertical_gravity_curves"]
     )
+
+
+def test_spherical_disk_response_is_bounded_and_attractive() -> None:
+    surface_density = 1025.0
+    near = MODULE._spherical_disk_response(
+        radius_m=100_000.0,
+        station_standoff_m=10_000.0,
+        surface_density_kg_m2=surface_density,
+    )
+    far = MODULE._spherical_disk_response(
+        radius_m=100_000.0,
+        station_standoff_m=1_000_000.0,
+        surface_density_kg_m2=surface_density,
+    )
+    infinite_sheet_bound = 2.0 * math.pi * 6.67430e-11 * surface_density
+    assert -infinite_sheet_bound < near < 0.0
+    assert abs(far) < abs(near)
+
+
+def test_spherical_gaussian_mass_normalization_closes() -> None:
+    target_mass = 1.0e15
+    _, mass = MODULE._spherical_gaussian_patch_response(
+        center_y_m=300_000.0,
+        station_x_m=-200_000.0,
+        scale_m=50_000.0,
+        peak_surface_density_kg_m2=1025.0,
+        cutoff_sigma=3.0,
+        cells_per_sigma=8,
+        target_signed_mass_kg=target_mass,
+    )
+    assert math.isclose(mass, target_mass, rel_tol=2e-15)

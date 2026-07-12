@@ -10,22 +10,26 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from oceangravity.constants import REFERENCE_SEAWATER_DENSITY, STANDARD_GRAVITY  # noqa: E402
+from oceangravity.constants import (  # noqa: E402
+    GRAVITATIONAL_CONSTANT,
+    MEAN_EARTH_RADIUS,
+    REFERENCE_SEAWATER_DENSITY,
+    STANDARD_GRAVITY,
+)
 from oceangravity.evaluation import (  # noqa: E402
     canonicalize_report_floats,
     evaluate_gravity_signal_against_curve,
 )
-from oceangravity.gravity import disk_gravity_numerical  # noqa: E402
 from oceangravity.instruments import load_noise_curves  # noqa: E402
 from oceangravity.processes import (  # noqa: E402
     mass_conserving_submarine_landslide,
     oscillating_compensated_gaussian_dipole,
-    propagating_compensated_gaussian_tsunami,
     regular_times,
-    translating_gaussian_surface_eddy,
 )
 
 
@@ -47,8 +51,95 @@ def _log_midpoints(bounds: list[float], count: int) -> tuple[float, ...]:
     return tuple(lower * ratio ** ((index + 0.5) / count) for index in range(count))
 
 
-def _scaled(values: tuple[float, ...], scale: float) -> tuple[float, ...]:
-    return tuple(scale * value for value in values)
+def _spherical_radial_weights(
+    x_edges_m: np.ndarray,
+    y_edges_m: np.ndarray,
+    station_x_m: float,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Return radial gravity per surface density and local cell centres."""
+
+    radius = MEAN_EARTH_RADIUS.value
+    longitude_edges = x_edges_m / radius
+    latitude_edges = y_edges_m / radius
+    longitude = 0.5 * (longitude_edges[:-1] + longitude_edges[1:])
+    sine_south = np.sin(latitude_edges[:-1])
+    sine_north = np.sin(latitude_edges[1:])
+    latitude = np.arcsin(0.5 * (sine_south + sine_north))
+    lat, lon = np.meshgrid(latitude, longitude, indexing="ij")
+    areas = radius**2 * (sine_north - sine_south)[:, None] * np.diff(longitude_edges)[None, :]
+    source_x = radius * np.cos(lat) * np.cos(lon)
+    source_y = radius * np.cos(lat) * np.sin(lon)
+    source_z = radius * np.sin(lat)
+    station_lon = station_x_m / radius
+    observation = np.array([radius * math.cos(station_lon), radius * math.sin(station_lon), 0.0])
+    radial = observation / radius
+    delta_x = source_x - observation[0]
+    delta_y = source_y - observation[1]
+    delta_z = source_z - observation[2]
+    distance_squared = delta_x**2 + delta_y**2 + delta_z**2
+    radial_displacement = delta_x * radial[0] + delta_y * radial[1] + delta_z * radial[2]
+    weights = (
+        GRAVITATIONAL_CONSTANT.value
+        * areas
+        * radial_displacement
+        / (distance_squared * np.sqrt(distance_squared))
+    )
+    x_centres = 0.5 * (x_edges_m[:-1] + x_edges_m[1:])
+    y_centres = 0.5 * (y_edges_m[:-1] + y_edges_m[1:])
+    return weights, x_centres, y_centres
+
+
+def _spherical_gaussian_patch_response(
+    *,
+    center_y_m: float,
+    station_x_m: float,
+    scale_m: float,
+    peak_surface_density_kg_m2: float,
+    cutoff_sigma: float,
+    cells_per_sigma: int,
+    target_signed_mass_kg: float | None = None,
+) -> tuple[float, float]:
+    """Integrate one compact Gaussian surface patch on the spherical Earth."""
+
+    cell_count = 2 * round(cutoff_sigma * cells_per_sigma)
+    x_edges = np.linspace(-cutoff_sigma * scale_m, cutoff_sigma * scale_m, cell_count + 1)
+    y_edges = np.linspace(
+        center_y_m - cutoff_sigma * scale_m,
+        center_y_m + cutoff_sigma * scale_m,
+        cell_count + 1,
+    )
+    weights, x_centres, y_centres = _spherical_radial_weights(x_edges, y_edges, station_x_m)
+    x, y = np.meshgrid(x_centres, y_centres, indexing="xy")
+    density = peak_surface_density_kg_m2 * np.exp(
+        -0.5 * (x**2 + (y - center_y_m) ** 2) / scale_m**2
+    )
+    radius = MEAN_EARTH_RADIUS.value
+    latitude_edges = y_edges / radius
+    areas = (
+        radius**2
+        * np.diff(x_edges / radius)[None, :]
+        * (np.sin(latitude_edges[1:]) - np.sin(latitude_edges[:-1]))[:, None]
+    )
+    mass = float(np.sum(density * areas))
+    if target_signed_mass_kg is not None:
+        if mass == 0.0 or math.copysign(1.0, mass) != math.copysign(1.0, target_signed_mass_kg):
+            raise ValueError("Gaussian patch cannot be normalized to the requested signed mass")
+        density *= target_signed_mass_kg / mass
+        mass = float(np.sum(density * areas))
+    return float(np.sum(density * weights)), mass
+
+
+def _spherical_disk_response(
+    *, radius_m: float, station_standoff_m: float, surface_density_kg_m2: float
+) -> float:
+    cell_count = 48
+    edges = np.linspace(-radius_m, radius_m, cell_count + 1)
+    weights, x_centres, y_centres = _spherical_radial_weights(
+        edges, edges, -(radius_m + station_standoff_m)
+    )
+    x, y = np.meshgrid(x_centres, y_centres, indexing="xy")
+    density = np.where(x**2 + y**2 <= radius_m**2, surface_density_kg_m2, 0.0)
+    return float(np.sum(density * weights))
 
 
 def _classify(values, interval, curves, config) -> dict:
@@ -86,14 +177,11 @@ def _tide_records(config, curves):
     records = []
     density = REFERENCE_SEAWATER_DENSITY.value * settings["sea_level_normalization_m"]
     for standoff in config["distance_standoff_m"]:
-        gravity_amplitude = disk_gravity_numerical(
-            density,
-            settings["disk_radius_m"],
-            (0.0, 0.0, 0.0),
-            (settings["disk_radius_m"] + standoff, 0.0, settings["observation_height_m"]),
-            radial_cells=48,
-            angular_cells=72,
-        )[2]
+        gravity_amplitude = _spherical_disk_response(
+            radius_m=settings["disk_radius_m"],
+            station_standoff_m=standoff,
+            surface_density_kg_m2=density,
+        )
         for duration in durations:
             interval = settings["period_s"] / 16.0
             count = max(33, int(duration / interval) + 1)
@@ -140,18 +228,21 @@ def _eddy_records(config, curves):
     interval = characteristic_time / 8.0
     times = regular_times(65, interval, start_time_s=-4.0 * characteristic_time)
     records = []
+    patch = config["spherical_patch"]
+    station_offset = patch["cutoff_sigma"] * settings["horizontal_scale_m"]
     for standoff in config["distance_standoff_m"]:
-        signal = translating_gaussian_surface_eddy(
-            times,
-            peak_sea_level_anomaly_m=settings["peak_sea_level_anomaly_m"],
-            horizontal_scale_m=settings["horizontal_scale_m"],
-            translation_speed_x_m_s=settings["translation_speed_m_s"],
-            closest_approach_y_m=standoff,
-            passage_time_s=0.0,
-            anomaly_z_m=0.0,
-            observation_xyz_m=(0.0, 0.0, settings["observation_height_m"]),
-            radial_cells=settings["radial_cells"],
-            angular_cells=settings["angular_cells"],
+        values = tuple(
+            _spherical_gaussian_patch_response(
+                center_y_m=settings["translation_speed_m_s"] * time,
+                station_x_m=-(station_offset + standoff),
+                scale_m=settings["horizontal_scale_m"],
+                peak_surface_density_kg_m2=(
+                    REFERENCE_SEAWATER_DENSITY.value * settings["peak_sea_level_anomaly_m"]
+                ),
+                cutoff_sigma=patch["cutoff_sigma"],
+                cells_per_sigma=patch["cells_per_sigma"],
+            )[0]
+            for time in times
         )
         records.append(
             _record(
@@ -163,7 +254,7 @@ def _eddy_records(config, curves):
                     "horizontal_scale_m": settings["horizontal_scale_m"],
                     "translation_speed_m_s": settings["translation_speed_m_s"],
                 },
-                signal.vertical_direct_gravity_m_s2,
+                values,
                 interval,
                 curves,
                 config,
@@ -216,6 +307,8 @@ def _tsunami_records(config, curves):
     speed = math.sqrt(STANDARD_GRAVITY.value * settings["water_depth_m"])
     interval = scale / speed / 6.0
     records = []
+    patch = config["spherical_patch"]
+    station_offset = patch["cutoff_sigma"] * scale
     for standoff in config["distance_standoff_m"]:
         for amplitude, length in zip(amplitudes, lengths, strict=True):
             duration = (length + 8.0 * scale) / speed
@@ -224,25 +317,46 @@ def _tsunami_records(config, curves):
                 interval,
                 start_time_s=-4 * scale / speed,
             )
-            result = propagating_compensated_gaussian_tsunami(
-                times,
-                crest_peak_sea_level_m=amplitude,
-                horizontal_scale_m=scale,
-                crest_trough_separation_m=length,
-                water_depth_m=settings["water_depth_m"],
-                crest_passage_time_s=0.0,
-                wave_plane_z_m=0.0,
-                observation_xyz_m=(0.0, standoff, settings["observation_height_m"]),
-                radial_cells=settings["radial_cells"],
-                angular_cells=settings["angular_cells"],
+            target_mass = (
+                2.0
+                * math.pi
+                * REFERENCE_SEAWATER_DENSITY.value
+                * amplitude
+                * scale**2
+                * (1.0 - math.exp(-0.5 * patch["cutoff_sigma"] ** 2))
             )
+            values = []
+            mass_residuals = []
+            for time in times:
+                crest, crest_mass = _spherical_gaussian_patch_response(
+                    center_y_m=speed * time,
+                    station_x_m=-(station_offset + standoff),
+                    scale_m=scale,
+                    peak_surface_density_kg_m2=(REFERENCE_SEAWATER_DENSITY.value * amplitude),
+                    cutoff_sigma=patch["cutoff_sigma"],
+                    cells_per_sigma=patch["cells_per_sigma"],
+                    target_signed_mass_kg=target_mass,
+                )
+                trough, trough_mass = _spherical_gaussian_patch_response(
+                    center_y_m=speed * time - length,
+                    station_x_m=-(station_offset + standoff),
+                    scale_m=scale,
+                    peak_surface_density_kg_m2=(-REFERENCE_SEAWATER_DENSITY.value * amplitude),
+                    cutoff_sigma=patch["cutoff_sigma"],
+                    cells_per_sigma=patch["cells_per_sigma"],
+                    target_signed_mass_kg=-target_mass,
+                )
+                values.append(math.fsum((crest, trough)))
+                mass_residuals.append(math.fsum((crest_mass, trough_mass)))
+            if max(abs(value) for value in mass_residuals) > target_mass * 1.0e-12:
+                raise RuntimeError("tsunami signed surface mass does not close")
             records.append(
                 _record(
                     "tsunami",
                     "dart_amplitude_mass_balanced_packet",
                     standoff,
                     {"deep_ocean_amplitude_m": amplitude, "source_length_m": length},
-                    result.signal.vertical_direct_gravity_m_s2,
+                    tuple(values),
                     interval,
                     curves,
                     config,

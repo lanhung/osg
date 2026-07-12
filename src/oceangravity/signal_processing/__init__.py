@@ -14,6 +14,11 @@ from .steps import (
     InstrumentStepDecision,
     apply_instrument_step_decisions,
 )
+from .drift import (
+    InstrumentDriftCorrection,
+    InstrumentDriftModel,
+    apply_instrument_drift_model,
+)
 
 __all__ = [
     "OneSidedSpectrum",
@@ -32,4 +37,7 @@ __all__ = [
     "InstrumentStepCorrection",
     "InstrumentStepDecision",
     "apply_instrument_step_decisions",
+    "InstrumentDriftCorrection",
+    "InstrumentDriftModel",
+    "apply_instrument_drift_model",
 ]

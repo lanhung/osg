@@ -7,7 +7,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 from oceangravity.constants import REFERENCE_SEAWATER_DENSITY, STANDARD_GRAVITY
-from oceangravity.gravity import gaussian_surface_gravity_numerical
+from oceangravity.gravity import gaussian_surface_response_numerical
 
 from .common import ScalarGravitySignal
 
@@ -74,6 +74,7 @@ def propagating_compensated_gaussian_tsunami(
     phase_speed = math.sqrt(STANDARD_GRAVITY.value * depth)
     local_sea_level = []
     vertical_gravity = []
+    vertical_gradient = []
     peak_surface_density = density * peak
     for time in times:
         crest_x = phase_speed * (time - passage_time)
@@ -91,7 +92,7 @@ def propagating_compensated_gaussian_tsunami(
                 - math.exp(-0.5 * trough_offset_squared / scale**2)
             )
         )
-        crest_gravity = gaussian_surface_gravity_numerical(
+        crest_response = gaussian_surface_response_numerical(
             peak_surface_density,
             scale,
             (crest_x, 0.0, plane_z),
@@ -99,8 +100,8 @@ def propagating_compensated_gaussian_tsunami(
             radial_cells=radial_cells,
             angular_cells=angular_cells,
             cutoff_sigma=cutoff_sigma,
-        )[2]
-        trough_gravity = gaussian_surface_gravity_numerical(
+        )
+        trough_response = gaussian_surface_response_numerical(
             -peak_surface_density,
             scale,
             (trough_x, 0.0, plane_z),
@@ -108,8 +109,20 @@ def propagating_compensated_gaussian_tsunami(
             radial_cells=radial_cells,
             angular_cells=angular_cells,
             cutoff_sigma=cutoff_sigma,
-        )[2]
-        vertical_gravity.append(math.fsum((crest_gravity, trough_gravity)))
+        )
+        vertical_gravity.append(
+            math.fsum(
+                (crest_response.gravity_m_s2[2], trough_response.gravity_m_s2[2])
+            )
+        )
+        vertical_gradient.append(
+            math.fsum(
+                (
+                    crest_response.vertical_gravity_gradient_s2,
+                    trough_response.vertical_gravity_gradient_s2,
+                )
+            )
+        )
 
     mass_amplitude = 2.0 * math.pi * density * peak * scale**2
     signal = ScalarGravitySignal(
@@ -119,6 +132,7 @@ def propagating_compensated_gaussian_tsunami(
         source_amplitude_unit="m local crest-minus-trough sea-level anomaly",
         vertical_direct_gravity_m_s2=tuple(vertical_gravity),
         model_scope="direct attraction of a mass-balanced shallow-water Gaussian packet; no elastic/seismic source",
+        vertical_direct_gravity_gradient_s2=tuple(vertical_gradient),
     )
     return TsunamiWavePacketResult(
         signal=signal,
@@ -126,4 +140,3 @@ def propagating_compensated_gaussian_tsunami(
         crest_mass_amplitude_kg=mass_amplitude,
         trough_mass_amplitude_kg=-mass_amplitude,
     )
-

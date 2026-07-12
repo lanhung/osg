@@ -6,7 +6,7 @@ import math
 from collections.abc import Sequence
 
 from oceangravity.constants import REFERENCE_SEAWATER_DENSITY
-from oceangravity.gravity import gaussian_surface_gravity_numerical
+from oceangravity.gravity import gaussian_surface_response_numerical
 
 from .common import ScalarGravitySignal
 
@@ -64,6 +64,7 @@ def translating_gaussian_surface_eddy(
 
     local_sea_level = []
     vertical_gravity = []
+    vertical_gradient = []
     for time in times:
         center_x = speed * (time - passage_time)
         center = (center_x, closest_y, anomaly_z)
@@ -73,7 +74,7 @@ def translating_gaussian_surface_eddy(
         local_sea_level.append(
             peak * math.exp(-0.5 * horizontal_offset_squared / scale**2)
         )
-        gravity = gaussian_surface_gravity_numerical(
+        response = gaussian_surface_response_numerical(
             density * peak,
             scale,
             center,
@@ -82,7 +83,8 @@ def translating_gaussian_surface_eddy(
             angular_cells=angular_cells,
             cutoff_sigma=cutoff_sigma,
         )
-        vertical_gravity.append(gravity[2])
+        vertical_gravity.append(response.gravity_m_s2[2])
+        vertical_gradient.append(response.vertical_gravity_gradient_s2)
 
     return ScalarGravitySignal(
         process_id="translating_gaussian_surface_eddy",
@@ -91,5 +93,5 @@ def translating_gaussian_surface_eddy(
         source_amplitude_unit="m local sea-level anomaly at observation projection",
         vertical_direct_gravity_m_s2=tuple(vertical_gravity),
         model_scope="direct attraction of translating Gaussian SSH; no 3-D compensation or elastic response",
+        vertical_direct_gravity_gradient_s2=tuple(vertical_gradient),
     )
-

@@ -93,7 +93,7 @@ Evidence: station manifest, response completeness report, noise sampling plan, s
 - [x] Implement the analytic point-mass gravity-gradient tensor with an explicit derivative convention.
 - [x] Implement deterministic gravity-gradient summation for discretized volume-density anomalies.
 - [x] Verify gradient symmetry, vacuum trace, finite differences, sign, and inverse-cube scaling.
-- [ ] Propagate direct gravity-gradient observables through all six process primitives. (Analytic disk tide/surge, volume dipole, and landslide complete; moving Gaussian eddy and tsunami gradients remain.)
+- [x] Propagate direct gravity-gradient observables through all six process primitives.
 
 Evidence: physics APIs, tests, convergence tables, analytic validation report.
 

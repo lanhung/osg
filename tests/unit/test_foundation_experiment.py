@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from run_p1_foundation import run  # noqa: E402
+from run_p1_foundation import build_process_signals, run  # noqa: E402
 
 
 class TestFoundationExperiment(unittest.TestCase):
@@ -50,7 +50,16 @@ class TestFoundationExperiment(unittest.TestCase):
             path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
             self.assertEqual(json.loads(path.read_text()), result)
 
+    def test_all_six_processes_now_expose_vertical_gradient(self) -> None:
+        config = json.loads(
+            (ROOT / "configs/paper1/foundation_reference.json").read_text(encoding="utf-8")
+        )
+        built = build_process_signals(config)
+        self.assertEqual(len(built), 6)
+        for signal, _, _ in built.values():
+            self.assertIsNotNone(signal.vertical_direct_gravity_gradient_s2)
+            self.assertGreater(signal.peak_absolute_gravity_gradient_s2, 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()
-

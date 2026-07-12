@@ -4,10 +4,17 @@ from __future__ import annotations
 
 import math
 from collections.abc import Sequence
+from dataclasses import dataclass
 
 from oceangravity.constants import GRAVITATIONAL_CONSTANT
 
 from .point_mass import Vector3, _as_finite_vector3
+
+
+@dataclass(frozen=True, slots=True)
+class GaussianSurfaceResponse:
+    gravity_m_s2: Vector3
+    vertical_gravity_gradient_s2: float
 
 
 def _gaussian_axis_geometry_factor(separation_over_scale: float) -> float:
@@ -88,6 +95,29 @@ def gaussian_surface_gravity_numerical(
     mass fraction is exactly ``exp(-cutoff_sigma^2 / 2)``.
     """
 
+    return gaussian_surface_response_numerical(
+        peak_surface_density_kg_m2,
+        scale_m,
+        anomaly_center_xyz_m,
+        observation_xyz_m,
+        radial_cells=radial_cells,
+        angular_cells=angular_cells,
+        cutoff_sigma=cutoff_sigma,
+    ).gravity_m_s2
+
+
+def gaussian_surface_response_numerical(
+    peak_surface_density_kg_m2: float,
+    scale_m: float,
+    anomaly_center_xyz_m: Sequence[float],
+    observation_xyz_m: Sequence[float],
+    *,
+    radial_cells: int = 256,
+    angular_cells: int = 256,
+    cutoff_sigma: float = 8.0,
+) -> GaussianSurfaceResponse:
+    """Integrate gravity vector and ``Tzz`` in the same polar-cell pass."""
+
     density = float(peak_surface_density_kg_m2)
     scale = float(scale_m)
     cutoff = float(cutoff_sigma)
@@ -120,6 +150,7 @@ def gaussian_surface_gravity_numerical(
     acceleration_x = 0.0
     acceleration_y = 0.0
     acceleration_z = 0.0
+    gradient_zz_terms: list[float] = []
 
     for radial_index in range(radial_cells):
         local_radius = (radial_index + 0.5) * radial_step
@@ -141,6 +172,17 @@ def gaussian_surface_gravity_numerical(
             acceleration_x += cell_scale * displacement_x
             acceleration_y += cell_scale * displacement_y
             acceleration_z += cell_scale * displacement_z
+            gradient_zz_terms.append(
+                base_scale
+                * local_density_factor
+                * cell_area
+                * (
+                    3.0 * displacement_z**2 * inverse_distance_cubed / distance_squared
+                    - inverse_distance_cubed
+                )
+            )
 
-    return acceleration_x, acceleration_y, acceleration_z
-
+    return GaussianSurfaceResponse(
+        gravity_m_s2=(acceleration_x, acceleration_y, acceleration_z),
+        vertical_gravity_gradient_s2=math.fsum(gradient_zz_terms),
+    )

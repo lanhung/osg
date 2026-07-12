@@ -12,3 +12,5 @@ outputs:
   - figure_03.pdf
   - residual_timeseries.nc
 
+# Registered deterministic experiments use metadata.json because the dependency-free
+# reproduction dispatcher can validate JSON before the full Python environment exists.

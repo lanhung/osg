@@ -34,7 +34,7 @@ The intended reproduction interface is:
 make reproduce PAPER=2 EXP=P2-E017
 ```
 
-It becomes operational when an experiment contains `experiments/paperN/<experiment-id>/metadata.yml` and a matching workflow. Until then, the command fails explicitly instead of silently producing an untracked result.
+It is operational for registered deterministic experiments containing `experiments/paperN/<experiment-id>/metadata.json`, a versioned runner/config, and expected output SHA-256. Unregistered experiments fail explicitly instead of silently producing an untracked result.
 
 ## Repository map
 
@@ -53,4 +53,3 @@ It becomes operational when an experiment contains `experiments/paperN/<experime
 - Gate 2: document missingness, outliers, jumps, timing, spectra, and exclusions.
 - Gate 3: predefine success and failure criteria.
 - Gate 4: test alternatives, sensitivity, holdouts, uncertainty, and failure cases.
-

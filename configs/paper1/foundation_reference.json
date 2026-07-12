@@ -1,0 +1,61 @@
+{
+  "tide": {
+    "disk_radius_m": 100000.0,
+    "disk_z_m": 0.0,
+    "observation_z_m": 10000.0,
+    "period_s": 44712.0,
+    "phase_rad": 0.0,
+    "sea_level_peak_amplitude_m": 1.0
+  },
+  "storm_surge": {
+    "disk_radius_m": 80000.0,
+    "disk_z_m": 0.0,
+    "fall_scale_s": 18000.0,
+    "observation_z_m": 20000.0,
+    "peak_sea_level_anomaly_m": 2.0,
+    "peak_time_s": 0.0,
+    "rise_scale_s": 7200.0
+  },
+  "eddy": {
+    "anomaly_z_m": 0.0,
+    "angular_cells": 48,
+    "closest_approach_y_m": 0.0,
+    "horizontal_scale_m": 50000.0,
+    "observation_xyz_m": [0.0, 0.0, 20000.0],
+    "passage_time_s": 0.0,
+    "peak_sea_level_anomaly_m": 0.3,
+    "radial_cells": 32,
+    "translation_speed_x_m_s": 0.2
+  },
+  "internal_wave": {
+    "cells_per_axis": 8,
+    "dipole_center_xyz_m": [0.0, 0.0, -2000.0],
+    "horizontal_scale_m": 10000.0,
+    "lobe_separation_m": 1000.0,
+    "observation_xyz_m": [0.0, 0.0, 0.0],
+    "peak_density_anomaly_kg_m3": 0.5,
+    "period_s": 1800.0,
+    "phase_rad": 0.0,
+    "vertical_scale_m": 200.0
+  },
+  "tsunami": {
+    "angular_cells": 48,
+    "crest_passage_time_s": 0.0,
+    "crest_peak_sea_level_m": 1.0,
+    "crest_trough_separation_m": 80000.0,
+    "horizontal_scale_m": 20000.0,
+    "observation_xyz_m": [0.0, 0.0, 10000.0],
+    "radial_cells": 32,
+    "water_depth_m": 4000.0,
+    "wave_plane_z_m": 0.0
+  },
+  "landslide": {
+    "observation_xyz_m": [0.0, 0.0, 1000.0],
+    "solid_destination_xyz_m": [2000.0, 0.0, -3000.0],
+    "solid_mass_kg": 1000000000000.0,
+    "solid_source_xyz_m": [-1000.0, 0.0, -2000.0],
+    "transition_duration_s": 30.0,
+    "transition_start_s": 0.0
+  }
+}
+

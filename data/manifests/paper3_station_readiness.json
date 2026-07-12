@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "draft_pending_live_inventory",
+  "purpose": "Record the response, waveform, licence, latency, and noise-QC gates separately from FDSN channel metadata.",
+  "source_inventory": "data/raw/paper3/fdsn_station_channels.txt",
+  "minimum_operational_station_count_for_inventory_smoke_gate": 1,
+  "warning": "The smoke-gate count is not a scientific minimum network size and cannot support a warning-value claim.",
+  "epochs": []
+}

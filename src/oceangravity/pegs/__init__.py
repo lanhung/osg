@@ -13,6 +13,12 @@ from .template_baseline import (
     NetworkTemplateScores,
     independent_noise_network_template_scores,
 )
+from .source_inversion import (
+    DiscreteSourceInversion,
+    SourceHypothesisFit,
+    SourceTemplateHypothesis,
+    invert_discrete_source_library,
+)
 from .network import (
     NetworkPerformance,
     coherent_network_stack,
@@ -36,6 +42,10 @@ __all__ = [
     "windowed_rms_energy_scores",
     "NetworkTemplateScores",
     "independent_noise_network_template_scores",
+    "DiscreteSourceInversion",
+    "SourceHypothesisFit",
+    "SourceTemplateHypothesis",
+    "invert_discrete_source_library",
     "NetworkPerformance",
     "coherent_network_stack",
     "generate_station_outage_masks",

@@ -1,0 +1,25 @@
+# P3-WU13 discrete source-library inversion
+
+Status: transparent reference inversion complete; validated Manila PEGS waveform
+library and real covariance model remain unavailable.
+
+The baseline ranks frozen source hypotheses by independent white-noise chi-square
+over all included station samples. It returns the winning scenario's library
+magnitude and rupture segment, improvement relative to the zero-signal model,
+and delta chi-square to the second-best candidate. A best candidate that does not
+beat the null is explicitly not treated as a detection.
+
+All hypotheses use identical stations, observations and masks. Duplicate scenario
+identities, station mismatches, length mismatches and invalid noise scales fail
+closed. Magnitude is discrete: the result cannot claim precision finer than the
+scenario grid and does not interpolate between templates.
+
+The output records sample interval, physical window duration, source-library ID,
+per-hypothesis template provenance, and a calibration source ID for every station
+noise scale. This makes it possible to reject templates or noise estimates that
+were derived from the held-out event.
+
+This is an interpretable lower-bound comparator for later likelihood or GNN
+methods. Real evaluation still requires validated PEGS simulations, response-
+corrected data, correlated/nonstationary noise, calibration of confidence, and
+held-out rupture segments.

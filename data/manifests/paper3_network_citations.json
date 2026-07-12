@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-07-12T16:14:00Z",
+  "earthscope_service": {
+    "citation_url": "https://www.earthscope.org/how-to-cite/",
+    "terms_url": "https://www.earthscope.org/terms-of-service/",
+    "license_guidance_url": "https://www.earthscope.org/sponsored-open-data/",
+    "required_acknowledgement": "EarthScope Consortium NSF SAGE Facility plus every network operator/source",
+    "default_guidance": "EarthScope states that data without an owner-declared licence are distributed as CC BY 4.0; this manifest does not infer whether a declaration is absent."
+  },
+  "networks": [
+    {
+      "network": "HK",
+      "name": "Hong Kong Seismograph Network",
+      "operator": "Hong Kong Observatory, China",
+      "fdsn_url": "https://www.fdsn.org/networks/detail/HK/",
+      "doi": null,
+      "doi_status": "FDSN registry reports no DOI",
+      "license_status": "operator-specific licence not yet located",
+      "raw_redistribution_authorized": false
+    },
+    {
+      "network": "IC",
+      "name": "New China Digital Seismograph Network",
+      "operator": "Albuquerque Seismological Laboratory/USGS",
+      "fdsn_url": "https://www.fdsn.org/networks/detail/IC/",
+      "doi": "10.7914/SN/IC",
+      "doi_status": "registered",
+      "license_status": "owner declaration not yet audited beyond EarthScope open-access flag",
+      "raw_redistribution_authorized": false
+    },
+    {
+      "network": "IU",
+      "name": "Global Seismograph Network (GSN - IRIS/USGS)",
+      "operator": "Albuquerque Seismological Laboratory/USGS",
+      "fdsn_url": "https://www.fdsn.org/networks/detail/IU/",
+      "doi": "10.7914/SN/IU",
+      "doi_status": "registered",
+      "license_status": "owner declaration not yet audited beyond EarthScope open-access flag",
+      "raw_redistribution_authorized": false
+    },
+    {
+      "network": "MY",
+      "name": "Malaysian National Seismic Network",
+      "operator": "Malaysian Meteorological Service, MOSTI-MMD-MET",
+      "fdsn_url": "https://www.fdsn.org/networks/detail/MY/",
+      "doi": null,
+      "doi_status": "FDSN registry reports no DOI",
+      "license_status": "operator-specific licence not yet located",
+      "raw_redistribution_authorized": false
+    },
+    {
+      "network": "TW",
+      "name": "Broadband Array in Taiwan for Seismology",
+      "operator": "Institute of Earth Sciences, Academia Sinica",
+      "fdsn_url": "https://www.fdsn.org/networks/detail/TW/",
+      "doi": "10.7914/SN/TW",
+      "doi_status": "registered",
+      "license_status": "owner declaration not yet audited beyond EarthScope open-access flag",
+      "raw_redistribution_authorized": false
+    }
+  ],
+  "release_policy": "Commit compact queries, hashes and derived QC metrics only; keep MiniSEED and StationXML off Git until every operator-specific licence is resolved."
+}

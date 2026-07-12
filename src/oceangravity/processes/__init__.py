@@ -10,6 +10,10 @@ from .internal_wave import (
     CompensatedDipoleResult,
     oscillating_compensated_gaussian_dipole,
 )
+from .gridded_load import (
+    GriddedSeaLevelSignalResult,
+    gridded_sea_level_direct_gravity_signal,
+)
 from .landslide import (
     MassRelocationResult,
     mass_conserving_gaussian_submarine_landslide,
@@ -23,6 +27,7 @@ __all__ = [
     "ScalarGravitySignal",
     "CompensatedDipoleResult",
     "MassRelocationResult",
+    "GriddedSeaLevelSignalResult",
     "TsunamiWavePacketResult",
     "asymmetric_gaussian_disk_surge",
     "periodic_disk_tide",
@@ -31,6 +36,7 @@ __all__ = [
     "mass_conserving_gaussian_submarine_landslide",
     "propagating_compensated_gaussian_tsunami",
     "regular_times",
+    "gridded_sea_level_direct_gravity_signal",
     "translating_gaussian_surface_eddy",
     "translating_compensated_gaussian_density_eddy",
     "CompensatedDensityEddyResult",

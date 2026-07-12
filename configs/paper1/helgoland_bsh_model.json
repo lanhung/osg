@@ -42,9 +42,15 @@
     "start_utc": "2022-01-29T00:00:00",
     "end_utc": "2022-02-01T00:00:00"
   },
-  "published_targets": {
-    "elastic_gravity_peak_to_peak_m_s2": 8.5e-8,
+  "published_model_target": {
+    "gravity_to_height_ratio_nm_s2_per_mm": -2.684,
+    "source": "Voigt et al. 2024 section 3.3: mean ratio calculated from the BSH time series over the investigated month",
+    "fractional_tolerance": 0.20
+  },
+  "published_observation_context": {
+    "gravity_peak_to_peak_m_s2": 8.5e-8,
     "vertical_displacement_m": -0.034,
-    "fractional_tolerance": 0.30
+    "source": "Voigt et al. 2024 section 3.3: observed iGrav047 and HELG extrema at 2022-01-30 05:00 UTC",
+    "acceptance_use": "context_only_not_a_model_only_acceptance_target"
   }
 }

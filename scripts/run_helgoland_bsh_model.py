@@ -333,15 +333,17 @@ def run(config: dict) -> dict:
     event_start = np.datetime64(config["event_window"]["start_utc"])
     event_end = np.datetime64(config["event_window"]["end_utc"])
     event = (times >= event_start) & (times <= event_end)
-    target = config["published_targets"]
-    elastic_peak_to_peak = float(np.ptp(detided["combined_elastic_gravity_m_s2"][event]))
-    displacement_excursion = float(np.min(detided["vertical_displacement_m"][event]))
-    gravity_fractional_error = abs(
-        elastic_peak_to_peak - target["elastic_gravity_peak_to_peak_m_s2"]
-    ) / abs(target["elastic_gravity_peak_to_peak_m_s2"])
-    displacement_fractional_error = abs(
-        displacement_excursion - target["vertical_displacement_m"]
-    ) / abs(target["vertical_displacement_m"])
+    target = config["published_model_target"]
+    height = detided["vertical_displacement_m"]
+    gravity = detided["combined_elastic_gravity_m_s2"]
+    centered_height = height - height.mean()
+    centered_gravity = gravity - gravity.mean()
+    gravity_to_height_ratio = float(
+        (centered_height @ centered_gravity) / (centered_height @ centered_height) * 1.0e6
+    )
+    ratio_fractional_error = abs(
+        gravity_to_height_ratio - target["gravity_to_height_ratio_nm_s2_per_mm"]
+    ) / abs(target["gravity_to_height_ratio_nm_s2_per_mm"])
     return {
         "schema_version": 1,
         "experiment_id": config["experiment_id"],
@@ -373,19 +375,26 @@ def run(config: dict) -> dict:
                 ("vertical_displacement_m", displacement),
             )
         },
-        "published_target_comparison": {
-            "elastic_gravity_peak_to_peak_m_s2": elastic_peak_to_peak,
-            "elastic_gravity_fractional_error": gravity_fractional_error,
-            "vertical_displacement_minimum_m": displacement_excursion,
-            "vertical_displacement_fractional_error": displacement_fractional_error,
-            "registered_fractional_tolerance": target["fractional_tolerance"],
-            "status": (
-                "pass"
-                if max(gravity_fractional_error, displacement_fractional_error)
-                <= target["fractional_tolerance"]
-                else "quantified_discrepancy"
-            ),
+        "series": {
+            "timestamps_utc": [str(value) + "Z" for value in times],
+            "direct_attraction_detided_m_s2": detided["direct_attraction_m_s2"].tolist(),
+            "combined_elastic_gravity_detided_m_s2": detided[
+                "combined_elastic_gravity_m_s2"
+            ].tolist(),
+            "vertical_displacement_detided_m": detided["vertical_displacement_m"].tolist(),
         },
+        "published_model_target_comparison": {
+            "gravity_to_height_ratio_nm_s2_per_mm": gravity_to_height_ratio,
+            "published_gravity_to_height_ratio_nm_s2_per_mm": target[
+                "gravity_to_height_ratio_nm_s2_per_mm"
+            ],
+            "fractional_error": ratio_fractional_error,
+            "registered_fractional_tolerance": target["fractional_tolerance"],
+            "status": "pass"
+            if ratio_fractional_error <= target["fractional_tolerance"]
+            else "quantified_discrepancy",
+        },
+        "published_observation_context": config["published_observation_context"],
         "limitations": [
             config["harmonic_detiding"]["scope_warning"],
             "LoadDef PREM/CE replaces the paper's SPOTL Gutenberg-Bullen response.",

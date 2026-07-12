@@ -2,6 +2,13 @@
 
 from .scenario import ManilaScenario, TsunamiArrival
 from .warning import WarningTimeline
+from .energy_baseline import (
+    HeldoutEnergyEventResult,
+    SingleStationEnergyAudit,
+    WindowEnergyScores,
+    audit_single_station_energy_baseline,
+    windowed_rms_energy_scores,
+)
 from .network import (
     NetworkPerformance,
     coherent_network_stack,
@@ -18,6 +25,11 @@ __all__ = [
     "ManilaScenario",
     "TsunamiArrival",
     "WarningTimeline",
+    "HeldoutEnergyEventResult",
+    "SingleStationEnergyAudit",
+    "WindowEnergyScores",
+    "audit_single_station_energy_baseline",
+    "windowed_rms_energy_scores",
     "NetworkPerformance",
     "coherent_network_stack",
     "generate_station_outage_masks",

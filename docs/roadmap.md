@@ -201,7 +201,7 @@ Evidence: correction waterfall, spectra, component files, sensitivity report.
 - [ ] Calculate vertical-deformation gravity effect and internal potential/mass response.
 - [ ] Calculate atmospheric direct/loading terms and inverted-barometer response. (Hydrostatic pressure-to-column-mass and area-weighted, mass-conserving inverse-barometer primitives are complete; vertical atmospheric structure, elastic response, regional boundary validation and real fields remain.)
 - [ ] Test CMEMS/ERA5 coupling to prevent double counting. (An executable effect-ownership ledger distinguishes missing, duplicate and ambiguous owners and currently blocks closure because the exact historical CMEMS inverse-barometer treatment is unknown; product metadata audit remains.)
-- [ ] Estimate terrestrial precipitation/groundwater contribution. (Explicit groundwater-porosity conversion and a sign-audited infinite Bouguer-slab direct-attraction baseline are complete; real data, rainfall lag, finite catchment and elastic response remain.)
+- [ ] Estimate terrestrial precipitation/groundwater contribution. (Explicit groundwater-porosity conversion, a sign-audited infinite Bouguer-slab baseline, causal two-timescale rainfall storage, and uncertainty-aware correction adapter are complete; mixture-weight evidence, real data, finite catchment and elastic response remain.)
 - [ ] Compare observation residual and independent forward prediction in time and frequency domains. (Mask-aware time-domain RMSE, correlation, peak amplitude and peak-time metrics plus a mask-aware Welch coherence reference implementation are complete; production FFT parity, frozen real-event frequency bands, and real-event comparison remain.)
 - [ ] Close units, signs, timing, and uncertainty budgets. (SI/unit, component-collision, UTC-validity and correlated uncertainty gates exist; real component uncertainties, covariance assumptions and event closure remain.)
 
@@ -256,7 +256,7 @@ Evidence: station/noise manifests, QC report, immutable split definitions.
 
 ### 3.3 Physics and statistical baselines
 
-- [ ] Implement single-station amplitude/energy threshold baseline.
+- [ ] Implement single-station amplitude/energy threshold baseline. (A mask-preserving sliding-RMS baseline freezes its threshold on calibration quiet windows and reports held-out quiet FAR, event detection probability and earliest trigger index; response-corrected real waveforms and passband evaluation remain.)
 - [ ] Implement multi-station coherent stacking/template/likelihood baseline.
 - [ ] Implement rapid source-parameter inversion for magnitude, region, and rupture segment.
 - [ ] Calibrate thresholds to false alarms per month/year using long real-noise windows.

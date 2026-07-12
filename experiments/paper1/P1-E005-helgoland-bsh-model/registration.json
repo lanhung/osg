@@ -4,9 +4,9 @@
   "experiment_id": "P1-E005-helgoland-bsh-model",
   "paper": "paper1",
   "registered_utc": "2026-07-12T14:01:13Z",
-  "code_commit": "e4c67b98c6f61eaea1a10094e0ce3c9cbf30f1b3",
+  "code_commit": "9055841e2ba6a95f18fc970b03fe4fdf04d5bdf3",
   "config_file": "configs/paper1/helgoland_bsh_model.json",
-  "config_file_sha256": "1f844f38e5d44a12631cec756cce979311a0df65cb2051ad5eb45746a8fcd8bf",
+  "config_file_sha256": "52afeb79e1665d5a3dc28cdc107e425384549a295ff7771bbd9fe6de22b2a6ab",
   "runner": "scripts/run_helgoland_bsh_model.py",
   "data_manifest": "data/manifests/helgoland_reproduction_inputs.json",
   "random_seed": null,
@@ -31,6 +31,13 @@
       "start_utc": "2026-07-12T14:04:14Z",
       "failure_class": "timestamp truncation violated registered nearest-second canonicalization",
       "scientific_output_created": false
+    },
+    {
+      "code_commit": "e4c67b98c6f61eaea1a10094e0ce3c9cbf30f1b3",
+      "start_utc": "2026-07-12T14:06:38Z",
+      "failure_class": "completed output superseded because observed extrema had been mislabelled as model-only acceptance targets",
+      "scientific_output_created": true,
+      "disposition": "superseded_not_registered"
     }
   ],
   "registration_note": "This record is committed before the production rerun. Final metadata.json will freeze the UTC start, output checksum, and observed environment after successful execution."

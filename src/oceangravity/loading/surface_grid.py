@@ -21,6 +21,7 @@ class SurfaceLoadResult:
     included_mass_kg: float
     included_cells: int
     skipped_masked_cells: int
+    skipped_zero_fraction_cells: int
     skipped_missing_cells: int
 
 
@@ -59,6 +60,7 @@ def surface_load_gravity_planar(
     observation_xyz_m: Sequence[float],
     *,
     water_mask: Sequence[Sequence[bool]] | None = None,
+    cell_load_fraction: Sequence[Sequence[float]] | None = None,
     missing_policy: str = "error",
 ) -> SurfaceLoadResult:
     """Approximate each planar grid cell by a point mass at its area centroid.
@@ -81,6 +83,9 @@ def surface_load_gravity_planar(
             raise ValueError("water_mask shape must match surface-density grid")
         if any(not isinstance(value, bool) for row in water_mask for value in row):
             raise ValueError("water_mask must contain booleans")
+    fractions = _validate_cell_load_fraction(
+        cell_load_fraction, row_count, column_count
+    )
 
     load_z = float(load_z_m)
     if not math.isfinite(load_z):
@@ -93,6 +98,7 @@ def surface_load_gravity_planar(
     masses: list[float] = []
     included_cells = 0
     skipped_masked_cells = 0
+    skipped_zero_fraction_cells = 0
     skipped_missing_cells = 0
 
     for row_index in range(row_count):
@@ -101,6 +107,10 @@ def surface_load_gravity_planar(
         for column_index in range(column_count):
             if water_mask is not None and not water_mask[row_index][column_index]:
                 skipped_masked_cells += 1
+                continue
+            fraction = fractions[row_index][column_index] if fractions is not None else 1.0
+            if fraction == 0.0:
+                skipped_zero_fraction_cells += 1
                 continue
             raw_density = surface_density_kg_m2[row_index][column_index]
             if raw_density is None or not math.isfinite(float(raw_density)):
@@ -113,7 +123,7 @@ def surface_load_gravity_planar(
             density = float(raw_density)
             step_x = x_edges[column_index + 1] - x_edges[column_index]
             center_x = 0.5 * (x_edges[column_index + 1] + x_edges[column_index])
-            area = step_x * step_y
+            area = step_x * step_y * fraction
             mass = density * area
             included_cells += 1
             areas.append(area)
@@ -151,6 +161,7 @@ def surface_load_gravity_planar(
         included_mass_kg=math.fsum(masses),
         included_cells=included_cells,
         skipped_masked_cells=skipped_masked_cells,
+        skipped_zero_fraction_cells=skipped_zero_fraction_cells,
         skipped_missing_cells=skipped_missing_cells,
     )
 
@@ -176,3 +187,22 @@ def _validate_edges(edges: Sequence[float], expected_length: int, name: str) -> 
         raise ValueError(f"{name} must be strictly increasing")
     return values
 
+
+def _validate_cell_load_fraction(
+    fractions: Sequence[Sequence[float]] | None,
+    row_count: int,
+    column_count: int,
+) -> tuple[tuple[float, ...], ...] | None:
+    if fractions is None:
+        return None
+    width = _validate_grid_shape(fractions, "cell_load_fraction")
+    if len(fractions) != row_count or width != column_count:
+        raise ValueError("cell_load_fraction shape must match surface-density grid")
+    values = tuple(tuple(float(value) for value in row) for row in fractions)
+    if not all(
+        math.isfinite(value) and 0.0 <= value <= 1.0
+        for row in values
+        for value in row
+    ):
+        raise ValueError("cell_load_fraction values must be finite and lie in [0, 1]")
+    return values

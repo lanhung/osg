@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from oceangravity.constants import GRAVITATIONAL_CONSTANT, MEAN_EARTH_RADIUS
 from oceangravity.gravity.point_mass import Vector3
 
-from .surface_grid import OptionalGrid, _validate_grid_shape
+from .surface_grid import OptionalGrid, _validate_cell_load_fraction, _validate_grid_shape
 
 
 @dataclass(frozen=True, slots=True)
@@ -22,6 +22,7 @@ class SphericalSurfaceLoadResult:
     included_mass_kg: float
     included_cells: int
     skipped_masked_cells: int
+    skipped_zero_fraction_cells: int
     skipped_missing_cells: int
 
 
@@ -35,6 +36,7 @@ def surface_load_gravity_spherical(
     *,
     load_radius_m: float = MEAN_EARTH_RADIUS.value,
     water_mask: Sequence[Sequence[bool]] | None = None,
+    cell_load_fraction: Sequence[Sequence[float]] | None = None,
     missing_policy: str = "error",
     chunk_size_cells: int | None = None,
 ) -> SphericalSurfaceLoadResult:
@@ -65,6 +67,7 @@ def surface_load_gravity_spherical(
             raise ValueError("water_mask shape must match surface-density grid")
         if any(not isinstance(value, bool) for row in water_mask for value in row):
             raise ValueError("water_mask must contain booleans")
+    fractions = _validate_cell_load_fraction(cell_load_fraction, row_count, column_count)
 
     observation_latitude = math.radians(float(observation_latitude_deg))
     observation_longitude = math.radians(float(observation_longitude_deg))
@@ -93,6 +96,7 @@ def surface_load_gravity_spherical(
     masses = _ChunkedSum(chunk_size_cells)
     included_cells = 0
     skipped_masked_cells = 0
+    skipped_zero_fraction_cells = 0
     skipped_missing_cells = 0
 
     for row_index in range(row_count):
@@ -104,6 +108,10 @@ def surface_load_gravity_spherical(
         for column_index in range(column_count):
             if water_mask is not None and not water_mask[row_index][column_index]:
                 skipped_masked_cells += 1
+                continue
+            fraction = fractions[row_index][column_index] if fractions is not None else 1.0
+            if fraction == 0.0:
+                skipped_zero_fraction_cells += 1
                 continue
             raw_density = surface_density_kg_m2[row_index][column_index]
             if raw_density is None or not math.isfinite(float(raw_density)):
@@ -118,7 +126,12 @@ def surface_load_gravity_spherical(
             longitude_east = math.radians(longitudes[column_index + 1])
             longitude_width = longitude_east - longitude_west
             centroid_longitude = 0.5 * (longitude_west + longitude_east)
-            area = load_radius**2 * longitude_width * (sine_north - sine_south)
+            area = (
+                load_radius**2
+                * longitude_width
+                * (sine_north - sine_south)
+                * fraction
+            )
             mass = density * area
             included_cells += 1
             areas.add(area)
@@ -157,6 +170,7 @@ def surface_load_gravity_spherical(
         included_mass_kg=masses.total(),
         included_cells=included_cells,
         skipped_masked_cells=skipped_masked_cells,
+        skipped_zero_fraction_cells=skipped_zero_fraction_cells,
         skipped_missing_cells=skipped_missing_cells,
     )
 

@@ -137,6 +137,65 @@ class TestSphericalSurfaceGrid(unittest.TestCase):
                 0.0,
                 1.0,
             )
+
+    def test_chunked_path_matches_reference_and_preserves_accounting(self) -> None:
+        density = [
+            [1.0, None, -0.5, 2.0],
+            [0.0, 3.0, 1.5, -1.0],
+            [2.5, 0.5, -2.0, 4.0],
+        ]
+        mask = [
+            [True, True, True, False],
+            [True, True, True, True],
+            [False, True, True, True],
+        ]
+        arguments = (
+            density,
+            [-3.0, -1.0, 2.0, 5.0],
+            [170.0, 175.0, 181.0, 186.0, 190.0],
+            1.0,
+            179.0,
+            50_000.0,
+        )
+        reference = surface_load_gravity_spherical(
+            *arguments, water_mask=mask, missing_policy="skip"
+        )
+        for chunk_size in (1, 2, 3, 7):
+            chunked = surface_load_gravity_spherical(
+                *arguments,
+                water_mask=mask,
+                missing_policy="skip",
+                chunk_size_cells=chunk_size,
+            )
+            repeated = surface_load_gravity_spherical(
+                *arguments,
+                water_mask=mask,
+                missing_policy="skip",
+                chunk_size_cells=chunk_size,
+            )
+            self.assertEqual(chunked, repeated)
+            self.assertEqual(chunked.included_cells, reference.included_cells)
+            self.assertEqual(chunked.skipped_masked_cells, reference.skipped_masked_cells)
+            self.assertEqual(chunked.skipped_missing_cells, reference.skipped_missing_cells)
+            self.assertAlmostEqual(
+                chunked.included_mass_kg,
+                reference.included_mass_kg,
+                delta=max(abs(reference.included_mass_kg), 1.0) * 2e-15,
+            )
+            for actual, expected in zip(
+                chunked.gravity_ecef_m_s2, reference.gravity_ecef_m_s2, strict=True
+            ):
+                self.assertAlmostEqual(
+                    actual,
+                    expected,
+                    delta=max(abs(expected), 1e-30) * 2e-15,
+                )
+
+    def test_chunk_size_validation(self) -> None:
+        arguments = ([[1.0]], [-1.0, 1.0], [0.0, 1.0], 0.0, 0.0, 1_000.0)
+        for invalid in (0, -1, 1.5, True):
+            with self.assertRaises(ValueError):
+                surface_load_gravity_spherical(*arguments, chunk_size_cells=invalid)
         with self.assertRaises(ValueError):
             surface_load_gravity_spherical(
                 [[1.0]],
@@ -150,4 +209,3 @@ class TestSphericalSurfaceGrid(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

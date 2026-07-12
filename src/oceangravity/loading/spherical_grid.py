@@ -36,17 +36,25 @@ def surface_load_gravity_spherical(
     load_radius_m: float = MEAN_EARTH_RADIUS.value,
     water_mask: Sequence[Sequence[bool]] | None = None,
     missing_policy: str = "error",
+    chunk_size_cells: int | None = None,
 ) -> SphericalSurfaceLoadResult:
     """Approximate spherical cells by point masses at equal-area centroids.
 
     Rows increase with latitude and columns with *unwrapped* longitude. Thus a grid
     crossing the antimeridian can use edges such as ``[170, 180, 190]``. Cell area
     is exact on a sphere. Source locations use the midpoint in longitude and in
-    ``sin(latitude)``, the natural equal-area coordinate.
+    ``sin(latitude)``, the natural equal-area coordinate. Setting
+    ``chunk_size_cells`` bounds each summation buffer; the same chunk size and
+    traversal order produce deterministic results.
     """
 
     if missing_policy not in {"error", "skip"}:
         raise ValueError("missing_policy must be 'error' or 'skip'")
+    if chunk_size_cells is not None:
+        if isinstance(chunk_size_cells, bool) or not isinstance(chunk_size_cells, int):
+            raise ValueError("chunk_size_cells must be a positive integer or None")
+        if chunk_size_cells <= 0:
+            raise ValueError("chunk_size_cells must be a positive integer or None")
     column_count = _validate_grid_shape(surface_density_kg_m2, "surface_density_kg_m2")
     row_count = len(surface_density_kg_m2)
     latitudes = _validate_latitudes(latitude_edges_deg, row_count + 1)
@@ -78,11 +86,11 @@ def surface_load_gravity_spherical(
     radial_unit = _radial_unit(observation_latitude, observation_longitude)
     observation_radius = load_radius + observation_height
     observation = tuple(observation_radius * component for component in radial_unit)
-    contributions_x: list[float] = []
-    contributions_y: list[float] = []
-    contributions_z: list[float] = []
-    areas: list[float] = []
-    masses: list[float] = []
+    contributions_x = _ChunkedSum(chunk_size_cells)
+    contributions_y = _ChunkedSum(chunk_size_cells)
+    contributions_z = _ChunkedSum(chunk_size_cells)
+    areas = _ChunkedSum(chunk_size_cells)
+    masses = _ChunkedSum(chunk_size_cells)
     included_cells = 0
     skipped_masked_cells = 0
     skipped_missing_cells = 0
@@ -113,8 +121,8 @@ def surface_load_gravity_spherical(
             area = load_radius**2 * longitude_width * (sine_north - sine_south)
             mass = density * area
             included_cells += 1
-            areas.append(area)
-            masses.append(mass)
+            areas.add(area)
+            masses.add(mass)
             if mass == 0.0:
                 continue
 
@@ -132,25 +140,48 @@ def surface_load_gravity_spherical(
                 * mass
                 / (distance_squared * math.sqrt(distance_squared))
             )
-            contributions_x.append(scale * displacement[0])
-            contributions_y.append(scale * displacement[1])
-            contributions_z.append(scale * displacement[2])
+            contributions_x.add(scale * displacement[0])
+            contributions_y.add(scale * displacement[1])
+            contributions_z.add(scale * displacement[2])
 
     gravity = (
-        math.fsum(contributions_x),
-        math.fsum(contributions_y),
-        math.fsum(contributions_z),
+        contributions_x.total(),
+        contributions_y.total(),
+        contributions_z.total(),
     )
     radial_gravity = math.fsum(gravity[index] * radial_unit[index] for index in range(3))
     return SphericalSurfaceLoadResult(
         gravity_ecef_m_s2=gravity,
         radial_gravity_m_s2=radial_gravity,
-        included_area_m2=math.fsum(areas),
-        included_mass_kg=math.fsum(masses),
+        included_area_m2=areas.total(),
+        included_mass_kg=masses.total(),
         included_cells=included_cells,
         skipped_masked_cells=skipped_masked_cells,
         skipped_missing_cells=skipped_missing_cells,
     )
+
+
+class _ChunkedSum:
+    """Bound temporary-memory use while retaining deterministic ``fsum`` blocks."""
+
+    def __init__(self, chunk_size: int | None) -> None:
+        self._chunk_size = chunk_size
+        self._current: list[float] = []
+        self._partial_sums: list[float] = []
+
+    def add(self, value: float) -> None:
+        self._current.append(value)
+        if self._chunk_size is not None and len(self._current) >= self._chunk_size:
+            self._flush()
+
+    def total(self) -> float:
+        self._flush()
+        return math.fsum(self._partial_sums)
+
+    def _flush(self) -> None:
+        if self._current:
+            self._partial_sums.append(math.fsum(self._current))
+            self._current.clear()
 
 
 def _radial_unit(latitude_rad: float, longitude_rad: float) -> Vector3:
@@ -184,4 +215,3 @@ def _validate_longitudes(edges: Sequence[float], expected_length: int) -> tuple[
     if values[-1] - values[0] > 360.0 + 1.0e-12:
         raise ValueError("longitude grid may span at most 360 degrees")
     return values
-

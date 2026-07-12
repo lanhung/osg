@@ -208,6 +208,8 @@ Coverage milestone: registered experiment `P1-E002-detectability-foundation` app
 
 Production primary-branch milestone: registered experiment `P1-E006-evidence-bounded-atlas` evaluates 1,446 evidence-bounded process--distance--parameter records on spherical/coastal or case-specific geometry. All six process families remain frequency-coverage-limited under the three admitted vertical-gravity literature anchors; no curve is extrapolated and no partial-band record is labelled detectable or undetectable. Structural model variants listed in the experiment disposition remain to be completed before the final sensitivity panel.
 
+Figure milestone: the deterministic `P1-E006` production bundle renders and visually audits frequency support, spherical distance--amplitude envelopes, the process--instrument coverage matrix and non-probabilistic sensitivity envelopes. These are review-ready primary-branch assets; structural-variant closure still precedes final manuscript-asset status.
+
 Gradient coverage milestone: registered experiment `P1-E003-gradient-detectability-foundation` applies the same gate to all six `Tzz` fixtures and only the two gradient-instrument anchors; vertical-gravity curves are explicitly excluded.
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.
@@ -226,13 +228,13 @@ Evidence: reproducible case configs, metrics, plots, discrepancy report.
 
 - [ ] Produce frequency–equivalent-gravity panel with uncertainty.
 - [ ] Produce distance–SNR panel with observation-time assumptions.
-- [ ] Produce process–instrument detectability matrix.
+- [x] Produce process–instrument detectability matrix. (`P1-E006` yields a complete coverage-gated matrix: all primary-branch records are unclassified because no admitted curve reaches 90% signal-energy coverage.)
 - [x] Implement a frequency-coverage gate that forbids detectability classification when a curve covers less than the required signal-energy fraction.
 - [ ] Produce uncertainty/cancellation panel.
 - [ ] Classify detectable, boundary-detectable, and undetectable regions without censoring negative results.
 - [ ] Run sensitivity to priors, geometry, PSD, integration time, and threshold.
 - [ ] Generate all manuscript figures and tables from one registered workflow.
-- [ ] Draft methods, results, limitations, data/code statements, and claim-safe abstract/title.
+- [x] Draft methods, results, limitations, data/code statements, and claim-safe abstract/title. (The eight-page registered-results PDF builds cleanly on AutoDL; author metadata, structural variants and journal formatting remain release gates.)
 - [ ] Complete internal reproducibility review and freeze Paper 1 release candidate.
 
 Evidence: registered experiment, figure/table bundle, full draft, reproduction report.

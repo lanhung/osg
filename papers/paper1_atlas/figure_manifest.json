@@ -1,33 +1,32 @@
 {
   "schema_version": 1,
   "paper": "paper1_atlas",
+  "registered_input": "P1-E006-evidence-bounded-atlas",
   "figures": [
     {
-      "figure_id": "figure_1_frequency_amplitude",
-      "status": "pending-scientific-ensemble",
-      "required_inputs": ["six cited process envelopes", "elastic components", "observation duration"]
+      "figure_id": "figure_1_frequency_coverage",
+      "status": "complete",
+      "path": "reports/figures/paper1/p1_frequency_coverage.png",
+      "sha256": "7c4c9b6eb104df6eb924b0c125de88016d94510c6f720724b916492866c69785"
     },
     {
-      "figure_id": "figure_2_distance_snr",
-      "status": "engineering-prototype-only",
-      "prototype": [
-        "reports/figures/distance_attenuation_gravity.svg",
-        "reports/figures/distance_attenuation_Tzz.svg"
-      ],
-      "registered_input": "P1-E004-distance-attenuation-foundation"
+      "figure_id": "figure_2_distance_amplitude",
+      "status": "complete-primary-branch",
+      "path": "reports/figures/paper1/p1_distance_amplitude_envelopes.png",
+      "sha256": "ac37edb732219e5f1957a1e1be1035136593b4cd0c2a350aa7839e33071a9d46"
     },
     {
       "figure_id": "figure_3_process_instrument_matrix",
-      "status": "engineering-prototype-only",
-      "registered_inputs": [
-        "P1-E002-detectability-foundation",
-        "P1-E003-gradient-detectability-foundation"
-      ]
+      "status": "complete",
+      "path": "reports/figures/paper1/p1_process_instrument_matrix.png",
+      "sha256": "005cc1fda9a0d0fb8cb593fdc755375c2f1631cfcb8ddbe77106e28582fd9d69"
     },
     {
-      "figure_id": "figure_4_uncertainty_compensation",
-      "status": "pending-cited-envelopes",
-      "required_models": ["SSH versus compensated 3-D eddy", "internal-wave dipole", "mass-balanced tsunami", "continuum landslide"]
+      "figure_id": "figure_4_sensitivity_envelopes",
+      "status": "complete-primary-branch",
+      "path": "reports/figures/paper1/p1_sensitivity_envelopes.png",
+      "sha256": "2706a405a06ea21b11b90c83a902ce9f855abce8721797aad95a79c2259eb7b4"
     }
-  ]
+  ],
+  "remaining_gate": "Structural model variants must close before primary-branch amplitude and sensitivity figures are promoted to final."
 }

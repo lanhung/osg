@@ -1,20 +1,25 @@
 # Paper 1 manuscript status
 
-The LaTeX file is a claim-safe working manuscript, not a submission draft.
-`\AtlasPending{}` markers are intentional scientific gates. Engineering
-experiments P1-E001 through P1-E004 may support method validation and prototype
-figures but cannot populate the Results section.
+The LaTeX source is now a reproducible results draft populated from registered
+experiments `P1-E005` and `P1-E006`. Engineering experiments `P1-E001` through
+`P1-E004` remain excluded from scientific Results.
 
-As of 2026-07-12, the methods and validation narrative can be written in full,
-including the analytic kernel suite, locked environment, LoadDef v1.2.2 source
-audit, and exact provider-scope Green-function benchmark. A submission-ready
-Results section cannot yet be written: the production prior audit reports 0/6
-process families ready, the four atlas figures remain pending or engineering
-prototypes, and neither registered published-case reproduction is complete. See
-`reports/P1-WU61-manuscript-readiness.md` for the evidence and minimum completion
-path.
+The abstract, Methods, Validation, Results, Discussion, Data and Code
+Availability, and Limitations sections contain registered primary-branch
+results. Frequency coverage and the process--instrument coverage matrix are
+complete. Distance-amplitude and sensitivity figures are complete for the
+primary model branches but remain subject to structural-variant closure listed
+in `P1-E006`.
 
-The current Vultr host has no TeX distribution. Compilation must be qualified in
-the future CPU image or another recorded environment. Final figure PDFs must be
-generated from registered scientific experiments; the existing SVGs are
-engineering prototypes.
+IGETS iGrav047 and author-restricted Haikou observations are supporting
+published-case dependencies only. Their absence is reported as a limitation and
+does not block the six-process atlas. A PEGS simulator has no Paper 1 dependency.
+
+Remaining human-only manuscript fields are the author list, affiliations,
+acknowledgements, conflicts, target journal and the final decision on whether to
+include unavailable observation rows. Build with:
+
+```bash
+cd papers/paper1_atlas
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```

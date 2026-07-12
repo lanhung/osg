@@ -27,6 +27,8 @@ def test_long_noise_stage1_exposure_and_split_independence() -> None:
     assert {window["start_utc"][:4] for window in calibration} == {"2023"}
     assert {window["start_utc"][:4] for window in heldout} == {"2025"}
     assert manifest["stage_gates"]["stage1_total_station_days_requested"] == 40
+    assert manifest["processing"]["diagnostic_band_hz"] == [0.005, 0.05]
+    assert manifest["processing"]["maximum_start_phase_mismatch_samples"] == 0.001
 
 
 def test_dynamic_values_are_not_promoted_to_manila_defaults() -> None:

@@ -36,7 +36,9 @@
     "response_output": "ACC",
     "pre_filt_hz": [0.001, 0.002, 0.1, 0.2],
     "water_level_db": 60.0,
-    "response_and_gap_qc": "same frozen gates as P3-WU22"
+    "diagnostic_band_hz": [0.005, 0.05],
+    "maximum_start_phase_mismatch_samples": 0.001,
+    "response_and_gap_qc": "identical numeric gates to P3-WU22; values expanded here before response processing"
   },
   "stage_gates": {
     "stage1_exposure_days_per_split": 4,

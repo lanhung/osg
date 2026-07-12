@@ -6,6 +6,8 @@ import json
 import unittest
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -13,6 +15,8 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.manuscript = (ROOT / "papers/paper1_atlas/main.tex").read_text()
+        cls.claims = yaml.safe_load((ROOT / "claims.yml").read_text())["paper1"]
+        cls.roadmap = (ROOT / "docs/roadmap.md").read_text()
 
     def test_working_title_and_locked_increment_are_present(self) -> None:
         self.assertIn(
@@ -28,6 +32,23 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         lowered = self.manuscript.lower()
         self.assertNotIn("first environmental newtonian-noise model", lowered)
         self.assertNotIn("first instrument-noise calculation", lowered)
+
+    def test_route_a_governance_is_aligned(self) -> None:
+        self.assertEqual(
+            self.claims["working_title"],
+            "Frequency-Coverage Limits in Assessing Gravity Signals from Oceanic "
+            "Mass Redistribution",
+        )
+        self.assertIn("direct radial gravity", self.claims["claim"])
+        self.assertIn(
+            "a completed decision-grade detectability atlas",
+            self.claims["forbidden_claims"],
+        )
+        self.assertIn("Cancel the distance--SNR panel for Route A", self.roadmap)
+        self.assertIn(
+            "Move gravity-gradient detectability to the supplement/future-work boundary",
+            self.roadmap,
+        )
 
     def test_registered_results_and_figure_statuses_are_explicit(self) -> None:
         self.assertIn("1,446", self.manuscript)

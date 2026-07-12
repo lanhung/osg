@@ -185,7 +185,9 @@ Evidence: gridded-load module, Green-function adapter, physics/regression tests,
 - [x] Define detection threshold and false-alarm convention; separate illustrative and decision-grade SNR.
 - [x] Create versioned instrument-curve schema with digitization/source uncertainty.
 - [ ] Add superconducting, absolute, and cold-atom gravimeter models. (Traceable iGrav self-noise, AQG and FG5 scalar/band anchors loaded; empirical site curves, full PSD digitization, newer cold-atom/HUST instruments remain.)
-- [ ] Add gravity-gradient/inertial sensor models where defensible. (Legacy atom-gradiometer and GOCE band anchors loaded with explicit limitations; modern ground/space instruments remain.)
+- [x] Freeze gravity-gradient work as a validated supplemental foundation. (Route A
+  does not require a gravity-gradient detectability result; legacy atom-gradiometer
+  and GOCE anchors and P1-E003 remain reproducibility artifacts/future work.)
 - [ ] Add environmental channels from gravitational-wave/Newtonian-noise literature without claiming reinvention. (Brundu atmospheric and Cosmic Explorer component/input manifests audited with observable separation; equation implementation and published-curve reproduction remain.)
 - [x] Encode HUST facility capabilities from the official acceptance announcement, explicitly ineligible as a noise curve until frequency-dependent instrument evidence is obtained.
 
@@ -232,13 +234,23 @@ Evidence: reproducible case configs, metrics, plots, discrepancy report.
 
 ### 1.6 Atlas and Paper 1
 
-- [ ] Produce frequency–equivalent-gravity panel with uncertainty.
-- [ ] Produce distance–SNR panel with observation-time assumptions.
+- [ ] Produce process spectral-energy and cumulative-energy panels. (Route A
+  replacement for the legacy frequency--equivalent-gravity deliverable.)
+- [x] Cancel the distance--SNR panel for Route A. No SNR is authorized when the
+  public noise evidence fails the spectral-coverage gate; distance--amplitude is
+  retained instead.
 - [x] Produce process–instrument detectability matrix. (`P1-E006` yields a complete coverage-gated matrix: all primary-branch records are unclassified because no admitted curve reaches 90% signal-energy coverage.)
 - [x] Implement a frequency-coverage gate that forbids detectability classification when a curve covers less than the required signal-energy fraction.
-- [ ] Produce uncertainty/cancellation panel.
-- [ ] Classify detectable, boundary-detectable, and undetectable regions without censoring negative results.
-- [ ] Run sensitivity to priors, geometry, PSD, integration time, and threshold.
+- [ ] Quantify the minimum low-frequency support required at 50%, 75%, 90% and
+  95% spectral-energy coverage.
+- [ ] Produce a physical-structure and mass-compensation sensitivity panel.
+- [x] Cancel universal detectable/boundary/undetectable classification for Route A.
+  Classification remains withheld where frequency coverage is insufficient.
+- [ ] Run Route-A sensitivity to process structure, geometry and coverage threshold.
+  PSD, integration-time and detection-threshold SNR studies move to future work
+  unless decision-grade site noise becomes available.
+- [x] Move gravity-gradient detectability to the supplement/future-work boundary;
+  it is not a Paper 1 release gate.
 - [ ] Generate all manuscript figures and tables from one registered workflow.
 - [x] Draft methods, results, limitations, data/code statements, and claim-safe abstract/title. (The eight-page registered-results PDF builds cleanly on AutoDL; author metadata, structural variants and journal formatting remain release gates.)
 - [ ] Complete internal reproducibility review and freeze Paper 1 release candidate.

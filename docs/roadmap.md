@@ -88,8 +88,11 @@ Evidence: station manifest, response completeness report, noise sampling plan, s
 - [x] Implement finite rectangular surface-load integration.
 - [x] Implement two-dimensional Gaussian surface anomaly integration.
 - [x] Implement three-dimensional density-anomaly volume integration.
-- [ ] Verify disk, rectangle, and Gaussian far-field point-mass limits below 1% error at the frozen distance ratio.
+- [x] Verify disk, rectangle, and Gaussian far-field point-mass limits below 1% error at the frozen distance ratio.
 - [x] Document density-compensation/cancellation tests for internal-wave-like dipoles.
+- [x] Implement the analytic point-mass gravity-gradient tensor with an explicit derivative convention.
+- [x] Implement deterministic gravity-gradient summation for discretized volume-density anomalies.
+- [x] Verify gradient symmetry, vacuum trace, finite differences, sign, and inverse-cube scaling.
 
 Evidence: physics APIs, tests, convergence tables, analytic validation report.
 

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "audit_id": "paper3-seedlink-one-shot-latency-v1",
+  "frozen_utc": "2026-07-12T17:45:00Z",
+  "endpoint": "rtserve.earthscope.org",
+  "port": 18000,
+  "lookback_minutes": 30,
+  "timeout_seconds": 30,
+  "streams": [
+    {"network": "HK", "station": "HKPS", "location": "", "channel": "LHZ"},
+    {"network": "IC", "station": "QIZ", "location": "10", "channel": "LHZ"},
+    {"network": "IU", "station": "DAV", "location": "00", "channel": "LHZ"},
+    {"network": "MY", "station": "KKM", "location": "", "channel": "LHZ"},
+    {"network": "TW", "station": "KMNB", "location": "", "channel": "LHZ"}
+  ],
+  "interpretation": "A single successful query estimates packet recency only at the audit instant. It does not establish uptime, continuity, guaranteed latency or operational suitability.",
+  "service_source": "https://docs.earthscope.org/service/seedlink",
+  "service_limit": "EarthScope does not guarantee real-time quality or continuity; operational use requires independent longitudinal monitoring."
+}

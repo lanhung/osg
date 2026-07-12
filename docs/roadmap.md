@@ -39,7 +39,7 @@ Evidence: CI run, lockfile, image digests, machine inventory, cross-machine regr
 
 ### 0.2 Literature and claims audit
 
-- [ ] Obtain and read the complete 2026 Haikou iGrav-048 paper, including supplements.
+- [ ] Obtain and read the complete 2026 Haikou iGrav-048 paper, including supplements. (VOR core methods/results and its numerical changes from the open preprint are audited; a locally checksummed complete VOR/supplement bundle remains unavailable.)
 - [x] Audit whether it contains event-specific typhoon windows or component separation.
 - [ ] Read and encode the Helgoland methods, geometry, filters, and reported uncertainties.
 - [ ] Read the atmospheric/Newtonian-noise and Cosmic Explorer source methods used by Paper 1.
@@ -147,9 +147,9 @@ Evidence: process configs, prior table, unit/physics tests, compact ensemble met
 
 ### 1.5 Published-case reproduction
 
-- [ ] Reproduce Helgoland storm-surge gravity magnitude and deformation components.
+- [ ] Reproduce Helgoland storm-surge gravity magnitude and deformation components. (Event/month targets, exact processing contract, input manifest and executable pending/pass/fail audit are frozen; IGETS/BSH/HELBH/GNSS inputs remain.)
 - [ ] Quantify differences caused by geometry, resolution, Green functions, or domain truncation.
-- [ ] Reproduce the Haikou NTOL magnitude/correlation only with legally available data or author-provided aggregates.
+- [ ] Reproduce the Haikou NTOL magnitude/correlation only with legally available data or author-provided aggregates. (VOR—not preprint—targets, method contract, restricted/open input split and executable audit are frozen; SG/GNSS are author-restricted and exact CMEMS/MPIOM artifacts remain.)
 - [ ] Record whether each case closes within 20–30% or supply a tested discrepancy explanation.
 - [ ] Freeze compact regression fixtures from reviewed reproductions.
 

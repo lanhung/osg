@@ -8,7 +8,7 @@
         "unresolved_physics_or_parameter_fields",
         "missing_frozen_production_joint_design"
       ],
-      "evidence_count": 4,
+      "evidence_count": 6,
       "process_id": "internal_wave",
       "production_joint_design_status": "missing",
       "ready_for_production_ensemble": false,
@@ -41,7 +41,7 @@
         "unresolved_physics_or_parameter_fields",
         "missing_frozen_production_joint_design"
       ],
-      "evidence_count": 4,
+      "evidence_count": 6,
       "process_id": "submarine_landslide",
       "production_joint_design_status": "missing",
       "ready_for_production_ensemble": false,

@@ -187,7 +187,7 @@ Evidence: event catalogue, data-quality report, exclusion manifest.
 - [ ] Implement calibration and timing normalization. (Versioned feedback-voltage calibration with validity interval and propagated factor/offset uncertainty is complete; real calibration records and full timestamp normalization remain.)
 - [ ] Flag spikes and earthquake-contaminated intervals without silently deleting them.
 - [ ] Represent gaps and uncertainty explicitly.
-- [ ] Correct jumps and instrument drift with versioned decisions. (Explicit persistent-step decisions and cumulative removed series are complete; real reviewed decisions and instrument-drift models remain.)
+- [ ] Correct jumps and instrument drift with versioned decisions. (Explicit persistent-step decisions plus linear/quadratic drift models with UTC validity, allowed non-event fit roles, no extrapolation and propagated uncertainty are complete; real reviewed decisions/model parameters and sensitivity branches remain.)
 - [ ] Remove solid Earth tide, ocean-tide loading, polar motion, atmosphere, and hydrology stepwise.
 - [ ] Save every removed component and its contribution to the event peak.
 - [ ] Test alternative correction models and filter choices.

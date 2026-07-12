@@ -1,0 +1,25 @@
+{
+  "code_commit": "bc04f17d62d48b2acbe8d6378a87b155e95a2584",
+  "config_file": "configs/paper1/foundation_reference.json",
+  "config_file_sha256": "ab04838d6ef6f98d48ef24da5b287667b8fc2f4480213878d95cd70f45deb6c9",
+  "data_manifest": null,
+  "docker_image": null,
+  "environment": {
+    "python": "3.14.4",
+    "third_party_runtime_dependencies": []
+  },
+  "experiment_id": "P1-E001-foundation",
+  "machine": "control-plane-host-unverified-identity",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E001-foundation/metrics.json",
+      "sha256": "5c827b1d8c95be6999d3f0eb2695ba0e8a79ce3e08b6ddd6f7dc1f8df950c2ba"
+    }
+  ],
+  "paper": "paper1",
+  "random_seed": null,
+  "result_class": "engineering_reference_not_cited_physical_prior",
+  "runner": "scripts/run_p1_foundation.py",
+  "schema_version": 1
+}
+

@@ -136,6 +136,8 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 - [ ] Freeze realistic parameter priors and citations for every process.
 - [ ] Run Latin-hypercube or Monte Carlo uncertainty with deterministic seeds. (Validated deterministic linear/log Latin-hypercube and quantile engine complete; cited priors, correlations, convergence and production ensembles remain.)
 
+Foundation milestone: registered experiment `P1-E001-foundation` runs all six direct-gravity primitives under explicitly non-scientific engineering fixture parameters; it is infrastructure evidence, not an atlas result.
+
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.
 
 ### 1.5 Published-case reproduction

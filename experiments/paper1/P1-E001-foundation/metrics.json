@@ -1,0 +1,49 @@
+{
+  "config_sha256": "cd715119facc6eacda347cbf6c7b748dc06f018671f4181ca18249a2df38fcec",
+  "experiment_id": "P1-E001-foundation",
+  "metrics": {
+    "eddy_surface": {
+      "dominant_nonzero_frequency_hz": 4.878048780487804e-07,
+      "model_scope": "direct attraction of translating Gaussian SSH; no 3-D compensation or elastic response",
+      "peak_absolute_direct_gravity_m_s2": 8.311183168686253e-08,
+      "peak_absolute_direct_gravity_microgal": 8.311183168686252
+    },
+    "internal_wave_dipole": {
+      "dominant_nonzero_frequency_hz": 0.0005555555555555556,
+      "model_scope": "direct attraction of equal/opposite 3-D Gaussian lobes; no free surface or elastic response",
+      "net_mass_per_unit_peak_density_m3": 0.0,
+      "peak_absolute_direct_gravity_m_s2": 1.3694570557659659e-08,
+      "peak_absolute_direct_gravity_microgal": 1.3694570557659658
+    },
+    "storm_surge": {
+      "dominant_nonzero_frequency_hz": 6.600660066006601e-06,
+      "model_scope": "direct attraction of an asymmetric transient finite-disk load; no elastic response",
+      "peak_absolute_direct_gravity_m_s2": 6.511809170480464e-07,
+      "peak_absolute_direct_gravity_microgal": 65.11809170480464
+    },
+    "submarine_landslide": {
+      "dominant_nonzero_frequency_hz": 0.01092896174863388,
+      "final_vertical_gradient_change_s2": -2.5433250686786285e-09,
+      "model_scope": "direct gravity/gradient from conserved point-mass relocation; no continuum slide or generated wave",
+      "net_mass_anomaly_kg": 0.0,
+      "peak_absolute_direct_gravity_m_s2": 3.3469592357331747e-06,
+      "peak_absolute_direct_gravity_microgal": 334.6959235733175
+    },
+    "tide": {
+      "dominant_nonzero_frequency_hz": 2.2365360529611736e-05,
+      "model_scope": "direct attraction of a uniform finite disk; no elastic Earth response",
+      "peak_absolute_direct_gravity_m_s2": 3.87071665300687e-07,
+      "peak_absolute_direct_gravity_microgal": 38.7071665300687
+    },
+    "tsunami_packet": {
+      "dominant_nonzero_frequency_hz": 0.0008083961734062343,
+      "model_scope": "direct attraction of a mass-balanced shallow-water Gaussian packet; no elastic/seismic source",
+      "net_surface_mass_amplitude_kg": 0.0,
+      "peak_absolute_direct_gravity_m_s2": 2.415402228443596e-07,
+      "peak_absolute_direct_gravity_microgal": 24.15402228443596,
+      "phase_speed_m_s": 198.05706248452742
+    }
+  },
+  "result_class": "engineering_reference_not_cited_physical_prior",
+  "schema_version": 1
+}

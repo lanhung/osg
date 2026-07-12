@@ -56,7 +56,7 @@ Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadat
 - [ ] Request Haikou iGrav-048 gravity, colocated pressure, calibration, jump, maintenance, and timing logs.
 - [ ] Request or inventory Wuhan/HUST and other coastal or regional SG data.
 - [ ] Inventory colocated/nearby tide gauges and GNSS vertical displacement records.
-- [ ] Define IBTrACS, ERA5, CMEMS, hydrology, and optional wave-product queries. (IBTrACS v04r01 retrieval, checksum and South China Sea selection are frozen; other products remain.)
+- [ ] Define IBTrACS, ERA5, CMEMS, hydrology, and optional wave-product queries. (IBTrACS selection plus ERA5/CMEMS product IDs, roles, bounds and double-count gates are frozen; exact event dates, CMEMS variable audit and hydrology product remain.)
 - [ ] Verify at least one station/three events or two stations/two events with required channels.
 - [ ] Record a formal go, conditional-go, or no-go decision by the end of Week 2.
 - [ ] If no-go, activate Helgoland code-validation track and narrow the Paper 2 claim.

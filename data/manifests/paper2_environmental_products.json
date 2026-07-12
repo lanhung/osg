@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-07-12",
+  "default_event_window_days_each_side": 7,
+  "spatial_bounds": {
+    "north_deg": 30.0,
+    "west_deg_east": 100.0,
+    "south_deg": 5.0,
+    "east_deg_east": 130.0
+  },
+  "products": [
+    {
+      "id": "era5-single-levels-hourly",
+      "provider": "Copernicus Climate Data Store / ECMWF",
+      "catalogue_id": "reanalysis-era5-single-levels",
+      "doi": "10.24381/cds.adbb2d47",
+      "resolution": "0.25 degree atmosphere; hourly",
+      "license": "CC-BY",
+      "access": "CDS account and accepted licence required",
+      "variables": [
+        {
+          "name": "surface_pressure",
+          "role": "atmospheric column load and direct attraction",
+          "mass_load_eligible": true
+        },
+        {
+          "name": "mean_sea_level_pressure",
+          "role": "storm context and pressure-system diagnostics",
+          "mass_load_eligible": false
+        },
+        {
+          "name": "10m_u_component_of_wind",
+          "role": "storm forcing and event context",
+          "mass_load_eligible": false
+        },
+        {
+          "name": "10m_v_component_of_wind",
+          "role": "storm forcing and event context",
+          "mass_load_eligible": false
+        },
+        {
+          "name": "total_precipitation",
+          "role": "terrestrial hydrology forcing and contamination diagnostic",
+          "mass_load_eligible": false
+        },
+        {
+          "name": "significant_height_of_combined_wind_waves_and_swell",
+          "role": "sea-state and microseism auxiliary only",
+          "mass_load_eligible": false
+        }
+      ],
+      "warnings": [
+        "ERA5T can change when finalized two to three months later; record retrieval date and checksum.",
+        "Total precipitation is accumulated and requires explicit interval handling.",
+        "Wave height is not an additional mean water-mass load."
+      ]
+    },
+    {
+      "id": "cmems-global-ocean-physics-analysis-forecast",
+      "provider": "Copernicus Marine Service",
+      "product_id": "GLOBAL_ANALYSISFORECAST_PHY_001_024",
+      "dataset_id": "cmems_mod_glo_phy_anfc_merged-sl_PT1H-i",
+      "doi": "10.48670/moi-00016",
+      "resolution": "hourly sea level; native product grid",
+      "temporal_extent_observed": "2022-09-01 through rolling forecast horizon",
+      "candidate_variables": ["zos"],
+      "variable_metadata_status": "must-verify-with-copernicusmarine-describe-before-download",
+      "role": "ocean sea-level anomaly source for surface-mass loading",
+      "mass_load_eligible": true,
+      "warnings": [
+        "Verify whether tides, inverse-barometer response, and mean dynamic topography are represented before anomaly construction.",
+        "Do not add an ERA5-driven ocean response if it is already represented in this ocean product.",
+        "Freeze exact product/dataset versions, variable metadata, retrieval time, and checksums."
+      ]
+    }
+  ],
+  "double_count_gate": {
+    "status": "unresolved-until-product-metadata-and-equations-audited",
+    "forbidden": [
+      "treating significant wave height as added water mass",
+      "adding inverted-barometer ocean response twice",
+      "combining pre-corrected SG residuals with the same correction term again"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-# P2-WU16 pressure-load primitives
+# P2-WU17 pressure-load primitives
 
 Status: hydrostatic column conversion and mass-conserving inverse-barometer
 reference implementation complete; production atmospheric attraction, elastic

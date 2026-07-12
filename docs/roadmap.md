@@ -98,10 +98,10 @@ Evidence: physics APIs, tests, convergence tables, analytic validation report.
 
 ### 1.2 Gridded ocean loads and elastic response
 
-- [ ] Define grid-cell area, coastline, missing-value, longitude-wrap, and Earth-shape conventions.
+- [ ] Define grid-cell area, coastline, missing-value, longitude-wrap, and Earth-shape conventions. (Planar and spherical-reference conventions complete; ellipsoid/topography sensitivity remains.)
 - [x] Convert sea-surface height anomaly to surface mass density without treating wave height as mean load.
 - [ ] Implement gridded direct-attraction integration with chunking and deterministic summation. (Local planar deterministic reference complete; optimized spherical/chunked path remains.)
-- [ ] Add planar and spherical geometry comparison and validity limits.
+- [x] Add planar and spherical geometry comparison and validity limits.
 - [ ] Define a load Green-function provider interface with provenance/version metadata.
 - [ ] Integrate a mature elastic-load Green-function dataset or library.
 - [ ] Preserve direct attraction, deformation, and potential response separately.

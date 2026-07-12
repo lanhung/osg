@@ -40,6 +40,12 @@ REFERENCE_SEAWATER_DENSITY = PhysicalConstant(
     source="Project reference value; scenario-specific density must override it",
 )
 
+MEAN_EARTH_RADIUS = PhysicalConstant(
+    value=6_371_008.8,
+    unit="m",
+    source="IUGG conventional mean Earth radius",
+)
+
 # Exact scale factors expressed in m s^-2.
 GAL = 1.0e-2
 MICROGAL = 1.0e-8
@@ -57,4 +63,3 @@ def si_to_microgal(value: float) -> float:
     """Convert metres per second squared to microgal."""
 
     return value / MICROGAL
-

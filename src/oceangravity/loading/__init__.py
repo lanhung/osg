@@ -11,9 +11,12 @@ from .gravity_budget import (
     GravityCorrectionComponent,
     GravityCorrectionChainResult,
     GravityCorrectionStage,
+    GravityCorrectionStageMetrics,
+    GravityCorrectionWaterfallMetrics,
     GravityResidualResult,
     compute_gravity_residual,
     apply_gravity_correction_chain,
+    summarize_gravity_correction_waterfall,
 )
 from .green_functions import (
     CombinedElasticLoadGreenFunctionSample,
@@ -41,6 +44,8 @@ __all__ = [
     "GravityCorrectionComponent",
     "GravityCorrectionChainResult",
     "GravityCorrectionStage",
+    "GravityCorrectionStageMetrics",
+    "GravityCorrectionWaterfallMetrics",
     "GravityResidualResult",
     "CombinedElasticLoadGreenFunctionSample",
     "CombinedElasticLoadResponse",
@@ -60,6 +65,7 @@ __all__ = [
     "surface_load_gravity_wgs84",
     "compute_gravity_residual",
     "apply_gravity_correction_chain",
+    "summarize_gravity_correction_waterfall",
     "build_provisional_loaddef_combined_provider",
     "loaddef_normalized_elastic_gravity_to_si",
 ]

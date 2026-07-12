@@ -12,6 +12,7 @@ from oceangravity.loading import (  # noqa: E402
     GravityCorrectionComponent,
     apply_gravity_correction_chain,
     compute_gravity_residual,
+    summarize_gravity_correction_waterfall,
 )
 
 
@@ -78,6 +79,30 @@ class TestGravityBudget(unittest.TestCase):
         self.assertEqual(chain.stages[1].output_m_s2, (6.0, 14.0))
         self.assertEqual(chain.final_residual.residual_m_s2, (6.0, 14.0))
         self.assertEqual(chain.stages[1].peak_absolute_removed_m_s2, 4.0)
+        self.assertEqual(chain.stages[1].physical_effect_ids, ("atmosphere_direct",))
+        self.assertEqual(chain.stages[1].source, "unit-test fixture")
+
+    def test_waterfall_reports_each_stage_without_altering_series(self) -> None:
+        observed = (5.0, -5.0)
+        tide = _component("tide", (1.0, -1.0), ("solid_earth_tide",))
+        atmosphere = _component("atmosphere", (2.0, -2.0), ("atmosphere_direct",))
+        chain = apply_gravity_correction_chain(observed, (tide, atmosphere))
+        metrics = summarize_gravity_correction_waterfall(chain)
+        self.assertEqual(metrics.initial_rms_m_s2, 5.0)
+        self.assertEqual(metrics.final_rms_m_s2, 2.0)
+        self.assertAlmostEqual(metrics.total_rms_change_fraction, 0.6)
+        self.assertEqual(len(metrics.stages), 2)
+        self.assertEqual(metrics.stages[0].removed_rms_m_s2, 1.0)
+        self.assertEqual(metrics.stages[0].output_rms_m_s2, 4.0)
+        self.assertAlmostEqual(metrics.stages[0].stage_rms_change_fraction, 0.2)
+        self.assertEqual(chain.final_residual.residual_m_s2, (2.0, -2.0))
+
+    def test_zero_rms_has_explicit_undefined_fraction(self) -> None:
+        zero = _component("zero", (0.0, 0.0), ("fixture",))
+        chain = apply_gravity_correction_chain((0.0, 0.0), (zero,))
+        metrics = summarize_gravity_correction_waterfall(chain)
+        self.assertIsNone(metrics.total_rms_change_fraction)
+        self.assertIsNone(metrics.stages[0].stage_rms_change_fraction)
 
 
 if __name__ == "__main__":

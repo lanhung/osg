@@ -46,12 +46,51 @@ class GravityCorrectionStage:
     removed_m_s2: tuple[float, ...]
     output_m_s2: tuple[float, ...]
     peak_absolute_removed_m_s2: float
+    physical_effect_ids: tuple[str, ...]
+    source: str
 
 
 @dataclass(frozen=True, slots=True)
 class GravityCorrectionChainResult:
     stages: tuple[GravityCorrectionStage, ...]
     final_residual: GravityResidualResult
+
+
+@dataclass(frozen=True, slots=True)
+class GravityCorrectionStageMetrics:
+    stage_index: int
+    component_id: str
+    physical_effect_ids: tuple[str, ...]
+    source: str
+    input_mean_m_s2: float
+    input_rms_m_s2: float
+    removed_mean_m_s2: float
+    removed_rms_m_s2: float
+    peak_absolute_removed_m_s2: float
+    output_mean_m_s2: float
+    output_rms_m_s2: float
+    stage_rms_change_fraction: float | None
+
+
+@dataclass(frozen=True, slots=True)
+class GravityCorrectionWaterfallMetrics:
+    initial_rms_m_s2: float
+    final_rms_m_s2: float
+    total_rms_change_fraction: float | None
+    closure_max_abs_m_s2: float
+    stages: tuple[GravityCorrectionStageMetrics, ...]
+
+
+def _mean(values: Sequence[float]) -> float:
+    return math.fsum(values) / len(values)
+
+
+def _rms(values: Sequence[float]) -> float:
+    return math.sqrt(math.fsum(value * value for value in values) / len(values))
+
+
+def _fractional_rms_change(before: float, after: float) -> float | None:
+    return None if before == 0.0 else (before - after) / before
 
 
 def compute_gravity_residual(
@@ -129,6 +168,8 @@ def apply_gravity_correction_chain(
                 removed_m_s2=component.values_m_s2,
                 output_m_s2=output,
                 peak_absolute_removed_m_s2=max(abs(value) for value in component.values_m_s2),
+                physical_effect_ids=component.physical_effect_ids,
+                source=component.source,
             )
         )
         current = output
@@ -140,3 +181,40 @@ def apply_gravity_correction_chain(
         if difference > max(final.closure_max_abs_m_s2, 1e-30) * 4.0:
             raise RuntimeError("sequential and direct correction paths do not close")
     return GravityCorrectionChainResult(stages=tuple(stages), final_residual=final)
+
+
+def summarize_gravity_correction_waterfall(
+    chain: GravityCorrectionChainResult,
+) -> GravityCorrectionWaterfallMetrics:
+    """Compute transparent stage metrics without changing correction series."""
+
+    initial = chain.final_residual.observed_m_s2
+    final = chain.final_residual.residual_m_s2
+    initial_rms = _rms(initial)
+    final_rms = _rms(final)
+    stages = tuple(
+        GravityCorrectionStageMetrics(
+            stage_index=stage.stage_index,
+            component_id=stage.component_id,
+            physical_effect_ids=stage.physical_effect_ids,
+            source=stage.source,
+            input_mean_m_s2=_mean(stage.input_m_s2),
+            input_rms_m_s2=_rms(stage.input_m_s2),
+            removed_mean_m_s2=_mean(stage.removed_m_s2),
+            removed_rms_m_s2=_rms(stage.removed_m_s2),
+            peak_absolute_removed_m_s2=stage.peak_absolute_removed_m_s2,
+            output_mean_m_s2=_mean(stage.output_m_s2),
+            output_rms_m_s2=_rms(stage.output_m_s2),
+            stage_rms_change_fraction=_fractional_rms_change(
+                _rms(stage.input_m_s2), _rms(stage.output_m_s2)
+            ),
+        )
+        for stage in chain.stages
+    )
+    return GravityCorrectionWaterfallMetrics(
+        initial_rms_m_s2=initial_rms,
+        final_rms_m_s2=final_rms,
+        total_rms_change_fraction=_fractional_rms_change(initial_rms, final_rms),
+        closure_max_abs_m_s2=chain.final_residual.closure_max_abs_m_s2,
+        stages=stages,
+    )

@@ -16,6 +16,8 @@ class GravityCorrectionComponent:
     physical_effect_ids: tuple[str, ...]
     source: str
     preapplied_to_input: bool = False
+    standard_uncertainty_m_s2: tuple[float, ...] | None = None
+    uncertainty_group_id: str | None = None
 
     def __post_init__(self) -> None:
         if not self.component_id.strip() or not self.source.strip():
@@ -28,6 +30,20 @@ class GravityCorrectionComponent:
             raise ValueError("physical effect IDs must be non-empty")
         if len(set(self.physical_effect_ids)) != len(self.physical_effect_ids):
             raise ValueError("physical effect IDs must be unique within a component")
+        if (self.standard_uncertainty_m_s2 is None) != (self.uncertainty_group_id is None):
+            raise ValueError(
+                "component uncertainty values and uncertainty_group_id must be supplied together"
+            )
+        if self.standard_uncertainty_m_s2 is not None:
+            if len(self.standard_uncertainty_m_s2) != len(self.values_m_s2):
+                raise ValueError("component uncertainty must match component length")
+            if not all(
+                math.isfinite(value) and value >= 0.0
+                for value in self.standard_uncertainty_m_s2
+            ):
+                raise ValueError("component standard uncertainty must be finite and nonnegative")
+            if not self.uncertainty_group_id or not self.uncertainty_group_id.strip():
+                raise ValueError("uncertainty_group_id must be non-empty")
 
 
 @dataclass(frozen=True, slots=True)
@@ -36,6 +52,10 @@ class GravityResidualResult:
     observed_m_s2: tuple[float, ...]
     subtracted_component_ids: tuple[str, ...]
     closure_max_abs_m_s2: float
+    residual_standard_uncertainty_m_s2: tuple[float, ...] | None
+    uncertainty_status: str
+    missing_uncertainty_ids: tuple[str, ...]
+    uncertainty_group_ids: tuple[str, ...]
 
 
 @dataclass(frozen=True, slots=True)
@@ -48,6 +68,8 @@ class GravityCorrectionStage:
     peak_absolute_removed_m_s2: float
     physical_effect_ids: tuple[str, ...]
     source: str
+    removed_standard_uncertainty_m_s2: tuple[float, ...] | None
+    uncertainty_group_id: str | None
 
 
 @dataclass(frozen=True, slots=True)
@@ -78,6 +100,8 @@ class GravityCorrectionWaterfallMetrics:
     final_rms_m_s2: float
     total_rms_change_fraction: float | None
     closure_max_abs_m_s2: float
+    uncertainty_status: str
+    missing_uncertainty_ids: tuple[str, ...]
     stages: tuple[GravityCorrectionStageMetrics, ...]
 
 
@@ -96,12 +120,29 @@ def _fractional_rms_change(before: float, after: float) -> float | None:
 def compute_gravity_residual(
     observed_m_s2: Sequence[float],
     components: Sequence[GravityCorrectionComponent],
+    *,
+    observed_standard_uncertainty_m_s2: Sequence[float] | None = None,
+    require_complete_uncertainty: bool = False,
 ) -> GravityResidualResult:
     """Subtract non-overlapping components and verify sample-wise closure."""
 
     observed = tuple(float(value) for value in observed_m_s2)
     if not observed or not all(math.isfinite(value) for value in observed):
         raise ValueError("observed gravity must be non-empty and finite")
+    observed_uncertainty = (
+        None
+        if observed_standard_uncertainty_m_s2 is None
+        else tuple(float(value) for value in observed_standard_uncertainty_m_s2)
+    )
+    if observed_uncertainty is not None and (
+        len(observed_uncertainty) != len(observed)
+        or not all(
+            math.isfinite(value) and value >= 0.0 for value in observed_uncertainty
+        )
+    ):
+        raise ValueError(
+            "observed standard uncertainty must match observation length and be nonnegative"
+        )
     component_ids = [component.component_id for component in components]
     if len(set(component_ids)) != len(component_ids):
         raise ValueError("gravity correction component IDs must be unique")
@@ -138,21 +179,72 @@ def compute_gravity_residual(
         )
         for index in range(len(observed))
     )
+    missing_uncertainty = []
+    if observed_uncertainty is None:
+        missing_uncertainty.append("observed")
+    missing_uncertainty.extend(
+        component.component_id
+        for component in components
+        if component.standard_uncertainty_m_s2 is None
+    )
+    if require_complete_uncertainty and missing_uncertainty:
+        raise ValueError(
+            "incomplete gravity uncertainty budget: " + ", ".join(missing_uncertainty)
+        )
+    group_ids = tuple(
+        sorted(
+            {
+                component.uncertainty_group_id
+                for component in components
+                if component.uncertainty_group_id is not None
+            }
+        )
+    )
+    residual_uncertainty = None
+    if not missing_uncertainty:
+        assert observed_uncertainty is not None
+        residual_uncertainty = tuple(
+            math.sqrt(
+                observed_uncertainty[index] ** 2
+                + math.fsum(
+                    math.fsum(
+                        component.standard_uncertainty_m_s2[index]
+                        for component in components
+                        if component.uncertainty_group_id == group_id
+                    )
+                    ** 2
+                    for group_id in group_ids
+                )
+            )
+            for index in range(len(observed))
+        )
     return GravityResidualResult(
         residual_m_s2=residual,
         observed_m_s2=observed,
         subtracted_component_ids=tuple(component_ids),
         closure_max_abs_m_s2=closure,
+        residual_standard_uncertainty_m_s2=residual_uncertainty,
+        uncertainty_status="complete" if not missing_uncertainty else "incomplete",
+        missing_uncertainty_ids=tuple(missing_uncertainty),
+        uncertainty_group_ids=group_ids,
     )
 
 
 def apply_gravity_correction_chain(
     observed_m_s2: Sequence[float],
     ordered_components: Sequence[GravityCorrectionComponent],
+    *,
+    observed_standard_uncertainty_m_s2: Sequence[float] | None = None,
+    require_complete_uncertainty: bool = False,
 ) -> GravityCorrectionChainResult:
     """Apply a validated correction order while retaining every intermediate series."""
 
-    final = compute_gravity_residual(observed_m_s2, ordered_components)
+    final = compute_gravity_residual(
+        observed_m_s2,
+        ordered_components,
+        observed_standard_uncertainty_m_s2=observed_standard_uncertainty_m_s2,
+        require_complete_uncertainty=require_complete_uncertainty,
+    )
     current = final.observed_m_s2
     stages = []
     for index, component in enumerate(ordered_components, start=1):
@@ -170,6 +262,8 @@ def apply_gravity_correction_chain(
                 peak_absolute_removed_m_s2=max(abs(value) for value in component.values_m_s2),
                 physical_effect_ids=component.physical_effect_ids,
                 source=component.source,
+                removed_standard_uncertainty_m_s2=component.standard_uncertainty_m_s2,
+                uncertainty_group_id=component.uncertainty_group_id,
             )
         )
         current = output
@@ -216,5 +310,7 @@ def summarize_gravity_correction_waterfall(
         final_rms_m_s2=final_rms,
         total_rms_change_fraction=_fractional_rms_change(initial_rms, final_rms),
         closure_max_abs_m_s2=chain.final_residual.closure_max_abs_m_s2,
+        uncertainty_status=chain.final_residual.uncertainty_status,
+        missing_uncertainty_ids=chain.final_residual.missing_uncertainty_ids,
         stages=stages,
     )

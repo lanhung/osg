@@ -1,0 +1,127 @@
+{
+  "claim_blockers": [
+    "engineering_fixture_not_validated_pegs_waveforms",
+    "synthetic_independent_noise_only",
+    "heldout_quiet_exposure_cannot_resolve_target_false_alarm_rate"
+  ],
+  "config_sha256": "0b513d97112193ff6139676d14c6cb6fc3ef01c708eb6561e7343a3000b843bd",
+  "discrete_source_inversion": {
+    "best_beats_null": true,
+    "best_chi_square": 0.0,
+    "best_is_unique": true,
+    "best_scenario_id": "fixture_mw86_central",
+    "decision_time_since_origin_s": 2.0,
+    "estimated_magnitude_mw": 8.6,
+    "estimated_segment_id": "central",
+    "included_sample_count": 4,
+    "noise_model": "independent_station_white_gaussian_reference",
+    "noise_scale_source_ids": [
+      [
+        "A",
+        "engineering_fixture_quiet_A"
+      ],
+      [
+        "B",
+        "engineering_fixture_quiet_B"
+      ]
+    ],
+    "null_chi_square": 399.99999999999994,
+    "ranked_hypotheses": [
+      {
+        "chi_square": 0.0,
+        "improvement_over_null_chi_square": 399.99999999999994,
+        "magnitude_mw": 8.6,
+        "scenario_id": "fixture_mw86_central",
+        "segment_id": "central",
+        "template_source_id": "engineering_fixture_template_86"
+      },
+      {
+        "chi_square": 99.99999999999999,
+        "improvement_over_null_chi_square": 299.99999999999994,
+        "magnitude_mw": 8.2,
+        "scenario_id": "fixture_mw82_north",
+        "segment_id": "north",
+        "template_source_id": "engineering_fixture_template_82"
+      }
+    ],
+    "sample_interval_s": 1.0,
+    "second_best_delta_chi_square": 99.99999999999999,
+    "source_library_id": "engineering_fixture_library_v1",
+    "station_ids": [
+      "A",
+      "B"
+    ],
+    "window_duration_s": 2.0,
+    "window_start_time_since_origin_s": 0.0
+  },
+  "experiment_id": "P3-E001-physical-baseline-foundation",
+  "network_template_scores": {
+    "decision_step_s": 2.0,
+    "decision_step_samples": 2,
+    "discarded_start_sample_indices": [],
+    "noise_model": "independent_station_white_gaussian_reference",
+    "noise_scale_source_ids": [
+      [
+        "A",
+        "engineering_fixture_quiet_A"
+      ],
+      [
+        "B",
+        "engineering_fixture_quiet_B"
+      ]
+    ],
+    "sample_interval_s": 1.0,
+    "scores": [
+      1.9999999999999996,
+      19.999999999999996
+    ],
+    "start_sample_indices": [
+      0,
+      2
+    ],
+    "station_ids": [
+      "A",
+      "B"
+    ],
+    "template_duration_s": 2.0,
+    "template_length_samples": 2,
+    "trailing_samples_after_last_start": 0
+  },
+  "result_class": "engineering_fixture_not_pegs_detectability_evidence",
+  "schema_version": 1,
+  "scientific_claim_ready": false,
+  "single_station_energy_audit": {
+    "heldout_events": [
+      {
+        "earliest_trigger_score_index": 1,
+        "event_id": "fixture_event",
+        "score_count": 3,
+        "triggered_score_fraction": 0.6666666666666666
+      }
+    ],
+    "quiet_false_positive_audit": {
+      "calibration_window_ids": [
+        "fixture_calibration_quiet"
+      ],
+      "heldout_exceedance_count": 0,
+      "heldout_false_alarms_per_30_days": 0.0,
+      "heldout_minimum_nonzero_resolvable_false_alarms_per_30_days": 10800.0,
+      "heldout_score_count": 4,
+      "heldout_triggered_window_ids": [],
+      "heldout_window_ids": [
+        "fixture_heldout_quiet"
+      ],
+      "passes_target_rate": false,
+      "rate_resolution_sufficient": false,
+      "threshold": {
+        "minimum_nonzero_resolvable_false_alarms_per_30_days": 10800.0,
+        "noise_window_count": 4,
+        "observed_exceedances": 0,
+        "observed_false_alarms_per_30_days": 0.0,
+        "target_false_alarms_per_30_days": 1.0,
+        "threshold": 1.1000000000000003,
+        "window_step_s": 60.0
+      }
+    }
+  }
+}

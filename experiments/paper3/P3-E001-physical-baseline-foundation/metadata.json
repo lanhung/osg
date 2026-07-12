@@ -1,0 +1,24 @@
+{
+  "code_commit": "dba8ef5fce400881cd6c6c4bdbb5e20d6ed83e50",
+  "config_file": "configs/paper3/physical_baseline_foundation.json",
+  "config_file_sha256": "79b09f10f45b30143ab92a15ce4e1c94617b83b48f83f0485759e0a8dae28362",
+  "data_manifest": null,
+  "docker_image": null,
+  "environment": {
+    "python": "3.14.4",
+    "third_party_runtime_dependencies": []
+  },
+  "experiment_id": "P3-E001-physical-baseline-foundation",
+  "machine": "control-plane-host-unverified-identity",
+  "outputs": [
+    {
+      "path": "experiments/paper3/P3-E001-physical-baseline-foundation/metrics.json",
+      "sha256": "7321caaf5d9273bde5a2b517cb511c953eac8b93f6ff14e80f0c116b0ff89c4e"
+    }
+  ],
+  "paper": "paper3",
+  "random_seed": null,
+  "result_class": "engineering_fixture_not_pegs_detectability_evidence",
+  "runner": "scripts/run_p3_physical_baseline_foundation.py",
+  "schema_version": 1
+}

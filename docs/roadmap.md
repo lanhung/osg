@@ -260,7 +260,7 @@ Evidence: station/noise manifests, QC report, immutable split definitions.
 - [ ] Implement multi-station coherent stacking/template/likelihood baseline. (Aligned coherent stacking and a signed, noise-weighted sliding network-template statistic are complete under an explicit independent white-noise reference; physical sample/template/decision durations and per-station noise-calibration source IDs are mandatory. Validated PEGS templates, real cross-station covariance and likelihood comparisons remain.)
 - [ ] Implement rapid source-parameter inversion for magnitude, region, and rupture segment. (A timing/provenance-aware discrete template-library inversion reports library-resolution Mw/segment, null-model improvement, second-best separation and explicit tied-best ambiguity under an independent-noise reference. Validated PEGS templates, confidence calibration, continuous/source-uncertainty inference and real covariance remain.)
 - [ ] Calibrate thresholds to false alarms per month/year using long real-noise windows.
-- [ ] Generate time-dependent detection probability and reliable-magnitude timelines.
+- [ ] Generate time-dependent detection probability and reliable-magnitude timelines. (Held-out detection/magnitude evaluators and a provenance-preserving discrete source-library prefix trajectory are complete; validated real-event trajectories, calibrated intervals and frozen reliability gates remain.)
 - [ ] Evaluate vertical-only versus three-component data.
 - [ ] Evaluate 0%, 20%, and 40% station outage.
 - [ ] Determine the physical detectability boundary before any GNN training.

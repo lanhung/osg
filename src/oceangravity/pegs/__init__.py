@@ -19,6 +19,11 @@ from .source_inversion import (
     SourceTemplateHypothesis,
     invert_discrete_source_library,
 )
+from .source_trajectory import (
+    SourceInversionTrajectory,
+    SourceInversionTrajectoryPoint,
+    invert_discrete_source_library_over_time,
+)
 from .network import (
     NetworkPerformance,
     coherent_network_stack,
@@ -46,6 +51,9 @@ __all__ = [
     "SourceHypothesisFit",
     "SourceTemplateHypothesis",
     "invert_discrete_source_library",
+    "SourceInversionTrajectory",
+    "SourceInversionTrajectoryPoint",
+    "invert_discrete_source_library_over_time",
     "NetworkPerformance",
     "coherent_network_stack",
     "generate_station_outage_masks",

@@ -4,6 +4,12 @@ observables: [vertical_gravity, gravity_gradient]
 snr:
   transient_definition: matched_filter
   periodic_definition: coherent_integration
-  threshold: null
-  note: threshold must be frozen with a false-alarm convention before production runs
-
+  detection_reference:
+    statistic: normalized_known-template_gaussian
+    sidedness: one-sided
+    family_false_alarm_probability: 0.001
+    independent_trials: 1
+    target_detection_probability: 0.90
+    statistic_threshold: 3.090232306167813
+    required_expected_snr: 4.371783871712414
+  note: illustrative atlas reference only; operational studies require empirical false alarms

@@ -1,0 +1,80 @@
+{
+  "config_sha256": "efbf62ec9c91ab5f42df6625e6fb5628422e08fae00b33153098833d76c597bf",
+  "experiment_id": "P1-E007-structural-variant-closure",
+  "implemented_energy_branch": [
+    {
+      "central_propagated_energy_j": 3000000000000000.0,
+      "crest_peak_sea_level_m": {
+        "central": 4.359184173,
+        "energy_minus_uncertainty": 4.226385862,
+        "energy_plus_uncertainty": 4.488054796
+      },
+      "crest_trough_separation_m": 300000.0,
+      "packet_net_surface_mass_kg": 0.0,
+      "relative_energy_uncertainty": 0.06
+    },
+    {
+      "central_propagated_energy_j": 3000000000000000.0,
+      "crest_peak_sea_level_m": {
+        "central": 4.358925611,
+        "energy_minus_uncertainty": 4.226135177,
+        "energy_plus_uncertainty": 4.48778859
+      },
+      "crest_trough_separation_m": 350000.0,
+      "packet_net_surface_mass_kg": 0.0,
+      "relative_energy_uncertainty": 0.06
+    },
+    {
+      "central_propagated_energy_j": 3000000000000000.0,
+      "crest_peak_sea_level_m": {
+        "central": 4.358915427,
+        "energy_minus_uncertainty": 4.226125303,
+        "energy_plus_uncertainty": 4.487778105
+      },
+      "crest_trough_separation_m": 400000.0,
+      "packet_net_surface_mass_kg": 0.0,
+      "relative_energy_uncertainty": 0.06
+    }
+  ],
+  "interpretation": "The energy-normalized tsunami branch is a discrete named-event sensitivity. Excluded branches are not assigned surrogate parameters, probability weights, or detectability labels.",
+  "result_class": "structural_sensitivity_closure_not_probability",
+  "schema_version": 1,
+  "status": "pass",
+  "variant_decisions": [
+    {
+      "reason": "fixed peak SSH, fixed speed-based radius and equal positive mass cannot all hold for distinct Gaussian and compact quadratic profiles",
+      "status": "excluded_pending_design_resolution",
+      "variant_id": "mesoscale_eddy_quadratic_composite_ssh"
+    },
+    {
+      "reason": "the validated compensated primitive lacks an evidence-supported mapping from SSH amplitude to vertical density structure",
+      "status": "excluded_pending_physical_mapping",
+      "variant_id": "mesoscale_eddy_compensated_core_halo"
+    },
+    {
+      "reason": "one regional buoyancy-frequency scalar does not determine a continuous density profile and boundary-conditioned vertical eigenfunction",
+      "status": "excluded_pending_physical_mapping",
+      "variant_id": "internal_wave_continuous_mode1_density_structure"
+    },
+    {
+      "reason": "the evidence ledger contains no transfer coefficient from the internal mode to free-surface height",
+      "status": "excluded_pending_physical_mapping",
+      "variant_id": "internal_wave_linear_free_surface_coupling"
+    },
+    {
+      "reason": "reported propagated energy maps analytically to the registered Gaussian crest-trough packet under an explicit linear long-wave energy convention",
+      "status": "implemented_evidence_bounded_sensitivity",
+      "variant_id": "tsunami_energy_normalized_mass_balanced_packet"
+    },
+    {
+      "reason": "regional volume medians and event velocity ranges do not supply a jointly supported amplitude-duration scenario",
+      "status": "excluded_insufficient_joint_evidence",
+      "variant_id": "landslide_mediterranean_storfjorden_joint_branch"
+    },
+    {
+      "reason": "displaced volume and acceleration do not determine a wave without an event-specific generation/entrainment transfer model",
+      "status": "excluded_pending_physical_mapping",
+      "variant_id": "landslide_generated_water_wave"
+    }
+  ]
+}

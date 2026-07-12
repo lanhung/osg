@@ -212,6 +212,8 @@ Figure milestone: the deterministic `P1-E006` production bundle renders and visu
 
 Reproduction milestone: registered workflows reproduce `P1-E005` and `P1-E006` byte-for-byte on AutoDL; the figure bundle is checksum deterministic and the eight-page results draft builds with no unresolved references/citations. The published-case submission exception gate passes on the open Helgoland model case while prohibiting unavailable Helgoland/Haikou observation statistics.
 
+Structural-closure milestone: registered experiment `P1-E007-structural-variant-closure` implements the evidence-supported energy-normalized tsunami mapping and explicitly excludes underdetermined eddy, internal-wave and landslide branches instead of inventing surrogate parameters. This closes the primary model-form disposition gate; excluded variants remain documented future evidence needs, not zero-effect assumptions.
+
 Gradient coverage milestone: registered experiment `P1-E003-gradient-detectability-foundation` applies the same gate to all six `Tzz` fixtures and only the two gradient-instrument anchors; vertical-gravity curves are explicitly excluded.
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.

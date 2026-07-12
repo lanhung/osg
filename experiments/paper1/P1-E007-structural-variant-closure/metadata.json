@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E007-structural-variant-closure",
+  "paper": "paper1",
+  "code_commit": "ae6d7f125c970dee4fb41390d39fd20b2c19f3f3",
+  "config_file": "configs/paper1/structural_variant_closure.json",
+  "config_file_sha256": "b8f4e895b271ff0afc510ed26adec34c7019b57a86d0dbe19404ef1482e0a41b",
+  "data_manifest": "data/manifests/process_parameter_evidence.json",
+  "runner": "scripts/run_p1_structural_variant_closure.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E007-structural-variant-closure/metrics.json",
+      "sha256": "589f8266eb45518f9edc6df1ccfdc1a6fdd8019b0c98b65a220cbb38ce61ae78"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-12T15:21:23Z",
+  "result_class": "structural_sensitivity_closure_not_probability"
+}

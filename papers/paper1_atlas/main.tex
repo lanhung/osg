@@ -132,8 +132,8 @@ with equivalent uncompensated water columns. Source standoffs are 10, 30, 100,
 Analytic tests cover point masses, finite disks, rectangles, Gaussian sheets,
 volume cells, gradient symmetry and trace, WGS~84 area, mass conservation, grid
 convergence, domain truncation, and time/frequency normalization. The complete
-software audit contains 448 passing tests and 12 passing subtests at the
-production-atlas implementation commit.
+software audit contains 461 passing tests and 12 passing subtests after the
+structural-closure implementation.
 
 The LoadDef v1.2.2 PREM/CE provider reproduces all 50 published benchmark rows
 used by the project for angular distance, radial displacement and combined
@@ -216,6 +216,17 @@ credible intervals.}
 \label{fig:sensitivity}
 \end{figure}
 
+A separate registered structural-closure experiment maps the
+$3.0\times10^{15}$~J Tohoku propagated-energy estimate (6\% uncertainty)
+reported by Tang et al.~\cite{Tang2012} to the same idealized mass-balanced
+Gaussian packet. Under the declared linear-long-wave convention
+$E=\rho g\int\eta^2\,\mathrm{d}A$, the 300--400~km separation sensitivity gives
+a central crest amplitude of 4.359~m and an energy-uncertainty range of
+4.226--4.488~m. This branch is deliberately separate from the 1.0--1.8~m
+deep-ocean amplitude-normalized branch; their difference measures
+normalization/model-form sensitivity and is not combined as a probability
+interval.
+
 \section{Discussion}
 The principal result is a boundary between classified, coverage-limited, and
 physically suppressed signals. Compensated internal structures can decay much
@@ -246,11 +257,16 @@ gridded products remain outside Git and are represented by versioned manifests,
 access conditions, time ranges, and checksums.
 
 \section{Limitations}
-The present production bundle contains one implemented primary branch per
-process family. Quadratic-composite and normalized compensated eddies,
-stratified mode-1/free-surface internal waves, energy-normalized tsunamis,
-Mediterranean/Storfjorden slide closure and the generated-water-wave slide
-component remain structural sensitivities rather than hidden omissions.
+The production atlas contains one primary branch per process family, plus the
+energy-normalized tsunami sensitivity. Remaining structural branches are
+explicit scientific exclusions, not hidden omissions or zero-effect
+assumptions. The eddy design cannot simultaneously hold peak SSH, radius, and
+positive mass fixed across Gaussian and compact quadratic profiles; the
+compensated eddy lacks an SSH-to-density-profile mapping. Continuous mode-1 and
+free-surface internal-wave branches lack a boundary-conditioned vertical
+profile and coupling coefficient. Mediterranean/Storfjorden slide evidence does
+not jointly close amplitude and duration, and the generated-water-wave branch
+lacks an event-specific generation/entrainment transfer model.
 
 The admitted instrument curves are literature anchors rather than complete
 site-specific environmental noise models. The iGrav curve estimates quiet

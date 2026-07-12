@@ -166,7 +166,9 @@ class LoadGreenFunctionProvider(Protocol):
 
     metadata: LoadGreenFunctionMetadata
 
-    def evaluate(self, angular_distance_rad: float) -> LoadGreenFunctionSample:
+    def evaluate(
+        self, angular_distance_rad: float
+    ) -> LoadGreenFunctionSample | CombinedElasticLoadGreenFunctionSample:
         """Return per-kilogram response at angular distance in radians."""
 
 
@@ -247,6 +249,72 @@ class TabulatedLoadGreenFunctionProvider:
             angular_distances_rad=distances,
             samples=samples,
             interpolation=document.get("interpolation", "linear_angular_distance"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class TabulatedCombinedElasticLoadGreenFunctionProvider:
+    """No-extrapolation table for combined elastic gravity and displacement."""
+
+    metadata: LoadGreenFunctionMetadata
+    angular_distances_rad: tuple[float, ...]
+    samples: tuple[CombinedElasticLoadGreenFunctionSample, ...]
+    interpolation: str = "linear_angular_distance"
+
+    def __post_init__(self) -> None:
+        if self.metadata.component_semantics != "combined_elastic_gravity":
+            raise ValueError("combined table requires combined_elastic_gravity metadata")
+        if len(self.angular_distances_rad) != len(self.samples) or len(self.samples) < 2:
+            raise ValueError("tabulated distances and samples must have equal length >= 2")
+        if self.interpolation != "linear_angular_distance":
+            raise ValueError("only linear_angular_distance interpolation is supported")
+        if not all(
+            math.isfinite(value) and 0.0 <= value <= math.pi
+            for value in self.angular_distances_rad
+        ):
+            raise ValueError("tabulated angular distances must be finite and lie in [0, pi]")
+        if any(
+            self.angular_distances_rad[index + 1] <= self.angular_distances_rad[index]
+            for index in range(len(self.angular_distances_rad) - 1)
+        ):
+            raise ValueError("tabulated angular distances must be strictly increasing")
+
+    def evaluate(self, angular_distance_rad: float) -> CombinedElasticLoadGreenFunctionSample:
+        distance = float(angular_distance_rad)
+        if not math.isfinite(distance):
+            raise ValueError("angular_distance_rad must be finite")
+        if distance < self.angular_distances_rad[0] or distance > self.angular_distances_rad[-1]:
+            raise ValueError("refusing to extrapolate beyond the tabulated angular-distance range")
+        index = bisect_right(self.angular_distances_rad, distance)
+        if index == 0:
+            return self.samples[0]
+        if index == len(self.angular_distances_rad):
+            return self.samples[-1]
+        left = index - 1
+        if distance == self.angular_distances_rad[left]:
+            return self.samples[left]
+        fraction = (distance - self.angular_distances_rad[left]) / (
+            self.angular_distances_rad[index] - self.angular_distances_rad[left]
+        )
+        left_sample = self.samples[left]
+        right_sample = self.samples[index]
+        return CombinedElasticLoadGreenFunctionSample(
+            elastic_gravity_m_s2_per_kg=(
+                left_sample.elastic_gravity_m_s2_per_kg
+                + fraction
+                * (
+                    right_sample.elastic_gravity_m_s2_per_kg
+                    - left_sample.elastic_gravity_m_s2_per_kg
+                )
+            ),
+            vertical_displacement_m_per_kg=(
+                left_sample.vertical_displacement_m_per_kg
+                + fraction
+                * (
+                    right_sample.vertical_displacement_m_per_kg
+                    - left_sample.vertical_displacement_m_per_kg
+                )
+            ),
         )
 
 

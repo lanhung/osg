@@ -23,10 +23,15 @@ from .green_functions import (
     LoadGreenFunctionScientificAudit,
     LoadGreenFunctionSample,
     TabulatedLoadGreenFunctionProvider,
+    TabulatedCombinedElasticLoadGreenFunctionProvider,
     LoadResponseComponents,
     assert_green_function_scientific_use_ready,
     convolve_combined_elastic_load_green_functions,
     convolve_load_green_functions,
+)
+from .loaddef_adapter import (
+    build_provisional_loaddef_combined_provider,
+    loaddef_normalized_elastic_gravity_to_si,
 )
 
 __all__ = [
@@ -44,6 +49,7 @@ __all__ = [
     "LoadGreenFunctionScientificAudit",
     "LoadGreenFunctionSample",
     "TabulatedLoadGreenFunctionProvider",
+    "TabulatedCombinedElasticLoadGreenFunctionProvider",
     "LoadResponseComponents",
     "assert_green_function_scientific_use_ready",
     "convolve_combined_elastic_load_green_functions",
@@ -54,4 +60,6 @@ __all__ = [
     "surface_load_gravity_wgs84",
     "compute_gravity_residual",
     "apply_gravity_correction_chain",
+    "build_provisional_loaddef_combined_provider",
+    "loaddef_normalized_elastic_gravity_to_si",
 ]

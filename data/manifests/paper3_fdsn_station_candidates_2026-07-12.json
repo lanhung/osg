@@ -260,6 +260,21 @@
   ],
   "incomplete_epoch_count": 14,
   "inventory_sha256": "12daf91de2aad1a12630da7eca6245f914f8173662b0e0170e99506ac2a4fdce",
+  "open_ended_candidate_epoch_count": 81,
+  "open_ended_networks": [
+    "AD",
+    "CB",
+    "HK",
+    "IC",
+    "IU",
+    "JP",
+    "MY",
+    "PS",
+    "RM",
+    "TM",
+    "TW"
+  ],
+  "open_ended_unique_network_station_count": 46,
   "schema_version": 1,
   "three_component_candidates": [
     {
@@ -3164,5 +3179,5 @@
       "station": "SBG3"
     }
   ],
-  "warning": "Channel metadata and scalar sensitivity do not establish waveform availability, full response, real-time latency, licence, or usable noise quality."
+  "warning": "An open-ended channel epoch does not establish current operation. Channel metadata and scalar sensitivity do not establish waveform availability, full response, real-time latency, licence, or usable noise quality."
 }

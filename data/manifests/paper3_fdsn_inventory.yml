@@ -35,4 +35,6 @@ expected_output:
     three_component_channel_epochs: 145
     incomplete_channel_epochs: 14
     unique_network_station_pairs: 75
+    open_ended_three_component_epochs: 81
+    open_ended_unique_network_station_pairs: 46
   limitation: EarthScope holdings only; waveform availability, full response, latency, licence and other regional FDSN centres remain unaudited

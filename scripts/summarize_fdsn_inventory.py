@@ -70,14 +70,20 @@ def summarize_inventory(path: Path) -> dict:
             "full_response_verified": False,
         }
         (candidates if has_triplet else incomplete).append(record)
+    open_ended = [record for record in candidates if not record["end_time"]]
     return {
         "schema_version": 1,
         "inventory_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "candidate_epoch_count": len(candidates),
         "incomplete_epoch_count": len(incomplete),
+        "open_ended_candidate_epoch_count": len(open_ended),
+        "open_ended_unique_network_station_count": len(
+            {(record["network"], record["station"]) for record in open_ended}
+        ),
+        "open_ended_networks": sorted({record["network"] for record in open_ended}),
         "three_component_candidates": candidates,
         "incomplete_channel_epochs": incomplete,
-        "warning": "Channel metadata and scalar sensitivity do not establish waveform availability, full response, real-time latency, licence, or usable noise quality.",
+        "warning": "An open-ended channel epoch does not establish current operation. Channel metadata and scalar sensitivity do not establish waveform availability, full response, real-time latency, licence, or usable noise quality.",
     }
 
 

@@ -14,6 +14,11 @@ The conservative exact-epoch parser found 145 three-component channel epochs,
 All 145 candidate epochs contain scalar sensitivity fields, but that does not
 establish a complete poles/zeros response.
 
+Of these, 81 three-component epochs across 46 unique network/station pairs have
+an empty metadata end time. This is a reproducible inventory field, not an
+operational claim: an open-ended epoch may still be offline, delayed, archival
+only or absent from the EarthScope waveform holdings.
+
 No station is yet labelled real-time-capable. The next audit must query response
 metadata and waveform availability for frozen epochs, inspect terms and
 acknowledgements, add other relevant FDSN centres, and distinguish archival,

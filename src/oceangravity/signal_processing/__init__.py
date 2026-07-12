@@ -7,7 +7,12 @@ from .timebase import (
     split_uniform_time_series,
 )
 from .quality import TimeSeriesQualitySummary, assess_time_series_quality
-from .snr import coherent_periodic_snr, matched_filter_snr
+from .snr import (
+    MaskedEventSnr,
+    coherent_periodic_snr,
+    masked_event_matched_filter_snr,
+    matched_filter_snr,
+)
 from .calibration import CalibratedGravity, GravityCalibration, apply_feedback_calibration
 from .steps import (
     InstrumentStepCorrection,
@@ -34,6 +39,8 @@ __all__ = [
     "OneSidedSpectrum",
     "coherent_periodic_snr",
     "matched_filter_snr",
+    "MaskedEventSnr",
+    "masked_event_matched_filter_snr",
     "mean_square_from_psd",
     "one_sided_spectrum",
     "split_uniform_time_series",

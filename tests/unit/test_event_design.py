@@ -10,7 +10,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from oceangravity.evaluation import EventWindow, audit_event_design  # noqa: E402
+from oceangravity.evaluation import (  # noqa: E402
+    EventStationData,
+    EventWindow,
+    audit_event_data_gate,
+    audit_event_design,
+)
 
 
 def _window(identifier, event_type, role, start_day, stations=("SG1",)):
@@ -23,6 +28,23 @@ def _window(identifier, event_type, role, start_day, stations=("SG1",)):
         station_ids=stations,
         source="unit-test fixture",
     )
+
+
+def _availability(event_id, station_id="SG1", **changes):
+    values = {
+        "event_id": event_id,
+        "station_id": station_id,
+        "gravity_product_level": "level1",
+        "gravity_coverage_fraction": 0.99,
+        "has_collocated_pressure": True,
+        "has_calibration": True,
+        "has_instrument_state": True,
+        "has_sea_level_anomaly": True,
+        "has_typhoon_track": True,
+        "has_precipitation_and_hydrology": True,
+    }
+    values.update(changes)
+    return EventStationData(**values)
 
 
 class TestEventDesign(unittest.TestCase):
@@ -68,6 +90,51 @@ class TestEventDesign(unittest.TestCase):
         )
         self.assertEqual(document["events"], [])
         self.assertTrue(document["status"].startswith("pending"))
+
+    def test_full_event_data_closure_passes_attribution_gate(self) -> None:
+        windows = (
+            _window("T1", "typhoon", "training", 1),
+            _window("T2", "typhoon", "training", 4),
+            _window("T3", "typhoon", "held_out", 7),
+            _window("C1", "storm_control", "control", 10),
+            _window("Q1", "quiet", "control", 13),
+            _window("Q2", "quiet", "control", 16),
+            _window("Q3", "quiet", "held_out", 19),
+        )
+        audit = audit_event_data_gate(
+            windows, tuple(_availability(window.event_id) for window in windows)
+        )
+        self.assertTrue(audit.attribution_data_gate_passes)
+        self.assertEqual(audit.eligible_pair_count, 7)
+        self.assertEqual(audit.ineligible_pairs, ())
+        self.assertEqual(audit.undeclared_pairs, ())
+
+    def test_level3_or_missing_pressure_cannot_support_attribution(self) -> None:
+        windows = (
+            _window("T1", "typhoon", "training", 1),
+            _window("T2", "typhoon", "training", 4),
+            _window("T3", "typhoon", "held_out", 7),
+        )
+        records = (
+            _availability("T1"),
+            _availability("T2", gravity_product_level="level3_residual"),
+            _availability("T3", has_collocated_pressure=False),
+        )
+        audit = audit_event_data_gate(windows, records)
+        self.assertFalse(audit.attribution_data_gate_passes)
+        reasons = {event: values for event, _, values in audit.ineligible_pairs}
+        self.assertIn("gravity_not_raw_enough", reasons["T2"])
+        self.assertIn("missing_collocated_pressure", reasons["T3"])
+
+    def test_missing_declaration_and_invalid_availability_are_explicit(self) -> None:
+        windows = (_window("T1", "typhoon", "training", 1),)
+        audit = audit_event_data_gate(windows, ())
+        self.assertEqual(audit.undeclared_pairs, (("T1", "SG1"),))
+        self.assertFalse(audit.attribution_data_gate_passes)
+        with self.assertRaises(ValueError):
+            _availability("T1", gravity_coverage_fraction=1.1)
+        with self.assertRaisesRegex(ValueError, "unknown event"):
+            audit_event_data_gate(windows, (_availability("T2"),))
 
 
 if __name__ == "__main__":

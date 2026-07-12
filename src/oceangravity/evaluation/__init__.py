@@ -41,6 +41,7 @@ from .case_reproduction import (
     CaseTargetResult,
     evaluate_case_reproduction,
 )
+from .event_metrics import EventModelMetrics, evaluate_event_model_metrics
 
 __all__ = [
     "gaussian_detection_probability",
@@ -62,6 +63,8 @@ __all__ = [
     "audit_event_design",
     "audit_event_data_gate",
     "evaluate_case_reproduction",
+    "EventModelMetrics",
+    "evaluate_event_model_metrics",
     "empirical_detection_probability",
     "earliest_reliable_detection_time",
     "earliest_reliable_magnitude_time",

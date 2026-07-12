@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "paper": "paper3_pegs",
+  "figures": [
+    {"figure_id": "figure_1_scenarios_stations", "status": "pending-source-and-station-freeze"},
+    {"figure_id": "figure_2_noise_strata_psd", "status": "pending-real-noise-library"},
+    {"figure_id": "figure_3_detection_probability_time", "status": "pending-simulator-and-threshold"},
+    {"figure_id": "figure_4_reliable_magnitude_time", "status": "pending-held-out-inversion"},
+    {"figure_id": "figure_5_station_count_pareto", "status": "pending-network-evaluation"},
+    {"figure_id": "figure_6_outage_typhoon_robustness", "status": "pending-noise-and-outage-ablation"},
+    {"figure_id": "figure_7_warning_timeline", "status": "pending-scenario-arrivals-and-baselines"}
+  ]
+}

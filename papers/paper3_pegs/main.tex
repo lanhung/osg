@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\PEGSPending}[1]{\textbf{[PENDING: #1]}}
+
+\title{Detectability and Warning Value of Prompt Elasto-Gravity Signals from Manila Trench Megathrust Earthquakes}
+\author{\PEGSPending{author list, station operators, and warning partners}}
+\date{Methods-first draft; not for submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We evaluate when prompt elasto-gravity signals (PEGS) from Manila Trench
+megathrust scenarios can be detected and used for reliable earthquake
+characterization under realistic South China and surrounding station geometry,
+non-Gaussian continuous noise, high-microseism and typhoon conditions, station
+outages, and explicit operational false-alarm constraints. The study compares
+single-station and coherent physical baselines with a conditional graph model,
+and quantifies decision-time gain relative to P-wave, W-phase, and GNSS
+characterization using scenario- and location-specific tsunami arrivals.
+\PEGSPending{Insert registered simulator, station, noise, baseline, and holdout
+results.}
+\end{abstract}
+
+\section{Introduction}
+PEGS theory, empirical-noise graph models, and a simulated real-time tsunami-
+warning implementation already exist. The question addressed here is narrower:
+whether South China and surrounding networks can provide reliable Manila Trench
+decisions at a fixed operational false-alarm rate, and what station/noise
+requirements define the feasible boundary.
+
+\section{Scenario and station data}
+Each source record binds segment, Mw, strike/dip/rake, depth, rupture dimensions,
+slip, rise time, rupture velocity, and publication. Every tsunami arrival is
+nested under that source and has a location and arrival definition. Qualitative
+statements such as ``more than about three hours'' are not converted into exact
+universal arrival times.
+
+Station candidates require a contemporaneous BH/LH three-component epoch, full
+response, waveform availability, licence, latency class, and noise quality.
+Channel metadata or scalar sensitivity alone is insufficient. Noise windows are
+frozen by season, day/night, calm sea, typhoon/microseism, urban/remote setting,
+and outage state before model fitting.
+
+\section{Methods}
+\subsection{PEGS simulation benchmark}
+The selected simulator must reproduce a published event at specified stations
+and components, with predeclared waveform correlation, amplitude, and onset
+tolerances, before Manila scenarios are generated. Earth model, reference frame,
+source-time function, units, sampling, and code commit are recorded.
+
+\subsection{Splits and domain shift}
+Training, validation, and test sets separate rupture segments and noise dates.
+Domain-out sources and stations are retained. Simultaneous station noise windows
+preserve spatial correlation. Synthetic white noise is an ablation, not the
+primary evaluation.
+
+\subsection{Physical baselines}
+Baselines proceed from single-station energy to explicit phase/time-aligned
+multi-station coherent stacking, template/likelihood detection, and rapid source
+parameter inversion. Station weights are explicit and L2-normalized. Fixed 0\%,
+20\%, and 40\% outage masks retain exact station identities.
+
+\subsection{False alarms and detection probability}
+Noise-only scores calibrate a threshold in false alarms per 30-day month. If the
+record is too short to resolve one exceedance at the target rate, the threshold
+is placed above the observed maximum and the resolution limit is reported.
+Held-out detection probability is then evaluated versus time. Earliest reliable
+detection may require multiple consecutive qualifying time points.
+
+\subsection{Reliable magnitude and warning value}
+At every time we report magnitude MAE and bias, sensitivity for the predeclared
+high-risk class (nominally $M_w\geq8.2$), lower-risk specificity, and prediction-
+interval coverage. Reliable magnitude time is the first sustained point meeting
+all criteria.
+
+For location $x$,
+\begin{align}
+ \Delta t_{\mathrm{characterization}} &=
+ t_{\mathrm{conventional,reliable\ Mw}}-t_{\mathrm{PEGS,reliable\ Mw}},\\
+ T_{\mathrm{lead}}(x) &= t_{\mathrm{tsunami\ arrival}}(x)
+ -t_{\mathrm{PEGS,reliable\ Mw}}.
+\end{align}
+Negative characterization gain is retained as a negative result.
+
+\subsection{Network optimization and conditional GNN}
+Existing, idealized, and incrementally augmented networks are compared by
+detection time/probability, false alarms, magnitude error, robustness, and
+station count. A graph model is trained only if held-out real-noise physical
+baselines demonstrate stable information. It must outperform those baselines
+under identical splits and thresholds, not merely fit synthetic waveforms.
+
+\section{Results}
+\PEGSPending{No validated PEGS simulator, frozen station inventory, or empirical
+noise library is present. Do not report the unit-test fixtures as detection or
+warning results.}
+
+\section{Discussion}
+A high-value negative result is an explicit station-count, placement, noise, and
+magnitude boundary. Preceding tsunami arrival alone does not establish decision
+value; the system must characterize hazard reliably and rarely enough to be
+operationally usable.
+
+\section{Data and code availability}
+Station metadata, waveform licences, exact noise dates, simulator/code versions,
+scenario provenance, splits, thresholds, compact metrics and checksums will be
+recorded. Restricted waveforms and large synthetic corpora remain outside Git.
+
+\section{Limitations}
+\PEGSPending{Update after simulator benchmark, station/noise gate, physical
+baselines, network optimization, and conditional graph ablations.}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

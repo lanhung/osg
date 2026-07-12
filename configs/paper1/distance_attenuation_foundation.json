@@ -1,0 +1,12 @@
+{
+  "foundation_config": "configs/paper1/foundation_reference.json",
+  "vertical_standoff_distances_m": [
+    1000.0,
+    3000.0,
+    10000.0,
+    30000.0,
+    100000.0,
+    300000.0,
+    1000000.0
+  ]
+}

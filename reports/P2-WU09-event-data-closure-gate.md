@@ -21,3 +21,13 @@ declarations and every exclusion reason remain in the audit output.
 The default 95% coverage threshold is a pre-analysis engineering default, not a
 claim that short gaps are harmless. Real records still require gap-length,
 timing, spectral and correction-stage sensitivity checks.
+
+The repository manifest is connected to the audit with:
+
+```bash
+python3 scripts/audit_paper2_data_gate.py
+```
+
+A final `go_full_attribution` or `no_go_full_attribution` is emitted only after
+the manifest's `decision_status` is deliberately changed from `draft` to
+`frozen`. The current empty manifest correctly emits `pending_no_event_windows`.

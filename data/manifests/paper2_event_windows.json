@@ -2,8 +2,11 @@
   "schema_version": 1,
   "reviewed_date": "2026-07-12",
   "status": "pending-sg-coverage-intersection",
+  "decision_status": "draft",
   "window_convention": "candidate typhoon time span expanded by seven days before and after",
+  "minimum_gravity_coverage_fraction": 0.95,
   "events": [],
+  "station_data_availability": [],
   "raw_data_gate": [
     "one station with at least three typhoon windows",
     "or two stations with at least two typhoon windows each"

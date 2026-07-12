@@ -127,7 +127,7 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 
 ### 1.4 Six ocean-process models
 
-- [ ] Tides: periodic surface-load parameterization and long-integration detectability.
+- [ ] Tides: periodic surface-load parameterization and long-integration detectability. (Validated finite-disk direct-attraction primitive complete; elastic response, priors and detectability ensemble remain.)
 - [ ] Storm surge/typhoon setup: regional sea-level anomaly with event-duration uncertainty.
 - [ ] Mesoscale eddy: Gaussian lens or 3-D density anomaly with compensation variants.
 - [ ] Internal wave: interface displacement/density dipole with cancellation diagnostics.

@@ -212,7 +212,7 @@ Evidence: component decomposition, double-count audit, closure metrics.
 - [ ] Process at least 3–5 typhoons if the data gate permits.
 - [ ] Add a non-typhoon strong-weather control.
 - [ ] Add 3–5 quiet windows.
-- [ ] Hold out at least one typhoon from all parameter fitting.
+- [ ] Hold out at least one typhoon from all parameter fitting. (The attribution API freezes training event identities and rejects prediction on any training event; real event splits remain unavailable.)
 - [ ] Report correlation, RMSE, peak amplitude/time error, explained variance, coherence, and event SNR.
 - [ ] Report quiet-window false positives and held-out-event performance.
 - [ ] Run station, product, Green-function, hydrology, and filter sensitivity.

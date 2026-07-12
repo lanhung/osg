@@ -44,6 +44,7 @@ class TestPegsSourceInversion(unittest.TestCase):
         self.assertEqual(result.estimated_segment_id, "central")
         self.assertEqual(result.best_chi_square, 0.0)
         self.assertTrue(result.best_beats_null)
+        self.assertTrue(result.best_is_unique)
         self.assertGreater(result.second_best_delta_chi_square, 0.0)
 
     def test_candidate_worse_than_null_is_not_a_detection(self) -> None:
@@ -124,6 +125,22 @@ class TestPegsSourceInversion(unittest.TestCase):
                 sample_interval_s=1.0,
                 window_start_time_since_origin_s=-1.0,
             )
+
+    def test_tied_best_hypotheses_are_not_claimed_as_unique(self) -> None:
+        result = invert_discrete_source_library(
+            {"A": (1.0, -1.0), "B": (0.5, -0.5)},
+            (
+                _hypothesis("north", 8.2, "north", 1.0),
+                _hypothesis("central", 8.2, "central", 1.0),
+            ),
+            {"A": 1.0, "B": 1.0},
+            {"A": "quiet:A", "B": "quiet:B"},
+            source_library_id="fixture-library-v1",
+            sample_interval_s=1.0,
+            window_start_time_since_origin_s=240.0,
+        )
+        self.assertEqual(result.second_best_delta_chi_square, 0.0)
+        self.assertFalse(result.best_is_unique)
 
 
 if __name__ == "__main__":

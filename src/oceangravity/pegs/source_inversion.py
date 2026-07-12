@@ -42,6 +42,7 @@ class DiscreteSourceInversion:
     estimated_magnitude_mw: float
     estimated_segment_id: str
     best_beats_null: bool
+    best_is_unique: bool
     null_chi_square: float
     best_chi_square: float
     second_best_delta_chi_square: float | None
@@ -206,6 +207,7 @@ def invert_discrete_source_library(
         estimated_magnitude_mw=best.magnitude_mw,
         estimated_segment_id=best.segment_id,
         best_beats_null=best.improvement_over_null_chi_square > 0.0,
+        best_is_unique=delta is None or delta > 0.0,
         null_chi_square=null_chi_square,
         best_chi_square=best.chi_square,
         second_best_delta_chi_square=delta,

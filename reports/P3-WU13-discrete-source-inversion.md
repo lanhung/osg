@@ -9,6 +9,10 @@ magnitude and rupture segment, improvement relative to the zero-signal model,
 and delta chi-square to the second-best candidate. A best candidate that does not
 beat the null is explicitly not treated as a detection.
 
+If multiple hypotheses share the minimum chi-square, deterministic scenario-ID
+ordering is retained only for serialization and `best_is_unique=false` prevents
+the selected row from being reported as a uniquely identified source.
+
 All hypotheses use identical stations, observations and masks. Duplicate scenario
 identities, station mismatches, length mismatches and invalid noise scales fail
 closed. Magnitude is discrete: the result cannot claim precision finer than the

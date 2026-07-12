@@ -3,8 +3,8 @@
   "execution_status": "registered_pending_execution",
   "experiment_id": "P3-E002-archive-network-design",
   "paper": "paper3",
-  "registered_utc": "2026-07-12T15:47:04Z",
-  "code_commit": "3d888d9120a8c8abc5334e63563f246e73f4ad1f",
+  "registered_utc": "2026-07-12T15:49:34Z",
+  "code_commit": "781f15d02d1b5bc44f164c65bfda2e5c51e1833a",
   "config_file": "configs/paper3/archive_network_design.json",
   "config_file_sha256": "91334f698cdfa0be45ae6a1b11ecfb98b0bfbdd46af24a16656265d8e829d46e",
   "runner": "scripts/run_p3_archive_network_design.py",
@@ -19,7 +19,7 @@
   "machine": "autodl-container-7fb444a9ae-9b4ed319",
   "planned_output": "experiments/paper3/P3-E002-archive-network-design/metrics.json",
   "result_class": "open_archive_network_design_not_pegs_detectability",
-  "registration_note": "Committed before execution. Archive and response readiness cannot be represented as real-time operation or PEGS detectability.",
+  "registration_note": "Corrected exact network/station/band/location/component response match committed before rerun. Archive readiness cannot be represented as real-time operation or PEGS detectability.",
   "failed_attempts": [
     {
       "code_commit": "3d888d9120a8c8abc5334e63563f246e73f4ad1f",

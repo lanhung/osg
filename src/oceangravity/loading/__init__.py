@@ -6,6 +6,7 @@ from .surface_grid import (
     surface_load_gravity_planar,
 )
 from .spherical_grid import SphericalSurfaceLoadResult, surface_load_gravity_spherical
+from .ellipsoidal_grid import EllipsoidalSurfaceLoadResult, surface_load_gravity_wgs84
 from .green_functions import (
     LoadGreenFunctionMetadata,
     LoadGreenFunctionProvider,
@@ -18,6 +19,7 @@ from .green_functions import (
 __all__ = [
     "SurfaceLoadResult",
     "SphericalSurfaceLoadResult",
+    "EllipsoidalSurfaceLoadResult",
     "LoadGreenFunctionMetadata",
     "LoadGreenFunctionProvider",
     "LoadGreenFunctionSample",
@@ -27,4 +29,5 @@ __all__ = [
     "sea_level_to_surface_density",
     "surface_load_gravity_planar",
     "surface_load_gravity_spherical",
+    "surface_load_gravity_wgs84",
 ]

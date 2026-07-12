@@ -99,7 +99,7 @@ Evidence: physics APIs, tests, convergence tables, analytic validation report.
 
 ### 1.2 Gridded ocean loads and elastic response
 
-- [ ] Define grid-cell area, coastline, missing-value, longitude-wrap, and Earth-shape conventions. (Planar and spherical-reference conventions complete; ellipsoid/topography sensitivity remains.)
+- [ ] Define grid-cell area, coastline, missing-value, longitude-wrap, and Earth-shape conventions. (Planar, spherical, WGS 84 ellipsoid and scalar load-height conventions complete; coastline partial cells, geoid/bathymetry and within-cell sensitivity remain.)
 - [x] Convert sea-surface height anomaly to surface mass density without treating wave height as mean load.
 - [x] Implement gridded direct-attraction integration with chunking and deterministic summation.
 - [x] Add planar and spherical geometry comparison and validity limits.

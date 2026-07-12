@@ -46,6 +46,20 @@ MEAN_EARTH_RADIUS = PhysicalConstant(
     source="IUGG conventional mean Earth radius",
 )
 
+WGS84_SEMI_MAJOR_AXIS = PhysicalConstant(
+    value=6_378_137.0,
+    unit="m",
+    source="WGS 84 defining parameter",
+    standard_uncertainty=0.0,
+)
+
+WGS84_INVERSE_FLATTENING = PhysicalConstant(
+    value=298.257223563,
+    unit="1",
+    source="WGS 84 defining parameter",
+    standard_uncertainty=0.0,
+)
+
 # Exact scale factors expressed in m s^-2.
 GAL = 1.0e-2
 MICROGAL = 1.0e-8

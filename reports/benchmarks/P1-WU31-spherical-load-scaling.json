@@ -1,0 +1,37 @@
+{
+  "benchmark_id": "P1-WU31-spherical-load-scaling",
+  "cases": [
+    {
+      "chunk_size_cells": null,
+      "elapsed_seconds": 2.2096373895183206,
+      "included_cells": 16200,
+      "integrator_peak_traced_bytes": 2633944,
+      "maximum_relative_gravity_difference_from_unchunked": 0.0
+    },
+    {
+      "chunk_size_cells": 256,
+      "elapsed_seconds": 1.9279552455991507,
+      "included_cells": 16200,
+      "integrator_peak_traced_bytes": 58080,
+      "maximum_relative_gravity_difference_from_unchunked": 0.0
+    },
+    {
+      "chunk_size_cells": 4096,
+      "elapsed_seconds": 2.018471632152796,
+      "included_cells": 16200,
+      "integrator_peak_traced_bytes": 663304,
+      "maximum_relative_gravity_difference_from_unchunked": 0.0
+    }
+  ],
+  "environment": {
+    "platform": "Linux-7.0.0-15-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4"
+  },
+  "grid": {
+    "latitude_cells": 90,
+    "longitude_cells": 180,
+    "total_cells": 16200
+  },
+  "measurement_scope": "kernel wall time and tracemalloc Python allocation peak; input allocation and I/O excluded",
+  "schema_version": 1
+}

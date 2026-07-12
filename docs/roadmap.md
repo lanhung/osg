@@ -101,7 +101,7 @@ Evidence: physics APIs, tests, convergence tables, analytic validation report.
 
 - [ ] Define grid-cell area, coastline, missing-value, longitude-wrap, and Earth-shape conventions. (Planar and spherical-reference conventions complete; ellipsoid/topography sensitivity remains.)
 - [x] Convert sea-surface height anomaly to surface mass density without treating wave height as mean load.
-- [ ] Implement gridded direct-attraction integration with chunking and deterministic summation. (Local planar deterministic reference complete; optimized spherical/chunked path remains.)
+- [x] Implement gridded direct-attraction integration with chunking and deterministic summation.
 - [x] Add planar and spherical geometry comparison and validity limits.
 - [x] Define a load Green-function provider interface with provenance/version metadata.
 - [ ] Integrate a mature elastic-load Green-function dataset or library.
@@ -140,6 +140,8 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 Foundation milestone: registered experiment `P1-E001-foundation` runs all six direct-gravity primitives under explicitly non-scientific engineering fixture parameters; it is infrastructure evidence, not an atlas result.
 
 Coverage milestone: registered experiment `P1-E002-detectability-foundation` applies the 90% energy-coverage gate to three vertical-gravity literature anchors. It classifies only the engineering landslide/iGrav pair; all long-period processes remain unknown/partial rather than extrapolated.
+
+Gradient coverage milestone: registered experiment `P1-E003-gradient-detectability-foundation` applies the same gate to all six `Tzz` fixtures and only the two gradient-instrument anchors; vertical-gravity curves are explicitly excluded.
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.
 

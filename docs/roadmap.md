@@ -138,6 +138,8 @@ Evidence: PSD/SNR tests, instrument manifests, curve plots and provenance.
 
 Foundation milestone: registered experiment `P1-E001-foundation` runs all six direct-gravity primitives under explicitly non-scientific engineering fixture parameters; it is infrastructure evidence, not an atlas result.
 
+Coverage milestone: registered experiment `P1-E002-detectability-foundation` applies the 90% energy-coverage gate to three vertical-gravity literature anchors. It classifies only the engineering landslide/iGrav pair; all long-period processes remain unknown/partial rather than extrapolated.
+
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.
 
 ### 1.5 Published-case reproduction

@@ -1,0 +1,204 @@
+{
+  "config_sha256": "527616013c729a04b9a33dc3e149719a93dc37989c27269b5229c75b6416fa0f",
+  "excluded_instrument_curves": {
+    "goce_egg_conservative_design_anchor": "observable 'gravity_gradient' does not match vertical_gravity signal",
+    "mcguirk_atom_gradiometer_anchor": "observable 'gravity_gradient' does not match vertical_gravity signal"
+  },
+  "experiment_id": "P1-E002-detectability-foundation",
+  "matrix": {
+    "eddy_surface": {
+      "aqg_a01_field_short_term_anchor": {
+        "covered_bin_count": 0,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "aqg_a01_field_short_term_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      },
+      "fg5_228_short_term_anchor": {
+        "covered_bin_count": 0,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "fg5_228_short_term_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "covered_bin_count": 0,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      }
+    },
+    "internal_wave_dipole": {
+      "aqg_a01_field_short_term_anchor": {
+        "covered_bin_count": 29,
+        "covered_maximum_frequency_hz": 0.008888888888888889,
+        "covered_minimum_frequency_hz": 0.0011111111111111111,
+        "instrument_id": "aqg_a01_field_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 4.281990282815054e-15,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 1.5276172187730775e-29,
+        "status": "partial_band_not_classified"
+      },
+      "fg5_228_short_term_anchor": {
+        "covered_bin_count": 29,
+        "covered_maximum_frequency_hz": 0.008888888888888889,
+        "covered_minimum_frequency_hz": 0.0011111111111111111,
+        "instrument_id": "fg5_228_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 7.136650471358425e-15,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 1.5276172187730775e-29,
+        "status": "partial_band_not_classified"
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "covered_bin_count": 29,
+        "covered_maximum_frequency_hz": 0.008888888888888889,
+        "covered_minimum_frequency_hz": 0.0011111111111111111,
+        "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+        "matched_filter_snr_in_covered_band": 3.2114927121112906e-12,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 1.5276172187730775e-29,
+        "status": "partial_band_not_classified"
+      }
+    },
+    "storm_surge": {
+      "aqg_a01_field_short_term_anchor": {
+        "covered_bin_count": 101,
+        "covered_maximum_frequency_hz": 0.0016633663366336633,
+        "covered_minimum_frequency_hz": 0.0010033003300330033,
+        "instrument_id": "aqg_a01_field_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 0.001256733579113202,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 9.664002073447226e-11,
+        "status": "partial_band_not_classified"
+      },
+      "fg5_228_short_term_anchor": {
+        "covered_bin_count": 101,
+        "covered_maximum_frequency_hz": 0.0016633663366336633,
+        "covered_minimum_frequency_hz": 0.0010033003300330033,
+        "instrument_id": "fg5_228_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 0.0020945559651886704,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 9.664002073447226e-11,
+        "status": "partial_band_not_classified"
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "covered_bin_count": 101,
+        "covered_maximum_frequency_hz": 0.0016633663366336633,
+        "covered_minimum_frequency_hz": 0.0010033003300330033,
+        "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+        "matched_filter_snr_in_covered_band": 0.9425501843349016,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 9.664002073447226e-11,
+        "status": "partial_band_not_classified"
+      }
+    },
+    "submarine_landslide": {
+      "aqg_a01_field_short_term_anchor": {
+        "covered_bin_count": 4,
+        "covered_maximum_frequency_hz": 0.04371584699453552,
+        "covered_minimum_frequency_hz": 0.01092896174863388,
+        "instrument_id": "aqg_a01_field_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 19.0603421573057,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.8861134123516177,
+        "status": "partial_band_not_classified"
+      },
+      "fg5_228_short_term_anchor": {
+        "covered_bin_count": 1,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "fg5_228_short_term_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "covered_bin_count": 9,
+        "covered_maximum_frequency_hz": 0.09836065573770492,
+        "covered_minimum_frequency_hz": 0.01092896174863388,
+        "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+        "matched_filter_snr_in_covered_band": 14833.731042260915,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.954127029201489,
+        "status": "detectable_under_curve_model"
+      }
+    },
+    "tide": {
+      "aqg_a01_field_short_term_anchor": {
+        "covered_bin_count": 0,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "aqg_a01_field_short_term_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      },
+      "fg5_228_short_term_anchor": {
+        "covered_bin_count": 0,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "fg5_228_short_term_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "covered_bin_count": 0,
+        "covered_maximum_frequency_hz": null,
+        "covered_minimum_frequency_hz": null,
+        "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+        "matched_filter_snr_in_covered_band": null,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.0,
+        "status": "no_frequency_coverage"
+      }
+    },
+    "tsunami_packet": {
+      "aqg_a01_field_short_term_anchor": {
+        "covered_bin_count": 23,
+        "covered_maximum_frequency_hz": 0.019401508161749625,
+        "covered_minimum_frequency_hz": 0.0016167923468124686,
+        "instrument_id": "aqg_a01_field_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 3.2067419748018477,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.20363034737275398,
+        "status": "partial_band_not_classified"
+      },
+      "fg5_228_short_term_anchor": {
+        "covered_bin_count": 16,
+        "covered_maximum_frequency_hz": 0.013742734947905984,
+        "covered_minimum_frequency_hz": 0.0016167923468124686,
+        "instrument_id": "fg5_228_short_term_anchor",
+        "matched_filter_snr_in_covered_band": 5.344462626312321,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.203622168690396,
+        "status": "partial_band_not_classified"
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "covered_bin_count": 23,
+        "covered_maximum_frequency_hz": 0.019401508161749625,
+        "covered_minimum_frequency_hz": 0.0016167923468124686,
+        "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+        "matched_filter_snr_in_covered_band": 2405.056481101386,
+        "required_expected_snr": 4.371783871712414,
+        "signal_energy_coverage_fraction": 0.20363034737275398,
+        "status": "partial_band_not_classified"
+      }
+    }
+  },
+  "result_class": "engineering_reference_not_cited_physical_prior",
+  "schema_version": 1
+}

@@ -1,0 +1,25 @@
+{
+  "code_commit": "38a20c820016ae8b4c52f81cd11926aa7625daa1",
+  "config_file": "configs/paper1/detectability_foundation.json",
+  "config_file_sha256": "efb71826ef6d2e3717cfba0ce7ab147eda57bfa46657d13031bac118902c4cf7",
+  "data_manifest": "data/manifests/instrument_noise_curves.json",
+  "docker_image": null,
+  "environment": {
+    "python": "3.14.4",
+    "third_party_runtime_dependencies": []
+  },
+  "experiment_id": "P1-E002-detectability-foundation",
+  "machine": "control-plane-host-unverified-identity",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E002-detectability-foundation/metrics.json",
+      "sha256": "5b9deb990bb877d1e9ff8faeba3f2d760821a0ab3c5b9aff43f7cdbfc389eb52"
+    }
+  ],
+  "paper": "paper1",
+  "random_seed": null,
+  "result_class": "engineering_reference_not_cited_physical_prior",
+  "runner": "scripts/run_p1_detectability_foundation.py",
+  "schema_version": 1
+}
+

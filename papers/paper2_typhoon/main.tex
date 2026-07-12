@@ -31,9 +31,10 @@ budget, independent evidence, and cross-event generalization.
 
 \section{Data and preregistered event design}
 The raw-data gate requires either one station covering at least three typhoons or
-two stations covering at least two typhoons each, including gravity, colocated
-pressure, calibration/timing/jump/maintenance records, sea-level fields, storm
-tracks, precipitation, and hydrology. Evaluation additionally requires one
+two stations covering at least two typhoons each. Required inputs include
+gravity, colocated pressure, calibration and maintenance logs, timing and jump
+records, sea-level fields, storm tracks, precipitation, and hydrology.
+Evaluation additionally requires one
 held-out typhoon, one non-typhoon strong-weather control, three quiet windows,
 and no overlapping same-station windows across splits.
 
@@ -80,11 +81,11 @@ second ERA5-driven inverse-barometer correction. Likewise, a pre-corrected NTOL
 residual cannot receive NTOL again. Unknown product physics blocks assembly.
 
 \subsection{Evaluation}
-Primary metrics are correlation, RMSE, peak amplitude and time error, explained
-variance, frequency-domain coherence, event SNR, and held-out performance.
-Quiet/control windows estimate false positives. Model, filter, hydrology,
-Green-function, station, and event sensitivities are retained, including failed
-events.
+Primary metrics are correlation, RMSE, peak amplitude and timing error,
+explained variance, spectral coherence, event SNR, and held-out performance.
+Quiet and control windows estimate false positives. Sensitivity tests cover the
+model, filters, hydrology, Green functions, stations, and events; failed events
+are retained.
 
 \section{Results}
 A registered non-restricted readiness audit connects 17 completed processing

@@ -1,0 +1,235 @@
+{
+  "config_sha256": "3c9051b4f9dfddf32d0254030318ac60ee06ae005e0c57d06fa0c6a1e22272d3",
+  "distance_definition": {
+    "internal_wave": "vertical distance above dipole centre",
+    "landslide": "vertical distance above source-destination midpoint",
+    "tide_storm_eddy_tsunami": "vertical distance above load/reference plane"
+  },
+  "experiment_id": "P1-E004-distance-attenuation-foundation",
+  "processes": {
+    "eddy_surface": [
+      {
+        "peak_absolute_direct_Tzz_s2": 7.209896087373817e-11,
+        "peak_absolute_direct_gravity_m_s2": 1.7054085996168133e-07,
+        "vertical_standoff_m": 1000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 2.3465839211729304e-11,
+        "peak_absolute_direct_gravity_m_s2": 1.5370616366930081e-07,
+        "vertical_standoff_m": 3000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.298350312798625e-12,
+        "peak_absolute_direct_gravity_m_s2": 1.1244394496922926e-07,
+        "vertical_standoff_m": 10000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.4091937307164967e-12,
+        "peak_absolute_direct_gravity_m_s2": 6.626185189834015e-08,
+        "vertical_standoff_m": 30000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 2.772647164712212e-13,
+        "peak_absolute_direct_gravity_m_s2": 2.0364083525504686e-08,
+        "vertical_standoff_m": 100000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 2.062656775597064e-14,
+        "peak_absolute_direct_gravity_m_s2": 3.3278592743450466e-09,
+        "vertical_standoff_m": 300000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 6.369581412258261e-16,
+        "peak_absolute_direct_gravity_m_s2": 3.2083799431672236e-10,
+        "vertical_standoff_m": 1000000.0
+      }
+    ],
+    "internal_wave_dipole": [
+      {
+        "peak_absolute_direct_Tzz_s2": 5.925658098569124e-12,
+        "peak_absolute_direct_gravity_m_s2": 2.1033189005797167e-08,
+        "vertical_standoff_m": 1000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 6.567499966880301e-12,
+        "peak_absolute_direct_gravity_m_s2": 6.212699248646772e-09,
+        "vertical_standoff_m": 3000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 3.1520627653538353e-13,
+        "peak_absolute_direct_gravity_m_s2": 3.1606616799116887e-09,
+        "vertical_standoff_m": 10000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 3.649094576253344e-14,
+        "peak_absolute_direct_gravity_m_s2": 4.815878224972626e-10,
+        "vertical_standoff_m": 30000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 5.709596437067407e-16,
+        "peak_absolute_direct_gravity_m_s2": 1.9745426708724354e-11,
+        "vertical_standoff_m": 100000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 7.653707704261225e-18,
+        "peak_absolute_direct_gravity_m_s2": 7.686744366898222e-13,
+        "vertical_standoff_m": 300000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 6.260605659220803e-20,
+        "peak_absolute_direct_gravity_m_s2": 2.0876827453003118e-14,
+        "vertical_standoff_m": 1000000.0
+      }
+    ],
+    "storm_surge": [
+      {
+        "peak_absolute_direct_Tzz_s2": 1.0743546954850264e-11,
+        "peak_absolute_direct_gravity_m_s2": 8.489399801279665e-07,
+        "vertical_standoff_m": 1000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.0723437370927776e-11,
+        "peak_absolute_direct_gravity_m_s2": 8.274696541478366e-07,
+        "vertical_standoff_m": 3000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.0499035207577822e-11,
+        "peak_absolute_direct_gravity_m_s2": 7.530543794350663e-07,
+        "vertical_standoff_m": 10000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 8.821351689637643e-12,
+        "peak_absolute_direct_gravity_m_s2": 5.578295776322403e-07,
+        "vertical_standoff_m": 30000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 2.6197126365626604e-12,
+        "peak_absolute_direct_gravity_m_s2": 1.8838384264284672e-07,
+        "vertical_standoff_m": 100000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.8382470436858836e-13,
+        "peak_absolute_direct_gravity_m_s2": 2.90273228964699e-08,
+        "vertical_standoff_m": 300000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 5.449585677806438e-15,
+        "peak_absolute_direct_gravity_m_s2": 2.7378579269661294e-09,
+        "vertical_standoff_m": 1000000.0
+      }
+    ],
+    "submarine_landslide": [
+      {
+        "peak_absolute_direct_Tzz_s2": 1.5315237828772817e-08,
+        "peak_absolute_direct_gravity_m_s2": 2.0452547288138833e-06,
+        "vertical_standoff_m": 1000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.392867995403983e-09,
+        "peak_absolute_direct_gravity_m_s2": 2.5023424556986558e-06,
+        "vertical_standoff_m": 3000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 3.605868988026559e-11,
+        "peak_absolute_direct_gravity_m_s2": 1.254079271404935e-07,
+        "vertical_standoff_m": 10000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.886991828483083e-13,
+        "peak_absolute_direct_gravity_m_s2": 4.9097162972518905e-09,
+        "vertical_standoff_m": 30000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.000410452004725e-15,
+        "peak_absolute_direct_gravity_m_s2": 1.334025982444146e-10,
+        "vertical_standoff_m": 100000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.9433537410825044e-17,
+        "peak_absolute_direct_gravity_m_s2": 4.943582610081785e-12,
+        "vertical_standoff_m": 300000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.0045382858137697e-19,
+        "peak_absolute_direct_gravity_m_s2": 1.3348516571521116e-13,
+        "vertical_standoff_m": 1000000.0
+      }
+    ],
+    "tide": [
+      {
+        "peak_absolute_direct_Tzz_s2": 4.297781345491908e-12,
+        "peak_absolute_direct_gravity_m_s2": 4.2554439175738783e-07,
+        "vertical_standoff_m": 1000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.292629675058068e-12,
+        "peak_absolute_direct_gravity_m_s2": 4.1695312375571743e-07,
+        "vertical_standoff_m": 3000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.234746295081907e-12,
+        "peak_absolute_direct_gravity_m_s2": 3.87071665300687e-07,
+        "vertical_standoff_m": 10000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 3.7771976472230504e-12,
+        "peak_absolute_direct_gravity_m_s2": 3.063282398168205e-07,
+        "vertical_standoff_m": 30000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.5197230967002072e-12,
+        "peak_absolute_direct_gravity_m_s2": 1.2589798354097286e-07,
+        "vertical_standoff_m": 100000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.3592816604792599e-13,
+        "peak_absolute_direct_gravity_m_s2": 2.205810473723637e-08,
+        "vertical_standoff_m": 300000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.234746295081908e-15,
+        "peak_absolute_direct_gravity_m_s2": 2.1332270777416496e-09,
+        "vertical_standoff_m": 1000000.0
+      }
+    ],
+    "tsunami_packet": [
+      {
+        "peak_absolute_direct_Tzz_s2": 2.1248236137339283e-10,
+        "peak_absolute_direct_gravity_m_s2": 3.275830334573436e-07,
+        "vertical_standoff_m": 1000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 3.5760163452001373e-11,
+        "peak_absolute_direct_gravity_m_s2": 4.103238734692011e-07,
+        "vertical_standoff_m": 3000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.428006948690737e-11,
+        "peak_absolute_direct_gravity_m_s2": 2.415402228443596e-07,
+        "vertical_standoff_m": 10000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 3.966296837584436e-12,
+        "peak_absolute_direct_gravity_m_s2": 8.788329942997202e-08,
+        "vertical_standoff_m": 30000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 2.229968504057936e-13,
+        "peak_absolute_direct_gravity_m_s2": 8.668453487244467e-09,
+        "vertical_standoff_m": 100000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 4.34178508073437e-15,
+        "peak_absolute_direct_gravity_m_s2": 4.00545382619775e-10,
+        "vertical_standoff_m": 300000.0
+      },
+      {
+        "peak_absolute_direct_Tzz_s2": 1.8609712755496638e-17,
+        "peak_absolute_direct_gravity_m_s2": 4.7540574396939736e-12,
+        "vertical_standoff_m": 1000000.0
+      }
+    ]
+  },
+  "result_class": "engineering_reference_not_cited_physical_prior",
+  "schema_version": 1
+}

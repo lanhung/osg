@@ -1,0 +1,24 @@
+{
+  "code_commit": "27463308004eb66cd26d32501f7c4a7561519876",
+  "config_file": "configs/paper1/distance_attenuation_foundation.json",
+  "config_file_sha256": "9d533b0159245855b7b896f6d8c7eebee575c4718e46d4570e55e5ab5bf1bafb",
+  "data_manifest": null,
+  "docker_image": null,
+  "environment": {
+    "python": "3.14.4",
+    "third_party_runtime_dependencies": []
+  },
+  "experiment_id": "P1-E004-distance-attenuation-foundation",
+  "machine": "control-plane-host-unverified-identity",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E004-distance-attenuation-foundation/metrics.json",
+      "sha256": "1f1014525a47a754a296ee2e0393ed9b78dd079bf6cd3742fec2508499c12ece"
+    }
+  ],
+  "paper": "paper1",
+  "random_seed": null,
+  "result_class": "engineering_reference_not_cited_physical_prior",
+  "runner": "scripts/run_p1_distance_attenuation_foundation.py",
+  "schema_version": 1
+}

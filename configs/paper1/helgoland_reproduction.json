@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "case_id": "helgoland-ntol-2022-voigt-2024",
+  "status": "targets-frozen-inputs-pending",
+  "primary_source": "https://doi.org/10.1029/2024GL109262",
+  "open_version": "https://refubium.fu-berlin.de/handle/fub188/44510",
+  "event": {
+    "peak_time_utc": "2022-01-30T05:00:00Z",
+    "local_sea_level_above_mean_high_water_m": 2.0,
+    "storm_name": "NADIA"
+  },
+  "analysis_window": {
+    "start_utc": "2022-01-26T00:00:00Z",
+    "end_utc": "2022-02-25T00:00:00Z",
+    "paper_description": "one month with several storm surges"
+  },
+  "targets": [
+    {
+      "target_id": "event_gravity_peak_to_peak_m_s2",
+      "expected_value": 8.5e-08,
+      "source_reported_value": "85 nm/s^2 peak-to-peak",
+      "unit": "m/s^2",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.30,
+      "source": "Voigt et al. 2024 section 3.3"
+    },
+    {
+      "target_id": "event_vertical_displacement_m",
+      "expected_value": -0.034,
+      "source_reported_value": "-34 mm",
+      "unit": "m",
+      "tolerance_kind": "fractional",
+      "tolerance": 0.30,
+      "source": "Voigt et al. 2024 section 3.3"
+    },
+    {
+      "target_id": "month_bsh_gravity_correlation",
+      "expected_value": 0.87,
+      "source_reported_value": "0.87",
+      "unit": "dimensionless",
+      "tolerance_kind": "absolute",
+      "tolerance": 0.05,
+      "source": "Voigt et al. 2024 Table 1"
+    },
+    {
+      "target_id": "month_bsh_gravity_rms_reduction_fraction",
+      "expected_value": 0.49,
+      "source_reported_value": "49 percent",
+      "unit": "fraction",
+      "tolerance_kind": "absolute",
+      "tolerance": 0.05,
+      "source": "Voigt et al. 2024 Table 1"
+    }
+  ],
+  "method_contract": {
+    "observation_sampling": "one-hour height-independent gravity residuals",
+    "local_newtonian_attraction": "empirically reduced using HELBH local tide-gauge measurements before NTOL comparison",
+    "solid_earth_tide_and_otl": "local tidal analysis using three years of iGrav data with ET34-X-V80",
+    "atmosphere": "ATMACS without its later NTOL term",
+    "earth_rotation": "IERS Earth orientation parameters",
+    "ocean_model": "BSH-HBMnoku hourly SSH snapshots conservatively remapped to 1/8 degree",
+    "elastic_loading": "SPOTL NLOADF with Gutenberg-Bullen Earth model",
+    "model_detiding": "three-year ET34-X-V80 analysis using the observation wave grouping",
+    "station_height_for_loading": "H0 = 0 m"
+  },
+  "rounding_policy": "Use Table 1 value 49 percent for the registered monthly target; 50 percent is narrative rounding. Use 85 nm/s^2, not outreach-page almost-90 wording."
+}

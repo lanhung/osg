@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "case_id": "helgoland-ntol-2022-voigt-2024",
+  "status": "pending-registered-data-access",
+  "inputs": [
+    {
+      "id": "igrav047-level1",
+      "role": "raw gravity and colocated pressure",
+      "doi": "10.5880/igets.he.l1.001",
+      "sampling": ["1 second", "1 minute"],
+      "license": "CC BY 4.0",
+      "access": "IGETS registration and authenticated SFTP required",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "helbh-tide-gauge",
+      "role": "local attraction transfer and non-tidal sea level",
+      "source": "BSH / paper data availability statement",
+      "access": "pending exact product and license audit",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "bsh-hbmnoku",
+      "role": "regional high-resolution sea-surface height model",
+      "source": "BSH",
+      "access": "pending exact archive/product authorization",
+      "local_path": null,
+      "sha256": null
+    },
+    {
+      "id": "helg-hel2-gnss",
+      "role": "independent vertical-displacement validation",
+      "source": "BKG / GFZ data products cited by the paper",
+      "access": "pending exact series and license audit",
+      "local_path": null,
+      "sha256": null
+    }
+  ],
+  "observed_reproduction_values": {}
+}

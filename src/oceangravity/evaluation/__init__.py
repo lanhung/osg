@@ -35,6 +35,12 @@ from .events import (
     audit_event_data_gate,
     audit_event_design,
 )
+from .case_reproduction import (
+    CaseReproductionAudit,
+    CaseTarget,
+    CaseTargetResult,
+    evaluate_case_reproduction,
+)
 
 __all__ = [
     "gaussian_detection_probability",
@@ -46,12 +52,16 @@ __all__ = [
     "EventDataGateAudit",
     "EventStationData",
     "EventWindow",
+    "CaseReproductionAudit",
+    "CaseTarget",
+    "CaseTargetResult",
     "evaluate_gravity_signal_against_curve",
     "evaluate_gradient_signal_against_curve",
     "gaussian_threshold_for_false_alarm",
     "calibrate_empirical_threshold",
     "audit_event_design",
     "audit_event_data_gate",
+    "evaluate_case_reproduction",
     "empirical_detection_probability",
     "earliest_reliable_detection_time",
     "earliest_reliable_magnitude_time",

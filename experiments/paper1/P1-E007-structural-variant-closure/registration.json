@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "execution_status": "registered_pending_execution",
+  "experiment_id": "P1-E007-structural-variant-closure",
+  "paper": "paper1",
+  "registered_utc": "2026-07-12T15:18:36Z",
+  "code_commit": "ae6d7f125c970dee4fb41390d39fd20b2c19f3f3",
+  "config_file": "configs/paper1/structural_variant_closure.json",
+  "config_file_sha256": "b8f4e895b271ff0afc510ed26adec34c7019b57a86d0dbe19404ef1482e0a41b",
+  "runner": "scripts/run_p1_structural_variant_closure.py",
+  "data_manifest": "data/manifests/process_parameter_evidence.json",
+  "random_seeds": [],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "planned_output": "experiments/paper1/P1-E007-structural-variant-closure/metrics.json",
+  "result_class": "structural_sensitivity_closure_not_probability",
+  "registration_note": "Committed before execution. Every E006 structural branch must be implemented from registered evidence or explicitly excluded; no surrogate physical parameter may be invented."
+}

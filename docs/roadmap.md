@@ -206,6 +206,8 @@ Foundation milestone: registered experiment `P1-E001-foundation` runs all six di
 
 Coverage milestone: registered experiment `P1-E002-detectability-foundation` applies the 90% energy-coverage gate to three vertical-gravity literature anchors. It classifies only the engineering landslide/iGrav pair; all long-period processes remain unknown/partial rather than extrapolated.
 
+Production primary-branch milestone: registered experiment `P1-E006-evidence-bounded-atlas` evaluates 1,446 evidence-bounded process--distance--parameter records on spherical/coastal or case-specific geometry. All six process families remain frequency-coverage-limited under the three admitted vertical-gravity literature anchors; no curve is extrapolated and no partial-band record is labelled detectable or undetectable. Structural model variants listed in the experiment disposition remain to be completed before the final sensitivity panel.
+
 Gradient coverage milestone: registered experiment `P1-E003-gradient-detectability-foundation` applies the same gate to all six `Tzz` fixtures and only the two gradient-instrument anchors; vertical-gravity curves are explicitly excluded.
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.

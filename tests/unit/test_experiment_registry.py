@@ -23,6 +23,7 @@ class TestExperimentRegistry(unittest.TestCase):
                 "P1-E003-gradient-detectability-foundation",
                 "P1-E004-distance-attenuation-foundation",
                 "P1-E005-helgoland-bsh-model",
+                "P1-E006-evidence-bounded-atlas",
                 "P3-E001-physical-baseline-foundation",
             ],
         )

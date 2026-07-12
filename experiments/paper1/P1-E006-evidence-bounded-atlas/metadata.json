@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E006-evidence-bounded-atlas",
+  "paper": "paper1",
+  "code_commit": "2d4532a6e6726f3ca9b611061160a65c88a9d4c7",
+  "config_file": "configs/paper1/evidence_bounded_atlas.json",
+  "config_file_sha256": "b2a9dde4f25ba28e69c990c842644d8f0c0df983554bd722b7b9a9f2c3642adf",
+  "data_manifest": "data/manifests/process_parameter_evidence.json",
+  "runner": "scripts/run_p1_evidence_bounded_atlas.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E006-evidence-bounded-atlas/metrics.json",
+      "sha256": "6d8235af08f52bb2c295f9bd53014f3194855d8936adbc4dd47a26c4af4483e5"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "registered_design_seeds": [1201, 1202, 1203, 1204, 1205, 1206],
+  "utc_start_time": "2026-07-12T14:50:23Z",
+  "result_class": "evidence_bounded_sensitivity_design_not_probability"
+}

@@ -50,10 +50,10 @@ class TestPegsEnergyBaseline(unittest.TestCase):
         )
         self.assertGreater(result.quiet_false_positive_audit.threshold.threshold, 1.2)
         self.assertEqual(tuple(row.event_id for row in result.heldout_events), ("event-a", "event-b"))
-        self.assertEqual(result.heldout_events[0].detection_probability, 1.0)
-        self.assertEqual(result.heldout_events[0].earliest_trigger_index, 0)
-        self.assertEqual(result.heldout_events[1].detection_probability, 2.0 / 3.0)
-        self.assertEqual(result.heldout_events[1].earliest_trigger_index, 1)
+        self.assertEqual(result.heldout_events[0].triggered_score_fraction, 1.0)
+        self.assertEqual(result.heldout_events[0].earliest_trigger_score_index, 0)
+        self.assertEqual(result.heldout_events[1].triggered_score_fraction, 2.0 / 3.0)
+        self.assertEqual(result.heldout_events[1].earliest_trigger_score_index, 1)
 
     def test_invalid_masks_and_identity_leakage_fail(self) -> None:
         with self.assertRaisesRegex(ValueError, "at least one"):

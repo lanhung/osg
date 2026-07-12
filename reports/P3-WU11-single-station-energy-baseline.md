@@ -12,8 +12,11 @@ decision step are distinct and recorded.
 The operational threshold is calibrated only on declared calibration quiet
 windows. The same threshold is then applied without refitting to held-out quiet
 windows and held-out event score sequences. Outputs include false alarms per
-30-day month, rate resolution, event-level detection probability and the first
-trigger index. Quiet and event identities cannot overlap.
+30-day month, rate resolution, the fraction of an event's score windows that
+trigger, and the first triggering score index. Quiet and event identities cannot
+overlap. The within-event trigger fraction is deliberately not called detection
+probability; that probability must be estimated across independent held-out
+events or noise realizations at each decision time.
 
 RMS is intentionally a lower-bound baseline, not a PEGS detection claim. All
 windows compared in a real experiment must share response-corrected units,

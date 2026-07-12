@@ -28,8 +28,8 @@ class WindowEnergyScores:
 class HeldoutEnergyEventResult:
     event_id: str
     score_count: int
-    detection_probability: float
-    earliest_trigger_index: int | None
+    triggered_score_fraction: float
+    earliest_trigger_score_index: int | None
 
 
 @dataclass(frozen=True, slots=True)
@@ -136,8 +136,8 @@ def audit_single_station_energy_baseline(
             HeldoutEnergyEventResult(
                 event_id=event_id,
                 score_count=len(scores),
-                detection_probability=empirical_detection_probability(scores, threshold),
-                earliest_trigger_index=earliest,
+                triggered_score_fraction=empirical_detection_probability(scores, threshold),
+                earliest_trigger_score_index=earliest,
             )
         )
     return SingleStationEnergyAudit(audit, tuple(results))

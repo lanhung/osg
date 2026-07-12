@@ -22,18 +22,25 @@ from .time_dependent import (
     earliest_reliable_detection_time,
     time_dependent_detection_probability,
 )
+from .magnitude import (
+    MagnitudePerformancePoint,
+    earliest_reliable_magnitude_time,
+    time_dependent_magnitude_performance,
+)
 
 __all__ = [
     "gaussian_detection_probability",
     "CurveDetectabilityResult",
     "EmpiricalThreshold",
     "DetectionProbabilityPoint",
+    "MagnitudePerformancePoint",
     "evaluate_gravity_signal_against_curve",
     "evaluate_gradient_signal_against_curve",
     "gaussian_threshold_for_false_alarm",
     "calibrate_empirical_threshold",
     "empirical_detection_probability",
     "earliest_reliable_detection_time",
+    "earliest_reliable_magnitude_time",
     "latin_hypercube",
     "ParameterRange",
     "ParameterDesign",
@@ -43,4 +50,5 @@ __all__ = [
     "summarize_ensemble",
     "sample_parameter_design",
     "time_dependent_detection_probability",
+    "time_dependent_magnitude_performance",
 ]

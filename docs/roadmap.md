@@ -66,7 +66,7 @@ Evidence: completed data manifest, correspondence/access log, event-station matr
 ### 0.4 Paper 3 data Go/No-Go
 
 - [ ] Inventory stations in South China, Hong Kong, Taiwan, Philippines, Vietnam, and surrounding networks. (The live EarthScope holdings query yields 145 three-component epochs and 75 unique network/station pairs; other FDSN centres, coverage gaps and ownership completeness remain.)
-- [ ] Distinguish archived, downloadable, real-time-capable, restricted, and unavailable stations.
+- [ ] Distinguish archived, downloadable, real-time-capable, restricted, and unavailable stations. (EarthScope archive extents exist for 8/10 response-priority pairs and six have samples within seven days; BAG/TWKB are absent from these holdings. Actual download, other centres, restrictions and SeedLink realtime/latency remain.)
 - [ ] Verify waveform epochs, sample rates, three-component channels, responses, and licenses. (Ten geographic-priority station pairs now have checksummed StationXML with exact three-component response-stage/transfer-function structure; waveform holdings, epoch-matched deconvolution, latency and network terms remain.)
 - [ ] Define noise-window strata: season, day/night, calm sea, typhoon, urban/remote, outages.
 - [ ] Select a published PEGS waveform benchmark and obtain a validated simulator.

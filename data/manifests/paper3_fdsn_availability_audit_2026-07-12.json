@@ -1,0 +1,522 @@
+{
+  "pairs_with_archive_triplet": 8,
+  "pairs_with_recent_archive_samples": 6,
+  "recent_days": 7.0,
+  "retrieved_at_utc": "2026-07-12T09:26:40.475913+00:00",
+  "retrieved_pair_count": 8,
+  "schema_version": 1,
+  "station_pair_count": 10,
+  "stations": [
+    {
+      "archive_channel_extent_count": 9,
+      "archive_recent_within_declared_days": true,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=IC&sta=QIZ&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2026-07-10T23:59:59.969500+00:00",
+      "network": "IC",
+      "raw_path": "data/raw/paper3/availability/IC.QIZ.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=IC&sta=QIZ&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "Hainan",
+      "sha256": "f4532c9f672989e5e7a58669933dd6f092bcc5962102cbdca031043d6d213478",
+      "size_bytes": 2308,
+      "station": "QIZ",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 3,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.969500+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "00",
+          "maximum_timespan_count": 99,
+          "quality": "M",
+          "sample_rate_hz": 20.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.069500+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "00",
+          "maximum_timespan_count": 60,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.069500+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "10",
+          "maximum_timespan_count": 59,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        }
+      ]
+    },
+    {
+      "archive_channel_extent_count": 20,
+      "archive_recent_within_declared_days": true,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=HK&sta=HKPS&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2026-07-10T23:59:59.994500+00:00",
+      "network": "HK",
+      "raw_path": "data/raw/paper3/availability/HK.HKPS.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=HK&sta=HKPS&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "Hong Kong",
+      "sha256": "cb4b7c3557b2c85290a62d12ef7bf765910b0e9d99ab3d72b34e6d6b38a3df62",
+      "size_bytes": 5094,
+      "station": "HKPS",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 6,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2021-09-14T00:00:00.019500+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-08T23:59:59.994500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 23,
+          "quality": "M",
+          "sample_rate_hz": 39.9999
+        },
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.994500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 287,
+          "quality": "M",
+          "sample_rate_hz": 40.0
+        },
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2021-10-02T00:00:00.019500+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-01T23:59:59.994500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 25,
+          "quality": "M",
+          "sample_rate_hz": 40.0001
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.069500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 246,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        },
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2021-11-14T00:00:00.019500+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2021-11-14T23:59:59.969500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "00",
+          "maximum_timespan_count": 5,
+          "quality": "M",
+          "sample_rate_hz": 19.9999
+        },
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.969500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "00",
+          "maximum_timespan_count": 271,
+          "quality": "M",
+          "sample_rate_hz": 20.0
+        }
+      ]
+    },
+    {
+      "archive_channel_extent_count": 12,
+      "archive_recent_within_declared_days": true,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=IU&sta=DAV&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2026-07-10T23:59:59.994538+00:00",
+      "network": "IU",
+      "raw_path": "data/raw/paper3/availability/IU.DAV.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=IU&sta=DAV&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "southern Philippines",
+      "sha256": "5a935d642677e2ddf1aaf781d31ed873bf33efec202ebb0b61c488f3014cd37e",
+      "size_bytes": 3058,
+      "station": "DAV",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 4,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.994538+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "00",
+          "maximum_timespan_count": 59,
+          "quality": "M",
+          "sample_rate_hz": 40.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.069538+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "00",
+          "maximum_timespan_count": 52,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        },
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.994538+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "10",
+          "maximum_timespan_count": 56,
+          "quality": "M",
+          "sample_rate_hz": 40.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.069538+00:00",
+          "components": [
+            "1",
+            "2",
+            "Z"
+          ],
+          "location": "10",
+          "maximum_timespan_count": 50,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        }
+      ]
+    },
+    {
+      "network": "PS",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=PS&sta=BAG&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "northern Philippines",
+      "station": "BAG",
+      "status": "no_data_404"
+    },
+    {
+      "archive_channel_extent_count": 6,
+      "archive_recent_within_declared_days": false,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=RM&sta=SZP&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2021-01-13T14:55:02.569536+00:00",
+      "network": "RM",
+      "raw_path": "data/raw/paper3/availability/RM.SZP.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=RM&sta=SZP&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "northwestern Philippines",
+      "sha256": "d582ffdddefc9f208e9ab6645914a0553dda7f0aa257f951007a71f14e426402",
+      "size_bytes": 1567,
+      "station": "SZP",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 2,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2021-01-13T14:55:02.569536+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 43265,
+          "quality": "M",
+          "sample_rate_hz": 40.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2021-01-13T14:54:47.069538+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 42339,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        }
+      ]
+    },
+    {
+      "network": "TW",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=TW&sta=TWKB&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "southern Taiwan",
+      "station": "TWKB",
+      "status": "no_data_404"
+    },
+    {
+      "archive_channel_extent_count": 6,
+      "archive_recent_within_declared_days": true,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=TW&sta=KMNB&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2026-07-10T23:59:59.969500+00:00",
+      "network": "TW",
+      "raw_path": "data/raw/paper3/availability/TW.KMNB.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=TW&sta=KMNB&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "Taiwan Strait",
+      "sha256": "67b0aefd53c7bedbdfacc4abba8e1f1bf4f49b3e1998812403aff673803d50ae",
+      "size_bytes": 1561,
+      "station": "KMNB",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 2,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.969500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 379,
+          "quality": "M",
+          "sample_rate_hz": 20.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.069500+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 347,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        }
+      ]
+    },
+    {
+      "archive_channel_extent_count": 6,
+      "archive_recent_within_declared_days": false,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=RM&sta=DLV&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2023-10-12T21:05:09.219538+00:00",
+      "network": "RM",
+      "raw_path": "data/raw/paper3/availability/RM.DLV.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=RM&sta=DLV&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "Vietnam",
+      "sha256": "3d89c13275f078e64475a735e0ac994f816b53f048e026eaa25e466e5321cfd8",
+      "size_bytes": 1561,
+      "station": "DLV",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 2,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-06-22T15:14:09.069538+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2023-10-12T21:05:09.219538+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 3138,
+          "quality": "M",
+          "sample_rate_hz": 20.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-06-22T15:13:13.069538+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2023-10-12T21:01:31.069539+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 3040,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        }
+      ]
+    },
+    {
+      "archive_channel_extent_count": 6,
+      "archive_recent_within_declared_days": true,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=MY&sta=KKM&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2026-07-11T00:04:52.069538+00:00",
+      "network": "MY",
+      "raw_path": "data/raw/paper3/availability/MY.KKM.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=MY&sta=KKM&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "northern Borneo",
+      "sha256": "797f9eac3f6395c7bb373e25cb4dbfa069dffba87db081917ba2308078eb0f74",
+      "size_bytes": 1567,
+      "station": "KKM",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 2,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-10T23:59:59.969538+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 14877,
+          "quality": "M",
+          "sample_rate_hz": 20.0
+        },
+        {
+          "all_open": true,
+          "band": "LH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-11T00:04:52.069538+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 14892,
+          "quality": "M",
+          "sample_rate_hz": 1.0
+        }
+      ]
+    },
+    {
+      "archive_channel_extent_count": 3,
+      "archive_recent_within_declared_days": true,
+      "final_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=JP&sta=YOJ&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "http_status": 200,
+      "latest_common_archive_sample": "2026-07-11T00:00:00.700000+00:00",
+      "network": "JP",
+      "raw_path": "data/raw/paper3/availability/JP.YOJ.json",
+      "requested_url": "https://service.earthscope.org/fdsnws/availability/1/extent?net=JP&sta=YOJ&cha=BH%3F%2CLH%3F&starttime=2020-01-01T00%3A00%3A00&endtime=2026-07-12T00%3A00%3A00&format=json&nodata=404",
+      "role": "southern Ryukyu",
+      "sha256": "cbbc61e1d16e4e5e716e5f8df55e4183b94f420824cddb372b09b65193aed71d",
+      "size_bytes": 814,
+      "station": "YOJ",
+      "status": "retrieved",
+      "three_component_archive_extent_count": 1,
+      "three_component_archive_extents": [
+        {
+          "all_open": true,
+          "band": "BH",
+          "common_earliest": "2020-01-01T00:00:00+00:00",
+          "common_extent_nonempty": true,
+          "common_latest": "2026-07-11T00:00:00.700000+00:00",
+          "components": [
+            "E",
+            "N",
+            "Z"
+          ],
+          "location": "",
+          "maximum_timespan_count": 1306,
+          "quality": "M",
+          "sample_rate_hz": 20.0
+        }
+      ]
+    }
+  ],
+  "warning": "Archive extents and recent samples do not establish continuous coverage, successful download, usable noise, low latency, or SeedLink realtime availability."
+}

@@ -1,0 +1,75 @@
+{
+  "all_processes_ready": false,
+  "policy": "Foundation fixtures may run, but production atlas ensembles require this gate to pass for all six processes.",
+  "process_count": 6,
+  "processes": [
+    {
+      "blockers": [
+        "unresolved_physics_or_parameter_fields",
+        "missing_frozen_production_joint_design"
+      ],
+      "evidence_count": 4,
+      "process_id": "internal_wave",
+      "production_joint_design_status": "missing",
+      "ready_for_production_ensemble": false,
+      "unresolved_count": 4
+    },
+    {
+      "blockers": [
+        "unresolved_physics_or_parameter_fields",
+        "missing_frozen_production_joint_design"
+      ],
+      "evidence_count": 2,
+      "process_id": "mesoscale_eddy",
+      "production_joint_design_status": "missing",
+      "ready_for_production_ensemble": false,
+      "unresolved_count": 3
+    },
+    {
+      "blockers": [
+        "unresolved_physics_or_parameter_fields",
+        "missing_frozen_production_joint_design"
+      ],
+      "evidence_count": 3,
+      "process_id": "storm_surge",
+      "production_joint_design_status": "missing",
+      "ready_for_production_ensemble": false,
+      "unresolved_count": 3
+    },
+    {
+      "blockers": [
+        "unresolved_physics_or_parameter_fields",
+        "missing_frozen_production_joint_design"
+      ],
+      "evidence_count": 4,
+      "process_id": "submarine_landslide",
+      "production_joint_design_status": "missing",
+      "ready_for_production_ensemble": false,
+      "unresolved_count": 4
+    },
+    {
+      "blockers": [
+        "unresolved_physics_or_parameter_fields",
+        "missing_frozen_production_joint_design"
+      ],
+      "evidence_count": 1,
+      "process_id": "tide",
+      "production_joint_design_status": "missing",
+      "ready_for_production_ensemble": false,
+      "unresolved_count": 3
+    },
+    {
+      "blockers": [
+        "unresolved_physics_or_parameter_fields",
+        "missing_frozen_production_joint_design"
+      ],
+      "evidence_count": 3,
+      "process_id": "tsunami",
+      "production_joint_design_status": "missing",
+      "ready_for_production_ensemble": false,
+      "unresolved_count": 4
+    }
+  ],
+  "ready_count": 0,
+  "schema_version": 1
+}

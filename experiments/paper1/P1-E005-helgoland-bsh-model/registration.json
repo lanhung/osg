@@ -4,7 +4,7 @@
   "experiment_id": "P1-E005-helgoland-bsh-model",
   "paper": "paper1",
   "registered_utc": "2026-07-12T14:01:13Z",
-  "code_commit": "eeb5337ab8e3537797c1ab27c8645d1c64f1b16e",
+  "code_commit": "0e6e635b142a14ca6ff3b5a29c83b85d43909404",
   "config_file": "configs/paper1/helgoland_bsh_model.json",
   "config_file_sha256": "1f844f38e5d44a12631cec756cce979311a0df65cb2051ad5eb45746a8fcd8bf",
   "runner": "scripts/run_helgoland_bsh_model.py",
@@ -19,5 +19,13 @@
   "machine": "autodl-container-7fb444a9ae-9b4ed319",
   "planned_output": "experiments/paper1/P1-E005-helgoland-bsh-model/metrics.json",
   "result_class": "published_case_model_reproduction_with_declared_detiding_difference",
-  "registration_note": "This record is committed before the production run. Final metadata.json will freeze the UTC start, output checksum, and observed environment after successful execution."
+  "failed_attempts": [
+    {
+      "code_commit": "eeb5337ab8e3537797c1ab27c8645d1c64f1b16e",
+      "start_utc": "2026-07-12T14:02:42Z",
+      "failure_class": "LoadDef text footer parsing error",
+      "scientific_output_created": false
+    }
+  ],
+  "registration_note": "This record is committed before the production rerun. Final metadata.json will freeze the UTC start, output checksum, and observed environment after successful execution."
 }

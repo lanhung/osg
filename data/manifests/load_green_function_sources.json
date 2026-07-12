@@ -26,6 +26,13 @@
         "Green-function comparison with Guo et al. (2004)",
         "M2 ocean-tide-loading displacement comparison with SPOTL"
       ],
+      "source_audit_observations": {
+        "scope": "upstream main branch inspected through GitHub HTML on 2026-07-12; not a v1.2.2 artifact audit",
+        "observed_reference_frame_outputs": ["CE", "CM", "CF"],
+        "observed_gravity_outputs": ["gE elastic response", "gN Newtonian response"],
+        "observed_output_normalization_header": "gE*(10^18*(a*theta))",
+        "project_consequence": "Use a selected gE reference-frame output only for the combined elastic path and compute direct attraction independently; do not add LoadDef gN again. Reverse and test the published normalization before SI conversion."
+      },
       "local_install": {
         "status": "blocked-by-control-plane-dns",
         "exact_commit": null,

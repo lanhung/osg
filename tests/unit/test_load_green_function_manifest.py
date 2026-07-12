@@ -24,6 +24,11 @@ class TestLoadGreenFunctionManifest(unittest.TestCase):
         self.assertEqual(source["software_citation_doi"], "10.1029/2018EA000462")
         self.assertEqual(source["license"], "GPL-3.0")
         self.assertIn("elastic gravity load Green function", source["documented_outputs"])
+        observations = source["source_audit_observations"]
+        self.assertEqual(observations["observed_reference_frame_outputs"], ["CE", "CM", "CF"])
+        self.assertIn("gN Newtonian response", observations["observed_gravity_outputs"])
+        self.assertIn("do not add LoadDef gN again".lower(), observations["project_consequence"].lower())
+        self.assertEqual(source["scientific_use_gate"]["status"], "not-ready")
 
     def test_unresolved_component_mapping_forbids_scientific_use(self) -> None:
         source = self.document["sources"][0]

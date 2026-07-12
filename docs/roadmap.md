@@ -199,7 +199,7 @@ Evidence: correction waterfall, spectra, component files, sensitivity report.
 - [ ] Acquire and subset event-matched sea-level anomaly products.
 - [ ] Calculate direct water attraction.
 - [ ] Calculate vertical-deformation gravity effect and internal potential/mass response.
-- [ ] Calculate atmospheric direct/loading terms and inverted-barometer response.
+- [ ] Calculate atmospheric direct/loading terms and inverted-barometer response. (Hydrostatic pressure-to-column-mass and area-weighted, mass-conserving inverse-barometer primitives are complete; vertical atmospheric structure, elastic response, regional boundary validation and real fields remain.)
 - [ ] Test CMEMS/ERA5 coupling to prevent double counting.
 - [ ] Estimate terrestrial precipitation/groundwater contribution.
 - [ ] Compare observation residual and independent forward prediction in time and frequency domains. (Mask-aware time-domain RMSE, correlation, peak amplitude and peak-time metrics plus a mask-aware Welch coherence reference implementation are complete; production FFT parity, frozen real-event frequency bands, and real-event comparison remain.)

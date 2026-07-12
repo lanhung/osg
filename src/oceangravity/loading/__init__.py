@@ -36,6 +36,11 @@ from .loaddef_adapter import (
     build_provisional_loaddef_combined_provider,
     loaddef_normalized_elastic_gravity_to_si,
 )
+from .pressure import (
+    InverseBarometerResult,
+    inverse_barometer_sea_level_anomaly,
+    pressure_anomaly_to_column_surface_density,
+)
 
 __all__ = [
     "SurfaceLoadResult",
@@ -68,4 +73,7 @@ __all__ = [
     "summarize_gravity_correction_waterfall",
     "build_provisional_loaddef_combined_provider",
     "loaddef_normalized_elastic_gravity_to_si",
+    "InverseBarometerResult",
+    "inverse_barometer_sea_level_anomaly",
+    "pressure_anomaly_to_column_surface_density",
 ]

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "execution_status": "registered_pending_execution",
+  "experiment_id": "P1-E008-frequency-coverage-requirements",
+  "paper": "paper1",
+  "registered_utc": "2026-07-12T17:20:00Z",
+  "code_commit": "00b229bcfd6085779ee7280b275bf903450b5e91",
+  "config_file": "configs/paper1/frequency_coverage_requirements.json",
+  "config_file_sha256": "df357964299d779ec14b4c05343241599ec3284f743d0af827e3dfabe89c8e2a",
+  "runner": "scripts/run_p1_frequency_coverage_requirements.py",
+  "data_manifest": "data/manifests/instrument_noise_curves.json",
+  "random_seeds": [],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "planned_output": "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+  "result_class": "spectral_coverage_requirement_not_detectability",
+  "registration_note": "Committed before AutoDL execution. Thresholds 0.50, 0.75, 0.90 and 0.95 and the positive-frequency, constant-detrended rectangular-window convention are frozen. No output may be interpreted as SNR or detection probability."
+}

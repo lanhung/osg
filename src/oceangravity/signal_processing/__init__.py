@@ -8,6 +8,12 @@ from .timebase import (
 )
 from .quality import TimeSeriesQualitySummary, assess_time_series_quality
 from .snr import coherent_periodic_snr, matched_filter_snr
+from .calibration import CalibratedGravity, GravityCalibration, apply_feedback_calibration
+from .steps import (
+    InstrumentStepCorrection,
+    InstrumentStepDecision,
+    apply_instrument_step_decisions,
+)
 
 __all__ = [
     "OneSidedSpectrum",
@@ -20,4 +26,10 @@ __all__ = [
     "UniformTimeSeriesSegment",
     "TimeSeriesQualitySummary",
     "assess_time_series_quality",
+    "CalibratedGravity",
+    "GravityCalibration",
+    "apply_feedback_calibration",
+    "InstrumentStepCorrection",
+    "InstrumentStepDecision",
+    "apply_instrument_step_decisions",
 ]

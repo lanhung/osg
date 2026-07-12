@@ -1,7 +1,11 @@
 """Parametric ocean-process source and gravity-signal models."""
 
 from .common import ScalarGravitySignal, regular_times
-from .eddy import translating_gaussian_surface_eddy
+from .eddy import (
+    CompensatedDensityEddyResult,
+    translating_compensated_gaussian_density_eddy,
+    translating_gaussian_surface_eddy,
+)
 from .internal_wave import (
     CompensatedDipoleResult,
     oscillating_compensated_gaussian_dipole,
@@ -23,4 +27,6 @@ __all__ = [
     "propagating_compensated_gaussian_tsunami",
     "regular_times",
     "translating_gaussian_surface_eddy",
+    "translating_compensated_gaussian_density_eddy",
+    "CompensatedDensityEddyResult",
 ]

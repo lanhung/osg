@@ -1,0 +1,11 @@
+{
+  "input_manifest": "data/manifests/paper2_ibtracs.json",
+  "region": {
+    "minimum_latitude_deg": 5.0,
+    "maximum_latitude_deg": 25.0,
+    "minimum_longitude_deg_east": 100.0,
+    "maximum_longitude_deg_east": 125.0
+  },
+  "minimum_regional_track_points": 1,
+  "required_basin": "WP"
+}

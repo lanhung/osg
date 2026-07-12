@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-07-12",
+  "dataset": "IBTrACS",
+  "release": "v04r01",
+  "subset": "last3years",
+  "official_product_page": "https://www.ncei.noaa.gov/products/international-best-track-archive",
+  "download_url": "https://www.ncei.noaa.gov/data/international-best-track-archive-for-climate-stewardship-ibtracs/v04r01/access/csv/ibtracs.last3years.list.v04r01.csv",
+  "dataset_doi": "10.25921/82ty-9e16",
+  "official_last_modified_observed": "2026-07-09",
+  "update_warning": "The v04r01 filename is updated multiple times per week; retrieval timestamp and SHA-256 are mandatory.",
+  "retrieval": {
+    "status": "pending-control-plane-network",
+    "path": "data/raw/paper2/ibtracs.last3years.list.v04r01.csv",
+    "retrieved_at_utc": null,
+    "sha256": null
+  },
+  "usage": {
+    "status": "open",
+    "policy": "WDC/WMO Resolution 40 terms stated on the official product page",
+    "citation_required": true
+  }
+}

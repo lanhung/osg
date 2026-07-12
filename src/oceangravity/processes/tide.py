@@ -6,7 +6,10 @@ import math
 from collections.abc import Sequence
 
 from oceangravity.constants import REFERENCE_SEAWATER_DENSITY
-from oceangravity.gravity import disk_vertical_gravity_on_axis
+from oceangravity.gravity import (
+    disk_vertical_gravity_gradient_on_axis,
+    disk_vertical_gravity_on_axis,
+)
 
 from .common import ScalarGravitySignal
 
@@ -54,6 +57,12 @@ def periodic_disk_tide(
         disk_z_m,
         observation_z_m,
     )
+    unit_sea_level_gradient = disk_vertical_gravity_gradient_on_axis(
+        density,
+        disk_radius_m,
+        disk_z_m,
+        observation_z_m,
+    )
     angular_frequency = 2.0 * math.pi / period
     sea_level = tuple(
         amplitude * math.cos(angular_frequency * time + phase) for time in times
@@ -66,5 +75,7 @@ def periodic_disk_tide(
         source_amplitude_unit="m sea-level anomaly",
         vertical_direct_gravity_m_s2=gravity,
         model_scope="direct attraction of a uniform finite disk; no elastic Earth response",
+        vertical_direct_gravity_gradient_s2=tuple(
+            unit_sea_level_gradient * value for value in sea_level
+        ),
     )
-

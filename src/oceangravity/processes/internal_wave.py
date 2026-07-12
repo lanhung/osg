@@ -6,7 +6,7 @@ import math
 from collections.abc import Sequence
 from dataclasses import dataclass
 
-from oceangravity.gravity import volume_cell_gravity
+from oceangravity.gravity import volume_cell_gravity, volume_cell_gravity_gradient
 
 from .common import ScalarGravitySignal
 
@@ -19,6 +19,7 @@ class CompensatedDipoleResult:
     positive_lobe_mass_per_unit_peak_density_m3: float
     negative_lobe_mass_per_unit_peak_density_m3: float
     unit_vertical_gravity_per_peak_density_m4_kg_s2: float
+    unit_vertical_gradient_per_peak_density_m3_kg_s2: float
     grid_cells_per_lobe: int
 
     @property
@@ -135,6 +136,12 @@ def oscillating_compensated_gaussian_dipole(
         cell_volume,
         observation,
     )
+    unit_gradient = volume_cell_gravity_gradient(
+        densities,
+        cell_centers,
+        cell_volume,
+        observation,
+    )
     angular_frequency = 2.0 * math.pi / period
     density_amplitude = tuple(
         peak_density * math.cos(angular_frequency * time + phase) for time in times
@@ -148,12 +155,15 @@ def oscillating_compensated_gaussian_dipole(
             unit_gravity[2] * amplitude for amplitude in density_amplitude
         ),
         model_scope="direct attraction of equal/opposite 3-D Gaussian lobes; no free surface or elastic response",
+        vertical_direct_gravity_gradient_s2=tuple(
+            unit_gradient[2][2] * amplitude for amplitude in density_amplitude
+        ),
     )
     return CompensatedDipoleResult(
         signal=signal,
         positive_lobe_mass_per_unit_peak_density_m3=positive_mass_per_density,
         negative_lobe_mass_per_unit_peak_density_m3=negative_mass_per_density,
         unit_vertical_gravity_per_peak_density_m4_kg_s2=unit_gravity[2],
+        unit_vertical_gradient_per_peak_density_m3_kg_s2=unit_gradient[2][2],
         grid_cells_per_lobe=cells_per_axis**3,
     )
-

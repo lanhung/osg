@@ -55,3 +55,37 @@ def disk_vertical_gravity_on_axis(
         * geometry_factor
     )
 
+
+def disk_vertical_gravity_gradient_on_axis(
+    surface_density_kg_m2: float,
+    radius_m: float,
+    disk_z_m: float,
+    observation_z_m: float,
+) -> float:
+    """Return ``Tzz = derivative(g_z)/derivative(z_observation)`` in s^-2."""
+
+    density = float(surface_density_kg_m2)
+    radius = float(radius_m)
+    disk_z = float(disk_z_m)
+    observation_z = float(observation_z_m)
+    for name, value in (
+        ("surface_density_kg_m2", density),
+        ("radius_m", radius),
+        ("disk_z_m", disk_z),
+        ("observation_z_m", observation_z),
+    ):
+        if not math.isfinite(value):
+            raise ValueError(f"{name} must be finite")
+    if radius <= 0.0:
+        raise ValueError("radius_m must be greater than zero")
+    separation = abs(disk_z - observation_z)
+    if separation == 0.0:
+        raise ValueError("thin-disk gravity gradient is undefined in the disk plane")
+    return (
+        2.0
+        * math.pi
+        * GRAVITATIONAL_CONSTANT.value
+        * density
+        * radius**2
+        / (separation**2 + radius**2) ** 1.5
+    )

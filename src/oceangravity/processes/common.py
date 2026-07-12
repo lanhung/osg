@@ -16,6 +16,7 @@ class ScalarGravitySignal:
     source_amplitude_unit: str
     vertical_direct_gravity_m_s2: tuple[float, ...]
     model_scope: str
+    vertical_direct_gravity_gradient_s2: tuple[float, ...] | None = None
 
     def __post_init__(self) -> None:
         if not self.process_id.strip() or not self.source_amplitude_unit.strip():
@@ -35,10 +36,23 @@ class ScalarGravitySignal:
             raise ValueError("source amplitudes must be finite")
         if not all(math.isfinite(value) for value in self.vertical_direct_gravity_m_s2):
             raise ValueError("gravity samples must be finite")
+        if self.vertical_direct_gravity_gradient_s2 is not None:
+            if len(self.vertical_direct_gravity_gradient_s2) != count:
+                raise ValueError("gravity-gradient array must match time length")
+            if not all(
+                math.isfinite(value) for value in self.vertical_direct_gravity_gradient_s2
+            ):
+                raise ValueError("gravity-gradient samples must be finite")
 
     @property
     def peak_absolute_gravity_m_s2(self) -> float:
         return max(abs(value) for value in self.vertical_direct_gravity_m_s2)
+
+    @property
+    def peak_absolute_gravity_gradient_s2(self) -> float | None:
+        if self.vertical_direct_gravity_gradient_s2 is None:
+            return None
+        return max(abs(value) for value in self.vertical_direct_gravity_gradient_s2)
 
 
 def regular_times(
@@ -58,4 +72,3 @@ def regular_times(
     if not math.isfinite(start):
         raise ValueError("start_time_s must be finite")
     return tuple(start + index * interval for index in range(sample_count))
-

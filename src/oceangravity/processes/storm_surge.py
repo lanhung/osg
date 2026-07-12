@@ -6,7 +6,10 @@ import math
 from collections.abc import Sequence
 
 from oceangravity.constants import REFERENCE_SEAWATER_DENSITY
-from oceangravity.gravity import disk_vertical_gravity_on_axis
+from oceangravity.gravity import (
+    disk_vertical_gravity_gradient_on_axis,
+    disk_vertical_gravity_on_axis,
+)
 
 from .common import ScalarGravitySignal
 
@@ -56,6 +59,12 @@ def asymmetric_gaussian_disk_surge(
         disk_z_m,
         observation_z_m,
     )
+    unit_sea_level_gradient = disk_vertical_gravity_gradient_on_axis(
+        density,
+        disk_radius_m,
+        disk_z_m,
+        observation_z_m,
+    )
     sea_level = []
     for time in times:
         scale = rise_scale if time < peak_time else fall_scale
@@ -71,5 +80,7 @@ def asymmetric_gaussian_disk_surge(
             unit_sea_level_gravity * value for value in sea_level_tuple
         ),
         model_scope="direct attraction of an asymmetric transient finite-disk load; no elastic response",
+        vertical_direct_gravity_gradient_s2=tuple(
+            unit_sea_level_gradient * value for value in sea_level_tuple
+        ),
     )
-

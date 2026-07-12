@@ -116,6 +116,9 @@ def mass_conserving_submarine_landslide(
         source_amplitude_unit="dimensionless completed mass-relocation fraction",
         vertical_direct_gravity_m_s2=tuple(fraction * final_gravity[2] for fraction in fractions),
         model_scope="direct gravity/gradient from conserved point-mass relocation; no continuum slide or generated wave",
+        vertical_direct_gravity_gradient_s2=tuple(
+            fraction * final_gradient[2][2] for fraction in fractions
+        ),
     )
     return MassRelocationResult(
         signal=signal,

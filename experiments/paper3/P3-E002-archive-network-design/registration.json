@@ -19,5 +19,14 @@
   "machine": "autodl-container-7fb444a9ae-9b4ed319",
   "planned_output": "experiments/paper3/P3-E002-archive-network-design/metrics.json",
   "result_class": "open_archive_network_design_not_pegs_detectability",
-  "registration_note": "Committed before execution. Archive and response readiness cannot be represented as real-time operation or PEGS detectability."
+  "registration_note": "Committed before execution. Archive and response readiness cannot be represented as real-time operation or PEGS detectability.",
+  "failed_attempts": [
+    {
+      "code_commit": "3d888d9120a8c8abc5334e63563f246e73f4ad1f",
+      "start_utc": "2026-07-12T15:47:55Z",
+      "failure_class": "station-level response match did not require exact location and component agreement with the selected archive triplet",
+      "scientific_output_created": true,
+      "disposition": "rejected_not_registered"
+    }
+  ]
 }

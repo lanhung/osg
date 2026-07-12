@@ -21,7 +21,23 @@ def _read(relative_path: str) -> dict:
     return json.loads((ROOT / relative_path).read_text(encoding="utf-8"))
 
 
-def _preferred_triplet(station: dict, *, band: str, minimum_rate: float) -> dict | None:
+def _triplet_key(network: str, station: str, row: dict) -> tuple:
+    return (
+        network,
+        station,
+        row["band"],
+        row["location"],
+        tuple(sorted(row["components"])),
+    )
+
+
+def _preferred_triplet(
+    station: dict,
+    *,
+    band: str,
+    minimum_rate: float,
+    response_triplets: set[tuple],
+) -> dict | None:
     candidates = [
         row
         for row in station.get("three_component_archive_extents", [])
@@ -29,6 +45,7 @@ def _preferred_triplet(station: dict, *, band: str, minimum_rate: float) -> dict
         and row["all_open"]
         and row["common_extent_nonempty"]
         and row["sample_rate_hz"] >= minimum_rate
+        and _triplet_key(station["network"], station["station"], row) in response_triplets
     ]
     if not candidates:
         return None
@@ -40,15 +57,12 @@ def run(config: dict) -> dict:
         raise ValueError("unsupported Paper 3 network-design schema")
     availability = _read(config["availability_manifest"])
     responses = _read(config["response_manifest"])
-    response_ready = {
-        (row["network"], row["station"])
+    response_triplets = {
+        _triplet_key(row["network"], row["station"], epoch)
         for row in responses["stations"]
         if row["status"] == "retrieved"
-        and any(
-            epoch["band"] == config["preferred_band"]
-            and epoch["full_response_structure_present_for_group"]
-            for epoch in row["three_component_response_epochs"]
-        )
+        for epoch in row["three_component_response_epochs"]
+        if epoch["full_response_structure_present_for_group"]
     }
     cutoff = _utc(config["recent_archive_cutoff_utc"])
     selected = []
@@ -60,6 +74,7 @@ def run(config: dict) -> dict:
             station,
             band=config["preferred_band"],
             minimum_rate=float(config["minimum_sample_rate_hz"]),
+            response_triplets=response_triplets,
         )
         row = {
             "network": key[0],
@@ -67,11 +82,12 @@ def run(config: dict) -> dict:
             "station_id": ".".join(key),
             "role": station["role"],
         }
-        if key not in response_ready or triplet is None:
+        if triplet is None:
             row["reason"] = "response_or_open_three_component_archive_missing"
             excluded.append(row)
         else:
             row["triplet"] = triplet
+            row["response_structure_matched"] = True
             historical.append(row)
             if _utc(triplet["common_latest"]) >= cutoff:
                 selected.append(row)

@@ -38,6 +38,7 @@ def test_outage_design_freezes_zero_twenty_forty_percent_sets() -> None:
 
 def test_every_selected_station_has_open_lh_triplet_and_response() -> None:
     for row in _result()["existing_archive_evaluation_network"]:
+        assert row["response_structure_matched"] is True
         assert row["triplet"]["band"] == "LH"
         assert row["triplet"]["all_open"] is True
         assert row["triplet"]["sample_rate_hz"] >= 1.0

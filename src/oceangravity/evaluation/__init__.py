@@ -43,7 +43,9 @@ from .case_reproduction import (
 )
 from .event_metrics import EventModelMetrics, evaluate_event_model_metrics
 from .attribution import (
+    OceanAttributionBlockBootstrap,
     OceanAttributionFit,
+    bootstrap_ocean_attribution_by_event,
     fit_ocean_attribution_coefficient,
     predict_heldout_ocean_attribution,
 )
@@ -71,6 +73,8 @@ __all__ = [
     "EventModelMetrics",
     "evaluate_event_model_metrics",
     "OceanAttributionFit",
+    "OceanAttributionBlockBootstrap",
+    "bootstrap_ocean_attribution_by_event",
     "fit_ocean_attribution_coefficient",
     "predict_heldout_ocean_attribution",
     "empirical_detection_probability",

@@ -14,6 +14,11 @@ identities, station mismatches, length mismatches and invalid noise scales fail
 closed. Magnitude is discrete: the result cannot claim precision finer than the
 scenario grid and does not interpolate between templates.
 
+The audit records a versioned source-library ID, each hypothesis template source,
+the shared sample interval, analysis-window start and duration, the resulting
+decision time since origin, and every station noise-scale calibration source.
+This makes time-dependent magnitude claims and noise-leakage review reproducible.
+
 The output records sample interval, physical window duration, source-library ID,
 per-hypothesis template provenance, and a calibration source ID for every station
 noise scale. This makes it possible to reject templates or noise estimates that

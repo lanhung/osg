@@ -49,7 +49,9 @@ class DiscreteSourceInversion:
     station_ids: tuple[str, ...]
     source_library_id: str
     sample_interval_s: float
+    window_start_time_since_origin_s: float
     window_duration_s: float
+    decision_time_since_origin_s: float
     noise_scale_source_ids: tuple[tuple[str, str], ...]
     ranked_hypotheses: tuple[SourceHypothesisFit, ...]
     noise_model: str
@@ -63,6 +65,7 @@ def invert_discrete_source_library(
     *,
     source_library_id: str,
     sample_interval_s: float,
+    window_start_time_since_origin_s: float,
     station_inclusion_masks: Mapping[str, Sequence[bool]] | None = None,
 ) -> DiscreteSourceInversion:
     """Rank fixed source templates by independent white-noise chi-square.
@@ -85,11 +88,16 @@ def invert_discrete_source_library(
     rows = tuple(hypotheses)
     if not rows:
         raise ValueError("source inversion requires at least one hypothesis")
-    if not source_library_id.strip():
+    if not isinstance(source_library_id, str) or not source_library_id.strip():
         raise ValueError("source_library_id must be non-empty")
     sample_interval = float(sample_interval_s)
     if not math.isfinite(sample_interval) or sample_interval <= 0.0:
         raise ValueError("sample_interval_s must be finite and positive")
+    window_start = float(window_start_time_since_origin_s)
+    if not math.isfinite(window_start) or window_start < 0.0:
+        raise ValueError(
+            "window_start_time_since_origin_s must be finite and non-negative"
+        )
     scenario_ids = tuple(row.scenario_id for row in rows)
     if len(set(scenario_ids)) != len(scenario_ids):
         raise ValueError("source hypothesis scenario IDs must be unique")
@@ -205,7 +213,11 @@ def invert_discrete_source_library(
         station_ids=station_ids,
         source_library_id=source_library_id,
         sample_interval_s=sample_interval,
+        window_start_time_since_origin_s=window_start,
         window_duration_s=sample_count * sample_interval,
+        decision_time_since_origin_s=(
+            window_start + sample_count * sample_interval
+        ),
         noise_scale_source_ids=tuple(
             (station_id, noise_sources[station_id]) for station_id in station_ids
         ),

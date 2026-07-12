@@ -241,8 +241,9 @@ Evidence: reproducible case configs, metrics, plots, discrepancy report.
   retained instead.
 - [x] Produce process–instrument detectability matrix. (`P1-E006` yields a complete coverage-gated matrix: all primary-branch records are unclassified because no admitted curve reaches 90% signal-energy coverage.)
 - [x] Implement a frequency-coverage gate that forbids detectability classification when a curve covers less than the required signal-energy fraction.
-- [ ] Quantify the minimum low-frequency support required at 50%, 75%, 90% and
-  95% spectral-energy coverage.
+- [x] Quantify the minimum low-frequency support required at 50%, 75%, 90% and
+  95% spectral-energy coverage. (`P1-E008` reconstructs all 1,446 P1-E006
+  records and reports intrinsic and instrument-bounded lower-edge requirements.)
 - [ ] Produce a physical-structure and mass-compensation sensitivity panel.
 - [x] Cancel universal detectable/boundary/undetectable classification for Route A.
   Classification remains withheld where frequency coverage is insufficient.
@@ -254,6 +255,12 @@ Evidence: reproducible case configs, metrics, plots, discrepancy report.
 - [ ] Generate all manuscript figures and tables from one registered workflow.
 - [x] Draft methods, results, limitations, data/code statements, and claim-safe abstract/title. (The eight-page registered-results PDF builds cleanly on AutoDL; author metadata, structural variants and journal formatting remain release gates.)
 - [ ] Complete internal reproducibility review and freeze Paper 1 release candidate.
+
+Release-candidate convergence: RC01 scope governance, RC02 frequency
+requirements, RC03 structured literature and RC04 observable-ledger audits pass.
+The remaining P0 gates are the conceptual/final figure reorganization, explicit
+Helgoland discrepancy decomposition, independent gravimetry/geodesy review,
+single-command manuscript reproduction and archival submission package.
 
 Evidence: registered experiment, figure/table bundle, full draft, reproduction report.
 

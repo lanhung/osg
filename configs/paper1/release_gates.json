@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-07-12T17:30:00Z",
+  "gates": [
+    {"id": "G1", "name": "Scope", "status": "pass", "evidence": "reports/P1-RC01-scope-governance-freeze.md"},
+    {"id": "G2", "name": "Literature", "status": "pass", "evidence": "reports/p1_literature_matrix_audit.json"},
+    {"id": "G3", "name": "Observable", "status": "pass", "evidence": "reports/p1_observable_ledger_audit.json"},
+    {"id": "G4", "name": "Coverage", "status": "pass", "evidence": "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json"},
+    {"id": "G5", "name": "New result", "status": "pass", "evidence": "reports/P1-RC02-frequency-coverage-requirements.md"},
+    {"id": "G6", "name": "Figures", "status": "pending", "evidence": "conceptual observable figure and final five-figure reorganization remain"},
+    {"id": "G7", "name": "Validation", "status": "pending", "evidence": "Helgoland tolerance passes; discrepancy-source decomposition requires final narrative review"},
+    {"id": "G8", "name": "Human review", "status": "pending", "evidence": "independent gravimetry/geodesy reviewer not yet recorded"},
+    {"id": "G9", "name": "Reproduction", "status": "pending", "evidence": "registered experiments reproduce; one-command figures/tables/PDF target remains"},
+    {"id": "G10", "name": "Release", "status": "pending", "evidence": "authors, journal format, tag, archive DOI and cover letter remain"}
+  ],
+  "release_candidate_ready": false
+}

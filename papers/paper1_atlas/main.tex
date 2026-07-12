@@ -30,22 +30,57 @@ storm surge, eddy and internal-wave signals have no overlapping band, whereas
 tsunami and landslide records have only partial coverage. We therefore withhold
 SNR classifications rather than extrapolating instrument curves. An independent
 open-data Helgoland calculation reproduces the published BSH gravity-to-height
-ratio within 15.6\%. The framework identifies frequency coverage, source geometry
-and mass compensation as separate limits on defensible ocean-gravity
-detectability statements.
+ratio within 15.6\%. The median lower edge required for 90\% energy coverage
+ranges from $3.89\times10^{-8}$~Hz for the eddy scenario to
+$2.63\times10^{-4}$~Hz for tsunami packets, factors of $2.6\times10^4$ and 3.8
+below the admitted $10^{-3}$~Hz curve edges. The framework converts a withheld
+classification into quantitative frequency requirements while keeping source
+geometry and mass compensation as separate physical limits.
 \end{abstract}
 
 \section{Introduction}
-Environmental Newtonian-noise studies already quantify atmospheric, seismic,
-and ocean-related gravitational disturbances for gravitational-wave facilities;
-they are not instrument-noise calculations developed here. Likewise, terrestrial
-gravimetry has detected non-tidal ocean loading during storm surges. The present
-increment is a cross-process, cross-distance, cross-instrument assessment under
-one auditable convention. It first asks whether available instrument evidence
-covers enough signal energy to authorize a detectability decision. It does not
-claim that the
-underlying gravity kernels, loading theory, or individual instrument concepts
-are new.
+Ocean tides, non-tidal ocean loading and storm surges already contribute to
+terrestrial gravity and displacement observations~\cite{Boy2003,BoyLyard2008,
+Voigt2024,Zhang2026}. Superconducting and atom-interferometric gravimeters reach
+high precision, but their sensitivity, stability, self-noise and site noise are
+different quantities with different frequency support~\cite{Banka1999,
+Rosat2011,Schafer2020,Menoret2018,Peters2001}.
+
+Environmental Newtonian-noise studies provide the broader theory of gravity
+fluctuations from moving density fields~\cite{Harms2015,VanCamp2017}. Work for
+gravitational-wave facilities often reports strain-equivalent noise from
+seismic or atmospheric sources~\cite{Creighton2008,Brundu2022,Hall2022}; those
+results are not vertical-gravimeter noise curves. Long terrestrial records also
+require removal of tides and other background components, and different
+procedures can leave residuals or distort target signals~\cite{Valencio2017}.
+
+Simple comparison of a source peak amplitude with one quoted sensitivity value
+therefore cannot establish detectability. The source spectrum must overlap a
+measured noise spectrum, the observable and units must agree, and enough signal
+energy must lie inside the reported band before an SNR is authorized.
+
+Here we ask that coverage question under one auditable convention for six
+representative process families. The contribution is a cross-process direct-
+radial-gravity framework, an explicit coverage gate, quantitative lower-band-
+edge requirements, mass-compensation tests and an open Helgoland model
+validation. The gravity kernels, elastic loading theory and instrument concepts
+are prior work, and no universal detectable/undetectable classification is
+claimed.
+
+\section{Related physical observables}
+Direct attraction is the Newtonian acceleration at a specified observation
+point. A surface load also deforms the Earth and changes its potential; a
+terrestrial gravimeter can additionally respond to station-height change. In
+general these contributions must be combined only after their reference frame,
+sign and Green-function conventions have been validated~\cite{Farrell1972,
+DziewonskiAnderson1981,Martens2019}. The six-process production ensemble in this
+paper contains direct radial gravity, not that total terrestrial observable.
+
+Gravity gradient $T_{ij}=\partial g_i/\partial x_j$ has units of s$^{-2}$ and a
+different instrument class~\cite{McGuirk2002,Sorrentino2014}. Gravitational-wave
+equivalent strain is another derived observable tied to detector geometry and a
+transfer function. Gradient and strain foundations are retained as supplemental
+context; neither is compared with the vertical-gravity curves used here.
 
 \section{Methods}
 \subsection{Observables and sign conventions}
@@ -86,12 +121,17 @@ scientific uncertainty statements. Parameter values are linked to named events,
 catalogue means or published ranges. They define sensitivity designs, not
 occurrence probabilities or population percentiles. The mesoscale-eddy Gaussian
 branch uses catalogue-scale amplitude, radius and propagation speed from
-Chelton et al.~\cite{Chelton2011}. Surface-wave packets and density dipoles are
-mass balanced before gravity integration.
+Chelton et al.~\cite{Chelton2011}; observed energetics and vertical structure
+show why SSH does not uniquely specify an interior density anomaly
+\cite{Luecke2017,Li2022Eddy,George2021}. Internal-wave scales are anchored to
+field and satellite studies~\cite{LiFarmer2011,Huang2016,Zhao2016,Rainville2013},
+while tsunami and landslide branches retain named-source provenance
+\cite{Tang2012,Lovholt2017,Kim2019}. Surface-wave packets and density dipoles
+are mass balanced before gravity integration.
 
 \begin{table}[ht]
 \centering
-\caption{Primary direct-gravity representations in P1-E006. Record counts include repeated distances, durations or paired sensitivity points and are not counts of independent natural events.}
+\caption{Primary direct-radial-gravity representations in P1-E006. Record counts include repeated distances, durations or paired sensitivity points and are not counts of independent natural events.}
 \label{tab:processes}
 \begin{tabular}{>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.23\linewidth}r}
 \toprule
@@ -115,9 +155,11 @@ For transient signals, expected matched-filter signal-to-noise ratio is
 \end{equation}
 Fourier normalization, detrending, one-sided PSD, and observation duration are
 versioned. A classification is forbidden unless the instrument curve covers at
-least 90\% of signal spectral energy. Vertical gravity, gravity gradient, and
-gravitational-wave equivalent strain remain different observables and are never
-merged into one sensitivity curve. The admitted vertical-gravity entries are an
+least 90\% of signal spectral energy. Sensitivity is evaluated separately at
+50\%, 75\%, 90\% and 95\%; these are coverage fractions, not detection
+probabilities. Vertical gravity, gravity gradient, and gravitational-wave
+equivalent strain remain different observables and are never merged into one
+sensitivity curve. The admitted vertical-gravity entries are an
 iGrav quiet self-noise anchor and short-term AQG-A01 and FG5\#228 anchors; their
 declared frequency intervals are not extrapolated.
 
@@ -130,11 +172,13 @@ with equivalent uncompensated water columns. Source standoffs are 10, 30, 100,
 300 and 1,000~km, and every coverage-limited outcome is retained.
 
 \section{Validation}
-Analytic tests cover point masses, finite disks, rectangles, Gaussian sheets,
+Analytic and regression tests cover point masses, finite disks, rectangles,
+Gaussian sheets,
 volume cells, gradient symmetry and trace, WGS~84 area, mass conservation, grid
-convergence, domain truncation, and time/frequency normalization. The complete
-software audit contains 461 passing tests and 12 passing subtests after the
-structural-closure implementation.
+convergence, domain truncation, and time/frequency normalization. Test counts and
+software-behaviour details are reported in the reproducibility supplement; the
+scientific validation below rests on analytic errors, published benchmarks and
+the independent Helgoland case rather than the number of tests.
 
 The LoadDef v1.2.2 PREM/CE provider reproduces all 50 published benchmark rows
 used by the project for angular distance, radial displacement and combined
@@ -162,7 +206,8 @@ has 90\% of signal energy inside a complete admitted band.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.96\linewidth]{../../reports/figures/paper1/p1_frequency_coverage.png}
-\caption{Characteristic process frequencies and admitted vertical-gravity
+\caption{Characteristic frequencies of the direct-radial-gravity process
+signals and admitted vertical-gravity
 curve support. Points denote fixed constituent frequencies and horizontal bars
 denote sensitivity ranges. Curve limits are not extrapolated.}
 \label{fig:frequency}
@@ -178,10 +223,31 @@ support is insufficient to make the comparison.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.94\linewidth]{../../reports/figures/paper1/p1_process_instrument_matrix.png}
-\caption{Process--instrument signal-energy coverage. ``No band'' means fewer
+\caption{Direct-radial-gravity process--instrument signal-energy coverage.
+``No band'' means fewer
 than two positive-frequency bins overlap a curve; ``partial'' means overlap is
 present but covers less than 90\% of signal energy.}
 \label{fig:matrix}
+\end{figure}
+
+Figure~\ref{fig:requirements} converts that withheld classification into an
+instrument-evidence requirement. At 90\% coverage, median admissible lower edges
+are $3.89\times10^{-8}$~Hz for the eddy, $7.72\times10^{-7}$~Hz for the storm
+surge, $1.10\times10^{-5}$~Hz for the internal wave,
+$2.15\times10^{-5}$~Hz for the tide, $4.92\times10^{-5}$~Hz for the landslide
+and $2.63\times10^{-4}$~Hz for the tsunami. Relative to the common
+$10^{-3}$~Hz lower edge of the admitted anchors, the corresponding gaps are
+approximately 25,700, 1,300, 91, 47, 20 and 3.8.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{../../reports/figures/paper1/p1_frequency_requirements.png}
+\caption{Direct-radial-gravity frequency requirements. (a) Median inverse
+cumulative-energy requirement at 50\%, 75\%, 90\% and 95\% coverage; connecting
+segments guide the eye. (b) Median maximum admissible lower band edge. (c) Gap
+between the admitted $10^{-3}$~Hz lower edge and the 90\% requirement. These are
+coverage quantities, not SNRs or detection probabilities.}
+\label{fig:requirements}
 \end{figure}
 
 Direct radial-gravity amplitudes decay with spherical surface standoff
@@ -211,7 +277,8 @@ than creates solid mass.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.98\linewidth]{../../reports/figures/paper1/p1_sensitivity_envelopes.png}
-\caption{Evidence-bounded parameter sensitivity for three primary branches.
+\caption{Evidence-bounded direct-radial-gravity parameter sensitivity for three
+primary branches.
 The bands represent design extrema and must not be read as confidence or
 credible intervals.}
 \label{fig:sensitivity}
@@ -243,6 +310,15 @@ anchors by assumption. Environmental Newtonian-noise calculations expressed as
 gravitational-wave strain are likewise not interchangeable with gravimeter
 self-noise~\cite{Brundu2022}.
 
+The threshold analysis distinguishes robust conclusions from finite-record
+sensitivity. All six median 90\% requirements lie below $10^{-3}$~Hz, so the
+coverage-limited result does not depend on choosing 90\% rather than 50\% or
+95\%. The storm-surge requirement nevertheless shifts by about one decade
+between 50\% and 95\%, whereas several short transient designs remain on the
+same resolved Fourier bin. Future field PSDs should therefore extend below the
+process-specific requirement and use records long enough to resolve its
+threshold dependence.
+
 The Helgoland reproduction supplies an independent positive validation of the
 elastic loading scale but not of observation/model correlation. The reported
 85~nm~s$^{-2}$ and $-34$~mm extrema are observations, not BSH model acceptance
@@ -254,7 +330,8 @@ The current public instrument anchors do not support a decision-grade
 cross-process detectability map: no production record reaches the required
 signal-energy coverage. This result does not imply absent physical signals or
 universal non-detectability. It establishes the frequency support that future
-site-specific noise measurements must provide, while the direct-gravity
+site-specific noise measurements must provide: median 90\% lower edges span
+$3.89\times10^{-8}$ to $2.63\times10^{-4}$~Hz across the six scenarios. The direct-gravity
 scenario suite quantifies how geometry, distance and mass compensation alter
 the source signal. Total terrestrial observables require separately validated
 elastic/potential and height components and are not inferred from the direct

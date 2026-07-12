@@ -1,0 +1,41 @@
+{
+  "bibliography_entry_count": 46,
+  "domain_counts": {
+    "Earth model": 1,
+    "GW detector": 1,
+    "IGETS": 1,
+    "Newtonian noise": 4,
+    "atom gradiometer": 2,
+    "atom gravimeter": 2,
+    "forward method": 1,
+    "geodesy": 1,
+    "gravity preprocessing": 1,
+    "instrument/SG": 3,
+    "loading theory": 1,
+    "non-tidal ocean loading": 2,
+    "ocean loading": 1,
+    "ocean process": 15,
+    "ocean tide loading": 1,
+    "ocean/atmosphere loading": 1,
+    "submarine landslide": 4,
+    "terrestrial gravity review": 1,
+    "tsunami": 3
+  },
+  "forbidden_placeholder_author_present": false,
+  "full_text_gate_passes": true,
+  "full_text_reviewed_count": 35,
+  "matrix_entry_count": 46,
+  "metadata_or_abstract_only_count": 11,
+  "minimum_reference_gate_passes": true,
+  "missing_bibliography_keys": [],
+  "process_coverage_gate_passes": true,
+  "process_source_counts": {
+    "internal_wave": 5,
+    "mesoscale_eddy": 5,
+    "storm_surge": 3,
+    "submarine_landslide": 3,
+    "tide": 4,
+    "tsunami": 3
+  },
+  "schema_version": 1
+}

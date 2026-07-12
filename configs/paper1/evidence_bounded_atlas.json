@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E006-evidence-bounded-atlas",
+  "process_evidence_manifest": "data/manifests/process_parameter_evidence.json",
+  "instrument_curve_manifest": "data/manifests/instrument_noise_curves.json",
+  "helgoland_model_metrics": "experiments/paper1/P1-E005-helgoland-bsh-model/metrics.json",
+  "authorized_vertical_gravity_curves": [
+    "igrav_quiet_j9_self_noise_anchor",
+    "aqg_a01_field_short_term_anchor",
+    "fg5_228_short_term_anchor"
+  ],
+  "minimum_signal_energy_coverage": 0.9,
+  "numerical_energy_coverage_floor": 1e-24,
+  "required_expected_snr": 4.371783871712414,
+  "report_significant_digits": 10,
+  "distance_standoff_m": [10000.0, 30000.0, 100000.0, 300000.0, 1000000.0],
+  "tide": {
+    "sample_count": 32,
+    "period_s": 44714.16432,
+    "observation_duration_s": [604800.0, 2592000.0],
+    "disk_radius_m": 100000.0,
+    "sea_level_normalization_m": 1.0,
+    "observation_height_m": 10.0,
+    "geometry_semantics": "finite-disk transfer diagnostic per 1 m SSH; standoff is measured from the disk edge and is not a tidal-amplitude probability model"
+  },
+  "eddy": {
+    "peak_sea_level_anomaly_m": 0.08,
+    "horizontal_scale_m": 90000.0,
+    "translation_speed_m_s": 0.02841848544973545,
+    "observation_height_m": 10.0,
+    "radial_cells": 24,
+    "angular_cells": 36
+  },
+  "internal_wave": {
+    "sample_count": 128,
+    "period_s": 44714.16432,
+    "peak_density_anomaly_kg_m3": [0.4691943732059368, 1.1260664956942485],
+    "horizontal_scale_m": [120000.0, 129000.0],
+    "vertical_scale_m": 500.0,
+    "lobe_separation_m": 500.0,
+    "center_depth_m": 500.0,
+    "cells_per_axis": 4
+  },
+  "tsunami": {
+    "sample_count": 96,
+    "deep_ocean_amplitude_m": [1.0, 1.8],
+    "source_length_m": [300000.0, 400000.0],
+    "source_width_m": 100000.0,
+    "water_depth_m": 4000.0,
+    "observation_height_m": 10.0,
+    "radial_cells": 20,
+    "angular_cells": 30
+  },
+  "landslide_storegga": {
+    "sample_count": 32,
+    "slide_volume_m3": [2400000000000.0, 3000000000000.0],
+    "bulk_density_contrast_kg_m3": 600.0,
+    "runout_m": 450000.0,
+    "velocity_m_s": [30.0, 60.0],
+    "source_depth_m": 2000.0,
+    "destination_depth_m": 3000.0
+  }
+}

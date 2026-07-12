@@ -83,7 +83,7 @@ Evidence: station manifest, response completeness report, noise sampling plan, s
 - [x] Define the point-mass local coordinate frame, vertical sign, observation geometry, and validation rules.
 - [x] Implement point-mass gravity vector and vertical component.
 - [x] Test zero mass, invalid coincidence, sign, symmetry, inverse-square scaling, and units.
-- [ ] Implement on-axis finite thin-disk analytic vertical gravity.
+- [x] Implement on-axis finite thin-disk analytic vertical gravity.
 - [ ] Implement off-axis disk numerical integration with convergence tests.
 - [ ] Implement finite rectangular surface-load integration.
 - [ ] Implement two-dimensional Gaussian surface anomaly integration.

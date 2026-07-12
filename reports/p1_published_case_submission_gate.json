@@ -1,0 +1,33 @@
+{
+  "interpretation": "The published-case submission gate passes for the main atlas; unavailable observation statistics remain prohibited rather than imputed.",
+  "minimum_passing_open_model_cases": 1,
+  "open_model_cases": [
+    {
+      "actual_status": "pass",
+      "case_id": "helgoland-ntol-2022-voigt-2024",
+      "experiment_id": "P1-E005-helgoland-bsh-model",
+      "required_status": "pass",
+      "status": "pass"
+    }
+  ],
+  "passing_open_model_cases": 1,
+  "policy_id": "paper1-published-case-submission-gate-v1",
+  "schema_version": 1,
+  "status": "pass",
+  "supporting_external_dependencies": [
+    {
+      "blocks_main_atlas": false,
+      "case_id": "helgoland-observation-statistics",
+      "dependency": "authenticated IGETS iGrav047 and paper-equivalent processed 2022 GNSS",
+      "status": "disclosed_unavailable",
+      "submission_effect": "report unavailable; do not report correlation or RMS reduction as reproduced"
+    },
+    {
+      "blocks_main_atlas": false,
+      "case_id": "haikou-model-and-observation-reproduction",
+      "dependency": "author-restricted SG/GNSS/hydrology plus account-gated exact CMEMS history and unresolved MPIOM product path",
+      "status": "disclosed_unavailable",
+      "submission_effect": "report unavailable and retain VOR values only as literature context"
+    }
+  ]
+}

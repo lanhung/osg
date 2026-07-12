@@ -210,6 +210,8 @@ Production primary-branch milestone: registered experiment `P1-E006-evidence-bou
 
 Figure milestone: the deterministic `P1-E006` production bundle renders and visually audits frequency support, spherical distance--amplitude envelopes, the process--instrument coverage matrix and non-probabilistic sensitivity envelopes. These are review-ready primary-branch assets; structural-variant closure still precedes final manuscript-asset status.
 
+Reproduction milestone: registered workflows reproduce `P1-E005` and `P1-E006` byte-for-byte on AutoDL; the figure bundle is checksum deterministic and the eight-page results draft builds with no unresolved references/citations. The published-case submission exception gate passes on the open Helgoland model case while prohibiting unavailable Helgoland/Haikou observation statistics.
+
 Gradient coverage milestone: registered experiment `P1-E003-gradient-detectability-foundation` applies the same gate to all six `Tzz` fixtures and only the two gradient-instrument anchors; vertical-gravity curves are explicitly excluded.
 
 Evidence: process configs, prior table, unit/physics tests, compact ensemble metrics.

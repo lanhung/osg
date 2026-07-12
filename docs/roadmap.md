@@ -267,6 +267,11 @@ Evidence: station/noise manifests, QC report, immutable split definitions.
 
 Evidence: baseline metrics, calibration curves, boundary/negative-result report.
 
+Foundation milestone: registered experiment `P3-E001-physical-baseline-foundation`
+connects the single-station threshold, two-station template and discrete source
+inversion APIs. It deliberately fails the one-per-month false-alarm exposure gate
+and is engineering infrastructure, not Manila PEGS detectability evidence.
+
 ### 3.4 Network optimization
 
 - [x] Define objective combining detection time, probability, false alarms, magnitude error, and station cost/count. (A deterministic non-dominated Pareto frontier is implemented; policy weights are deliberately not hidden in a scalar score.)

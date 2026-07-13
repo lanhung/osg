@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E010-independent-review-sensitivity",
+  "source_config": "configs/paper1/evidence_bounded_atlas.json",
+  "source_metrics": "experiments/paper1/P1-E006-evidence-bounded-atlas/metrics.json",
+  "source_frequency_metrics": "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+  "instrument_curve_manifest": "data/manifests/instrument_noise_curves_reviewed_v2.json",
+  "authorized_vertical_gravity_curves": [
+    "igrav_quiet_j9_self_noise_anchor",
+    "aqg_a01_field_short_term_anchor",
+    "fg5_228_short_term_anchor"
+  ],
+  "required_energy_fractions": [0.5, 0.75, 0.9, 0.95],
+  "minimum_signal_energy_coverage": 0.9,
+  "required_expected_snr": 4.371783871712414,
+  "spectral_conventions": [
+    {"id": "registered_rectangular_trapezoid", "detrend": "constant", "window": "rectangular", "integration": "continuous_trapezoid"},
+    {"id": "rectangular_parseval_bins", "detrend": "constant", "window": "rectangular", "integration": "one_sided_periodogram_bin_sum"},
+    {"id": "hann_parseval_bins", "detrend": "constant", "window": "hann-periodic", "integration": "one_sided_periodogram_bin_sum"}
+  ],
+  "claim_boundary": "Robustness audit of frequency coverage only; no output is a detection probability, site-noise model, or universal detectability classification.",
+  "report_significant_digits": 10
+}

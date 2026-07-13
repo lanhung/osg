@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-07-13",
+  "review_status": "independent_ai_scientific_review_with_primary_source_check",
+  "curves": [
+    {
+      "instrument_id": "igrav_quiet_j9_self_noise_anchor",
+      "observable": "vertical_gravity",
+      "asd_unit": "m s^-2 Hz^-1/2",
+      "frequencies_hz": [0.001, 0.1],
+      "asd": [1e-09, 1e-09],
+      "source": "https://doi.org/10.1093/gji/ggaa359",
+      "source_reported_quantity": "approximately -180 dB average PSD relative to 1 (m s^-2)^2 Hz^-1 from 1e-3 to 1e-1 Hz for iGrav015/iGrav032",
+      "operating_conditions": "Three-channel-correlation self-noise estimate for seven quiet days at J9 Strasbourg; environmental site noise is not represented.",
+      "interpretation": "Approximate flat anchor converted from the paper-reported PSD level.",
+      "model_uncertainty_note": "The source reports an average and frequency-dependent resonances; this is not a digitized site-noise curve.",
+      "digitization_relative_uncertainty": 0.0,
+      "curve_version": "primary-source-reviewed-v2"
+    },
+    {
+      "instrument_id": "aqg_a01_field_short_term_anchor",
+      "observable": "vertical_gravity",
+      "asd_unit": "m s^-2 Hz^-1/2",
+      "frequencies_hz": [0.0005, 0.01],
+      "asd": [7.5e-07, 7.5e-07],
+      "source": "https://doi.org/10.1038/s41598-018-30608-1",
+      "source_reported_quantity": "750 nm s^-2 Hz^-1/2; constant PSD reported from 5e-4 to 1e-2 Hz; longer timescales are not white noise",
+      "operating_conditions": "AQG-A01 Larzac field campaign at the reported 750 nm s^-2 Hz^-1/2 operating sensitivity.",
+      "interpretation": "Flat short-term white-noise anchor only over the explicitly reported plateau.",
+      "model_uncertainty_note": "Long-term instrumental drift, geophysical residuals and site-specific environmental noise remain outside this anchor.",
+      "digitization_relative_uncertainty": 0.0,
+      "curve_version": "primary-source-reviewed-v2"
+    },
+    {
+      "instrument_id": "fg5_228_short_term_anchor",
+      "observable": "vertical_gravity",
+      "asd_unit": "m s^-2 Hz^-1/2",
+      "frequencies_hz": [0.0005, 0.01],
+      "asd": [4.5e-07, 4.5e-07],
+      "source": "https://doi.org/10.1038/s41598-018-30608-1",
+      "source_reported_quantity": "450 nm s^-2 Hz^-1/2; constant PSD reported from 5e-4 to 1e-2 Hz using an effective 36 s sampling interval",
+      "operating_conditions": "FG5#228 32-hour Larzac comparison with drops treated as continuous at the reported effective rate.",
+      "interpretation": "Flat short-term white-noise anchor only over the explicitly reported plateau.",
+      "model_uncertainty_note": "Dead time, site vibration, long-term effects and non-white behaviour remain outside this anchor.",
+      "digitization_relative_uncertainty": 0.0,
+      "curve_version": "primary-source-reviewed-v2"
+    }
+  ]
+}

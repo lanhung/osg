@@ -4,11 +4,10 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 
 import matplotlib as mpl
-import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -48,15 +47,20 @@ def render(source: dict, audit: dict, output_svg: Path, output_png: Path) -> Non
     direct = np.asarray(series["direct_attraction_detided_m_s2"])[selected] * 1.0e9
     elastic = np.asarray(series["combined_elastic_gravity_detided_m_s2"])[selected] * 1.0e9
     height = np.asarray(series["vertical_displacement_detided_m"])[selected] * 1.0e3
-    axis.plot(times[selected], direct, label="direct", color="#d35400")
-    axis.plot(times[selected], elastic, label="combined elastic", color="#8e44ad")
+    selected_times = times[selected]
+    sample_index = np.arange(selected_times.size)
+    axis.plot(sample_index, direct, label="direct", color="#d35400")
+    axis.plot(sample_index, elastic, label="combined elastic", color="#8e44ad")
     axis.set_ylabel("Gravity component (nm s⁻²)")
-    axis.xaxis.set_major_locator(mdates.DayLocator(interval=1, tz=timezone.utc))
-    axis.xaxis.set_major_formatter(mdates.DateFormatter("%b %d", tz=timezone.utc))
+    tick_positions = np.arange(0, selected_times.size, 24)
+    axis.set_xticks(
+        tick_positions,
+        [selected_times[index].strftime("%b %d") for index in tick_positions],
+    )
     axis.tick_params(axis="x", rotation=25)
     second = axis.twinx()
     second.plot(
-        times[selected],
+        sample_index,
         height,
         label="vertical displacement",
         color="#27ae60",

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import unittest
 from pathlib import Path
@@ -44,6 +45,14 @@ class TestPaper1ReleaseMetadata(unittest.TestCase):
         deposition = json.loads((ROOT / ".zenodo.json").read_text())
         self.assertEqual(deposition["version"], "1.0.0")
         self.assertNotIn("doi", deposition)
+
+    def test_release_manifest_hashes_and_disclosures_are_valid(self) -> None:
+        manifest = json.loads((ROOT / "data/manifests/paper1_release_v1.0.0.json").read_text())
+        for artifact in manifest["artifacts"]:
+            observed = hashlib.sha256((ROOT / artifact["path"]).read_bytes()).hexdigest()
+            self.assertEqual(observed, artifact["sha256"], artifact["path"])
+        self.assertFalse(manifest["review"]["independent_human_peer_review"])
+        self.assertIsNone(manifest["archive"]["doi"])
 
 
 if __name__ == "__main__":

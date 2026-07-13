@@ -78,8 +78,9 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         self.assertTrue(all(gates[f"G{index}"] == "pass" for index in range(1, 8)))
         self.assertEqual(gates["G8"], "pass_with_disclosure")
         self.assertEqual(gates["G9"], "pass")
-        self.assertEqual(gates["G10"], "pending")
-        self.assertFalse(release["release_candidate_ready"])
+        self.assertEqual(gates["G10"], "pass_repository_release")
+        self.assertTrue(release["release_candidate_ready"])
+        self.assertIn("not a signed journal submission", release["release_scope"])
 
 
 if __name__ == "__main__":

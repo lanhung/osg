@@ -1,32 +1,32 @@
 {
   "artifacts": {
     "papers/paper1_atlas/main.pdf": {
-      "bytes": 994673,
-      "sha256": "075c4c1cae8119156dc9a5e0316d3a34e444052647ab20ed6782370882847028"
+      "bytes": 1001252,
+      "sha256": "a09f0c7207127ca0a2c480d7347a72851687dbef9fa4264b7592fbac9947103a"
     },
     "reports/figures/paper1/p1_distance_amplitude_envelopes.png": {
       "bytes": 159163,
       "sha256": "ac37edb732219e5f1957a1e1be1035136593b4cd0c2a350aa7839e33071a9d46"
     },
     "reports/figures/paper1/p1_distance_amplitude_envelopes.svg": {
-      "bytes": 73145,
-      "sha256": "321103eea8403eff6b659d1f7664919567266003bbface5acfb67f3439f302a8"
+      "bytes": 72190,
+      "sha256": "fc257c154bea4ede32de979183e4c5a0db9d71f119fa7285249b8100f4cd879d"
     },
     "reports/figures/paper1/p1_frequency_coverage.png": {
-      "bytes": 70449,
-      "sha256": "7c4c9b6eb104df6eb924b0c125de88016d94510c6f720724b916492866c69785"
+      "bytes": 70489,
+      "sha256": "98911f82ac5287a144868a0780c64d42749686f85f1c0a7866d0fd0f20c3691f"
     },
     "reports/figures/paper1/p1_frequency_coverage.svg": {
-      "bytes": 79684,
-      "sha256": "01c76612f104e3220d42e43071f5b612814c978f5135e59332321862694048ec"
+      "bytes": 78605,
+      "sha256": "75c6a0d2198717fc21977f00ac05aa0dbf72f4d3671bc6695d3fca8707c81a3c"
     },
     "reports/figures/paper1/p1_frequency_requirements.png": {
-      "bytes": 285539,
-      "sha256": "d8e8ef45e7c5f9e1eb2b7951293a2eac343a490ea04f64a625be752ceae70596"
+      "bytes": 286365,
+      "sha256": "fc0b65f27b46163ace0e995d1d6b9b19599e63ff330a46bcf2afb92e6bb74204"
     },
     "reports/figures/paper1/p1_frequency_requirements.svg": {
-      "bytes": 140967,
-      "sha256": "b8aaa066017b66dacf3e2fb02d839c89016788ca70881a1a50686826638d9ea5"
+      "bytes": 140311,
+      "sha256": "1ec5b4624cca8042e0ce2c5ca40f475eabb6389ff1d4e990eb90bcb216efec7d"
     },
     "reports/figures/paper1/p1_observable_framework.png": {
       "bytes": 195008,
@@ -62,7 +62,7 @@
       "cwd": ".",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"experiments\": [\n    \"P1-E001-foundation\",\n    \"P1-E002-detectability-foundation\",\n    \"P1-E003-gradient-detectability-foundation\",\n    \"P1-E004-distance-attenuation-foundation\",\n    \"P1-E005-helgoland-bsh-model\",\n    \"P1-E006-evidence-bounded-atlas\",\n    \"P1-E007-structural-variant-closure\",\n    \"P1-E008-frequency-coverage-requirements\",\n    \"P1-E009-helgoland-component-audit\",\n    \"P2-E001-nonrestricted-readiness\",\n    \"P2-E002-cmems-effect-ownership\",\n    \"P3-E001-physical-baseline-foundation\",\n    \"P3-E002-archive-network-design\",\n    \"P3-E003-seasonal-noise-stage1\"\n  ],\n  \"registered_count\": 14,\n  \"status\": \"valid\"\n}\n"
+      "stdout_tail": "{\n  \"experiments\": [\n    \"P1-E001-foundation\",\n    \"P1-E002-detectability-foundation\",\n    \"P1-E003-gradient-detectability-foundation\",\n    \"P1-E004-distance-attenuation-foundation\",\n    \"P1-E005-helgoland-bsh-model\",\n    \"P1-E006-evidence-bounded-atlas\",\n    \"P1-E007-structural-variant-closure\",\n    \"P1-E008-frequency-coverage-requirements\",\n    \"P1-E009-helgoland-component-audit\",\n    \"P1-E010-independent-review-sensitivity\",\n    \"P2-E001-nonrestricted-readiness\",\n    \"P2-E002-cmems-effect-ownership\",\n    \"P3-E001-physical-baseline-foundation\",\n    \"P3-E002-archive-network-design\",\n    \"P3-E003-seasonal-noise-stage1\"\n  ],\n  \"registered_count\": 15,\n  \"status\": \"valid\"\n}\n"
     },
     {
       "command": [
@@ -85,9 +85,11 @@
         "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
         "scripts/render_p1_production_figures.py",
         "--output-dir",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1",
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1",
+        "--curves",
+        "data/manifests/instrument_noise_curves_reviewed_v2.json",
         "--manifest-path",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_production_renderer_manifest.json"
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_production_renderer_manifest.json"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -100,10 +102,12 @@
         "scripts/render_p1_frequency_requirements.py",
         "--metrics",
         "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+        "--instrument-curves",
+        "data/manifests/instrument_noise_curves_reviewed_v2.json",
         "--output-svg",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_frequency_requirements.svg",
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_frequency_requirements.svg",
         "--output-png",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_frequency_requirements.png"
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_frequency_requirements.png"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -115,9 +119,9 @@
         "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
         "scripts/render_p1_conceptual_observables.py",
         "--output-svg",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_observable_framework.svg",
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_observable_framework.svg",
         "--output-png",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_observable_framework.png"
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_observable_framework.png"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -133,9 +137,9 @@
         "--component-audit",
         "experiments/paper1/P1-E009-helgoland-component-audit/metrics.json",
         "--output-svg",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_structure_validation.svg",
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_structure_validation.svg",
         "--output-png",
-        "/root/autodl-tmp/ocean-gravity-run/repo-git/reports/figures/paper1/p1_structure_validation.png"
+        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_structure_validation.png"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -170,7 +174,7 @@
       "cwd": "papers/paper1_atlas",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "09.02).]\n) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty\n(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))\n(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty\n(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))\n(./main.out) (./main.out) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}\n] [2 <../../reports/figures/paper1/p1_observable_framework.png>] [3] [4]\n[5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../reports/\nfigures/paper1/p1_frequency_requirements.png>] [7 <../../reports/figures/paper1\n/p1_distance_amplitude_envelopes.png>] [8 <../../reports/figures/paper1/p1_stru\ncture_validation.png>] (./main.bbl [9] [10]) [11] (./main.aux) )</usr/share/tex\nlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/t\nexmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub\nlic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams\nfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c\nm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.\npfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us\nr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/\ntexlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv\ne/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf\n-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f\nonts/type1/public/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (11 pages, 994673 bytes).\nTranscript written on main.log.\n"
+      "stdout_tail": "ig:distance' on page 6 undefined on input line 288.\n\n[6 <../../reports/figures/paper1/p1_frequency_requirements.png>]\n\nLaTeX Warning: Citation `Tang2012' on page 7 undefined on input line 314.\n\n\nLaTeX Warning: Reference `fig:structure' on page 7 undefined on input line 323.\n\n\n[7 <../../reports/figures/paper1/p1_distance_amplitude_envelopes.png>]\n\nLaTeX Warning: Citation `Brundu2022' on page 8 undefined on input line 355.\n\n[8 <../../reports/figures/paper1/p1_structure_validation.png>]\nNo file main.bbl.\n[9] (./main.aux)\n\nLaTeX Warning: There were undefined references.\n\n\nLaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.\n\n\nPackage rerunfilecheck Warning: File `main.out' has changed.\n(rerunfilecheck)                Rerun to get outlines right\n(rerunfilecheck)                or use package `bookmark'.\n\n )\n(see the transcript file for additional information)</usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu\nblic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a\nmsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts\n/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr\n12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>\n</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/sh\nare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texl\nive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texm\nf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist\n/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/\ntype1/public/amsfonts/cm/cmsy8.pfb>\nOutput written on main.pdf (9 pages, 972460 bytes).\nTranscript written on main.log.\n"
     },
     {
       "command": [
@@ -192,7 +196,7 @@
       "cwd": "papers/paper1_atlas",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "09.02).]\n) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty\n(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))\n(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty\n(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))\n(./main.out) (./main.out) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}\n] [2 <../../reports/figures/paper1/p1_observable_framework.png>] [3] [4]\n[5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../reports/\nfigures/paper1/p1_frequency_requirements.png>] [7 <../../reports/figures/paper1\n/p1_distance_amplitude_envelopes.png>] [8 <../../reports/figures/paper1/p1_stru\ncture_validation.png>] (./main.bbl [9] [10]) [11] (./main.aux) )</usr/share/tex\nlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/t\nexmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub\nlic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams\nfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c\nm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.\npfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us\nr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/\ntexlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv\ne/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf\n-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f\nonts/type1/public/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (11 pages, 994673 bytes).\nTranscript written on main.log.\n"
+      "stdout_tail": "144.\n\n[3]\n\nLaTeX Warning: Citation `Martens2019' on page 4 undefined on input line 213.\n\n\nLaTeX Warning: Citation `Voigt2024' on page 4 undefined on input line 222.\n\n[4] [5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../repo\nrts/figures/paper1/p1_frequency_requirements.png>]\n\nLaTeX Warning: Citation `Tang2012' on page 7 undefined on input line 314.\n\n[7 <../../reports/figures/paper1/p1_distance_amplitude_envelopes.png>]\n\nLaTeX Warning: Citation `Brundu2022' on page 8 undefined on input line 355.\n\n[8 <../../reports/figures/paper1/p1_structure_validation.png>] (./main.bbl\n[9] [10] [11]) [12] (./main.aux)\n\nLaTeX Warning: There were undefined references.\n\n\nLaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.\n\n )\n(see the transcript file for additional information)</usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu\nblic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a\nmsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts\n/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr\n12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>\n</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/sh\nare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texl\nive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texm\nf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist\n/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/\ntype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p\nublic/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (12 pages, 1000650 bytes).\nTranscript written on main.log.\n"
     },
     {
       "command": [
@@ -204,7 +208,7 @@
       "cwd": "papers/paper1_atlas",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "09.02).]\n) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty\n(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))\n(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty\n(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))\n(./main.out) (./main.out) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}\n] [2 <../../reports/figures/paper1/p1_observable_framework.png>] [3] [4]\n[5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../reports/\nfigures/paper1/p1_frequency_requirements.png>] [7 <../../reports/figures/paper1\n/p1_distance_amplitude_envelopes.png>] [8 <../../reports/figures/paper1/p1_stru\ncture_validation.png>] (./main.bbl [9] [10]) [11] (./main.aux) )</usr/share/tex\nlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/t\nexmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub\nlic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams\nfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c\nm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.\npfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us\nr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/\ntexlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv\ne/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf\n-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f\nonts/type1/public/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (11 pages, 994673 bytes).\nTranscript written on main.log.\n"
+      "stdout_tail": ".]\n) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty\n(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))\n(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty\n(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))\n(./main.out) (./main.out) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}\n] [2 <../../reports/figures/paper1/p1_observable_framework.png>] [3] [4]\n[5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../reports/\nfigures/paper1/p1_frequency_requirements.png>] [7 <../../reports/figures/paper1\n/p1_distance_amplitude_envelopes.png>] [8 <../../reports/figures/paper1/p1_stru\ncture_validation.png>] (./main.bbl [9] [10] [11]) [12] (./main.aux) )</usr/shar\ne/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texl\nive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/te\nxmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di\nst/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon\nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type\n1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi\nc/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo\nnts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/\ncmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb\n></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s\nhare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t\nexlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/\ntexmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (12 pages, 1001252 bytes).\nTranscript written on main.log.\n"
     }
   ],
   "literature_audit_passes": true,
@@ -215,7 +219,8 @@
     "P1-E005",
     "P1-E006",
     "P1-E008",
-    "P1-E009"
+    "P1-E009",
+    "P1-E010"
   ],
   "workflow": "paper1-release"
 }

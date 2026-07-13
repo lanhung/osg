@@ -2,7 +2,9 @@
 
 Status: **pass** (2026-07-13)
 
-Command executed on the AutoDL server from commit `9afd30b`:
+Final release command executed on the AutoDL server from commit `dfbe314`.
+The earlier G9 workflow was also run twice consecutively with identical hashes;
+the release run revalidated the expanded P1-E010 package:
 
 ```bash
 /root/autodl-tmp/ocean-gravity-run/venv/bin/python \
@@ -17,16 +19,17 @@ observable ledgers, regenerates all five main figures and two supplementary
 figures from frozen registered metrics, runs BibTeX and three LaTeX passes, and
 fails on undefined citations or references.
 
-The command was run twice consecutively on AutoDL. Both runs produced:
+The final release run produced:
 
-- 11-page PDF during the build log (final file 994,673 bytes);
+- 12-page PDF during the build log (final file 1,001,252 bytes);
 - PDF SHA-256
-  `075c4c1cae8119156dc9a5e0316d3a34e444052647ab20ed6782370882847028`;
+  `a09f0c7207127ca0a2c480d7347a72851687dbef9fa4264b7592fbac9947103a`;
 - build-report SHA-256
-  `5d88ee6dda411ae48682472b724337b11aef4a30aff21788d01acee9a7354845`;
-- identical registered figure hashes on the second run;
+  `f2b17175911f8718edd928313dd346a0b25a9d0ab45bc18aca37a9bf30f0b8fb`;
+- 453 passing tests on AutoDL;
 - passing literature and observable audits;
-- no undefined citations or references in the final LaTeX log.
+- no undefined citations, references, warnings, overfull or underfull boxes in
+  the final LaTeX log.
 
 The machine-readable command records and hashes are in
 `reports/paper1_release_build.json`. Bulk BSH inputs remain on AutoDL; the build

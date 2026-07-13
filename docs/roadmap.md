@@ -254,7 +254,7 @@ Evidence: reproducible case configs, metrics, plots, discrepancy report.
   it is not a Paper 1 release gate.
 - [ ] Generate all manuscript figures and tables from one registered workflow.
 - [x] Draft methods, results, limitations, data/code statements, and claim-safe abstract/title. (The eight-page registered-results PDF builds cleanly on AutoDL; author metadata, structural variants and journal formatting remain release gates.)
-- [ ] Complete internal reproducibility review and freeze Paper 1 release candidate.
+- [x] Complete internal reproducibility review and freeze Paper 1 release candidate. (G8 is a disclosed, user-authorized AI scientific audit rather than human peer review; G9 passed on AutoDL and repository release `paper1-v1.0.0` is frozen.)
 
 Release-candidate convergence: RC01 scope governance, RC02 frequency
 requirements, RC03 structured literature and RC04 observable-ledger audits pass.

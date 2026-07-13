@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "release": "paper1-v1.0.0",
+  "release_date": "2026-07-13",
+  "release_type": "versioned_repository_technical_preprint",
+  "repository": "https://github.com/lanhung/osg",
+  "tag": "paper1-v1.0.0",
+  "preparation_commit": "dfbe314ca96bec825f7e2a8d517f6c3fcb488b22",
+  "tag_commit_resolution": "git rev-list -n 1 paper1-v1.0.0",
+  "artifacts": [
+    {"path": "papers/paper1_atlas/main.pdf", "sha256": "a09f0c7207127ca0a2c480d7347a72851687dbef9fa4264b7592fbac9947103a"},
+    {"path": "reports/paper1_release_build.json", "sha256": "f2b17175911f8718edd928313dd346a0b25a9d0ab45bc18aca37a9bf30f0b8fb"},
+    {"path": "experiments/paper1/P1-E006-evidence-bounded-atlas/metrics.json", "sha256": "6d8235af08f52bb2c295f9bd53014f3194855d8936adbc4dd47a26c4af4483e5"},
+    {"path": "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json", "sha256": "e9e169de96b7c7ec7349fbee8dcf5a1cc458bb7ca65ea5f9254e5d736de568d1"},
+    {"path": "experiments/paper1/P1-E009-helgoland-component-audit/metrics.json", "sha256": "a68887c8b595ab4e49ee6bed131b75ddb5c7577627c11f625cf887c66b68073e"},
+    {"path": "experiments/paper1/P1-E010-independent-review-sensitivity/metrics.json", "sha256": "095ffe195043e7dd802b8c897f5330c0347741628c72dd8d7acbc5f6ab0616fd"},
+    {"path": "papers/paper1_atlas/figure_manifest.json", "sha256": "d67f28ead7eafd17870d58bd907f0ed079378c0b95cef0c0c14a0f950a932e30"},
+    {"path": "docs/review/paper1_ai_scientific_review_record.md", "sha256": "71b64b701d942d85fa6ff1ed55788eacb1a1f15e3ce475d88d8d70b5d9455ead"},
+    {"path": "CITATION.cff", "sha256": "811fe2f7989916f3d8d4baa4d32b90456fd409d977b8f5fc08ef172efaaf4061"},
+    {"path": "LICENSE", "sha256": "54492240ce5a2d2b3bc050e057cdf358ef27244a9aa9c1a182f705999e0f1ce7"}
+  ],
+  "validation": {
+    "autodl_unit_tests_passed": 453,
+    "latex_pages": 12,
+    "latex_undefined_references": 0,
+    "latex_overfull_boxes": 0,
+    "latex_underfull_boxes": 0,
+    "observable_audit_passed": true,
+    "literature_audit_passed": true,
+    "p1_e010_robustness_passed": true
+  },
+  "licensing": {
+    "code": "MIT",
+    "original_documents_and_figures": "CC-BY-4.0",
+    "third_party_raw_data_redistributed": false
+  },
+  "review": {
+    "type": "user-authorized AI scientific review",
+    "independent_human_peer_review": false,
+    "disclosure": "docs/review/paper1_ai_scientific_review_record.md"
+  },
+  "archive": {
+    "github_tag_release": true,
+    "zenodo_metadata_prepared": true,
+    "doi": null,
+    "doi_status": "requires authenticated repository-owner deposition; no DOI is claimed"
+  }
+}

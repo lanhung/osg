@@ -11,7 +11,8 @@
     {"id": "G7", "name": "Validation", "status": "pass", "evidence": "reports/P1-G7-helgoland-discrepancy-decomposition.md"},
     {"id": "G8", "name": "Scientific review", "status": "pass_with_disclosure", "evidence": "docs/review/paper1_ai_scientific_review_record.md; user authorized AI substitution, which is not independent human peer review"},
     {"id": "G9", "name": "Reproduction", "status": "pass", "evidence": "reports/P1-G9-single-command-reproduction.md"},
-    {"id": "G10", "name": "Release", "status": "pending", "evidence": "authors, journal format, tag, archive DOI and cover letter remain"}
+    {"id": "G10", "name": "Release", "status": "pass_repository_release", "evidence": "reports/P1-G10-release.md; Git tag paper1-v1.0.0; DOI deposition remains an explicitly external authenticated action"}
   ],
-  "release_candidate_ready": false
+  "release_candidate_ready": true,
+  "release_scope": "versioned repository technical preprint; not a signed journal submission"
 }

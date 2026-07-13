@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "execution_status": "registered_pending_execution",
+  "experiment_id": "P1-E010-independent-review-sensitivity",
+  "paper": "paper1",
+  "registered_utc": "2026-07-13T16:45:00Z",
+  "code_commit": "7fe5f1f2ea654ef9d3739d38ede897d82fcc2d73",
+  "config_file": "configs/paper1/independent_review_sensitivity.json",
+  "config_file_sha256": "7a3675a93e2f74b9804e21540a342b37e8e5d153bd8dc51b5ac87eec548b2a9c",
+  "runner": "scripts/run_p1_independent_review_sensitivity.py",
+  "data_manifest": "data/manifests/instrument_noise_curves_reviewed_v2.json",
+  "random_seeds": [],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "planned_output": "experiments/paper1/P1-E010-independent-review-sensitivity/metrics.json",
+  "result_class": "independent_review_robustness_not_detectability",
+  "registration_note": "Committed before AutoDL execution. The AQG/FG5 band correction and all three spectral conventions were selected from primary-source and numerical-method review before production results were observed."
+}

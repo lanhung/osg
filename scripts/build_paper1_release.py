@@ -81,6 +81,8 @@ def main() -> int:
                 "scripts/render_p1_production_figures.py",
                 "--output-dir",
                 str(FIGURES),
+                "--curves",
+                "data/manifests/instrument_noise_curves_reviewed_v2.json",
                 "--manifest-path",
                 str(FIGURES / "p1_production_renderer_manifest.json"),
             ]
@@ -93,6 +95,8 @@ def main() -> int:
                 "scripts/render_p1_frequency_requirements.py",
                 "--metrics",
                 "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+                "--instrument-curves",
+                "data/manifests/instrument_noise_curves_reviewed_v2.json",
                 "--output-svg",
                 str(FIGURES / "p1_frequency_requirements.svg"),
                 "--output-png",
@@ -200,7 +204,13 @@ def main() -> int:
     payload = {
         "schema_version": 1,
         "workflow": "paper1-release",
-        "uses_frozen_registered_metrics": ["P1-E005", "P1-E006", "P1-E008", "P1-E009"],
+        "uses_frozen_registered_metrics": [
+            "P1-E005",
+            "P1-E006",
+            "P1-E008",
+            "P1-E009",
+            "P1-E010",
+        ],
         "commands": records,
         "artifacts": {
             str(path.relative_to(ROOT)): {"bytes": path.stat().st_size, "sha256": sha256(path)}

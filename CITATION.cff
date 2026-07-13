@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software or the Paper 1 results, please cite this release."
+title: "Ocean Gravity Program: Paper 1 frequency-coverage release"
+type: software
+authors:
+  - name: "Ocean Gravity Program contributors"
+version: 1.0.0
+date-released: 2026-07-13
+repository-code: "https://github.com/lanhung/osg"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Frequency-Coverage Limits in Assessing Gravity Signals from Oceanic Mass Redistribution"
+  authors:
+    - name: "Ocean Gravity Program contributors"
+  year: 2026
+  status: unpublished

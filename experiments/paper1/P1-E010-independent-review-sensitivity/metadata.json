@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E010-independent-review-sensitivity",
+  "paper": "paper1",
+  "code_commit": "5d7d004a152fc87d879a6e2bcac31d1b584c5d3d",
+  "config_file": "configs/paper1/independent_review_sensitivity.json",
+  "config_file_sha256": "7a3675a93e2f74b9804e21540a342b37e8e5d153bd8dc51b5ac87eec548b2a9c",
+  "data_manifest": "data/manifests/instrument_noise_curves_reviewed_v2.json",
+  "runner": "scripts/run_p1_independent_review_sensitivity.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E010-independent-review-sensitivity/metrics.json",
+      "sha256": "095ffe195043e7dd802b8c897f5330c0347741628c72dd8d7acbc5f6ab0616fd"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-13T16:28:00Z",
+  "result_class": "independent_review_robustness_not_detectability"
+}

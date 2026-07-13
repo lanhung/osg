@@ -21,7 +21,7 @@ PROCESS_ORDER = (
 PROCESS_LABELS = ("Eddy", "Storm surge", "Internal wave", "Tide", "Landslide", "Tsunami")
 
 
-def render(metrics: dict, output_svg: Path, output_png: Path) -> None:
+def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png: Path) -> None:
     mpl.rcParams["svg.hashsalt"] = "oceangravity-paper1-v1"
     thresholds = tuple(metrics["required_energy_fractions"])
     matrix = np.asarray(
@@ -33,7 +33,16 @@ def render(metrics: dict, output_svg: Path, output_png: Path) -> None:
             for process in PROCESS_ORDER
         ]
     )
-    published_low = 1.0e-3
+    reviewed_ids = {
+        "igrav_quiet_j9_self_noise_anchor",
+        "aqg_a01_field_short_term_anchor",
+        "fg5_228_short_term_anchor",
+    }
+    published_low = min(
+        row["frequencies_hz"][0]
+        for row in instrument_curves["curves"]
+        if row["instrument_id"] in reviewed_ids
+    )
     gap = published_low / matrix[:, thresholds.index(0.9)]
 
     figure, axes = plt.subplots(1, 3, figsize=(13.2, 4.4), layout="constrained")
@@ -74,7 +83,7 @@ def render(metrics: dict, output_svg: Path, output_png: Path) -> None:
 
     axes[2].barh(PROCESS_LABELS, gap, color=colors)
     axes[2].set_xscale("log")
-    axes[2].set_xlabel("Published 1e-3 Hz edge / 90% requirement")
+    axes[2].set_xlabel("Lowest reviewed 5e-4 Hz edge / 90% requirement")
     axes[2].set_title("c  Low-frequency coverage gap", loc="left")
     axes[2].grid(True, axis="x", which="both", alpha=0.25)
     for row, value in enumerate(gap):
@@ -99,10 +108,16 @@ def render(metrics: dict, output_svg: Path, output_png: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--metrics", type=Path, required=True)
+    parser.add_argument("--instrument-curves", type=Path, required=True)
     parser.add_argument("--output-svg", type=Path, required=True)
     parser.add_argument("--output-png", type=Path, required=True)
     args = parser.parse_args()
-    render(json.loads(args.metrics.read_text()), args.output_svg, args.output_png)
+    render(
+        json.loads(args.metrics.read_text()),
+        json.loads(args.instrument_curves.read_text()),
+        args.output_svg,
+        args.output_png,
+    )
 
 
 if __name__ == "__main__":

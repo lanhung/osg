@@ -4,7 +4,8 @@
   "registered_inputs": [
     "P1-E006-evidence-bounded-atlas",
     "P1-E008-frequency-coverage-requirements",
-    "P1-E009-helgoland-component-audit"
+    "P1-E009-helgoland-component-audit",
+    "P1-E010-independent-review-sensitivity"
   ],
   "figures": [
     {
@@ -17,13 +18,13 @@
       "figure_id": "figure_2_frequency_coverage",
       "status": "complete",
       "path": "reports/figures/paper1/p1_frequency_coverage.png",
-      "sha256": "7c4c9b6eb104df6eb924b0c125de88016d94510c6f720724b916492866c69785"
+      "sha256": "98911f82ac5287a144868a0780c64d42749686f85f1c0a7866d0fd0f20c3691f"
     },
     {
       "figure_id": "figure_3_frequency_requirements",
       "status": "complete",
       "path": "reports/figures/paper1/p1_frequency_requirements.png",
-      "sha256": "d8e8ef45e7c5f9e1eb2b7951293a2eac343a490ea04f64a625be752ceae70596"
+      "sha256": "fc0b65f27b46163ace0e995d1d6b9b19599e63ff330a46bcf2afb92e6bb74204"
     },
     {
       "figure_id": "figure_4_distance_amplitude",
@@ -42,5 +43,5 @@
     "reports/figures/paper1/p1_process_instrument_matrix.png",
     "reports/figures/paper1/p1_sensitivity_envelopes.png"
   ],
-  "remaining_gate": "Independent human geodesy review remains before release."
+  "remaining_gate": "Repository release is authorized by a disclosed AI review; independent human geodesy review remains recommended before journal submission."
 }

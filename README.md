@@ -2,11 +2,17 @@
 
 Reproducible research code for three connected studies:
 
-1. a frequency-distance-instrument detectability atlas for ocean-induced gravity signals;
+1. frequency-coverage limits for assessing ocean-induced direct gravity signals;
 2. event-resolved attribution of typhoon-driven ocean mass loading in superconducting gravimeter records;
 3. detectability and warning value of prompt elasto-gravity signals (PEGS) from Manila Trench earthquakes.
 
 The project is gated by scientific evidence, not by code completion. The authoritative novelty boundaries are in [`claims.yml`](claims.yml), and data access risks are tracked in [`data/manifests/data_availability.yml`](data/manifests/data_availability.yml).
+
+Paper 1 version 1.0 is the first frozen repository release. Its manuscript,
+registered metrics, independent AI scientific audit and release evidence are in
+[`papers/paper1_atlas/`](papers/paper1_atlas/) and
+[`reports/P1-G10-release.md`](reports/P1-G10-release.md). The AI audit is
+disclosed and is not represented as independent human peer review.
 
 ## Quick start
 

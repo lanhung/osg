@@ -7,11 +7,9 @@
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}
 
-\newcommand{\AtlasPending}[1]{\textbf{[PENDING: #1]}}
-
 \title{Frequency-Coverage Limits in Assessing Gravity Signals from Oceanic Mass Redistribution}
-\author{\AtlasPending{author list and affiliations}}
-\date{Reproducible results draft; author metadata pending}
+\author{Ocean Gravity Program contributors}
+\date{Version 1.0 technical preprint, 13 July 2026}
 
 \begin{document}
 \maketitle
@@ -28,12 +26,12 @@ every process branch. None passes a predeclared 90\% signal-energy
 coverage gate for the three admitted vertical-gravity literature anchors: tide,
 storm surge, eddy and internal-wave signals have no overlapping band, whereas
 tsunami and landslide records have only partial coverage. We therefore withhold
-SNR classifications rather than extrapolating instrument curves. An independent
+SNR classifications rather than extrapolating instrument curves. A separate
 open-data Helgoland calculation reproduces the published BSH gravity-to-height
 ratio within 15.6\%. The median lower edge required for 90\% energy coverage
 ranges from $3.89\times10^{-8}$~Hz for the eddy scenario to
-$2.63\times10^{-4}$~Hz for tsunami packets, factors of $2.6\times10^4$ and 3.8
-below the admitted $10^{-3}$~Hz curve edges. The framework converts a withheld
+$2.63\times10^{-4}$~Hz for tsunami packets, factors of $1.3\times10^4$ and 1.9
+below the lowest reviewed $5\times10^{-4}$~Hz curve edge. The framework converts a withheld
 classification into quantitative frequency requirements while keeping source
 geometry and mass compensation as separate physical limits.
 \end{abstract}
@@ -177,8 +175,21 @@ least 90\% of signal spectral energy. Sensitivity is evaluated separately at
 probabilities. Vertical gravity, gravity gradient, and gravitational-wave
 equivalent strain remain different observables and are never merged into one
 sensitivity curve. The admitted vertical-gravity entries are an
-iGrav quiet self-noise anchor and short-term AQG-A01 and FG5\#228 anchors; their
-declared frequency intervals are not extrapolated.
+iGrav quiet self-noise anchor over $10^{-3}$--$10^{-1}$~Hz and short-term
+AQG-A01 and FG5\#228 white-noise anchors over the source-reported
+$5\times10^{-4}$--$10^{-2}$~Hz plateau; their intervals are not extrapolated.
+
+For a finite, constant-detrended signal, the coverage quantity is
+\begin{equation}
+ C(f_{\mathrm{low}},f_{\mathrm{high}})=
+ \frac{\int_{f_{\mathrm{low}}}^{f_{\mathrm{high}}}|\tilde{s}(f)|^2\,\mathrm{d}f}
+ {\int_{0^+}^{f_{\mathrm{Nyquist}}}|\tilde{s}(f)|^2\,\mathrm{d}f}.
+\end{equation}
+The registered primary convention uses a rectangular window and trapezoidal
+integration of positive-frequency Fourier amplitudes. An independent review
+audit also applies rectangular- and periodic-Hann-window one-sided periodogram
+bin sums. The maximum admissible lower edge is the highest resolved frequency
+for which $C$ reaches the requested fraction at a fixed upper edge.
 
 \subsection{Parameter design and uncertainty}
 Latin-hypercube and stratified designs are labelled as scenario envelopes unless
@@ -226,9 +237,10 @@ so no causal percentage is assigned to either source.
 \section{Results}
 Figure~\ref{fig:frequency} compares process timescales with the admitted
 instrument-curve support. M2 tide and the M2 internal-wave branch lie near
-$2.24\times10^{-5}$~Hz. Storm-surge and eddy ranges are lower. The three admitted
-vertical-gravity anchors begin at $10^{-3}$~Hz. Tsunami characteristic content
-crosses that edge, while the Storegga transition lies mainly below it; neither
+$2.24\times10^{-5}$~Hz. Storm-surge and eddy ranges are lower. The iGrav anchor
+begins at $10^{-3}$~Hz and the reviewed AQG/FG5 plateaus at
+$5\times10^{-4}$~Hz. Tsunami characteristic content
+crosses these edges, while the Storegga transition lies mainly below them; neither
 has 90\% of signal energy inside a complete admitted band.
 
 \begin{figure}[H]
@@ -257,9 +269,9 @@ instrument-evidence requirement. At 90\% coverage, median admissible lower edges
 are $3.89\times10^{-8}$~Hz for the eddy, $7.72\times10^{-7}$~Hz for the storm
 surge, $1.10\times10^{-5}$~Hz for the internal wave,
 $2.15\times10^{-5}$~Hz for the tide, $4.92\times10^{-5}$~Hz for the landslide
-and $2.63\times10^{-4}$~Hz for the tsunami. Relative to the common
-$10^{-3}$~Hz lower edge of the admitted anchors, the corresponding gaps are
-approximately 25,700, 1,300, 91, 47, 20 and 3.8.
+and $2.63\times10^{-4}$~Hz for the tsunami. Relative to the lowest reviewed
+$5\times10^{-4}$~Hz edge, the corresponding gaps are approximately 12,900,
+648, 45, 23, 10 and 1.9.
 
 \begin{figure}[H]
 \centering
@@ -267,7 +279,7 @@ approximately 25,700, 1,300, 91, 47, 20 and 3.8.
 \caption{Direct-radial-gravity frequency requirements. (a) Median inverse
 cumulative-energy requirement at 50\%, 75\%, 90\% and 95\% coverage; connecting
 segments guide the eye. (b) Median maximum admissible lower band edge. (c) Gap
-between the admitted $10^{-3}$~Hz lower edge and the 90\% requirement. These are
+between the lowest reviewed $5\times10^{-4}$~Hz lower edge and the 90\% requirement. These are
 coverage quantities, not SNRs or detection probabilities.}
 \label{fig:requirements}
 \end{figure}
@@ -343,13 +355,23 @@ gravitational-wave strain are likewise not interchangeable with gravimeter
 self-noise~\cite{Brundu2022}.
 
 The threshold analysis distinguishes robust conclusions from finite-record
-sensitivity. All six median 90\% requirements lie below $10^{-3}$~Hz, so the
+sensitivity. All six median 90\% requirements lie below $5\times10^{-4}$~Hz, so the
 coverage-limited result does not depend on choosing 90\% rather than 50\% or
 95\%. The storm-surge requirement nevertheless shifts by about one decade
 between 50\% and 95\%, whereas several short transient designs remain on the
 same resolved Fourier bin. Future field PSDs should therefore extend below the
 process-specific requirement and use records long enough to resolve its
 threshold dependence.
+
+The independent review audit reconstructed all 1,446 signals using the
+primary-source AQG/FG5 intervals and repeated the 50--95\% calculation with
+rectangular and periodic-Hann periodogram bin sums. Every record retains its
+no-band or partial-band status. Median 90\% requirements remain below the lowest
+reviewed edge for every process and convention. The largest convention effect
+is the internal-wave rectangular periodogram result,
+$2.20\times10^{-5}$~Hz, twice the registered trapezoidal value but still a
+factor of 23 below $5\times10^{-4}$~Hz. These checks establish convention-level
+robustness, not natural-population uncertainty.
 
 The Helgoland reproduction supplies an independent positive validation of the
 elastic loading scale but not of observation/model correlation. The reported
@@ -395,9 +417,9 @@ self-noise, AQG and FG5 entries are short-term anchors, and none authorizes
 low-frequency extrapolation. Thus the matrix establishes a coverage boundary,
 not universal instrument performance. Haikou observation reproduction remains
 author-restricted; this does not affect the six-process ensemble. A PEGS
-simulator is unrelated to Paper~1. Final authorship, affiliations, target-journal
-format and the decision to include unavailable observation rows require human
-author approval.
+simulator is unrelated to Paper~1. The repository release uses collective
+project authorship; journal submission still requires named author order,
+affiliations, declarations and corresponding-author approval.
 
 \bibliographystyle{plain}
 \bibliography{references}

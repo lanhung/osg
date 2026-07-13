@@ -1,0 +1,560 @@
+{
+  "all_robustness_checks_pass": true,
+  "claim_boundary": "Robustness audit of frequency coverage only; no output is a detection probability, site-noise model, or universal detectability classification.",
+  "config_sha256": "531e9664927cc6d5009f0ab25908147a6dd7eba6b4bc1fab066ab458c727def5",
+  "experiment_id": "P1-E010-independent-review-sensitivity",
+  "median_90pct_requirement_below_lowest_reviewed_edge": {
+    "internal_wave": {
+      "hann_parseval_bins": true,
+      "rectangular_parseval_bins": true,
+      "registered_rectangular_trapezoid": true
+    },
+    "mesoscale_eddy": {
+      "hann_parseval_bins": true,
+      "rectangular_parseval_bins": true,
+      "registered_rectangular_trapezoid": true
+    },
+    "storm_surge": {
+      "hann_parseval_bins": true,
+      "rectangular_parseval_bins": true,
+      "registered_rectangular_trapezoid": true
+    },
+    "submarine_landslide": {
+      "hann_parseval_bins": true,
+      "rectangular_parseval_bins": true,
+      "registered_rectangular_trapezoid": true
+    },
+    "tide": {
+      "hann_parseval_bins": true,
+      "rectangular_parseval_bins": true,
+      "registered_rectangular_trapezoid": true
+    },
+    "tsunami": {
+      "hann_parseval_bins": true,
+      "rectangular_parseval_bins": true,
+      "registered_rectangular_trapezoid": true
+    }
+  },
+  "process_summary": {
+    "internal_wave": {
+      "methods": {
+        "hann_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          },
+          "0.75": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          },
+          "0.9": {
+            "maximum_hz": 1.101010608e-05,
+            "median_hz": 1.101010608e-05,
+            "minimum_hz": 1.101010608e-05
+          },
+          "0.95": {
+            "maximum_hz": 1.101010608e-05,
+            "median_hz": 1.101010608e-05,
+            "minimum_hz": 1.101010608e-05
+          }
+        },
+        "rectangular_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          },
+          "0.75": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          },
+          "0.9": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          },
+          "0.95": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          }
+        },
+        "registered_rectangular_trapezoid": {
+          "0.5": {
+            "maximum_hz": 2.202021215e-05,
+            "median_hz": 2.202021215e-05,
+            "minimum_hz": 2.202021215e-05
+          },
+          "0.75": {
+            "maximum_hz": 1.101010608e-05,
+            "median_hz": 1.101010608e-05,
+            "minimum_hz": 1.101010608e-05
+          },
+          "0.9": {
+            "maximum_hz": 1.101010608e-05,
+            "median_hz": 1.101010608e-05,
+            "minimum_hz": 1.101010608e-05
+          },
+          "0.95": {
+            "maximum_hz": 1.101010608e-05,
+            "median_hz": 1.101010608e-05,
+            "minimum_hz": 1.101010608e-05
+          }
+        }
+      },
+      "record_count": 640
+    },
+    "mesoscale_eddy": {
+      "methods": {
+        "hann_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.75": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.9": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.95": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          }
+        },
+        "rectangular_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.75": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.9": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.95": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          }
+        },
+        "registered_rectangular_trapezoid": {
+          "0.5": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.75": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.9": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          },
+          "0.95": {
+            "maximum_hz": 3.886288609e-08,
+            "median_hz": 3.886288609e-08,
+            "minimum_hz": 3.886288609e-08
+          }
+        }
+      },
+      "record_count": 5
+    },
+    "storm_surge": {
+      "methods": {
+        "hann_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 1.543209877e-06,
+            "median_hz": 1.543209877e-06,
+            "minimum_hz": 1.543209877e-06
+          },
+          "0.75": {
+            "maximum_hz": 7.716049383e-07,
+            "median_hz": 7.716049383e-07,
+            "minimum_hz": 7.716049383e-07
+          },
+          "0.9": {
+            "maximum_hz": 7.716049383e-07,
+            "median_hz": 7.716049383e-07,
+            "minimum_hz": 7.716049383e-07
+          },
+          "0.95": {
+            "maximum_hz": 3.858024691e-07,
+            "median_hz": 3.858024691e-07,
+            "minimum_hz": 3.858024691e-07
+          }
+        },
+        "rectangular_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 4.24382716e-06,
+            "median_hz": 4.24382716e-06,
+            "minimum_hz": 4.24382716e-06
+          },
+          "0.75": {
+            "maximum_hz": 1.543209877e-06,
+            "median_hz": 1.543209877e-06,
+            "minimum_hz": 1.543209877e-06
+          },
+          "0.9": {
+            "maximum_hz": 7.716049383e-07,
+            "median_hz": 7.716049383e-07,
+            "minimum_hz": 7.716049383e-07
+          },
+          "0.95": {
+            "maximum_hz": 7.716049383e-07,
+            "median_hz": 7.716049383e-07,
+            "minimum_hz": 7.716049383e-07
+          }
+        },
+        "registered_rectangular_trapezoid": {
+          "0.5": {
+            "maximum_hz": 4.24382716e-06,
+            "median_hz": 4.24382716e-06,
+            "minimum_hz": 4.24382716e-06
+          },
+          "0.75": {
+            "maximum_hz": 1.929012346e-06,
+            "median_hz": 1.929012346e-06,
+            "minimum_hz": 1.929012346e-06
+          },
+          "0.9": {
+            "maximum_hz": 7.716049383e-07,
+            "median_hz": 7.716049383e-07,
+            "minimum_hz": 7.716049383e-07
+          },
+          "0.95": {
+            "maximum_hz": 3.858024691e-07,
+            "median_hz": 3.858024691e-07,
+            "minimum_hz": 3.858024691e-07
+          }
+        }
+      },
+      "record_count": 1
+    },
+    "submarine_landslide": {
+      "methods": {
+        "hann_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.75": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.9": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.95": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          }
+        },
+        "rectangular_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.75": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.9": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.95": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          }
+        },
+        "registered_rectangular_trapezoid": {
+          "0.5": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.75": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.9": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          },
+          "0.95": {
+            "maximum_hz": 6.512820513e-05,
+            "median_hz": 4.923076923e-05,
+            "minimum_hz": 3.333333333e-05
+          }
+        }
+      },
+      "record_count": 160
+    },
+    "tide": {
+      "methods": {
+        "hann_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 2.286873537e-05,
+            "median_hz": 2.232761522e-05,
+            "minimum_hz": 2.159309597e-05
+          },
+          "0.75": {
+            "maximum_hz": 2.256575795e-05,
+            "median_hz": 2.221644438e-05,
+            "minimum_hz": 2.152351564e-05
+          },
+          "0.9": {
+            "maximum_hz": 2.228689292e-05,
+            "median_hz": 2.191895089e-05,
+            "minimum_hz": 2.09539181e-05
+          },
+          "0.95": {
+            "maximum_hz": 2.213837617e-05,
+            "median_hz": 2.17148103e-05,
+            "minimum_hz": 2.061563072e-05
+          }
+        },
+        "rectangular_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 2.313545997e-05,
+            "median_hz": 2.236427797e-05,
+            "minimum_hz": 2.188159571e-05
+          },
+          "0.75": {
+            "maximum_hz": 2.260789755e-05,
+            "median_hz": 2.22889227e-05,
+            "minimum_hz": 2.152351564e-05
+          },
+          "0.9": {
+            "maximum_hz": 2.256575795e-05,
+            "median_hz": 2.223734267e-05,
+            "minimum_hz": 2.152351564e-05
+          },
+          "0.95": {
+            "maximum_hz": 2.256575795e-05,
+            "median_hz": 2.211094709e-05,
+            "minimum_hz": 2.005073197e-05
+          }
+        },
+        "registered_rectangular_trapezoid": {
+          "0.5": {
+            "maximum_hz": 2.236427797e-05,
+            "median_hz": 2.207304688e-05,
+            "minimum_hz": 2.09539181e-05
+          },
+          "0.75": {
+            "maximum_hz": 2.209304637e-05,
+            "median_hz": 2.151616471e-05,
+            "minimum_hz": 2.005073197e-05
+          },
+          "0.9": {
+            "maximum_hz": 2.2040158e-05,
+            "median_hz": 2.146970685e-05,
+            "minimum_hz": 2.005073197e-05
+          },
+          "0.95": {
+            "maximum_hz": 2.187417268e-05,
+            "median_hz": 2.135651921e-05,
+            "minimum_hz": 1.930729033e-05
+          }
+        }
+      },
+      "record_count": 160
+    },
+    "tsunami": {
+      "methods": {
+        "hann_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.75": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.9": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.95": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          }
+        },
+        "rectangular_parseval_bins": {
+          "0.5": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.75": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.9": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.95": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          }
+        },
+        "registered_rectangular_trapezoid": {
+          "0.5": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.75": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.9": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          },
+          "0.95": {
+            "maximum_hz": 0.0002796099706,
+            "median_hz": 0.0002626251158,
+            "minimum_hz": 0.0002475713281
+          }
+        }
+      },
+      "record_count": 480
+    }
+  },
+  "record_count": 1446,
+  "registered_e008_median_requirements_reproduced": {
+    "internal_wave": true,
+    "mesoscale_eddy": true,
+    "storm_surge": true,
+    "submarine_landslide": true,
+    "tide": true,
+    "tsunami": true
+  },
+  "result_class": "independent_review_robustness_not_detectability",
+  "reviewed_curve_status_summary": {
+    "internal_wave": {
+      "aqg_a01_field_short_term_anchor": {
+        "no_frequency_coverage": 640
+      },
+      "fg5_228_short_term_anchor": {
+        "no_frequency_coverage": 640
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "no_frequency_coverage": 640
+      }
+    },
+    "mesoscale_eddy": {
+      "aqg_a01_field_short_term_anchor": {
+        "no_frequency_coverage": 5
+      },
+      "fg5_228_short_term_anchor": {
+        "no_frequency_coverage": 5
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "no_frequency_coverage": 5
+      }
+    },
+    "storm_surge": {
+      "aqg_a01_field_short_term_anchor": {
+        "no_frequency_coverage": 1
+      },
+      "fg5_228_short_term_anchor": {
+        "no_frequency_coverage": 1
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "no_frequency_coverage": 1
+      }
+    },
+    "submarine_landslide": {
+      "aqg_a01_field_short_term_anchor": {
+        "partial_band_not_classified": 160
+      },
+      "fg5_228_short_term_anchor": {
+        "partial_band_not_classified": 160
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "partial_band_not_classified": 160
+      }
+    },
+    "tide": {
+      "aqg_a01_field_short_term_anchor": {
+        "no_frequency_coverage": 160
+      },
+      "fg5_228_short_term_anchor": {
+        "no_frequency_coverage": 160
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "no_frequency_coverage": 160
+      }
+    },
+    "tsunami": {
+      "aqg_a01_field_short_term_anchor": {
+        "partial_band_not_classified": 480
+      },
+      "fg5_228_short_term_anchor": {
+        "partial_band_not_classified": 480
+      },
+      "igrav_quiet_j9_self_noise_anchor": {
+        "partial_band_not_classified": 480
+      }
+    }
+  },
+  "reviewed_instrument_bands_hz": {
+    "aqg_a01_field_short_term_anchor": [
+      0.0005,
+      0.01
+    ],
+    "fg5_228_short_term_anchor": [
+      0.0005,
+      0.01
+    ],
+    "igrav_quiet_j9_self_noise_anchor": [
+      0.001,
+      0.1
+    ]
+  },
+  "reviewed_instrument_lowest_edge_hz": 0.0005,
+  "schema_version": 1
+}

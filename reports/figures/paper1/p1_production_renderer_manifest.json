@@ -4,28 +4,28 @@
       "path": "reports/figures/paper1/p1_distance_amplitude_envelopes.svg",
       "preview_png_path": "reports/figures/paper1/p1_distance_amplitude_envelopes.png",
       "preview_png_sha256": "ac37edb732219e5f1957a1e1be1035136593b4cd0c2a350aa7839e33071a9d46",
-      "sha256": "321103eea8403eff6b659d1f7664919567266003bbface5acfb67f3439f302a8",
+      "sha256": "fc257c154bea4ede32de979183e4c5a0db9d71f119fa7285249b8100f4cd879d",
       "status": "complete"
     },
     "frequency_coverage": {
       "path": "reports/figures/paper1/p1_frequency_coverage.svg",
       "preview_png_path": "reports/figures/paper1/p1_frequency_coverage.png",
-      "preview_png_sha256": "7c4c9b6eb104df6eb924b0c125de88016d94510c6f720724b916492866c69785",
-      "sha256": "01c76612f104e3220d42e43071f5b612814c978f5135e59332321862694048ec",
+      "preview_png_sha256": "98911f82ac5287a144868a0780c64d42749686f85f1c0a7866d0fd0f20c3691f",
+      "sha256": "75c6a0d2198717fc21977f00ac05aa0dbf72f4d3671bc6695d3fca8707c81a3c",
       "status": "complete"
     },
     "process_instrument_coverage_matrix": {
       "path": "reports/figures/paper1/p1_process_instrument_matrix.svg",
       "preview_png_path": "reports/figures/paper1/p1_process_instrument_matrix.png",
       "preview_png_sha256": "005cc1fda9a0d0fb8cb593fdc755375c2f1631cfcb8ddbe77106e28582fd9d69",
-      "sha256": "b982c0f9225df977c3895d9b25ca0d2bb403de5d1d8359bcf32a39651a12f36b",
+      "sha256": "4ebcb66a7fb54dba25d25f54ed473c605fae78a6b386fbf50ada4d6787bf3f23",
       "status": "complete"
     },
     "sensitivity_envelopes": {
       "path": "reports/figures/paper1/p1_sensitivity_envelopes.svg",
       "preview_png_path": "reports/figures/paper1/p1_sensitivity_envelopes.png",
       "preview_png_sha256": "2706a405a06ea21b11b90c83a902ce9f855abce8721797aad95a79c2259eb7b4",
-      "sha256": "13bfe84bc8f6ba76025d146525ee4c55dd59f79d0cdcf660c63463d80962303f",
+      "sha256": "d397bbe6e6bcba650e3bdb18c732988f45656f05bb2ecb9718d053823fde5b5f",
       "status": "complete"
     }
   },

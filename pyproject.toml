@@ -4,11 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "oceangravity"
-version = "0.1.0"
+version = "1.0.0"
 description = "Reproducible modelling and detection of ocean-induced gravity signals"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Ocean Gravity Program contributors" }]
+license = "MIT"
 dependencies = [
   "h5netcdf[h5py]>=1.3",
   "numpy>=2.0",

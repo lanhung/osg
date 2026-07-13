@@ -9,7 +9,7 @@
     {"id": "G5", "name": "New result", "status": "pass", "evidence": "reports/P1-RC02-frequency-coverage-requirements.md"},
     {"id": "G6", "name": "Figures", "status": "pass", "evidence": "reports/P1-G6-final-figure-structure.md"},
     {"id": "G7", "name": "Validation", "status": "pass", "evidence": "reports/P1-G7-helgoland-discrepancy-decomposition.md"},
-    {"id": "G8", "name": "Human review", "status": "pending", "evidence": "review packet prepared; independent reviewer identity, acceptance and completed record not yet available"},
+    {"id": "G8", "name": "Scientific review", "status": "pass_with_disclosure", "evidence": "docs/review/paper1_ai_scientific_review_record.md; user authorized AI substitution, which is not independent human peer review"},
     {"id": "G9", "name": "Reproduction", "status": "pass", "evidence": "reports/P1-G9-single-command-reproduction.md"},
     {"id": "G10", "name": "Release", "status": "pending", "evidence": "authors, journal format, tag, archive DOI and cover letter remain"}
   ],

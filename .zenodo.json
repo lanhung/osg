@@ -1,0 +1,25 @@
+{
+  "title": "Ocean Gravity Program: Paper 1 frequency-coverage release",
+  "description": "Reproducible code, registered compact metrics, figures and technical preprint for frequency-coverage limits in assessing direct gravity signals from representative ocean mass-redistribution scenarios.",
+  "creators": [
+    {"name": "Ocean Gravity Program contributors"}
+  ],
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "version": "1.0.0",
+  "keywords": [
+    "gravimetry",
+    "ocean loading",
+    "frequency coverage",
+    "Newtonian gravity",
+    "reproducible research"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/lanhung/osg",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}

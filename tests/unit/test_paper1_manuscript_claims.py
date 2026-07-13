@@ -66,6 +66,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
                 "P1-E006-evidence-bounded-atlas",
                 "P1-E008-frequency-coverage-requirements",
                 "P1-E009-helgoland-component-audit",
+                "P1-E010-independent-review-sensitivity",
             ],
         )
         self.assertEqual([item["status"] for item in figures["figures"]].count("complete"), 5)
@@ -75,7 +76,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         gates = {row["id"]: row["status"] for row in release["gates"]}
         self.assertEqual(set(gates), {f"G{index}" for index in range(1, 11)})
         self.assertTrue(all(gates[f"G{index}"] == "pass" for index in range(1, 8)))
-        self.assertEqual(gates["G8"], "pending")
+        self.assertEqual(gates["G8"], "pass_with_disclosure")
         self.assertEqual(gates["G9"], "pass")
         self.assertEqual(gates["G10"], "pending")
         self.assertFalse(release["release_candidate_ready"])

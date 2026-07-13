@@ -87,6 +87,7 @@ def _save(fig: plt.Figure, path: Path) -> None:
         bbox_inches="tight",
         metadata={"Date": None, "Creator": "oceangravity registered renderer"},
     )
+    path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines()) + "\n")
     fig.savefig(
         path.with_suffix(".png"),
         format="png",

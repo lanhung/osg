@@ -76,7 +76,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         self.assertEqual(set(gates), {f"G{index}" for index in range(1, 11)})
         self.assertTrue(all(gates[f"G{index}"] == "pass" for index in range(1, 8)))
         self.assertEqual(gates["G8"], "pending")
-        self.assertEqual(gates["G9"], "pending")
+        self.assertEqual(gates["G9"], "pass")
         self.assertEqual(gates["G10"], "pending")
         self.assertFalse(release["release_candidate_ready"])
 

@@ -10,7 +10,7 @@
     {"id": "G6", "name": "Figures", "status": "pass", "evidence": "reports/P1-G6-final-figure-structure.md"},
     {"id": "G7", "name": "Validation", "status": "pass", "evidence": "reports/P1-G7-helgoland-discrepancy-decomposition.md"},
     {"id": "G8", "name": "Human review", "status": "pending", "evidence": "review packet prepared; independent reviewer identity, acceptance and completed record not yet available"},
-    {"id": "G9", "name": "Reproduction", "status": "pending", "evidence": "registered experiments reproduce; one-command figures/tables/PDF target remains"},
+    {"id": "G9", "name": "Reproduction", "status": "pass", "evidence": "reports/P1-G9-single-command-reproduction.md"},
     {"id": "G10", "name": "Release", "status": "pending", "evidence": "authors, journal format, tag, archive DOI and cover letter remain"}
   ],
   "release_candidate_ready": false

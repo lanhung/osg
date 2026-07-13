@@ -1,4 +1,4 @@
-.PHONY: test test-env lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects audit-paper2-decision
+.PHONY: test test-env lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects audit-paper2-decision paper1-release
 
 UV ?= uv
 
@@ -33,3 +33,6 @@ audit-effects:
 
 audit-paper2-decision:
 	python3 scripts/audit_paper2_decision.py --output reports/paper2_decision_status.json
+
+paper1-release:
+	python3 scripts/build_paper1_release.py --python python3

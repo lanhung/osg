@@ -59,6 +59,11 @@ def parse_args() -> argparse.Namespace:
         "--curves", type=Path, default=ROOT / "data/manifests/instrument_noise_curves.json"
     )
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--manifest-path",
+        type=Path,
+        help="Optional manifest path; defaults to OUTPUT_DIR/p1_figure_manifest.json",
+    )
     return parser.parse_args()
 
 
@@ -301,7 +306,8 @@ def main() -> int:
     config = json.loads(args.config.read_text(encoding="utf-8"))
     curves = json.loads(args.curves.read_text(encoding="utf-8"))
     manifest = run(metrics, config, curves, args.output_dir)
-    manifest_path = args.output_dir / "p1_figure_manifest.json"
+    manifest_path = args.manifest_path or args.output_dir / "p1_figure_manifest.json"
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     return 0
 

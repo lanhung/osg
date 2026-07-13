@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "gate": "G8",
+  "status": "awaiting_reviewer_assignment",
+  "minimum_independent_reviewers": 1,
+  "required_expertise": [
+    "terrestrial gravimetry",
+    "ocean loading",
+    "physical geodesy"
+  ],
+  "reviewer": null,
+  "invitation_sent_utc": null,
+  "acceptance_received_utc": null,
+  "review_completed_utc": null,
+  "external_contact_performed_by_repository_workflow": false,
+  "packet": "docs/review/paper1_independent_scientific_review_packet.md",
+  "checklist": "docs/review/paper1_reviewer_checklist.csv",
+  "record_template": "docs/review/paper1_review_record_template.md"
+}

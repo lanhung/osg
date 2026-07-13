@@ -6,6 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -21,6 +22,7 @@ PROCESS_LABELS = ("Eddy", "Storm surge", "Internal wave", "Tide", "Landslide", "
 
 
 def render(metrics: dict, output_svg: Path, output_png: Path) -> None:
+    mpl.rcParams["svg.hashsalt"] = "oceangravity-paper1-v1"
     thresholds = tuple(metrics["required_energy_fractions"])
     matrix = np.asarray(
         [
@@ -83,7 +85,14 @@ def render(metrics: dict, output_svg: Path, output_png: Path) -> None:
     )
     output_svg.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output_svg, metadata={"Date": None, "Creator": "oceangravity"})
-    figure.savefig(output_png, dpi=220, metadata={"Software": "oceangravity"})
+    output_svg.write_text(
+        "\n".join(line.rstrip() for line in output_svg.read_text().splitlines()) + "\n"
+    )
+    figure.savefig(
+        output_png,
+        dpi=220,
+        metadata={"Software": "oceangravity registered renderer"},
+    )
     plt.close(figure)
 
 

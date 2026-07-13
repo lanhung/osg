@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E009-helgoland-component-audit",
+  "paper": "paper1",
+  "code_commit": "a838823348cf1d355530ed8a9656c9be51ca98a2",
+  "config_file": "configs/paper1/helgoland_component_audit.json",
+  "config_file_sha256": "648fc5468c0bf9ee3f929a2c242d55a7d205051d343c13a18949f70c5211b7aa",
+  "data_manifest": "data/manifests/helgoland_reproduction_inputs.json",
+  "runner": "scripts/run_p1_helgoland_component_audit.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E009-helgoland-component-audit/metrics.json",
+      "sha256": "a68887c8b595ab4e49ee6bed131b75ddb5c7577627c11f625cf887c66b68073e"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-13T00:22:00Z",
+  "result_class": "registered_component_decomposition_not_observable_redefinition"
+}

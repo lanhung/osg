@@ -1,8 +1,8 @@
 {
   "audit_passes": true,
   "incomplete_rows": [],
-  "ledger_row_count": 11,
-  "main_output_count": 9,
+  "ledger_row_count": 13,
+  "main_output_count": 11,
   "missing_artifacts": [],
   "missing_figure_rows": [],
   "schema_version": 1,

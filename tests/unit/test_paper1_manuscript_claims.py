@@ -27,10 +27,8 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         self.assertIn("cross-process direct-", self.manuscript)
         self.assertIn("direct radial gravity", self.manuscript)
         self.assertIn("not counts of independent natural events", self.manuscript)
-        self.assertIn(
-            "Direct-radial-gravity process--instrument signal-energy coverage",
-            self.manuscript,
-        )
+        self.assertIn("Observable and evidence framework", self.manuscript)
+        self.assertIn("Supplementary Figure~S1", self.manuscript)
         self.assertIn("Direct-radial-gravity frequency requirements", self.manuscript)
 
     def test_forbidden_claims_are_absent(self) -> None:
@@ -67,16 +65,19 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
             [
                 "P1-E006-evidence-bounded-atlas",
                 "P1-E008-frequency-coverage-requirements",
+                "P1-E009-helgoland-component-audit",
             ],
         )
-        self.assertEqual([item["status"] for item in figures["figures"]].count("complete"), 3)
+        self.assertEqual([item["status"] for item in figures["figures"]].count("complete"), 5)
 
     def test_release_gate_snapshot_does_not_claim_submission_readiness(self) -> None:
         release = json.loads((ROOT / "configs/paper1/release_gates.json").read_text())
         gates = {row["id"]: row["status"] for row in release["gates"]}
         self.assertEqual(set(gates), {f"G{index}" for index in range(1, 11)})
-        self.assertTrue(all(gates[f"G{index}"] == "pass" for index in range(1, 6)))
-        self.assertTrue(all(gates[f"G{index}"] == "pending" for index in range(6, 11)))
+        self.assertTrue(all(gates[f"G{index}"] == "pass" for index in range(1, 8)))
+        self.assertEqual(gates["G8"], "pending")
+        self.assertEqual(gates["G9"], "pending")
+        self.assertEqual(gates["G10"], "pending")
         self.assertFalse(release["release_candidate_ready"])
 
 

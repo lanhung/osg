@@ -1,0 +1,68 @@
+{
+  "claim_boundary": "Only the combined elastic-gravity ratio is compared with the published height-dependent model target. Direct-plus-elastic proximity is diagnostic and cannot be used to redefine the published observable or allocate the discrepancy causally.",
+  "component_scale_ratios": {
+    "direct_to_elastic_peak_to_peak": 0.18091253921443357,
+    "direct_to_elastic_rms": 0.18025498474152382
+  },
+  "components": {
+    "combined_elastic_gravity": {
+      "correlation_with_vertical_displacement": 0.999979091861238,
+      "paper_convention_ratio_nm_s2_per_mm": -2.2662457310207795,
+      "peak_to_peak_m_s2": 6.381893636534429e-08,
+      "rms_m_s2": 1.2873269805534267e-08
+    },
+    "direct_attraction": {
+      "correlation_with_vertical_displacement": 0.9930446853682579,
+      "paper_convention_ratio_nm_s2_per_mm": -0.40566931089458913,
+      "peak_to_peak_m_s2": 1.154564582781879e-08,
+      "rms_m_s2": 2.3204710523700986e-09
+    },
+    "direct_plus_combined_elastic_gravity_diagnostic": {
+      "correlation_with_vertical_displacement": 0.9999080949791702,
+      "paper_convention_ratio_nm_s2_per_mm": -2.6719150419153683,
+      "peak_to_peak_m_s2": 7.527435145280935e-08,
+      "rms_m_s2": 1.5178727096759848e-08
+    }
+  },
+  "config_sha256": "ebfa2f6d4fc1f35a8b8eb3413bc20627a9cc84f7fc49a4288cf9f43ebb72c7e0",
+  "diagnostic_total_proximity": {
+    "absolute_difference_from_published_target_nm_s2_per_mm": 0.012084958084631836,
+    "comparison_authorized": false,
+    "direct_plus_elastic_nm_s2_per_mm": -2.6719150419153683,
+    "fractional_difference_from_published_target": 0.004502592430935855
+  },
+  "discrepancy_source_ledger": [
+    {
+      "project": "LoadDef v1.2.2 PREM/CE",
+      "published": "SPOTL Gutenberg-Bullen convention",
+      "quantitative_allocation": null,
+      "source": "Earth/load-response model",
+      "status": "confounded_not_isolated_by_available_registered_runs"
+    },
+    {
+      "project": "30-day eight-constituent harmonic fit with trend",
+      "published": "three-year ET34-X-V80 analysis",
+      "quantitative_allocation": null,
+      "source": "tidal removal",
+      "status": "confounded_not_isolated_by_available_registered_series"
+    },
+    {
+      "project": "computed and retained separately",
+      "published": "excluded from the registered height-dependent comparison",
+      "quantitative_allocation": null,
+      "source": "direct attraction",
+      "status": "diagnostic_only_not_a_discrepancy_explanation"
+    }
+  ],
+  "experiment_id": "P1-E009-helgoland-component-audit",
+  "published_elastic_comparison": {
+    "absolute_difference_nm_s2_per_mm": 0.41775426897922063,
+    "fractional_difference": 0.15564615088644582,
+    "model_nm_s2_per_mm": -2.2662457310207795,
+    "target_nm_s2_per_mm": -2.684
+  },
+  "result_class": "registered_component_decomposition_not_observable_redefinition",
+  "sample_count": 720,
+  "schema_version": 1,
+  "source_experiment": "P1-E005-helgoland-bsh-model"
+}

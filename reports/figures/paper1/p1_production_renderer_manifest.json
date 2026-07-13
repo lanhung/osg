@@ -1,12 +1,5 @@
 {
   "assets": {
-    "observable_framework": {
-      "path": "reports/figures/paper1/p1_observable_framework.svg",
-      "preview_png_path": "reports/figures/paper1/p1_observable_framework.png",
-      "preview_png_sha256": "178373edc8ccaaafa40ba97641ea9dcddbd97a9f24d67fc777d388d48634f4f1",
-      "sha256": "68e045e5d85e29d193627d8a678bf8f63bf1fdc797cfea2cb17df882de74ce9c",
-      "status": "complete"
-    },
     "distance_amplitude_envelopes": {
       "path": "reports/figures/paper1/p1_distance_amplitude_envelopes.svg",
       "preview_png_path": "reports/figures/paper1/p1_distance_amplitude_envelopes.png",
@@ -19,13 +12,6 @@
       "preview_png_path": "reports/figures/paper1/p1_frequency_coverage.png",
       "preview_png_sha256": "7c4c9b6eb104df6eb924b0c125de88016d94510c6f720724b916492866c69785",
       "sha256": "01c76612f104e3220d42e43071f5b612814c978f5135e59332321862694048ec",
-      "status": "complete"
-    },
-    "frequency_requirements": {
-      "path": "reports/figures/paper1/p1_frequency_requirements.svg",
-      "preview_png_path": "reports/figures/paper1/p1_frequency_requirements.png",
-      "preview_png_sha256": "d8e8ef45e7c5f9e1eb2b7951293a2eac343a490ea04f64a625be752ceae70596",
-      "sha256": "b8aaa066017b66dacf3e2fb02d839c89016788ca70881a1a50686826638d9ea5",
       "status": "complete"
     },
     "process_instrument_coverage_matrix": {
@@ -41,19 +27,8 @@
       "preview_png_sha256": "2706a405a06ea21b11b90c83a902ce9f855abce8721797aad95a79c2259eb7b4",
       "sha256": "13bfe84bc8f6ba76025d146525ee4c55dd59f79d0cdcf660c63463d80962303f",
       "status": "complete"
-    },
-    "structure_validation": {
-      "path": "reports/figures/paper1/p1_structure_validation.svg",
-      "preview_png_path": "reports/figures/paper1/p1_structure_validation.png",
-      "preview_png_sha256": "946ca3b03623cb0b5f77092a4388af6f03d93279872b24ca00d399e3a1173210",
-      "sha256": "9b70ef41176edffb2de6ae54e79acf7b261b55908051a2b3e58944754e313db3",
-      "status": "complete"
     }
   },
   "schema_version": 1,
-  "source_experiments": [
-    "P1-E006-evidence-bounded-atlas",
-    "P1-E008-frequency-coverage-requirements",
-    "P1-E009-helgoland-component-audit"
-  ]
+  "source_experiment": "P1-E006-evidence-bounded-atlas"
 }

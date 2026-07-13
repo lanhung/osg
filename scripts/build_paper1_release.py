@@ -32,6 +32,7 @@ def run(command: list[str], *, cwd: Path = ROOT) -> dict:
             "SOURCE_DATE_EPOCH": "1783900800",
             "FORCE_SOURCE_DATE": "1",
             "MPLCONFIGDIR": "/tmp/oceangravity-matplotlib",
+            "TZ": "UTC",
         },
     )
     record = {

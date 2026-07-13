@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "execution_status": "registered_pending_execution",
+  "experiment_id": "P1-E009-helgoland-component-audit",
+  "paper": "paper1",
+  "registered_utc": "2026-07-13T00:20:00Z",
+  "code_commit": "b9239ac98455d0164ac776f87531e515d42ea2c5",
+  "config_file": "configs/paper1/helgoland_component_audit.json",
+  "config_file_sha256": "648fc5468c0bf9ee3f929a2c242d55a7d205051d343c13a18949f70c5211b7aa",
+  "runner": "scripts/run_p1_helgoland_component_audit.py",
+  "data_manifest": "data/manifests/helgoland_reproduction_inputs.json",
+  "random_seeds": [],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "planned_output": "experiments/paper1/P1-E009-helgoland-component-audit/metrics.json",
+  "result_class": "registered_component_decomposition_not_observable_redefinition",
+  "registration_note": "Committed before AutoDL execution. The combined elastic component alone retains the published comparison authorization; direct-plus-elastic is diagnostic and cannot be used to relabel the target."
+}

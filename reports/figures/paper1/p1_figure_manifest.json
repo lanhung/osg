@@ -45,8 +45,8 @@
     "structure_validation": {
       "path": "reports/figures/paper1/p1_structure_validation.svg",
       "preview_png_path": "reports/figures/paper1/p1_structure_validation.png",
-      "preview_png_sha256": "946ca3b03623cb0b5f77092a4388af6f03d93279872b24ca00d399e3a1173210",
-      "sha256": "9b70ef41176edffb2de6ae54e79acf7b261b55908051a2b3e58944754e313db3",
+      "preview_png_sha256": "2a15fd24d122175ad934764ce80b845beb9382785ad01681d33686732cedf51c",
+      "sha256": "f86cac6c8feee8d504a2af146eac7e2d5b725f284400f26be9dd8cb0e55ebfe0",
       "status": "complete"
     }
   },

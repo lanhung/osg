@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import matplotlib as mpl
@@ -51,7 +51,8 @@ def render(source: dict, audit: dict, output_svg: Path, output_png: Path) -> Non
     axis.plot(times[selected], direct, label="direct", color="#d35400")
     axis.plot(times[selected], elastic, label="combined elastic", color="#8e44ad")
     axis.set_ylabel("Gravity component (nm s⁻²)")
-    axis.xaxis.set_major_formatter(mdates.DateFormatter("%b %d"))
+    axis.xaxis.set_major_locator(mdates.DayLocator(interval=1, tz=timezone.utc))
+    axis.xaxis.set_major_formatter(mdates.DateFormatter("%b %d", tz=timezone.utc))
     axis.tick_params(axis="x", rotation=25)
     second = axis.twinx()
     second.plot(

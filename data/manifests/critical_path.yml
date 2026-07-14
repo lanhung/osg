@@ -1,5 +1,5 @@
 schema_version: 1
-baseline_date: 2026-07-12
+baseline_date: 2026-07-14
 status: active
 policy:
   scientific_delivery_order:
@@ -39,7 +39,7 @@ tracks:
     blocker_type: external_authorization
     owner: PI
     support_owner: Codex
-    status: pending_human_action
+    status: account_created_authenticated_inventory_pending
     deadline: 2026-08-09
     checkpoints:
       - date: 2026-07-19
@@ -57,6 +57,10 @@ tracks:
       - colocated pressure
       - calibration, timing, jump, and maintenance provenance
       - environmental validation sources and explicit terms
+    current_evidence:
+      - PI reported IGETS account creation on 2026-07-14
+      - authenticated login and remote station/file coverage remain unverified
+      - Haikou iGrav-048 is policy-constrained and is optional, not critical-path
     fallback_trigger: no committed raw-enough data delivery by 2026-08-23
     fallback_ladder:
       - haikou_or_chinese_coastal_multi_typhoon

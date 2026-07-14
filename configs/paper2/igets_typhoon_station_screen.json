@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "purpose": "registered-access acquisition prioritization only; not typhoon attribution evidence",
+  "station_region": {
+    "minimum_latitude_deg": 0.0,
+    "maximum_latitude_deg": 45.0,
+    "minimum_longitude_deg_east": 100.0,
+    "maximum_longitude_deg_east": 150.0
+  },
+  "event_screen": {
+    "required_basin": "WP",
+    "minimum_season": 2023,
+    "minimum_maximum_usa_wind_kt": 64.0,
+    "maximum_closest_track_distance_km": 750.0
+  },
+  "station_rules": {
+    "require_open_ended_sensor_epoch": true,
+    "deduplicate_by_station_name": true
+  },
+  "interpretation": "A match authorizes only an authenticated remote-directory coverage inquiry. It does not prove that IGETS hosts the event window, that station logs are complete, or that a typhoon gravity signal exists."
+}

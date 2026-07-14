@@ -1,6 +1,6 @@
 # Data-access action pack
 
-Audit date: 2026-07-12
+Audit date: 2026-07-14
 
 These actions require a human identity, affiliation, acceptance of terms, CAPTCHA, or station-owner approval. Codex must prepare and track them but must not impersonate the principal investigator or claim that a request was sent.
 
@@ -12,6 +12,10 @@ as registered, requested, approved, or delivered without human-supplied evidence
 
 Register at the official [IGETS data-user page](https://isdc.gfz.de/igets-data-base/registration-for-data-users/). The form requires personal/institutional information and a CAPTCHA.
 
+PI-reported status on 2026-07-14: **account created; authenticated login and
+station/file inventory not yet verified**. Account creation must not be
+represented as delivery of Hsinchu, Wuhan, Helgoland or any other station data.
+
 Current official access facts:
 
 - download requires a registered account;
@@ -22,7 +26,18 @@ Current official access facts:
 
 After registration, record only the account existence and access date in the private operations log. Never commit username/password. Inventory directories and file headers before downloading bulk data, then create a manifest containing station, sensor, level, exact time range, remote paths, license/terms, and checksums.
 
+For the first authenticated session, the PI should log in interactively from
+AutoDL or create an owner-readable (`chmod 600`) rclone configuration there.
+Do not paste the password into chat, a shell command, a Git-tracked file or a
+process argument. Codex may continue after login by inventorying remote paths and
+downloading header/calibration files before any waveform bulk transfer.
+
 ## Action B — Haikou iGrav-048 collaboration/data request
+
+Status update on 2026-07-14: current policy changes make near-term delivery
+unlikely. Communication may continue, but Paper 2 must be designed to succeed
+without iGrav-048. Haikou is optional cross-station validation rather than the
+primary data gate.
 
 Send from the principal investigator's institutional address to the corresponding author/station contact shown in the VOR. Suggested English text:
 

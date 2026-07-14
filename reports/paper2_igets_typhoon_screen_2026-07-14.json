@@ -1,0 +1,571 @@
+{
+  "candidate_station_count": 5,
+  "config_sha256": "4f949c6b65da0b26fdd360008712e25984324729bd25adc689a101ceeac0f1c3",
+  "ibtracs_sha256": "91217d5c3caf56c02c858fc699ccac80c683ed14d50ab6495963470b964f9608",
+  "schema_version": 1,
+  "screen_id": "igets-public-station-ibtracs-acquisition-priority",
+  "station_inventory_sha256": "265f2cb036b2edbccc4e9b8378406dd1846b9c554bfe8ce4a6b5c78bf4f3d096",
+  "stations": [
+    {
+      "active_sensors": [
+        "GWR T048"
+      ],
+      "event_match_count": 23,
+      "events": [
+        {
+          "closest_track_distance_km": 12.031641183040948,
+          "closest_track_time": "2025-07-06 21:00:00",
+          "maximum_usa_wind_kt": 89.0,
+          "name": "DANAS",
+          "season": 2025,
+          "sid": "2025184N20122"
+        },
+        {
+          "closest_track_distance_km": 24.621479223256312,
+          "closest_track_time": "2024-07-24 21:00:00",
+          "maximum_usa_wind_kt": 125.0,
+          "name": "GAEMI",
+          "season": 2024,
+          "sid": "2024201N12133"
+        },
+        {
+          "closest_track_distance_km": 102.03931027587707,
+          "closest_track_time": "2024-10-31 18:00:00",
+          "maximum_usa_wind_kt": 140.0,
+          "name": "KONG-REY",
+          "season": 2024,
+          "sid": "2024298N13150"
+        },
+        {
+          "closest_track_distance_km": 166.08421229497023,
+          "closest_track_time": "2025-11-12 21:00:00",
+          "maximum_usa_wind_kt": 115.0,
+          "name": "FUNG-WONG",
+          "season": 2025,
+          "sid": "2025308N09144"
+        },
+        {
+          "closest_track_distance_km": 211.29162153647292,
+          "closest_track_time": "2023-09-03 09:00:00",
+          "maximum_usa_wind_kt": 105.0,
+          "name": "HAIKUI",
+          "season": 2023,
+          "sid": "2023239N18144"
+        },
+        {
+          "closest_track_distance_km": 214.0682117510258,
+          "closest_track_time": "2025-08-13 06:00:00",
+          "maximum_usa_wind_kt": 89.0,
+          "name": "PODUL",
+          "season": 2025,
+          "sid": "2025218N19149"
+        },
+        {
+          "closest_track_distance_km": 230.74724755053538,
+          "closest_track_time": "2023-07-28 00:00:00",
+          "maximum_usa_wind_kt": 130.0,
+          "name": "DOKSURI",
+          "season": 2023,
+          "sid": "2023201N13134"
+        },
+        {
+          "closest_track_distance_km": 233.45141796459697,
+          "closest_track_time": "2024-10-03 18:00:00",
+          "maximum_usa_wind_kt": 135.0,
+          "name": "KRATHON",
+          "season": 2024,
+          "sid": "2024270N24128"
+        },
+        {
+          "closest_track_distance_km": 264.3134339683546,
+          "closest_track_time": "2024-11-16 00:00:00",
+          "maximum_usa_wind_kt": 130.0,
+          "name": "USAGI",
+          "season": 2024,
+          "sid": "2024314N07151"
+        },
+        {
+          "closest_track_distance_km": 311.0997159519777,
+          "closest_track_time": "2023-10-05 00:00:00",
+          "maximum_usa_wind_kt": 120.0,
+          "name": "KOINU",
+          "season": 2023,
+          "sid": "2023271N14144"
+        },
+        {
+          "closest_track_distance_km": 362.86921987390724,
+          "closest_track_time": "2025-06-15 15:00:00",
+          "maximum_usa_wind_kt": 64.0,
+          "name": "WUTIP",
+          "season": 2025,
+          "sid": "2025161N15114"
+        },
+        {
+          "closest_track_distance_km": 385.507065473582,
+          "closest_track_time": "2023-08-03 09:00:00",
+          "maximum_usa_wind_kt": 125.0,
+          "name": "KHANUN",
+          "season": 2023,
+          "sid": "2023207N09141"
+        },
+        {
+          "closest_track_distance_km": 409.78677242482644,
+          "closest_track_time": "2025-07-25 15:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "CO-MAY",
+          "season": 2025,
+          "sid": "2025203N20124"
+        },
+        {
+          "closest_track_distance_km": 453.96265829502187,
+          "closest_track_time": "2026-06-25 00:00:00",
+          "maximum_usa_wind_kt": 124.0,
+          "name": "MEKKHALA",
+          "season": 2026,
+          "sid": "2026170N12145"
+        },
+        {
+          "closest_track_distance_km": 476.72655042662666,
+          "closest_track_time": "2023-08-30 12:00:00",
+          "maximum_usa_wind_kt": 140.0,
+          "name": "SAOLA",
+          "season": 2023,
+          "sid": "2023234N18128"
+        },
+        {
+          "closest_track_distance_km": 480.0545742158775,
+          "closest_track_time": "2023-05-31 18:00:00",
+          "maximum_usa_wind_kt": 165.0,
+          "name": "MAWAR",
+          "season": 2023,
+          "sid": "2023138N05151"
+        },
+        {
+          "closest_track_distance_km": 517.0088625056408,
+          "closest_track_time": "2025-07-19 09:00:00",
+          "maximum_usa_wind_kt": 64.0,
+          "name": "WIPHA",
+          "season": 2025,
+          "sid": "2025197N14131"
+        },
+        {
+          "closest_track_distance_km": 590.6292156496094,
+          "closest_track_time": "2025-09-22 12:00:00",
+          "maximum_usa_wind_kt": 144.0,
+          "name": "RAGASA",
+          "season": 2025,
+          "sid": "2025260N13138"
+        },
+        {
+          "closest_track_distance_km": 637.2518692741953,
+          "closest_track_time": "2026-06-01 03:00:00",
+          "maximum_usa_wind_kt": 74.0,
+          "name": "JANGMI",
+          "season": 2026,
+          "sid": "2026147N10138"
+        },
+        {
+          "closest_track_distance_km": 672.1755791682269,
+          "closest_track_time": "2024-11-12 15:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "TORAJI",
+          "season": 2024,
+          "sid": "2024312N14145"
+        },
+        {
+          "closest_track_distance_km": 673.543039553363,
+          "closest_track_time": "2024-09-15 21:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "BEBINCA",
+          "season": 2024,
+          "sid": "2024253N11148"
+        },
+        {
+          "closest_track_distance_km": 688.588281168528,
+          "closest_track_time": "2024-11-07 15:00:00",
+          "maximum_usa_wind_kt": 130.0,
+          "name": "YINXING",
+          "season": 2024,
+          "sid": "2024307N06143"
+        },
+        {
+          "closest_track_distance_km": 711.3680401583197,
+          "closest_track_time": "2024-09-03 18:00:00",
+          "maximum_usa_wind_kt": 145.0,
+          "name": "YAGI",
+          "season": 2024,
+          "sid": "2024244N09137"
+        }
+      ],
+      "latitude_deg": 24.7926,
+      "longitude_deg_east": 120.9855,
+      "station": "Hsinchu"
+    },
+    {
+      "active_sensors": [
+        "GWR T011 TT70"
+      ],
+      "event_match_count": 15,
+      "events": [
+        {
+          "closest_track_distance_km": 179.47014248307403,
+          "closest_track_time": "2024-09-01 18:00:00",
+          "maximum_usa_wind_kt": 115.0,
+          "name": "SHANSHAN",
+          "season": 2024,
+          "sid": "2024233N15148"
+        },
+        {
+          "closest_track_distance_km": 193.30934556755815,
+          "closest_track_time": "2024-11-02 09:00:00",
+          "maximum_usa_wind_kt": 140.0,
+          "name": "KONG-REY",
+          "season": 2024,
+          "sid": "2024298N13150"
+        },
+        {
+          "closest_track_distance_km": 260.04895102936524,
+          "closest_track_time": "2026-06-03 03:00:00",
+          "maximum_usa_wind_kt": 74.0,
+          "name": "JANGMI",
+          "season": 2026,
+          "sid": "2026147N10138"
+        },
+        {
+          "closest_track_distance_km": 294.11981335123045,
+          "closest_track_time": "2026-06-27 09:00:00",
+          "maximum_usa_wind_kt": 124.0,
+          "name": "MEKKHALA",
+          "season": 2026,
+          "sid": "2026170N12145"
+        },
+        {
+          "closest_track_distance_km": 307.48158516302624,
+          "closest_track_time": "2023-08-15 21:00:00",
+          "maximum_usa_wind_kt": 120.0,
+          "name": "LAN",
+          "season": 2023,
+          "sid": "2023218N25145"
+        },
+        {
+          "closest_track_distance_km": 347.7964196944932,
+          "closest_track_time": "2025-08-01 15:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "KROSA",
+          "season": 2025,
+          "sid": "2025205N13145"
+        },
+        {
+          "closest_track_distance_km": 375.0140225938289,
+          "closest_track_time": "2024-08-16 09:00:00",
+          "maximum_usa_wind_kt": 110.0,
+          "name": "AMPIL",
+          "season": 2024,
+          "sid": "2024225N22135"
+        },
+        {
+          "closest_track_distance_km": 400.8128828457129,
+          "closest_track_time": "2024-10-01 09:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "JEBI",
+          "season": 2024,
+          "sid": "2024269N14150"
+        },
+        {
+          "closest_track_distance_km": 406.557888256025,
+          "closest_track_time": "2024-08-12 03:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "MARIA",
+          "season": 2024,
+          "sid": "2024218N23143"
+        },
+        {
+          "closest_track_distance_km": 413.1660709121268,
+          "closest_track_time": "2024-05-31 03:00:00",
+          "maximum_usa_wind_kt": 90.0,
+          "name": "EWINIAR",
+          "season": 2024,
+          "sid": "2024141N03142"
+        },
+        {
+          "closest_track_distance_km": 428.07703617650856,
+          "closest_track_time": "2025-10-13 00:00:00",
+          "maximum_usa_wind_kt": 74.0,
+          "name": "NAKRI",
+          "season": 2025,
+          "sid": "2025280N13147"
+        },
+        {
+          "closest_track_distance_km": 461.2849163024456,
+          "closest_track_time": "2025-10-08 21:00:00",
+          "maximum_usa_wind_kt": 119.0,
+          "name": "HALONG",
+          "season": 2025,
+          "sid": "2025276N20147"
+        },
+        {
+          "closest_track_distance_km": 517.4684420719675,
+          "closest_track_time": "2023-06-03 06:00:00",
+          "maximum_usa_wind_kt": 165.0,
+          "name": "MAWAR",
+          "season": 2023,
+          "sid": "2023138N05151"
+        },
+        {
+          "closest_track_distance_km": 537.1618716868084,
+          "closest_track_time": "2023-09-04 00:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "KIROGI",
+          "season": 2023,
+          "sid": "2023241N10158"
+        },
+        {
+          "closest_track_distance_km": 590.1228318572706,
+          "closest_track_time": "2023-06-12 21:00:00",
+          "maximum_usa_wind_kt": 95.0,
+          "name": "GUCHOL",
+          "season": 2023,
+          "sid": "2023156N12135"
+        }
+      ],
+      "latitude_deg": 36.5439,
+      "longitude_deg_east": 138.2033,
+      "station": "Matsushiro"
+    },
+    {
+      "active_sensors": [
+        "GWR T007 TT70"
+      ],
+      "event_match_count": 14,
+      "events": [
+        {
+          "closest_track_distance_km": 29.794794292182107,
+          "closest_track_time": "2024-08-12 03:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "MARIA",
+          "season": 2024,
+          "sid": "2024218N23143"
+        },
+        {
+          "closest_track_distance_km": 298.30950881784713,
+          "closest_track_time": "2025-08-02 03:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "KROSA",
+          "season": 2025,
+          "sid": "2025205N13145"
+        },
+        {
+          "closest_track_distance_km": 302.7554872320332,
+          "closest_track_time": "2024-10-01 15:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "JEBI",
+          "season": 2024,
+          "sid": "2024269N14150"
+        },
+        {
+          "closest_track_distance_km": 357.63189924125027,
+          "closest_track_time": "2026-06-03 12:00:00",
+          "maximum_usa_wind_kt": 74.0,
+          "name": "JANGMI",
+          "season": 2026,
+          "sid": "2026147N10138"
+        },
+        {
+          "closest_track_distance_km": 371.8844548710098,
+          "closest_track_time": "2024-08-17 00:00:00",
+          "maximum_usa_wind_kt": 110.0,
+          "name": "AMPIL",
+          "season": 2024,
+          "sid": "2024225N22135"
+        },
+        {
+          "closest_track_distance_km": 404.6917817228776,
+          "closest_track_time": "2026-06-27 12:00:00",
+          "maximum_usa_wind_kt": 124.0,
+          "name": "MEKKHALA",
+          "season": 2026,
+          "sid": "2026170N12145"
+        },
+        {
+          "closest_track_distance_km": 431.79721603718735,
+          "closest_track_time": "2023-08-16 15:00:00",
+          "maximum_usa_wind_kt": 120.0,
+          "name": "LAN",
+          "season": 2023,
+          "sid": "2023218N25145"
+        },
+        {
+          "closest_track_distance_km": 496.1625412121339,
+          "closest_track_time": "2024-11-02 12:00:00",
+          "maximum_usa_wind_kt": 140.0,
+          "name": "KONG-REY",
+          "season": 2024,
+          "sid": "2024298N13150"
+        },
+        {
+          "closest_track_distance_km": 512.4427545150519,
+          "closest_track_time": "2024-05-31 09:00:00",
+          "maximum_usa_wind_kt": 90.0,
+          "name": "EWINIAR",
+          "season": 2024,
+          "sid": "2024141N03142"
+        },
+        {
+          "closest_track_distance_km": 559.4805712087616,
+          "closest_track_time": "2024-09-01 18:00:00",
+          "maximum_usa_wind_kt": 115.0,
+          "name": "SHANSHAN",
+          "season": 2024,
+          "sid": "2024233N15148"
+        },
+        {
+          "closest_track_distance_km": 622.2538010616151,
+          "closest_track_time": "2025-10-13 06:00:00",
+          "maximum_usa_wind_kt": 74.0,
+          "name": "NAKRI",
+          "season": 2025,
+          "sid": "2025280N13147"
+        },
+        {
+          "closest_track_distance_km": 630.939217865955,
+          "closest_track_time": "2023-06-03 12:00:00",
+          "maximum_usa_wind_kt": 165.0,
+          "name": "MAWAR",
+          "season": 2023,
+          "sid": "2023138N05151"
+        },
+        {
+          "closest_track_distance_km": 643.133416939474,
+          "closest_track_time": "2025-10-09 06:00:00",
+          "maximum_usa_wind_kt": 119.0,
+          "name": "HALONG",
+          "season": 2025,
+          "sid": "2025276N20147"
+        },
+        {
+          "closest_track_distance_km": 656.2511413876306,
+          "closest_track_time": "2023-06-13 00:00:00",
+          "maximum_usa_wind_kt": 95.0,
+          "name": "GUCHOL",
+          "season": 2023,
+          "sid": "2023156N12135"
+        }
+      ],
+      "latitude_deg": 39.1333,
+      "longitude_deg_east": 141.1334,
+      "station": "Mizusawa"
+    },
+    {
+      "active_sensors": [
+        "OSG 065"
+      ],
+      "event_match_count": 8,
+      "events": [
+        {
+          "closest_track_distance_km": 95.8157739818055,
+          "closest_track_time": "2023-07-29 03:00:00",
+          "maximum_usa_wind_kt": 130.0,
+          "name": "DOKSURI",
+          "season": 2023,
+          "sid": "2023201N13134"
+        },
+        {
+          "closest_track_distance_km": 108.52261859143017,
+          "closest_track_time": "2024-07-27 18:00:00",
+          "maximum_usa_wind_kt": 125.0,
+          "name": "GAEMI",
+          "season": 2024,
+          "sid": "2024201N12133"
+        },
+        {
+          "closest_track_distance_km": 255.68262701274003,
+          "closest_track_time": "2024-09-18 12:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "BEBINCA",
+          "season": 2024,
+          "sid": "2024253N11148"
+        },
+        {
+          "closest_track_distance_km": 306.7470136889322,
+          "closest_track_time": "2025-08-01 06:00:00",
+          "maximum_usa_wind_kt": 70.0,
+          "name": "CO-MAY",
+          "season": 2025,
+          "sid": "2025203N20124"
+        },
+        {
+          "closest_track_distance_km": 490.5075700162948,
+          "closest_track_time": "2025-06-15 12:00:00",
+          "maximum_usa_wind_kt": 64.0,
+          "name": "WUTIP",
+          "season": 2025,
+          "sid": "2025161N15114"
+        },
+        {
+          "closest_track_distance_km": 543.3484826963032,
+          "closest_track_time": "2025-07-09 09:00:00",
+          "maximum_usa_wind_kt": 89.0,
+          "name": "DANAS",
+          "season": 2025,
+          "sid": "2025184N20122"
+        },
+        {
+          "closest_track_distance_km": 638.0795064609993,
+          "closest_track_time": "2025-08-14 09:00:00",
+          "maximum_usa_wind_kt": 89.0,
+          "name": "PODUL",
+          "season": 2025,
+          "sid": "2025218N19149"
+        },
+        {
+          "closest_track_distance_km": 721.759095505014,
+          "closest_track_time": "2024-11-01 03:00:00",
+          "maximum_usa_wind_kt": 140.0,
+          "name": "KONG-REY",
+          "season": 2024,
+          "sid": "2024298N13150"
+        }
+      ],
+      "latitude_deg": 30.5158,
+      "longitude_deg_east": 114.4898,
+      "station": "Wuhan"
+    },
+    {
+      "active_sensors": [
+        "OSG 066"
+      ],
+      "event_match_count": 3,
+      "events": [
+        {
+          "closest_track_distance_km": 496.3616212712734,
+          "closest_track_time": "2023-07-19 06:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "TALIM",
+          "season": 2023,
+          "sid": "2023194N16123"
+        },
+        {
+          "closest_track_distance_km": 557.0391086798799,
+          "closest_track_time": "2024-09-09 06:00:00",
+          "maximum_usa_wind_kt": 145.0,
+          "name": "YAGI",
+          "season": 2024,
+          "sid": "2024244N09137"
+        },
+        {
+          "closest_track_distance_km": 645.0149303626957,
+          "closest_track_time": "2025-09-29 18:00:00",
+          "maximum_usa_wind_kt": 80.0,
+          "name": "BUALOI",
+          "season": 2025,
+          "sid": "2025266N11137"
+        }
+      ],
+      "latitude_deg": 26.8956,
+      "longitude_deg_east": 100.2323,
+      "station": "Lijiang"
+    }
+  ],
+  "stations_with_matches": 5,
+  "warning": "A match authorizes only an authenticated remote-directory coverage inquiry. It does not prove that IGETS hosts the event window, that station logs are complete, or that a typhoon gravity signal exists."
+}

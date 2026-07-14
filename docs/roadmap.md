@@ -79,7 +79,7 @@ Evidence: `docs/literature_matrix.*`, source notes, updated claims audit metadat
 Owner: PI for identity, agreements, and station contact; Codex for inventories,
 manifests, closure audits, and analysis readiness.
 
-- [ ] Freeze candidate SG stations and candidate typhoons before requesting data. (A checksummed 11-event Haikou-proxy priority list is frozen for coverage inquiry; author-confirmed iGrav-048 coordinates/coverage and alternative SG stations remain.)
+- [ ] Freeze candidate SG stations and candidate typhoons before requesting data. (The 11-event Haikou-proxy list remains only a collaboration inquiry. A 2026-07-14 official-table/IBTrACS acquisition screen now prioritizes Hsinchu, Matsushiro/Mizusawa and Wuhan, but authenticated Level 1 file coverage, headers and station logs must close before final station/event freeze.)
 - [x] Determine IGETS product levels, nominal cadence, registration/SFTP access path, and public station table. (Station/file-specific terms remain after registration.)
 - [ ] Request Haikou iGrav-048 gravity, colocated pressure, calibration, jump, maintenance, and timing logs.
 - [ ] Request or inventory Wuhan/HUST and other coastal or regional SG data.

@@ -91,19 +91,22 @@ def screen(station_inventory: dict, ibtracs_path: Path, config: dict) -> dict:
             maximum_wind = max(winds) if winds else None
             if maximum_wind is None or maximum_wind < event_rules["minimum_maximum_usa_wind_kt"]:
                 continue
-            closest = min(
-                (
-                    _distance_km(
-                        station["latitude_deg"],
-                        station["longitude_deg_east"],
-                        point["latitude_deg"],
-                        point["longitude_deg_east"],
-                    ),
-                    point,
-                )
-                for point in points
+            closest_point = min(
+                points,
+                key=lambda point: _distance_km(
+                    station["latitude_deg"],
+                    station["longitude_deg_east"],
+                    point["latitude_deg"],
+                    point["longitude_deg_east"],
+                ),
             )
-            if closest[0] > event_rules["maximum_closest_track_distance_km"]:
+            closest_distance = _distance_km(
+                station["latitude_deg"],
+                station["longitude_deg_east"],
+                closest_point["latitude_deg"],
+                closest_point["longitude_deg_east"],
+            )
+            if closest_distance > event_rules["maximum_closest_track_distance_km"]:
                 continue
             station_matches.append(
                 {
@@ -111,8 +114,8 @@ def screen(station_inventory: dict, ibtracs_path: Path, config: dict) -> dict:
                     "name": points[0]["name"],
                     "season": points[0]["season"],
                     "maximum_usa_wind_kt": maximum_wind,
-                    "closest_track_distance_km": closest[0],
-                    "closest_track_time": closest[1]["time"],
+                    "closest_track_distance_km": closest_distance,
+                    "closest_track_time": closest_point["time"],
                 }
             )
         station_matches.sort(key=lambda item: (item["closest_track_distance_km"], item["sid"]))

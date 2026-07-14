@@ -55,6 +55,24 @@ def test_screen_retains_only_active_nearby_typhoon(tmp_path: Path) -> None:
                 zip(
                     fields,
                     [
+                        "2026001N",
+                        "2026",
+                        "WP",
+                        "TEST",
+                        "2026-01-01 03:00:00",
+                        "20",
+                        "120.5",
+                        "80",
+                    ],
+                    strict=True,
+                )
+            )
+        )
+        writer.writerow(
+            dict(
+                zip(
+                    fields,
+                    [
                         "2026002N",
                         "2026",
                         "WP",

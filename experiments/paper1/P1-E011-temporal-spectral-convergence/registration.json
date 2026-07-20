@@ -4,9 +4,9 @@
   "experiment_id": "P1-E011-temporal-spectral-convergence",
   "paper": "paper1",
   "registered_utc": "2026-07-20T00:00:00Z",
-  "code_commit": "67f89856b3ef6711e51e974bb7170240372f39e7",
+  "code_commit": "0ee880b31b597da3ca67907a7a22980e6e18524c",
   "config_file": "configs/paper1/temporal_spectral_convergence.json",
-  "config_file_sha256": "8050106ea9013d7037352c45fcb25e67e1654c5465e662db4e73efbe6343e5bd",
+  "config_file_sha256": "c385a45b9b89b544ef6cdc3cb690c749027d6ddafbe467d2698be6885a18a405",
   "runner": "scripts/run_p1_temporal_spectral_convergence.py",
   "data_manifest": "data/manifests/instrument_noise_curves_reviewed_v2.json",
   "random_seeds": [],
@@ -19,5 +19,5 @@
   "machine": "autodl-container-7fb444a9ae-9b4ed319",
   "planned_output": "experiments/paper1/P1-E011-temporal-spectral-convergence/metrics.json",
   "result_class": "temporal_spectral_convergence_not_detectability",
-  "registration_note": "Committed before production execution. Padding factors, cadence multipliers, record windows, 5% grid/cadence tolerance, 10% window-stability tolerance, exact UTC storm windows and the no-interpolation rule are fixed. Zero padding samples the finite-record DTFT and creates no temporal information. E006, E008, E010 and the Helgoland experiments remain unchanged until this audit determines whether a versioned update is required."
+  "registration_note": "Committed before production execution. Padding factors, cadence multipliers, integer-cycle tide windows, other record windows, 5% grid/cadence tolerance, 10% window-stability tolerance, exact UTC storm windows and the no-interpolation rule are fixed. Zero padding samples the finite-record DTFT and creates no temporal information. The initial pending registration used a mistyped non-integer 7/14-day tide duration; it was corrected before any production execution. E006, E008, E010 and the Helgoland experiments remain unchanged until this audit determines whether a versioned update is required."
 }

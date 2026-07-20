@@ -16,6 +16,9 @@ from .case_reproduction import (
 )
 from .detectability import (
     CurveDetectabilityResult,
+    FrequencySupportAudit,
+    audit_curve_frequency_support,
+    boundary_aware_spectral_energy,
     evaluate_gradient_signal_against_curve,
     evaluate_gravity_signal_against_curve,
 )
@@ -78,6 +81,7 @@ __all__ = [
     "EventModelMetrics",
     "EventStationData",
     "EventWindow",
+    "FrequencySupportAudit",
     "MagnitudePerformancePoint",
     "OceanAttributionBlockBootstrap",
     "OceanAttributionFit",
@@ -89,11 +93,13 @@ __all__ = [
     "ParameterRange",
     "QuietScoreWindow",
     "QuietWindowFalsePositiveAudit",
+    "audit_curve_frequency_support",
     "audit_event_data_gate",
     "audit_event_design",
     "audit_paper2_decision",
     "audit_quiet_window_false_positives",
     "bootstrap_ocean_attribution_by_event",
+    "boundary_aware_spectral_energy",
     "calibrate_empirical_threshold",
     "canonicalize_report_floats",
     "compare_event_model_improvement",

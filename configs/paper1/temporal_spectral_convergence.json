@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E011-temporal-spectral-convergence",
+  "source_experiment_id": "P1-E006-evidence-bounded-atlas",
+  "source_config": "configs/paper1/evidence_bounded_atlas.json",
+  "source_metrics": "experiments/paper1/P1-E006-evidence-bounded-atlas/metrics.json",
+  "instrument_curve_manifest": "data/manifests/instrument_noise_curves_reviewed_v2.json",
+  "authorized_vertical_gravity_curves": [
+    "igrav_quiet_j9_self_noise_anchor",
+    "aqg_a01_field_short_term_anchor",
+    "fg5_228_short_term_anchor"
+  ],
+  "required_energy_fractions": [0.5, 0.75, 0.9, 0.95],
+  "headline_energy_fraction": 0.9,
+  "dense_dtft": {
+    "implementation": "zero-padded real FFT samples of the finite-record DTFT",
+    "detrend": "constant",
+    "window": "rectangular",
+    "padding_factors": [1, 4, 16, 64],
+    "convergence_comparison": [16, 64],
+    "relative_tolerance": 0.05,
+    "interpretation": "Zero padding interpolates the finite-record transform and adds no temporal information."
+  },
+  "representative_design": {
+    "distance_standoff_m": [10000.0, 100000.0, 1000000.0],
+    "parameter_sample_count": 3,
+    "cadence_multipliers": [1, 2, 4, 8],
+    "cadence_convergence_comparison": [4, 8],
+    "relative_tolerance": 0.05
+  },
+  "record_window_design": {
+    "tide_observation_duration_s": [604800.0, 1207278.43664, 2593421.53056],
+    "tide_endpoint_inclusive": false,
+    "eddy_half_width_characteristic_times": [4.0, 6.0, 8.0],
+    "internal_wave_periods": [2.0, 4.0, 8.0],
+    "internal_wave_endpoint_inclusive": false,
+    "tsunami_padding_scale_count": [4.0, 8.0, 12.0],
+    "landslide_padding_transition_durations": [0.5, 1.0, 2.0],
+    "storm_windows_utc": [
+      {"id": "published_event_7d", "start": "2022-01-27T00:00:00Z", "end": "2022-02-03T00:00:00Z"},
+      {"id": "published_event_14d", "start": "2022-01-26T01:00:00Z", "end": "2022-02-09T01:00:00Z"},
+      {"id": "available_archive_30d", "start": "2022-01-26T01:00:00Z", "end": "2022-02-25T01:00:00Z"}
+    ],
+    "largest_two_relative_tolerance": 0.1
+  },
+  "decision_rules": {
+    "retain_zero_of_1446_conclusion_if_no_dense_record_reaches_coverage_threshold": true,
+    "exact_requirement_requires_grid_and_cadence_convergence": true,
+    "window_limited_if_largest_two_median_relative_change_exceeds": 0.1,
+    "do_not_interpolate_storm_to_higher_cadence": true
+  },
+  "claim_boundary": "Finite-record temporal/spectral convergence and common-support audit only. Dense frequency sampling does not create information, and no output is an SNR, detection probability, or universal process constant.",
+  "report_significant_digits": 10
+}

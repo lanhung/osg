@@ -23,6 +23,127 @@ class CurveDetectabilityResult:
     covered_bin_count: int
 
 
+@dataclass(frozen=True, slots=True)
+class FrequencySupportAudit:
+    """Numerical common-support diagnostics without a detectability claim."""
+
+    status: str
+    record_duration_s: float
+    native_frequency_spacing_hz: float
+    source_nyquist_hz: float
+    instrument_low_edge_hz: float
+    instrument_high_edge_hz: float
+    common_support_low_hz: float | None
+    common_support_high_hz: float | None
+    native_overlap_bin_count: int
+    resolution_limited: bool
+
+
+def audit_curve_frequency_support(
+    sample_count: int,
+    sample_interval_s: float,
+    curve: NoiseCurve,
+) -> FrequencySupportAudit:
+    """Separate source sampling support from published curve support.
+
+    This audit does not inspect signal amplitudes. In particular, fewer than two
+    native Fourier bins is reported as a numerical-resolution limitation rather
+    than as zero signal energy or absent instrument evidence.
+    """
+
+    if isinstance(sample_count, bool) or not isinstance(sample_count, int) or sample_count < 2:
+        raise ValueError("sample_count must be an integer of at least two")
+    interval = float(sample_interval_s)
+    if not math.isfinite(interval) or interval <= 0.0:
+        raise ValueError("sample_interval_s must be finite and positive")
+    duration = sample_count * interval
+    spacing = 1.0 / duration
+    nyquist = (sample_count // 2) * spacing
+    curve_low = curve.frequencies_hz[0]
+    curve_high = curve.frequencies_hz[-1]
+    common_low = max(spacing, curve_low)
+    common_high = min(nyquist, curve_high)
+    if nyquist < curve_low:
+        status = "source_temporal_support_below_curve"
+        common_low_output = None
+        common_high_output = None
+        bin_count = 0
+    elif curve_high < spacing:
+        status = "curve_temporal_support_below_source_resolution"
+        common_low_output = None
+        common_high_output = None
+        bin_count = 0
+    else:
+        first = max(1, math.ceil(curve_low / spacing - 1.0e-12))
+        last = min(sample_count // 2, math.floor(curve_high / spacing + 1.0e-12))
+        bin_count = max(0, last - first + 1)
+        common_low_output = common_low
+        common_high_output = common_high
+        status = (
+            "common_support_unresolved_by_native_grid"
+            if bin_count < 2
+            else "native_common_support_resolved"
+        )
+    return FrequencySupportAudit(
+        status=status,
+        record_duration_s=duration,
+        native_frequency_spacing_hz=spacing,
+        source_nyquist_hz=nyquist,
+        instrument_low_edge_hz=curve_low,
+        instrument_high_edge_hz=curve_high,
+        common_support_low_hz=common_low_output,
+        common_support_high_hz=common_high_output,
+        native_overlap_bin_count=bin_count,
+        resolution_limited=status != "native_common_support_resolved",
+    )
+
+
+def boundary_aware_spectral_energy(
+    frequencies_hz: Sequence[float],
+    amplitudes: Sequence[complex],
+    lower_frequency_hz: float,
+    upper_frequency_hz: float,
+) -> float:
+    """Integrate ``|X(f)|^2`` with linearly interpolated band boundaries."""
+
+    if len(frequencies_hz) != len(amplitudes) or len(frequencies_hz) < 2:
+        raise ValueError("frequencies and amplitudes must have equal length of at least two")
+    frequencies = tuple(float(value) for value in frequencies_hz)
+    if any(right <= left for left, right in itertools.pairwise(frequencies)):
+        raise ValueError("frequencies must be strictly increasing")
+    lower = max(float(lower_frequency_hz), frequencies[0])
+    upper = min(float(upper_frequency_hz), frequencies[-1])
+    if not math.isfinite(lower) or not math.isfinite(upper) or upper <= lower:
+        return 0.0
+    powers = tuple(abs(value) ** 2 for value in amplitudes)
+
+    def interpolate(frequency: float) -> float:
+        for index, (left, right) in enumerate(itertools.pairwise(frequencies)):
+            if left <= frequency <= right:
+                fraction = (frequency - left) / (right - left)
+                return powers[index] + fraction * (powers[index + 1] - powers[index])
+        raise RuntimeError("clamped boundary is outside the frequency grid")
+
+    grid_frequencies = [lower]
+    grid_powers = [interpolate(lower)]
+    for frequency, power in zip(frequencies, powers, strict=True):
+        if lower < frequency < upper:
+            grid_frequencies.append(frequency)
+            grid_powers.append(power)
+    grid_frequencies.append(upper)
+    grid_powers.append(interpolate(upper))
+    return math.fsum(
+        0.5 * (right_f - left_f) * (left_p + right_p)
+        for left_f, right_f, left_p, right_p in zip(
+            grid_frequencies[:-1],
+            grid_frequencies[1:],
+            grid_powers[:-1],
+            grid_powers[1:],
+            strict=True,
+        )
+    )
+
+
 def evaluate_gravity_signal_against_curve(
     samples_m_s2: Sequence[float],
     sample_interval_s: float,

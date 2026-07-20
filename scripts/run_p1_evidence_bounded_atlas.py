@@ -183,8 +183,11 @@ def _tide_records(config, curves):
             surface_density_kg_m2=density,
         )
         for duration in durations:
-            interval = settings["period_s"] / 16.0
-            count = max(33, int(duration / interval) + 1)
+            interval = settings["period_s"] / settings.get("samples_per_period", 16.0)
+            if settings.get("endpoint_inclusive", True):
+                count = max(33, int(duration / interval) + 1)
+            else:
+                count = max(32, round(duration / interval))
             times = regular_times(count, interval)
             values = tuple(
                 gravity_amplitude * math.cos(2.0 * math.pi * time / settings["period_s"])
@@ -225,8 +228,11 @@ def _storm_records(config, curves):
 def _eddy_records(config, curves):
     settings = config["eddy"]
     characteristic_time = settings["horizontal_scale_m"] / settings["translation_speed_m_s"]
-    interval = characteristic_time / 8.0
-    times = regular_times(65, interval, start_time_s=-4.0 * characteristic_time)
+    samples_per_characteristic_time = settings.get("samples_per_characteristic_time", 8)
+    half_width = settings.get("window_half_width_characteristic_times", 4.0)
+    interval = characteristic_time / samples_per_characteristic_time
+    count = round(2.0 * half_width * samples_per_characteristic_time) + 1
+    times = regular_times(count, interval, start_time_s=-half_width * characteristic_time)
     records = []
     patch = config["spherical_patch"]
     station_offset = patch["cutoff_sigma"] * settings["horizontal_scale_m"]
@@ -267,8 +273,12 @@ def _internal_wave_records(config, curves):
     settings = config["internal_wave"]
     densities = _linear_midpoints(settings["peak_density_anomaly_kg_m3"], settings["sample_count"])
     scales = _linear_midpoints(settings["horizontal_scale_m"], settings["sample_count"])
-    interval = settings["period_s"] / 32.0
-    times = regular_times(65, interval)
+    samples_per_period = settings.get("samples_per_period", 32)
+    window_periods = settings.get("window_periods", 2.0)
+    endpoint_inclusive = settings.get("endpoint_inclusive", True)
+    interval = settings["period_s"] / samples_per_period
+    count = round(window_periods * samples_per_period) + int(endpoint_inclusive)
+    times = regular_times(count, interval)
     records = []
     for standoff in config["distance_standoff_m"]:
         for density, scale in zip(densities, scales, strict=True):
@@ -305,17 +315,19 @@ def _tsunami_records(config, curves):
     lengths = _linear_midpoints(settings["source_length_m"], settings["sample_count"])
     scale = settings["source_width_m"] / 2.0
     speed = math.sqrt(STANDARD_GRAVITY.value * settings["water_depth_m"])
-    interval = scale / speed / 6.0
+    samples_per_scale_crossing = settings.get("samples_per_scale_crossing", 6.0)
+    padding_scale_count = settings.get("padding_scale_count", 4.0)
+    interval = scale / speed / samples_per_scale_crossing
     records = []
     patch = config["spherical_patch"]
     station_offset = patch["cutoff_sigma"] * scale
     for standoff in config["distance_standoff_m"]:
         for amplitude, length in zip(amplitudes, lengths, strict=True):
-            duration = (length + 8.0 * scale) / speed
+            duration = (length + 2.0 * padding_scale_count * scale) / speed
             times = regular_times(
                 int(duration / interval) + 1,
                 interval,
-                start_time_s=-4 * scale / speed,
+                start_time_s=-padding_scale_count * scale / speed,
             )
             target_mass = (
                 2.0
@@ -373,8 +385,15 @@ def _landslide_records(config, curves):
     for standoff in config["distance_standoff_m"]:
         for volume, velocity in zip(volumes, velocities, strict=True):
             duration = settings["runout_m"] / velocity
-            interval = duration / 32.0
-            times = regular_times(65, interval, start_time_s=-0.5 * duration)
+            samples_per_transition = settings.get("samples_per_transition", 32.0)
+            padding_transition_durations = settings.get("padding_transition_durations", 0.5)
+            interval = duration / samples_per_transition
+            count = round((1.0 + 2.0 * padding_transition_durations) * samples_per_transition) + 1
+            times = regular_times(
+                count,
+                interval,
+                start_time_s=-padding_transition_durations * duration,
+            )
             result = mass_conserving_submarine_landslide(
                 times,
                 solid_mass_kg=volume * settings["bulk_density_contrast_kg_m3"],

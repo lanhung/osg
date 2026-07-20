@@ -33,17 +33,22 @@ def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png:
             for process in PROCESS_ORDER
         ]
     )
-    reviewed_ids = {
+    reviewed_ids = (
         "igrav_quiet_j9_self_noise_anchor",
         "aqg_a01_field_short_term_anchor",
         "fg5_228_short_term_anchor",
-    }
-    published_low = min(
-        row["frequencies_hz"][0]
+    )
+    reviewed_curves = {
+        row["instrument_id"]: row
         for row in instrument_curves["curves"]
         if row["instrument_id"] in reviewed_ids
-    )
-    gap = published_low / matrix[:, thresholds.index(0.9)]
+    }
+    low_edges = {
+        curve_id: reviewed_curves[curve_id]["frequencies_hz"][0]
+        for curve_id in reviewed_ids
+    }
+    requirement_90 = matrix[:, thresholds.index(0.9)]
+    permissive_gap = min(low_edges.values()) / requirement_90
 
     figure, axes = plt.subplots(1, 3, figsize=(13.2, 4.4), layout="constrained")
     colors = plt.cm.tab10(np.linspace(0.0, 0.8, len(PROCESS_ORDER)))
@@ -81,12 +86,30 @@ def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png:
     colorbar = figure.colorbar(image, ax=axes[1], shrink=0.82)
     colorbar.set_label("log10(Hz)")
 
-    axes[2].barh(PROCESS_LABELS, gap, color=colors)
+    axes[2].barh(PROCESS_LABELS, permissive_gap, color=colors, alpha=0.45)
+    marker_styles = {
+        "igrav_quiet_j9_self_noise_anchor": ("iGrav", "D", "#222222"),
+        "aqg_a01_field_short_term_anchor": ("AQG-A01", "o", "#006d77"),
+        "fg5_228_short_term_anchor": ("FG5#228", "x", "#9b2226"),
+    }
+    y_positions = np.arange(len(PROCESS_LABELS))
+    for curve_id in reviewed_ids:
+        label, marker, color = marker_styles[curve_id]
+        axes[2].scatter(
+            low_edges[curve_id] / requirement_90,
+            y_positions,
+            marker=marker,
+            color=color,
+            s=28,
+            label=f"{label}: {low_edges[curve_id]:.0e} Hz",
+            zorder=3,
+        )
     axes[2].set_xscale("log")
-    axes[2].set_xlabel("Lowest reviewed 5e-4 Hz edge / 90% requirement")
+    axes[2].set_xlabel("Published lower edge / 90% requirement")
     axes[2].set_title("c  Low-frequency coverage gap", loc="left")
     axes[2].grid(True, axis="x", which="both", alpha=0.25)
-    for row, value in enumerate(gap):
+    axes[2].legend(fontsize=7, loc="lower right")
+    for row, value in enumerate(permissive_gap):
         axes[2].text(value * 1.08, row, f"{value:.2g}x", va="center", fontsize=8)
 
     figure.suptitle(

@@ -152,17 +152,18 @@ def render_frequency_coverage(config: dict, curves: dict, path: Path) -> None:
         base + index for index in range(len(labels) - len(PROCESS_ORDER))
     ]
     ax.set_yticks(positions, labels)
-    ax.axvline(1e-3, color="#777777", linestyle="--", linewidth=0.8)
+    permissive_lower_edge = min(row["frequencies_hz"][0] for row in admitted_rows)
+    ax.axvline(permissive_lower_edge, color="#777777", linestyle="--", linewidth=0.8)
     ax.text(
-        1.08e-3,
+        permissive_lower_edge * 1.08,
         len(PROCESS_ORDER) - 0.25,
-        "lowest admitted curve edge",
+        "most permissive published lower edge",
         color="#555555",
         fontsize=8,
     )
     ax.set_xscale("log")
     ax.set_xlabel("Characteristic frequency or range (Hz)")
-    ax.set_title("Process timescales versus admitted vertical-gravity curve support")
+    ax.set_title("Process timescales versus reviewed vertical-gravity curve support")
     ax.grid(axis="x", which="both", alpha=0.2)
     ax.invert_yaxis()
     _save(fig, path)

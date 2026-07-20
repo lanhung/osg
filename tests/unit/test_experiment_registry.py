@@ -28,6 +28,7 @@ class TestExperimentRegistry(unittest.TestCase):
                 "P1-E008-frequency-coverage-requirements",
                 "P1-E009-helgoland-component-audit",
                 "P1-E010-independent-review-sensitivity",
+                "P1-E011-temporal-spectral-convergence",
                 "P2-E001-nonrestricted-readiness",
                 "P2-E002-cmems-effect-ownership",
                 "P3-E001-physical-baseline-foundation",

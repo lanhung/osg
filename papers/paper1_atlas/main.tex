@@ -37,12 +37,14 @@ tsunami and landslide records have only partial coverage. We therefore assign
 no
 SNR classifications rather than extrapolating instrument curves. A separate
 open-data Helgoland calculation reproduces the published BSH gravity-to-height
-ratio within 15.6\%. The median lower edge required for 90\% energy coverage
-ranges from $3.89\times10^{-8}$~Hz for the eddy scenario to
-$2.63\times10^{-4}$~Hz for tsunami packets, factors of $1.3\times10^4$ and 1.9
-below the lowest reviewed $5\times10^{-4}$~Hz curve edge. The framework converts
-the absence of a classification into quantitative frequency requirements while keeping source
-geometry and mass compensation as separate physical limits.
+ratio within 15.6\%. A temporal/spectral audit confirms that the 0-of-1,446
+result is unchanged by dense boundary-aware frequency integration or finer
+analytic-source cadence. Exact-cycle tide and internal-wave lower edges are
+stable near $2\times10^{-5}$~Hz, whereas eddy, storm-surge, tsunami and
+landslide values vary with the finite record window; all tested values remain
+below the most permissive reviewed $5\times10^{-4}$~Hz curve edge. The
+framework therefore identifies a robust common-support deficit without
+promoting finite-record quantities to universal process constants.
 \end{abstract}
 
 \section{Introduction}
@@ -210,6 +212,15 @@ audit also applies rectangular and periodic Hann window one-sided periodogram
 bin sums. The maximum admissible lower edge is the highest resolved frequency
 for which $C$ reaches the requested fraction at a fixed upper edge.
 
+A separate temporal/spectral convergence audit samples the same finite-record
+transform at 1, 4, 16 and 64 times the native Fourier density, compares
+regenerable analytic signals at 1, 2, 4 and 8 times their baseline cadence, and
+varies physically defined record windows. Zero padding only samples the
+finite-record DTFT more densely and creates no new temporal information. Grid
+and cadence medians must change by less than 5\% at the final two resolutions.
+The largest two record windows use a separate 10\% stability gate. Hourly BSH
+storm fields are never interpolated to manufacture higher-frequency support.
+
 \subsection{Parameter design and uncertainty}
 Latin-hypercube and stratified designs are labelled as scenario envelopes unless
 every dimension has a source-supported probability distribution. Engineering
@@ -290,23 +301,32 @@ the original native-grid implementation condition of fewer than two positive
 frequency samples, while ``partial'' means a resolved overlap covers less than
 90\% of signal energy.
 
-Figure~\ref{fig:requirements} converts the absence of a classification into an
-instrument-evidence requirement. At 90\% coverage, median admissible lower edges
-are $3.89\times10^{-8}$~Hz for the eddy, $7.72\times10^{-7}$~Hz for the storm
-surge, $1.10\times10^{-5}$~Hz for the internal wave,
-$2.15\times10^{-5}$~Hz for the tide, $4.92\times10^{-5}$~Hz for the landslide
-and $2.63\times10^{-4}$~Hz for the tsunami. Relative to the lowest reviewed
-$5\times10^{-4}$~Hz edge, the corresponding gaps are approximately 12,900,
-648, 45, 23, 10 and 1.9.
+Figure~\ref{fig:requirements} separates dense-grid convergence from
+record-window dependence. All six process medians converge within 5\% between
+16- and 64-times finite-DTFT sampling, and all five regenerable analytic
+families pass the 4- versus 8-times cadence gate. Exact-cycle tide windows give
+median 90\% lower edges of $2.157$--$2.216\times10^{-5}$~Hz and 2--8-period
+internal-wave windows give $1.817$--$2.101\times10^{-5}$~Hz; their
+largest-two-window changes are 1.00\% and 5.20\%. The other branches are window
+limited: the tested ranges are $1.407$--$2.793\times10^{-8}$~Hz for the eddy,
+$7.837\times10^{-7}$--$3.488\times10^{-6}$~Hz for the single storm case,
+$5.990$--$9.903\times10^{-5}$~Hz for tsunami packets and
+$7.764\times10^{-6}$--$1.846\times10^{-5}$~Hz for landslide transitions. These
+are finite-record scenario diagnostics. Every tested value remains below the
+most permissive reviewed $5\times10^{-4}$~Hz edge, and dense boundary-aware
+integration still yields zero 90\%-coverage passes among 1,446 records.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\PaperFigureRoot/p1_frequency_requirements.png}
-\caption{Direct-radial-gravity frequency requirements. (a) Median inverse
-cumulative-energy requirement at 50\%, 75\%, 90\% and 95\% coverage; connecting
-segments guide the eye. (b) Median maximum admissible lower band edge. (c) Gap
-between the lowest reviewed $5\times10^{-4}$~Hz lower edge and the 90\% requirement. These are
-coverage quantities, not SNRs or detection probabilities.}
+\caption{Finite-record direct-radial-gravity frequency support. (a) Dense-grid
+median inverse cumulative-energy edge at 50\%, 75\%, 90\% and 95\% coverage;
+connecting segments guide the eye. (b) The same values as a process--threshold
+matrix. (c) The 90\% edges under the tested record windows; circles denote the
+two stable processes and open squares the four window-limited processes.
+Vertical lines give the three published reference-curve lower edges. These are
+coverage quantities, not SNRs, detection probabilities or universal process
+constants.}
 \label{fig:requirements}
 \end{figure}
 
@@ -380,14 +400,16 @@ anchors by assumption. Environmental Newtonian-noise calculations expressed as
 gravitational-wave strain are likewise not interchangeable with gravimeter
 self-noise~\cite{Brundu2022}.
 
-The threshold analysis distinguishes robust conclusions from finite-record
-sensitivity. All six median 90\% requirements lie below $5\times10^{-4}$~Hz, so the
-coverage-limited result does not depend on choosing 90\% rather than 50\% or
-95\%. The storm-surge requirement nevertheless shifts by about one decade
-between 50\% and 95\%, whereas several short transient designs remain on the
-same resolved Fourier bin. Future field PSDs should therefore extend below the
-process-specific requirement and use records long enough to resolve its
-threshold dependence.
+The threshold and convergence analyses distinguish a robust common-support
+conclusion from finite-record sensitivity. At every tested energy fraction and
+record window, the process medians remain below $5\times10^{-4}$~Hz. Dense
+frequency sampling and finer cadence do not change that conclusion. However,
+$f_{\mathrm{low}}T$ remains nearly constant as the eddy, storm, tsunami and
+landslide windows change, demonstrating that their exact edges are controlled
+partly by record definition. Future field studies should therefore report a
+record-window convergence analysis together with the low-frequency extent of
+the measured site PSD, rather than adopt these four ranges as instrument-design
+constants.
 
 The review audit reconstructed all 1,446 signals using the source-reported AQG
 and FG5 intervals and repeated the 50--95\% calculation with
@@ -398,6 +420,14 @@ is the internal-wave rectangular periodogram result,
 $2.20\times10^{-5}$~Hz, twice the fixed trapezoidal value but still a
 factor of 23 below $5\times10^{-4}$~Hz. These checks establish robustness to the
 numerical convention, not natural population uncertainty.
+
+The subsequent convergence audit changes the quantitative interpretation but
+not the primary classification result. Boundary-aware 64-times sampling finds
+no 90\%-coverage pass among the 1,446 records. It resolves the former first-bin
+quantization and confirms stable tide and internal-wave estimates, while
+identifying eddy, storm-surge, tsunami and landslide edges as window limited.
+Accordingly the native-grid P1-E008 values remain reproducible historical
+outputs but are not used as universal measurement requirements.
 
 The Helgoland calculation supplies an independent model-scale consistency
 check, reproducing the published elastic gravity-to-height ratio within 15.6\%,
@@ -410,13 +440,14 @@ authenticated iGrav047 data and a paper-equivalent processed 2022 GNSS series.
 The reviewed public instrument references do not support a comprehensive
 cross-process detectability assessment: no production record reaches the required
 signal-energy coverage. This result does not imply absent physical signals or
-universal non-detectability. It establishes the frequency support that future
-site-specific noise measurements must provide: median 90\% lower edges span
-$3.89\times10^{-8}$ to $2.63\times10^{-4}$~Hz across the six scenarios. The direct-gravity
-scenario suite quantifies how geometry, distance and mass compensation alter
-the source signal. Total terrestrial observables require separately validated
-elastic/potential and height components and are not inferred from the direct
-atlas alone.
+universal non-detectability. Dense spectral and cadence convergence preserves
+the zero-classification result, while record-window tests show that four of six
+exact low-frequency edges are scenario-window dependent. The direct-gravity
+suite quantifies how geometry, distance and mass compensation alter the source
+signal and defines the additional temporal-support evidence a future field
+study must measure and converge. Total terrestrial observables require
+separately validated elastic/potential and height components and are not
+inferred from the direct atlas alone.
 
 \section{Data and code availability}
 Code, compact experiment metadata, checksums, figure inputs and manuscript

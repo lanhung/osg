@@ -18,6 +18,6 @@ def test_incomplete_submission_metadata_blocks_release() -> None:
     metadata = json.loads(
         (ROOT / "papers/paper1_journal_of_geodesy/submission_metadata.json").read_text()
     )
-    assert metadata["status"] == "incomplete_user_verification_required"
+    assert metadata["status"] != "complete_verified"
     with pytest.raises(RuntimeError, match="not complete and verified"):
         _validate_submission_metadata()

@@ -94,7 +94,7 @@ def main() -> int:
                 python,
                 "scripts/render_p1_frequency_requirements.py",
                 "--metrics",
-                "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+                "experiments/paper1/P1-E011-temporal-spectral-convergence/metrics.json",
                 "--instrument-curves",
                 "data/manifests/instrument_noise_curves_reviewed_v2.json",
                 "--output-svg",
@@ -210,6 +210,7 @@ def main() -> int:
             "P1-E008",
             "P1-E009",
             "P1-E010",
+            "P1-E011",
         ],
         "commands": records,
         "artifacts": {

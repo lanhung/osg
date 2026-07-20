@@ -70,6 +70,17 @@ def _validate_e011() -> Path:
     return output
 
 
+def _validate_figure_manifest() -> None:
+    manifest_path = ROOT / "papers/paper1_atlas/figure_manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    if "P1-E011-temporal-spectral-convergence" not in manifest["registered_inputs"]:
+        raise RuntimeError("figure manifest does not register P1-E011")
+    for figure in manifest["figures"]:
+        path = ROOT / figure["path"]
+        if not path.is_file() or _sha256(path) != figure["sha256"]:
+            raise RuntimeError(f"figure checksum mismatch: {figure['path']}")
+
+
 def _scan_sources() -> None:
     forbidden = (
         "Journal of Geodesy submission draft",
@@ -114,9 +125,19 @@ def main() -> int:
     e011_output = _validate_e011()
     _scan_sources()
     records = [
+        _run(
+            [
+                args.python,
+                "scripts/build_paper1_release.py",
+                "--python",
+                args.python,
+                "--skip-pdf",
+            ]
+        ),
         _run([args.python, "scripts/validate_experiment_registry.py"]),
         _run([args.python, "scripts/export_paper1_journal_tables.py"]),
     ]
+    _validate_figure_manifest()
     for executable in ("pdflatex", "bibtex"):
         if shutil.which(executable) is None:
             raise RuntimeError(f"required executable not found: {executable}")

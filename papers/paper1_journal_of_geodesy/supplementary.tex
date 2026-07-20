@@ -50,9 +50,19 @@ no linear detrend is applied to the primary E008 calculation.
 \begin{table}[ht]
 \centering
 \caption{Native-grid lower-frequency requirements. These values are retained
-as the P1-E008 result and are subject to the P1-E011 convergence audit.}
+as the historical P1-E008 result and are superseded for interpretation by the
+P1-E011 convergence audit in Table~\ref{tab:s4-convergence}.}
 \label{tab:s3-frequency}
 \resizebox{\textwidth}{!}{\input{generated/frequency_requirements.tex}}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{P1-E011 dense-grid and record-window audit at 90\% unweighted
+finite-record spectral-energy coverage. The window-limited ranges are scenario
+diagnostics rather than process constants.}
+\label{tab:s4-convergence}
+\resizebox{\textwidth}{!}{\input{generated/temporal_spectral_convergence.tex}}
 \end{table}
 
 \section{Instrument evidence}
@@ -62,7 +72,7 @@ not complete site-noise models. Their frequency limits are never extrapolated.
 \begin{table}[ht]
 \centering
 \caption{Instrument-noise evidence and frequency support.}
-\label{tab:s4-instruments}
+\label{tab:s5-instruments}
 \resizebox{\textwidth}{!}{\input{generated/instrument_evidence.tex}}
 \end{table}
 

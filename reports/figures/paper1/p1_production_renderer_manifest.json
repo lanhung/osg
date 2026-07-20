@@ -10,8 +10,8 @@
     "frequency_coverage": {
       "path": "reports/figures/paper1/p1_frequency_coverage.svg",
       "preview_png_path": "reports/figures/paper1/p1_frequency_coverage.png",
-      "preview_png_sha256": "98911f82ac5287a144868a0780c64d42749686f85f1c0a7866d0fd0f20c3691f",
-      "sha256": "75c6a0d2198717fc21977f00ac05aa0dbf72f4d3671bc6695d3fca8707c81a3c",
+      "preview_png_sha256": "8e25b0934250b244b19f6ea843305383ff63e13922a3864d6d6c3dcd8672244b",
+      "sha256": "04e77cacbf725e5f6a80b592af15f9683612c8c250b05e994b189161c704a9a6",
       "status": "complete"
     },
     "process_instrument_coverage_matrix": {

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "experiment_id": "P1-E011-temporal-spectral-convergence",
+  "paper": "paper1",
+  "code_commit": "0ee880b31b597da3ca67907a7a22980e6e18524c",
+  "config_file": "configs/paper1/temporal_spectral_convergence.json",
+  "config_file_sha256": "c385a45b9b89b544ef6cdc3cb690c749027d6ddafbe467d2698be6885a18a405",
+  "data_manifest": "data/manifests/instrument_noise_curves_reviewed_v2.json",
+  "runner": "scripts/run_p1_temporal_spectral_convergence.py",
+  "outputs": [
+    {
+      "path": "experiments/paper1/P1-E011-temporal-spectral-convergence/metrics.json",
+      "sha256": "b37ff38278cb231e6b9e5ea0c41ccd7b4f7f401f6d052f303561a0396afc2fbf"
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0"
+  },
+  "machine": "autodl-container-7fb444a9ae-9b4ed319",
+  "random_seed": null,
+  "utc_start_time": "2026-07-20T10:16:59Z",
+  "utc_finish_time": "2026-07-20T10:18:39Z",
+  "execution_worktree_commit": "3aec10b361ae14bd583235ed04ecd8f13caf6e6e",
+  "result_class": "temporal_spectral_convergence_not_detectability"
+}

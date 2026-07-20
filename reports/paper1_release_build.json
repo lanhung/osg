@@ -1,9 +1,5 @@
 {
   "artifacts": {
-    "papers/paper1_atlas/main.pdf": {
-      "bytes": 1001252,
-      "sha256": "a09f0c7207127ca0a2c480d7347a72851687dbef9fa4264b7592fbac9947103a"
-    },
     "reports/figures/paper1/p1_distance_amplitude_envelopes.png": {
       "bytes": 159163,
       "sha256": "ac37edb732219e5f1957a1e1be1035136593b4cd0c2a350aa7839e33071a9d46"
@@ -13,20 +9,20 @@
       "sha256": "fc257c154bea4ede32de979183e4c5a0db9d71f119fa7285249b8100f4cd879d"
     },
     "reports/figures/paper1/p1_frequency_coverage.png": {
-      "bytes": 70489,
-      "sha256": "98911f82ac5287a144868a0780c64d42749686f85f1c0a7866d0fd0f20c3691f"
+      "bytes": 74350,
+      "sha256": "8e25b0934250b244b19f6ea843305383ff63e13922a3864d6d6c3dcd8672244b"
     },
     "reports/figures/paper1/p1_frequency_coverage.svg": {
-      "bytes": 78605,
-      "sha256": "75c6a0d2198717fc21977f00ac05aa0dbf72f4d3671bc6695d3fca8707c81a3c"
+      "bytes": 79915,
+      "sha256": "04e77cacbf725e5f6a80b592af15f9683612c8c250b05e994b189161c704a9a6"
     },
     "reports/figures/paper1/p1_frequency_requirements.png": {
-      "bytes": 286365,
-      "sha256": "fc0b65f27b46163ace0e995d1d6b9b19599e63ff330a46bcf2afb92e6bb74204"
+      "bytes": 316916,
+      "sha256": "494dc64253ffa952abb830e8841e39034000919c0b29662dac99f7af49432ca6"
     },
     "reports/figures/paper1/p1_frequency_requirements.svg": {
-      "bytes": 140311,
-      "sha256": "1ec5b4624cca8042e0ce2c5ca40f475eabb6389ff1d4e990eb90bcb216efec7d"
+      "bytes": 155212,
+      "sha256": "3a266d3eab7aa9d7a9ed79bf24dd411dd1c7936fa8beedaf4001a69a99f6d293"
     },
     "reports/figures/paper1/p1_observable_framework.png": {
       "bytes": 195008,
@@ -56,17 +52,17 @@
   "commands": [
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/validate_experiment_registry.py"
       ],
       "cwd": ".",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"experiments\": [\n    \"P1-E001-foundation\",\n    \"P1-E002-detectability-foundation\",\n    \"P1-E003-gradient-detectability-foundation\",\n    \"P1-E004-distance-attenuation-foundation\",\n    \"P1-E005-helgoland-bsh-model\",\n    \"P1-E006-evidence-bounded-atlas\",\n    \"P1-E007-structural-variant-closure\",\n    \"P1-E008-frequency-coverage-requirements\",\n    \"P1-E009-helgoland-component-audit\",\n    \"P1-E010-independent-review-sensitivity\",\n    \"P2-E001-nonrestricted-readiness\",\n    \"P2-E002-cmems-effect-ownership\",\n    \"P3-E001-physical-baseline-foundation\",\n    \"P3-E002-archive-network-design\",\n    \"P3-E003-seasonal-noise-stage1\"\n  ],\n  \"registered_count\": 15,\n  \"status\": \"valid\"\n}\n"
+      "stdout_tail": "{\n  \"experiments\": [\n    \"P1-E001-foundation\",\n    \"P1-E002-detectability-foundation\",\n    \"P1-E003-gradient-detectability-foundation\",\n    \"P1-E004-distance-attenuation-foundation\",\n    \"P1-E005-helgoland-bsh-model\",\n    \"P1-E006-evidence-bounded-atlas\",\n    \"P1-E007-structural-variant-closure\",\n    \"P1-E008-frequency-coverage-requirements\",\n    \"P1-E009-helgoland-component-audit\",\n    \"P1-E010-independent-review-sensitivity\",\n    \"P1-E011-temporal-spectral-convergence\",\n    \"P2-E001-nonrestricted-readiness\",\n    \"P2-E002-cmems-effect-ownership\",\n    \"P3-E001-physical-baseline-foundation\",\n    \"P3-E002-archive-network-design\",\n    \"P3-E003-seasonal-noise-stage1\"\n  ],\n  \"registered_count\": 16,\n  \"status\": \"valid\"\n}\n"
     },
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/audit_p1_literature_matrix.py",
         "--matrix",
         "docs/paper1_literature_matrix.csv",
@@ -82,14 +78,14 @@
     },
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/render_p1_production_figures.py",
         "--output-dir",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1",
+        "/root/os/osg/reports/figures/paper1",
         "--curves",
         "data/manifests/instrument_noise_curves_reviewed_v2.json",
         "--manifest-path",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_production_renderer_manifest.json"
+        "/root/os/osg/reports/figures/paper1/p1_production_renderer_manifest.json"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -98,16 +94,16 @@
     },
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/render_p1_frequency_requirements.py",
         "--metrics",
-        "experiments/paper1/P1-E008-frequency-coverage-requirements/metrics.json",
+        "experiments/paper1/P1-E011-temporal-spectral-convergence/metrics.json",
         "--instrument-curves",
         "data/manifests/instrument_noise_curves_reviewed_v2.json",
         "--output-svg",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_frequency_requirements.svg",
+        "/root/os/osg/reports/figures/paper1/p1_frequency_requirements.svg",
         "--output-png",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_frequency_requirements.png"
+        "/root/os/osg/reports/figures/paper1/p1_frequency_requirements.png"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -116,12 +112,12 @@
     },
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/render_p1_conceptual_observables.py",
         "--output-svg",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_observable_framework.svg",
+        "/root/os/osg/reports/figures/paper1/p1_observable_framework.svg",
         "--output-png",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_observable_framework.png"
+        "/root/os/osg/reports/figures/paper1/p1_observable_framework.png"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -130,16 +126,16 @@
     },
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/render_p1_structure_validation.py",
         "--source-metrics",
         "experiments/paper1/P1-E005-helgoland-bsh-model/metrics.json",
         "--component-audit",
         "experiments/paper1/P1-E009-helgoland-component-audit/metrics.json",
         "--output-svg",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_structure_validation.svg",
+        "/root/os/osg/reports/figures/paper1/p1_structure_validation.svg",
         "--output-png",
-        "/root/autodl-tmp/ocean-gravity-run/paper1-v1-final2/reports/figures/paper1/p1_structure_validation.png"
+        "/root/os/osg/reports/figures/paper1/p1_structure_validation.png"
       ],
       "cwd": ".",
       "returncode": 0,
@@ -148,7 +144,7 @@
     },
     {
       "command": [
-        "/root/autodl-tmp/ocean-gravity-run/venv/bin/python",
+        ".venv/bin/python",
         "scripts/audit_p1_observable_ledger.py",
         "--root",
         ".",
@@ -163,64 +159,19 @@
       "returncode": 0,
       "stderr_tail": "",
       "stdout_tail": ""
-    },
-    {
-      "command": [
-        "pdflatex",
-        "-interaction=nonstopmode",
-        "-halt-on-error",
-        "main.tex"
-      ],
-      "cwd": "papers/paper1_atlas",
-      "returncode": 0,
-      "stderr_tail": "",
-      "stdout_tail": "ig:distance' on page 6 undefined on input line 288.\n\n[6 <../../reports/figures/paper1/p1_frequency_requirements.png>]\n\nLaTeX Warning: Citation `Tang2012' on page 7 undefined on input line 314.\n\n\nLaTeX Warning: Reference `fig:structure' on page 7 undefined on input line 323.\n\n\n[7 <../../reports/figures/paper1/p1_distance_amplitude_envelopes.png>]\n\nLaTeX Warning: Citation `Brundu2022' on page 8 undefined on input line 355.\n\n[8 <../../reports/figures/paper1/p1_structure_validation.png>]\nNo file main.bbl.\n[9] (./main.aux)\n\nLaTeX Warning: There were undefined references.\n\n\nLaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.\n\n\nPackage rerunfilecheck Warning: File `main.out' has changed.\n(rerunfilecheck)                Rerun to get outlines right\n(rerunfilecheck)                or use package `bookmark'.\n\n )\n(see the transcript file for additional information)</usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu\nblic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a\nmsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts\n/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr\n12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>\n</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/sh\nare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texl\nive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texm\nf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist\n/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/\ntype1/public/amsfonts/cm/cmsy8.pfb>\nOutput written on main.pdf (9 pages, 972460 bytes).\nTranscript written on main.log.\n"
-    },
-    {
-      "command": [
-        "bibtex",
-        "main"
-      ],
-      "cwd": "papers/paper1_atlas",
-      "returncode": 0,
-      "stderr_tail": "",
-      "stdout_tail": "This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)\nThe top-level auxiliary file: main.aux\nThe style file: plain.bst\nDatabase file #1: references.bib\n"
-    },
-    {
-      "command": [
-        "pdflatex",
-        "-interaction=nonstopmode",
-        "-halt-on-error",
-        "main.tex"
-      ],
-      "cwd": "papers/paper1_atlas",
-      "returncode": 0,
-      "stderr_tail": "",
-      "stdout_tail": "144.\n\n[3]\n\nLaTeX Warning: Citation `Martens2019' on page 4 undefined on input line 213.\n\n\nLaTeX Warning: Citation `Voigt2024' on page 4 undefined on input line 222.\n\n[4] [5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../repo\nrts/figures/paper1/p1_frequency_requirements.png>]\n\nLaTeX Warning: Citation `Tang2012' on page 7 undefined on input line 314.\n\n[7 <../../reports/figures/paper1/p1_distance_amplitude_envelopes.png>]\n\nLaTeX Warning: Citation `Brundu2022' on page 8 undefined on input line 355.\n\n[8 <../../reports/figures/paper1/p1_structure_validation.png>] (./main.bbl\n[9] [10] [11]) [12] (./main.aux)\n\nLaTeX Warning: There were undefined references.\n\n\nLaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.\n\n )\n(see the transcript file for additional information)</usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo\nnts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu\nblic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a\nmsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts\n/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr\n12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>\n</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/sh\nare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texl\nive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texm\nf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist\n/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/\ntype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p\nublic/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (12 pages, 1000650 bytes).\nTranscript written on main.log.\n"
-    },
-    {
-      "command": [
-        "pdflatex",
-        "-interaction=nonstopmode",
-        "-halt-on-error",
-        "main.tex"
-      ],
-      "cwd": "papers/paper1_atlas",
-      "returncode": 0,
-      "stderr_tail": "",
-      "stdout_tail": ".]\n) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty\n(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))\n(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty\n(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)\n(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))\n(./main.out) (./main.out) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}\n] [2 <../../reports/figures/paper1/p1_observable_framework.png>] [3] [4]\n[5 <../../reports/figures/paper1/p1_frequency_coverage.png>] [6 <../../reports/\nfigures/paper1/p1_frequency_requirements.png>] [7 <../../reports/figures/paper1\n/p1_distance_amplitude_envelopes.png>] [8 <../../reports/figures/paper1/p1_stru\ncture_validation.png>] (./main.bbl [9] [10] [11]) [12] (./main.aux) )</usr/shar\ne/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texl\nive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/te\nxmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di\nst/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon\nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type\n1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi\nc/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo\nnts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/\ncmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb\n></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s\nhare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t\nexlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/\ntexmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-d\nist/fonts/type1/public/amsfonts/cm/cmti10.pfb>\nOutput written on main.pdf (12 pages, 1001252 bytes).\nTranscript written on main.log.\n"
     }
   ],
   "literature_audit_passes": true,
   "observable_audit_passes": true,
-  "pdf_built": true,
+  "pdf_built": false,
   "schema_version": 1,
   "uses_frozen_registered_metrics": [
     "P1-E005",
     "P1-E006",
     "P1-E008",
     "P1-E009",
-    "P1-E010"
+    "P1-E010",
+    "P1-E011"
   ],
   "workflow": "paper1-release"
 }

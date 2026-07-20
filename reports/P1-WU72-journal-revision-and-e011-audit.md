@@ -1,7 +1,7 @@
 # P1-WU72 Journal revision and E011 audit
 
-Status: revision infrastructure complete; new scientific experiment registered;
-production execution, author metadata and archival DOI pending.
+Status: revision infrastructure complete; P1-E011 executed and finalized;
+author affiliations verified; archival DOI and author declarations pending.
 
 The repository did not contain the separately circulated Journal of Geodesy
 source described by the review. Its release workflow compiled only
@@ -52,13 +52,13 @@ An initial pending registration contained a mistyped non-integer tide duration.
 It was corrected to exact 14, 27 and 58 M2-cycle windows and the preregistration
 hash was updated before any production execution. The history is retained.
 
-Production has not run because both GitHub and the AutoDL hostname became
-unresolvable from the managed environment after registration. No local run is
-being substituted for the required AutoDL production execution. Local commits
-through `e801f1a` contain the complete registered runner and journal build;
-GitHub push and AutoDL execution must resume when network resolution returns.
+Production ran on AutoDL on 2026-07-20 after the registered code was imported
+into an isolated worktree without modifying the server's existing dirty working
+copy or active jobs. The checksum-registered result is summarized in
+`reports/P1-WU73-e011-temporal-spectral-convergence.md`.
 
-E005 and E009 are not invalidated and will not be rerun. E006/E008/E010 remain
-the immutable v1.0 results until E011 determines whether only the exact
-lower-edge requirements need revision or whether a versioned E006-v2 branch is
-scientifically required.
+E005 and E009 are not invalidated and will not be rerun. E011 confirms that no
+record reaches the dense, boundary-aware 90% coverage threshold, so E006-v2 is
+not required. E008/E010 remain immutable historical results, while the journal
+revision supersedes their exact native-grid lower-edge headlines with the
+E011 convergence and window-dependence result.

@@ -21,18 +21,50 @@ PROCESS_ORDER = (
 PROCESS_LABELS = ("Eddy", "Storm surge", "Internal wave", "Tide", "Landslide", "Tsunami")
 
 
-def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png: Path) -> None:
-    mpl.rcParams["svg.hashsalt"] = "oceangravity-paper1-v1"
+def _requirement_matrix(metrics: dict) -> tuple[tuple[float, ...], np.ndarray, bool]:
+    """Return threshold/process medians and whether E011 convergence data are used."""
+    if "baseline_audit" in metrics:
+        thresholds = (0.5, 0.75, 0.9, 0.95)
+        summary = metrics["baseline_audit"]["process_summary"]
+        matrix = np.asarray(
+            [
+                [
+                    summary[process]["padding_factors"]["64"][str(threshold)]["median_hz"]
+                    for threshold in thresholds
+                ]
+                for process in PROCESS_ORDER
+            ]
+        )
+        return thresholds, matrix, True
     thresholds = tuple(metrics["required_energy_fractions"])
     matrix = np.asarray(
         [
             [
-                metrics["process_summary"][process]["thresholds"][str(threshold)]["median_hz"]
+                metrics["process_summary"][process]["thresholds"][str(threshold)][
+                    "median_hz"
+                ]
                 for threshold in thresholds
             ]
             for process in PROCESS_ORDER
         ]
     )
+    return thresholds, matrix, False
+
+
+def _window_values(metrics: dict, process: str, baseline: float) -> tuple[np.ndarray, bool]:
+    if "window_audit" not in metrics:
+        return np.asarray([baseline]), True
+    row = metrics["window_audit"][process]
+    if process == "storm_surge":
+        values = [window["f_low_90_hz"] for window in row["windows"]]
+    else:
+        values = row["median_f_low_90_hz"]
+    return np.asarray(values, dtype=float), bool(row["window_stable"])
+
+
+def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png: Path) -> None:
+    mpl.rcParams["svg.hashsalt"] = "oceangravity-paper1-v1"
+    thresholds, matrix, convergence_mode = _requirement_matrix(metrics)
     reviewed_ids = (
         "igrav_quiet_j9_self_noise_anchor",
         "aqg_a01_field_short_term_anchor",
@@ -48,9 +80,8 @@ def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png:
         for curve_id in reviewed_ids
     }
     requirement_90 = matrix[:, thresholds.index(0.9)]
-    permissive_gap = min(low_edges.values()) / requirement_90
 
-    figure, axes = plt.subplots(1, 3, figsize=(13.2, 4.4), layout="constrained")
+    figure, axes = plt.subplots(1, 3, figsize=(14.4, 4.4), layout="constrained")
     colors = plt.cm.tab10(np.linspace(0.0, 0.8, len(PROCESS_ORDER)))
     for index, label in enumerate(PROCESS_LABELS):
         axes[0].plot(
@@ -71,7 +102,10 @@ def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png:
     axes[1].set_xticks(range(len(thresholds)), [f"{value:.0%}" for value in thresholds])
     axes[1].set_yticks(range(len(PROCESS_LABELS)), PROCESS_LABELS)
     axes[1].set_xlabel("Required energy coverage")
-    axes[1].set_title("b  Median lower-edge requirement", loc="left")
+    axes[1].set_title(
+        "b  Dense-grid finite-record median" if convergence_mode else "b  Median lower edge",
+        loc="left",
+    )
     for row in range(matrix.shape[0]):
         for column in range(matrix.shape[1]):
             axes[1].text(
@@ -86,34 +120,73 @@ def render(metrics: dict, instrument_curves: dict, output_svg: Path, output_png:
     colorbar = figure.colorbar(image, ax=axes[1], shrink=0.82)
     colorbar.set_label("log10(Hz)")
 
-    axes[2].barh(PROCESS_LABELS, permissive_gap, color=colors, alpha=0.45)
+    if convergence_mode:
+        for row, process in enumerate(PROCESS_ORDER):
+            values, stable = _window_values(metrics, process, requirement_90[row])
+            axes[2].hlines(row, values.min(), values.max(), color=colors[row], linewidth=3)
+            axes[2].scatter(
+                values,
+                np.full(values.shape, row),
+                marker="o" if stable else "s",
+                facecolor=colors[row] if stable else "white",
+                edgecolor=colors[row],
+                s=30,
+                zorder=3,
+            )
+        axes[2].set_yticks(range(len(PROCESS_LABELS)), PROCESS_LABELS)
+        axes[2].invert_yaxis()
+    else:
+        permissive_gap = min(low_edges.values()) / requirement_90
+        axes[2].barh(PROCESS_LABELS, permissive_gap, color=colors, alpha=0.45)
     marker_styles = {
         "igrav_quiet_j9_self_noise_anchor": ("iGrav", "D", "#222222"),
         "aqg_a01_field_short_term_anchor": ("AQG-A01", "o", "#006d77"),
         "fg5_228_short_term_anchor": ("FG5#228", "x", "#9b2226"),
     }
-    y_positions = np.arange(len(PROCESS_LABELS))
-    for curve_id in reviewed_ids:
-        label, marker, color = marker_styles[curve_id]
-        axes[2].scatter(
-            low_edges[curve_id] / requirement_90,
-            y_positions,
-            marker=marker,
-            color=color,
-            s=28,
-            label=f"{label}: {low_edges[curve_id]:.0e} Hz",
-            zorder=3,
-        )
+    if convergence_mode:
+        for curve_id in reviewed_ids:
+            label, _marker, color = marker_styles[curve_id]
+            axes[2].axvline(
+                low_edges[curve_id],
+                color=color,
+                linestyle="--" if curve_id != reviewed_ids[0] else ":",
+                linewidth=1.2,
+                label=f"{label}: {low_edges[curve_id]:.0e} Hz",
+            )
+    else:
+        y_positions = np.arange(len(PROCESS_LABELS))
+        for curve_id in reviewed_ids:
+            label, marker, color = marker_styles[curve_id]
+            axes[2].scatter(
+                low_edges[curve_id] / requirement_90,
+                y_positions,
+                marker=marker,
+                color=color,
+                s=28,
+                label=f"{label}: {low_edges[curve_id]:.0e} Hz",
+                zorder=3,
+            )
     axes[2].set_xscale("log")
-    axes[2].set_xlabel("Published lower edge / 90% requirement")
-    axes[2].set_title("c  Low-frequency coverage gap", loc="left")
+    axes[2].set_xlabel(
+        "90% finite-record lower edge (Hz)"
+        if convergence_mode
+        else "Published lower edge / 90% requirement"
+    )
+    axes[2].set_title(
+        "c  Record-window audit"
+        if convergence_mode
+        else "c  Low-frequency coverage gap",
+        loc="left",
+    )
     axes[2].grid(True, axis="x", which="both", alpha=0.25)
     axes[2].legend(fontsize=7, loc="lower right")
-    for row, value in enumerate(permissive_gap):
-        axes[2].text(value * 1.08, row, f"{value:.2g}x", va="center", fontsize=8)
+    if not convergence_mode:
+        for row, value in enumerate(permissive_gap):
+            axes[2].text(value * 1.08, row, f"{value:.2g}x", va="center", fontsize=8)
 
     figure.suptitle(
-        "Frequency support required before SNR classification (coverage only)", fontsize=12
+        "Finite-record frequency support before SNR classification (coverage only)",
+        fontsize=12,
     )
     output_svg.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output_svg, metadata={"Date": None, "Creator": "oceangravity"})

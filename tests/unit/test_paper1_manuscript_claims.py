@@ -56,7 +56,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
     def test_registered_results_and_figure_statuses_are_explicit(self) -> None:
         self.assertIn("1,446", self.manuscript)
         self.assertIn("15.6", self.manuscript)
-        self.assertIn("We therefore withhold", self.manuscript)
+        self.assertIn("We therefore assign", self.manuscript)
         self.assertIn("SNR classifications rather than extrapolating", self.manuscript)
         figures = json.loads((ROOT / "papers/paper1_atlas/figure_manifest.json").read_text())
         self.assertEqual(len(figures["figures"]), 5)

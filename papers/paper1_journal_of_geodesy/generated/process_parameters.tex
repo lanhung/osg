@@ -1,0 +1,26 @@
+\begin{tabular}{lllll}
+\toprule
+Process & Parameter & Value/range & Unit & Design interpretation \\
+\midrule
+Tide & M2 period & $4.471\times10^{4}$ & s & fixed \\
+Tide & observation duration & 604800.0--2592000.0 & s & log-midpoint design \\
+Tide & disk radius & $1\times10^{5}$ & m & fixed \\
+Tide & SSH normalization & 1 & m & geometry diagnostic \\
+Eddy & peak SSH anomaly & 0.08 & m & catalogue mean \\
+Eddy & horizontal scale & $9\times10^{4}$ & m & fixed \\
+Eddy & translation speed & 0.0284185 & m s$^{-1}$ & derived catalogue mean \\
+Internal wave & peak density anomaly & 0.4691943732059368--1.1260664956942485 & kg m$^{-3}$ & linear-midpoint sensitivity \\
+Internal wave & horizontal scale & 120000.0--129000.0 & m & linear-midpoint sensitivity \\
+Internal wave & period & $4.471\times10^{4}$ & s & M2 branch \\
+Internal wave & vertical scale / lobe separation & 500.0 / 500.0 & m & exact mass compensation \\
+Tsunami & deep-ocean crest amplitude & 1.0--1.8 & m & linear-midpoint sensitivity \\
+Tsunami & crest--trough separation & 300000.0--400000.0 & m & linear-midpoint sensitivity \\
+Tsunami & source width & $1\times10^{5}$ & m & fixed \\
+Tsunami & water depth & 4000 & m & fixed \\
+Landslide & slide volume & 2400000000000.0--3000000000000.0 & m$^3$ & linear-midpoint sensitivity \\
+Landslide & density contrast & 600 & kg m$^{-3}$ & fixed \\
+Landslide & runout & $4.5\times10^{5}$ & m & fixed \\
+Landslide & velocity & 30.0--60.0 & m s$^{-1}$ & linear-midpoint sensitivity \\
+All idealized families & surface standoff & 10000.0, 30000.0, 100000.0, 300000.0, 1000000.0 & m & fixed design; storm excluded \\
+\bottomrule
+\end{tabular}

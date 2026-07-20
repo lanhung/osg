@@ -7,9 +7,17 @@
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}
 
-\title{Frequency-Coverage Limits in Assessing Gravity Signals from Oceanic Mass Redistribution}
-\author{Ocean Gravity Program contributors}
-\date{Version 1.0 technical preprint, 13 July 2026}
+\providecommand{\PaperFigureRoot}{../../reports/figures/paper1}
+\providecommand{\PaperBibliography}{references}
+\ifdefined\JournalOfGeodesyVersion
+  \title{Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry}
+  \input{author_metadata.tex}
+  \date{}
+\else
+  \title{Frequency-Coverage Limits in Assessing Gravity Signals from Oceanic Mass Redistribution}
+  \author{Ocean Gravity Program contributors}
+  \date{Version 1.0 technical preprint, 13 July 2026}
+\fi
 
 \begin{document}
 \maketitle
@@ -22,17 +30,18 @@ framework with explicit source geometry, observation duration, spectral
 coverage, and instrument-specific noise. The primary six-process production
 ensemble contains 1,446 records of direct radial gravity; elastic and height
 components are retained separately where evaluated and are not implied for
-every process branch. None passes a predeclared 90\% signal-energy
-coverage gate for the three admitted vertical-gravity literature anchors: tide,
+every process branch. None passes the fixed 90\% signal-energy
+coverage gate for the three reviewed vertical-gravity literature references: tide,
 storm surge, eddy and internal-wave signals have no overlapping band, whereas
-tsunami and landslide records have only partial coverage. We therefore withhold
+tsunami and landslide records have only partial coverage. We therefore assign
+no
 SNR classifications rather than extrapolating instrument curves. A separate
 open-data Helgoland calculation reproduces the published BSH gravity-to-height
 ratio within 15.6\%. The median lower edge required for 90\% energy coverage
 ranges from $3.89\times10^{-8}$~Hz for the eddy scenario to
 $2.63\times10^{-4}$~Hz for tsunami packets, factors of $1.3\times10^4$ and 1.9
-below the lowest reviewed $5\times10^{-4}$~Hz curve edge. The framework converts a withheld
-classification into quantitative frequency requirements while keeping source
+below the lowest reviewed $5\times10^{-4}$~Hz curve edge. The framework converts
+the absence of a classification into quantitative frequency requirements while keeping source
 geometry and mass compensation as separate physical limits.
 \end{abstract}
 
@@ -55,7 +64,7 @@ procedures can leave residuals or distort target signals~\cite{Valencio2017}.
 Simple comparison of a source peak amplitude with one quoted sensitivity value
 therefore cannot establish detectability. The source spectrum must overlap a
 measured noise spectrum, the observable and units must agree, and enough signal
-energy must lie inside the reported band before an SNR is authorized.
+energy must lie inside the reported band before an SNR is considered interpretable.
 
 Here we ask that coverage question under one auditable convention for six
 representative process families. The contribution is a cross-process direct-
@@ -86,13 +95,13 @@ validated total-observable calculation.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.98\linewidth]{../../reports/figures/paper1/p1_observable_framework.png}
+\includegraphics[width=0.98\linewidth]{\PaperFigureRoot/p1_observable_framework.png}
 \caption{Observable and evidence framework. Ocean mass anomalies feed the
 direct radial-gravity calculation; surface loads may additionally require
 elastic/potential and station-height terms before a total terrestrial
 observable can be formed. Gravity gradient is a separate supplemental
 observable. The spectral-energy coverage gate must pass before a noise-based
-classification is authorized. Arrows describe calculation dependencies, not
+classification is interpreted. Arrows describe calculation dependencies, not
 completed branches for all six processes.}
 \label{fig:framework}
 \end{figure}
@@ -117,7 +126,7 @@ Reference calculations include local planar, mean-radius spherical, and WGS~84
 ellipsoidal geometry. Spherical and ellipsoidal cell areas are integrated in
 their native surface coordinates. Missing ocean values, hard masks, and partial
 coastal-cell fractions are explicit. Grid refinement and domain truncation are
-tested before a dataset is admitted to a result.
+tested before a dataset is included in a result.
 
 For idealized compact surface anomalies evaluated against terrestrial
 instruments, source cells and the station lie on a spherical Earth. Distance is
@@ -126,7 +135,7 @@ source support. Compact anomalies translate parallel to an idealized coastline,
 preventing a source cell from coinciding with the station. A rejected local-plane
 near-field calculation is retained in the experiment preregistration history:
 its midpoint quadrature exceeded the continuous-sheet amplitude bound and did
-not enter the registered output.
+not enter the fixed output.
 
 \subsection{Ocean-process models}
 The six process families are summarized in Table~\ref{tab:processes}. Surface
@@ -169,12 +178,14 @@ For transient signals, expected matched-filter signal-to-noise ratio is
  \frac{|\tilde{s}(f)|^2}{S_n(f)}\,\mathrm{d}f.
 \end{equation}
 Fourier normalization, detrending, one-sided PSD, and observation duration are
-versioned. A classification is forbidden unless the instrument curve covers at
-least 90\% of signal spectral energy. Sensitivity is evaluated separately at
+versioned. An SNR classification is considered interpretable only if the
+instrument curve covers at least 90\% of signal spectral energy. The 90\%
+working threshold retains most signal energy while limiting dependence on an
+unmeasured band; conclusions are evaluated separately at
 50\%, 75\%, 90\% and 95\%; these are coverage fractions, not detection
 probabilities. Vertical gravity, gravity gradient, and gravitational-wave
 equivalent strain remain different observables and are never merged into one
-sensitivity curve. The admitted vertical-gravity entries are an
+sensitivity curve. The reviewed vertical-gravity entries are an
 iGrav quiet self-noise anchor over $10^{-3}$--$10^{-1}$~Hz and short-term
 AQG-A01 and FG5\#228 white-noise anchors over the source-reported
 $5\times10^{-4}$--$10^{-2}$~Hz plateau; their intervals are not extrapolated.
@@ -185,8 +196,16 @@ For a finite, constant-detrended signal, the coverage quantity is
  \frac{\int_{f_{\mathrm{low}}}^{f_{\mathrm{high}}}|\tilde{s}(f)|^2\,\mathrm{d}f}
  {\int_{0^+}^{f_{\mathrm{Nyquist}}}|\tilde{s}(f)|^2\,\mathrm{d}f}.
 \end{equation}
-The registered primary convention uses a rectangular window and trapezoidal
-integration of positive frequency Fourier amplitudes. An independent review
+This criterion deliberately uses unweighted signal energy, not accumulated
+SNR. It is an evidence-admissibility check applied before the matched-filter
+calculation, not an
+estimate of the fraction of detectable SNR in the reviewed band. The fixed
+primary convention uses a rectangular window and trapezoidal integration of
+positive-frequency Fourier amplitudes. Trapezoidal integration requires at
+least two frequency samples in a common interval; a one-bin interval is
+reported as numerically unresolved rather than assigned zero physical energy.
+This implementation condition is separate from the 90\% criterion. An
+independent review
 audit also applies rectangular and periodic Hann window one-sided periodogram
 bin sums. The maximum admissible lower edge is the highest resolved frequency
 for which $C$ reaches the requested fraction at a fixed upper edge.
@@ -216,55 +235,62 @@ LoadDef's Newtonian term is not added a second time.
 The Helgoland model-only reproduction uses 242 BSH-HBMnoku files and 720 hourly
 fields conservatively remapped to a 1/8-degree WGS~84 grid. Direct attraction,
 combined elastic gravity and vertical displacement remain separate. After the
-registered sign conversion at the literature-comparison boundary, the computed
+fixed sign conversion at the literature-comparison boundary, the computed
 gravity-to-height ratio is $-2.266$~nm~s$^{-2}$~mm$^{-1}$, compared with
 $-2.684$~nm~s$^{-2}$~mm$^{-1}$ reported by Voigt et
-al.~\cite{Voigt2024}. The 15.6\% difference passes the predeclared 20\% tolerance
-for replacing SPOTL/Gutenberg--Bullen and a three-year tidal analysis with
-LoadDef PREM/CE and the registered 30-day harmonic fit.
+al.~\cite{Voigt2024}. The 15.6\% difference passes the 20\% protocol tolerance
+fixed before the production result was accepted. The tolerance accommodates
+the documented replacement of SPOTL/Gutenberg--Bullen and a three-year tidal
+analysis by LoadDef PREM/CE and a fixed 30-day harmonic fit; it is an engineering
+consistency tolerance, not a statistical uncertainty interval.
 
-The registered component audit quantifies, but does not over-interpret, this
+The version-controlled component audit quantifies, but does not over-interpret, this
 difference. The direct term has a fitted ratio of
 $-0.406$~nm~s$^{-2}$~mm$^{-1}$ and RMS and peak-to-peak amplitudes equal to
 18.0\% and 18.1\% of the combined elastic term. Their diagnostic arithmetic sum
 is $-2.672$~nm~s$^{-2}$~mm$^{-1}$, 0.45\% from the published ratio, but this is
-not an authorized comparison: the registered target is the combined elastic
+not the primary comparison: the fixed target is the combined elastic
 quantity and the source paper's observable convention cannot be redefined
 post hoc. PREM/CE versus SPOTL/Gutenberg--Bullen Earth response and the 30-day
 fit versus three-year detiding remain confounded in the available computation,
 so no causal percentage is assigned to either source.
 
 \section{Results}
-Figure~\ref{fig:frequency} compares process timescales with the admitted
+Figure~\ref{fig:frequency} compares process timescales with the reviewed
 instrument-curve support. M2 tide and the M2 internal-wave branch lie near
 $2.24\times10^{-5}$~Hz. Storm-surge and eddy ranges are lower. The iGrav anchor
 begins at $10^{-3}$~Hz and the reviewed AQG/FG5 plateaus at
 $5\times10^{-4}$~Hz. Tsunami characteristic content
 crosses these edges, while the Storegga transition lies mainly below them; neither
-has 90\% of signal energy inside a complete admitted band.
+has 90\% of signal energy inside a complete reviewed band.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.96\linewidth]{../../reports/figures/paper1/p1_frequency_coverage.png}
+\includegraphics[width=0.96\linewidth]{\PaperFigureRoot/p1_frequency_coverage.png}
 \caption{Characteristic frequencies of the direct-radial-gravity process
-signals and admitted vertical-gravity
+signals and reviewed vertical-gravity
 curve support. Points denote fixed constituent frequencies and horizontal bars
 denote sensitivity ranges. Curve limits are not extrapolated.}
 \label{fig:frequency}
 \end{figure}
 
-The resulting coverage matrix is retained as versioned Supplementary
+The resulting native-grid coverage matrix is retained as Supplementary
 Figure~S1. All 806
-long-period records have no covered spectral interval for any admitted curve.
+long-period records have no numerically integrable common interval for any
+reviewed curve. For several representations the source Nyquist frequency itself
+lies below the lowest curve edge; other cases have fewer than two native
+Fourier samples in the common interval. These conditions are not interpreted as
+zero physical energy.
 All 640 tsunami and Storegga records have some overlapping bins but fail the
 90\% energy criterion. Consequently no production record is labelled detectable
-or undetectable. This differs from a statement of zero SNR: available curve
-support is insufficient to make the comparison. In Supplementary Figure~S1,
-``no band'' means fewer than two positive-frequency bins overlap a curve and
-``partial'' means overlap is present but covers less than 90\% of signal
-energy.
+or undetectable. This differs from a statement of zero SNR: the represented
+source spectra and reviewed curve support do not provide an adequate common
+interval for the comparison. In Supplementary Figure~S1, ``no band'' denotes
+the original native-grid implementation condition of fewer than two positive
+frequency samples, while ``partial'' means a resolved overlap covers less than
+90\% of signal energy.
 
-Figure~\ref{fig:requirements} converts that withheld classification into an
+Figure~\ref{fig:requirements} converts the absence of a classification into an
 instrument-evidence requirement. At 90\% coverage, median admissible lower edges
 are $3.89\times10^{-8}$~Hz for the eddy, $7.72\times10^{-7}$~Hz for the storm
 surge, $1.10\times10^{-5}$~Hz for the internal wave,
@@ -275,7 +301,7 @@ $5\times10^{-4}$~Hz edge, the corresponding gaps are approximately 12,900,
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{../../reports/figures/paper1/p1_frequency_requirements.png}
+\includegraphics[width=\linewidth]{\PaperFigureRoot/p1_frequency_requirements.png}
 \caption{Direct-radial-gravity frequency requirements. (a) Median inverse
 cumulative-energy requirement at 50\%, 75\%, 90\% and 95\% coverage; connecting
 segments guide the eye. (b) Median maximum admissible lower band edge. (c) Gap
@@ -296,7 +322,7 @@ source's near field.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.96\linewidth]{../../reports/figures/paper1/p1_distance_amplitude_envelopes.png}
+\includegraphics[width=0.96\linewidth]{\PaperFigureRoot/p1_distance_amplitude_envelopes.png}
 \caption{Peak absolute direct radial gravity versus surface standoff. Lines show
 the median sensitivity design and shading spans the sampled minimum and maximum;
 shading is not a probability interval.}
@@ -309,7 +335,7 @@ cancels signed surface mass to numerical tolerance, and every slide record
 relocates rather than creates solid mass. Its bands are design extrema, not
 confidence or credible intervals.
 
-A separate registered structural-closure experiment maps the
+A separate version-controlled structural-closure experiment maps the
 $3.0\times10^{15}$~J Tohoku propagated-energy estimate (6\% uncertainty)
 reported by Tang et al.~\cite{Tang2012} to the same idealized mass-balanced
 Gaussian packet. Under the declared linear-long-wave convention
@@ -322,20 +348,20 @@ interval.
 
 Figure~\ref{fig:structure} closes the main results by placing conservation and
 the Helgoland component audit in one view. It preserves the distinction between
-physical closure, a validated elastic comparison and an informative but
-unauthorized arithmetic diagnostic.
+physical closure, a model-scale elastic consistency check and an informative
+arithmetic diagnostic outside the primary comparison.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.98\linewidth]{../../reports/figures/paper1/p1_structure_validation.png}
-\caption{Physical structure and Helgoland validation. (a) Schematic only:
+\includegraphics[width=0.98\linewidth]{\PaperFigureRoot/p1_structure_validation.png}
+\caption{Physical structure and Helgoland consistency check. (a) Schematic only:
 compensated wave/density anomalies and a conserved slide relocation suppress
 the far-field monopole relative to an uncompensated load. (b) Separately stored
 Helgoland direct gravity, combined elastic gravity and vertical displacement.
-(c) Fitted gravity-to-height ratios. Only the combined elastic bar has the
-registered comparison to the published value. The hatched direct-plus-elastic
-bar is an arithmetic diagnostic and is not an authorized alternative
-observable or acceptance test.}
+(c) Fitted gravity-to-height ratios. Only the combined elastic bar has the fixed
+comparison to the published value. The hatched direct-plus-elastic bar is an
+arithmetic diagnostic and is not an alternative primary observable or
+acceptance test.}
 \label{fig:structure}
 \end{figure}
 
@@ -369,19 +395,20 @@ rectangular and periodic Hann periodogram bin sums. Every record retains its
 no-band or partial-band status. Median 90\% requirements remain below the lowest
 reviewed edge for every process and convention. The largest convention effect
 is the internal-wave rectangular periodogram result,
-$2.20\times10^{-5}$~Hz, twice the registered trapezoidal value but still a
+$2.20\times10^{-5}$~Hz, twice the fixed trapezoidal value but still a
 factor of 23 below $5\times10^{-4}$~Hz. These checks establish robustness to the
 numerical convention, not natural population uncertainty.
 
-The Helgoland reproduction supplies an independent positive validation of the
-elastic loading scale but not of observation/model correlation. The reported
+The Helgoland calculation supplies an independent model-scale consistency
+check, reproducing the published elastic gravity-to-height ratio within 15.6\%,
+but it does not validate observation/model correlation. The reported
 85~nm~s$^{-2}$ and $-34$~mm extrema are observations, not BSH model acceptance
 targets. Reproducing the reported correlation and RMS reduction would require
 authenticated iGrav047 data and a paper-equivalent processed 2022 GNSS series.
 
 \section{Conclusions}
-The current public instrument anchors do not support a decision-grade
-cross-process detectability map: no production record reaches the required
+The reviewed public instrument references do not support a comprehensive
+cross-process detectability assessment: no production record reaches the required
 signal-energy coverage. This result does not imply absent physical signals or
 universal non-detectability. It establishes the frequency support that future
 site-specific noise measurements must provide: median 90\% lower edges span
@@ -411,7 +438,7 @@ profile and coupling coefficient. Mediterranean/Storfjorden slide evidence does
 not jointly close amplitude and duration, and the generated-water-wave branch
 lacks an event-specific generation/entrainment transfer model.
 
-The admitted instrument curves are literature anchors rather than complete
+The reviewed instrument curves are literature references rather than complete
 site-specific environmental noise models. The iGrav curve estimates quiet
 self-noise, AQG and FG5 entries are short-term anchors, and none authorizes
 low-frequency extrapolation. Thus the matrix establishes a coverage boundary,
@@ -422,5 +449,5 @@ project authorship; journal submission still requires named author order,
 affiliations, declarations and corresponding-author approval.
 
 \bibliographystyle{plain}
-\bibliography{references}
+\bibliography{\PaperBibliography}
 \end{document}

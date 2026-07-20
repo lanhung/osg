@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in,landscape]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+\title{Supplementary Information: Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry}
+\author{Hang Diao \and Qikai Zhang \and Yifang Luo \and Wannian Li \and Jiaqing Huang \and Fan Zhang}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Version-controlled analysis protocol}
+The configurations are version-controlled analysis protocols rather than an
+externally registered clinical-style preregistration. P1-E006 fixes the
+1,446-record sensitivity design; P1-E008 fixes the 50, 75, 90 and 95\% energy
+fractions; P1-E010 fixes the independent spectral-convention comparison; and
+P1-E011 fixes the temporal/spectral convergence audit before its production
+execution. Commit hashes, configuration checksums, software environment and
+output checksums accompany each experiment. The 20\% Helgoland tolerance was
+stored in the P1-E005 protocol before its production output was accepted; it is
+an engineering replacement tolerance for differing Earth-response and detiding
+implementations, not an observational uncertainty interval.
+
+\section{Process-model parameter registry}
+Table~S1 lists every parameter that defines the primary process branches. Ranges
+are sensitivity designs and do not define probability distributions.
+
+\begin{table}[ht]
+\centering
+\caption{Process-model parameters for the P1-E006 direct-radial-gravity ensemble.}
+\label{tab:s1-parameters}
+\resizebox{\textwidth}{!}{\input{generated/process_parameters.tex}}
+\end{table}
+
+\section{Record and spectral registry}
+The record duration is $N\Delta t$ under the Fourier convention used by the
+software. Before P1-E011, the native frequency spacing is
+$\Delta f=(N\Delta t)^{-1}$. Constant detrending removes only the record mean;
+no linear detrend is applied to the primary E008 calculation.
+
+\begin{table}[ht]
+\centering
+\caption{Composition and native temporal resolution of all 1,446 records.}
+\label{tab:s2-records}
+\resizebox{\textwidth}{!}{\input{generated/record_registry.tex}}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Native-grid lower-frequency requirements. These values are retained
+as the P1-E008 result and are subject to the P1-E011 convergence audit.}
+\label{tab:s3-frequency}
+\resizebox{\textwidth}{!}{\input{generated/frequency_requirements.tex}}
+\end{table}
+
+\section{Instrument evidence}
+The three entries are published noise references over their stated intervals,
+not complete site-noise models. Their frequency limits are never extrapolated.
+
+\begin{table}[ht]
+\centering
+\caption{Instrument-noise evidence and frequency support.}
+\label{tab:s4-instruments}
+\resizebox{\textwidth}{!}{\input{generated/instrument_evidence.tex}}
+\end{table}
+
+\section{Process constructions and conservation}
+The eddy is a Gaussian sea-surface-height anomaly translated parallel to the
+idealized coast. The internal-wave branch consists of equal and opposite
+three-dimensional Gaussian density lobes, so its discretized net anomalous mass
+is zero. Each tsunami record is an equal-mass Gaussian crest--trough pair whose
+signed surface mass closes to the stated numerical tolerance. The Storegga
+branch removes a solid mass at the source and adds the same mass at the
+destination; its transition fraction is a half-cosine ramp. These constructions
+are representative forward-model sensitivities, not population models.
+
+\section{Supplementary figures}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.88\textwidth]{../../reports/figures/paper1/p1_process_instrument_matrix.png}
+\caption{Process--instrument common-support matrix under the original native-bin
+implementation. P1-E011 separately reports source Nyquist limitations, native
+grid resolution and boundary-aware dense-grid energy coverage.}
+\label{fig:s1}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.88\textwidth]{../../reports/figures/paper1/p1_sensitivity_envelopes.png}
+\caption{Version-controlled process sensitivity envelopes. Bands are extrema of
+the fixed designs, not confidence or credible intervals.}
+\label{fig:s2}
+\end{figure}
+
+\end{document}

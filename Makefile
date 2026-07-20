@@ -1,4 +1,4 @@
-.PHONY: test test-env lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects audit-paper2-decision paper1-release
+.PHONY: test test-env lint validate-experiments reproduce reproduce-all audit-cases audit-priors audit-effects audit-paper2-decision paper1-release paper1-jog-release
 
 UV ?= uv
 
@@ -36,3 +36,6 @@ audit-paper2-decision:
 
 paper1-release:
 	python3 scripts/build_paper1_release.py --python python3
+
+paper1-jog-release:
+	python3 scripts/build_paper1_jog_release.py --python python3

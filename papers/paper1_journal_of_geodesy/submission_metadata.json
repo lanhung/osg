@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "incomplete_user_verification_required",
+  "target_journal": "Journal of Geodesy",
+  "manuscript_title": "Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry",
+  "authors_in_order": [
+    {"name": "Hang Diao", "affiliation_ids": [], "orcid": null, "corresponding": null},
+    {"name": "Qikai Zhang", "affiliation_ids": [], "orcid": null, "corresponding": null},
+    {"name": "Yifang Luo", "affiliation_ids": [], "orcid": null, "corresponding": null},
+    {"name": "Wannian Li", "affiliation_ids": [], "orcid": null, "corresponding": null},
+    {"name": "Jiaqing Huang", "affiliation_ids": [], "orcid": null, "corresponding": null},
+    {"name": "Fan Zhang", "affiliation_ids": [], "orcid": null, "corresponding": null}
+  ],
+  "affiliations": [],
+  "corresponding_author_email": null,
+  "archival_doi": null,
+  "development_repository": "https://github.com/lanhung/osg",
+  "release_tag": "paper1-v1.1.0",
+  "required_user_inputs": [
+    "verified author order and contributions",
+    "complete affiliation names, cities, postal codes and countries",
+    "corresponding author and institutional email",
+    "ORCIDs where available",
+    "Zenodo or equivalent archival DOI after v1.1.0 deposition"
+  ]
+}

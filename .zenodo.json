@@ -1,13 +1,18 @@
 {
-  "title": "Ocean Gravity Program: Paper 1 frequency-coverage release",
-  "description": "Reproducible code, registered compact metrics, figures and technical preprint for frequency-coverage limits in assessing direct gravity signals from representative ocean mass-redistribution scenarios.",
+  "title": "Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry",
+  "description": "Reproducible code, version-controlled configurations, compact metrics, figures, manuscript and supplementary information for an evidence-based frequency-support audit of direct gravity signals from representative ocean mass-redistribution scenarios.",
   "creators": [
-    {"name": "Ocean Gravity Program contributors"}
+    {"name": "Diao, Hang", "affiliation": "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"},
+    {"name": "Zhang, Qikai", "affiliation": "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"},
+    {"name": "Luo, Yifang", "affiliation": "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"},
+    {"name": "Li, Wannian", "affiliation": "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"},
+    {"name": "Huang, Jiaqing", "affiliation": "Jiangsu Sungo Intelligent Technology Research Center Co., Ltd."},
+    {"name": "Zhang, Fan", "affiliation": "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"}
   ],
   "upload_type": "software",
   "license": "MIT",
   "access_right": "open",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "keywords": [
     "gravimetry",
     "ocean loading",

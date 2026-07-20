@@ -1,17 +1,45 @@
 cff-version: 1.2.0
 message: "If you use this software or the Paper 1 results, please cite this release."
-title: "Ocean Gravity Program: Paper 1 frequency-coverage release"
+title: "Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry"
 type: software
 authors:
-  - name: "Ocean Gravity Program contributors"
-version: 1.0.0
-date-released: 2026-07-13
+  - family-names: Diao
+    given-names: Hang
+    affiliation: "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"
+  - family-names: Zhang
+    given-names: Qikai
+    affiliation: "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"
+  - family-names: Luo
+    given-names: Yifang
+    affiliation: "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"
+  - family-names: Li
+    given-names: Wannian
+    affiliation: "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"
+  - family-names: Huang
+    given-names: Jiaqing
+    affiliation: "Jiangsu Sungo Intelligent Technology Research Center Co., Ltd."
+  - family-names: Zhang
+    given-names: Fan
+    affiliation: "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University"
+version: 1.1.0
+date-released: 2026-07-20
 repository-code: "https://github.com/lanhung/osg"
 license: MIT
 preferred-citation:
   type: article
-  title: "Frequency-Coverage Limits in Assessing Gravity Signals from Oceanic Mass Redistribution"
+  title: "Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry"
   authors:
-    - name: "Ocean Gravity Program contributors"
+    - family-names: Diao
+      given-names: Hang
+    - family-names: Zhang
+      given-names: Qikai
+    - family-names: Luo
+      given-names: Yifang
+    - family-names: Li
+      given-names: Wannian
+    - family-names: Huang
+      given-names: Jiaqing
+    - family-names: Zhang
+      given-names: Fan
   year: 2026
   status: unpublished

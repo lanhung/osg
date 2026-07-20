@@ -32,11 +32,18 @@
     }
   ],
   "corresponding_author_email": "f.zhang@zju.edu.cn",
+  "author_contribution_statement": null,
+  "funding_statement": null,
+  "competing_interests_statement": null,
+  "all_author_approval_date": null,
   "archival_doi": null,
   "development_repository": "https://github.com/lanhung/osg",
   "release_tag": "paper1-v1.1.0",
   "required_user_inputs": [
     "author-approved CRediT contribution statement",
+    "author-approved funding statement and grant numbers, or an explicit no-funding statement",
+    "author-approved competing-interests statement",
+    "date on which all six authors approved the submission",
     "ORCIDs where available",
     "Zenodo or equivalent archival DOI after v1.1.0 deposition"
   ],

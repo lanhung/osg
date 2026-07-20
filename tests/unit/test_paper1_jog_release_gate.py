@@ -21,3 +21,5 @@ def test_incomplete_submission_metadata_blocks_release() -> None:
     assert metadata["status"] != "complete_verified"
     with pytest.raises(RuntimeError, match="not complete and verified"):
         _validate_submission_metadata()
+    candidate = _validate_submission_metadata(require_release=False)
+    assert candidate["corresponding_author_email"] == "f.zhang@zju.edu.cn"

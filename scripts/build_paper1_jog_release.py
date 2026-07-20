@@ -40,18 +40,27 @@ def _run(command: list[str], *, cwd: Path = ROOT) -> dict:
     return record
 
 
-def _validate_submission_metadata() -> dict:
+def _validate_submission_metadata(*, require_release: bool = True) -> dict:
     path = PAPER / "submission_metadata.json"
     metadata = json.loads(path.read_text())
-    if metadata.get("status") != "complete_verified":
+    if require_release and metadata.get("status") != "complete_verified":
         raise RuntimeError("submission metadata is not complete and verified")
     if not metadata.get("affiliations"):
         raise RuntimeError("at least one verified affiliation is required")
     if not metadata.get("corresponding_author_email"):
         raise RuntimeError("corresponding-author email is required")
-    doi = metadata.get("archival_doi")
-    if not isinstance(doi, str) or not doi.startswith("10."):
-        raise RuntimeError("a finalized archival DOI is required")
+    if require_release:
+        doi = metadata.get("archival_doi")
+        if not isinstance(doi, str) or not doi.startswith("10."):
+            raise RuntimeError("a finalized archival DOI is required")
+        for field in (
+            "author_contribution_statement",
+            "funding_statement",
+            "competing_interests_statement",
+            "all_author_approval_date",
+        ):
+            if not isinstance(metadata.get(field), str) or not metadata[field].strip():
+                raise RuntimeError(f"verified release metadata field is required: {field}")
     for author in metadata["authors_in_order"]:
         if not author["affiliation_ids"] or author["corresponding"] is None:
             raise RuntimeError("every author needs affiliations and corresponding-author status")
@@ -88,7 +97,12 @@ def _scan_sources() -> None:
         "[PENDING",
         "?Zhang",
     )
-    for path in (PAPER / "main.tex", PAPER / "supplementary.tex"):
+    for path in (
+        PAPER / "main.tex",
+        PAPER / "supplementary.tex",
+        ROOT / "papers/paper1_atlas/main.tex",
+        ROOT / "papers/paper1_atlas/references.bib",
+    ):
         text = path.read_text(errors="replace")
         for marker in forbidden:
             if marker in text:
@@ -118,10 +132,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument(
+        "--candidate-audit",
+        action="store_true",
+        help="compile and audit before DOI/declaration approval without authorizing release",
+    )
+    parser.add_argument(
         "--report", type=Path, default=ROOT / "reports/paper1_jog_release_build.json"
     )
     args = parser.parse_args()
-    metadata = _validate_submission_metadata()
+    metadata = _validate_submission_metadata(require_release=not args.candidate_audit)
     e011_output = _validate_e011()
     _scan_sources()
     records = [
@@ -154,6 +173,7 @@ def main() -> int:
         "workflow": "paper1-jog-release",
         "release_tag": metadata["release_tag"],
         "archival_doi": metadata["archival_doi"],
+        "release_authorized": not args.candidate_audit,
         "commands": records,
         "artifacts": {
             str(path.relative_to(ROOT)): {"bytes": path.stat().st_size, "sha256": _sha256(path)}

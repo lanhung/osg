@@ -1,9 +1,10 @@
-"""Release-integrity tests for the Paper 1 v1.0 repository package."""
+"""Release-integrity tests for the current Paper 1 package and immutable v1.0 tag."""
 
 from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -17,9 +18,9 @@ class TestPaper1ReleaseMetadata(unittest.TestCase):
         pyproject = (ROOT / "pyproject.toml").read_text()
         citation = yaml.safe_load((ROOT / "CITATION.cff").read_text())
         manuscript = (ROOT / "papers/paper1_atlas/main.tex").read_text()
-        self.assertIn('version = "1.0.0"', pyproject)
-        self.assertEqual(citation["version"], "1.0.0")
-        self.assertIn("Version 1.0 technical preprint", manuscript)
+        self.assertIn('version = "1.1.0"', pyproject)
+        self.assertEqual(citation["version"], "1.1.0")
+        self.assertIn("Version 1.1 technical companion", manuscript)
         self.assertNotIn("[PENDING:", manuscript)
 
     def test_ai_review_disclosure_cannot_be_mistaken_for_human_review(self) -> None:
@@ -43,13 +44,19 @@ class TestPaper1ReleaseMetadata(unittest.TestCase):
         self.assertIn("MIT License", (ROOT / "LICENSE").read_text())
         self.assertIn("Creative Commons", (ROOT / "LICENSES.md").read_text())
         deposition = json.loads((ROOT / ".zenodo.json").read_text())
-        self.assertEqual(deposition["version"], "1.0.0")
+        self.assertEqual(deposition["version"], "1.1.0")
         self.assertNotIn("doi", deposition)
 
     def test_release_manifest_hashes_and_disclosures_are_valid(self) -> None:
         manifest = json.loads((ROOT / "data/manifests/paper1_release_v1.0.0.json").read_text())
         for artifact in manifest["artifacts"]:
-            observed = hashlib.sha256((ROOT / artifact["path"]).read_bytes()).hexdigest()
+            tagged_bytes = subprocess.run(
+                ["git", "show", f"paper1-v1.0.0:{artifact['path']}"],
+                cwd=ROOT,
+                check=True,
+                capture_output=True,
+            ).stdout
+            observed = hashlib.sha256(tagged_bytes).hexdigest()
             self.assertEqual(observed, artifact["sha256"], artifact["path"])
         self.assertFalse(manifest["review"]["independent_human_peer_review"])
         self.assertIsNone(manifest["archive"]["doi"])

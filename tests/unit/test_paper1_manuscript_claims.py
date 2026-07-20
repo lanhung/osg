@@ -29,7 +29,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
         self.assertIn("not counts of independent natural events", self.manuscript)
         self.assertIn("Observable and evidence framework", self.manuscript)
         self.assertIn("Supplementary Figure~S1", self.manuscript)
-        self.assertIn("Direct-radial-gravity frequency requirements", self.manuscript)
+        self.assertIn("Finite-record direct-radial-gravity frequency support", self.manuscript)
 
     def test_forbidden_claims_are_absent(self) -> None:
         lowered = self.manuscript.lower()
@@ -67,6 +67,7 @@ class TestPaper1ManuscriptClaims(unittest.TestCase):
                 "P1-E008-frequency-coverage-requirements",
                 "P1-E009-helgoland-component-audit",
                 "P1-E010-independent-review-sensitivity",
+                "P1-E011-temporal-spectral-convergence",
             ],
         )
         self.assertEqual([item["status"] for item in figures["figures"]].count("complete"), 5)

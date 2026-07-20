@@ -262,6 +262,17 @@ The remaining P0 gates are the conceptual/final figure reorganization, explicit
 Helgoland discrepancy decomposition, independent gravimetry/geodesy review,
 single-command manuscript reproduction and archival submission package.
 
+Journal-revision milestone (2026-07-20): `paper1-v1.0.0` remains immutable. A
+separate Journal of Geodesy source/SI package, generated parameter/record/
+frequency/instrument tables and fail-closed `paper1-jog-release` target are now
+versioned. P1-E011 is preregistered to distinguish source Nyquist, native-grid
+resolution, record-window effects and reviewed-curve support using dense-DTFT,
+cadence, window and boundary-integration checks. E011 production is pending
+AutoDL network restoration; exact lower-edge claims and v1.1 figures remain
+open until its decision record is available. Author affiliations/ORCIDs,
+corresponding-author metadata and an archival DOI are explicit human-owned
+release blockers rather than manuscript placeholders.
+
 Evidence: registered experiment, figure/table bundle, full draft, reproduction report.
 
 ## Phase 2 — Paper 2 typhoon event attribution (Weeks 9–15)

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "revision_id": "paper1-v1.1.0-journal-revision",
+  "audit_date": "2026-07-20",
+  "gates": [
+    {"id": "JR1", "name": "separate_journal_source_and_build", "status": "pass"},
+    {"id": "JR2", "name": "bibliography_metadata_and_clean_compile", "status": "partial_compile_pending"},
+    {"id": "JR3", "name": "self_contained_supplement_and_generated_tables", "status": "pass"},
+    {"id": "JR4", "name": "P1_E011_temporal_spectral_convergence", "status": "registered_execution_pending"},
+    {"id": "JR5", "name": "E011_conditioned_results_figures_and_claims", "status": "pending_JR4"},
+    {"id": "JR6", "name": "verified_authors_affiliations_orcids_corresponding_author", "status": "pending_user_metadata"},
+    {"id": "JR7", "name": "archival_DOI", "status": "pending_deposition"},
+    {"id": "JR8", "name": "public_v1_1_0_tag", "status": "pending_release"},
+    {"id": "JR9", "name": "single_command_main_SI_release_build", "status": "pending_JR4_JR6_JR7"},
+    {"id": "JR10", "name": "independent_human_geodesy_review", "status": "recommended_pending"}
+  ],
+  "submission_ready": false,
+  "immutable_predecessor": "paper1-v1.0.0",
+  "prohibited_action": "Do not move or overwrite the paper1-v1.0.0 tag."
+}

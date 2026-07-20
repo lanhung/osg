@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -109,6 +110,31 @@ def _scan_sources() -> None:
                 raise RuntimeError(f"forbidden draft marker {marker!r} in {path}")
 
 
+def _validate_tex_graph() -> None:
+    bibliography = (ROOT / "papers/paper1_atlas/references.bib").read_text()
+    bibliography_keys = set(re.findall(r"@[A-Za-z]+\{([^,]+),", bibliography))
+    for tex_path in (
+        ROOT / "papers/paper1_atlas/main.tex",
+        PAPER / "supplementary.tex",
+    ):
+        text = tex_path.read_text()
+        cited: set[str] = set()
+        for group in re.findall(r"\\cite(?:\[[^]]*\])?\{([^}]+)\}", text):
+            cited.update(key.strip() for key in group.split(","))
+        missing_citations = sorted(cited - bibliography_keys)
+        if missing_citations:
+            raise RuntimeError(
+                f"undefined citation keys in {tex_path}: {', '.join(missing_citations)}"
+            )
+        labels = set(re.findall(r"\\label\{([^}]+)\}", text))
+        references = set(re.findall(r"\\(?:ref|eqref)\{([^}]+)\}", text))
+        missing_references = sorted(references - labels)
+        if missing_references:
+            raise RuntimeError(
+                f"undefined reference keys in {tex_path}: {', '.join(missing_references)}"
+            )
+
+
 def _compile(name: str, records: list[dict]) -> None:
     latex = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", f"{name}.tex"]
     records.append(_run(latex, cwd=PAPER))
@@ -143,6 +169,7 @@ def main() -> int:
     metadata = _validate_submission_metadata(require_release=not args.candidate_audit)
     e011_output = _validate_e011()
     _scan_sources()
+    _validate_tex_graph()
     records = [
         _run(
             [

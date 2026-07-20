@@ -5,13 +5,18 @@ from pathlib import Path
 
 import pytest
 
-from scripts.build_paper1_jog_release import _scan_sources, _validate_submission_metadata
+from scripts.build_paper1_jog_release import (
+    _scan_sources,
+    _validate_submission_metadata,
+    _validate_tex_graph,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_journal_source_has_no_visible_draft_markers() -> None:
     _scan_sources()
+    _validate_tex_graph()
 
 
 def test_incomplete_submission_metadata_blocks_release() -> None:

@@ -1,0 +1,31 @@
+{
+  "audit_passes": true,
+  "count_checks": {
+    "e006_record_count_is_1446": true,
+    "e011_record_array_has_1446_rows": true,
+    "e011_record_count_is_1446": true,
+    "process_counts_sum_to_1446": true
+  },
+  "decision_checks": {
+    "cadence_medians_converged": true,
+    "dense_pass_count_is_zero": true,
+    "grid_medians_converged": true,
+    "window_limited_processes_exact": true,
+    "window_stable_processes_exact": true,
+    "zero_classification_is_stable": true
+  },
+  "failures": [],
+  "instrument_and_figure_checks": {
+    "all_figure_checksums_match": true,
+    "aqg_low_edge_is_5e_4": true,
+    "fg5_low_edge_is_5e_4": true,
+    "figure_manifest_registers_e011": true,
+    "igrav_low_edge_is_1e_3": true
+  },
+  "manuscript_checks": {
+    "native_grid_table_is_historical": true,
+    "old_headline_values_absent_from_main": true,
+    "required_revised_fragments_present": true
+  },
+  "schema_version": 1
+}

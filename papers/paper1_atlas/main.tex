@@ -451,11 +451,15 @@ inferred from the direct atlas alone.
 
 \section{Data and code availability}
 Code, compact experiment metadata, checksums, figure inputs and manuscript
-sources are maintained in the public project repository. Bulk BSH NetCDF and
+sources are maintained in the public
+\href{https://github.com/lanhung/osg}{project repository}. Bulk BSH NetCDF and
 GNSS RINEX inputs remain on the compute data volume and are represented by
 source queries, inventories and checksums. Restricted gravimeter data and large
 gridded products remain outside Git and are represented by versioned manifests,
 access conditions, time ranges, and checksums.
+\ifdefined\JournalOfGeodesyVersion
+\input{generated/release_statements.tex}
+\fi
 
 \section{Limitations}
 The production atlas contains one primary branch per process family, plus the

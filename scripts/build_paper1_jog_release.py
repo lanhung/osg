@@ -20,6 +20,50 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _latex_escape(text: str) -> str:
+    for source, replacement in (
+        ("\\", r"\textbackslash{}"),
+        ("&", r"\&"),
+        ("%", r"\%"),
+        ("#", r"\#"),
+        ("_", r"\_"),
+        ("$", r"\$"),
+    ):
+        text = text.replace(source, replacement)
+    return text
+
+
+def _write_release_statements(metadata: dict, *, candidate_audit: bool) -> Path:
+    path = PAPER / "generated/release_statements.tex"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if candidate_audit:
+        content = (
+            "\\paragraph{Candidate-build notice.} This internally audited PDF is not "
+            "the released submission version; archival DOI and author-approved "
+            "declarations are intentionally absent.\n"
+        )
+    else:
+        doi = _latex_escape(metadata["archival_doi"])
+        contributions = _latex_escape(metadata["author_contribution_statement"])
+        funding = _latex_escape(metadata["funding_statement"])
+        interests = _latex_escape(metadata["competing_interests_statement"])
+        ai_statement = _latex_escape(metadata["ai_assistance_statement"])
+        content = (
+            f"Archived code, fixed configurations and derived numerical outputs are "
+            f"available at \\href{{https://doi.org/{doi}}}{{https://doi.org/{doi}}}.\n\n"
+            "\\section{Author contributions}\n"
+            f"{contributions}\n\n"
+            "\\section{Funding}\n"
+            f"{funding}\n\n"
+            "\\section{Competing interests}\n"
+            f"{interests}\n\n"
+            "\\section{AI assistance disclosure}\n"
+            f"{ai_statement}\n"
+        )
+    path.write_text(content)
+    return path
+
+
 def _run(command: list[str], *, cwd: Path = ROOT) -> dict:
     result = subprocess.run(
         command,
@@ -58,6 +102,7 @@ def _validate_submission_metadata(*, require_release: bool = True) -> dict:
             "author_contribution_statement",
             "funding_statement",
             "competing_interests_statement",
+            "ai_assistance_statement",
             "all_author_approval_date",
         ):
             if not isinstance(metadata.get(field), str) or not metadata[field].strip():
@@ -149,9 +194,19 @@ def _compile(name: str, records: list[dict]) -> None:
         "Reference `",
         "undefined citations",
         "Rerun to get cross-references right",
+        "multiply defined",
+        "Overfull \\hbox",
+        "Underfull \\hbox",
+        "Missing character:",
+        "destination with the same identifier",
+        "Label(s) may have changed",
     )
     if any(marker in log for marker in markers):
-        raise RuntimeError(f"{name}.log contains unresolved citations or references")
+        raise RuntimeError(f"{name}.log contains a prohibited release warning")
+    if name == "main":
+        bibliography_log = (PAPER / "main.blg").read_text(errors="replace")
+        if "Warning--" in bibliography_log or "error" in bibliography_log.lower():
+            raise RuntimeError("main.blg contains a BibTeX warning or error")
 
 
 def main() -> int:
@@ -167,6 +222,7 @@ def main() -> int:
     )
     args = parser.parse_args()
     metadata = _validate_submission_metadata(require_release=not args.candidate_audit)
+    _write_release_statements(metadata, candidate_audit=args.candidate_audit)
     e011_output = _validate_e011()
     _scan_sources()
     _validate_tex_graph()
@@ -182,6 +238,7 @@ def main() -> int:
         ),
         _run([args.python, "scripts/validate_experiment_registry.py"]),
         _run([args.python, "scripts/export_paper1_journal_tables.py"]),
+        _run([args.python, "scripts/audit_paper1_journal_consistency.py"]),
     ]
     _validate_figure_manifest()
     for executable in ("pdflatex", "bibtex"):
@@ -194,6 +251,7 @@ def main() -> int:
         PAPER / "supplementary.pdf",
         *sorted((PAPER / "generated").glob("*.tex")),
         e011_output,
+        ROOT / "reports/paper1_journal_consistency_audit.json",
     ]
     payload = {
         "schema_version": 1,

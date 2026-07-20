@@ -44,9 +44,9 @@
     "author-approved funding statement and grant numbers, or an explicit no-funding statement",
     "author-approved competing-interests statement",
     "date on which all six authors approved the submission",
-    "ORCIDs where available",
     "Zenodo or equivalent archival DOI after v1.1.0 deposition"
   ],
+  "optional_user_inputs": ["ORCIDs for authors who have and wish to supply them"],
   "verification_notes": [
     "Author order, affiliation mapping and corresponding author were supplied by the user on 2026-07-20.",
     "No ORCID was inferred from name matching alone.",

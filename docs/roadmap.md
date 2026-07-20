@@ -264,14 +264,15 @@ single-command manuscript reproduction and archival submission package.
 
 Journal-revision milestone (2026-07-20): `paper1-v1.0.0` remains immutable. A
 separate Journal of Geodesy source/SI package, generated parameter/record/
-frequency/instrument tables and fail-closed `paper1-jog-release` target are now
-versioned. P1-E011 is preregistered to distinguish source Nyquist, native-grid
-resolution, record-window effects and reviewed-curve support using dense-DTFT,
-cadence, window and boundary-integration checks. E011 production is pending
-AutoDL network restoration; exact lower-edge claims and v1.1 figures remain
-open until its decision record is available. Author affiliations/ORCIDs,
-corresponding-author metadata and an archival DOI are explicit human-owned
-release blockers rather than manuscript placeholders.
+frequency/convergence/instrument tables and fail-closed `paper1-jog-release`
+target are versioned. P1-E011 completed on AutoDL: dense boundary-aware
+integration preserves the 0-of-1,446 conclusion, grid and cadence convergence
+pass, tide/internal-wave windows are stable, and eddy/storm/tsunami/landslide
+lower edges are explicitly window limited. E006-v2 is not required. The six
+authors, affiliations and corresponding author are resolved. Author-approved
+contributions/funding/competing-interest declarations, archival DOI, clean
+main/SI LaTeX build and public v1.1.0 tag remain release gates; ORCIDs are
+optional and are not inferred.
 
 Evidence: registered experiment, figure/table bundle, full draft, reproduction report.
 

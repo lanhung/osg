@@ -1,26 +1,48 @@
 {
   "schema_version": 1,
-  "status": "incomplete_user_verification_required",
+  "status": "pending_archival_doi_and_contributions",
   "target_journal": "Journal of Geodesy",
   "manuscript_title": "Frequency-Support Requirements for Assessing Direct Ocean-Induced Gravity Signals in Terrestrial Gravimetry",
   "authors_in_order": [
-    {"name": "Hang Diao", "affiliation_ids": [], "orcid": null, "corresponding": null},
-    {"name": "Qikai Zhang", "affiliation_ids": [], "orcid": null, "corresponding": null},
-    {"name": "Yifang Luo", "affiliation_ids": [], "orcid": null, "corresponding": null},
-    {"name": "Wannian Li", "affiliation_ids": [], "orcid": null, "corresponding": null},
-    {"name": "Jiaqing Huang", "affiliation_ids": [], "orcid": null, "corresponding": null},
-    {"name": "Fan Zhang", "affiliation_ids": [], "orcid": null, "corresponding": null}
+    {"name": "Hang Diao", "affiliation_ids": [1], "orcid": null, "corresponding": false},
+    {"name": "Qikai Zhang", "affiliation_ids": [1], "orcid": null, "corresponding": false},
+    {"name": "Yifang Luo", "affiliation_ids": [1], "orcid": null, "corresponding": false},
+    {"name": "Wannian Li", "affiliation_ids": [1], "orcid": null, "corresponding": false},
+    {"name": "Jiaqing Huang", "affiliation_ids": [2], "orcid": null, "corresponding": false},
+    {"name": "Fan Zhang", "affiliation_ids": [1], "orcid": null, "corresponding": true}
   ],
-  "affiliations": [],
-  "corresponding_author_email": null,
+  "affiliations": [
+    {
+      "id": 1,
+      "name": "State Key Laboratory of Ocean Sensing & Ocean College, Zhejiang University",
+      "city": "Zhoushan",
+      "region": "Zhejiang",
+      "postal_code": "316021",
+      "country": "China",
+      "verification": "Zhejiang University profile and published author affiliation"
+    },
+    {
+      "id": 2,
+      "name": "Jiangsu Sungo Intelligent Technology Research Center Co., Ltd.",
+      "city": "Nantong",
+      "region": "Jiangsu",
+      "postal_code": "226019",
+      "country": "China",
+      "verification": "published author affiliation; city resolved from postal code 226019"
+    }
+  ],
+  "corresponding_author_email": "f.zhang@zju.edu.cn",
   "archival_doi": null,
   "development_repository": "https://github.com/lanhung/osg",
   "release_tag": "paper1-v1.1.0",
   "required_user_inputs": [
-    "verified author order and contributions",
-    "complete affiliation names, cities, postal codes and countries",
-    "corresponding author and institutional email",
+    "author-approved CRediT contribution statement",
     "ORCIDs where available",
     "Zenodo or equivalent archival DOI after v1.1.0 deposition"
+  ],
+  "verification_notes": [
+    "Author order, affiliation mapping and corresponding author were supplied by the user on 2026-07-20.",
+    "No ORCID was inferred from name matching alone.",
+    "Affiliation 2 city is a postal-code resolution; the published affiliation itself states Jiangsu 226019."
   ]
 }

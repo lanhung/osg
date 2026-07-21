@@ -27,3 +27,5 @@ def test_generated_tables_are_populated_from_frozen_inputs() -> None:
     assert "storm\\_surge" in record_registry_table(metrics)
     assert "$f_{90}$ median" in frequency_requirement_table(metrics)
     assert "aqg\\_a01" in instrument_evidence_table(instruments)
+    assert r"ASD (SI/$\sqrt{\mathrm{Hz}}$)" in instrument_evidence_table(instruments)
+    assert r"ASD (SI/\\sqrt{Hz})" not in instrument_evidence_table(instruments)

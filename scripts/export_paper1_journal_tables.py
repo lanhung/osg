@@ -276,7 +276,7 @@ def instrument_evidence_table(manifest: dict) -> str:
         r"\begin{tabular}{llllll}",
         r"\toprule",
         (
-            r"Instrument/reference & Observable & Band (Hz) & ASD (SI/\sqrt{Hz}) & "
+            r"Instrument/reference & Observable & Band (Hz) & ASD (SI/$\sqrt{\mathrm{Hz}}$) & "
             r"Evidence type & DOI \\"
         ),
         r"\midrule",
